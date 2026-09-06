@@ -1,0 +1,39 @@
+{
+  "status": "design_only_not_deployed",
+  "universityRefresh": {
+    "intervalHours": 120,
+    "anchorUtc": null,
+    "scope": "all_registered_official_czech_hei_sources",
+    "overlapPolicy": "single_run_with_persistent_lock",
+    "missedRuns": "coalesce_to_one_catch_up"
+  },
+  "jobStatusRefresh": {
+    "intervalHours": 24,
+    "purpose": "lightweight_closure_and_application_link_check"
+  },
+  "deadlineSweep": {
+    "intervalSeconds": 60,
+    "sourceTimezone": "preserve_per_record"
+  },
+  "publication": {
+    "closedJobsVisibleInPublicLists": false,
+    "archiveRecords": true,
+    "cacheInvalidationTargetSeconds": 300,
+    "primaryJobClick": "direct_official_application",
+    "requireSiteLoginToApply": false
+  },
+  "coverageTargets": {
+    "officialInstitutionBaselineRegistrationPercent": 100,
+    "institutionSourceMappingPercent": 95,
+    "cycleSourceSuccessPercent": 90
+  },
+  "failurePolicy": {
+    "networkFailureMeansClosed": false,
+    "http404MeansClosedWithoutCorroboration": false,
+    "retryBackoffSeconds": [
+      300,
+      1800,
+      7200
+    ]
+  }
+}

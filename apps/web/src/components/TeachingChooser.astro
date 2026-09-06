@@ -1,0 +1,34 @@
+---
+import { t } from "../lib/i18n";
+import type { TeachingLanguageChoice, UiLocale } from "../lib/types";
+
+interface Props {
+  locale: UiLocale;
+  selected?: TeachingLanguageChoice;
+}
+
+const { locale, selected = null } = Astro.props;
+---
+<section aria-labelledby="teaching-prompt">
+  <h1 id="teaching-prompt">{t(locale, "teaching.prompt")}</h1>
+  <p class="lede">{t(locale, "brand.tagline")}</p>
+  <div class="chooser two">
+    <a class:list={["choice-card", { selected: selected === "en" }]} href={`/${locale}/programmes?teachingLanguage=en`}>
+      <p class="muted">{t(locale, "teaching.label")}</p>
+      <h2>{t(locale, "teaching.en")}</h2>
+      <p>{t(locale, "teaching.en.help")}</p>
+    </a>
+    <a class:list={["choice-card", { selected: selected === "cs" }]} href={`/${locale}/programmes?teachingLanguage=cs`}>
+      <p class="muted">{t(locale, "teaching.label")}</p>
+      <h2>{t(locale, "teaching.cs")}</h2>
+      <p>{t(locale, "teaching.cs.help")}</p>
+    </a>
+  </div>
+  <p>
+    <a class="secondary-link" href={`/${locale}/programmes?teachingLanguage=all`}>{t(locale, "teaching.all")}</a>
+  </p>
+  <p class="disclaimer">{t(locale, "home.researchHelp")}</p>
+  <p>
+    <a class="btn" href={`/${locale}/research-jobs`}>{t(locale, "home.researchCta")}</a>
+  </p>
+</section>

@@ -1,0 +1,44 @@
+digraph SD2 {
+// Explicit OPM-to-DOT mapping; see README.md. Layout is not execution order.
+  graph [rankdir="LR", compound="true", bgcolor="#FFFFFF", pad="0.3", nodesep="0.38", ranksep="0.65", splines="spline", fontname="Microsoft YaHei", fontsize="18", labelloc="t", label="SD2  界面语言独立切换与呈现\nISO 19450:2024 · OPM semantic mapping / DOT"];
+  node [fontname="Microsoft YaHei", fontsize="11", margin="0.14,0.10", penwidth="1.3"];
+  edge [fontname="Segoe UI", fontsize="9", arrowsize="0.7", penwidth="1.1"];
+  subgraph cluster_bundle {
+    graph [label="三语内容包\nTranslation Bundle", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="bundle"];
+    reviewed [label="三语已复核\nreviewed", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="bundle"];
+    translated [label="翻译草稿\ndraft", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="bundle"];
+  }
+  subgraph cluster_language {
+    graph [label="授课语言选择\nTeaching Language Choice", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="language"];
+    language [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
+    alllang [label="全部授课语言\nall", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="language"];
+    czech [label="捷克语授课\nCzech", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="language"];
+    english [label="英语授课\nEnglish", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="language"];
+    unset [label="尚未选择\nunset", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="language"];
+  }
+  subgraph cluster_locale {
+    graph [label="界面语言\nUI Locale", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="locale"];
+    locale [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
+    csui [label="Čeština\ncs", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="locale"];
+    enui [label="English\nen", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="locale"];
+    zh [label="简体中文\nzh-CN", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="locale"];
+  }
+  catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  context [label="浏览上下文与收藏\nBrowsing Context", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  intent [label="用户界面语言选择\nLocale Choice", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  present [label="渲染当前语言页面\nLocalized Page Rendering", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  screen [label="当前语言界面\nLocalized Interface", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  switch [label="切换界面语言\nLocale Switching", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  tokens [label="UI 设计规则\nDesign Rules", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  user [label="申请者\nApplicant", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
+  user -> switch [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  intent -> switch [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  switch -> locale [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect", lhead="cluster_locale"];
+  locale -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument", ltail="cluster_locale"];
+  context -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  language -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument", ltail="cluster_language"];
+  reviewed -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  tokens -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  catalog -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  present -> screen [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+}

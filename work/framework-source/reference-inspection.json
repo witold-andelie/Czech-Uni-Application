@@ -1,0 +1,97 @@
+{
+  "source": "https://www.guanfu.online/",
+  "checked": "2026-09-06",
+  "extraction": "Scrapling 0.4.9 GET, HTTP 200",
+  "htmlBytes": 1829039,
+  "sha256": "d26fd9b89bb772ec861c0b25fc58310f7ffc900b4ad59ebd2866f6ba9e93be6a",
+  "arrays": {
+    "__UNIS__": {
+      "count": 1521,
+      "fields": [
+        "id",
+        "name_de",
+        "name_kurz",
+        "name_en",
+        "stadt",
+        "bundesland",
+        "typ",
+        "latitude",
+        "longitude",
+        "gruendungsjahr",
+        "studenten_anzahl",
+        "website",
+        "wikidata_qid",
+        "qs_2025",
+        "the_2025",
+        "arwu_2024",
+        "tu9",
+        "exzellenz",
+        "u15",
+        "studiengang_count",
+        "zulassung_count"
+      ]
+    },
+    "__PROGRAMS__": {
+      "count": 1588,
+      "fields": [
+        "id",
+        "hochschule_id",
+        "name_de",
+        "abschluss",
+        "stufe",
+        "variante",
+        "url",
+        "sprache",
+        "regelstudienzeit",
+        "ects",
+        "studiengebuehr_non_eu",
+        "zulassungsart",
+        "eignungsverfahren",
+        "deadline_ws",
+        "deadline_ss",
+        "deadline_ws_start",
+        "deadline_ws_end",
+        "deadline_ss_start",
+        "deadline_ss_end",
+        "sprachnachweis_details",
+        "bewerbungs_url",
+        "fach"
+      ]
+    }
+  },
+  "externalScripts": [
+    "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  ],
+  "fetchCalls": 0,
+  "publicRepositoryLinks": [],
+  "institutionTypes": {
+    "Sonstige": 633,
+    "FH": 51,
+    "Universität": 595,
+    "Kunst": 22,
+    "TU": 146,
+    "Musik": 46,
+    "PH": 28
+  },
+  "institutionsWithProgrammes": 33,
+  "fhWithProgrammes": 0,
+  "inlineLogicExcerpts": [
+    "const UNIS = window.__UNIS__;",
+    ".filter(([k]) => k !== 'HAW')",
+    "function renderMarkers(unis) {",
+    "function filterPrograms() {",
+    "return PROGRAMS.filter(p => {",
+    ".filter(Boolean).join(' ').toLowerCase();",
+    "function filterUnis() {",
+    "return UNIS.filter(u => {",
+    "const hay = [u.name_de, u.name_en, u.name_kurz, u.stadt].filter(Boolean).join(' ').toLowerCase();",
+    ".filter(v => v && !p.name_de.toLowerCase().includes(v.toLowerCase()));",
+    "].filter(Boolean).join('');",
+    "function render() {",
+    "const progs = sortPrograms(filterPrograms());",
+    "const unis = sortUnis(filterUnis());",
+    "document.getElementById('mapCount').textContent = unis.filter(u => u.latitude != null).length;",
+    "return keys.filter(k => c[k]).map(k => ({ key: k, count: c[k] }));",
+    ".filter(t => typCounts[t])"
+  ]
+}

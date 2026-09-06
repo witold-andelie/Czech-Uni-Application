@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Application Window — foundational contract",
+  "type": "object",
+  "required": [
+    "id",
+    "ownerType",
+    "ownerId",
+    "roundNumber",
+    "roundLabelOriginal",
+    "opensAt",
+    "closesAt",
+    "timezone",
+    "status",
+    "sourceEvidenceId"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ownerType": {
+      "enum": [
+        "offering",
+        "research_job"
+      ]
+    },
+    "ownerId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "roundNumber": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "roundLabelOriginal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "roundType": {
+      "enum": [
+        "regular",
+        "supplementary",
+        "rolling",
+        "unspecified"
+      ]
+    },
+    "opensAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO date or datetime; validate precision and timezone together"
+    },
+    "closesAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timezone": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "upcoming",
+        "open",
+        "closed",
+        "conditional",
+        "unknown"
+      ]
+    },
+    "conditionalOnVacancies": {
+      "type": "boolean"
+    },
+    "applicationUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "sourceEvidenceId": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "description": "基础契约；跨字段时间顺序、证据与精度规则由实现补充验证，不是完整生产模型。"
+}

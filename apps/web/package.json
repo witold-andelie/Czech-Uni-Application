@@ -1,0 +1,21 @@
+{
+  "name": "czech-uni-apply-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1 --port 4321",
+    "test": "node --experimental-strip-types --test src/lib/catalog.test.ts src/lib/i18n.test.ts",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^9.0.1",
+    "astro": "^7.3.1",
+    "svelte": "^5.39.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}

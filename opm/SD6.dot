@@ -1,0 +1,67 @@
+digraph SD6 {
+// Explicit OPM-to-DOT mapping; see README.md. Layout is not execution order.
+  graph [rankdir="LR", compound="true", bgcolor="#FFFFFF", pad="0.3", nodesep="0.38", ranksep="0.65", splines="spline", fontname="Microsoft YaHei", fontsize="18", labelloc="t", label="SD6  平台与数据的对象结构\nISO 19450:2024 · OPM semantic mapping / DOT"];
+  node [fontname="Microsoft YaHei", fontsize="11", margin="0.14,0.10", penwidth="1.3"];
+  edge [fontname="Segoe UI", fontsize="9", arrowsize="0.7", penwidth="1.1"];
+  subgraph cluster_facts {
+    graph [label="结构化记录\nStructured Record", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="facts"];
+    draft [label="待核验\ndraft", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
+    rejected [label="不符合发布要求\nrejected", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
+    verified [label="已核验\nverified", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
+  }
+  subgraph cluster_jobs {
+    graph [label="科研岗位记录\nResearch Job Record", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="jobs"];
+    jobs [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
+    eligiblejob [label="硕士可申请且确认带薪\nmaster eligible and paid", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
+    otherjob [label="其他资格或证据不足\nother or unresolved", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
+    uncheckedjob [label="资格未核验\nunchecked", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
+  }
+  subgraph cluster_recognition {
+    graph [label="中留服官方查询参考状态\nCSCSE Reference Status", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="recognition"];
+    recognition [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
+    listed [label="官方查询可查\nlisted", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="recognition"];
+    notfound [label="官方查询暂未查到\nnot found", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="recognition"];
+    unverifiedrecognition [label="待核验\nunverified", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="recognition"];
+  }
+  admin [label="审核后台\nTypeScript / Svelte\nEditorial Console", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  api [label="在线 API 服务\nGo\nOnline API Service", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  cache [label="发布数据缓存\nStatic HTML / JSON\nPublished Data Cache", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  db [label="PostgreSQL 数据库（建议 Supabase）\nSQL / PostgreSQL; Supabase\nPostgreSQL Database", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  export [label="导出公网站快照\nPublic Snapshot Exporting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  extra [label="实习与临床等额外语言要求\nAdditional Language Requirements", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  ingestion [label="采集服务\nPython / Scrapling\nIngestion Service", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  institution [label="独立高校或科研机构\nInstitution", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  offering [label="语言轨道与年度方案\nProgramme Offering", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  ownership [label="学校性质：公立／私立／国立\nInstitution Ownership", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  platform [label="捷克留学与科研平台\nCzech Opportunity Platform", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  private [label="内部核验数据\nEditorial Data Store", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  programme [label="学术项目\nProgramme", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  round [label="申请轮次\nAdmission Round", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  store [label="存储核验数据\nReviewed Data Storing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  teaching [label="方案授课语言\nTeaching Languages", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  web [label="三语公网站\nTypeScript / Astro / Svelte\nPublic Website", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  window [label="申请时间段与官方轮次\nApplication Window", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  platform -> web [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  platform -> admin [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  platform -> ingestion [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  platform -> db [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  platform -> cache [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  catalog -> institution [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  catalog -> programme [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  catalog -> jobs [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation", lhead="cluster_jobs"];
+  programme -> offering [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  offering -> round [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  offering -> teaching [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition"];
+  offering -> extra [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition"];
+  db -> store [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  verified -> store [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  store -> private [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+  catalog -> export [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  export -> cache [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+  platform -> api [dir="back", arrowtail="normal", color="#475569", label="aggregation", opm_relation="aggregation"];
+  institution -> ownership [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition"];
+  institution -> recognition [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition", lhead="cluster_recognition"];
+  round -> window [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition"];
+  jobs -> window [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition", ltail="cluster_jobs"];
+}

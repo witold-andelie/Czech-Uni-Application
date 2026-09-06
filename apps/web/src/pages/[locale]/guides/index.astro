@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const locale = localeFromParam(Astro.params.locale);
+---
+<BaseLayout locale={locale} title={t(locale, "guides.title")}>
+  <main id="main" class="page">
+    <h1>{t(locale, "guides.title")}</h1>
+    <p class="lede">{t(locale, "guides.intro")}</p>
+    <div class="panel">
+      <p>{t(locale, "guides.body")}</p>
+      <p>{t(locale, "recognition.disclaimer")}</p>
+      <p>{t(locale, "detail.notSubmitted")}</p>
+    </div>
+  </main>
+</BaseLayout>

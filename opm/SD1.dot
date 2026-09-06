@@ -1,0 +1,51 @@
+digraph SD1 {
+// Explicit OPM-to-DOT mapping; see README.md. Layout is not execution order.
+  graph [rankdir="LR", compound="true", bgcolor="#FFFFFF", pad="0.3", nodesep="0.38", ranksep="0.65", splines="spline", fontname="Microsoft YaHei", fontsize="18", labelloc="t", label="SD1  按授课语言优先发现项目\nISO 19450:2024 · OPM semantic mapping / DOT"];
+  node [fontname="Microsoft YaHei", fontsize="11", margin="0.14,0.10", penwidth="1.3"];
+  edge [fontname="Segoe UI", fontsize="9", arrowsize="0.7", penwidth="1.1"];
+  subgraph cluster_language {
+    graph [label="授课语言选择\nTeaching Language Choice", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="language"];
+    language [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
+    alllang [label="全部授课语言\nall", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="language"];
+    czech [label="捷克语授课\nCzech", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="language"];
+    english [label="英语授课\nEnglish", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="language"];
+    unset [label="尚未选择\nunset", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="language"];
+  }
+  catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  choose_all [label="选择全部授课语言\nAll Teaching Choosing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  choose_cs [label="选择捷克语授课\nCzech Teaching Choosing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  choose_en [label="选择英语授课\nEnglish Teaching Choosing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  compare [label="比较机会\nOpportunity Comparing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  comparison [label="比较视图\nComparison View", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  detail [label="机会详情\nOpportunity Detail", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  filter [label="按语言优先筛选\nProgramme Filtering", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  inspect [label="查看资格与来源\nDetail Inspecting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  query [label="检索条件\nSearch Criteria", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  results [label="专业检索结果\nProgramme Results", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  save [label="收藏机会\nOpportunity Saving", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  selection [label="比较项选择\nComparison Selection", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  shortlist [label="机会候选清单\nOpportunity Shortlist", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  user [label="申请者\nApplicant", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
+  user -> choose_en [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  choose_en -> english [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  unset -> choose_en [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  user -> choose_cs [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  choose_cs -> czech [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  unset -> choose_cs [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  user -> choose_all [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  choose_all -> alllang [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  unset -> choose_all [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  language -> filter [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument", ltail="cluster_language"];
+  query -> filter [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  catalog -> filter [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  filter -> results [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  results -> inspect [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  user -> inspect [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  inspect -> detail [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  detail -> save [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  user -> save [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  save -> shortlist [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+  selection -> compare [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  catalog -> compare [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  compare -> comparison [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+}

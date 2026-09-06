@@ -1,0 +1,65 @@
+---
+import "../styles/global.css";
+import { htmlLang, t, LOCALES } from "../lib/i18n";
+import type { UiLocale } from "../lib/types";
+import LocaleSwitcher from "../components/LocaleSwitcher.svelte";
+
+interface Props {
+  locale: UiLocale;
+  title: string;
+  description?: string;
+}
+
+const { locale, title, description } = Astro.props;
+const path = Astro.url.pathname;
+const brand = t(locale, "brand.name");
+const documentTitle = title === brand ? brand : `${title} · ${brand}`;
+const nav = [
+  { href: `/${locale}/programmes`, key: "nav.programmes", match: "/programmes" },
+  { href: `/${locale}/research-jobs`, key: "nav.research", match: "/research-jobs" },
+  { href: `/${locale}/guides`, key: "nav.guides", match: "/guides" },
+  { href: `/${locale}/saved`, key: "nav.saved", match: "/saved" },
+  { href: `/${locale}/compare`, key: "nav.compare", match: "/compare" },
+] as const;
+---
+<!doctype html>
+<html lang={htmlLang(locale)}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description ?? t(locale, "meta.description")} />
+    <title>{documentTitle}</title>
+    {LOCALES.map((item) => (
+      <link rel="alternate" hreflang={htmlLang(item)} href={`/${item}/`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href="/zh-CN/" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t(locale, "skip.nav")}</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href={`/${locale}/`}>{t(locale, "brand.name")}</a>
+        <nav class="nav-main" aria-label={t(locale, "brand.name")}>
+          {nav.map((item) => (
+            <a href={item.href} aria-current={path.includes(item.match) ? "page" : undefined}>
+              {t(locale, item.key)}
+            </a>
+          ))}
+        </nav>
+        <div class="header-tools">
+          <LocaleSwitcher client:load locale={locale} pathname={path} />
+        </div>
+      </div>
+    </header>
+    <div class="banner" role="status">
+      <div class="chooser-wrap">{t(locale, "fixture.banner")}</div>
+    </div>
+    <slot />
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>{t(locale, "recognition.disclaimer")}</p>
+        <p>{t(locale, "footer.disclaimer")}</p>
+      </div>
+    </footer>
+  </body>
+</html>

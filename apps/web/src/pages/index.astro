@@ -1,0 +1,28 @@
+---
+---
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Czech Study and Research Platform</title>
+    <script is:inline>
+      (function () {
+        var stored = null;
+        try { stored = localStorage.getItem("czech-uni-apply:uiLocale"); } catch (e) {}
+        var locales = ["zh-CN", "en", "cs"];
+        var next = "zh-CN";
+        if (stored && locales.indexOf(stored) !== -1) next = stored;
+        else {
+          var nav = (navigator.languages || [navigator.language || ""]).map(function (item) { return String(item).toLowerCase(); });
+          if (nav.some(function (item) { return item === "cs" || item.indexOf("cs-") === 0; })) next = "cs";
+          else if (nav.some(function (item) { return item === "en" || item.indexOf("en-") === 0; })) next = "en";
+        }
+        location.replace("/" + next + "/");
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url=/zh-CN/" /></noscript>
+  </head>
+  <body>
+    <p><a href="/zh-CN/">简体中文</a> · <a href="/en/">English</a> · <a href="/cs/">Čeština</a></p>
+  </body>
+</html>

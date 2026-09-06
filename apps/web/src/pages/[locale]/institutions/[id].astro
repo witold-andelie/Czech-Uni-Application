@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import InstitutionTags from "../../../components/InstitutionTags.astro";
+import { findInstitution } from "../../../lib/catalog";
+import { text } from "../../../lib/format";
+import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
+import { loadCatalog } from "../../../lib/loadCatalog";
+
+export function getStaticPaths() {
+  const catalog = loadCatalog();
+  return LOCALES.flatMap((locale) =>
+    catalog.institutions.map((institution) => ({ params: { locale, id: institution.id } })),
+  );
+}
+
+const locale = localeFromParam(Astro.params.locale);
+const catalog = loadCatalog();
+const institution = findInstitution(catalog, Astro.params.id ?? "");
+if (!institution) throw new Error("Missing institution");
+const offerings = catalog.offerings.filter((item) => item.institutionId === institution.id);
+---
+<BaseLayout locale={locale} title={text(institution.displayName, locale)}>
+  <main id="main" class="page">
+    <h1>{text(institution.displayName, locale)}</h1>
+    <p class="muted">{institution.officialName} · {text(institution.city, locale)}</p>
+    <InstitutionTags locale={locale} institution={institution} />
+    <p><a href={institution.officialUrl} rel="noopener noreferrer" target="_blank">{institution.officialUrl}</a></p>
+    <h2>{t(locale, "nav.programmes")}</h2>
+    <ul>
+      {offerings.map((offering) => (
+        <li>
+          <a href={`/${locale}/programmes/${offering.id}`}>{text(offering.title, locale)}</a>
+          · {offering.academicYear}
+        </li>
+      ))}
+    </ul>
+  </main>
+</BaseLayout>

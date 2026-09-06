@@ -1,0 +1,38 @@
+---
+import { t } from "../lib/i18n";
+import { ownershipLabel, recognitionKey } from "../lib/format";
+import type { Institution, UiLocale } from "../lib/types";
+
+interface Props {
+  locale: UiLocale;
+  institution: Institution;
+  compact?: boolean;
+}
+
+const { locale, institution, compact = false } = Astro.props;
+const rec = institution.cscseReference;
+const recKey = recognitionKey(rec.lookupStatus);
+const ownershipClass = `ownership-${institution.ownership}`;
+const recClass = `cscse-${rec.lookupStatus}`;
+const legal = institution.legalType === "research_institute" ? t(locale, "institution.researchOrg") : null;
+---
+<div class="tags">
+  {legal ? (
+    <span class="tag">{legal}</span>
+  ) : (
+    <span class:list={["tag", ownershipClass]}>{t(locale, "institution.ownership")}：{ownershipLabel(institution.ownership, locale)}</span>
+  )}
+  <span class:list={["tag", recClass]}>{t(locale, recKey)}</span>
+  <span class="tag">{t(locale, "fixture.card")}</span>
+</div>
+{!compact && (
+  <div class="disclaimer">
+    <p>{t(locale, "recognition.disclaimer")}</p>
+    {rec.lookupStatus === "not_found" && <p>{t(locale, "recognition.notFound.help")}</p>}
+    {rec.checkedAt && <p>{t(locale, "recognition.lookupDate")}：{rec.checkedAt}</p>}
+    {rec.officialMatchedName && <p>{t(locale, "recognition.matchedName")}：{rec.officialMatchedName}</p>}
+    {rec.notices.filter((item) => item.active).map((notice) => (
+      <p class="notice"><strong>{t(locale, "recognition.notice")}</strong> {notice.text[locale]}</p>
+    ))}
+  </div>
+)}

@@ -1,0 +1,44 @@
+digraph SD4 {
+// Explicit OPM-to-DOT mapping; see README.md. Layout is not execution order.
+  graph [rankdir="LR", compound="true", bgcolor="#FFFFFF", pad="0.3", nodesep="0.38", ranksep="0.65", splines="spline", fontname="Microsoft YaHei", fontsize="18", labelloc="t", label="SD4  官方采集与 Scrapling 升级\nISO 19450:2024 · OPM semantic mapping / DOT"];
+  node [fontname="Microsoft YaHei", fontsize="11", margin="0.14,0.10", penwidth="1.3"];
+  edge [fontname="Segoe UI", fontsize="9", arrowsize="0.7", penwidth="1.1"];
+  subgraph cluster_request {
+    graph [label="采集请求\nAcquisition Request", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="request"];
+    acquired [label="已获取正文\nacquired", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="request"];
+    difficult [label="正文缺失或动态页面\ndifficult", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="request"];
+    failed [label="尝试后仍失败\nfailed", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="request"];
+    pending [label="待提取\npending", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="request"];
+  }
+  detect [label="识别难提取页面\nDifficult Page Detecting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  dynamic [label="Scrapling 动态提取成功\nDynamic Evidence Fetching", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  escalate [label="登记人工处理\nManual Review Queuing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  evidence [label="来源证据\nSource Evidence", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  fail [label="记录动态提取失败\nAcquisition Failure Recording", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  fetchtool [label="本机 Scrapling 动态提取\nScrapling DynamicFetcher", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  gettool [label="本机 Scrapling 普通提取\nScrapling GET", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  queue [label="人工核验队列\nManual Review Queue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  rules [label="提取与访问规则\nExtraction Rules", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  simple [label="普通页面提取成功\nOrdinary Evidence Fetching", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  source [label="官方来源\nOfficial Source", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  source -> simple [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  gettool -> simple [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  pending -> simple [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  simple -> acquired [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  simple -> evidence [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  source -> detect [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  rules -> detect [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  pending -> detect [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  detect -> difficult [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  source -> dynamic [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  fetchtool -> dynamic [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  difficult -> dynamic [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  dynamic -> acquired [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  dynamic -> evidence [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  fetchtool -> fail [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  source -> fail [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  difficult -> fail [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  fail -> failed [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  failed -> escalate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  escalate -> queue [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+}

@@ -1,0 +1,180 @@
+[
+  {
+    "id": "T01",
+    "title": "三语界面与语言优先入口",
+    "dependsOn": [],
+    "models": [
+      "SD1",
+      "SD2"
+    ],
+    "acceptance": [
+      "A01",
+      "A02",
+      "A03"
+    ],
+    "status": "in_progress"
+  },
+  {
+    "id": "T02",
+    "title": "项目实体与语言轨道数据契约",
+    "dependsOn": [
+      "T01"
+    ],
+    "models": [
+      "SD6"
+    ],
+    "acceptance": [
+      "A04",
+      "A05",
+      "A12"
+    ],
+    "status": "in_progress"
+  },
+  {
+    "id": "T03",
+    "title": "项目检索、详情、比较收藏",
+    "dependsOn": [
+      "T02"
+    ],
+    "models": [
+      "SD1"
+    ],
+    "acceptance": [
+      "A06",
+      "A07",
+      "A15"
+    ],
+    "status": "in_progress"
+  },
+  {
+    "id": "T04",
+    "title": "官方采集与 Scrapling 适配",
+    "dependsOn": [
+      "T02"
+    ],
+    "models": [
+      "SD4"
+    ],
+    "acceptance": [
+      "A09"
+    ],
+    "status": "not_started"
+  },
+  {
+    "id": "T05",
+    "title": "审核、三语翻译和一致发布",
+    "dependsOn": [
+      "T04"
+    ],
+    "models": [
+      "SD3"
+    ],
+    "acceptance": [
+      "A08",
+      "A11"
+    ],
+    "status": "not_started"
+  },
+  {
+    "id": "T06",
+    "title": "硕士带薪科研与博士要求筛选",
+    "dependsOn": [
+      "T05"
+    ],
+    "models": [
+      "SD5"
+    ],
+    "acceptance": [
+      "A07",
+      "A10",
+      "A11"
+    ],
+    "status": "not_started"
+  },
+  {
+    "id": "T07",
+    "title": "响应式、可访问性和大陆线路验收",
+    "dependsOn": [
+      "T03",
+      "T06"
+    ],
+    "models": [
+      "SD2"
+    ],
+    "acceptance": [
+      "A13",
+      "A14",
+      "A16"
+    ],
+    "status": "not_started"
+  },
+  {
+    "id": "T08",
+    "title": "在线启动、查询与前端载荷性能验证",
+    "dependsOn": [
+      "T03",
+      "T06"
+    ],
+    "models": [
+      "SD6"
+    ],
+    "acceptance": [
+      "A17"
+    ],
+    "status": "not_started"
+  },
+  {
+    "id": "T09",
+    "title": "五天调度、广覆盖和失败重试",
+    "dependsOn": [
+      "T04",
+      "T05"
+    ],
+    "models": [
+      "OPS"
+    ],
+    "acceptance": [
+      "A18",
+      "A19"
+    ],
+    "status": "not_started"
+  },
+  {
+    "id": "T10",
+    "title": "岗位自动下架、缓存同步与官方申请直达",
+    "dependsOn": [
+      "T06",
+      "T09"
+    ],
+    "models": [
+      "SD3",
+      "SD5"
+    ],
+    "acceptance": [
+      "A20",
+      "A21"
+    ],
+    "status": "not_started"
+  },
+  {
+    "id": "T11",
+    "title": "学校性质、中留服参考和多轮申请窗口",
+    "dependsOn": [
+      "T02",
+      "T05",
+      "T10"
+    ],
+    "models": [
+      "SD3",
+      "SD5",
+      "SD6"
+    ],
+    "acceptance": [
+      "A22",
+      "A23",
+      "A24",
+      "A25"
+    ],
+    "status": "in_progress"
+  }
+]

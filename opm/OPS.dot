@@ -1,0 +1,25 @@
+digraph OPS {
+// Explicit OPM-to-DOT mapping; see README.md. Layout is not execution order.
+  graph [rankdir="LR", compound="true", bgcolor="#FFFFFF", pad="0.3", nodesep="0.38", ranksep="0.65", splines="spline", fontname="Microsoft YaHei", fontsize="18", labelloc="t", label="OPS  目录维护的支撑环境\nISO 19450:2024 · OPM semantic mapping / DOT"];
+  node [fontname="Microsoft YaHei", fontsize="11", margin="0.14,0.10", penwidth="1.3"];
+  edge [fontname="Segoe UI", fontsize="9", arrowsize="0.7", penwidth="1.1"];
+  catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  clock [label="每五天调度（120 小时）\nFive Day Schedule", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  editor [label="内容审核者\nContent Reviewer", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
+  maintain [label="维护可信目录\nCatalogue Maintaining", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  platform [label="捷克留学与科研平台\nCzech Opportunity Platform", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  quality [label="数据与翻译发布规则\nContent Rules", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  registry [label="捷克官方高校来源名录\nOfficial Institution Source Registry", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  run [label="采集批次与覆盖报告\nCrawl Run", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  schedule [label="派发全覆盖采集\nCoverage Refresh Scheduling", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  source [label="官方来源\nOfficial Source", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  editor -> maintain [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  platform -> maintain [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  source -> maintain [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  quality -> maintain [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  maintain -> catalog [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+  clock -> schedule [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  registry -> schedule [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  schedule -> run [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  run -> maintain [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+}

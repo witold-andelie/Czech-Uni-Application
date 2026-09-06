@@ -1,0 +1,1768 @@
+{
+  "standard": "ISO 19450:2024",
+  "notation": "Explicit OPM semantic mapping to Graphviz DOT",
+  "nodes": {
+    "user": {
+      "id": "user",
+      "kind": "object",
+      "en": "Applicant",
+      "zh": "申请者",
+      "physical": true,
+      "external": true
+    },
+    "editor": {
+      "id": "editor",
+      "kind": "object",
+      "en": "Content Reviewer",
+      "zh": "内容审核者",
+      "physical": true,
+      "external": true
+    },
+    "platform": {
+      "id": "platform",
+      "kind": "object",
+      "en": "Czech Opportunity Platform",
+      "zh": "捷克留学与科研平台",
+      "physical": false,
+      "external": false
+    },
+    "need": {
+      "id": "need",
+      "kind": "object",
+      "en": "Opportunity Need",
+      "zh": "机会需求",
+      "physical": false,
+      "external": false
+    },
+    "shortlist": {
+      "id": "shortlist",
+      "kind": "object",
+      "en": "Opportunity Shortlist",
+      "zh": "机会候选清单",
+      "physical": false,
+      "external": false
+    },
+    "catalog": {
+      "id": "catalog",
+      "kind": "object",
+      "en": "Published Catalogue",
+      "zh": "已发布目录",
+      "physical": false,
+      "external": false
+    },
+    "source": {
+      "id": "source",
+      "kind": "object",
+      "en": "Official Source",
+      "zh": "官方来源",
+      "physical": false,
+      "external": true
+    },
+    "evidence": {
+      "id": "evidence",
+      "kind": "object",
+      "en": "Source Evidence",
+      "zh": "来源证据",
+      "physical": false,
+      "external": false
+    },
+    "facts": {
+      "id": "facts",
+      "kind": "object",
+      "en": "Structured Record",
+      "zh": "结构化记录",
+      "physical": false,
+      "external": false
+    },
+    "draft": {
+      "id": "draft",
+      "kind": "state",
+      "owner": "facts",
+      "en": "draft",
+      "zh": "待核验"
+    },
+    "verified": {
+      "id": "verified",
+      "kind": "state",
+      "owner": "facts",
+      "en": "verified",
+      "zh": "已核验"
+    },
+    "rejected": {
+      "id": "rejected",
+      "kind": "state",
+      "owner": "facts",
+      "en": "rejected",
+      "zh": "不符合发布要求"
+    },
+    "snapshot": {
+      "id": "snapshot",
+      "kind": "object",
+      "en": "Publication Snapshot",
+      "zh": "发布快照",
+      "physical": false,
+      "external": false
+    },
+    "live": {
+      "id": "live",
+      "kind": "state",
+      "owner": "snapshot",
+      "en": "current",
+      "zh": "当前版本"
+    },
+    "stale": {
+      "id": "stale",
+      "kind": "state",
+      "owner": "snapshot",
+      "en": "needs review",
+      "zh": "待复核"
+    },
+    "archived": {
+      "id": "archived",
+      "kind": "state",
+      "owner": "snapshot",
+      "en": "archived",
+      "zh": "已归档"
+    },
+    "bundle": {
+      "id": "bundle",
+      "kind": "object",
+      "en": "Translation Bundle",
+      "zh": "三语内容包",
+      "physical": false,
+      "external": false
+    },
+    "translated": {
+      "id": "translated",
+      "kind": "state",
+      "owner": "bundle",
+      "en": "draft",
+      "zh": "翻译草稿"
+    },
+    "reviewed": {
+      "id": "reviewed",
+      "kind": "state",
+      "owner": "bundle",
+      "en": "reviewed",
+      "zh": "三语已复核"
+    },
+    "quality": {
+      "id": "quality",
+      "kind": "object",
+      "en": "Content Rules",
+      "zh": "数据与翻译发布规则",
+      "physical": false,
+      "external": false
+    },
+    "locale": {
+      "id": "locale",
+      "kind": "object",
+      "en": "UI Locale",
+      "zh": "界面语言",
+      "physical": false,
+      "external": false
+    },
+    "zh": {
+      "id": "zh",
+      "kind": "state",
+      "owner": "locale",
+      "en": "zh-CN",
+      "zh": "简体中文"
+    },
+    "enui": {
+      "id": "enui",
+      "kind": "state",
+      "owner": "locale",
+      "en": "en",
+      "zh": "English"
+    },
+    "csui": {
+      "id": "csui",
+      "kind": "state",
+      "owner": "locale",
+      "en": "cs",
+      "zh": "Čeština"
+    },
+    "language": {
+      "id": "language",
+      "kind": "object",
+      "en": "Teaching Language Choice",
+      "zh": "授课语言选择",
+      "physical": false,
+      "external": false
+    },
+    "unset": {
+      "id": "unset",
+      "kind": "state",
+      "owner": "language",
+      "en": "unset",
+      "zh": "尚未选择"
+    },
+    "english": {
+      "id": "english",
+      "kind": "state",
+      "owner": "language",
+      "en": "English",
+      "zh": "英语授课"
+    },
+    "czech": {
+      "id": "czech",
+      "kind": "state",
+      "owner": "language",
+      "en": "Czech",
+      "zh": "捷克语授课"
+    },
+    "alllang": {
+      "id": "alllang",
+      "kind": "state",
+      "owner": "language",
+      "en": "all",
+      "zh": "全部授课语言"
+    },
+    "query": {
+      "id": "query",
+      "kind": "object",
+      "en": "Search Criteria",
+      "zh": "检索条件",
+      "physical": false,
+      "external": false
+    },
+    "results": {
+      "id": "results",
+      "kind": "object",
+      "en": "Programme Results",
+      "zh": "专业检索结果",
+      "physical": false,
+      "external": false
+    },
+    "detail": {
+      "id": "detail",
+      "kind": "object",
+      "en": "Opportunity Detail",
+      "zh": "机会详情",
+      "physical": false,
+      "external": false
+    },
+    "selection": {
+      "id": "selection",
+      "kind": "object",
+      "en": "Comparison Selection",
+      "zh": "比较项选择",
+      "physical": false,
+      "external": false
+    },
+    "comparison": {
+      "id": "comparison",
+      "kind": "object",
+      "en": "Comparison View",
+      "zh": "比较视图",
+      "physical": false,
+      "external": false
+    },
+    "intent": {
+      "id": "intent",
+      "kind": "object",
+      "en": "Locale Choice",
+      "zh": "用户界面语言选择",
+      "physical": false,
+      "external": false
+    },
+    "context": {
+      "id": "context",
+      "kind": "object",
+      "en": "Browsing Context",
+      "zh": "浏览上下文与收藏",
+      "physical": false,
+      "external": false
+    },
+    "screen": {
+      "id": "screen",
+      "kind": "object",
+      "en": "Localized Interface",
+      "zh": "当前语言界面",
+      "physical": false,
+      "external": false
+    },
+    "tokens": {
+      "id": "tokens",
+      "kind": "object",
+      "en": "Design Rules",
+      "zh": "UI 设计规则",
+      "physical": false,
+      "external": false
+    },
+    "deadline": {
+      "id": "deadline",
+      "kind": "object",
+      "en": "Deadline and Source Change",
+      "zh": "截止与源更新信号",
+      "physical": false,
+      "external": false
+    },
+    "request": {
+      "id": "request",
+      "kind": "object",
+      "en": "Acquisition Request",
+      "zh": "采集请求",
+      "physical": false,
+      "external": false
+    },
+    "pending": {
+      "id": "pending",
+      "kind": "state",
+      "owner": "request",
+      "en": "pending",
+      "zh": "待提取"
+    },
+    "difficult": {
+      "id": "difficult",
+      "kind": "state",
+      "owner": "request",
+      "en": "difficult",
+      "zh": "正文缺失或动态页面"
+    },
+    "acquired": {
+      "id": "acquired",
+      "kind": "state",
+      "owner": "request",
+      "en": "acquired",
+      "zh": "已获取正文"
+    },
+    "failed": {
+      "id": "failed",
+      "kind": "state",
+      "owner": "request",
+      "en": "failed",
+      "zh": "尝试后仍失败"
+    },
+    "gettool": {
+      "id": "gettool",
+      "kind": "object",
+      "en": "Scrapling GET",
+      "zh": "本机 Scrapling 普通提取",
+      "physical": false,
+      "external": false
+    },
+    "fetchtool": {
+      "id": "fetchtool",
+      "kind": "object",
+      "en": "Scrapling DynamicFetcher",
+      "zh": "本机 Scrapling 动态提取",
+      "physical": false,
+      "external": false
+    },
+    "queue": {
+      "id": "queue",
+      "kind": "object",
+      "en": "Manual Review Queue",
+      "zh": "人工核验队列",
+      "physical": false,
+      "external": false
+    },
+    "rules": {
+      "id": "rules",
+      "kind": "object",
+      "en": "Extraction Rules",
+      "zh": "提取与访问规则",
+      "physical": false,
+      "external": false
+    },
+    "jobs": {
+      "id": "jobs",
+      "kind": "object",
+      "en": "Research Job Record",
+      "zh": "科研岗位记录",
+      "physical": false,
+      "external": false
+    },
+    "uncheckedjob": {
+      "id": "uncheckedjob",
+      "kind": "state",
+      "owner": "jobs",
+      "en": "unchecked",
+      "zh": "资格未核验"
+    },
+    "eligiblejob": {
+      "id": "eligiblejob",
+      "kind": "state",
+      "owner": "jobs",
+      "en": "master eligible and paid",
+      "zh": "硕士可申请且确认带薪"
+    },
+    "otherjob": {
+      "id": "otherjob",
+      "kind": "state",
+      "owner": "jobs",
+      "en": "other or unresolved",
+      "zh": "其他资格或证据不足"
+    },
+    "jobcriteria": {
+      "id": "jobcriteria",
+      "kind": "object",
+      "en": "Job Criteria",
+      "zh": "工作语言与博士注册偏好",
+      "physical": false,
+      "external": false
+    },
+    "jobresults": {
+      "id": "jobresults",
+      "kind": "object",
+      "en": "Research Job Results",
+      "zh": "带薪科研检索结果",
+      "physical": false,
+      "external": false
+    },
+    "degree": {
+      "id": "degree",
+      "kind": "object",
+      "en": "Degree Requirement",
+      "zh": "学位要求",
+      "physical": false,
+      "external": false
+    },
+    "phd": {
+      "id": "phd",
+      "kind": "object",
+      "en": "Doctoral Enrollment Requirement",
+      "zh": "博士注册要求",
+      "physical": false,
+      "external": false
+    },
+    "pay": {
+      "id": "pay",
+      "kind": "object",
+      "en": "Compensation Terms",
+      "zh": "报酬与工时口径",
+      "physical": false,
+      "external": false
+    },
+    "worklang": {
+      "id": "worklang",
+      "kind": "object",
+      "en": "Working Languages",
+      "zh": "工作语言",
+      "physical": false,
+      "external": false
+    },
+    "institution": {
+      "id": "institution",
+      "kind": "object",
+      "en": "Institution",
+      "zh": "独立高校或科研机构",
+      "physical": false,
+      "external": false
+    },
+    "programme": {
+      "id": "programme",
+      "kind": "object",
+      "en": "Programme",
+      "zh": "学术项目",
+      "physical": false,
+      "external": false
+    },
+    "offering": {
+      "id": "offering",
+      "kind": "object",
+      "en": "Programme Offering",
+      "zh": "语言轨道与年度方案",
+      "physical": false,
+      "external": false
+    },
+    "round": {
+      "id": "round",
+      "kind": "object",
+      "en": "Admission Round",
+      "zh": "申请轮次",
+      "physical": false,
+      "external": false
+    },
+    "teaching": {
+      "id": "teaching",
+      "kind": "object",
+      "en": "Teaching Languages",
+      "zh": "方案授课语言",
+      "physical": false,
+      "external": false
+    },
+    "extra": {
+      "id": "extra",
+      "kind": "object",
+      "en": "Additional Language Requirements",
+      "zh": "实习与临床等额外语言要求",
+      "physical": false,
+      "external": false
+    },
+    "web": {
+      "id": "web",
+      "kind": "object",
+      "en": "Public Website",
+      "zh": "三语公网站\nTypeScript / Astro / Svelte",
+      "physical": false,
+      "external": false,
+      "implementation": "TypeScript / Astro / Svelte"
+    },
+    "admin": {
+      "id": "admin",
+      "kind": "object",
+      "en": "Editorial Console",
+      "zh": "审核后台\nTypeScript / Svelte",
+      "physical": false,
+      "external": false,
+      "implementation": "TypeScript / Svelte"
+    },
+    "ingestion": {
+      "id": "ingestion",
+      "kind": "object",
+      "en": "Ingestion Service",
+      "zh": "采集服务\nPython / Scrapling",
+      "physical": false,
+      "external": false,
+      "implementation": "Python / Scrapling"
+    },
+    "db": {
+      "id": "db",
+      "kind": "object",
+      "en": "PostgreSQL Database",
+      "zh": "PostgreSQL 数据库（建议 Supabase）\nSQL / PostgreSQL; Supabase",
+      "physical": false,
+      "external": false,
+      "implementation": "SQL / PostgreSQL; Supabase"
+    },
+    "cache": {
+      "id": "cache",
+      "kind": "object",
+      "en": "Published Data Cache",
+      "zh": "发布数据缓存\nStatic HTML / JSON",
+      "physical": false,
+      "external": false,
+      "implementation": "Static HTML / JSON"
+    },
+    "dbdecision": {
+      "id": "dbdecision",
+      "kind": "object",
+      "en": "Database Choice",
+      "zh": "数据库选择建议",
+      "physical": false,
+      "external": false
+    },
+    "private": {
+      "id": "private",
+      "kind": "object",
+      "en": "Editorial Data Store",
+      "zh": "内部核验数据",
+      "physical": false,
+      "external": false
+    },
+    "support": {
+      "id": "support",
+      "kind": "process",
+      "en": "Opportunity Finding",
+      "zh": "寻找留学与科研机会"
+    },
+    "discover": {
+      "id": "discover",
+      "kind": "process",
+      "en": "Programme Discovering",
+      "zh": "发现学位项目"
+    },
+    "maintain": {
+      "id": "maintain",
+      "kind": "process",
+      "en": "Catalogue Maintaining",
+      "zh": "维护可信目录"
+    },
+    "render": {
+      "id": "render",
+      "kind": "process",
+      "en": "Interface Presenting",
+      "zh": "呈现三语界面"
+    },
+    "research": {
+      "id": "research",
+      "kind": "process",
+      "en": "Research Opportunity Finding",
+      "zh": "寻找带薪科研机会"
+    },
+    "choose_en": {
+      "id": "choose_en",
+      "kind": "process",
+      "en": "English Teaching Choosing",
+      "zh": "选择英语授课"
+    },
+    "choose_cs": {
+      "id": "choose_cs",
+      "kind": "process",
+      "en": "Czech Teaching Choosing",
+      "zh": "选择捷克语授课"
+    },
+    "choose_all": {
+      "id": "choose_all",
+      "kind": "process",
+      "en": "All Teaching Choosing",
+      "zh": "选择全部授课语言"
+    },
+    "filter": {
+      "id": "filter",
+      "kind": "process",
+      "en": "Programme Filtering",
+      "zh": "按语言优先筛选"
+    },
+    "inspect": {
+      "id": "inspect",
+      "kind": "process",
+      "en": "Detail Inspecting",
+      "zh": "查看资格与来源"
+    },
+    "save": {
+      "id": "save",
+      "kind": "process",
+      "en": "Opportunity Saving",
+      "zh": "收藏机会"
+    },
+    "compare": {
+      "id": "compare",
+      "kind": "process",
+      "en": "Opportunity Comparing",
+      "zh": "比较机会"
+    },
+    "switch": {
+      "id": "switch",
+      "kind": "process",
+      "en": "Locale Switching",
+      "zh": "切换界面语言"
+    },
+    "present": {
+      "id": "present",
+      "kind": "process",
+      "en": "Localized Page Rendering",
+      "zh": "渲染当前语言页面"
+    },
+    "acquire": {
+      "id": "acquire",
+      "kind": "process",
+      "en": "Evidence Acquiring",
+      "zh": "获取官方证据"
+    },
+    "normalize": {
+      "id": "normalize",
+      "kind": "process",
+      "en": "Record Structuring",
+      "zh": "结构化来源事实"
+    },
+    "verify": {
+      "id": "verify",
+      "kind": "process",
+      "en": "Record Verifying",
+      "zh": "核验关键字段"
+    },
+    "reject": {
+      "id": "reject",
+      "kind": "process",
+      "en": "Record Rejecting",
+      "zh": "标记不符合发布要求"
+    },
+    "translate": {
+      "id": "translate",
+      "kind": "process",
+      "en": "Content Translating",
+      "zh": "生成三语译文"
+    },
+    "review": {
+      "id": "review",
+      "kind": "process",
+      "en": "Translation Reviewing",
+      "zh": "复核三语内容"
+    },
+    "publish": {
+      "id": "publish",
+      "kind": "process",
+      "en": "Snapshot Publishing",
+      "zh": "发布一致版本"
+    },
+    "invalidate": {
+      "id": "invalidate",
+      "kind": "process",
+      "en": "Snapshot Invalidating",
+      "zh": "标记源更新待复核"
+    },
+    "archive": {
+      "id": "archive",
+      "kind": "process",
+      "en": "Snapshot Archiving",
+      "zh": "归档截止或撤回记录"
+    },
+    "retry": {
+      "id": "retry",
+      "kind": "process",
+      "en": "Record Repreparing",
+      "zh": "准备新核验版本"
+    },
+    "simple": {
+      "id": "simple",
+      "kind": "process",
+      "en": "Ordinary Evidence Fetching",
+      "zh": "普通页面提取成功"
+    },
+    "detect": {
+      "id": "detect",
+      "kind": "process",
+      "en": "Difficult Page Detecting",
+      "zh": "识别难提取页面"
+    },
+    "dynamic": {
+      "id": "dynamic",
+      "kind": "process",
+      "en": "Dynamic Evidence Fetching",
+      "zh": "Scrapling 动态提取成功"
+    },
+    "fail": {
+      "id": "fail",
+      "kind": "process",
+      "en": "Acquisition Failure Recording",
+      "zh": "记录动态提取失败"
+    },
+    "escalate": {
+      "id": "escalate",
+      "kind": "process",
+      "en": "Manual Review Queuing",
+      "zh": "登记人工处理"
+    },
+    "jobverify": {
+      "id": "jobverify",
+      "kind": "process",
+      "en": "Master Eligibility Verifying",
+      "zh": "核验硕士资格与带薪证据"
+    },
+    "jobother": {
+      "id": "jobother",
+      "kind": "process",
+      "en": "Other Eligibility Recording",
+      "zh": "记录其他资格或未知"
+    },
+    "jobfilter": {
+      "id": "jobfilter",
+      "kind": "process",
+      "en": "Research Job Filtering",
+      "zh": "按工作语言与博士要求筛选"
+    },
+    "store": {
+      "id": "store",
+      "kind": "process",
+      "en": "Reviewed Data Storing",
+      "zh": "存储核验数据"
+    },
+    "export": {
+      "id": "export",
+      "kind": "process",
+      "en": "Public Snapshot Exporting",
+      "zh": "导出公网站快照"
+    },
+    "api": {
+      "id": "api",
+      "kind": "object",
+      "en": "Online API Service",
+      "zh": "在线 API 服务\nGo",
+      "physical": false,
+      "external": false,
+      "implementation": "Go"
+    },
+    "clock": {
+      "id": "clock",
+      "kind": "object",
+      "en": "Five Day Schedule",
+      "zh": "每五天调度（120 小时）"
+    },
+    "registry": {
+      "id": "registry",
+      "kind": "object",
+      "en": "Official Institution Source Registry",
+      "zh": "捷克官方高校来源名录"
+    },
+    "run": {
+      "id": "run",
+      "kind": "object",
+      "en": "Crawl Run",
+      "zh": "采集批次与覆盖报告"
+    },
+    "schedule": {
+      "id": "schedule",
+      "kind": "process",
+      "en": "Coverage Refresh Scheduling",
+      "zh": "派发全覆盖采集"
+    },
+    "application": {
+      "id": "application",
+      "kind": "object",
+      "en": "Official Application Target",
+      "zh": "官方申请目标"
+    },
+    "navigation": {
+      "id": "navigation",
+      "kind": "object",
+      "en": "External Navigation",
+      "zh": "官方申请页导航"
+    },
+    "navigate": {
+      "id": "navigate",
+      "kind": "process",
+      "en": "Application Opening",
+      "zh": "直达官方申请页"
+    },
+    "ownership": {
+      "id": "ownership",
+      "kind": "object",
+      "en": "Institution Ownership",
+      "zh": "学校性质：公立／私立／国立"
+    },
+    "recognition": {
+      "id": "recognition",
+      "kind": "object",
+      "en": "CSCSE Reference Status",
+      "zh": "中留服官方查询参考状态"
+    },
+    "window": {
+      "id": "window",
+      "kind": "object",
+      "en": "Application Window",
+      "zh": "申请时间段与官方轮次"
+    },
+    "listed": {
+      "id": "listed",
+      "kind": "state",
+      "owner": "recognition",
+      "en": "listed",
+      "zh": "官方查询可查"
+    },
+    "notfound": {
+      "id": "notfound",
+      "kind": "state",
+      "owner": "recognition",
+      "en": "not found",
+      "zh": "官方查询暂未查到"
+    },
+    "unverifiedrecognition": {
+      "id": "unverifiedrecognition",
+      "kind": "state",
+      "owner": "recognition",
+      "en": "unverified",
+      "zh": "待核验"
+    }
+  },
+  "diagrams": [
+    {
+      "id": "SD",
+      "title": "系统环境与主要价值",
+      "parent": null,
+      "edges": [
+        {
+          "source": "user",
+          "target": "support",
+          "type": "agent"
+        },
+        {
+          "source": "platform",
+          "target": "support",
+          "type": "instrument"
+        },
+        {
+          "source": "need",
+          "target": "support",
+          "type": "instrument"
+        },
+        {
+          "source": "catalog",
+          "target": "support",
+          "type": "instrument"
+        },
+        {
+          "source": "support",
+          "target": "shortlist",
+          "type": "result"
+        }
+      ],
+      "requirements": [],
+      "notes": "平台帮助申请者形成候选清单；申请者自行通过官方入口申请。SD0 展开主过程。"
+    },
+    {
+      "id": "SD0",
+      "title": "机会发现主过程展开",
+      "parent": "support",
+      "edges": [
+        {
+          "source": "user",
+          "target": "discover",
+          "type": "agent"
+        },
+        {
+          "source": "catalog",
+          "target": "discover",
+          "type": "instrument"
+        },
+        {
+          "source": "need",
+          "target": "discover",
+          "type": "instrument"
+        },
+        {
+          "source": "platform",
+          "target": "discover",
+          "type": "instrument"
+        },
+        {
+          "source": "discover",
+          "target": "shortlist",
+          "type": "effect"
+        },
+        {
+          "source": "user",
+          "target": "research",
+          "type": "agent"
+        },
+        {
+          "source": "catalog",
+          "target": "research",
+          "type": "instrument"
+        },
+        {
+          "source": "need",
+          "target": "research",
+          "type": "instrument"
+        },
+        {
+          "source": "platform",
+          "target": "research",
+          "type": "instrument"
+        },
+        {
+          "source": "research",
+          "target": "shortlist",
+          "type": "effect"
+        },
+        {
+          "source": "user",
+          "target": "render",
+          "type": "agent"
+        },
+        {
+          "source": "platform",
+          "target": "render",
+          "type": "instrument"
+        },
+        {
+          "source": "catalog",
+          "target": "render",
+          "type": "instrument"
+        },
+        {
+          "source": "render",
+          "target": "screen",
+          "type": "result"
+        }
+      ],
+      "requirements": [
+        "A01",
+        "A02",
+        "A10"
+      ],
+      "notes": "主过程的三个子过程；项目与岗位是替代任务路径，不要求先选择授课语言才能找工作。shortlist 首次使用时由父过程创建，子过程更新。"
+    },
+    {
+      "id": "SD1",
+      "title": "按授课语言优先发现项目",
+      "parent": "discover",
+      "edges": [
+        {
+          "source": "user",
+          "target": "choose_en",
+          "type": "agent"
+        },
+        {
+          "source": "choose_en",
+          "target": "english",
+          "type": "output"
+        },
+        {
+          "source": "unset",
+          "target": "choose_en",
+          "type": "input"
+        },
+        {
+          "source": "user",
+          "target": "choose_cs",
+          "type": "agent"
+        },
+        {
+          "source": "choose_cs",
+          "target": "czech",
+          "type": "output"
+        },
+        {
+          "source": "unset",
+          "target": "choose_cs",
+          "type": "input"
+        },
+        {
+          "source": "user",
+          "target": "choose_all",
+          "type": "agent"
+        },
+        {
+          "source": "choose_all",
+          "target": "alllang",
+          "type": "output"
+        },
+        {
+          "source": "unset",
+          "target": "choose_all",
+          "type": "input"
+        },
+        {
+          "source": "language",
+          "target": "filter",
+          "type": "instrument"
+        },
+        {
+          "source": "query",
+          "target": "filter",
+          "type": "instrument"
+        },
+        {
+          "source": "catalog",
+          "target": "filter",
+          "type": "instrument"
+        },
+        {
+          "source": "filter",
+          "target": "results",
+          "type": "result"
+        },
+        {
+          "source": "results",
+          "target": "inspect",
+          "type": "instrument"
+        },
+        {
+          "source": "user",
+          "target": "inspect",
+          "type": "agent"
+        },
+        {
+          "source": "inspect",
+          "target": "detail",
+          "type": "result"
+        },
+        {
+          "source": "detail",
+          "target": "save",
+          "type": "instrument"
+        },
+        {
+          "source": "user",
+          "target": "save",
+          "type": "agent"
+        },
+        {
+          "source": "save",
+          "target": "shortlist",
+          "type": "effect"
+        },
+        {
+          "source": "selection",
+          "target": "compare",
+          "type": "instrument"
+        },
+        {
+          "source": "catalog",
+          "target": "compare",
+          "type": "instrument"
+        },
+        {
+          "source": "compare",
+          "target": "comparison",
+          "type": "result"
+        }
+      ],
+      "requirements": [
+        "A01",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A15"
+      ],
+      "notes": "展示首次选择；后续改选用相同 Choosing 过程的 effect 变体，不强制退回首页。filter 必须先读取语言状态，unset 时展示选择控件不执行限定语言查询。英语入口默认仅英语独立轨道。"
+    },
+    {
+      "id": "SD2",
+      "title": "界面语言独立切换与呈现",
+      "parent": "render",
+      "edges": [
+        {
+          "source": "user",
+          "target": "switch",
+          "type": "agent"
+        },
+        {
+          "source": "intent",
+          "target": "switch",
+          "type": "instrument"
+        },
+        {
+          "source": "switch",
+          "target": "locale",
+          "type": "effect"
+        },
+        {
+          "source": "locale",
+          "target": "present",
+          "type": "instrument"
+        },
+        {
+          "source": "context",
+          "target": "present",
+          "type": "instrument"
+        },
+        {
+          "source": "language",
+          "target": "present",
+          "type": "instrument"
+        },
+        {
+          "source": "reviewed",
+          "target": "present",
+          "type": "instrument"
+        },
+        {
+          "source": "tokens",
+          "target": "present",
+          "type": "instrument"
+        },
+        {
+          "source": "catalog",
+          "target": "present",
+          "type": "instrument"
+        },
+        {
+          "source": "present",
+          "target": "screen",
+          "type": "result"
+        }
+      ],
+      "requirements": [
+        "A02",
+        "A03",
+        "A13",
+        "A14",
+        "A16"
+      ],
+      "notes": "switch 仅改变 UI Locale，不改变 Teaching Language Choice 或 Browsing Context；locale 三个状态互斥。翻译包已复核状态是界面呈现所需资源，原文附录允许保留源语言。"
+    },
+    {
+      "id": "OPS",
+      "title": "目录维护的支撑环境",
+      "parent": null,
+      "edges": [
+        {
+          "source": "editor",
+          "target": "maintain",
+          "type": "agent"
+        },
+        {
+          "source": "platform",
+          "target": "maintain",
+          "type": "instrument"
+        },
+        {
+          "source": "source",
+          "target": "maintain",
+          "type": "instrument"
+        },
+        {
+          "source": "quality",
+          "target": "maintain",
+          "type": "instrument"
+        },
+        {
+          "source": "maintain",
+          "target": "catalog",
+          "type": "effect"
+        },
+        {
+          "source": "clock",
+          "target": "schedule",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "schedule",
+          "type": "instrument"
+        },
+        {
+          "source": "schedule",
+          "target": "run",
+          "type": "result"
+        },
+        {
+          "source": "run",
+          "target": "maintain",
+          "type": "instrument"
+        }
+      ],
+      "requirements": [
+        "A08",
+        "A09",
+        "A18",
+        "A19"
+      ],
+      "notes": "独立支撑过程的上下文，SD3 展开 maintain；采集与审核不阻塞在线用户查询。 每 120 小时触发全覆盖采集，失败逐源重试；官方高校名录为覆盖分母。"
+    },
+    {
+      "id": "SD3",
+      "title": "可信目录维护与三语发布",
+      "parent": "maintain",
+      "edges": [
+        {
+          "source": "source",
+          "target": "acquire",
+          "type": "instrument"
+        },
+        {
+          "source": "acquire",
+          "target": "evidence",
+          "type": "result"
+        },
+        {
+          "source": "evidence",
+          "target": "normalize",
+          "type": "instrument"
+        },
+        {
+          "source": "normalize",
+          "target": "draft",
+          "type": "result"
+        },
+        {
+          "source": "draft",
+          "target": "verify",
+          "type": "input"
+        },
+        {
+          "source": "verify",
+          "target": "verified",
+          "type": "output"
+        },
+        {
+          "source": "editor",
+          "target": "verify",
+          "type": "agent"
+        },
+        {
+          "source": "evidence",
+          "target": "verify",
+          "type": "instrument"
+        },
+        {
+          "source": "quality",
+          "target": "verify",
+          "type": "instrument"
+        },
+        {
+          "source": "draft",
+          "target": "reject",
+          "type": "input"
+        },
+        {
+          "source": "reject",
+          "target": "rejected",
+          "type": "output"
+        },
+        {
+          "source": "editor",
+          "target": "reject",
+          "type": "agent"
+        },
+        {
+          "source": "verified",
+          "target": "translate",
+          "type": "instrument"
+        },
+        {
+          "source": "translate",
+          "target": "translated",
+          "type": "result"
+        },
+        {
+          "source": "translated",
+          "target": "review",
+          "type": "input"
+        },
+        {
+          "source": "review",
+          "target": "reviewed",
+          "type": "output"
+        },
+        {
+          "source": "editor",
+          "target": "review",
+          "type": "agent"
+        },
+        {
+          "source": "evidence",
+          "target": "review",
+          "type": "instrument"
+        },
+        {
+          "source": "verified",
+          "target": "publish",
+          "type": "instrument"
+        },
+        {
+          "source": "reviewed",
+          "target": "publish",
+          "type": "instrument"
+        },
+        {
+          "source": "quality",
+          "target": "publish",
+          "type": "instrument"
+        },
+        {
+          "source": "publish",
+          "target": "live",
+          "type": "result"
+        },
+        {
+          "source": "publish",
+          "target": "catalog",
+          "type": "effect"
+        },
+        {
+          "source": "live",
+          "target": "invalidate",
+          "type": "input"
+        },
+        {
+          "source": "invalidate",
+          "target": "stale",
+          "type": "output"
+        },
+        {
+          "source": "deadline",
+          "target": "invalidate",
+          "type": "instrument"
+        },
+        {
+          "source": "live",
+          "target": "archive",
+          "type": "input"
+        },
+        {
+          "source": "archive",
+          "target": "archived",
+          "type": "output"
+        },
+        {
+          "source": "deadline",
+          "target": "archive",
+          "type": "instrument"
+        },
+        {
+          "source": "archive",
+          "target": "catalog",
+          "type": "effect"
+        },
+        {
+          "source": "stale",
+          "target": "retry",
+          "type": "instrument"
+        },
+        {
+          "source": "evidence",
+          "target": "retry",
+          "type": "instrument"
+        },
+        {
+          "source": "retry",
+          "target": "draft",
+          "type": "result"
+        }
+      ],
+      "requirements": [
+        "A03",
+        "A06",
+        "A08",
+        "A11",
+        "A20",
+        "A25"
+      ],
+      "notes": "维护是独立支撑过程，不是用户发现过程的子过程。verified 与 reviewed 必须指向相同源哈希，发布为 AND 条件。更新创建新内容版本，旧快照保留审计。过期状态可优先更新，不能继续表示开放。 archive 同步更新公开目录和三语缓存，关闭岗位下架但保留归档；已知截止不等待下一轮五天采集。 轮次结束与整个机会关闭分别判断，第二轮仍开放不整体下架。"
+    },
+    {
+      "id": "SD4",
+      "title": "官方采集与 Scrapling 升级",
+      "parent": "acquire",
+      "edges": [
+        {
+          "source": "source",
+          "target": "simple",
+          "type": "instrument"
+        },
+        {
+          "source": "gettool",
+          "target": "simple",
+          "type": "instrument"
+        },
+        {
+          "source": "pending",
+          "target": "simple",
+          "type": "input"
+        },
+        {
+          "source": "simple",
+          "target": "acquired",
+          "type": "output"
+        },
+        {
+          "source": "simple",
+          "target": "evidence",
+          "type": "result"
+        },
+        {
+          "source": "source",
+          "target": "detect",
+          "type": "instrument"
+        },
+        {
+          "source": "rules",
+          "target": "detect",
+          "type": "instrument"
+        },
+        {
+          "source": "pending",
+          "target": "detect",
+          "type": "input"
+        },
+        {
+          "source": "detect",
+          "target": "difficult",
+          "type": "output"
+        },
+        {
+          "source": "source",
+          "target": "dynamic",
+          "type": "instrument"
+        },
+        {
+          "source": "fetchtool",
+          "target": "dynamic",
+          "type": "instrument"
+        },
+        {
+          "source": "difficult",
+          "target": "dynamic",
+          "type": "input"
+        },
+        {
+          "source": "dynamic",
+          "target": "acquired",
+          "type": "output"
+        },
+        {
+          "source": "dynamic",
+          "target": "evidence",
+          "type": "result"
+        },
+        {
+          "source": "fetchtool",
+          "target": "fail",
+          "type": "instrument"
+        },
+        {
+          "source": "source",
+          "target": "fail",
+          "type": "instrument"
+        },
+        {
+          "source": "difficult",
+          "target": "fail",
+          "type": "input"
+        },
+        {
+          "source": "fail",
+          "target": "failed",
+          "type": "output"
+        },
+        {
+          "source": "failed",
+          "target": "escalate",
+          "type": "instrument"
+        },
+        {
+          "source": "escalate",
+          "target": "queue",
+          "type": "effect"
+        }
+      ],
+      "requirements": [
+        "A09"
+      ],
+      "notes": "成功与失败分支互斥，判定依赖真实响应和正文完整性；不以 HTTP 200 作为成功充分条件。动态失败前必须有真实 Scrapling 尝试日志，来源始终作为 instrument，绝不被消耗。"
+    },
+    {
+      "id": "SD5",
+      "title": "硕士可申请的带薪科研资格",
+      "parent": "research",
+      "edges": [
+        {
+          "source": "jobs",
+          "target": "degree",
+          "type": "exhibition"
+        },
+        {
+          "source": "jobs",
+          "target": "phd",
+          "type": "exhibition"
+        },
+        {
+          "source": "jobs",
+          "target": "pay",
+          "type": "exhibition"
+        },
+        {
+          "source": "jobs",
+          "target": "worklang",
+          "type": "exhibition"
+        },
+        {
+          "source": "uncheckedjob",
+          "target": "jobverify",
+          "type": "input"
+        },
+        {
+          "source": "jobverify",
+          "target": "eligiblejob",
+          "type": "output"
+        },
+        {
+          "source": "evidence",
+          "target": "jobverify",
+          "type": "instrument"
+        },
+        {
+          "source": "editor",
+          "target": "jobverify",
+          "type": "agent"
+        },
+        {
+          "source": "uncheckedjob",
+          "target": "jobother",
+          "type": "input"
+        },
+        {
+          "source": "jobother",
+          "target": "otherjob",
+          "type": "output"
+        },
+        {
+          "source": "evidence",
+          "target": "jobother",
+          "type": "instrument"
+        },
+        {
+          "source": "editor",
+          "target": "jobother",
+          "type": "agent"
+        },
+        {
+          "source": "eligiblejob",
+          "target": "jobfilter",
+          "type": "instrument"
+        },
+        {
+          "source": "jobcriteria",
+          "target": "jobfilter",
+          "type": "instrument"
+        },
+        {
+          "source": "catalog",
+          "target": "jobfilter",
+          "type": "instrument"
+        },
+        {
+          "source": "jobfilter",
+          "target": "jobresults",
+          "type": "result"
+        },
+        {
+          "source": "jobresults",
+          "target": "save",
+          "type": "instrument"
+        },
+        {
+          "source": "user",
+          "target": "save",
+          "type": "agent"
+        },
+        {
+          "source": "save",
+          "target": "shortlist",
+          "type": "effect"
+        },
+        {
+          "source": "user",
+          "target": "navigate",
+          "type": "agent"
+        },
+        {
+          "source": "jobresults",
+          "target": "navigate",
+          "type": "instrument"
+        },
+        {
+          "source": "application",
+          "target": "navigate",
+          "type": "instrument"
+        },
+        {
+          "source": "navigate",
+          "target": "navigation",
+          "type": "result"
+        }
+      ],
+      "requirements": [
+        "A07",
+        "A10",
+        "A11",
+        "A21",
+        "A24",
+        "A25"
+      ],
+      "notes": "资格核验部分属于科研支撑细化；检索只使用同一岗位的已发布当前版本。硕士资格不代表无需读博，unspecified 不能当 not_required，工资数值未公开也须有带薪证据。 岗位标题和主按钮直接打开经核验的官方申请目标，站内解读为次级入口。 申请直达目标按当前适用的申请轮次选择，岗位面试轮次不冒充申请轮次。"
+    },
+    {
+      "id": "SD6",
+      "title": "平台与数据的对象结构",
+      "parent": null,
+      "edges": [
+        {
+          "source": "platform",
+          "target": "web",
+          "type": "aggregation"
+        },
+        {
+          "source": "platform",
+          "target": "admin",
+          "type": "aggregation"
+        },
+        {
+          "source": "platform",
+          "target": "ingestion",
+          "type": "aggregation"
+        },
+        {
+          "source": "platform",
+          "target": "db",
+          "type": "aggregation"
+        },
+        {
+          "source": "platform",
+          "target": "cache",
+          "type": "aggregation"
+        },
+        {
+          "source": "catalog",
+          "target": "institution",
+          "type": "aggregation"
+        },
+        {
+          "source": "catalog",
+          "target": "programme",
+          "type": "aggregation"
+        },
+        {
+          "source": "catalog",
+          "target": "jobs",
+          "type": "aggregation"
+        },
+        {
+          "source": "programme",
+          "target": "offering",
+          "type": "aggregation"
+        },
+        {
+          "source": "offering",
+          "target": "round",
+          "type": "aggregation"
+        },
+        {
+          "source": "offering",
+          "target": "teaching",
+          "type": "exhibition"
+        },
+        {
+          "source": "offering",
+          "target": "extra",
+          "type": "exhibition"
+        },
+        {
+          "source": "db",
+          "target": "store",
+          "type": "instrument"
+        },
+        {
+          "source": "verified",
+          "target": "store",
+          "type": "instrument"
+        },
+        {
+          "source": "store",
+          "target": "private",
+          "type": "effect"
+        },
+        {
+          "source": "catalog",
+          "target": "export",
+          "type": "instrument"
+        },
+        {
+          "source": "export",
+          "target": "cache",
+          "type": "effect"
+        },
+        {
+          "source": "platform",
+          "target": "api",
+          "type": "aggregation"
+        },
+        {
+          "source": "institution",
+          "target": "ownership",
+          "type": "exhibition"
+        },
+        {
+          "source": "institution",
+          "target": "recognition",
+          "type": "exhibition"
+        },
+        {
+          "source": "round",
+          "target": "window",
+          "type": "exhibition"
+        },
+        {
+          "source": "jobs",
+          "target": "window",
+          "type": "exhibition"
+        }
+      ],
+      "requirements": [
+        "A12",
+        "A17",
+        "A22",
+        "A23",
+        "A24"
+      ],
+      "notes": "对象结构视图；catalog 中这些是记录集合的组成类别而非单个实例数量。PostgreSQL 为逻辑持久层，Supabase 是建议托管方式。store 只更新内部核验数据，公开可见性由 SD3 publish 决定。 模块语言以 LANGUAGE_STACK.md 为准；Go 在线服务、Python 离线采集、静态前台分离。 中留服参考不是个人认证保证；学校性质独立标注。申请窗口记录起止及官网轮次，未知不补造。"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Programme Offering — foundational contract",
+  "type": "object",
+  "required": [
+    "id",
+    "programmeId",
+    "academicYear",
+    "teachingLanguages",
+    "languageMode",
+    "languageEvidenceUrl"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "programmeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "academicYear": {
+      "type": "string",
+      "pattern": "^[0-9]{4}/[0-9]{4}$"
+    },
+    "teachingLanguages": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)*$"
+      }
+    },
+    "languageMode": {
+      "enum": [
+        "single",
+        "joint_required"
+      ]
+    },
+    "languageEvidenceUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "additionalLanguageRequirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "language",
+          "context",
+          "requirement",
+          "evidenceUrl"
+        ],
+        "properties": {
+          "language": {
+            "type": "string"
+          },
+          "context": {
+            "enum": [
+              "admission",
+              "placement",
+              "clinical",
+              "other"
+            ]
+          },
+          "requirement": {
+            "enum": [
+              "required",
+              "optional",
+              "unknown"
+            ]
+          },
+          "evidenceUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "languageMode": {
+            "const": "single"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "teachingLanguages": {
+            "maxItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "languageMode": {
+            "const": "joint_required"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "teachingLanguages": {
+            "minItems": 2
+          }
+        }
+      }
+    }
+  ],
+  "description": "基础语言轨道契约，非完整生产数据库 schema；其余实体按 DATA_MODEL 实施。"
+}

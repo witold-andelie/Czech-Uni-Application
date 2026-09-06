@@ -1,0 +1,72 @@
+digraph SD3 {
+// Explicit OPM-to-DOT mapping; see README.md. Layout is not execution order.
+  graph [rankdir="LR", compound="true", bgcolor="#FFFFFF", pad="0.3", nodesep="0.38", ranksep="0.65", splines="spline", fontname="Microsoft YaHei", fontsize="18", labelloc="t", label="SD3  可信目录维护与三语发布\nISO 19450:2024 · OPM semantic mapping / DOT"];
+  node [fontname="Microsoft YaHei", fontsize="11", margin="0.14,0.10", penwidth="1.3"];
+  edge [fontname="Segoe UI", fontsize="9", arrowsize="0.7", penwidth="1.1"];
+  subgraph cluster_bundle {
+    graph [label="三语内容包\nTranslation Bundle", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="bundle"];
+    reviewed [label="三语已复核\nreviewed", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="bundle"];
+    translated [label="翻译草稿\ndraft", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="bundle"];
+  }
+  subgraph cluster_facts {
+    graph [label="结构化记录\nStructured Record", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="facts"];
+    draft [label="待核验\ndraft", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
+    rejected [label="不符合发布要求\nrejected", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
+    verified [label="已核验\nverified", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
+  }
+  subgraph cluster_snapshot {
+    graph [label="发布快照\nPublication Snapshot", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="snapshot"];
+    archived [label="已归档\narchived", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    live [label="当前版本\ncurrent", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    stale [label="待复核\nneeds review", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+  }
+  acquire [label="获取官方证据\nEvidence Acquiring", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  archive [label="归档截止或撤回记录\nSnapshot Archiving", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  deadline [label="截止与源更新信号\nDeadline and Source Change", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  editor [label="内容审核者\nContent Reviewer", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
+  evidence [label="来源证据\nSource Evidence", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  invalidate [label="标记源更新待复核\nSnapshot Invalidating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  normalize [label="结构化来源事实\nRecord Structuring", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  publish [label="发布一致版本\nSnapshot Publishing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  quality [label="数据与翻译发布规则\nContent Rules", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  reject [label="标记不符合发布要求\nRecord Rejecting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  retry [label="准备新核验版本\nRecord Repreparing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  review [label="复核三语内容\nTranslation Reviewing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  source [label="官方来源\nOfficial Source", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  translate [label="生成三语译文\nContent Translating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  verify [label="核验关键字段\nRecord Verifying", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  source -> acquire [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  acquire -> evidence [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  evidence -> normalize [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  normalize -> draft [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  draft -> verify [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  verify -> verified [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  editor -> verify [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  evidence -> verify [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  quality -> verify [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  draft -> reject [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  reject -> rejected [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  editor -> reject [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  verified -> translate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  translate -> translated [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  translated -> review [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  review -> reviewed [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  editor -> review [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  evidence -> review [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  verified -> publish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  reviewed -> publish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  quality -> publish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  publish -> live [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  publish -> catalog [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+  live -> invalidate [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  invalidate -> stale [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  deadline -> invalidate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  live -> archive [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  archive -> archived [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  deadline -> archive [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  archive -> catalog [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+  stale -> retry [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  evidence -> retry [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  retry -> draft [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+}

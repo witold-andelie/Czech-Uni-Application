@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TeachingChooser from "../../components/TeachingChooser.astro";
+import { LOCALES, localeFromParam, t } from "../../lib/i18n";
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const locale = localeFromParam(Astro.params.locale);
+---
+<BaseLayout locale={locale} title={t(locale, "brand.name")}>
+  <main id="main" class="page">
+    <TeachingChooser locale={locale} />
+  </main>
+</BaseLayout>
