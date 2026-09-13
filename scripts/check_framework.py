@@ -24,7 +24,9 @@ for p in json_files:
 locales=[json.loads((root/'locales'/f'{l}.json').read_text(encoding='utf-8')) for l in ['zh-CN','en','cs']]
 if not all(set(x)==set(locales[0]) for x in locales): errors.append('Locale keys differ')
 if any(not isinstance(v,str) or not v.strip() for d in locales for v in d.values()): errors.append('Empty locale translation')
-for p in project_files('.md'):
+for p in [q for q in project_files('.md') if q.name == 'README.md']:  # only tracked README is public; other docs stay local
+    if p.name != 'README.md':
+        continue
     for link in re.findall(r'\]\(([^)]+)\)',p.read_text(encoding='utf-8')):
         if re.match(r'^[a-zA-Z]+:',link) or link.startswith('#'): continue
         target=link.split('#')[0].strip('<>')
@@ -34,6 +36,6 @@ sys.path.insert(0, str(root/'scripts'))
 from render_opm import check_generated
 errors.extend(check_generated())
 report={'status':'passed' if not errors else 'failed','jsonFilesChecked':len(json_files),'localeKeysPerLanguage':len(locales[0]),'diagramsChecked':len(m['diagrams']),'opmGenerationCheck':'semantic DOT/OPL/SVG titles and PNG magic; Graphviz metadata is not compared as bytes','errors':errors,'applicationTests':'run separately; see PROGRESS.md','formalIsoCertification':False}
-(root/'docs/framework-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(root/'work/framework-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report,ensure_ascii=False))
 if errors: raise SystemExit(1)

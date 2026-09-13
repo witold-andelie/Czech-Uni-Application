@@ -33,3 +33,22 @@ data/published/staging/
 *.tmp
 *.orig
 nohup.out
+
+# Owner rule (2026-09-13): documentation stays local; only README.md is public.
+docs/
+apps/admin/
+data/fixtures/README.md
+data/published/README.md
+opm/README.md
+opm/OPL.md
+schemas/README.md
+services/catalog/README.md
+services/ingestion/README.md
+tests/contracts/README.md
+work/README.md
+AGENTS.md
+PROGRESS.md
+Czech_Uni_Apply_*.md
+FLASH_AGENT_COVERAGE_RUNBOOK_*.md
+PUBLIC_BETA_READINESS_*.md
+handoff/
