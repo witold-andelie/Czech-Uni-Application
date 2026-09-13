@@ -4,7 +4,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from parse_msmt_detail import parse_detail
 
-RAW = Path(__file__).resolve().parents[3] / "work" / "raw" / "2026-09-06"
+RAW = Path(__file__).resolve().parent / "fixtures" / "raw-2026-09-06"
 
 
 def test_charles_english_name():

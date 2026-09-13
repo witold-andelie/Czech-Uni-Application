@@ -4,7 +4,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from parse_msmt_programmes import parse, parse_csv
 
-RAW_DIR = Path(__file__).resolve().parents[3] / "work" / "raw" / "2026-09-06"
+RAW_DIR = Path(__file__).resolve().parent / "fixtures" / "raw-2026-09-06"
 RAW = RAW_DIR / "msmt-programmes-charles.html"
 CSV = RAW_DIR / "msmt-programmes-charles.csv.txt"
 

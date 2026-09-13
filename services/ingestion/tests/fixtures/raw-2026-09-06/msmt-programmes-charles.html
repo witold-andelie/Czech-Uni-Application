@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><link rel="stylesheet" type="text/css" href="styly.css" /><title>
+	Registr vysokých škol a uskutečňovaných studijních programů
+</title>
+</head>
+<body>
+    <form method="post" action="./csplist.aspx" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+
+<script src="/registrvssp/ScriptResource.axd?d=SiS5EW-z9O36BScAuzig6Fct0aDw4tPdkkG_otD9Qwt6pAk6z2On-gz4Zes3BFdq5K5ijBag4Aeg7WUQec8pfemG9Zt_yfURxKbxWbDmCNPIqxDK8hmAyq6yDR8YGxt1FcP5pxuKA4jJ2K4Z0DKoXw2&amp;t=7f16157c" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('Nepodařilo se načíst rozhraní Framework ASP.NET Ajax na straně klienta.');
+//]]>
+</script>
+
+<script src="/registrvssp/ScriptResource.axd?d=jSeK7mczTwVWVriLJr7xkru_7TGJpbMx9vSmGmAQ11LD9J7zJAblvDXPNEn56UJw3ibVvpuezArPVKP6TKk0QPl6TBgdXxpdjDnZDouOSEsHiNxUktq1AsyRvGbTp5woPlnPCK2MN3Cnlv3Ld4gmIA2&amp;t=7f16157c" type="text/javascript"></script>
+<script src="/registrvssp/ScriptResource.axd?d=qBSZuyB0bhXfcbP1sld6vine00h8hP4zx7y1-Un9yKVSntzsQyPqkGvKwsv0xlBkJitJMHxEbNPv2ksk9W9yEoeGPGuVKv3EuV2i03OVcntIdItlb1VovVHauYyKSheaQmVKo2t8_3oozXlgiUPQqQ2&amp;t=7f16157c" type="text/javascript"></script>
+<script src="/registrvssp/ScriptResource.axd?d=hWRgSuZglFzB-RRLva05YvVUTFsrz-LUmFUDsq4gOjqoHzjzUTnf2P9bIBdQSZRTrtqh-llcEuwO-uA3mNTfik1TnhO609PslOzuIaDl0BkM7FbYWsyjIXKk6nx5rHjZWzbX5VtH1MdNxjdH_9wVAw2&amp;t=7f16157c" type="text/javascript"></script>
+<script src="/registrvssp/ScriptResource.axd?d=wRMJCIdCzRRTqpVaN4Aeac-7tI_m1RQAB5S0SUtKhXDGVUftikkSX7PI6UGFT9k0cx0-q_cCdbIikZG8mUQlGOdqjdR1Z7bUWIGXgP6_nXfDDubskmE1TC7BLqGiJh1EhAyHDMksKloQ1t3lZRO2zQ4U5qWjQ_oRfPH4ulMygkA1&amp;t=7f16157c" type="text/javascript"></script>
+<script src="/registrvssp/ScriptResource.axd?d=WNGHpcGUED7ohlo8B-biOI7HJYnWDXm5wBWX6bFqAnWi7-iYBOBDbq_1nK_M7feHAPdmSCr4TSoAT8GUeSldHpSTQ3uOx14Hyk-3_Y1DvsLrB5Nzz_z6FZWh1U3IDSwcYbAMktL9fqeuiIn1dMAsCCASRPh5FPuMvEW09KmCtgU1&amp;t=7f16157c" type="text/javascript"></script>
+<script src="/registrvssp/ScriptResource.axd?d=5pPEKUyJJ3LEy7Y9GuA67nNEiYJd-6-g5fVuRf7Bcxxm44ZikNKWXtYDkxTjJpk7HCtA8GZTliEBJXZT0TdqE_K3_BXSqh58PRkIVOHDkCQ0bnS0W54Z-Noaod5x_YBo21xO0o2KbRVBeOBv7ymMaEgBuY_OkvcF9ozQDf_5-Sg1&amp;t=7f16157c" type="text/javascript"></script>
+<script src="/registrvssp/ScriptResource.axd?d=JuCj3QHAz98vfU0pmKPSivOLE5cpNZUEnMQtUBAAN0oHVXycgYzq2Yp3fmdhL3Qv1fDTwtZvE3_QBh_SeRJnKTsG-IeC41HvNXjBXFUm8Dx1klPKLLbDeC_gTBo-_BxBQn02RydV6x_1vpVaUlNlkZkCaD1h5iNUC005kmzRXwA1&amp;t=7f16157c" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DADB1663" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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" />
+    <div>
+        <div class="zahl" align="center">
+        <table class="hlavicka">
+        <tr>
+        <td>
+           <img src="img/msmt_logo.png" alt="logo MŠMT" title="logo MŠMT" />
+        </td>
+        <td class="zahl_2" colspan="2">
+            MINISTERSTVO ŠKOLSTVÍ<br />MLÁDEŽE A TĚLOVÝCHOVY
+        </td>
+        <td></td>
+        </tr>
+        <tr>
+        <td colspan="2" class="zahl_1" ></td>
+        <td class="zahl_3" colspan="2">
+            <a href="./" title="Úvodní stránka registru">REGISTR VYSOKÝCH ŠKOL<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <i>a uskutečňovaných studijních programů</i></a>
+        </td>
+        </tr>
+        </table>
+        </div>
+        
+    
+<div align="center">
+<span class="txt_b">Studijní programy českých vysokých škol</span><br />
+<table id="rozklik">
+<tr>
+<td>V názvu SP/SO: <input name="ctl00$ContentPlaceHolder1$v_nazvu_tb" type="text" id="ContentPlaceHolder1_v_nazvu_tb" class="tb_search" /></td>
+<td>&nbsp; &nbsp;</td>
+<td colspan="3">Vysoká škola: <input name="ctl00$ContentPlaceHolder1$vysoka_skola_tb" type="text" value="Univerzita Karlova" id="ContentPlaceHolder1_vysoka_skola_tb" class="tb2_search" /></td>
+</tr>
+<tr>
+<td>Typ SP: <select name="ctl00$ContentPlaceHolder1$typ_sp_ddl" id="ContentPlaceHolder1_typ_sp_ddl" class="ddl_search">
+	<option value="X">vše</option>
+	<option value="1">bakal&#225;řsk&#253;</option>
+	<option value="2">magistersk&#253;</option>
+	<option value="3">navazuj&#237;c&#237; magistersk&#253;</option>
+	<option value="4">doktorsk&#253;</option>
+
+</select></td>
+<td>&nbsp; &nbsp;</td>
+<td>Forma studia: <select name="ctl00$ContentPlaceHolder1$forma_studia_ddl" id="ContentPlaceHolder1_forma_studia_ddl" class="ddl_search">
+	<option value="X">vše</option>
+	<option value="1">prezenčn&#237;</option>
+	<option value="2">distančn&#237;</option>
+	<option value="3">kombinovan&#233;</option>
+
+</select></td>
+<td>&nbsp; &nbsp;</td>
+<td>Kraj: <select name="ctl00$ContentPlaceHolder1$kraj_ddl" id="ContentPlaceHolder1_kraj_ddl" class="ddl_search">
+	<option value="X">vše</option>
+	<option value="CZ011">Praha</option>
+	<option value="CZ021">Středočesk&#253;</option>
+	<option value="CZ031">Jihočesk&#253;</option>
+	<option value="CZ032">Plzeňsk&#253;</option>
+	<option value="CZ041">Karlovarsk&#253;</option>
+	<option value="CZ042">&#218;steck&#253;</option>
+	<option value="CZ051">Libereck&#253;</option>
+	<option value="CZ052">Kr&#225;lov&#233;hradeck&#253;</option>
+	<option value="CZ053">Pardubick&#253;</option>
+	<option value="CZ061">Vysočina</option>
+	<option value="CZ062">Jihomoravsk&#253;</option>
+	<option value="CZ071">Olomouck&#253;</option>
+	<option value="CZ072">Zl&#237;nsk&#253;</option>
+	<option value="CZ081">Moravskoslezsk&#253;</option>
+
+</select></td>
+</tr>
+<tr>
+<td colspan="5">Studijní program: <input name="ctl00$ContentPlaceHolder1$studijni_program_tb" type="text" id="ContentPlaceHolder1_studijni_program_tb" class="tbl_search" /></td>
+</tr>
+<tr>
+<td colspan="5">Studijní obor: <input name="ctl00$ContentPlaceHolder1$studijni_obor_tb" type="text" id="ContentPlaceHolder1_studijni_obor_tb" class="tbl_search" /></td>
+</tr>
+<tr>
+<td colspan="5">Oblast vzdělávání (pouze nové akreditace): <select name="ctl00$ContentPlaceHolder1$ddl_ov" id="ContentPlaceHolder1_ddl_ov" class="ddl_search2">
+	<option selected="selected" value="0"></option>
+	<option value="01">Architektura a urbanismus</option>
+	<option value="02">Bezpečnostn&#237; obory </option>
+	<option value="03">Biologie, ekologie a životn&#237; prostřed&#237;</option>
+	<option value="04">Doprava</option>
+	<option value="05">Ekonomick&#233; obory </option>
+	<option value="06">Elektrotechnika </option>
+	<option value="07">Energetika</option>
+	<option value="08">Farmacie </option>
+	<option value="09">Filologie</option>
+	<option value="10">Filozofie, religionistika a teologie</option>
+	<option value="11">Fyzika</option>
+	<option value="12">Historick&#233; vědy</option>
+	<option value="13">Chemie </option>
+	<option value="14">Informatika</option>
+	<option value="15">Kybernetika</option>
+	<option value="16">Lesnictv&#237; a&#160;dřevařstv&#237; </option>
+	<option value="17">Matematika</option>
+	<option value="18">Medi&#225;ln&#237; a komunikačn&#237; studia</option>
+	<option value="19">Neučitelsk&#225; pedagogika </option>
+	<option value="20">Politick&#233; vědy </option>
+	<option value="21">Potravin&#225;řstv&#237;</option>
+	<option value="22">Pr&#225;vo </option>
+	<option value="23">Psychologie</option>
+	<option value="24">Soci&#225;ln&#237; pr&#225;ce </option>
+	<option value="25">Sociologie </option>
+	<option value="26">Stavebnictv&#237; </option>
+	<option value="27">Stroj&#237;renstv&#237;, technologie a&#160;materi&#225;ly</option>
+	<option value="28">Tělesn&#225; v&#253;chova a sport; kinantropologie </option>
+	<option value="29">Těžba a zpracov&#225;n&#237; nerostn&#253;ch surovin </option>
+	<option value="30">Učitelstv&#237; </option>
+	<option value="31">Uměn&#237; </option>
+	<option value="32">Vědy o uměn&#237; a kultuře</option>
+	<option value="33">Vědy o Zemi </option>
+	<option value="34">Veterin&#225;rn&#237; l&#233;kařstv&#237;, veterin&#225;rn&#237; hygiena </option>
+	<option value="35">Všeobecn&#233; l&#233;kařstv&#237; a zubn&#237; l&#233;kařstv&#237;</option>
+	<option value="36">Zdravotnick&#233; obory </option>
+	<option value="37">Zemědělstv&#237;</option>
+
+</select></td>
+</tr>
+<tr>
+<td colspan="5" class="txt_center">
+<br />
+<input type="submit" name="ctl00$ContentPlaceHolder1$vyhledat_btn" value="Vyhledat" id="ContentPlaceHolder1_vyhledat_btn" title="Vyhledat podle zadaných podmínek" class="btn_back" />&nbsp;
+<input type="submit" name="ctl00$ContentPlaceHolder1$reset_btn" value="Reset" id="ContentPlaceHolder1_reset_btn" title="Resetovat výběr podmínek výše" class="btn_back" />&nbsp;
+<input type="submit" name="ctl00$ContentPlaceHolder1$excel_btn" value="Export XLSX" id="ContentPlaceHolder1_excel_btn" title="Export výběru dále nedělených studijních programů a studijních oborů do souboru XLSX (Excel)" class="btn_back" />&nbsp;
+<input type="submit" name="ctl00$ContentPlaceHolder1$csv_btn" value="Export CSV" id="ContentPlaceHolder1_csv_btn" title="Export výběru dále nedělených studijních programů a studijních oborů do souboru CSV" class="btn_back" />&nbsp;
+<input type="submit" name="ctl00$ContentPlaceHolder1$temp_btn" value="Temp XLSX" id="ContentPlaceHolder1_temp_btn" title="Dočasný export do formátu XLSX" class="btn_back" />&nbsp;
+<input type="submit" name="ctl00$ContentPlaceHolder1$zpet_btn" value="Zpět" id="ContentPlaceHolder1_zpet_btn" title="Zpět na detail vysoké školy" class="btn_back" /><br />&nbsp;</td>
+</tr>
+</table>
+<div class="txt_s">
+<span id="ContentPlaceHolder1_ppns_lb">Počet položek na stránce: </span> <select name="ctl00$ContentPlaceHolder1$ddl_stranky" id="ContentPlaceHolder1_ddl_stranky" class="ddl_sel">
+	<option value="10">10</option>
+	<option selected="selected" value="20">20</option>
+	<option value="30">30</option>
+	<option value="40">40</option>
+	<option value="50">50</option>
+	<option value="100">100</option>
+
+</select> <span id="ContentPlaceHolder1_vysledek_lb">Celkový počet odpovídajících záznamů: 925 (SP = Studijní program, SO = Studijní obor, SDS = Standardní doba studia v letech, FS = Forma studia)</span>
+</div>
+<span id="ContentPlaceHolder1_no_rec_lb"></span>
+<div>
+	<table class="td_border" cellspacing="0" rules="all" border="1" id="ContentPlaceHolder1_gw_seznam" width="1075">
+		<tr class="td_bolder">
+			<th class="tds_bolder1" scope="col">DRUH</th><th class="tds_bolder4" scope="col">N&#193;ZEV SP/SO</th><th class="tds_bolder3" scope="col">TYP SP</th><th class="tds_bolder4" scope="col">N&#193;ZEV SP</th><th class="tds_bolder4" scope="col">VYSOK&#193; ŠKOLA</th><th class="tds_bolder4" scope="col">FAKULTA</th><th class="tds_bolder3" scope="col">FS</th><th class="tds_bolder1" scope="col">ISCED-F</th><th class="tds_bolder2" scope="col">SDS</th><th class="tds_bolder2" scope="col">JAZYK</th><th class="tds_bolder1" scope="col"> </th>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Addiction: Specialization in Health Care </td><td>doktorsk&#253;</td><td>Addiction: Specialization in Health Care </td><td>Univerzita Karlova</td><td>1. l&#233;kařsk&#225; fakulta</td><td>prezenční<br />kombinované</td><td>0988</td><td>4</td><td>angličtina</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl02$SP_21417" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_21417_0" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Addictology</td><td>navazuj&#237;c&#237; magistersk&#253;</td><td>Addictology</td><td>Univerzita Karlova</td><td>1. l&#233;kařsk&#225; fakulta</td><td>prezenční<br />kombinované</td><td>0912</td><td>2</td><td>angličtina</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl03$SP_14205" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_14205_1" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Adiktologie</td><td>navazuj&#237;c&#237; magistersk&#253;</td><td>Adiktologie</td><td>Univerzita Karlova</td><td>1. l&#233;kařsk&#225; fakulta</td><td>prezenční<br />kombinované</td><td>0988</td><td>2</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl04$SP_14204" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_14204_2" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Adiktologie</td><td>bakal&#225;řsk&#253;</td><td>Adiktologie</td><td>Univerzita Karlova</td><td>1. l&#233;kařsk&#225; fakulta</td><td>prezenční<br />kombinované</td><td>0988</td><td>3</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl05$SP_14203" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_14203_3" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Adiktologie: Specializace ve zdravotnictv&#237;</td><td>doktorsk&#253;</td><td>Adiktologie: Specializace ve zdravotnictv&#237;</td><td>Univerzita Karlova</td><td>1. l&#233;kařsk&#225; fakulta</td><td>prezenční<br />kombinované</td><td>0988</td><td>4</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl06$SP_21416" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_21416_4" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Aesthetics</td><td>doktorsk&#253;</td><td>Aesthetics</td><td>Univerzita Karlova</td><td>Filozofick&#225; fakulta</td><td>prezenční<br />kombinované</td><td>0213</td><td>4</td><td>angličtina</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl07$SP_15249" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_15249_5" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Algebra, number theory, and mathematical logic</td><td>doktorsk&#253;</td><td>Algebra, number theory, and mathematical logic</td><td>Univerzita Karlova</td><td>Matematicko-fyzik&#225;ln&#237; fakulta</td><td>prezenční<br />kombinované</td><td>0541</td><td>4</td><td>angličtina</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl08$SP_15213" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_15213_6" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Algebra, teorie č&#237;sel a matematick&#225; logika</td><td>doktorsk&#253;</td><td>Algebra, teorie č&#237;sel a matematick&#225; logika</td><td>Univerzita Karlova</td><td>Matematicko-fyzik&#225;ln&#237; fakulta</td><td>prezenční<br />kombinované</td><td>0541</td><td>4</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl09$SP_15212" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_15212_7" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Analytical Chemistry</td><td>navazuj&#237;c&#237; magistersk&#253;</td><td>Analytical Chemistry</td><td>Univerzita Karlova</td><td>Př&#237;rodovědeck&#225; fakulta</td><td>prezenční</td><td>0531</td><td>2</td><td>angličtina</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl10$SP_19197" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_19197_8" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Analytical Chemistry</td><td>doktorsk&#253;</td><td>Analytical Chemistry</td><td>Univerzita Karlova</td><td>Př&#237;rodovědeck&#225; fakulta</td><td>prezenční<br />kombinované</td><td>0531</td><td>4</td><td>angličtina</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl11$SP_19870" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_19870_9" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Analytick&#225; chemie</td><td>doktorsk&#253;</td><td>Analytick&#225; chemie</td><td>Univerzita Karlova</td><td>Př&#237;rodovědeck&#225; fakulta</td><td>prezenční<br />kombinované</td><td>0531</td><td>4</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl12$SP_19866" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_19866_10" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Analytick&#225; chemie</td><td>navazuj&#237;c&#237; magistersk&#253;</td><td>Analytick&#225; chemie</td><td>Univerzita Karlova</td><td>Př&#237;rodovědeck&#225; fakulta</td><td>prezenční</td><td>0531</td><td>2</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl13$SP_19198" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_19198_11" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Anatomie, histologie a embryologie</td><td>doktorsk&#253;</td><td>Anatomie, histologie a embryologie</td><td>Univerzita Karlova</td><td>L&#233;kařsk&#225; fakulta v Plzni</td><td>prezenční<br />kombinované</td><td>0912</td><td>4</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl14$SP_15167" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_15167_12" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Anatomy, Histology and Embryology</td><td>doktorsk&#253;</td><td>Anatomy, Histology and Embryology</td><td>Univerzita Karlova</td><td>L&#233;kařsk&#225; fakulta v Plzni</td><td>prezenční<br />kombinované</td><td>0912</td><td>4</td><td>angličtina</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl15$SP_15168" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_15168_13" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Ancient Egypt and the Near East</td><td>navazuj&#237;c&#237; magistersk&#253;</td><td>Ancient Egypt and the Near East</td><td>Univerzita Karlova</td><td>Filozofick&#225; fakulta</td><td>prezenční</td><td>0222</td><td>2</td><td>angličtina</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl16$SP_14297" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_14297_14" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Ancient Egypt and the Near East</td><td>bakal&#225;řsk&#253;</td><td>Ancient Egypt and the Near East</td><td>Univerzita Karlova</td><td>Filozofick&#225; fakulta</td><td>prezenční</td><td>0222</td><td>3</td><td>angličtina</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl17$SP_19828" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_19828_15" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Andragogika a management vzděl&#225;v&#225;n&#237;</td><td>navazuj&#237;c&#237; magistersk&#253;</td><td>Andragogika a management vzděl&#225;v&#225;n&#237;</td><td>Univerzita Karlova</td><td>Pedagogick&#225; fakulta</td><td>prezenční<br />kombinované</td><td>0111</td><td>2</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl18$SP_18720" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_18720_16" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Andragogika a person&#225;ln&#237; ř&#237;zen&#237;</td><td>navazuj&#237;c&#237; magistersk&#253;</td><td>Andragogika a person&#225;ln&#237; ř&#237;zen&#237;</td><td>Univerzita Karlova</td><td>Filozofick&#225; fakulta</td><td>prezenční</td><td>0111</td><td>2</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl19$SP_14275" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_14275_17" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Andragogika a person&#225;ln&#237; ř&#237;zen&#237;</td><td>bakal&#225;řsk&#253;</td><td>Andragogika a person&#225;ln&#237; ř&#237;zen&#237;</td><td>Univerzita Karlova</td><td>Filozofick&#225; fakulta</td><td>prezenční</td><td>0111</td><td>3</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl20$SP_14284" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_14284_18" class="btn_auto" /></td>
+		</tr><tr>
+			<td>SP dále nedělený</td><td>Anglick&#253; jazyk</td><td>navazuj&#237;c&#237; magistersk&#253;</td><td>Anglick&#253; jazyk</td><td>Univerzita Karlova</td><td>Filozofick&#225; fakulta</td><td>prezenční</td><td>0231</td><td>2</td><td>čeština</td><td><input type="submit" name="ctl00$ContentPlaceHolder1$gw_seznam$ctl21$SP_19903" value="Detail" id="ContentPlaceHolder1_gw_seznam_SP_19903_19" class="btn_auto" /></td>
+		</tr><tr class="pager">
+			<td colspan="11"><table>
+				<tr>
+					<td><span>1</span></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$2&#39;)">2</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$3&#39;)">3</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$4&#39;)">4</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$5&#39;)">5</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$6&#39;)">6</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$7&#39;)">7</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$8&#39;)">8</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$9&#39;)">9</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$10&#39;)">10</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$11&#39;)">...</a></td><td><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gw_seznam&#39;,&#39;Page$Last&#39;)">Poslední</a></td>
+				</tr>
+			</table></td>
+		</tr>
+	</table>
+</div>
+</div>
+
+
+
+
+        <div align="center">
+        <table class="paticka">
+        <tr>
+        <td>
+        Registr vysokých škol a uskutečňovaných studijních programů je veden dle § 87 odst. 1 písm. j) bod 2. zákona č. 111/1998 Sb.,<br />o vysokých školách a o změně a doplnění některých zákonů (zákon o vysokých školách), ve znění pozdějších předpisů.<br />
+         &#169; 2022 Ministerstvo školství, mládeže a tělovýchovy, aktualizace k 09.02.2022 18:06 
+        </td>
+        </tr>
+        </table>
+        </div> 
+    </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.AutoCompleteBehavior, {"completionInterval":100,"completionListCssClass":"completionList","completionListItemCssClass":"listItem","contextKey":"","delimiterCharacters":"","enableCaching":false,"highlightedItemCssClass":"itemHighlighted","id":"ContentPlaceHolder1_ACE1","minimumPrefixLength":0,"serviceMethod":"NajdiVS","servicePath":"/registrvssp/csplist.aspx","useContextKey":true}, null, null, $get("ContentPlaceHolder1_vysoka_skola_tb"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.AutoCompleteBehavior, {"completionInterval":100,"completionListCssClass":"completionList","completionListItemCssClass":"listItem","contextKey":"","delimiterCharacters":"","enableCaching":false,"highlightedItemCssClass":"itemHighlighted","id":"ContentPlaceHolder1_ACE2","minimumPrefixLength":0,"serviceMethod":"NajdiSP","servicePath":"/registrvssp/csplist.aspx","useContextKey":true}, null, null, $get("ContentPlaceHolder1_studijni_program_tb"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.AutoCompleteBehavior, {"completionInterval":100,"completionListCssClass":"completionList","completionListItemCssClass":"listItem","contextKey":"","delimiterCharacters":"","enableCaching":false,"highlightedItemCssClass":"itemHighlighted","id":"ContentPlaceHolder1_ACE3","minimumPrefixLength":0,"serviceMethod":"NajdiSO","servicePath":"/registrvssp/csplist.aspx","useContextKey":true}, null, null, $get("ContentPlaceHolder1_studijni_obor_tb"));
+});
+//]]>
+</script>
+</form>
+</body>
+</html>

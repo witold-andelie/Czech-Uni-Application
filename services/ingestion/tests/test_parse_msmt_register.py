@@ -4,7 +4,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from parse_msmt_register import parse
 
-RAW = Path(__file__).resolve().parents[3] / "work" / "raw" / "2026-09-06" / "msmt-cvslist.html"
+RAW = Path(__file__).resolve().parent / "fixtures" / "raw-2026-09-06" / "msmt-cvslist.html"
 
 
 def test_parse_counts_and_fields():

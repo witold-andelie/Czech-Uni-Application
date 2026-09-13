@@ -4,7 +4,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from parse_cuni_sis import build, parse_mff_costs, parse_sis
 
-RAW = Path(__file__).resolve().parents[3] / "work" / "raw" / "2026-09-06"
+RAW = Path(__file__).resolve().parent / "fixtures" / "raw-2026-09-06"
 EN = (RAW / "cuni-sis-cs-bachelor-en.html").read_text(encoding="utf-8")
 CS = (RAW / "cuni-sis-cs-bachelor-cs.html").read_text(encoding="utf-8")
 COSTS = (RAW / "cuni-mff-costs.html").read_text(encoding="utf-8")

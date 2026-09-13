@@ -1,0 +1,184 @@
+<html><head><title>Přijímací řízení - Univerzita Karlova</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="formatter" content="is.cuni.cz"><meta name="robots" content="noarchive"><link rel="shortcut icon" type="image/x-icon" href="../img/pie.ico"><link rel="icon" type="image/x-icon" href="../img/pie.ico"><link rel="stylesheet" href="../lib_pie/design/styles/jquery-ui.css?1788173076"><link rel="stylesheet" href="../lib_pie/design/styles/fullcalendar.css?1788173076"><link rel="stylesheet" href="../lib_pie/design/styles/uk-screen.css?1788173076" media="screen,projection"><link rel="stylesheet" href="../lib_pie/design/styles/uk-print.css?1788173076" media="print"><link rel="stylesheet" href="../img/datetimepicker.css?1788173074"><link rel="stylesheet" href="../img/pie.css?1788173076"><link rel="stylesheet" href="../img/gray.css?1788173074"><script type="text/javascript" src="../lib/js_jquery.js?ver=1788173072"></script><script type="text/javascript" src="../lib/js_jquery.placeholder.js?ver=1788173072"></script><script type="text/javascript" src="../lib_pie/design/scripts/jquery-ui.min.js?ver=1788173076"></script><script type="text/javascript" src="../lib_pie/design/scripts/jquery.validate.min.js?ver=1788173076"></script><script type="text/javascript" src="../lib_pie/design/scripts/jquery.tablesorter.min.js?ver=1788173076"></script><script type="text/javascript" src="../lib/fontawesome.js?ver=1788173072"></script><script type="text/javascript" src="../lib/js_fancyfields.eru.js?ver=1788173072"></script><script type="text/javascript" src="../lib_pie/design/scripts/css.browser.selector.js?ver=1788173076"></script><script type="text/javascript" src="../lib_pie/design/scripts/fullcalendar.min.js?ver=1788173076"></script><script type="text/javascript" src="../lib/js_stev.js?ver=1788173072"></script><script type="text/javascript" src="../lib_pie/design/scripts/site.js?ver=1788173076"></script><script type="text/javascript" src="../lib/js_pie.js?ver=1788173073"></script><script type="text/javascript" src="../lib/js_ajax.js?ver=1788173072"></script><script type="text/javascript" src="../lib/js_jquery.gray.js?ver=1788173072"></script><script type="text/javascript" src="../lib/js_jquery.datetimepicker.js?ver=1788173073"></script><script type="text/javascript" src="../res/stev/matomo.js?ver=1700992617"></script><script type="text/javascript">
+var dl_pie = true;
+</script></head><body onclick="if(!isChildOfRegDiv(getEventSourceElement(event))) { HideAllRegisteredDivs(); }" class="pie_available disable_module_icons" data-logged="0">
+<span id="stev_top"></span>
+
+<script type="text/javascript">
+var dl_lang_id="cs"; var dl_lang = {};dl_lang["stev.js_input_bold"] = "Text, který má být tučný";dl_lang["stev.js_input_italic"] = "Text, který má být kurzívou";dl_lang["stev.js_input_underline"] = "Text, který má být podtržený";dl_lang["stev.js_input_sup"] = "Text, který má být horním indexem";dl_lang["stev.js_input_sub"] = "Text, který má být dolním indexem";dl_lang["stev.js_selected_multiple"] = "Označené položky (klikněte pro odznačení)";dl_lang["stev.js_session_timeout"] = "Sezení je ukončeno. Pro další práci s IS se znovu přihlašte.\nVeškerá neuložená data budou ztracena. Zkopírujte si rozepsaná data.";dl_lang["stev.order_kod_nazev"] = "Změnit třídění na kód - název";dl_lang["stev.order_nazev_kod"] = "Změnit třídění na název - kód";dl_lang["stev.notify.before"] = "před \x3Cmin\x3E min";dl_lang["stev.autocomplete.placeholder"] = "...hledat";dl_lang["stev.autocomplete.more.placeholder"] = "... další";dl_lang["stev.filtr.zmenen"] = "Filtr byl změněn, odešlete formulář tímto tlačítkem pro zobrazení relevantních výsledků";dl_lang["stev.page_unlimited.warning"] = "POZOR: Nastavujete neomezené stránkování. To způsobí zobrazení všech možných výsledků, kterých může být MNOHO. Souhlasíte?";dl_lang["stev.pie.napoveda_zobraz"] = "Zobrazit nápovědu";dl_lang["stev.pie.uploadbutton"] = "Vybrat soubor...";dl_lang["stev.form.html_check"] = "VAROVÁNÍ: Způsob zápisu HTML značek uvedený v tomto políčku může způsobovat špatné zobrazení na stránce.";dl_lang["stev.form.html_check.navrh"] = "Navrhovaná úprava:";dl_lang["stev.form.html_check.problems"] = "Nalezené problémy a opravy (validátor Tidy):";dl_lang["stev.form.html_check.pouzit"] = "Opravit";dl_lang["stev.form.html_check.navrhnout"] = "Návrh opravy";dl_lang["stev.zbyva"] = "zbývá";dl_lang["stev.prebyva"] = "přebývá";dl_lang["stev.dominima"] = "do minima";dl_lang["stev.domaxima"] = "do maxima";dl_lang["stev.dlg_neodpovida_podminkam"] = "Hodnota již nevyhovuje podmínkám definovaným pro tuto položku.";dl_lang["stev.dlg_neplatne"] = "Položka je v číselníku označena jako neplatná.";dl_lang["stev.dlg_expirovane"] = "Položka je v číselníku již expirovaná.";dl_lang["stev.dlg_nezavedene"] = "Položka není v číselníku zatím zavedena.";dl_lang["stev.leave_form"] = "Vypadá to, že máte rozeditovaný formulář. Opuštěním stránky bez uložení přijdete o data. Opravdu odejít?";dl_lang["stev.filtr.podcarou.odstranit"] = "odstranit";dl_lang["stev.filtr.podcarou.odstranitradek"] = "odstranit řádek";
+</script><script type="text/javascript">
+var dl_root = ".."; var dl_pie_switch = false; var dl_id="";var dl_tid="";
+            var dl_config = {
+               stev : {
+                  resource_location: "",
+                  report_problem: false,
+                  pie: {
+                        form_select: false
+                  }
+               }
+            };
+            var dl_module_id = "prijimacky";
+            var dl_page_info = {
+               url:      "/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+               module:   dl_page_info,
+               postdata: "YTowOnt9",
+               getdata : "YToyOntzOjI6ImRvIjtzOjExOiJkZXRhaWxfb2JvciI7czo3OiJpZF9vYm9yIjtzOjU6IjM0NDU2Ijt9"
+            };
+            
+</script><div id="hint" style="position:absolute; z-index:100; width:350px; margin-top: 20px; margin-left: 10px; visibility: hidden; display: none; border: 1px solid #FCAF3F;"><div id="hintlbl" style="padding: 4px 2px 4px 2px; background: #FEF7C1; color:#000000;"></div></div>
+<div id="page">
+         <div id="headerTop"><div class="pageCol cf"><h5 class="visuallyhidden">Volba jazyka</h5>
+                     <ul id="langs" class="rgt"><li><span title="čeština"><img src="../lib_pie/design/images/flags/cs.png" alt="čeština"></span></li><li><a href="/studium/eng/prijimacky/index.php?do=detail_obor&amp;id_obor=34456" title="switch to english"><img src="../lib_pie/design/images/flags/en.png" alt="english"></a></li></ul><h5 class="visuallyhidden">Uživatel</h5>
+               <ul class="rgt"><li class="username"><span class="highlighted"><span id="stev_jmeno" class="anonym">Anonym</span></span></li></ul><ul class="lft"></ul><span id="sis_plus_icons" class="lft"></span></div>
+         </div>
+         <div class="fullHeader">
+         <div id="header" class="pageCol cf"> <a href="../prijimacky/index.php?id=&amp;tid=" target="_blank" id="logo"><img title="Univerzita Karlova" src="../lib_pie/design/images/uk-logo.jpg" alt="Univerzita Karlova" width="398"></a><div class="rgt myStudyNav">
+               <div id="stev_role"><a class="button" id="button_login" href="../login.php?do=prijimacky&amp;id_obor=34456">Přihlásit se</a></div></div></div></div><div id="mask" class="close_modal"></div>
+<div id="loading" class="loading" onclick="ShowHide('loading',0); event.cancelBubble = true;"></div>
+
+<script type="text/javascript">
+addRegDiv('loading');
+</script><script type="text/javascript">
+ShowHide('loading',1);
+</script><div id="menu">
+            <h5 class="visuallyhidden">Hlavní menu</h5>
+            <div class="stripe"></div>
+            <ul class="cf"><li class="active"><a href="../prijimacky/index.php" class="link1">Přijímací řízení</a></li><li><a href="../index.php" class="link1">Vstup do SIS 3</a></li></ul></div> <div id="contentContainer"><div class="breadcrumbs pageCol"><a href="../prijimacky/index.php" class="link1"><img src="../img/prijimacky.gif" class="module_icon" alt="" title="">Přijímací řízení</a>&gt; <a href="../prijimacky/index.php?do=obory" class="link1">Vyhledání oborů/programů</a>&gt; <strong>Detail programu/oboru</strong></div><h1 class="pageCol">Detail programu/oboru<span class="modulNapoveda zobrazNapovedu icon-napoveda icon pie-cervena ukDialog" data-fakulta="11000" style="float:right;" title="Zobrazit nápovědu"></span></h1><div class="coloredBlock">
+            <div class="pageCol pageBlock">
+            <p class="subheadingMenu"><a href="../prijimacky/index.php?do=obory" class="backButton"><span class="icon icon-sipka-velka-prava"></span>Vyhledání oborů/programů</a><a href="/studium/prijimacky/index.php?do=detail_obor&amp;id_obor=34456" class="button active">Detail programu/oboru</a></p></div>
+            </div>
+            <div class="pageCol"><noscript><div class="messageBox warning smooth "><span class="icon icon-krizek"><span class="visuallyhidden">zavřít</span></span>
+          <p></p><ul><li>Váš prohlížeč nepodporuje JavaScript nebo je jeho podpora vypnutá. Některé funkce nemusejí být dostupné.</li></ul></div></noscript></div><div class="coloredBlock"><div class="pageBlock pageCol">
+   <h2>Informatika (0613RA1400060000)</h2><table cellspacing="0" cellpadding="2" class="tab1 cleanTable lft lft-mobile predmetRightCol"><tr><th><span class="icon icon-fakulta" title="">Fakulta:</span></th>
+               <td style="white-space: nowrap"><a href="../prijimacky/index.php?do=info_fakulta&amp;fak=11320" class="link3" target="_blank">Matematicko-fyzikální fakulta</a> <span class="icon icon-napoveda icon-regular ukDialog" title="Po kliknutí na odkaz se v novém okně (na nové kartě v prohlížeči) zobrazí fakultní podmínky (termín podání přihlášky, den otevřených dveří, poplatky...)"></span></td>
+            </tr><tr><th><span class="icon icon-studijni-program" title="">Studijní program:</span></th>
+               <td>Informatika (B0613A140006)</td>
+            </tr><tr><th><span class="icon icon-forma-studia" title="">Forma studia:</span></th>
+               <td>prezenční</td>
+            </tr><tr><th><span class="icon icon-druh-studia" title="">Druh studia:</span></th>
+               <td>bakalářské</td>
+            </tr><tr><th><span class="icon icon-jazyk" title="">Jazyk výuky:</span></th>
+               <td>čeština</td>
+            </tr><tr><th><span class="icon icon-obor" title="">Standardní doba studia:</span></th>
+                        <td>3 roky</td>
+                     </tr><tr><th><span class="icon icon-kosticka" title="">Forma přihlášky:</span></th>
+                        <td>Elektronická, Listinná</td>
+                     </tr><tr><th><span class="icon icon-obalka" title="">Možnost upuštění od přijímací zkoušky:</span></th>
+                        <td>ano</td>
+                     </tr></table><div class="rightCol rightCol-mobile small"><p class="center"></p>
+         <ul class="inline center center-mobile"><li><span class="icon icon-red above icon-krizek">Na tento program/obor nyní nelze podat elektronickou přihlášku.</span></li></ul><p></p>
+         </div></div></div><div class="pageCol pageCol-mobile"><ul class="list list-mobile"><li class="open"><div class="heading">
+                  <h3 class="fakeLink">Termín podání přihlášky</h3>
+                  <span class="state">
+					<span class="open stateBtn ukDialog" title="Sbalit"><span class="visuallyhidden">sbalit</span></span>
+					<span class="closed stateBtn ukDialog" title="Rozbalit (další informace – např. detail přihlášky)"><span class="visuallyhidden">Rozbalit (další informace – např. detail přihlášky)</span></span>
+				</span>
+            </div>
+            <div class="content"><table cellspacing="0" cellpadding="2" class="tab1 cleanTable zero-margin-bottom"><tr><th>Termín podání přihlášky:</th>
+                                    <td>31.03.2026</td>
+                                 </tr></table></div></li><li class="open"><div class="heading">
+                  <h3 class="fakeLink">Poplatek za úkony spojené s přijímacím řízením</h3>
+                  <span class="state">
+					<span class="open stateBtn ukDialog" title="Sbalit"><span class="visuallyhidden">sbalit</span></span>
+					<span class="closed stateBtn ukDialog" title="Rozbalit (další informace – např. detail přihlášky)"><span class="visuallyhidden">Rozbalit (další informace – např. detail přihlášky)</span></span>
+				</span>
+            </div>
+            <div class="content"><table cellspacing="0" cellpadding="2" class="tab1 cleanTable zero-margin-bottom"><tr><th>Poplatek za elektronickou formu přihlášky:</th>
+                                    <td>940 Kč</td>
+                                 </tr><tr><th>Poplatek za listinnou formu přihlášky:</th>
+                                    <td>990 Kč</td>
+                                 </tr></table></div></li><li class="open"><div class="heading">
+                  <h3 class="fakeLink">Charakteristika programu/oboru</h3>
+                  <span class="state">
+					<span class="open stateBtn ukDialog" title="Sbalit"><span class="visuallyhidden">sbalit</span></span>
+					<span class="closed stateBtn ukDialog" title="Rozbalit (další informace – např. detail přihlášky)"><span class="visuallyhidden">Rozbalit (další informace – např. detail přihlášky)</span></span>
+				</span>
+            </div>
+            <div class="content">Cílem bakalářského studijního programu Informatika je výchova absolventů vzdělaných ve dvou oblastech. Jednak v aplikované informatice, tedy zejména ve schopnosti aktivně algoritmizovat a programovat reálné problémy, což umožňuje odchod do praxe ihned po ukončení bakalářského studia. Dále pak v teoretické informatice (včetně poměrně rozsáhlého matematického aparátu), což umožňuje další návazné studium na magisterské a později případně doktorské úrovni. Pokrytí obou zmíněných oblastí odpovídá pozici informatiky na pomezí technických a přírodních věd.<br><br>
+Studijní program Informatika má šest specializací, z toho čtyři praktičtěji zaměřené (Programování a vývoj software, Systémové programování, Databáze a web, Počítačová grafika a vidění) a dvě teoretičtěji zaměřené (Obecná informatika, Umělá inteligence). První ročník je nicméně společný a k volbě specializací tedy studující přistupují až ve druhém ročníku, kdy mají již k takovému rozhodnutí dostatek informací.<br><br>
+Nedílnou součástí studia je tvůrčí činnost, která také zahrnuje závěrečné studentské práce. Ta je cílena zejména na vývoj softwarových děl, či specializovaného hardwaru (v aplikované části informatiky) a na vědecké publikace (v teoretické části informatiky).<br></div></li><li class="open"><div class="heading">
+                  <h3 class="fakeLink">Popis ověření a kritéria hodnocení</h3>
+                  <span class="state">
+					<span class="open stateBtn ukDialog" title="Sbalit"><span class="visuallyhidden">sbalit</span></span>
+					<span class="closed stateBtn ukDialog" title="Rozbalit (další informace – např. detail přihlášky)"><span class="visuallyhidden">Rozbalit (další informace – např. detail přihlášky)</span></span>
+				</span>
+            </div>
+            <div class="content">Pro všechny studijní programy (tj. Fyzika, Obecná matematika, Finanční matematika, Matematika pro informační technologie, Matematické modelování, Matematika se zaměřením na vzdělávání, Fyzika se zaměřením na vzdělávání, Informatika se zaměřením na vzdělávání, Deskriptivní geometrie se zaměřením na vzdělávání a Informatika obsahuje tato zkouška deset úloh testujících předpoklady ke studiu na MFF UK (logické myšlení, přesnost vyjadřování, středoškolská matematika). Zkouška má písemnou podobu. Ke každé úloze je nabídnuto pět možných odpovědí a úkolem je označit, které jsou správné a které špatné. Čas na vypracování zkoušky je 75 minut. Za každou úlohu je možné získat 10 bodů. Bodová hranice pro úspěšné složení odborné přijímací zkoušky je 40 bodů ze 100 možných.<br><br>
+Přijímací zkouška konaná v náhradním termínu má stejnou podobu i kritéria hodnocení jako přijímací zkouška v řádném termínu.<br><br>
+U přijímací zkoušky je zakázáno opisovat od jiných uchazečů i nechat jiného uchazeče opisovat. Takový čin je považován za podvodné jednání a vztahuje se na něj § 67 zákona č. 111/1998 Sb. v platném znění. K přijímací zkoušce je nutné si přinést psací potřeby. Používání jakýchkoliv dalších pomůcek není při přijímací zkoušce povoleno.<br><br>
+Uchazeči o studium v českém jazyce, kteří nedoloží absolvování maturitní zkoušky z českého nebo slovenského jazyka, musejí doložit dostatečnou znalost jazyka:<br>
+- buď dokladem o absolvování alespoň dvouletého souvislého studia na základní, střední nebo vysoké škole v ČR nebo SR, nebo<br>
+- dokladem o vykonání zkoušky z českého jazyka úrovně B2 nebo C1 na Ústavu jazykové a odborné přípravy Univerzity Karlovy (ÚJOP UK), nebo<br>
+- doložením vykonání státní jazykové zkoušky nebo zkoušky z českého nebo slovenského jazyka úrovně B2, C1 nebo C2 na jazykové škole s právem státní jazykové zkoušky. <br><br>
+Úředně ověřený doklad je nutno zaslat poštou na studijní oddělení MFF UK **nejpozději do 31. 7. 2026** (platí pro všechny výše uvedené možnosti doložení jazykových schopností).  <br></div></li><li class="open"><div class="heading">
+                  <h3 class="fakeLink">Podmínky přijetí</h3>
+                  <span class="state">
+					<span class="open stateBtn ukDialog" title="Sbalit"><span class="visuallyhidden">sbalit</span></span>
+					<span class="closed stateBtn ukDialog" title="Rozbalit (další informace – např. detail přihlášky)"><span class="visuallyhidden">Rozbalit (další informace – např. detail přihlášky)</span></span>
+				</span>
+            </div>
+            <div class="content">Podmínkou přijetí ke studiu v bakalářském studijním programu je dosažení středního vzdělání s maturitní zkouškou.<br><br><table cellspacing="0" cellpadding="2" class="tab1 cleanTable zero-margin-bottom"><tr><th>Způsob ověření:</th>
+                                          <td colspan="3">přijímací zkouška</td>
+                                       </tr><tr><th>Datum ověření (přijímací zkoušky) od:</th>
+                                          <td>09.06.2026</td>
+                                          <th>Do:</th>
+                                          <td>09.06.2026</td>
+                                       </tr><tr><th>Náhradní termín (přijímací zkoušky):</th>
+                                          <td>23.06.2026</td>
+                                             <th>Do:</th>
+                                             <td>23.06.2026   </td>
+                                       </tr></table></div></li><li class="open"><div class="heading">
+                  <h3 class="fakeLink">Podmínky pro upuštění od přijímací zkoušky</h3>
+                  <span class="state">
+					<span class="open stateBtn ukDialog" title="Sbalit"><span class="visuallyhidden">sbalit</span></span>
+					<span class="closed stateBtn ukDialog" title="Rozbalit (další informace – např. detail přihlášky)"><span class="visuallyhidden">Rozbalit (další informace – např. detail přihlášky)</span></span>
+				</span>
+            </div>
+            <div class="content">Pro všechny otevírané studijní programy (tj. Fyzika, Obecná matematika, Finanční matematika, Matematika pro informační technologie, Matematické modelování, Matematika se zaměřením na vzdělávání, Fyzika se zaměřením na vzdělávání, Informatika se zaměřením na vzdělávání, Deskriptivní geometrie se zaměřením na vzdělávání a Informatika) je od odborné přijímací zkoušky na bakalářské studium upuštěno u uchazečů, kteří o upuštění od přijímací zkoušky (prominutí) požádají, na MFF UK dosud nestudovali, splní alespoň jednu z následujících podmínek a tuto skutečnost řádně doloží:<br><br>
+1. ukončili nebo ukončí ve školním roce 2024/25 nebo 2025/2026 středoškolské studium maturitní zkouškou v České nebo Slovenské republice a jejich celkový průměr známek z matematiky na výročních vysvědčeních 1. až 3. ročníku a pololetním vysvědčení 4. ročníku střední školy nepřevyšuje 1,5 u uchazečů do všech studijních programů kromě programu Informatika. U uchazečů do programu Informatika nesmí celkový průměr známek z matematiky být vyšší než 1,4;<br>
+2. postoupili v České nebo Slovenské republice do ústředního (resp. celoštátneho) kola Matematické olympiády (kategorie A nebo P), Fyzikální olympiády (kategorie A) nebo Olympiády v informatike (kategorie A) nebo byli v České nebo Slovenské republice úspěšnými řešiteli krajského kola Matematické olympiády (kategorie A, B, C nebo P), Fyzikální olympiády (kategorie A, B, C nebo D), Astronomické olympiády (kategorie AB nebo CD) či Olympiády v informatike (kategorie A) nebo postoupili v České lingvistické olympiádě do ústředního kola;<br>
+3. obdrželi osvědčení úspěšného řešitele Matematického korespondenčního semináře, Fyzikálního korespondenčního semináře, Korespondenčního semináře z programování nebo Korespondenčního semináře M&amp;M, které pořádá MFF UK;<br>
+4. ukončili či ukončí středoškolské studium maturitní zkouškou v České republice ve školním roce 2024/25 nebo 2025/26 a  úspěšně složili zkoušku Matematika rozšiřující (organizace CERMAT) s procentuální úspěšností alespoň 68%;<br>
+5. ukončili či ukončí středoškolské studium maturitní zkouškou ve Slovenské republice ve školním roce 2024/25 nebo 2025/26 a v externí části maturitní zkoušky z předmětu Matematika dosáhli úspěšnosti v testu alespoň 75%;<br>
+6. absolvovali mezinárodní zkoušky Advanced Placement z předmětů Calculus AB nebo Calculus BC s výsledkem 5 a 4. Splnění této podmínky musí uchazeč doložit oficiální cestou prostřednictvím organizace Centrum pro talentovanou mládež. Upozorňujeme, že výsledky zkoušky Advanced Placement konané v jarním termínu 2026 Centrum vydává až v průběhu léta, a proto nemohou být uznány jako důvod pro upuštění od přijímací zkoušky. Pro tyto účely mohou být uznány pouze výsledky zkoušek konaných nejpozději v květnu 2025; <br>
+7. umístili se do třetího místa v jedné z kategorií soutěže České hlavičky, kterou vyhlašuje společnost Česká hlava PROJEKT z.ú. ve spolupráci s Ministerstvem školství, mládeže a tělovýchovy ČR. Tuto skutečnost doloží ověřenou kopií diplomu či potvrzením od vyhlašovatele.<br><br>
+**Žádost o upuštění od přijímací zkoušky se podává pouze elektronicky v sekci „Žádosti“ v elektronické přihlášce ke studiu a lze ji podat až po odeslání a zaevidování přihlášky studijním oddělením.**<br><br>
+Uchazeč podá nejpozději do níže uvedených termínů elektronicky žádost o upuštění od přijímací zkoušky prostřednictvím SIS: Moje přihlášky – Žádosti – Upuštění od přijímací zkoušky. <br>
+V elektronické žádosti uchazeč specifikuje, z jakého důvodu žádá o upuštění od přijímací zkoušky. Jako přílohu vloží potvrzení o dané skutečnosti.<br><br>
+Uchazeč dokládá jednou z možností:<br>
+- **potvrzení opatřené digitálním (elektronickým) podpisem** pověřené osoby (třídní učitel, organizátor olympiády, Cermat apod.), která nahraje dokument na uchazečův flash disk či zašle e-mailem) nebo<br>
+- **autorizovaná konverze** (elektronické úřední ověření dokumentu a převedení listinného dokumentu do elektronické podoby) požadovaných dokladů – vyřizuje se např. na CzechPointu, kde jej nahrají na uchazečův flash disk<br>
+- v případě bodu 1. uchazeč využije krátký **formulář pro potvrzení známek** z matematiky, který je dostupný na adrese <a href="https://www.mff.cuni.cz/cs/uchazeci/casto-kladene-dotazy" class="link8">https://www.mff.cuni.cz/cs/uchazeci/casto-kladene-dotazy</a>. <br><br>
+Elektronickou žádost s doložením (pouze) jednoho bodu z uvedených možností je nutné podat nejpozději v těchto termínech:<br>
+- do 5. 4. 2026 v případě bodu 1.<br>
+- do 30. 4. 2026 v případě bodů 2.-3.<br>
+- do 24. 5. 2026 v případě bodů 4.-6.<br>
+- do 5. 4. 2026 v případě bodu 7.<br><br>
+Na žádosti podané po výše uvedených termínech vztahujících se k jednotlivým podmínkám nebude brán zřetel. Zároveň nebude brán zřetel na žádosti, které by byly doručeny v listinné podobě, pokud uchazeč podal přihlášku v elektronické podobě.<br><br>
+**Rozhodnutí o upuštění od přijímací zkoušky** bude fakulta rozesílat po uzavření termínu pro podání přihlášek, tj. nejdříve v průběhu dubna.<br><br>
+Začátkem května zašle MFF UK všem uchazečům, kterým nebylo do této doby vydáno rozhodnutí o upuštění od odborné přijímací zkoušky, pozvánku na tuto zkoušku. Uchazeči žádající o upuštění od přijímací zkoušky na základě bodů 4, 5 nebo bodu 6 tak mohou učinit až do 24. 5. 2026, tedy i po obdržení pozvánky na přijímací zkoušku. V případě kladného rozhodnutí MFF UK o upuštění od přijímací zkoušky, které bylo učiněno až po odeslání pozvánky na přijímací zkoušku, se stává tato pozvánka bezpředmětnou.<br></div></li><li class="open"><div class="heading">
+                  <h3 class="fakeLink">Přípravný kurz</h3>
+                  <span class="state">
+					<span class="open stateBtn ukDialog" title="Sbalit"><span class="visuallyhidden">sbalit</span></span>
+					<span class="closed stateBtn ukDialog" title="Rozbalit (další informace – např. detail přihlášky)"><span class="visuallyhidden">Rozbalit (další informace – např. detail přihlášky)</span></span>
+				</span>
+            </div>
+            <div class="content">MFF organizuje v rámci celoživotního vzdělávání Přípravný kurz k maturitě a přijímacím zkouškám. Bližší informace najdete na adrese:<br><a href="https://www.mff.cuni.cz/cs/uchazeci/pripravny-kurz" class="link8">https://www.mff.cuni.cz/cs/uchazeci/pripravny-kurz</a></div></li><li class="open"><div class="heading">
+                  <h3 class="fakeLink">Informace o uplatnění absolventů</h3>
+                  <span class="state">
+					<span class="open stateBtn ukDialog" title="Sbalit"><span class="visuallyhidden">sbalit</span></span>
+					<span class="closed stateBtn ukDialog" title="Rozbalit (další informace – např. detail přihlášky)"><span class="visuallyhidden">Rozbalit (další informace – např. detail přihlášky)</span></span>
+				</span>
+            </div>
+            <div class="content">Absolventi studijního programu Informatika jsou vybaveni kombinací dovedností a znalostí, která jim umožňuje jak práci na IT aplikacích (programování, správa systémů, vývoj SW aplikací), tak práci analytickou, vyžadující hluboké teoretické znalosti a schopnost přesného kritického myšlení. Absolventi jsou schopni rychle vstřebávat nové poznatky, a tudíž se dobře orientovat v rychle se měnícím světě IT technologií. Přesný profil absolventa samozřejmě závisí na zvolené specializaci, různé specializace kladou různě silný důraz na konkrétní dovednosti a znalosti.<br><br>
+Uplatnitelnost absolventů všech šesti specializací na trhu práce je výborná. Mezi povolání, na které jednotlivé specializace své absolventy připravují, patří: programátor, vývojář aplikací (pro standardní i mobilní platformy), analytik SW, datový analytik a analytik webových aplikací, analytik firemních procesů (zejména v IT firmách), správce počítačových sítí, specialista na optimalizaci procesů, specialista na automatické zpracování přirozeného jazyka (mluveného i psaného), vývojář počítačových her. Tato povolání patří mezi nejžádanější povolání na pracovním trhu. Nezaměstnanost našich absolventů je nulová a drtivá většina z nich zůstává v oboru, který vystudovali.<br></div></li></ul></div> 
+         </div> <div id="footer"><div class="pageCol cf"><div class="leftCol helpdesk"> <a class="top" href="#stev_top" title="na začátek stránky">na začátek stránky</a> | <a class="tisk" href="#" onclick="window.print(); return false;" target="_blank" title="verze pro tisk">verze pro tisk</a> | <a href="https://is.cuni.cz/studium/info.php?pie" target="_blank">kontakty</a></div><div class="rightCol pageInfo">SIS<span class="codename"> π</span>, modul <span class="moduleName">Přijímací řízení</span> [<span class="moduleId">prijimacky</span>] verze <span class="moduleVersion">604</span> - <span class="pageDate">Neděle 6. září 2026</span></div></div>
+      </div>
+      </div> 
+
+<script type="text/javascript">
+ShowHide('loading',0);
+</script><script type="text/javascript">
+$(document).ready(function () {
+               UK.init();
+               });
+</script></body></html>
