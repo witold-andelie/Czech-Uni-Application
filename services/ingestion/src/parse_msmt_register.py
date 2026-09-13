@@ -9,7 +9,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-RAW = ROOT / "work" / "raw" / "2026-09-06" / "msmt-cvslist.html"
+RAW = ROOT / "services" / "ingestion" / "tests" / "fixtures" / "raw-2026-09-06" / "msmt-cvslist.html"
+if not RAW.exists():
+    RAW = ROOT / "work" / "raw" / "2026-09-06" / "msmt-cvslist.html"
 OUT = ROOT / "data" / "sources" / "msmt-hei-baseline.json"
 
 OWNERSHIP = {

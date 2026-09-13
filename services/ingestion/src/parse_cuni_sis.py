@@ -13,7 +13,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-RAW = ROOT / "work" / "raw" / "2026-09-06"
+RAW = ROOT / "services" / "ingestion" / "tests" / "fixtures" / "raw-2026-09-06"
+if not RAW.exists():
+    RAW = ROOT / "work" / "raw" / "2026-09-06"
 OUT = ROOT / "data" / "sources" / "admissions" / "cuni-mff-cs-tracer.json"
 REGISTER = ROOT / "data" / "sources" / "programmes" / "vs_11000.json"
 
