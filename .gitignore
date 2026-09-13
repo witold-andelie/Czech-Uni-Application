@@ -54,3 +54,6 @@ PUBLIC_BETA_READINESS_*.md
 handoff/
 # only the root README.md is public; sub-app READMEs stay local
 !README.md
+# every README.md is local except the repository-root one
+**/README.md
+!/README.md
