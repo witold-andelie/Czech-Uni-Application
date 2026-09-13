@@ -1,19 +1,25 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import ShortlistView from "../../components/ShortlistView.svelte";
 import { LOCALES, localeFromParam, t } from "../../lib/i18n";
-import { loadCatalog } from "../../lib/loadCatalog";
+import { withBase } from "../../lib/base";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export function getStaticPaths() {
   return LOCALES.map((locale) => ({ params: { locale } }));
 }
 
 const locale = localeFromParam(Astro.params.locale);
-const catalog = loadCatalog();
+const target = withBase(`/${locale}/programmes`);
 ---
-<BaseLayout locale={locale} title={t(locale, "saved.title")}>
-  <main id="main" class="page">
-    <h1>{t(locale, "saved.title")}</h1>
-    <ShortlistView client:load catalog={catalog} locale={locale} />
-  </main>
-</BaseLayout>
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>{t(locale, "brand.name")}</title>
+  </head>
+  <body>
+    <p><a href={target}>{t(locale, "nav.programmes")}</a></p>
+  </body>
+</html>

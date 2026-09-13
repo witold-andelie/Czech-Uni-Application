@@ -1,15 +1,62 @@
 {
-  "status": "design_only_not_deployed",
+  "status": "stable_shards_and_source_specific_volatile_cadences_configured",
   "universityRefresh": {
-    "intervalHours": 120,
-    "anchorUtc": null,
-    "scope": "all_registered_official_czech_hei_sources",
+    "intervalHours": 24,
+    "fullCycleHours": 120,
+    "shardCount": 5,
+    "shardBy": "persisted_institution_id_assignment_sorted_modulo_initial",
+    "anchorUtc": "2026-09-01T00:00:00Z",
+    "scope": "one_fifth_of_registered_official_czech_hei_sources_per_utc_day",
     "overlapPolicy": "single_run_with_persistent_lock",
-    "missedRuns": "coalesce_to_one_catch_up"
+    "missedRuns": "same_modulo_day_unless_120h_sla_overdue_then_one_shard_catch_up",
+    "lockOrder": [
+      "work/runs/refresh.lock",
+      "data/published/.publish.lock",
+      "data/published/safety/.safety.lock"
+    ]
   },
   "jobStatusRefresh": {
-    "intervalHours": 24,
-    "purpose": "lightweight_closure_and_application_link_check"
+    "intervalHours": 1,
+    "purpose": "lightweight_closure_deadline_and_application_link_check_for_known_jobs"
+  },
+  "jobDiscovery": {
+    "intervalHours": 4,
+    "scope": "every_registered_official_job_listing_independent_of_university_shards",
+    "purpose": "discover_new_paid_school_research_candidates_and_archive_disappeared_entries_only_after_complete_pagination"
+  },
+  "programmeAvailability": {
+    "intervalHours": 2,
+    "scope": "complete_en_and_cs_dzs_directory_plus_open_application_signal",
+    "purpose": "volatile_programme_discovery_crosscheck",
+    "authorityBoundary": "msmt_is_legal_baseline_and_university_sources_are_authoritative_for_application_windows",
+    "absenceFromOpenFilterMeansClosed": false
+  },
+  "czuProgrammeAvailability": {
+    "intervalHours": 2,
+    "scope": "official_czu_english_bachelor_master_rest_catalogue_plus_every_detail_and_open_signal",
+    "purpose": "priority_refresh_for_czu_programme_windows_tuition_duration_and_apply_target",
+    "sourceCoverageClaim": "complete_for_declared_english_bachelor_master_scope_only",
+    "absenceFromOpenPageMeansClosed": false,
+    "publication": "candidate_only_until_source_bound_zh-CN_en_cs_review"
+  },
+  "czuCzechProgrammeAvailability": {
+    "intervalHours": 2,
+    "scope": "official_czu_czech_facing_bachelor_master_homepage_count_plus_programme_sitemap_and_every_detail",
+    "purpose": "priority_refresh_for_czu_czech_and_english_teaching_language_windows_and_apply_targets",
+    "sourceCoverageClaim": "complete_for_declared_bachelor_master_portal_scope_only",
+    "englishSourceCrosscheck": "compare_title_and_degree_multiset_with_study_czu_cz",
+    "absenceFromDetailWindowMeansClosed": false,
+    "publication": "candidate_only_until_source_bound_zh-CN_en_cs_review"
+  },
+  "czuDoctoralProgrammeAvailability": {
+    "intervalHours": 2,
+    "scope": "current_msmt_czu_doctoral_baseline_crosschecked_with_all_six_doctoral_faculty_admission_sources",
+    "purpose": "priority_refresh_for_czu_doctoral_programme_presence_language_and_academic_year_windows",
+    "sourceCoverageClaim": "complete_for_current_msmt_baseline_and_configured_2026_2027_faculty_evidence_only",
+    "unknownStartMeansOpen": false,
+    "conditionalRoundMeansOpen": false,
+    "changedReviewedScan": "fail_closed_until_human_rereview",
+    "publication": "candidate_only_until_source_bound_zh-CN_en_cs_review"
   },
   "deadlineSweep": {
     "intervalSeconds": 60,

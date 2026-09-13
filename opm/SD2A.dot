@@ -1,0 +1,54 @@
+digraph SD2A {
+// Explicit OPM-to-DOT mapping; see README.md. Layout is not execution order.
+  graph [rankdir="LR", compound="true", bgcolor="#FFFFFF", pad="0.3", nodesep="0.38", ranksep="0.65", splines="spline", fontname="Microsoft YaHei", fontsize="18", labelloc="t", label="SD2A  交互地图聚合与失败回退\nISO 19450:2024 · OPM semantic mapping / DOT"];
+  node [fontname="Microsoft YaHei", fontsize="11", margin="0.14,0.10", penwidth="1.3"];
+  edge [fontname="Segoe UI", fontsize="9", arrowsize="0.7", penwidth="1.1"];
+  subgraph cluster_mapview {
+    graph [label="高校地图视图\nInstitution Map View", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="mapview"];
+    mapview [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
+    mapinteractive [label="交互街道图\ninteractive street map", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="mapview"];
+    mapoverview [label="项目内置概览图\nbundled overview", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="mapview"];
+  }
+  subgraph cluster_tilehealth {
+    graph [label="外部瓦片加载状态\nExternal Tile Health", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="tilehealth"];
+    tilesfailed [label="失败或超时\nfailed or timed out", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="tilehealth"];
+    tilesloaded [label="加载成功\nloaded", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="tilehealth"];
+  }
+  bundledmap [label="项目内置捷克概览图层\nBundled Czech Overview Layers", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  clusterexpand [label="放大展开点位聚合\nMarker Group Expanding", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  institution [label="独立高校或科研机构\nInstitution", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  mapclusters [label="键盘可操作点位聚合\nKeyboard Map Marker Groups", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  mapfallback [label="切换内置概览图\nMap Overview Falling Back", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  maprender [label="呈现交互地图\nInteractive Map Rendering", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  mapretry [label="重试交互地图\nInteractive Map Retrying", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  markergroup [label="聚合相邻学校点位\nNearby Marker Grouping", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  osmtiles [label="OpenStreetMap 在线栅格瓦片\nOpenStreetMap Raster Tiles", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  tilemonitor [label="监测瓦片失败与超时\nTile Failure Monitoring", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  user [label="申请者\nApplicant", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
+  wheelinput [label="无修饰键鼠标滚轮输入\nUnmodified Mouse Wheel Input", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  wheelzoom [label="用普通滚轮缩放地图\nMap Wheel Zooming", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  catalog -> maprender [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  osmtiles -> maprender [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  maprender -> mapinteractive [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  osmtiles -> tilemonitor [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  tilemonitor -> tilesfailed [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  mapinteractive -> mapfallback [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  mapfallback -> mapoverview [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  tilesfailed -> mapfallback [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  bundledmap -> mapfallback [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  mapoverview -> mapretry [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  mapretry -> mapinteractive [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  user -> mapretry [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  osmtiles -> mapretry [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  institution -> markergroup [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  mapinteractive -> markergroup [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  markergroup -> mapclusters [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  user -> clusterexpand [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  mapclusters -> clusterexpand [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  clusterexpand -> mapview [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect", lhead="cluster_mapview"];
+  user -> wheelzoom [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  wheelinput -> wheelzoom [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  mapinteractive -> wheelzoom [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  wheelzoom -> mapview [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect", lhead="cluster_mapview"];
+}

@@ -1,10 +1,11 @@
 ---
+import { withBase } from "../lib/base.ts";
 ---
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Czech Study and Research Platform</title>
+    <title>捷克留学与科研平台</title>
     <script is:inline>
       (function () {
         var stored = null;
@@ -23,6 +24,6 @@
     <noscript><meta http-equiv="refresh" content="0; url=/zh-CN/" /></noscript>
   </head>
   <body>
-    <p><a href="/zh-CN/">简体中文</a> · <a href="/en/">English</a> · <a href="/cs/">Čeština</a></p>
+    <p><a href={withBase("/zh-CN/")}>简体中文</a> · <a href={withBase("/en/")}>English</a> · <a href={withBase("/cs/")}>Čeština</a></p>
   </body>
 </html>

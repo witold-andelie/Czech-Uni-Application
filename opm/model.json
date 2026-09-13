@@ -34,14 +34,6 @@
       "physical": false,
       "external": false
     },
-    "shortlist": {
-      "id": "shortlist",
-      "kind": "object",
-      "en": "Opportunity Shortlist",
-      "zh": "机会候选清单",
-      "physical": false,
-      "external": false
-    },
     "catalog": {
       "id": "catalog",
       "kind": "object",
@@ -243,22 +235,6 @@
       "physical": false,
       "external": false
     },
-    "selection": {
-      "id": "selection",
-      "kind": "object",
-      "en": "Comparison Selection",
-      "zh": "比较项选择",
-      "physical": false,
-      "external": false
-    },
-    "comparison": {
-      "id": "comparison",
-      "kind": "object",
-      "en": "Comparison View",
-      "zh": "比较视图",
-      "physical": false,
-      "external": false
-    },
     "intent": {
       "id": "intent",
       "kind": "object",
@@ -431,8 +407,8 @@
     "pay": {
       "id": "pay",
       "kind": "object",
-      "en": "Compensation Terms",
-      "zh": "报酬与工时口径",
+      "en": "Compensation and Workload Terms",
+      "zh": "报酬、薪资基准与实际工时",
       "physical": false,
       "external": false
     },
@@ -443,6 +419,20 @@
       "zh": "工作语言",
       "physical": false,
       "external": false
+    },
+    "worklangspecified": {
+      "id": "worklangspecified",
+      "kind": "state",
+      "owner": "worklang",
+      "en": "specified by the vacancy",
+      "zh": "公告已说明"
+    },
+    "worklangund": {
+      "id": "worklangund",
+      "kind": "state",
+      "owner": "worklang",
+      "en": "not specified (BCP 47 und)",
+      "zh": "公告未说明（BCP 47 und）"
     },
     "institution": {
       "id": "institution",
@@ -612,18 +602,6 @@
       "kind": "process",
       "en": "Detail Inspecting",
       "zh": "查看资格与来源"
-    },
-    "save": {
-      "id": "save",
-      "kind": "process",
-      "en": "Opportunity Saving",
-      "zh": "收藏机会"
-    },
-    "compare": {
-      "id": "compare",
-      "kind": "process",
-      "en": "Opportunity Comparing",
-      "zh": "比较机会"
     },
     "switch": {
       "id": "switch",
@@ -838,7 +816,7 @@
       "kind": "state",
       "owner": "recognition",
       "en": "not found",
-      "zh": "官方查询暂未查到"
+      "zh": "中留服暂未收录（捷克官方认可）"
     },
     "unverifiedrecognition": {
       "id": "unverifiedrecognition",
@@ -846,6 +824,633 @@
       "owner": "recognition",
       "en": "unverified",
       "zh": "待核验"
+    },
+    "pubpolicy": {
+      "id": "pubpolicy",
+      "kind": "object",
+      "en": "Publication Contract",
+      "zh": "发布业务契约"
+    },
+    "activepointer": {
+      "id": "activepointer",
+      "kind": "object",
+      "en": "Active Version Pointer",
+      "zh": "当前版本原子指针"
+    },
+    "buildbinding": {
+      "id": "buildbinding",
+      "kind": "object",
+      "en": "Immutable Build Binding",
+      "zh": "不可变构建版本绑定"
+    },
+    "browserasset": {
+      "id": "browserasset",
+      "kind": "object",
+      "en": "Versioned Browser Asset",
+      "zh": "带版本浏览器资源"
+    },
+    "revision": {
+      "id": "revision",
+      "kind": "object",
+      "en": "Repository Revision",
+      "zh": "仓库修订"
+    },
+    "revisionpending": {
+      "id": "revisionpending",
+      "kind": "state",
+      "owner": "revision",
+      "en": "awaiting CI",
+      "zh": "等待持续集成"
+    },
+    "revisionvalidated": {
+      "id": "revisionvalidated",
+      "kind": "state",
+      "owner": "revision",
+      "en": "CI validated",
+      "zh": "持续集成已通过"
+    },
+    "ciworkflow": {
+      "id": "ciworkflow",
+      "kind": "object",
+      "en": "Pinned CI Workflow",
+      "zh": "固定依赖的持续集成工作流"
+    },
+    "deliveryartifact": {
+      "id": "deliveryartifact",
+      "kind": "object",
+      "en": "Commit-bound Delivery Artifact",
+      "zh": "绑定提交的交付制品"
+    },
+    "stagedsnapshot": {
+      "id": "stagedsnapshot",
+      "kind": "state",
+      "owner": "snapshot",
+      "en": "staged",
+      "zh": "已暂存"
+    },
+    "validatedsnapshot": {
+      "id": "validatedsnapshot",
+      "kind": "state",
+      "owner": "snapshot",
+      "en": "validated",
+      "zh": "门禁已通过"
+    },
+    "localereview": {
+      "id": "localereview",
+      "kind": "object",
+      "en": "Locale Review Record",
+      "zh": "逐语种审核记录"
+    },
+    "reviewpending": {
+      "id": "reviewpending",
+      "kind": "state",
+      "owner": "localereview",
+      "en": "pending",
+      "zh": "待人工复核"
+    },
+    "reviewbound": {
+      "id": "reviewbound",
+      "kind": "state",
+      "owner": "localereview",
+      "en": "hash bound",
+      "zh": "已绑定源哈希"
+    },
+    "reviewinvalid": {
+      "id": "reviewinvalid",
+      "kind": "state",
+      "owner": "localereview",
+      "en": "invalidated",
+      "zh": "源变更后失效"
+    },
+    "contenthash": {
+      "id": "contenthash",
+      "kind": "object",
+      "en": "Source Content Hash",
+      "zh": "源内容哈希"
+    },
+    "snapshotstage": {
+      "id": "snapshotstage",
+      "kind": "process",
+      "en": "Snapshot Staging",
+      "zh": "隔离暂存候选快照"
+    },
+    "snapshotvalidate": {
+      "id": "snapshotvalidate",
+      "kind": "process",
+      "en": "Publication Contract Validating",
+      "zh": "校验发布业务契约"
+    },
+    "snapshotactivate": {
+      "id": "snapshotactivate",
+      "kind": "process",
+      "en": "Snapshot Activating",
+      "zh": "原子激活快照"
+    },
+    "buildpin": {
+      "id": "buildpin",
+      "kind": "process",
+      "en": "Build Version Pinning",
+      "zh": "固定构建版本"
+    },
+    "browserpublish": {
+      "id": "browserpublish",
+      "kind": "process",
+      "en": "Browser Asset Exporting",
+      "zh": "导出版本化浏览器资源"
+    },
+    "civalidate": {
+      "id": "civalidate",
+      "kind": "process",
+      "en": "Continuous Integration Validating",
+      "zh": "持续集成校验"
+    },
+    "deliverypackage": {
+      "id": "deliverypackage",
+      "kind": "process",
+      "en": "Static Delivery Packaging",
+      "zh": "打包静态交付制品"
+    },
+    "bindreview": {
+      "id": "bindreview",
+      "kind": "process",
+      "en": "Locale Review Binding",
+      "zh": "绑定逐语种人工审核"
+    },
+    "reviewinvalidate": {
+      "id": "reviewinvalidate",
+      "kind": "process",
+      "en": "Locale Review Invalidating",
+      "zh": "使旧审核失效"
+    },
+    "schedulequeue": {
+      "id": "schedulequeue",
+      "kind": "object",
+      "en": "Persistent Schedule Queue",
+      "zh": "持久调度队列"
+    },
+    "schedidle": {
+      "id": "schedidle",
+      "kind": "state",
+      "owner": "schedulequeue",
+      "en": "idle",
+      "zh": "空闲"
+    },
+    "schedpending": {
+      "id": "schedpending",
+      "kind": "state",
+      "owner": "schedulequeue",
+      "en": "scheduled",
+      "zh": "已排队"
+    },
+    "schedrunning": {
+      "id": "schedrunning",
+      "kind": "state",
+      "owner": "schedulequeue",
+      "en": "running",
+      "zh": "运行中"
+    },
+    "schedfailed": {
+      "id": "schedfailed",
+      "kind": "state",
+      "owner": "schedulequeue",
+      "en": "failed",
+      "zh": "失败待重试"
+    },
+    "refreshlease": {
+      "id": "refreshlease",
+      "kind": "object",
+      "en": "Refresh Lease",
+      "zh": "刷新任务租约"
+    },
+    "leaseavailable": {
+      "id": "leaseavailable",
+      "kind": "state",
+      "owner": "refreshlease",
+      "en": "available",
+      "zh": "可获取"
+    },
+    "leaseheld": {
+      "id": "leaseheld",
+      "kind": "state",
+      "owner": "refreshlease",
+      "en": "held",
+      "zh": "持有中"
+    },
+    "leaseexpired": {
+      "id": "leaseexpired",
+      "kind": "state",
+      "owner": "refreshlease",
+      "en": "expired",
+      "zh": "已过期"
+    },
+    "osmutex": {
+      "id": "osmutex",
+      "kind": "object",
+      "en": "Operating System File Mutex",
+      "zh": "操作系统文件互斥锁"
+    },
+    "sourceattempt": {
+      "id": "sourceattempt",
+      "kind": "object",
+      "en": "Source Refresh Attempt",
+      "zh": "逐来源刷新尝试"
+    },
+    "attemptpending": {
+      "id": "attemptpending",
+      "kind": "state",
+      "owner": "sourceattempt",
+      "en": "attempted",
+      "zh": "已尝试"
+    },
+    "attemptsucceeded": {
+      "id": "attemptsucceeded",
+      "kind": "state",
+      "owner": "sourceattempt",
+      "en": "succeeded",
+      "zh": "抓取与解析成功"
+    },
+    "attemptfailed": {
+      "id": "attemptfailed",
+      "kind": "state",
+      "owner": "sourceattempt",
+      "en": "failed",
+      "zh": "抓取或解析失败"
+    },
+    "dailyclock": {
+      "id": "dailyclock",
+      "kind": "object",
+      "en": "One Hour Job Status Check",
+      "zh": "岗位 1 小时状态复核周期"
+    },
+    "discoveryclock": {
+      "id": "discoveryclock",
+      "kind": "object",
+      "en": "Four Hour Job Discovery",
+      "zh": "岗位目录 4 小时发现周期"
+    },
+    "programmeclock": {
+      "id": "programmeclock",
+      "kind": "object",
+      "en": "Two Hour Programme Availability Refresh",
+      "zh": "项目可用性 2 小时刷新周期"
+    },
+    "czuprogrammeclock": {
+      "id": "czuprogrammeclock",
+      "kind": "object",
+      "en": "Two Hour CZU Programme Window Refresh",
+      "zh": "CZU 项目窗口 2 小时刷新周期"
+    },
+    "czuczechprogrammeclock": {
+      "id": "czuczechprogrammeclock",
+      "kind": "object",
+      "en": "Two Hour CZU Czech Portal Programme Refresh",
+      "zh": "CZU 捷克入口项目 2 小时刷新周期"
+    },
+    "czudoctoralprogrammeclock": {
+      "id": "czudoctoralprogrammeclock",
+      "kind": "object",
+      "en": "Two Hour CZU Doctoral Faculty Refresh",
+      "zh": "CZU 博士学院来源 2 小时刷新周期"
+    },
+    "slalog": {
+      "id": "slalog",
+      "kind": "object",
+      "en": "SLA Breach Log",
+      "zh": "来源 SLA 违约记录"
+    },
+    "jobinspection": {
+      "id": "jobinspection",
+      "kind": "object",
+      "en": "Job Status Inspection",
+      "zh": "岗位开放状态核查"
+    },
+    "programmedirectory": {
+      "id": "programmedirectory",
+      "kind": "object",
+      "en": "DZS Programme Candidate Directory",
+      "zh": "DZS 项目候选目录"
+    },
+    "czuprogrammedirectory": {
+      "id": "czuprogrammedirectory",
+      "kind": "object",
+      "en": "CZU English Programme Candidate Directory",
+      "zh": "CZU 英语项目候选目录"
+    },
+    "czuczechprogrammedirectory": {
+      "id": "czuczechprogrammedirectory",
+      "kind": "object",
+      "en": "CZU Czech Portal Programme Candidate Directory",
+      "zh": "CZU 捷克入口项目候选目录"
+    },
+    "czudoctoralprogrammedirectory": {
+      "id": "czudoctoralprogrammedirectory",
+      "kind": "object",
+      "en": "CZU Doctoral Candidate Directory",
+      "zh": "CZU 博士项目候选目录"
+    },
+    "coveragereport": {
+      "id": "coveragereport",
+      "kind": "object",
+      "en": "Denominator Bound Coverage Report",
+      "zh": "绑定固定分母的覆盖报告"
+    },
+    "leaseacquire": {
+      "id": "leaseacquire",
+      "kind": "process",
+      "en": "Refresh Lease Acquiring",
+      "zh": "原子获取刷新租约"
+    },
+    "leaseexpire": {
+      "id": "leaseexpire",
+      "kind": "process",
+      "en": "Refresh Lease Expiring",
+      "zh": "标记租约到期"
+    },
+    "leasereclaim": {
+      "id": "leasereclaim",
+      "kind": "process",
+      "en": "Expired Lease Reclaiming",
+      "zh": "回收过期租约"
+    },
+    "leaserelease": {
+      "id": "leaserelease",
+      "kind": "process",
+      "en": "Refresh Lease Releasing",
+      "zh": "按拥有者释放租约"
+    },
+    "runstart": {
+      "id": "runstart",
+      "kind": "process",
+      "en": "Source Attempt Starting",
+      "zh": "启动逐来源尝试"
+    },
+    "runsucceed": {
+      "id": "runsucceed",
+      "kind": "process",
+      "en": "Source Success Recording",
+      "zh": "记录来源成功"
+    },
+    "runfail": {
+      "id": "runfail",
+      "kind": "process",
+      "en": "Source Failure Recording",
+      "zh": "记录来源失败"
+    },
+    "runretry": {
+      "id": "runretry",
+      "kind": "process",
+      "en": "Source Retry Scheduling",
+      "zh": "按退避时间重排来源"
+    },
+    "slamonitor": {
+      "id": "slamonitor",
+      "kind": "process",
+      "en": "Source SLA Monitoring",
+      "zh": "监测来源 SLA"
+    },
+    "jobrecheck": {
+      "id": "jobrecheck",
+      "kind": "process",
+      "en": "Job Status Rechecking",
+      "zh": "复核岗位开放状态"
+    },
+    "programmeavailability": {
+      "id": "programmeavailability",
+      "kind": "process",
+      "en": "Programme Availability Refreshing",
+      "zh": "刷新项目目录与可用信号"
+    },
+    "czuprogrammeavailability": {
+      "id": "czuprogrammeavailability",
+      "kind": "process",
+      "en": "CZU Programme Window Refreshing",
+      "zh": "刷新 CZU 项目目录与窗口"
+    },
+    "czuczechprogrammeavailability": {
+      "id": "czuczechprogrammeavailability",
+      "kind": "process",
+      "en": "CZU Czech Portal Programme Refreshing",
+      "zh": "刷新 CZU 捷克入口项目目录"
+    },
+    "czudoctoralprogrammeavailability": {
+      "id": "czudoctoralprogrammeavailability",
+      "kind": "process",
+      "en": "CZU Doctoral Faculty Evidence Refreshing",
+      "zh": "刷新 CZU 博士学院证据"
+    },
+    "coveragecalculate": {
+      "id": "coveragecalculate",
+      "kind": "process",
+      "en": "Source Coverage Calculating",
+      "zh": "计算来源覆盖与缺口"
+    },
+    "listingpage": {
+      "id": "listingpage",
+      "kind": "object",
+      "en": "Paginated Vacancy Listing",
+      "zh": "分页岗位目录"
+    },
+    "vacancydetail": {
+      "id": "vacancydetail",
+      "kind": "object",
+      "en": "Official Vacancy Body and Attachment",
+      "zh": "岗位官方正文与附件"
+    },
+    "discoverycursor": {
+      "id": "discoverycursor",
+      "kind": "object",
+      "en": "Discovery Cursor and Completeness",
+      "zh": "发现游标与分页完整性"
+    },
+    "legalemployer": {
+      "id": "legalemployer",
+      "kind": "object",
+      "en": "Resolved Legal Employer",
+      "zh": "已辨认法定雇主"
+    },
+    "vacancycandidate": {
+      "id": "vacancycandidate",
+      "kind": "object",
+      "en": "Dynamic Vacancy Candidate",
+      "zh": "动态发现岗位候选"
+    },
+    "vacancydiscovered": {
+      "id": "vacancydiscovered",
+      "kind": "state",
+      "owner": "vacancycandidate",
+      "en": "discovered",
+      "zh": "已发现"
+    },
+    "vacancyready": {
+      "id": "vacancyready",
+      "kind": "state",
+      "owner": "vacancycandidate",
+      "en": "scoped and attributable",
+      "zh": "正文已定界且雇主可归属"
+    },
+    "vacancyquarantined": {
+      "id": "vacancyquarantined",
+      "kind": "state",
+      "owner": "vacancycandidate",
+      "en": "quarantined",
+      "zh": "法定雇主未明待核验"
+    },
+    "vacancyunavailable": {
+      "id": "vacancyunavailable",
+      "kind": "state",
+      "owner": "vacancycandidate",
+      "en": "unavailable",
+      "zh": "完整目录中已消失"
+    },
+    "vacancyexcluded": {
+      "id": "vacancyexcluded",
+      "kind": "state",
+      "owner": "vacancycandidate",
+      "en": "outside supported catalogue scope",
+      "zh": "不再符合研究或技术岗位范围"
+    },
+    "vacancydiscover": {
+      "id": "vacancydiscover",
+      "kind": "process",
+      "en": "Registered Vacancy Discovering",
+      "zh": "按注册来源发现岗位"
+    },
+    "vacancyqualify": {
+      "id": "vacancyqualify",
+      "kind": "process",
+      "en": "Vacancy Scope and Employer Resolving",
+      "zh": "定界岗位正文并辨认雇主"
+    },
+    "vacancyquarantine": {
+      "id": "vacancyquarantine",
+      "kind": "process",
+      "en": "Unresolved Employer Quarantining",
+      "zh": "隔离雇主不明候选"
+    },
+    "vacancydisappear": {
+      "id": "vacancydisappear",
+      "kind": "process",
+      "en": "Listing Disappearance Recording",
+      "zh": "记录完整目录中的岗位消失"
+    },
+    "vacancyexclude": {
+      "id": "vacancyexclude",
+      "kind": "process",
+      "en": "Catalogue Scope Exclusion Recording",
+      "zh": "记录岗位范围排除"
+    },
+    "vacancynormalize": {
+      "id": "vacancynormalize",
+      "kind": "process",
+      "en": "Vacancy Candidate Structuring",
+      "zh": "结构化动态岗位候选"
+    },
+    "mapview": {
+      "id": "mapview",
+      "kind": "object",
+      "en": "Institution Map View",
+      "zh": "高校地图视图"
+    },
+    "mapinteractive": {
+      "id": "mapinteractive",
+      "kind": "state",
+      "owner": "mapview",
+      "en": "interactive street map",
+      "zh": "交互街道图"
+    },
+    "mapoverview": {
+      "id": "mapoverview",
+      "kind": "state",
+      "owner": "mapview",
+      "en": "bundled overview",
+      "zh": "项目内置概览图"
+    },
+    "tilehealth": {
+      "id": "tilehealth",
+      "kind": "object",
+      "en": "External Tile Health",
+      "zh": "外部瓦片加载状态"
+    },
+    "tilesloaded": {
+      "id": "tilesloaded",
+      "kind": "state",
+      "owner": "tilehealth",
+      "en": "loaded",
+      "zh": "加载成功"
+    },
+    "tilesfailed": {
+      "id": "tilesfailed",
+      "kind": "state",
+      "owner": "tilehealth",
+      "en": "failed or timed out",
+      "zh": "失败或超时"
+    },
+    "osmtiles": {
+      "id": "osmtiles",
+      "kind": "object",
+      "en": "OpenStreetMap Raster Tiles",
+      "zh": "OpenStreetMap 在线栅格瓦片",
+      "external": true
+    },
+    "bundledmap": {
+      "id": "bundledmap",
+      "kind": "object",
+      "en": "Bundled Czech Overview Layers",
+      "zh": "项目内置捷克概览图层"
+    },
+    "mapclusters": {
+      "id": "mapclusters",
+      "kind": "object",
+      "en": "Keyboard Map Marker Groups",
+      "zh": "键盘可操作点位聚合"
+    },
+    "maprender": {
+      "id": "maprender",
+      "kind": "process",
+      "en": "Interactive Map Rendering",
+      "zh": "呈现交互地图"
+    },
+    "tilemonitor": {
+      "id": "tilemonitor",
+      "kind": "process",
+      "en": "Tile Failure Monitoring",
+      "zh": "监测瓦片失败与超时"
+    },
+    "mapfallback": {
+      "id": "mapfallback",
+      "kind": "process",
+      "en": "Map Overview Falling Back",
+      "zh": "切换内置概览图"
+    },
+    "mapretry": {
+      "id": "mapretry",
+      "kind": "process",
+      "en": "Interactive Map Retrying",
+      "zh": "重试交互地图"
+    },
+    "markergroup": {
+      "id": "markergroup",
+      "kind": "process",
+      "en": "Nearby Marker Grouping",
+      "zh": "聚合相邻学校点位"
+    },
+    "clusterexpand": {
+      "id": "clusterexpand",
+      "kind": "process",
+      "en": "Marker Group Expanding",
+      "zh": "放大展开点位聚合"
+    },
+    "wheelinput": {
+      "id": "wheelinput",
+      "kind": "object",
+      "en": "Unmodified Mouse Wheel Input",
+      "zh": "无修饰键鼠标滚轮输入"
+    },
+    "wheelzoom": {
+      "id": "wheelzoom",
+      "kind": "process",
+      "en": "Map Wheel Zooming",
+      "zh": "用普通滚轮缩放地图"
     }
   },
   "diagrams": [
@@ -876,12 +1481,12 @@
         },
         {
           "source": "support",
-          "target": "shortlist",
+          "target": "results",
           "type": "result"
         }
       ],
       "requirements": [],
-      "notes": "平台帮助申请者形成候选清单；申请者自行通过官方入口申请。SD0 展开主过程。"
+      "notes": "平台帮助申请者浏览、筛选并核对官方信息；申请者自行通过官方入口申请。SD0 展开主过程。"
     },
     {
       "id": "SD0",
@@ -909,11 +1514,6 @@
           "type": "instrument"
         },
         {
-          "source": "discover",
-          "target": "shortlist",
-          "type": "effect"
-        },
-        {
           "source": "user",
           "target": "research",
           "type": "agent"
@@ -934,11 +1534,6 @@
           "type": "instrument"
         },
         {
-          "source": "research",
-          "target": "shortlist",
-          "type": "effect"
-        },
-        {
           "source": "user",
           "target": "render",
           "type": "agent"
@@ -957,6 +1552,16 @@
           "source": "render",
           "target": "screen",
           "type": "result"
+        },
+        {
+          "source": "discover",
+          "target": "results",
+          "type": "result"
+        },
+        {
+          "source": "research",
+          "target": "jobresults",
+          "type": "result"
         }
       ],
       "requirements": [
@@ -964,7 +1569,7 @@
         "A02",
         "A10"
       ],
-      "notes": "主过程的三个子过程；项目与岗位是替代任务路径，不要求先选择授课语言才能找工作。shortlist 首次使用时由父过程创建，子过程更新。"
+      "notes": "主过程的三个子过程；项目与岗位是替代任务路径，不要求先选择授课语言才能找工作。"
     },
     {
       "id": "SD1",
@@ -1049,36 +1654,6 @@
         {
           "source": "inspect",
           "target": "detail",
-          "type": "result"
-        },
-        {
-          "source": "detail",
-          "target": "save",
-          "type": "instrument"
-        },
-        {
-          "source": "user",
-          "target": "save",
-          "type": "agent"
-        },
-        {
-          "source": "save",
-          "target": "shortlist",
-          "type": "effect"
-        },
-        {
-          "source": "selection",
-          "target": "compare",
-          "type": "instrument"
-        },
-        {
-          "source": "catalog",
-          "target": "compare",
-          "type": "instrument"
-        },
-        {
-          "source": "compare",
-          "target": "comparison",
           "type": "result"
         }
       ],
@@ -1198,8 +1773,373 @@
           "type": "instrument"
         },
         {
+          "source": "schedidle",
+          "target": "schedule",
+          "type": "input"
+        },
+        {
+          "source": "schedule",
+          "target": "schedpending",
+          "type": "output"
+        },
+        {
           "source": "schedule",
           "target": "run",
+          "type": "result"
+        },
+        {
+          "source": "osmutex",
+          "target": "leaseacquire",
+          "type": "instrument"
+        },
+        {
+          "source": "leaseavailable",
+          "target": "leaseacquire",
+          "type": "input"
+        },
+        {
+          "source": "leaseacquire",
+          "target": "leaseheld",
+          "type": "output"
+        },
+        {
+          "source": "clock",
+          "target": "leaseexpire",
+          "type": "instrument"
+        },
+        {
+          "source": "leaseheld",
+          "target": "leaseexpire",
+          "type": "input"
+        },
+        {
+          "source": "leaseexpire",
+          "target": "leaseexpired",
+          "type": "output"
+        },
+        {
+          "source": "osmutex",
+          "target": "leasereclaim",
+          "type": "instrument"
+        },
+        {
+          "source": "clock",
+          "target": "leasereclaim",
+          "type": "instrument"
+        },
+        {
+          "source": "leaseexpired",
+          "target": "leasereclaim",
+          "type": "input"
+        },
+        {
+          "source": "leasereclaim",
+          "target": "leaseheld",
+          "type": "output"
+        },
+        {
+          "source": "osmutex",
+          "target": "leaserelease",
+          "type": "instrument"
+        },
+        {
+          "source": "leaseheld",
+          "target": "leaserelease",
+          "type": "input"
+        },
+        {
+          "source": "leaserelease",
+          "target": "leaseavailable",
+          "type": "output"
+        },
+        {
+          "source": "schedpending",
+          "target": "runstart",
+          "type": "input"
+        },
+        {
+          "source": "runstart",
+          "target": "schedrunning",
+          "type": "output"
+        },
+        {
+          "source": "leaseheld",
+          "target": "runstart",
+          "type": "instrument"
+        },
+        {
+          "source": "source",
+          "target": "runstart",
+          "type": "instrument"
+        },
+        {
+          "source": "runstart",
+          "target": "attemptpending",
+          "type": "result"
+        },
+        {
+          "source": "schedrunning",
+          "target": "runsucceed",
+          "type": "input"
+        },
+        {
+          "source": "attemptpending",
+          "target": "runsucceed",
+          "type": "input"
+        },
+        {
+          "source": "runsucceed",
+          "target": "schedidle",
+          "type": "output"
+        },
+        {
+          "source": "runsucceed",
+          "target": "attemptsucceeded",
+          "type": "output"
+        },
+        {
+          "source": "schedrunning",
+          "target": "runfail",
+          "type": "input"
+        },
+        {
+          "source": "attemptpending",
+          "target": "runfail",
+          "type": "input"
+        },
+        {
+          "source": "runfail",
+          "target": "schedfailed",
+          "type": "output"
+        },
+        {
+          "source": "runfail",
+          "target": "attemptfailed",
+          "type": "output"
+        },
+        {
+          "source": "schedfailed",
+          "target": "runretry",
+          "type": "input"
+        },
+        {
+          "source": "attemptfailed",
+          "target": "runretry",
+          "type": "input"
+        },
+        {
+          "source": "clock",
+          "target": "runretry",
+          "type": "instrument"
+        },
+        {
+          "source": "runretry",
+          "target": "schedpending",
+          "type": "output"
+        },
+        {
+          "source": "runretry",
+          "target": "attemptpending",
+          "type": "output"
+        },
+        {
+          "source": "schedulequeue",
+          "target": "slamonitor",
+          "type": "instrument"
+        },
+        {
+          "source": "clock",
+          "target": "slamonitor",
+          "type": "instrument"
+        },
+        {
+          "source": "slamonitor",
+          "target": "slalog",
+          "type": "result"
+        },
+        {
+          "source": "dailyclock",
+          "target": "jobrecheck",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "jobrecheck",
+          "type": "instrument"
+        },
+        {
+          "source": "osmutex",
+          "target": "jobrecheck",
+          "type": "instrument"
+        },
+        {
+          "source": "jobrecheck",
+          "target": "jobinspection",
+          "type": "result"
+        },
+        {
+          "source": "jobrecheck",
+          "target": "jobs",
+          "type": "effect"
+        },
+        {
+          "source": "discoveryclock",
+          "target": "vacancydiscover",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "vacancydiscover",
+          "type": "instrument"
+        },
+        {
+          "source": "osmutex",
+          "target": "vacancydiscover",
+          "type": "instrument"
+        },
+        {
+          "source": "vacancydiscover",
+          "target": "vacancydiscovered",
+          "type": "result"
+        },
+        {
+          "source": "programmeclock",
+          "target": "programmeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "source",
+          "target": "programmeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "programmeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "osmutex",
+          "target": "programmeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "programmeavailability",
+          "target": "programmedirectory",
+          "type": "result"
+        },
+        {
+          "source": "czuprogrammeclock",
+          "target": "czuprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "source",
+          "target": "czuprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "czuprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "osmutex",
+          "target": "czuprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "czuprogrammeavailability",
+          "target": "czuprogrammedirectory",
+          "type": "result"
+        },
+        {
+          "source": "czuczechprogrammeclock",
+          "target": "czuczechprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "source",
+          "target": "czuczechprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "czuczechprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "osmutex",
+          "target": "czuczechprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "czuczechprogrammeavailability",
+          "target": "czuczechprogrammedirectory",
+          "type": "result"
+        },
+        {
+          "source": "czudoctoralprogrammeclock",
+          "target": "czudoctoralprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "source",
+          "target": "czudoctoralprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "czudoctoralprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "osmutex",
+          "target": "czudoctoralprogrammeavailability",
+          "type": "instrument"
+        },
+        {
+          "source": "czudoctoralprogrammeavailability",
+          "target": "czudoctoralprogrammedirectory",
+          "type": "result"
+        },
+        {
+          "source": "registry",
+          "target": "coveragecalculate",
+          "type": "instrument"
+        },
+        {
+          "source": "programmedirectory",
+          "target": "coveragecalculate",
+          "type": "instrument"
+        },
+        {
+          "source": "czuprogrammedirectory",
+          "target": "coveragecalculate",
+          "type": "instrument"
+        },
+        {
+          "source": "czuczechprogrammedirectory",
+          "target": "coveragecalculate",
+          "type": "instrument"
+        },
+        {
+          "source": "czudoctoralprogrammedirectory",
+          "target": "coveragecalculate",
+          "type": "instrument"
+        },
+        {
+          "source": "jobs",
+          "target": "coveragecalculate",
+          "type": "instrument"
+        },
+        {
+          "source": "catalog",
+          "target": "coveragecalculate",
+          "type": "instrument"
+        },
+        {
+          "source": "coveragecalculate",
+          "target": "coveragereport",
           "type": "result"
         },
         {
@@ -1212,9 +2152,23 @@
         "A08",
         "A09",
         "A18",
-        "A19"
+        "A19",
+        "A35",
+        "A36",
+        "A42",
+        "A43",
+        "A45",
+        "A46",
+        "A47",
+        "A48",
+        "A49",
+        "A58",
+        "A59",
+        "A64",
+        "A65",
+        "A66"
       ],
-      "notes": "独立支撑过程的上下文，SD3 展开 maintain；采集与审核不阻塞在线用户查询。 每 120 小时触发全覆盖采集，失败逐源重试；官方高校名录为覆盖分母。"
+      "notes": "独立支撑过程的上下文，SD3 展开 maintain；采集与审核不阻塞在线用户查询。稳定来源保持 120 小时全覆盖，高波动任务分别以 1 小时复核已知岗位状态、4 小时发现全部已登记岗位目录、2 小时刷新 DZS 项目目录、2 小时刷新 CZU 英语本科／硕士目录及窗口、2 小时刷新 CZU 捷克入口本科／硕士目录、2 小时刷新 CZU 博士学院证据。普通漏跑等到下一个同余日；超过 120 小时未成功才做单分片 SLA 补跑。官方高校名录是覆盖分母；覆盖报告分开表示来源完整、学校接入、current／supported 候选与正式发布，单源刷新不能冒充全源成功。CZU 两条本科／硕士来源各自按官网声明范围报告完整性并保留交叉差异；博士来源以 MŠMT 60 个 offering 和六学院年度证据为边界，未知开始日、条件轮次及未公告轮次不推断为开放。候选仍受三语和来源哈希发布门禁约束。持久队列在操作系统互斥锁内改变；租约带拥有者、续期与过期回收。锁顺序为 refresh → publish → safety。已核验关闭走独立安全状态覆盖，网络失败不是关闭。幂等官方读取只对短暂失败作两次有限请求重试，并尊重 Retry-After；过长延迟交给调度。最终抓取或解析失败不推进成功时间，按逐来源退避时间重试，不触发目录缺席归档，并继续参加 SLA 监测。成功和失败、租约释放和到期是互斥分支。"
     },
     {
       "id": "SD3",
@@ -1292,6 +2246,11 @@
           "type": "result"
         },
         {
+          "source": "translate",
+          "target": "reviewpending",
+          "type": "result"
+        },
+        {
           "source": "translated",
           "target": "review",
           "type": "input"
@@ -1312,12 +2271,67 @@
           "type": "instrument"
         },
         {
+          "source": "evidence",
+          "target": "contenthash",
+          "type": "exhibition"
+        },
+        {
+          "source": "reviewpending",
+          "target": "bindreview",
+          "type": "input"
+        },
+        {
+          "source": "bindreview",
+          "target": "reviewbound",
+          "type": "output"
+        },
+        {
+          "source": "editor",
+          "target": "bindreview",
+          "type": "agent"
+        },
+        {
+          "source": "contenthash",
+          "target": "bindreview",
+          "type": "instrument"
+        },
+        {
+          "source": "evidence",
+          "target": "bindreview",
+          "type": "instrument"
+        },
+        {
+          "source": "reviewbound",
+          "target": "reviewinvalidate",
+          "type": "input"
+        },
+        {
+          "source": "reviewinvalidate",
+          "target": "reviewinvalid",
+          "type": "output"
+        },
+        {
+          "source": "deadline",
+          "target": "reviewinvalidate",
+          "type": "instrument"
+        },
+        {
+          "source": "contenthash",
+          "target": "reviewinvalidate",
+          "type": "instrument"
+        },
+        {
           "source": "verified",
           "target": "publish",
           "type": "instrument"
         },
         {
           "source": "reviewed",
+          "target": "publish",
+          "type": "instrument"
+        },
+        {
+          "source": "reviewbound",
           "target": "publish",
           "type": "instrument"
         },
@@ -1393,9 +2407,12 @@
         "A08",
         "A11",
         "A20",
-        "A25"
+        "A25",
+        "A34",
+        "A32",
+        "A39"
       ],
-      "notes": "维护是独立支撑过程，不是用户发现过程的子过程。verified 与 reviewed 必须指向相同源哈希，发布为 AND 条件。更新创建新内容版本，旧快照保留审计。过期状态可优先更新，不能继续表示开放。 archive 同步更新公开目录和三语缓存，关闭岗位下架但保留归档；已知截止不等待下一轮五天采集。 轮次结束与整个机会关闭分别判断，第二轮仍开放不整体下架。"
+      "notes": "维护是独立支撑过程，不是用户发现过程的子过程。verified、reviewed 与逐语种 hash bound 审核记录是发布的 AND 条件；源内容哈希变化使旧审核记录失效。更新创建新内容版本，旧快照保留审计。过期状态可优先更新，不能继续表示开放。archive 同步更新公开目录和三语缓存，关闭岗位下架但保留归档；已知截止不等待下一轮五天采集。轮次结束与整个机会关闭分别判断，第二轮仍开放不整体下架。SD3A 展开原子发布与构建固定版本。"
     },
     {
       "id": "SD4",
@@ -1594,21 +2611,6 @@
           "type": "result"
         },
         {
-          "source": "jobresults",
-          "target": "save",
-          "type": "instrument"
-        },
-        {
-          "source": "user",
-          "target": "save",
-          "type": "agent"
-        },
-        {
-          "source": "save",
-          "target": "shortlist",
-          "type": "effect"
-        },
-        {
           "source": "user",
           "target": "navigate",
           "type": "agent"
@@ -1635,9 +2637,14 @@
         "A11",
         "A21",
         "A24",
-        "A25"
+        "A25",
+        "A34",
+        "A38",
+        "A51",
+        "A58",
+        "A62"
       ],
-      "notes": "资格核验部分属于科研支撑细化；检索只使用同一岗位的已发布当前版本。硕士资格不代表无需读博，unspecified 不能当 not_required，工资数值未公开也须有带薪证据。 岗位标题和主按钮直接打开经核验的官方申请目标，站内解读为次级入口。 申请直达目标按当前适用的申请轮次选择，岗位面试轮次不冒充申请轮次。"
+      "notes": "资格核验部分属于科研支撑细化；检索只使用同一岗位的已发布当前版本。硕士资格不代表无需读博，unspecified 不能当 not_required，工资数值未公开也须有带薪证据。salary.basisFte 只表达薪资基准，employmentFte 表达岗位实际工时，employmentStartsAt 表达可到岗日期；三者分别记录，缺失不推断。 岗位标题和主按钮直接打开经核验的官方申请目标，站内解读为次级入口。 申请直达目标按当前适用的申请轮次选择，岗位面试轮次不冒充申请轮次。"
     },
     {
       "id": "SD6",
@@ -1760,9 +2767,443 @@
         "A17",
         "A22",
         "A23",
-        "A24"
+        "A24",
+        "A55"
       ],
-      "notes": "对象结构视图；catalog 中这些是记录集合的组成类别而非单个实例数量。PostgreSQL 为逻辑持久层，Supabase 是建议托管方式。store 只更新内部核验数据，公开可见性由 SD3 publish 决定。 模块语言以 LANGUAGE_STACK.md 为准；Go 在线服务、Python 离线采集、静态前台分离。 中留服参考不是个人认证保证；学校性质独立标注。申请窗口记录起止及官网轮次，未知不补造。"
+      "notes": "对象结构视图；catalog 中这些是记录集合的组成类别而非单个实例数量。PostgreSQL 为逻辑持久层，Supabase 是建议托管方式。store 只更新内部核验数据，公开可见性由 SD3 publish 决定。 模块语言以 LANGUAGE_STACK.md 为准；Go 在线服务、Python 离线采集、静态前台分离。 中留服官方查询与运营方名单分字段保存；没有官方查询证据时公开状态为 unverified。申请窗口记录起止及官网轮次，未知不补造。"
+    },
+    {
+      "id": "SD2A",
+      "title": "交互地图聚合与失败回退",
+      "parent": "present",
+      "edges": [
+        {
+          "source": "catalog",
+          "target": "maprender",
+          "type": "instrument"
+        },
+        {
+          "source": "osmtiles",
+          "target": "maprender",
+          "type": "instrument"
+        },
+        {
+          "source": "maprender",
+          "target": "mapinteractive",
+          "type": "result"
+        },
+        {
+          "source": "osmtiles",
+          "target": "tilemonitor",
+          "type": "instrument"
+        },
+        {
+          "source": "tilemonitor",
+          "target": "tilesfailed",
+          "type": "result"
+        },
+        {
+          "source": "mapinteractive",
+          "target": "mapfallback",
+          "type": "input"
+        },
+        {
+          "source": "mapfallback",
+          "target": "mapoverview",
+          "type": "output"
+        },
+        {
+          "source": "tilesfailed",
+          "target": "mapfallback",
+          "type": "instrument"
+        },
+        {
+          "source": "bundledmap",
+          "target": "mapfallback",
+          "type": "instrument"
+        },
+        {
+          "source": "mapoverview",
+          "target": "mapretry",
+          "type": "input"
+        },
+        {
+          "source": "mapretry",
+          "target": "mapinteractive",
+          "type": "output"
+        },
+        {
+          "source": "user",
+          "target": "mapretry",
+          "type": "agent"
+        },
+        {
+          "source": "osmtiles",
+          "target": "mapretry",
+          "type": "instrument"
+        },
+        {
+          "source": "institution",
+          "target": "markergroup",
+          "type": "instrument"
+        },
+        {
+          "source": "mapinteractive",
+          "target": "markergroup",
+          "type": "instrument"
+        },
+        {
+          "source": "markergroup",
+          "target": "mapclusters",
+          "type": "result"
+        },
+        {
+          "source": "user",
+          "target": "clusterexpand",
+          "type": "agent"
+        },
+        {
+          "source": "mapclusters",
+          "target": "clusterexpand",
+          "type": "instrument"
+        },
+        {
+          "source": "clusterexpand",
+          "target": "mapview",
+          "type": "effect"
+        },
+        {
+          "source": "user",
+          "target": "wheelzoom",
+          "type": "agent"
+        },
+        {
+          "source": "wheelinput",
+          "target": "wheelzoom",
+          "type": "instrument"
+        },
+        {
+          "source": "mapinteractive",
+          "target": "wheelzoom",
+          "type": "instrument"
+        },
+        {
+          "source": "wheelzoom",
+          "target": "mapview",
+          "type": "effect"
+        }
+      ],
+      "requirements": [
+        "A14",
+        "A16",
+        "A40",
+        "A41",
+        "A44"
+      ],
+      "notes": "正式交互层当前使用 OpenStreetMap 在线栅格瓦片，并保留项目内置的捷克 14 州概览图。连续瓦片错误或 12 秒超时会切换至内置图，列表与筛选继续可用，用户可以重试。低缩放用原生按钮聚合相邻学校，键盘激活后放大；近景恢复独立按钮并展开同坐标点。桌面端鼠标位于地图时，普通滚轮直接缩放，不要求 Ctrl、Command、Shift 或 Alt。该模型不表示大陆运营商与真机验收已经完成，也不把当前栅格实现描述成自托管 PMTiles。"
+    },
+    {
+      "id": "SD3A",
+      "title": "原子发布与不可变构建绑定",
+      "parent": "publish",
+      "edges": [
+        {
+          "source": "verified",
+          "target": "snapshotstage",
+          "type": "instrument"
+        },
+        {
+          "source": "reviewed",
+          "target": "snapshotstage",
+          "type": "instrument"
+        },
+        {
+          "source": "reviewbound",
+          "target": "snapshotstage",
+          "type": "instrument"
+        },
+        {
+          "source": "snapshotstage",
+          "target": "stagedsnapshot",
+          "type": "result"
+        },
+        {
+          "source": "stagedsnapshot",
+          "target": "snapshotvalidate",
+          "type": "input"
+        },
+        {
+          "source": "snapshotvalidate",
+          "target": "validatedsnapshot",
+          "type": "output"
+        },
+        {
+          "source": "pubpolicy",
+          "target": "snapshotvalidate",
+          "type": "instrument"
+        },
+        {
+          "source": "validatedsnapshot",
+          "target": "snapshotactivate",
+          "type": "input"
+        },
+        {
+          "source": "snapshotactivate",
+          "target": "live",
+          "type": "output"
+        },
+        {
+          "source": "osmutex",
+          "target": "snapshotactivate",
+          "type": "instrument"
+        },
+        {
+          "source": "snapshotactivate",
+          "target": "activepointer",
+          "type": "effect"
+        },
+        {
+          "source": "live",
+          "target": "buildpin",
+          "type": "instrument"
+        },
+        {
+          "source": "activepointer",
+          "target": "buildpin",
+          "type": "instrument"
+        },
+        {
+          "source": "buildpin",
+          "target": "buildbinding",
+          "type": "result"
+        },
+        {
+          "source": "buildbinding",
+          "target": "browserpublish",
+          "type": "instrument"
+        },
+        {
+          "source": "live",
+          "target": "browserpublish",
+          "type": "instrument"
+        },
+        {
+          "source": "browserpublish",
+          "target": "browserasset",
+          "type": "result"
+        },
+        {
+          "source": "browserpublish",
+          "target": "cache",
+          "type": "effect"
+        },
+        {
+          "source": "revisionpending",
+          "target": "civalidate",
+          "type": "input"
+        },
+        {
+          "source": "civalidate",
+          "target": "revisionvalidated",
+          "type": "output"
+        },
+        {
+          "source": "ciworkflow",
+          "target": "civalidate",
+          "type": "instrument"
+        },
+        {
+          "source": "pubpolicy",
+          "target": "civalidate",
+          "type": "instrument"
+        },
+        {
+          "source": "revisionvalidated",
+          "target": "deliverypackage",
+          "type": "instrument"
+        },
+        {
+          "source": "browserasset",
+          "target": "deliverypackage",
+          "type": "instrument"
+        },
+        {
+          "source": "ciworkflow",
+          "target": "deliverypackage",
+          "type": "instrument"
+        },
+        {
+          "source": "deliverypackage",
+          "target": "deliveryartifact",
+          "type": "result"
+        }
+      ],
+      "requirements": [
+        "A08",
+        "A31",
+        "A32",
+        "A33",
+        "A39",
+        "A42",
+        "A45",
+        "A46",
+        "A47",
+        "A48",
+        "A49",
+        "A50",
+        "A52",
+        "A53",
+        "A54",
+        "A56",
+        "A58",
+        "A59",
+        "A60",
+        "A65"
+      ],
+      "notes": "候选数据先在 refresh 锁内钉扎世代并复制到唯一 staging，再释放该锁，按固定文件集合、结构、关系、证据、URL、资格及逐语种哈希审核规则校验。窗口日期、时区、必需来源／证据 URL、受控薪资码和会被渲染的嵌套 tracer 窗口必须同时由 Python 与 Node 拒绝。岗位批准绑定事实哈希、译文哈希、证据哈希和审核角色，抓取时间戳单独保存。DZS 与 CZU 的来源完整性只说明各自声明范围抓取完整，不等于已经完成三语正式发布；CZU 英语目录和捷克入口本科／硕士候选必须逐字段保留来源证据、内容哈希及跨源差异，博士候选还须保留 MŠMT offering 匹配、六学院证据、窗口状态和图像 PDF 的受审哈希。岗位公告未说明工作语言时使用 BCP 47 und 状态，不从公告语言推断。只有合格候选才能成为不可变快照并通过单一原子指针激活；force 不能绕过门禁。已核验关闭另有独立安全状态覆盖，快照回滚不能重新打开之后的关闭。构建启动时只解析一次当前版本，固定到该快照，并只从该版本生成浏览器资源；发布、回滚或采集并发不会让一个构建混读版本。生产 API 绑定该不可变发布，拒绝 fixture。Pull request 与 main 提交运行固定依赖的确定性 CI；main 仅在数据、Go 与 Web 检查全部通过后生成绑定提交 SHA 的静态交付制品。该制品不代表已经部署公网；在托管 run 出现前报告 CI configured; local checks passed; hosted CI/CD not verified。"
+    },
+    {
+      "id": "SD4A",
+      "title": "注册来源驱动的动态岗位发现",
+      "parent": "acquire",
+      "edges": [
+        {
+          "source": "source",
+          "target": "vacancydiscover",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "vacancydiscover",
+          "type": "instrument"
+        },
+        {
+          "source": "listingpage",
+          "target": "vacancydiscover",
+          "type": "instrument"
+        },
+        {
+          "source": "discoverycursor",
+          "target": "vacancydiscover",
+          "type": "instrument"
+        },
+        {
+          "source": "vacancydiscover",
+          "target": "vacancydiscovered",
+          "type": "result"
+        },
+        {
+          "source": "vacancydiscover",
+          "target": "evidence",
+          "type": "result"
+        },
+        {
+          "source": "vacancydiscovered",
+          "target": "vacancyqualify",
+          "type": "input"
+        },
+        {
+          "source": "vacancyqualify",
+          "target": "vacancyready",
+          "type": "output"
+        },
+        {
+          "source": "evidence",
+          "target": "vacancyqualify",
+          "type": "instrument"
+        },
+        {
+          "source": "vacancydetail",
+          "target": "vacancyqualify",
+          "type": "instrument"
+        },
+        {
+          "source": "legalemployer",
+          "target": "vacancyqualify",
+          "type": "instrument"
+        },
+        {
+          "source": "vacancydiscovered",
+          "target": "vacancyquarantine",
+          "type": "input"
+        },
+        {
+          "source": "vacancyquarantine",
+          "target": "vacancyquarantined",
+          "type": "output"
+        },
+        {
+          "source": "registry",
+          "target": "vacancyquarantine",
+          "type": "instrument"
+        },
+        {
+          "source": "vacancyready",
+          "target": "vacancydisappear",
+          "type": "input"
+        },
+        {
+          "source": "vacancydisappear",
+          "target": "vacancyunavailable",
+          "type": "output"
+        },
+        {
+          "source": "listingpage",
+          "target": "vacancydisappear",
+          "type": "instrument"
+        },
+        {
+          "source": "discoverycursor",
+          "target": "vacancydisappear",
+          "type": "instrument"
+        },
+        {
+          "source": "vacancyready",
+          "target": "vacancyexclude",
+          "type": "input"
+        },
+        {
+          "source": "vacancyexclude",
+          "target": "vacancyexcluded",
+          "type": "output"
+        },
+        {
+          "source": "listingpage",
+          "target": "vacancyexclude",
+          "type": "instrument"
+        },
+        {
+          "source": "vacancydetail",
+          "target": "vacancyexclude",
+          "type": "instrument"
+        },
+        {
+          "source": "vacancyready",
+          "target": "vacancynormalize",
+          "type": "instrument"
+        },
+        {
+          "source": "evidence",
+          "target": "vacancynormalize",
+          "type": "instrument"
+        },
+        {
+          "source": "vacancynormalize",
+          "target": "uncheckedjob",
+          "type": "result"
+        }
+      ],
+      "requirements": [
+        "A09",
+        "A37",
+        "A38",
+        "A43",
+        "A45",
+        "A46",
+        "A57",
+        "A64"
+      ],
+      "notes": "来源注册表每 4 小时独立驱动已登记官方岗位列表、分页、详情和必要附件发现。Charles 使用官方 AJAX 真分页；VUT 读取公开 GraphQL 全分页与逐项详情；CTU 核对公告总数并提取 PDF，扫描件走有上限的本地 OCR；CZU 将 WP Job Manager 公共分页与同站 REST 全文按岗位 ID、标题和 URL 对齐。提取以逐项全文判断研究或技术职责、学历、博士注册与带薪证据，纯教学、行政、研究支持及科学传播岗位不因背景关键词进入候选；否定语义优先，缺证据保持 unknown。AVCR 中无法辨认实际研究所的候选进入隔离区。只有源级完整时，完整目录中缺席才记 unavailable；仍在目录但不符合范围则进入 outside supported catalogue scope 状态。覆盖报告区分校级聚合、院系局部、研究网络和有证据的完整声明；登记学校覆盖与已审核公开岗位覆盖必须分列，0 个完整声明不等于高校岗位齐全。动态发现仍须经过事实核验和三语人工审核，不能直接发布。"
     }
   ]
 }

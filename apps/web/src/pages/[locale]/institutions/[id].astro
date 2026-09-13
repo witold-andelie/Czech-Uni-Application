@@ -1,38 +1,291 @@
 ---
+import { withBase } from "../../../lib/base.ts";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import InstitutionTags from "../../../components/InstitutionTags.astro";
-import { findInstitution } from "../../../lib/catalog";
-import { text } from "../../../lib/format";
+import LiveWindows from "../../../components/LiveWindows.svelte";
+import InstitutionJobs from "../../../components/InstitutionJobs.svelte";
+import { findInstitution, isPublicJob, buildJobViews, safeHttpUrl } from "../../../lib/catalog";
+import { dataClassKey, degreeKey, extraContextKey, fieldSep, formatTracerTuition, languageName, teachingLanguageLabel, text } from "../../../lib/format";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
+import { loadAdmissionsTracer, tracerWindowsForUi } from "../../../lib/loadAdmissionsTracer";
+import { findApplyPortal, portalHasReachableLink } from "../../../lib/loadApplyPortals";
+import { findBaseline, loadBaseline } from "../../../lib/loadBaseline";
+import { institutionFromBaseline } from "../../../lib/mergeBrowseCatalog";
 import { loadCatalog } from "../../../lib/loadCatalog";
+import { loadSafetyOverlayFromDisk } from "../../../lib/loadSafetyOverlay";
+import { applySafetyOverlay } from "../../../lib/safetyStatus";
+import ExternalIcon from "../../../components/ExternalIcon.svelte";
 
 export function getStaticPaths() {
   const catalog = loadCatalog();
-  return LOCALES.flatMap((locale) =>
-    catalog.institutions.map((institution) => ({ params: { locale, id: institution.id } })),
-  );
+  const baseline = loadBaseline();
+  const fixtureIds = new Set(catalog.institutions.map((item) => item.id));
+  return LOCALES.flatMap((locale) => [
+    ...catalog.institutions.map((institution) => ({ params: { locale, id: institution.id } })),
+    ...baseline.institutions
+      .filter((item) => !fixtureIds.has(item.id))
+      .map((item) => ({ params: { locale, id: item.id } })),
+  ]);
 }
 
 const locale = localeFromParam(Astro.params.locale);
-const catalog = loadCatalog();
-const institution = findInstitution(catalog, Astro.params.id ?? "");
-if (!institution) throw new Error("Missing institution");
-const offerings = catalog.offerings.filter((item) => item.institutionId === institution.id);
+const id = Astro.params.id ?? "";
+const overlay = loadSafetyOverlayFromDisk();
+const catalog = applySafetyOverlay(loadCatalog(), overlay);
+const baselineItem = findBaseline(id);
+const baselineInstitution = baselineItem ? institutionFromBaseline(baselineItem) : null;
+const fixture = baselineItem ? null : findInstitution(catalog, id);
+if (!fixture && !baselineItem) throw new Error("Missing institution");
+
+const officialUrl = safeHttpUrl(fixture?.officialUrl ?? baselineItem?.officialUrl ?? null);
+const tracer = loadAdmissionsTracer(id);
+const portal = findApplyPortal(id);
+const offerings = catalog.offerings.filter((item) => item.institutionId === id);
+const inventoryItems = offerings.filter((item) => item.dataClass === "official_register_extract");
+const listedItems = offerings.filter((item) => item.dataClass !== "official_register_extract");
+const employerJobs = catalog.jobs.filter((item) => item.employerId === id);
+const employerWindows = catalog.windows.filter(
+  (item) => item.ownerType === "research_job" && employerJobs.some((job) => job.id === item.ownerId),
+);
+const jobsHere = buildJobViews(catalog, new Date()).filter(
+  (view) => view.job.employerId === id && isPublicJob(view.job, view.summary),
+);
+const groups = [
+  { key: "en", label: t(locale, "teaching.en"), items: listedItems.filter((item) => item.languageMode === "single" && item.teachingLanguages[0] === "en") },
+  { key: "cs", label: t(locale, "teaching.cs"), items: listedItems.filter((item) => item.languageMode === "single" && item.teachingLanguages[0] === "cs") },
+  { key: "joint", label: t(locale, "lang.joint"), items: listedItems.filter((item) => item.languageMode === "joint_required") },
+].filter((group) => group.items.length > 0);
+const inventoryCounts = {
+  total: inventoryItems.length,
+  bachelor: inventoryItems.filter((item) => item.degree === "bachelor").length,
+  master: inventoryItems.filter((item) => item.degree === "master").length,
+  doctorate: inventoryItems.filter((item) => item.degree === "doctorate").length,
+  en: inventoryItems.filter((item) => item.teachingLanguages[0] === "en").length,
+  cs: inventoryItems.filter((item) => item.teachingLanguages[0] === "cs").length,
+};
+const title = fixture ? text(fixture.displayName, locale) : (baselineItem?.officialName ?? "");
+const hasPortal = portalHasReachableLink(portal);
+const hasInventory = inventoryCounts.total > 0 || (baselineItem?.programmeInventory?.total ?? 0) > 0;
+const hasJobs = jobsHere.length > 0;
+const websiteOnly = Boolean(baselineItem) && !hasPortal && !hasInventory && !hasJobs && !tracer;
 ---
-<BaseLayout locale={locale} title={text(institution.displayName, locale)}>
+<BaseLayout locale={locale} title={title}>
   <main id="main" class="page">
-    <h1>{text(institution.displayName, locale)}</h1>
-    <p class="muted">{institution.officialName} · {text(institution.city, locale)}</p>
-    <InstitutionTags locale={locale} institution={institution} />
-    <p><a href={institution.officialUrl} rel="noopener noreferrer" target="_blank">{institution.officialUrl}</a></p>
-    <h2>{t(locale, "nav.programmes")}</h2>
-    <ul>
-      {offerings.map((offering) => (
-        <li>
-          <a href={`/${locale}/programmes/${offering.id}`}>{text(offering.title, locale)}</a>
-          · {offering.academicYear}
-        </li>
-      ))}
-    </ul>
+    {fixture ? (
+      <>
+        <h1>{text(fixture.displayName, locale)}</h1>
+        <p class="muted">{fixture.officialName} · {text(fixture.city, locale)}</p>
+        <InstitutionTags locale={locale} institution={fixture} />
+        {officialUrl && (
+          <p>
+            <a class="external" href={officialUrl} rel="noopener noreferrer" target="_blank">
+              {officialUrl}
+              <ExternalIcon />
+              <span class="visually-hidden">{t(locale, "action.external")}</span>
+            </a>
+          </p>
+        )}
+        <h2>{t(locale, "nav.programmes")}</h2>
+        {groups.map((group) => (
+          <section>
+            <h3>{group.label}</h3>
+            <ul>
+              {group.items.map((offering) => (
+                <li>
+                  <a href={withBase(`/${locale}/programmes/${offering.id}`)}>{text(offering.title, locale)}</a>
+                  · {offering.academicYear}
+                  · {teachingLanguageLabel(offering.teachingLanguages, offering.languageMode, locale)}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+        {hasJobs && <InstitutionJobs client:load locale={locale} jobs={employerJobs} windows={employerWindows} initialOverlay={overlay} />}
+      </>
+    ) : baselineItem && (
+      <>
+        <h1>{baselineItem.officialName}</h1>
+        {baselineItem.officialNameEn && (
+          <p class="muted">{t(locale, "institutions.englishName")}{fieldSep(locale)}{baselineItem.officialNameEn}</p>
+        )}
+        <p class="muted">{baselineItem.msmtCode} · {baselineItem.region}</p>
+        {baselineInstitution && <InstitutionTags locale={locale} institution={baselineInstitution} />}
+        <div class="tags">
+          <span class="tag">{t(locale, "institutions.registerOnly")}</span>
+        </div>
+        {baselineItem.ico && (
+          <p>{t(locale, "institutions.ico")}{fieldSep(locale)}{baselineItem.ico}</p>
+        )}
+        {baselineItem.seat && (
+          <p>{t(locale, "institutions.seat")}{fieldSep(locale)}{baselineItem.seat}</p>
+        )}
+        {officialUrl && (
+          <p>
+            <a class="external" href={officialUrl} rel="noopener noreferrer" target="_blank">
+              {officialUrl}
+              <ExternalIcon />
+              <span class="visually-hidden">{t(locale, "action.external")}</span>
+            </a>
+          </p>
+        )}
+        {!officialUrl && <p>{t(locale, "institutions.noWebsite")}</p>}
+        <p>
+          <a href={withBase(`/${locale}/map?q=${encodeURIComponent(baselineItem.officialName)}`)}>{t(locale, "institutions.openMap")}</a>
+        </p>
+        {websiteOnly && <p class="disclaimer">{t(locale, "institutions.websiteOnly")}</p>}
+        {hasPortal && (
+        <>
+        <h2>{t(locale, "institutions.applyPortal")}</h2>
+        <p class="disclaimer">{t(locale, "institutions.applyPortal.help")}</p>
+        {portal && (safeHttpUrl(portal.applyUrl) || safeHttpUrl(portal.applyUrlEn)) && (
+          <p>
+            {t(locale, "institutions.applyPortal.form")}{fieldSep(locale)}
+            {safeHttpUrl(portal.applyUrl) && (
+              <a class="external" href={safeHttpUrl(portal.applyUrl)} rel="noopener noreferrer" target="_blank" data-apply-portal="cs">
+                {t(locale, "institutions.applyPortal.cs")}
+                <ExternalIcon />
+                <span class="visually-hidden">{t(locale, "action.external")}</span>
+              </a>
+            )}
+            {safeHttpUrl(portal.applyUrl) && safeHttpUrl(portal.applyUrlEn) && portal.applyUrl !== portal.applyUrlEn ? " · " : ""}
+            {safeHttpUrl(portal.applyUrlEn) && portal.applyUrlEn !== portal.applyUrl && (
+              <a href={safeHttpUrl(portal.applyUrlEn)} rel="noopener noreferrer" target="_blank" data-apply-portal="en" class="external">
+                {t(locale, "institutions.applyPortal.en")}
+                <ExternalIcon />
+                <span class="visually-hidden">{t(locale, "action.external")}</span>
+              </a>
+            )}
+          </p>
+        )}
+        {portal && (portal.admissionsUrl || portal.admissionsUrlEn) && (
+          <p>
+            {t(locale, "institutions.applyPortal.info")}{fieldSep(locale)}
+            {safeHttpUrl(portal.admissionsUrl) && (
+              <a class="external" href={safeHttpUrl(portal.admissionsUrl)} rel="noopener noreferrer" target="_blank">
+                {t(locale, "institutions.applyPortal.cs")}
+                <ExternalIcon />
+                <span class="visually-hidden">{t(locale, "action.external")}</span>
+              </a>
+            )}
+            {portal.admissionsUrl && portal.admissionsUrlEn && portal.admissionsUrl !== portal.admissionsUrlEn ? " · " : ""}
+            {safeHttpUrl(portal.admissionsUrlEn) && portal.admissionsUrlEn !== portal.admissionsUrl && (
+              <a class="external" href={safeHttpUrl(portal.admissionsUrlEn)} rel="noopener noreferrer" target="_blank">
+                {t(locale, "institutions.applyPortal.en")}
+                <ExternalIcon />
+                <span class="visually-hidden">{t(locale, "action.external")}</span>
+              </a>
+            )}
+          </p>
+        )}
+        </>
+        )}
+        {hasInventory && (
+        <>
+        <h2>{t(locale, "nav.programmes")}</h2>
+        {inventoryCounts.total > 0 ? (
+          <div class="disclaimer">
+            <p>{t(locale, "institutions.inventory", { n: inventoryCounts.total })}</p>
+            <p>
+              {t(locale, "degree.bachelor")}{fieldSep(locale)}{inventoryCounts.bachelor}
+              {" · "}
+              {t(locale, "degree.master")}{fieldSep(locale)}{inventoryCounts.master}
+              {" · "}
+              {t(locale, "degree.doctorate")}{fieldSep(locale)}{inventoryCounts.doctorate}
+            </p>
+            <p>
+              <a href={withBase(`/${locale}/programmes?teachingLanguage=en&institution=${id}`)}>{t(locale, "teaching.en")} ({inventoryCounts.en})</a>
+              {" · "}
+              <a href={withBase(`/${locale}/programmes?teachingLanguage=cs&institution=${id}`)}>{t(locale, "teaching.cs")} ({inventoryCounts.cs})</a>
+              {" · "}
+              <a href={withBase(`/${locale}/programmes?teachingLanguage=all&degree=doctorate&institution=${id}`)}>{t(locale, "degree.doctorate")}</a>
+            </p>
+          </div>
+        ) : baselineItem.programmeInventory ? (
+          <p class="disclaimer">{t(locale, "institutions.inventory", { n: baselineItem.programmeInventory.total })}</p>
+        ) : groups.length === 0 ? (
+          <p class="disclaimer">{t(locale, "institutions.noProgrammes")}</p>
+        ) : null}
+        {groups.map((group) => (
+          <section>
+            <h3>{group.label}</h3>
+            <ul>
+              {group.items.map((offering) => (
+                <li>
+                  <a href={withBase(`/${locale}/programmes/${offering.id}`)}>{text(offering.title, locale)}</a>
+                  · {offering.academicYear}
+                  · {teachingLanguageLabel(offering.teachingLanguages, offering.languageMode, locale)}
+                  · {t(locale, dataClassKey(offering.dataClass))}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+        </>
+        )}
+        {hasJobs && <InstitutionJobs client:load locale={locale} jobs={employerJobs} windows={employerWindows} initialOverlay={overlay} />}
+        <p>
+          <a class="external" href={baselineItem.programmeInventory?.sourceUrl ?? "https://regvssp.msmt.cz/registrvssp/cvslist.aspx"} rel="noopener noreferrer" target="_blank">
+            {t(locale, "institutions.source")}
+            <ExternalIcon />
+            <span class="visually-hidden">{t(locale, "action.external")}</span>
+          </a>
+        </p>
+        {tracer && (
+          <>
+            <h2>{t(locale, "institutions.tracer")}</h2>
+            <p class="disclaimer">{t(locale, "institutions.tracer.disclaimer")}</p>
+            {tracer.offerings.map((offering) => {
+              const sisUrl = safeHttpUrl(offering.languageEvidenceUrl);
+              const fee = offering.applicationFee.onlineOriginal ?? offering.applicationFee.paperOriginal;
+              return (
+                <section class="panel" data-tracer-id={offering.id}>
+                  <h3>{text(offering.title, locale)}</h3>
+                  <p class="muted">
+                    {offering.titleOriginal}
+                    {fieldSep(locale)}{offering.academicYear}
+                    {fieldSep(locale)}{teachingLanguageLabel(offering.teachingLanguages, offering.languageMode, locale)}
+                    {fieldSep(locale)}{t(locale, degreeKey(offering.degree))}
+                  </p>
+                  <p>{t(locale, "institutions.tracer.faculty")}{fieldSep(locale)}{offering.facultyOriginal}</p>
+                  <p>{t(locale, "detail.tuition")}</p>
+                  {formatTracerTuition(offering.tuition, locale).map((line) => (
+                    <p>{line}</p>
+                  ))}
+                  {offering.tuition.noteOriginal && (
+                    <p class="disclaimer">{offering.tuition.noteOriginal}</p>
+                  )}
+                  {fee && (
+                    <p class="disclaimer">{t(locale, "application.feeNotTuition")}{fieldSep(locale)}{fee}</p>
+                  )}
+                  {offering.window.opensAtNotInferredFrom && (
+                    <p class="notice">{t(locale, "application.opensMonthOnly", { note: offering.window.opensAtNotInferredFrom })}</p>
+                  )}
+                  {offering.additionalLanguageRequirements.map((item) => (
+                    <p>
+                      {t(locale, extraContextKey(item.context))}{fieldSep(locale)}{languageName(item.language, locale)} ({t(locale, `requirement.${item.requirement}`)})
+                      {item.note ? ` — ${text(item.note, locale)}` : ""}
+                    </p>
+                  ))}
+                  <LiveWindows client:load locale={locale} windows={tracerWindowsForUi(offering)} fallbackUrl={offering.applicationUrl} applyLabel={t(locale, "action.official")} />
+                  <p>
+                    <a href={withBase(`/${locale}/programmes/${offering.id}`)}>{t(locale, "action.siteInterpretation")}</a>
+                    {sisUrl ? (
+                      <>
+                        {" · "}
+                        <a class="external" href={sisUrl} rel="noopener noreferrer" target="_blank">
+                          {t(locale, "institutions.tracer.sourcePage")}
+                          <ExternalIcon />
+                          <span class="visually-hidden">{t(locale, "action.external")}</span>
+                        </a>
+                      </>
+                    ) : null}
+                  </p>
+                </section>
+              );
+            })}
+          </>
+        )}
+      </>
+    )}
   </main>
 </BaseLayout>

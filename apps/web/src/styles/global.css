@@ -51,6 +51,7 @@ summary:focus-visible {
   background: var(--color-primary);
   color: #fff;
   padding: 8px 14px;
+  min-height: 44px;
   border-radius: 0 0 8px 8px;
   font-weight: 600;
   text-decoration: none;
@@ -89,7 +90,7 @@ summary:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-16);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding-top: var(--space-12);
   padding-bottom: var(--space-12);
 }
@@ -133,6 +134,27 @@ summary:focus-visible {
   gap: var(--space-16);
   align-items: center;
   flex-wrap: wrap;
+}
+
+.nav-desktop,
+.tools-desktop {
+  display: none;
+}
+
+.mobile-nav {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .nav-desktop,
+  .tools-desktop {
+    display: flex;
+  }
+  .mobile-nav,
+  .nav-drawer,
+  .mobile-nav + .sheet-backdrop {
+    display: none !important;
+  }
 }
 
 .locale-switch {
@@ -214,6 +236,10 @@ h2 {
   border-color: var(--color-primary);
 }
 
+html[data-teaching] .ssr-teaching-chooser {
+  display: none;
+}
+
 .secondary-link {
   display: inline-flex;
   min-height: 44px;
@@ -225,10 +251,41 @@ h2 {
   gap: var(--space-24);
 }
 
-@media (min-width: 1024px) {
+/* Safety/other notices inside the list grid must span the full row; as a
+   plain first child they would occupy the 272px filter column and push the
+   real filters and results one grid cell over. */
+.layout-list > .notice {
+  grid-column: 1 / -1;
+}
+
+/* The results column's counter line starts flush with the filter card's top
+   border instead of dropping below it by the paragraph margin. */
+.layout-list > div > .muted:first-of-type {
+  margin-top: 0;
+}
+
+.layout-list {
+  display: grid;
+  gap: var(--space-24);
+}
+
+/* Desktop: the filter rail pins beside the results while the page scrolls
+   (owner UI rule). The card scrolls internally when taller than the
+   viewport. */
+/* Owner rule: filter rail left + results right from tablet width up; the
+   rail is pinned (sticky) and scrolls internally. Below 768px phones keep
+   the bottom-sheet filter. */
+@media (min-width: 768px) {
   .layout-list {
     grid-template-columns: 272px minmax(0, 1fr);
     align-items: start;
+  }
+  .layout-list > .filters.card {
+    position: sticky;
+    top: 12px;
+    align-self: start;
+    max-height: calc(100vh - 24px);
+    overflow-y: auto;
   }
 }
 
@@ -244,6 +301,14 @@ h2 {
   gap: var(--space-8);
   font-size: var(--small-size);
   color: var(--color-muted);
+}
+
+.checkbox-row {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  grid-template-columns: none;
 }
 
 input,
@@ -357,6 +422,8 @@ button.primary {
 .tag.cscse-listed { background: var(--color-success-bg); color: var(--color-success); }
 .tag.cscse-not_found { background: var(--color-warning-bg); color: var(--color-warning); }
 .tag.cscse-unverified { background: #eef1f4; }
+.tag.cscse-operator-listed { background: var(--color-info-bg); color: var(--color-info, #245b8a); }
+.tag.cscse-operator-absent { background: #eef1f4; }
 .tag.status-open { background: var(--color-success-bg); color: var(--color-success); }
 .tag.status-upcoming { background: var(--color-info-bg); }
 .tag.status-closed { background: var(--color-error-bg); color: var(--color-error); }
@@ -408,6 +475,20 @@ button.primary {
   padding: var(--space-16);
 }
 
+.compare-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  margin-bottom: var(--space-16);
+}
+
+.compare-head {
+  display: grid;
+  gap: var(--space-8);
+}
+
 .compare-wrap {
   overflow-x: auto;
 }
@@ -451,13 +532,745 @@ button.primary {
   }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
   .filter-drawer .filters {
     display: none;
   }
   .filter-drawer[open] .filters {
     display: grid;
     margin-top: 12px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.external,
+a.external {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.external-icon {
+  flex: none;
+}
+
+.result-card {
+  position: relative;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-12);
+  align-items: flex-start;
+  padding-right: 8px;
+}
+
+.status-badge {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.status-badge.status-open {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.status-badge.status-conditional,
+.status-badge.status-unknown {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.status-badge.status-upcoming {
+  background: var(--color-info-bg);
+  color: var(--color-primary);
+}
+
+.status-badge.status-closed {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+.card-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+}
+
+.metric-label {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.metric-value {
+  margin: 4px 0 0;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.tags-secondary .tag {
+  min-height: 24px;
+  font-size: 12px;
+  background: #f4f7fb;
+}
+
+.directory-toolbar {
+  display: grid;
+  gap: var(--space-16);
+  margin: var(--space-24) 0;
+}
+
+.chip-group {
+  display: grid;
+  gap: 8px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip-row-scroll {
+  max-height: 168px;
+  overflow: auto;
+}
+
+.chip {
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* A79: long localized chip labels must wrap instead of pushing the page
+   wider than the viewport. Wrapping stays local to the chip. */
+.chip-row > .chip {
+  min-width: 0;
+  flex-shrink: 1;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--color-info-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 650;
+}
+
+.institution-grid {
+  display: grid;
+  gap: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  .institution-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .institution-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.institution-card h2,
+.institution-card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.institution-card h2 a,
+.institution-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.institution-card h2 a:hover {
+  color: var(--color-primary);
+}
+
+.page-map {
+  max-width: min(1480px, 100%);
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-32);
+}
+
+.map-page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-8) var(--space-16);
+  margin-bottom: var(--space-16);
+}
+
+.map-page-head h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.layout-map {
+  display: grid;
+  /* A79: minmax(0, 1fr) constrains columns to the available width, so long
+     localized labels cannot push the document wider than the viewport. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-16);
+}
+
+/* A79: grid children must be allowed to shrink below their content width. */
+.layout-map > *,
+.layout-map .map-list-wrap > *,
+.layout-map .map-stage-wrap > *,
+.map-list-wrap .directory-toolbar > *,
+.map-list-wrap .chip-group > * {
+  min-width: 0;
+}
+
+.layout-map .map-stage-wrap {
+  order: 0;
+}
+
+.layout-map .map-list-wrap {
+  order: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .layout-map {
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+    /* Columns stretch to equal height so the map fills the space beside the
+       school list instead of leaving a blank area under it. */
+    align-items: stretch;
+  }
+  /* Column positions are fixed on every desktop width: school list left,
+     map right — never re-ordered by window height. */
+  .layout-map .map-list-wrap {
+    order: 0;
+  }
+  .layout-map .map-stage-wrap {
+    order: 1;
+  }
+}
+
+/* A79: sticky positioning and the fixed list height apply only when the
+   window has room. On short windows the page scrolls normally and no list
+   content can paint over the map explanation below. */
+@media (min-width: 1024px) and (min-height: 701px) {
+  .layout-map .map-stage-wrap {
+    position: sticky;
+    top: 12px;
+  }
+  .layout-map .map-list-wrap {
+    max-height: calc(100vh - 168px);
+    overflow: auto;
+  }
+}
+
+/* A79: sticky only when there is room for it; the stage's own content no
+   longer carries a conflicting viewport-derived maximum, so the map and
+   the selected card are never clipped by the wrapper. */
+@media (min-width: 1024px) and (min-height: 701px) {
+  .layout-map .map-stage-wrap {
+    order: 1;
+    position: sticky;
+    top: 12px;
+  }
+}
+
+.map-stage-wrap {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-16);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: var(--space-12);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12) var(--space-16);
+  font-size: var(--small-size);
+  color: var(--color-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.pin-mark {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(22, 38, 61, 0.35);
+  flex: none;
+}
+
+.pin-mark.listed {
+  background: var(--color-success);
+  border-radius: 50%;
+}
+
+.pin-mark.not-found {
+  background: var(--color-warning);
+  border-radius: 2px;
+}
+
+.map-viewport {
+  position: relative;
+  width: 100%;
+  min-height: min(68vh, 820px);
+  height: 100%;
+  background: #c5d4b8;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+}
+
+.map-viewport.dragging {
+  cursor: grabbing;
+}
+
+.map-world {
+  --map-scale: 1;
+  position: absolute;
+  inset: 0;
+  transform-origin: 0 0;
+}
+
+.map-world svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.map-viewport:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.map-stage {
+  position: relative;
+  width: 100%;
+  background: #e8eef6;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  overflow: visible;
+}
+
+.map-stage svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.czechia-land {
+  fill: #d7e4f5;
+  stroke: var(--color-primary);
+  stroke-width: calc(1.4 / var(--map-scale, 1));
+}
+
+.czechia-region {
+  fill: #d7e6c8;
+  stroke: #5f7a52;
+  stroke-width: calc(0.9 / var(--map-scale, 1));
+}
+
+.czechia-region:nth-child(even) {
+  fill: #e7efd4;
+}
+
+.czechia-region.praha {
+  fill: #c5d4b3;
+}
+
+.map-neighbor {
+  fill: #d5d8ce;
+  stroke: #9aa392;
+  stroke-width: calc(0.6 / var(--map-scale, 1));
+}
+
+.map-lake {
+  fill: #7eafc9;
+  stroke: #5a93b0;
+  stroke-width: calc(0.4 / var(--map-scale, 1));
+}
+
+.map-river {
+  fill: none;
+  stroke: #4d8fb5;
+  stroke-width: calc(1.15 / var(--map-scale, 1));
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.map-credit {
+  position: absolute;
+  left: 8px;
+  right: 88px;
+  bottom: 8px;
+  z-index: 5;
+  margin: 0;
+  padding: 6px 8px;
+  max-width: calc(100% - 96px);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--color-muted);
+  background: rgba(245, 247, 241, 0.92);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.map-city {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+  text-shadow: 0 0 4px #f4f7ee, 0 1px 0 #fff;
+  white-space: nowrap;
+}
+
+.map-city.major {
+  font-size: 15px;
+}
+
+.map-zoom {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 6;
+  display: grid;
+  gap: 4px;
+}
+
+.map-zoom .btn {
+  min-width: 44px;
+}
+
+.map-pin {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -100%);
+  transform-origin: 50% 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.map-pin .pin-mark {
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%);
+}
+
+.map-pin.selected {
+  z-index: 4;
+}
+
+.map-pin.selected .pin-mark {
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.map-callout {
+  position: absolute;
+  z-index: 5;
+  width: min(260px, calc(100% - 24px));
+  transform: translate(-50%, 8px);
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(22, 38, 61, 0.16);
+}
+
+.map-school-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  max-height: min(45vh, 480px);
+  overflow-y: auto;
+  padding: 6px 4px 20px 2px;
+  scroll-padding: 24px 0;
+}
+
+@media (min-width: 1024px) and (min-height: 701px) {
+  .map-school-list {
+    max-height: calc(100vh - 360px);
+  }
+}
+
+.map-school-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  scroll-margin: 24px 0;
+}
+
+.map-school-row:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.map-school-row.selected {
+  border-color: #2563eb !important;
+  border-left: 5px solid #1d4ed8 !important;
+  background: #eff6ff !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.18) !important;
+}
+
+.map-school-pick {
+  display: grid;
+  gap: 4px;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.map-school-pick:disabled {
+  cursor: default;
+}
+
+.school-pick-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.map-school-name {
+  font-weight: 650;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text);
+  word-break: break-word;
+}
+
+.map-school-row.selected .map-school-name {
+  color: #1e40af;
+  font-weight: 700;
+}
+
+.selected-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1d4ed8;
+  background: #dbeafe;
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  line-height: 1.4;
+}
+
+.map-school-open {
+  min-height: 44px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--small-size);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.unmatched-panel {
+  margin-top: var(--space-32);
+}
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  border: 0;
+  padding: 0;
+  background: rgba(22, 38, 61, 0.45);
+  cursor: pointer;
+}
+
+.filter-sheet-toolbar {
+  display: contents;
+}
+
+/* button.btn (0,1,1) would outrank a plain class here, leaving the mobile
+   sheet's close button visible at the top of the desktop filter card. */
+button.filter-sheet-close {
+  display: none;
+}
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  width: min(320px, 92vw);
+  height: 100%;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  padding: var(--space-24) var(--space-16);
+  display: grid;
+  align-content: start;
+  gap: var(--space-24);
+  overflow: auto;
+}
+
+.nav-drawer-links {
+  display: grid;
+  gap: 4px;
+}
+
+.nav-drawer-links a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0 8px;
+  border-radius: var(--radius-control);
+}
+
+.nav-drawer-links a[aria-current="page"] {
+  color: var(--color-primary);
+  font-weight: 700;
+  background: var(--color-info-bg);
+}
+
+.layout-list button.filter-open-mobile,
+.filter-sheet-bar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .layout-list > .filters.card {
+    display: none;
+  }
+  .layout-list.sheet-open > .filters.card {
+    display: grid;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    max-height: min(85vh, 720px);
+    margin: 0;
+    border-radius: 16px 16px 0 0;
+    overflow: auto;
+    padding: var(--space-16);
+    padding-bottom: 8px;
+  }
+  .filter-sheet-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .layout-list.sheet-open .filter-sheet-close {
+    display: inline-flex;
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+  .filter-sheet-bar {
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    background: var(--color-surface);
+    padding: 12px 0 4px;
+    margin-top: 8px;
+  }
+  .filter-sheet-bar .btn {
+    width: 100%;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+  .layout-list.sheet-open .filters .chip {
+    white-space: normal;
+    max-width: 100%;
+    flex-shrink: 1;
+    text-align: center;
+  }
+  .layout-list button.filter-open-mobile {
+    display: inline-flex;
+    position: sticky;
+    bottom: 16px;
+    z-index: 15;
+    margin: 8px 0 16px;
+    box-shadow: 0 8px 24px rgba(22, 38, 61, 0.16);
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-list.sheet-open .sheet-backdrop {
+    display: none;
+  }
+}
+
+.compare-wrap {
+  mask-image: linear-gradient(to right, #000 92%, transparent);
+}
+
+@media (min-width: 900px) {
+  .compare-wrap {
+    mask-image: none;
   }
 }
 

@@ -1,34 +1,47 @@
 ---
+import { withBase } from "../../../lib/base.ts";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import InstitutionTags from "../../../components/InstitutionTags.astro";
-import SaveButton from "../../../components/SaveButton.svelte";
-import CompareButton from "../../../components/CompareButton.svelte";
-import { findOffering, primaryApplicationUrl } from "../../../lib/catalog";
-import { formatTuition, hostOf, roundLabel, teachingLanguageLabel, text, windowRange, windowStatusLabel } from "../../../lib/format";
+import LiveWindows from "../../../components/LiveWindows.svelte";
+import { findOffering, officialOfferingHref, programmesBackHref, safeHttpUrl } from "../../../lib/catalog";
+import { dataClassKey, extraContextKey, fieldSep, formatTracerTuition, languageName, teachingLanguageLabel, text, degreeKey } from "../../../lib/format";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
+import { findApplyPortal } from "../../../lib/loadApplyPortals";
 import { loadCatalog } from "../../../lib/loadCatalog";
 
 export function getStaticPaths() {
   const catalog = loadCatalog();
-  return LOCALES.flatMap((locale) =>
-    catalog.offerings.map((offering) => ({ params: { locale, id: offering.id } })),
-  );
+  const ids = new Set(catalog.offerings.map((item) => item.id));
+  for (const alias of Object.keys(catalog.offeringAliases ?? {})) ids.add(alias);
+  return LOCALES.flatMap((locale) => [...ids].map((id) => ({ params: { locale, id } })));
 }
 
 const locale = localeFromParam(Astro.params.locale);
 const catalog = loadCatalog();
 const view = findOffering(catalog, Astro.params.id ?? "", new Date());
 if (!view) throw new Error("Missing offering");
-const applyUrl = primaryApplicationUrl(view.summary, view.offering.applicationUrl);
-const current = view.summary.current[0];
+const admission = view.offering.additionalLanguageRequirements.filter((item) => item.context === "admission");
+const extra = view.offering.additionalLanguageRequirements.filter((item) => item.context !== "admission");
+const sourceIds = new Set(view.windows.map((window) => window.sourceEvidenceId).filter(Boolean));
+if (view.offering.tuition.evidenceUrl) {
+  for (const row of catalog.evidence) {
+    if (row.url === view.offering.tuition.evidenceUrl) sourceIds.add(row.id);
+  }
+}
+const sources = catalog.evidence.filter((row) => sourceIds.has(row.id));
+const uniqueSources = [...new Map(sources.map((row) => [row.url, row])).values()];
+const officialHref = officialOfferingHref(view.offering, view.institution, findApplyPortal(view.institution.id));
 ---
 <BaseLayout locale={locale} title={text(view.offering.title, locale)}>
   <main id="main" class="page detail-grid">
-    <p><a href={`/${locale}/programmes`}>{t(locale, "action.back")}</a></p>
-    <p class="muted">{t(locale, "fixture.card")} · {view.offering.academicYear}</p>
+    <p><a href={programmesBackHref(locale, view.offering)}>{t(locale, "action.back")}</a></p>
+    <p class="muted">{t(locale, dataClassKey(view.offering.dataClass))} · {view.offering.academicYear === "register" || view.offering.academicYear === "unknown" ? t(locale, view.offering.academicYear === "unknown" ? "detail.unknownYear" : "inventory.year") : view.offering.academicYear}</p>
     <h1>{text(view.offering.title, locale)}</h1>
+    {view.offering.titleOriginal && view.offering.titleOriginal !== text(view.offering.title, locale) && (
+      <p class="muted">{t(locale, "detail.originalTitle")}{fieldSep(locale)}{view.offering.titleOriginal}</p>
+    )}
     <p>
-      <a href={`/${locale}/institutions/${view.institution.id}`}>{text(view.institution.displayName, locale)}</a>
+      <a href={withBase(`/${locale}/institutions/${view.institution.id}`)}>{text(view.institution.displayName, locale)}</a>
       · {text(view.institution.city, locale)}
     </p>
     <InstitutionTags locale={locale} institution={view.institution} />
@@ -41,57 +54,76 @@ const current = view.summary.current[0];
       </div>
       <div class="panel">
         <p class="muted">{t(locale, "detail.degree")}</p>
-        <p>{t(locale, `degree.${view.offering.degree}`)}</p>
+        <p>{t(locale, degreeKey(view.offering.degree))}</p>
       </div>
       <div class="panel">
         <p class="muted">{t(locale, "detail.tuition")}</p>
-        <p>{formatTuition(view.offering.tuition, locale)}</p>
+        {formatTracerTuition(view.offering.tuition, locale).map((line) => (
+          <p>{line}</p>
+        ))}
+        {view.offering.tuition.noteOriginal && <p class="disclaimer">{view.offering.tuition.noteOriginal}</p>}
       </div>
       <div class="panel">
-        <p class="muted">{t(locale, "application.currentRound")}</p>
-        <p>{windowStatusLabel(view.summary.opportunityStatus, locale)}</p>
-        {current && <p>{roundLabel(current, locale)} · {windowRange(current, locale)}</p>}
+        <p class="muted">{t(locale, "detail.year")}</p>
+        <p>{view.offering.academicYear === "register" || view.offering.academicYear === "unknown" ? t(locale, view.offering.academicYear === "unknown" ? "detail.unknownYear" : "inventory.year") : view.offering.academicYear}</p>
       </div>
+      {text(view.offering.field, locale) !== text(view.offering.title, locale) && (
+        <div class="panel">
+          <p class="muted">{t(locale, "inventory.faculty")}</p>
+          <p>{text(view.offering.field, locale)}</p>
+        </div>
+      )}
     </section>
 
-    {view.offering.additionalLanguageRequirements.map((item) => (
-      <p class="notice">
-        {t(locale, "teaching.additional")} · {item.language} / {item.context} / {item.requirement}
-        {item.note ? ` — ${text(item.note, locale)}` : ""}
-      </p>
-    ))}
-
     <section class="panel">
-      <h2>{t(locale, "application.timeline")}</h2>
-      {view.windows.length === 0 && <p>{t(locale, "application.roundUnknown")}</p>}
-      {view.windows.map((window) => (
-        <article>
-          <h3>{roundLabel(window, locale)} {window.roundLabelOriginal ? `· ${window.roundLabelOriginal}` : ""}</h3>
-          <p>{windowRange(window, locale)}</p>
-          {window.applicantScope && <p>{t(locale, "application.scope")}：{text(window.applicantScope, locale)}</p>}
-          {window.conditionalOnVacancies && <p class="notice">{t(locale, "application.vacanciesConditional")}</p>}
-          {window.applicationUrl && view.summary.opportunityStatus !== "closed" && (
-            <p>
-              <a href={window.applicationUrl} rel="noopener noreferrer" target="_blank">
-                {t(locale, "action.official")} ({hostOf(window.applicationUrl)})
-              </a>
-            </p>
-          )}
-        </article>
+      <h2>{t(locale, "detail.admissionLanguage")}</h2>
+      {admission.length === 0 && <p>{t(locale, "status.unknown")}</p>}
+      {admission.map((item) => (
+        <p>
+          {languageName(item.language, locale)}{fieldSep(locale)}{t(locale, `requirement.${item.requirement}`)}
+          {item.note ? ` — ${text(item.note, locale)}` : ""}
+        </p>
+      ))}
+    </section>
+    <section class="panel">
+      <h2>{t(locale, "detail.additionalLanguage")}</h2>
+      {extra.length === 0 && <p>{t(locale, "status.unknown")}</p>}
+      {extra.map((item) => (
+        <p class="notice">
+          {t(locale, extraContextKey(item.context))}{fieldSep(locale)}{languageName(item.language, locale)} ({t(locale, `requirement.${item.requirement}`)})
+          {item.note ? ` — ${text(item.note, locale)}` : ""}
+        </p>
       ))}
     </section>
 
-    <div class="actions">
-      {applyUrl && view.summary.opportunityStatus === "open" && (
-        <a class="btn primary" href={applyUrl} rel="noopener noreferrer" target="_blank">
-          {t(locale, "action.official")} · {hostOf(applyUrl)}
+    <LiveWindows client:load locale={locale} windows={view.windows} wholeClosed={view.offering.lifecycleOverride === "closed"} fallbackUrl={view.offering.applicationTargetKind === "general_portal" ? view.offering.generalApplyPortalUrl : view.offering.applicationUrl} applyLabel={view.offering.applicationTargetKind === "general_portal" ? t(locale, "application.generalPortal") : t(locale, "action.official")} noticeIsNotApplication={view.offering.applicationTargetKind === "general_portal"}>
+    </LiveWindows>
+    {officialHref && (
+      <p class="disclaimer">
+        {view.offering.dataClass === "official_register_extract" ? `${t(locale, "inventory.portalHelp")} ` : ""}
+        <a class="external" href={officialHref} rel="noopener noreferrer" target="_blank">
+          {t(locale, "action.officialLink")}
         </a>
-      )}
-      <SaveButton client:load locale={locale} id={`offering:${view.offering.id}`} />
-      <CompareButton client:load locale={locale} id={`offering:${view.offering.id}`} />
-    </div>
+      </p>
+    )}
     <p class="disclaimer">{t(locale, "detail.notSubmitted")}</p>
-    <p class="muted">{t(locale, "source.label")} · {t(locale, "source.verified")}：{t(locale, "status.unknown")}</p>
+    {view.offering.fetchedAt && <p class="muted">{t(locale, "detail.fetchedAt")}{fieldSep(locale)}{view.offering.fetchedAt.slice(0, 10)}</p>}
+    {view.offering.factsReviewedAt && <p class="muted">{t(locale, "detail.factsReviewedAt")}{fieldSep(locale)}{view.offering.factsReviewedAt.slice(0, 10)}</p>}
+    <p class="muted">{t(locale, "source.label")}{fieldSep(locale)}{t(locale, dataClassKey(view.offering.dataClass))}</p>
+    {uniqueSources.length > 0 && (
+      <ul>
+        {uniqueSources.map((row) => {
+          const href = safeHttpUrl(row.url);
+          return href ? (
+            <li>
+              <a class="external" href={href} rel="noopener noreferrer" target="_blank">
+                {href}
+              </a>
+            </li>
+          ) : null;
+        })}
+      </ul>
+    )}
   </main>
 </BaseLayout>
 <style>

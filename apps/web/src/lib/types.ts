@@ -9,7 +9,21 @@ export type RoundType = "regular" | "supplementary" | "rolling" | "unspecified";
 export type WindowStatus = "upcoming" | "open" | "closed" | "conditional" | "unknown";
 export type DatePrecision = "datetime" | "date" | "month" | "unknown";
 export type DegreeLevel = "bachelor" | "master" | "doctorate" | "other" | "unknown";
-export type DataClass = "ui_fixture" | "published";
+export type DataClass =
+  | "ui_fixture"
+  | "published"
+  | "official_admissions_extract"
+  | "official_register_extract"
+  | "official_career_extract";
+export type CatalogKind =
+  | "ui_fixture"
+  | "published"
+  | "tracer_not_published"
+  | "browse_with_tracer"
+  | "browse_with_inventory"
+  | "jobs_not_published";
+export type JobTrack = "assistant" | "post_master" | "postdoc";
+export type JobTrackFilter = "master_eligible" | JobTrack | "all";
 
 export interface LocalizedText {
   "zh-CN": string;
@@ -28,10 +42,13 @@ export interface CscseNotice {
 
 export interface CscseReference {
   lookupStatus: CscseLookup;
+  operatorListStatus?: "listed" | "absent" | null;
+  evidenceKind?: "official_lookup" | "operator_supplied_list" | "none" | null;
   officialMatchedName: string | null;
   matchedAwardingInstitutionId: string | null;
   lookupUrl: string;
   checkedAt: string | null;
+  operatorListDated?: string | null;
   sourceVersion: string | null;
   evidenceId: string | null;
   reviewer: string | null;
@@ -87,6 +104,13 @@ export interface Tuition {
   cycle: "year" | "semester" | "programme" | null;
   published: boolean;
   evidenceUrl: string | null;
+  noteOriginal?: string | null;
+  variants?: {
+    amount: number;
+    currency: string;
+    cycle: "year" | "semester" | "programme" | null;
+    applicantScopeOriginal: string | null;
+  }[];
 }
 
 export interface Programme {
@@ -111,8 +135,16 @@ export interface Offering {
   degree: DegreeLevel;
   durationSemesters: number | null;
   field: LocalizedText;
+  iscedF?: string | null;
   tuition: Tuition;
   applicationUrl: string | null;
+  applicationTargetKind?: "programme_page" | "general_portal" | "unknown";
+  generalApplyPortalUrl?: string | null;
+  officialProgrammeUrl?: string | null;
+  sourceLanguage?: string | null;
+  titleOriginal?: string | null;
+  fetchedAt?: string | null;
+  factsReviewedAt?: string | null;
   verifiedAt: string | null;
   dataClass: DataClass;
   lifecycleOverride: "open" | "closed" | "upcoming" | "unknown" | null;
@@ -136,6 +168,8 @@ export interface ResearchJob {
   doctoralEnrollment: "required" | "optional" | "not_required" | "unspecified";
   paidStatus: "confirmed" | "unconfirmed" | "unpaid";
   salary: Salary;
+  employmentFte: number | null;
+  employmentStartsAt: string | null;
   workingLanguages: string[];
   sourceUrl: string;
   applicationUrl: string | null;
@@ -144,10 +178,19 @@ export interface ResearchJob {
   lifecycleStatus: "open" | "closed" | "expired" | "unavailable" | "unknown";
   visibility: "public" | "archived";
   isPostdoc: boolean;
+  track?: JobTrack;
   city: LocalizedText;
+  sourceLanguage?: string | null;
+  originalText?: string | null;
+  roleSummary?: LocalizedText | null;
+  qualificationEvidence?: LocalizedText | null;
+  applicationMaterials?: LocalizedText | null;
   verifiedAt: string | null;
+  factsReviewedAt?: string | null;
   dataClass: DataClass;
   wholeOpportunityClosed: boolean;
+  lastAttemptAt?: string | null;
+  lastAttemptReason?: string | null;
 }
 
 export interface SourceEvidence {
@@ -159,13 +202,14 @@ export interface SourceEvidence {
 export interface CatalogSnapshot {
   generatedAt: string;
   dataClass: DataClass;
-  catalogKind: "ui_fixture";
+  catalogKind: CatalogKind;
   institutions: Institution[];
   programmes: Programme[];
   offerings: Offering[];
   windows: ApplicationWindow[];
   jobs: ResearchJob[];
   evidence: SourceEvidence[];
+  offeringAliases?: Record<string, string>;
 }
 
 export interface FilterQuery {
@@ -173,10 +217,12 @@ export interface FilterQuery {
   includeJointRequired: boolean;
   search: string;
   degree: DegreeLevel | "all";
+  field?: string | "all";
   city: string | "all";
+  institutionId?: string | "all";
   ownership: Ownership | "all";
   listedOnly: boolean;
-  status: "open" | "upcoming" | "closed" | "all";
+  status: "open" | "upcoming" | "closed" | "conditional" | "all";
   orientation: "research" | "applied" | "all";
   sort: "default" | "deadline";
   page: number;
@@ -185,15 +231,18 @@ export interface FilterQuery {
 
 export interface JobFilterQuery {
   masterEligible: boolean;
+  track?: JobTrackFilter;
   doctoralEnrollment: "required" | "optional" | "not_required" | "unspecified" | "all";
   workingLanguage: string | "all";
+  /** A71: derived funded-doctoral discovery control based on structured facts. */
+  fundedDoctoral: boolean;
   search: string;
   page: number;
   pageSize: number;
 }
 
 export interface WindowSummary {
-  opportunityStatus: "open" | "upcoming" | "closed" | "unknown";
+  opportunityStatus: "open" | "upcoming" | "closed" | "unknown" | "conditional";
   current: ApplicationWindow[];
   upcoming: ApplicationWindow[];
   closed: ApplicationWindow[];

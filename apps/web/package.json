@@ -3,18 +3,25 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev --host 127.0.0.1 --port 4321",
-    "build": "astro build",
+    "dev": "node scripts/run-with-published.mjs dev --host 127.0.0.1 --port 4321",
+    "build": "node scripts/run-with-published.mjs build",
     "preview": "astro preview --host 127.0.0.1 --port 4321",
-    "test": "node --experimental-strip-types --test src/lib/catalog.test.ts src/lib/i18n.test.ts",
-    "check": "astro check"
+    "test": "node --experimental-strip-types --test scripts/published-contract.test.mjs src/lib/catalog.test.ts src/lib/i18n.test.ts src/lib/storage.test.ts src/lib/institutions.test.ts src/lib/inventory.test.ts src/lib/mapProjection.test.ts src/lib/safetyStatus.test.ts src/lib/modal.test.ts src/lib/jobSearchPublished.test.ts",
+    "test:e2e": "playwright test",
+    "preview:e2e": "node scripts/preview-e2e.mjs",
+    "check": "node scripts/run-with-published.mjs check",
+    "verify:published": "node scripts/verify-published.mjs",
+    "build:pages": "node scripts/run-with-published.mjs build"
   },
   "dependencies": {
     "@astrojs/svelte": "^9.0.1",
     "astro": "^7.3.1",
+    "maplibre-gl": "^6.7.0",
     "svelte": "^5.39.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@playwright/test": "1.63.0",
     "@types/node": "^24.3.0",
     "typescript": "^5.9.2"
   }

@@ -10,6 +10,12 @@ digraph SD5 {
     otherjob [label="其他资格或证据不足\nother or unresolved", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
     uncheckedjob [label="资格未核验\nunchecked", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
   }
+  subgraph cluster_worklang {
+    graph [label="工作语言\nWorking Languages", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="worklang"];
+    worklang [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
+    worklangspecified [label="公告已说明\nspecified by the vacancy", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="worklang"];
+    worklangund [label="公告未说明（BCP 47 und）\nnot specified (BCP 47 und)", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="worklang"];
+  }
   application [label="官方申请目标\nOfficial Application Target", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   degree [label="学位要求\nDegree Requirement", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
@@ -22,16 +28,13 @@ digraph SD5 {
   jobverify [label="核验硕士资格与带薪证据\nMaster Eligibility Verifying", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   navigate [label="直达官方申请页\nApplication Opening", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   navigation [label="官方申请页导航\nExternal Navigation", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
-  pay [label="报酬与工时口径\nCompensation Terms", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  pay [label="报酬、薪资基准与实际工时\nCompensation and Workload Terms", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   phd [label="博士注册要求\nDoctoral Enrollment Requirement", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
-  save [label="收藏机会\nOpportunity Saving", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
-  shortlist [label="机会候选清单\nOpportunity Shortlist", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   user [label="申请者\nApplicant", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
-  worklang [label="工作语言\nWorking Languages", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   jobs -> degree [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition", ltail="cluster_jobs"];
   jobs -> phd [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition", ltail="cluster_jobs"];
   jobs -> pay [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition", ltail="cluster_jobs"];
-  jobs -> worklang [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition", ltail="cluster_jobs"];
+  jobs -> worklang [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition", ltail="cluster_jobs", lhead="cluster_worklang"];
   uncheckedjob -> jobverify [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
   jobverify -> eligiblejob [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
   evidence -> jobverify [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
@@ -44,9 +47,6 @@ digraph SD5 {
   jobcriteria -> jobfilter [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   catalog -> jobfilter [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   jobfilter -> jobresults [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
-  jobresults -> save [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
-  user -> save [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
-  save -> shortlist [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
   user -> navigate [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
   jobresults -> navigate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   application -> navigate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];

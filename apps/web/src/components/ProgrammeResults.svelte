@@ -1,181 +1,334 @@
 <script lang="ts">
+  import { withBase } from "../lib/base.ts";
   import {
+    canApply,
     defaultFilterQuery,
     filterOfferings,
+    filterQueryFromSearch,
+    officialOfferingHref,
     primaryApplicationUrl,
+    safeHttpUrl,
+    searchFromFilter,
+    uniqueCityOptions,
+    uniqueFieldOptions,
+    uniqueInstitutionOptions,
   } from "../lib/catalog";
   import { t } from "../lib/i18n";
   import {
-    hostOf,
+    degreeKey,
+    extraContextKey,
+    fieldSep,
+    dataClassKey,
+    formatTracerTuition,
+    languageName,
     ownershipLabel,
     recognitionKey,
     roundLabel,
     teachingLanguageLabel,
     text,
-    formatTuition,
     windowRange,
     windowStatusLabel,
   } from "../lib/format";
   import { saveTeachingLanguage } from "../lib/storage";
+  import { subscribeNow } from "../lib/clock";
+  import { fetchInventoryCatalog, loadCatalogShell } from "../lib/loadCatalogClient";
+  import { findApplyPortal } from "../lib/loadApplyPortals";
   import type { CatalogSnapshot, FilterQuery, UiLocale } from "../lib/types";
-  import SaveButton from "./SaveButton.svelte";
-  import CompareButton from "./CompareButton.svelte";
+  import { onMount } from "svelte";
+  import OfficialLink from "./OfficialLink.svelte";
+  import FilterDrawer from "./FilterDrawer.svelte";
 
-  let { catalog, locale }: { catalog: CatalogSnapshot; locale: UiLocale } = $props();
+  let { locale }: { locale: UiLocale } = $props();
 
-  let query = $state(defaultFilterQuery());
+  let catalog = $state<CatalogSnapshot>(loadCatalogShell());
+  let inventoryLoading = $state(true);
+  let inventoryError = $state(false);
+  let query = $state<FilterQuery>(filterQueryFromSearch(""));
   let now = $state(new Date());
+  let sheetOpen = $state(false);
+  let inventoryGeneration = $state(0);
 
-  function readQuery(): FilterQuery {
-    const params = new URLSearchParams(window.location.search);
-    const teaching = params.get("teachingLanguage");
-    return defaultFilterQuery({
-      teachingLanguage: teaching === "en" || teaching === "cs" || teaching === "all" ? teaching : null,
-      includeJointRequired: params.get("includeJoint") === "1",
-      search: params.get("q") ?? "",
-      degree: (params.get("degree") as FilterQuery["degree"]) || "all",
-      city: params.get("city") || "all",
-      ownership: (params.get("ownership") as FilterQuery["ownership"]) || "all",
-      listedOnly: params.get("listedOnly") === "1",
-      status: (params.get("status") as FilterQuery["status"]) || "all",
-      orientation: (params.get("orientation") as FilterQuery["orientation"]) || "all",
-      sort: params.get("sort") === "deadline" ? "deadline" : "default",
-      page: Number(params.get("page") || "1") || 1,
-    });
+  function applySearch(search: string) {
+    const parsed = filterQueryFromSearch(search);
+    query = parsed;
+    if (parsed.teachingLanguage) saveTeachingLanguage(parsed.teachingLanguage);
   }
 
-  $effect(() => {
-    query = readQuery();
-    if (query.teachingLanguage) saveTeachingLanguage(query.teachingLanguage);
-    const onPop = () => {
-      query = readQuery();
-    };
+  onMount(() => {
+    applySearch(window.location.search);
+    const onPop = () => applySearch(window.location.search);
     window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
+    const stopClock = subscribeNow((value) => {
+      now = value;
+    }, () => catalog.windows);
+    return () => {
+      window.removeEventListener("popstate", onPop);
+      stopClock();
+    };
+  });
+
+  $effect(() => {
+    const generation = inventoryGeneration;
+    void generation;
+    let cancelled = false;
+    inventoryLoading = true;
+    inventoryError = false;
+    fetchInventoryCatalog()
+      .then((full) => {
+        if (!cancelled) {
+          catalog = full;
+          inventoryLoading = false;
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          inventoryLoading = false;
+          inventoryError = true;
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
   });
 
   let result = $derived(filterOfferings(catalog, query, now, locale));
-  let cities = $derived([...new Set(catalog.institutions.map((item) => item.city[locale]))].sort());
+  let fields = $derived(uniqueFieldOptions(catalog, locale));
+  let cities = $derived(uniqueCityOptions(catalog, locale));
+  let schools = $derived(uniqueInstitutionOptions(catalog, locale, query.city));
   let pageCount = $derived(Math.max(1, Math.ceil(result.total / query.pageSize)));
 
-  function hrefWith(patch: Record<string, string | null>): string {
-    const params = new URLSearchParams(window.location.search);
-    for (const [key, value] of Object.entries(patch)) {
-      if (value == null || value === "" || value === "all") params.delete(key);
-      else params.set(key, value);
-    }
-    const qs = params.toString();
-    return `${window.location.pathname}${qs ? `?${qs}` : ""}`;
+  function syncUrl(mode: "replace" | "push") {
+    if (query.teachingLanguage) saveTeachingLanguage(query.teachingLanguage);
+    const href = `${window.location.pathname}${searchFromFilter(query)}`;
+    if (mode === "push") history.pushState(null, "", href);
+    else history.replaceState(null, "", href);
+    window.dispatchEvent(new Event("listquerychange"));
+    if (query.teachingLanguage) document.documentElement.setAttribute("data-teaching", query.teachingLanguage);
+    else document.documentElement.removeAttribute("data-teaching");
+  }
+
+  function patchQuery(patch: Partial<FilterQuery>, mode: "replace" | "push" = "replace") {
+    const next = { ...query, ...patch };
+    if (patch.page == null) next.page = 1;
+    query = next;
+    syncUrl(mode);
+  }
+
+  function toggleField(value: string) {
+    patchQuery({ field: query.field === value ? "all" : value });
+  }
+
+  function toggleCity(value: string) {
+    const city = query.city === value ? "all" : value;
+    const allowed = uniqueInstitutionOptions(catalog, locale, city);
+    const institutionId =
+      query.institutionId && query.institutionId !== "all" && allowed.some((item) => item.value === query.institutionId)
+        ? query.institutionId
+        : "all";
+    patchQuery({ city, institutionId });
+  }
+
+  function toggleInstitution(value: string) {
+    patchQuery({ institutionId: query.institutionId === value ? "all" : value });
+  }
+
+  function clearFilters() {
+    query = defaultFilterQuery({ teachingLanguage: query.teachingLanguage });
+    syncUrl("replace");
+  }
+
+  function onSubmit(event: SubmitEvent) {
+    event.preventDefault();
+    syncUrl("replace");
   }
 </script>
 
-{#if query.teachingLanguage == null}
-  <div class="empty card">
-    <h2>{t(locale, "teaching.unset.notice")}</h2>
-  </div>
-{:else}
-  <div class="layout-list">
-    <details class="filter-drawer card" open>
-      <summary>{t(locale, "filter.drawer")}</summary>
-      <form class="filters" method="get">
-        <input type="hidden" name="teachingLanguage" value={query.teachingLanguage} />
-        <label>
-          <span class="field-label">{t(locale, "search.placeholder")}</span>
-          <input type="search" name="q" value={query.search} placeholder={t(locale, "search.placeholder")} />
-        </label>
+{#if query.teachingLanguage != null}
+  <div class="layout-list" class:sheet-open={sheetOpen}>
+    <FilterDrawer bind:open={sheetOpen} {locale} labelledBy="programme-filter-title" resultCount={result.total} id="programme-filter-drawer" onsubmit={onSubmit}>
+        <p class="disclaimer">{t(locale, "filter.live")}</p>
+        <div class="chip-group">
+          <span class="field-label">{t(locale, "filter.field")}</span>
+          <div class="chip-row" role="group" aria-label={t(locale, "filter.field")}>
+            <button type="button" class="chip" aria-pressed={!query.field || query.field === "all"} onclick={() => patchQuery({ field: "all" })}>
+              {t(locale, "filter.all")}
+            </button>
+            {#each fields as field}
+              <button type="button" class="chip" aria-pressed={query.field === field.value} onclick={() => toggleField(field.value)}>
+                {field.label}
+              </button>
+            {/each}
+          </div>
+        </div>
+        <div class="chip-group">
+          <span class="field-label">{t(locale, "filter.city")}</span>
+          <div class="chip-row" role="group" aria-label={t(locale, "filter.city")}>
+            <button type="button" class="chip" aria-pressed={query.city === "all"} onclick={() => patchQuery({ city: "all", institutionId: query.institutionId })}>
+              {t(locale, "filter.all")}
+            </button>
+            {#each cities as city}
+              <button type="button" class="chip" aria-pressed={query.city === city.value} onclick={() => toggleCity(city.value)}>
+                {city.label}
+              </button>
+            {/each}
+          </div>
+        </div>
+        <div class="chip-group">
+          <span class="field-label">{t(locale, "filter.institution")}</span>
+          <div class="chip-row chip-row-scroll" role="group" aria-label={t(locale, "filter.institution")}>
+            <button type="button" class="chip" aria-pressed={!query.institutionId || query.institutionId === "all"} onclick={() => patchQuery({ institutionId: "all" })}>
+              {t(locale, "filter.all")}
+            </button>
+            {#each schools as school}
+              <button type="button" class="chip" aria-pressed={query.institutionId === school.value} onclick={() => toggleInstitution(school.value)}>
+                {school.label}
+              </button>
+            {/each}
+          </div>
+        </div>
         <label class="checkbox-row">
-          <input type="checkbox" name="includeJoint" value="1" checked={query.includeJointRequired} />
+          <input type="checkbox" bind:checked={query.includeJointRequired} onchange={() => patchQuery({})} />
           {t(locale, "teaching.joint")}
         </label>
         <label>
           {t(locale, "filter.degree")}
-          <select name="degree">
+          <select bind:value={query.degree} onchange={() => patchQuery({})}>
             <option value="all">{t(locale, "filter.all")}</option>
-            <option value="bachelor" selected={query.degree === "bachelor"}>{t(locale, "degree.bachelor")}</option>
-            <option value="master" selected={query.degree === "master"}>{t(locale, "degree.master")}</option>
-            <option value="doctorate" selected={query.degree === "doctorate"}>{t(locale, "degree.doctorate")}</option>
+            <option value="bachelor">{t(locale, "degree.bachelor")}</option>
+            <option value="master">{t(locale, "degree.master")}</option>
+            <option value="doctorate">{t(locale, "degree.doctorate")}</option>
           </select>
         </label>
         <label>
-          {t(locale, "filter.city")}
-          <select name="city">
+          {t(locale, "filter.orientation")}
+          <select bind:value={query.orientation} onchange={() => patchQuery({})}>
             <option value="all">{t(locale, "filter.all")}</option>
-            {#each cities as city}
-              <option value={city} selected={query.city === city}>{city}</option>
-            {/each}
+            <option value="research">{t(locale, "orientation.research")}</option>
+            <option value="applied">{t(locale, "orientation.applied")} ({t(locale, "orientation.applied.unverified")})</option>
           </select>
         </label>
         <label>
           {t(locale, "filter.ownership")}
-          <select name="ownership">
+          <select bind:value={query.ownership} onchange={() => patchQuery({})}>
             <option value="all">{t(locale, "filter.all")}</option>
-            <option value="public" selected={query.ownership === "public"}>{t(locale, "institution.public")}</option>
-            <option value="private" selected={query.ownership === "private"}>{t(locale, "institution.private")}</option>
-            <option value="state" selected={query.ownership === "state"}>{t(locale, "institution.state")}</option>
-            <option value="unknown" selected={query.ownership === "unknown"}>{t(locale, "institution.unknown")}</option>
+            <option value="public">{t(locale, "institution.public")}</option>
+            <option value="private">{t(locale, "institution.private")}</option>
+            <option value="unknown">{t(locale, "institution.unknown")}</option>
           </select>
         </label>
         <label class="checkbox-row">
-          <input type="checkbox" name="listedOnly" value="1" checked={query.listedOnly} />
+          <input type="checkbox" bind:checked={query.listedOnly} onchange={() => patchQuery({})} />
           {t(locale, "filter.recognition.listedOnly")}
         </label>
         <label>
           {t(locale, "filter.status")}
-          <select name="status">
+          <select bind:value={query.status} onchange={() => patchQuery({})}>
             <option value="all">{t(locale, "filter.all")}</option>
-            <option value="open" selected={query.status === "open"}>{t(locale, "status.open")}</option>
-            <option value="upcoming" selected={query.status === "upcoming"}>{t(locale, "status.upcoming")}</option>
-            <option value="closed" selected={query.status === "closed"}>{t(locale, "status.closed")}</option>
+            <option value="open">{t(locale, "status.open")}</option>
+            <option value="conditional">{t(locale, "status.conditional")}</option>
+            <option value="upcoming">{t(locale, "status.upcoming")}</option>
+            <option value="closed">{t(locale, "status.closed")}</option>
           </select>
         </label>
         <label>
           {t(locale, "sort.default")}
-          <select name="sort">
-            <option value="default" selected={query.sort === "default"}>{t(locale, "sort.default")}</option>
-            <option value="deadline" selected={query.sort === "deadline"}>{t(locale, "sort.deadline")}</option>
+          <select bind:value={query.sort} onchange={() => patchQuery({})}>
+            <option value="default">{t(locale, "sort.default")}</option>
+            <option value="deadline">{t(locale, "sort.deadline")}</option>
           </select>
         </label>
-        <button class="btn primary" type="submit">{t(locale, "filter.apply")}</button>
-        <a class="btn" href={`/${locale}/programmes?teachingLanguage=${query.teachingLanguage}`}>{t(locale, "filter.clear")}</a>
-      </form>
-    </details>
+        <button class="btn" type="button" onclick={clearFilters}>{t(locale, "filter.clear")}</button>
+    </FilterDrawer>
 
     <div>
+      <button
+        type="button"
+        class="btn primary filter-open-mobile"
+        aria-expanded={sheetOpen}
+        aria-controls="programme-filter-drawer"
+        onclick={() => (sheetOpen = true)}
+      >
+        {t(locale, "filter.drawer")} · {t(locale, "filter.count", { n: result.total })}
+      </button>
       <div class="results-head">
         <p>
           {#if query.teachingLanguage === "en"}{t(locale, "teaching.selected.en")}
           {:else if query.teachingLanguage === "cs"}{t(locale, "teaching.selected.cs")}
           {:else}{t(locale, "teaching.selected.all")}{/if}
           · {t(locale, "filter.count", { n: result.total })}
+          {#if result.total > 0}
+            · {t(locale, "pagination.pageOf", { n: query.page, total: pageCount })}
+          {/if}
+          {#if inventoryLoading}
+            · {t(locale, "inventory.loading")}
+          {/if}
+          {#if inventoryError}
+            · {t(locale, "error.partialCatalog")}
+          {/if}
         </p>
-        <a href={`/${locale}/`}>{t(locale, "teaching.change")}</a>
+        <a href={withBase(`/${locale}/programmes`)}>{t(locale, "teaching.change")}</a>
       </div>
 
-      {#if result.total === 0}
+      {#if inventoryError}
         <div class="empty card">
-          <h2>{t(locale, "empty.title")}</h2>
-          <p>{t(locale, "empty.help")}</p>
+          <h2>{t(locale, "error.loadFailed")}</h2>
+          <p>{t(locale, "error.partialCatalog")}</p>
+          <p>
+            <button class="btn" type="button" onclick={() => (inventoryGeneration += 1)}>{t(locale, "error.retry")}</button>
+          </p>
+        </div>
+      {:else if result.total === 0}
+        <div class="empty card">
+          {#if query.orientation === "applied"}
+            <h2>{t(locale, "orientation.applied.statusTitle")}</h2>
+            <p>{t(locale, "orientation.applied.statusHelp")}</p>
+          {:else}
+            <h2>{t(locale, "empty.title")}</h2>
+            <p>{t(locale, "empty.help")}</p>
+          {/if}
+          <p>
+            <button class="btn" type="button" onclick={clearFilters}>{t(locale, "filter.clear")}</button>
+          </p>
         </div>
       {:else}
         <div class="card-grid">
           {#each result.page as view}
-            {@const applyUrl = primaryApplicationUrl(view.summary, view.offering.applicationUrl)}
+            {@const applyUrl = safeHttpUrl(primaryApplicationUrl(view.summary, view.offering.applicationUrl))}
+            {@const officialUrl = officialOfferingHref(view.offering, view.institution, findApplyPortal(view.institution.id))}
             {@const current = view.summary.current[0]}
-            <article class="card">
-              <p class="muted">{text(view.institution.displayName, locale)} · {text(view.institution.city, locale)}</p>
+            <article class="card result-card">
+              <div class="card-head">
+                <p class="muted">{text(view.institution.displayName, locale)} · {text(view.institution.city, locale)}</p>
+                <span class={`status-badge status-${view.summary.opportunityStatus}`}>{windowStatusLabel(view.summary.opportunityStatus, locale)}</span>
+              </div>
               <h3>
-                <a href={`/${locale}/programmes/${view.offering.id}`}>{text(view.offering.title, locale)}</a>
+                <a href={withBase(`/${locale}/programmes/${view.offering.id}`)}>{text(view.offering.title, locale)}</a>
               </h3>
-              <div class="tags">
+              {#if text(view.offering.field, locale) && text(view.offering.field, locale) !== text(view.offering.title, locale)}
+                <p class="muted">{t(locale, "inventory.faculty")}{fieldSep(locale)}{text(view.offering.field, locale)}</p>
+              {/if}
+              <div class="card-metrics">
+                <div>
+                  <p class="metric-label">{t(locale, "detail.tuition")}</p>
+                  {#each formatTracerTuition(view.offering.tuition, locale) as line}
+                    <p class="metric-value">{line}</p>
+                  {/each}
+                </div>
+                <div>
+                  <p class="metric-label">{t(locale, "detail.duration")}</p>
+                  <p class="metric-value">
+                    {view.offering.durationSemesters
+                      ? t(locale, "detail.semesters", { n: view.offering.durationSemesters })
+                      : t(locale, "status.unknown")}
+                  </p>
+                </div>
+              </div>
+              <div class="tags tags-secondary">
                 <span class="tag">{teachingLanguageLabel(view.offering.teachingLanguages, view.offering.languageMode, locale)}</span>
-                <span class="tag">{t(locale, `degree.${view.offering.degree === "unknown" ? "master" : view.offering.degree}`)}</span>
-                {#if view.offering.durationSemesters}
-                  <span class="tag">{t(locale, "detail.semesters", { n: view.offering.durationSemesters })}</span>
-                {/if}
-                <span class="tag">{t(locale, "detail.tuition")}：{formatTuition(view.offering.tuition, locale)}</span>
+                <span class="tag">{t(locale, degreeKey(view.offering.degree))}</span>
                 <span class={`tag ownership-${view.institution.ownership}`}>{ownershipLabel(view.institution.ownership, locale)}</span>
                 <span class={`tag cscse-${view.institution.cscseReference.lookupStatus}`}>{t(locale, recognitionKey(view.institution.cscseReference.lookupStatus))}</span>
-                <span class={`tag status-${view.summary.opportunityStatus}`}>{windowStatusLabel(view.summary.opportunityStatus, locale)}</span>
+                <span class="tag">{t(locale, dataClassKey(view.offering.dataClass))}</span>
               </div>
               {#if current}
                 <p>
@@ -183,26 +336,26 @@
                   · {windowRange(current, locale)}
                 </p>
               {:else}
-                <p>{t(locale, "application.opensUnknown")} — {t(locale, "status.unknown")}</p>
+                <p>{t(locale, "application.opensUnknown")}</p>
               {/if}
               {#each view.offering.additionalLanguageRequirements as extra}
                 {#if extra.requirement === "required"}
-                  <p class="notice">{extra.note ? text(extra.note, locale) : t(locale, "teaching.additional")}</p>
+                  <p class="notice">{extra.note ? text(extra.note, locale) : `${t(locale, extraContextKey(extra.context))}${fieldSep(locale)}${languageName(extra.language, locale)}`}</p>
                 {/if}
               {/each}
               {#each view.institution.cscseReference.notices.filter((item) => item.active) as notice}
-                <p class="notice">{t(locale, "recognition.notice")}：{text(notice.text, locale)}</p>
+                <p class="notice">{t(locale, "recognition.notice")}{fieldSep(locale)}{text(notice.text, locale)}</p>
               {/each}
               <div class="actions">
-                {#if applyUrl && view.summary.opportunityStatus === "open"}
-                  <a class="btn primary" href={applyUrl} rel="noopener noreferrer" target="_blank">
-                    {t(locale, "action.official")}
-                    <span class="muted">({hostOf(applyUrl)} · {t(locale, "action.external")})</span>
-                  </a>
+                {#if applyUrl && canApply(view.summary)}
+                  <OfficialLink {locale} href={applyUrl} label={t(locale, "action.official")} primary />
+                  {#if officialUrl && officialUrl !== applyUrl}
+                    <OfficialLink {locale} href={officialUrl} />
+                  {/if}
+                {:else if officialUrl}
+                  <OfficialLink {locale} href={officialUrl} />
                 {/if}
-                <a class="btn" href={`/${locale}/programmes/${view.offering.id}`}>{t(locale, "action.siteInterpretation")}</a>
-                <SaveButton {locale} id={`offering:${view.offering.id}`} />
-                <CompareButton {locale} id={`offering:${view.offering.id}`} />
+                <a class="btn" href={withBase(`/${locale}/programmes/${view.offering.id}`)}>{t(locale, "action.siteInterpretation")}</a>
               </div>
               <p class="disclaimer">{t(locale, "detail.notSubmitted")}</p>
             </article>
@@ -211,11 +364,11 @@
         {#if pageCount > 1}
           <p class="actions">
             {#if query.page > 1}
-              <a class="btn" href={hrefWith({ page: String(query.page - 1) })}>{t(locale, "pagination.prev")}</a>
+              <button class="btn" type="button" onclick={() => patchQuery({ page: query.page - 1 }, "push")}>{t(locale, "pagination.prev")}</button>
             {/if}
-            <span>{t(locale, "pagination.page", { n: query.page })}</span>
+            <span>{t(locale, "pagination.pageOf", { n: query.page, total: pageCount })}</span>
             {#if query.page < pageCount}
-              <a class="btn" href={hrefWith({ page: String(query.page + 1) })}>{t(locale, "pagination.next")}</a>
+              <button class="btn" type="button" onclick={() => patchQuery({ page: query.page + 1 }, "push")}>{t(locale, "pagination.next")}</button>
             {/if}
           </p>
         {/if}

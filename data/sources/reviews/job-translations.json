@@ -1,0 +1,961 @@
+{
+  "schemaVersion": 1,
+  "note": "Explicit per-locale editorial review records bound to canonical fact and translation hashes (fact-v1). The reviewer role is operator_source_review: an internal source-and-language review, not an external human certification. Changing salary, eligibility, original text, or translated titles invalidates approval.",
+  "reviews": {
+    "job-cuni-cenmas-asia-postdoc": {
+      "sourceHash": "sha256:b53e59b039ed8406a60740b960d0dc3f2349e59d9d3061e4bcbe370b5c9276d5",
+      "evidenceHash": "sha256:b53e59b039ed8406a60740b960d0dc3f2349e59d9d3061e4bcbe370b5c9276d5",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-12-a70b-01",
+      "reviewedAt": "2026-09-12T19:50:41Z",
+      "reviewNote": "Re-review after extractor correction (A67). The salary is stated as a monthly range 2,000-2,600 EUR with full-time employment; the notice gives no tax basis for the range, which stays unknown. Doctoral enrollment is not stated in the notice. Title translations unchanged from the prior review; facts re-bound to current evidence.",
+      "title": {
+        "zh-CN": "亚洲比较区域研究博士后研究员",
+        "en": "Researcher in Comparative Area Studies, with a Focus on Asia (Postdoctoral level)",
+        "cs": "Researcher in Comparative Area Studies, with a Focus on Asia (Postdoctoral level)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:50:41Z",
+          "contentHash": "sha256:6f79cddf51eb52585c1c8dd86424ba134354737993b623478e3425d5335be510"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:50:41Z",
+          "contentHash": "sha256:2dce8aa1c324e3ebbc4c0b334cb948f20f07ccd144eca60f260bd480760ad85c"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:50:41Z",
+          "contentHash": "sha256:2dce8aa1c324e3ebbc4c0b334cb948f20f07ccd144eca60f260bd480760ad85c"
+        }
+      },
+      "factHash": "sha256:02cd9b7c39dd9b03356da755fc96bde134d4d0da942e547f12c7630e15fc1f8d"
+    },
+    "job-cuni-d3s-postdoc": {
+      "sourceHash": "sha256:3270a2b40a0495f1220c3dfac325bb668ef59e5dc854f31d72a4ab11915b11dc",
+      "evidenceHash": "sha256:3270a2b40a0495f1220c3dfac325bb668ef59e5dc854f31d72a4ab11915b11dc",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-12-a70b-02",
+      "reviewedAt": "2026-09-12T19:50:41Z",
+      "reviewNote": "Re-review after extractor correction (A67). The notice states 'competitive salary - approx. 2900 EUR gross' without a payroll period, so the cycle stays unspecified instead of an inferred monthly value. Title translations unchanged from the prior review.",
+      "title": {
+        "zh-CN": "高可靠可信系统软件架构博士后研究员",
+        "en": "Postdoctoral Research Positions in software architectures for dependable and trustworthy systems",
+        "cs": "Postdoctoral Research Positions in software architectures for dependable and trustworthy systems"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:50:41Z",
+          "contentHash": "sha256:f14de9fa9118615ca07fac4ff9f11c5f5368e64d1aa550df1440cc7df7e1cc49"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:50:41Z",
+          "contentHash": "sha256:d4430fccc1d98ebb1b571f37066670fe059ead15f56a9fdd2633e490d5be4fd8"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:50:41Z",
+          "contentHash": "sha256:d4430fccc1d98ebb1b571f37066670fe059ead15f56a9fdd2633e490d5be4fd8"
+        }
+      },
+      "factHash": "sha256:b415c587a9d504e9dec99d00f570018e03101718ee0150b0eb7a684a66b53fb5"
+    },
+    "job-cuni-mff-academic-researcher-ksvi": {
+      "sourceHash": "sha256:6b9beb964967f876a33982156ba318fd8b917c5fb984e95feb049be7a5a0f6d2",
+      "revokedReason": "The refreshed listing bundle no longer provides vacancy-level degree, compensation, or working-language evidence.",
+      "title": {
+        "zh-CN": "软件与计算机科学教育系学术研究员",
+        "en": "Academic Researcher at the Department of Software and Computer Science Education",
+        "cs": "Academic Researcher at the Department of Software and Computer Science Education"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "revoked",
+          "reviewedAt": "2026-09-07T00:00:00Z"
+        },
+        "en": {
+          "status": "revoked",
+          "reviewedAt": "2026-09-07T00:00:00Z"
+        },
+        "cs": {
+          "status": "revoked",
+          "reviewedAt": "2026-09-07T00:00:00Z"
+        }
+      }
+    },
+    "job-cuni-mff-research-fellow-ucjf": {
+      "sourceHash": "sha256:6b9beb964967f876a33982156ba318fd8b917c5fb984e95feb049be7a5a0f6d2",
+      "revokedReason": "The refreshed listing bundle no longer provides vacancy-level degree, compensation, or working-language evidence.",
+      "title": {
+        "zh-CN": "粒子与核物理研究所研究员",
+        "en": "Research Fellow at the Institute of Particle and Nuclear Physics",
+        "cs": "Research Fellow at the Institute of Particle and Nuclear Physics"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "revoked",
+          "reviewedAt": "2026-09-07T00:00:00Z"
+        },
+        "en": {
+          "status": "revoked",
+          "reviewedAt": "2026-09-07T00:00:00Z"
+        },
+        "cs": {
+          "status": "revoked",
+          "reviewedAt": "2026-09-07T00:00:00Z"
+        }
+      }
+    },
+    "job-41000-1601": {
+      "sourceHash": "sha256:4163a8e49b1c133eb9c2943479002c938ec53be2087a853caf9a3c16e0dedda8",
+      "evidenceHash": "sha256:4163a8e49b1c133eb9c2943479002c938ec53be2087a853caf9a3c16e0dedda8",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-12-a70-05",
+      "reviewedAt": "2026-09-12T19:37:52Z",
+      "reviewNote": "Re-review after source change. The prior notice's deadline (2026-09-07) no longer appears; the current notice adds the department, expanded duties and states workload 1.0 with start 2026-10-01, with no application deadline. Salary basis 60,000 CZK gross for full time is unchanged. The old approval is superseded by this review; the window is unknown, not open.",
+      "title": {
+        "zh-CN": "工程学院知识转移助理（A2）",
+        "en": "Faculty of Engineering Knowledge Transfer Assistant – A2",
+        "cs": "TF_Asistent znalostního transferu – A2"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:5365e877bfddf7bed78865c8e987765dbfb65329bc6fa71e24cf8a7299567cc7"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:0305cdac45af941fc42ade0d5f59c793052e5e4eba3b6c459cdfd46ceb222c14"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:b466a826ac25066a54c0bee02ff5d7c229344f9388dd7cd5953bf3968f3cb30f"
+        }
+      },
+      "factHash": "sha256:ec161b7f73db1fa34777c2b1344781209ac5a38ac8f3696c651e3a583f0b253e"
+    },
+    "job-41000-1602": {
+      "sourceHash": "sha256:ee684891a09eb7e7d441a8a0b7122b7f0c6a43e4ef58ff871c32446b7e2b1cef",
+      "title": {
+        "zh-CN": "工程学院知识转移助理（A1）",
+        "en": "Faculty of Engineering Knowledge Transfer Assistant – A1",
+        "cs": "TF_Asistent znalostního transferu – A1"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T07:45:00Z",
+          "contentHash": "sha256:eeb37fe0daeaf2ad5b1848b13f2390ad9ad6f3ac4847fc25b52c863b597342e0"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T07:45:00Z",
+          "contentHash": "sha256:ce8d983c587d1c4cee8678457e8a0884685974bbd3c691eefa6d3c54e93967d4"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T07:45:00Z",
+          "contentHash": "sha256:940176050b24ec77e02d3c5ee7bff53a16238a3d2c315609274c78a078a334e3"
+        }
+      },
+      "normalizationVersion": "fact-v1",
+      "factHash": "sha256:0da431440e1d50b93f347259529703caf4ed5c0f5cc6b62e20501cb74a5f10e9",
+      "evidenceHash": "sha256:ee684891a09eb7e7d441a8a0b7122b7f0c6a43e4ef58ff871c32446b7e2b1cef",
+      "reviewer": {
+        "role": "operator_source_review"
+      }
+    },
+    "job-41000-1603": {
+      "sourceHash": "sha256:889ebb9eeb663c29da25fd7e3e4239ce2da58a8e0af06d7ae49e975e041c142f",
+      "title": {
+        "zh-CN": "工程学院知识转移助理（D1）",
+        "en": "Faculty of Engineering Knowledge Transfer Assistant – D1",
+        "cs": "TF_Asistent znalostního transferu D1"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T07:45:00Z",
+          "contentHash": "sha256:63740922117f9b053e530f42efd9276f642f2d6da8c1aaec78ff5ad16a99c779"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T07:45:00Z",
+          "contentHash": "sha256:e7fc569f03221468edda6d36c0ffd9952272e8d67eb7d7ebb73927e8a49ef577"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T07:45:00Z",
+          "contentHash": "sha256:134263681c9f98a13a18b2d153ffcfc89359757cbfd303eacd8f701369340e29"
+        }
+      },
+      "normalizationVersion": "fact-v1",
+      "factHash": "sha256:a5fbe6762dca15e7ef78697be64e05d688e5ac824bc26bea4733fb24f6017a16",
+      "evidenceHash": "sha256:889ebb9eeb663c29da25fd7e3e4239ce2da58a8e0af06d7ae49e975e041c142f",
+      "reviewer": {
+        "role": "operator_source_review"
+      }
+    },
+    "job-41000-1604": {
+      "sourceHash": "sha256:7bf361dd952f3c548ecb5a4ac19044594eab72b58a3e1d1a2ac377309bb70056",
+      "title": {
+        "zh-CN": "工程学院知识转移助理（T1）",
+        "en": "Faculty of Engineering Knowledge Transfer Assistant – T1",
+        "cs": "TF_Asistent znalostního transferu – T1"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T07:45:00Z",
+          "contentHash": "sha256:54ef454d4d3836b3a205e1c1503400df115958effa6ce49fd207cf68a8c8ddf3"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T07:45:00Z",
+          "contentHash": "sha256:2e156504052f1cfbad426a5f1049c5394053c374fcff0d96704c2709a9507b3b"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T07:45:00Z",
+          "contentHash": "sha256:668cecdca8bdf9644dfdff75ecf94b6b98d12faaa650dc4b6eda99c9744e14d6"
+        }
+      },
+      "normalizationVersion": "fact-v1",
+      "factHash": "sha256:2401359d325e259de533adcc31bfa35dad1e3271598ae440a6c0c6d082bf651c",
+      "evidenceHash": "sha256:7bf361dd952f3c548ecb5a4ac19044594eab72b58a3e1d1a2ac377309bb70056",
+      "reviewer": {
+        "role": "operator_source_review"
+      }
+    },
+    "job-14000-81369": {
+      "sourceHash": "sha256:8cb7f08e1f8ef960ba9d622a81de776fa143891548acb67cecb8c7bcddfbbb95",
+      "evidenceHash": "sha256:8cb7f08e1f8ef960ba9d622a81de776fa143891548acb67cecb8c7bcddfbbb95",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-12-a70-01",
+      "reviewedAt": "2026-09-12T19:37:52Z",
+      "reviewNote": "Reviewed against the live official page: MSc or equivalent required, part-time contract complemented by a PhD stipend; no amount stated. Deadline 2026-11-30, start February 2027.",
+      "title": {
+        "zh-CN": "博士候选人：病毒如何劫持细胞的蛋白质工厂",
+        "en": "PhD Candidate: How do viruses hijack the cell's protein factory?",
+        "cs": "Kandidát na PhD: Jak viry unesou buněčnou proteinovou továrnu"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:397930a1f505015b309d3e7fef1e331907bc58b752887c83199b78d90278d202"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:393f72184c6ec2e212abfe4d423fcad6947956bb9c775d24fb5759f111053ead"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:047a2fe075f77c00878629135cef870250b31221c2d16545974500c4a31bc6e1"
+        }
+      },
+      "factHash": "sha256:5aa8a93c2ad46b6d86af3e39807237963ed1d2d06e4a7f3dc205349eb683cc79"
+    },
+    "job-14000-81652": {
+      "sourceHash": "sha256:af37278d46a7584328cbec06c947bb9a594857941f7d94bcf29a382bcd92e21d",
+      "evidenceHash": "sha256:af37278d46a7584328cbec06c947bb9a594857941f7d94bcf29a382bcd92e21d",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-12-a70-02",
+      "reviewedAt": "2026-09-12T19:37:52Z",
+      "reviewNote": "Reviewed against the live official page: Master's degree required, 4-year Ph.D. programme with financial support, 0.5 FTE part-time employment (20 hours/week); no amount stated, funding recorded as a mixed package. Deadline 2026-09-20.",
+      "title": {
+        "zh-CN": "RECETOX 博士奖学金职位",
+        "en": "Ph.D. Fellowship (RECETOX)",
+        "cs": "Doktorandské stipendium RECETOX"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:fc8a1daee9719fc1f13a3d5c13249a031f81c27421234528eb4bfd626c19e05b"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:e5509128586625e32ba5416f3b2502886d81d682151a6827cecbc7152825ac8e"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:a21a780439c24d4cf8bf4f7d779ca89ed393da224632f8bfb59fc6f1a40e933b"
+        }
+      },
+      "factHash": "sha256:13d329b0cafc2a18a8b2dda6b67bed8d294db6331547adb256506c0e65933ad0"
+    },
+    "job-14000-81700": {
+      "sourceHash": "sha256:ec31dfd8aa99409be4ec6ac84dfc9f5f689262fc2f804a991aede0c4693fd461",
+      "evidenceHash": "sha256:ec31dfd8aa99409be4ec6ac84dfc9f5f689262fc2f804a991aede0c4693fd461",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-12-a70-03",
+      "reviewedAt": "2026-09-12T19:37:52Z",
+      "reviewNote": "Reviewed against the live official page: master-level research specialist role; compensation described without a numeric amount, so no amount is published. Doctoral enrollment is not stated and stays unspecified. Deadline 2027-01-08.",
+      "title": {
+        "zh-CN": "结构生物学研究专员",
+        "en": "Research Specialist in Structural Biology",
+        "cs": "Výzkumný specialista ve strukturní biologii"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:46dfffb7ba2f56fa2f6de4bc32db1cb9863b245d96dd288374e3fc1e1584fe20"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:050e2f36d2004d8a51516e82d5aec85889b035e52197e996631513586b004335"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:71cf14798430339039c88281b533328ecb6a449945b56a5c79b1b20b9376e012"
+        }
+      },
+      "factHash": "sha256:d7ff601981719c0588c8b7e4ba334de2dd98b1414dc330f8fbcc1b74cd7853bf"
+    },
+    "job-14000-81701": {
+      "sourceHash": "sha256:6e265ebd9484793a43b12df175bd1d7362fffc9ce2b62077c53d1b152c8f85f6",
+      "evidenceHash": "sha256:6e265ebd9484793a43b12df175bd1d7362fffc9ce2b62077c53d1b152c8f85f6",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-12-a70-04",
+      "reviewedAt": "2026-09-12T19:37:52Z",
+      "reviewNote": "Reviewed against the live official page: MSc or equivalent required, doctoral position with ERC-funded salary starting at 30,000 CZK net; the source states no payroll cycle, which stays unspecified. Deadline 2027-01-08 with rolling review. Supersedes no prior approval.",
+      "title": {
+        "zh-CN": "真核翻译调控结构生物学全资助博士职位",
+        "en": "Fully Funded PhD Position in Structural Biology of Eukaryotic Translation Control",
+        "cs": "Plně financovaná doktorská pozice ve strukturní biologii regulace eukaryotické translace"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:937a23a41eda93ae0cdf5ac3d68ad1862092f9b589924486b5e325bedf92ed2d"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:07e471df29c339a478d8952a1acd52de4f6a5a3644b6a6d6a1e0a5a193a12417"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-12T19:37:52Z",
+          "contentHash": "sha256:2279e648f375483555ec15f247c18c9a78891d384b571870534db52f16419789"
+        }
+      },
+      "factHash": "sha256:ecaced74c5728b627c2d52359f6288f053d706379def49735014570316650239"
+    },
+    "job-18000-04276d9b86f1": {
+      "sourceHash": "sha256:b29955481bb861fe6ba4a773e3565c5a0b7d65c36f85c486c28370deac9669aa",
+      "evidenceHash": "sha256:b29955481bb861fe6ba4a773e3565c5a0b7d65c36f85c486c28370deac9669aa",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-01",
+      "reviewedAt": "2026-09-13T16:39:48Z",
+      "reviewNote": "Reviewed against the live advert after the Packet 3 classification fix: body states 'The postdoctoral researcher will work closely with PhD and MSc students' and 'a three-year full-time postdoctoral position' — mentoring PhD students is not an enrollment requirement. Salary/deadline as for the PRF call.",
+      "title": {
+        "zh-CN": "古生物分子博士后研究员（历史样本的基因组学、蛋白质组学与病原体检测）",
+        "en": "Ancient Biomolecules: Genomics, Proteomics and Pathogen Detection in Historical Samples",
+        "cs": "Postdoktorand — starobé biomolekuly: genomika, proteomika a detekce patogenů v historických vzorcích"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:0561b59be78285176d6938ee418c0b596f71d26aeb5dd57268ece6131705d045"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:ec70702221891318c1e7cb9eb5a667e75ab3d7bc10bd5d3b10260078b924d16a"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:fd25473a2038127264af009a3eec3a193a3fab3ce0739b1080692cf8bf1a575a"
+        }
+      },
+      "factHash": "sha256:c5151d711dbc037faa4372bd0690d4967fe5772bc9888985c44adb13f957cbc5"
+    },
+    "job-18000-0b0de28455a7": {
+      "sourceHash": "sha256:ce3830bf1bbfae473f806609ea320dc90f7de045f95c7d88d635886c89659bc2",
+      "evidenceHash": "sha256:ce3830bf1bbfae473f806609ea320dc90f7de045f95c7d88d635886c89659bc2",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-02",
+      "reviewedAt": "2026-09-13T16:39:48Z",
+      "reviewNote": "Reviewed against the live advert: PhD required; three-year role; Part-time or Full-time, on-site (no definite FTE); gross monthly salary 46,000 CZK plus bonuses; deadline 2026-10-02; start January 2027 (month precision — no exact date invented); applications by e-mail per Dean's Decision No. 09/2026. Postdoc: all-track scope only.",
+      "title": {
+        "zh-CN": "生物有机化学博士后研究员（神经退行性疾病线粒体酶调节剂）",
+        "en": "Postdoctoral Researcher in Bioorganic Chemistry (Modulators of Mitochondrial Enzymes in Neurodegeneration)",
+        "cs": "Postdoktorand v bioorganické chemii (modulátory mitochondriálních enzymů při neurodegeneraci)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:0dcb66575cfd6517b55d48e0c8efae3e55b9a25a3ec875f8fd2b597b806395c5"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:614e40c4b57e8e43e1de6f67abac701377e10fb87fd5e76e9ed1abdec4c77897"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:8e27da730e72694e14eb059541885ef63efd2dec5d414a3e1f6f331b057f5391"
+        }
+      },
+      "factHash": "sha256:070641190c690f05ac0f0f786ad2a1e941147906ec5d24c3b3685c92c80e59a8"
+    },
+    "job-18000-53bb0a840389": {
+      "sourceHash": "sha256:2a073aae59fd95116b90f513a49bf4ef1d6b2da7bc54b41e209da47d07fada83",
+      "evidenceHash": "sha256:2a073aae59fd95116b90f513a49bf4ef1d6b2da7bc54b41e209da47d07fada83",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-03",
+      "reviewedAt": "2026-09-13T16:39:48Z",
+      "reviewNote": "Reviewed against the live advert: PhD required; Full-time, on-site; gross monthly 46,000 CZK plus bonuses; deadline 2026-10-02; start January 2027 (month precision). Postdoc: all-track scope only.",
+      "title": {
+        "zh-CN": "宇宙学、修正引力与引力物理博士后研究员",
+        "en": "Postdoctoral Researcher in Cosmology, Modified Gravity and Gravitational Physics",
+        "cs": "Postdoktorand v kosmologii, modifikované gravitaci a gravitační fyzice"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:3ec12c334328b018ef0a200f9b6446fd1f37f23e6f866776448dc4b723fb7bbe"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:7f172b742d1a846112c98833ad7de8d6a26fe19625cc2eb65c4ff1353569b12f"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:a90fbe7dc866096db0aee69b46540136c4fb33885dfb089646210308ed4d7850"
+        }
+      },
+      "factHash": "sha256:5d6e321bf42965a80af464b307066b24edd61d7b69be1a7088321c1e6a311c10"
+    },
+    "job-18000-7d6694cc18df": {
+      "sourceHash": "sha256:889d6a79ea6c3c226123a85c9953869c8e61167129a062b6eb917c94a43dfec7",
+      "evidenceHash": "sha256:889d6a79ea6c3c226123a85c9953869c8e61167129a062b6eb917c94a43dfec7",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-04",
+      "reviewedAt": "2026-09-13T16:39:48Z",
+      "reviewNote": "Reviewed against the live advert: PhD required; Part-time or Full-time, on-site; gross monthly 46,000 CZK plus bonuses; deadline 2026-10-02; start January 2027 (month precision).",
+      "title": {
+        "zh-CN": "分析化学博士后研究员（代谢组学分析）",
+        "en": "Postdoctoral Researcher in Analytical Chemistry (Metabolomic Analysis)",
+        "cs": "Postdoktorand v analytické chemii (metabolomická analýza)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:497f5f9adc12f958ccba64639168547545522f9bc0e0ba0258462d0663ca2c1b"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:5b1aa7857c6fae1d4ff13645e63ca2479827eddcc964333e43c7f1c81c3db107"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:652f701a20118145ffd4562eb70eb611b11f2797101f9fef809f383acfecdb40"
+        }
+      },
+      "factHash": "sha256:11a7380017b2e7befbc69c93f458b5945bcaa56c6ed02113d1f92d5078fadc31"
+    },
+    "job-18000-a17b80cb7ea5": {
+      "sourceHash": "sha256:a54c7a7ae22e4488b8b612e64a234b249840d898df3c8edbc8ed0b7415941c8c",
+      "evidenceHash": "sha256:a54c7a7ae22e4488b8b612e64a234b249840d898df3c8edbc8ed0b7415941c8c",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-05",
+      "reviewedAt": "2026-09-13T16:39:48Z",
+      "reviewNote": "Reviewed against the live advert: PhD required; Part-time or Full-time, on-site; gross monthly 46,000 CZK plus bonuses; deadline 2026-10-02; start January 2027 (month precision).",
+      "title": {
+        "zh-CN": "生物化学博士后研究员（PDZ 结构域研究）",
+        "en": "Postdoctoral Researcher in Biochemistry (Study of PDZ Domains)",
+        "cs": "Postdoktorand v biochemii (studium PDZ domén)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:767591def75a63d1025358ca4b0308a21125278b191df3e44617ff86aefa5b86"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:f50579e2b60dd8a21e67bcac714a40d5e6a9440bc4e1130d7bf21c6b7098a849"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T16:39:48Z",
+          "contentHash": "sha256:83397bdb4ccab621a4ce032e4f4c0585311ccd25c9d2ca9b77ea2dac54cec093"
+        }
+      },
+      "factHash": "sha256:4e4e4bc66cd366548ce29bd6be8ef9539ce05e4318f7e31912ba9bbef6b42d29"
+    },
+    "job-17000-174": {
+      "sourceHash": "sha256:b536e1f1039dc303c883a311590d312f023834fefeb0f2f962b9277064c0f676",
+      "evidenceHash": "sha256:b536e1f1039dc303c883a311590d312f023834fefeb0f2f962b9277064c0f676",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-osu-01",
+      "reviewedAt": "2026-09-13T17:21:14Z",
+      "reviewNote": "Enumerated requirements list VŠ education in a medical field with no doctorate; 'Zájem o zařazení do doktorského studia' is listed as an advantage → doctoral enrollment optional. English B2 and Czech C1/C2 required. Salary follows the internal pay scale (no amount stated). Intended start October 2026; FTE not stated as a usable number.",
+      "title": {
+        "zh-CN": "精神病学方向讲师",
+        "en": "Lecturer with a focus on psychiatry",
+        "cs": "Lektor/lektorka se zaměřením na psychiatrii"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:0b37e756adfc4d538acf44e4119ccbdd262fb83f3dad9dcb8a2842bab3f8aa10"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:1c4a6723f8d5e1cdb66ca9388b3f032e2470d075cc01d3fddfdbe56cc9ee3d8e"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:82460101924ee2a89e1f89254e8dfab13ac70d8ed2bb48a47707502cfd850db2"
+        }
+      },
+      "factHash": "sha256:75a0bcda6e4bda43533df542cc10d9919817dab6eaa5145693bad83fab680e74"
+    },
+    "job-17000-177": {
+      "sourceHash": "sha256:631abde87083ee8f532f93842fac425a83cbb1c21c7650e7f40d986698ff1b95",
+      "evidenceHash": "sha256:631abde87083ee8f532f93842fac425a83cbb1c21c7650e7f40d986698ff1b95",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-osu-02",
+      "reviewedAt": "2026-09-13T17:21:14Z",
+      "reviewNote": "Ukončené Ph.D. required; English at least B2; selection in Czech and English; deadline 2026-09-21. Postdoc: all-track scope only.",
+      "title": {
+        "zh-CN": "初级研究员／博士后（生物力学、身体活动、MRI 与健康方向）",
+        "en": "Researcher – junior/postdoc (biomechanics, physical activity, MRI and health)",
+        "cs": "VP4 Odborný pracovník / odborná pracovnice – junior/postdoc (v oblasti biomechaniky, pohybové aktivity, MRI a zdraví)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:d916442eb2bd0fd5df27aef2a38797ab4a14487b163134803a558b07f8ab5834"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:2dbce87c5166e4e91d6a1ff96f7820994739de79bff55460ca20d283540da791"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:d57b1360cdcdc1fe0abadb57eff4401ea7e7b0140ab8e509cb50433334c92e39"
+        }
+      },
+      "factHash": "sha256:3f70737b800f47e819350b5c936c73a1ac7931fe726606b6c2f89426a1226389"
+    },
+    "job-17000-181": {
+      "sourceHash": "sha256:5dfc8795dff60b61265f90943d0c35c1921b3a0de89851172f8dcba7b0a4b4b7",
+      "evidenceHash": "sha256:5dfc8795dff60b61265f90943d0c35c1921b3a0de89851172f8dcba7b0a4b4b7",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-osu-03",
+      "reviewedAt": "2026-09-13T17:21:14Z",
+      "reviewNote": "Doktorský titul (Ph.D.) required; selection process conducted in Czech; deadline 2026-09-30. Focused on sustainable development within FORD 5. Postdoc: all-track scope only.",
+      "title": {
+        "zh-CN": "博士后研究员 I（可持续发展方向）",
+        "en": "Postdoc I",
+        "cs": "Postdoktorand I"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:ed0856a2cba3ef7d39a897c526676f3574ba84a4c79fa2d4a30949ec164725fc"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:3d8583ffe8ad52e6dbeedd7437191f0ba5dfb4fa07be63756d07d950e261828b"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:f39a1e4f32d98c7753eb754d28b8e4d20ed2f3dd355c507b52c1e4193f2d4d81"
+        }
+      },
+      "factHash": "sha256:16747a3797d090ab0d7aa0150692b838d31ce0466793dde97405fda5ccc1a7df"
+    },
+    "job-17000-183": {
+      "sourceHash": "sha256:0d27641f0ec4eda39bbfaab3132e1513dcdc0d625d128215eb1df1c63b9fac65",
+      "evidenceHash": "sha256:0d27641f0ec4eda39bbfaab3132e1513dcdc0d625d128215eb1df1c63b9fac65",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-osu-04",
+      "reviewedAt": "2026-09-13T17:21:14Z",
+      "reviewNote": "Requires completed doctoral degree (Andragogy/Pedagogy or related); English B2, Czech C2; FTE 1.0, fixed-term; start from 2026-11-01; deadline 2026-10-06; research level R2.",
+      "title": {
+        "zh-CN": "成人教育学、成人教育评估与人力资源管理方向助理教授",
+        "en": "Assistant Professor in Andragogy, Adult Education Evaluation and HR Management",
+        "cs": "Odborný asistent / odborná asistentka se zaměřením na andragogiku, evaluaci ve vzdělávání dospělých a řízení lidských zdrojů"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:1071e12b852847cb9c86dbabef384f5c3e6e0f4ce5c02b918c3d86618ed28ea0"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:0e987d371c53357966775e8415497b5ad4047997c6a50c63a172189e43c11ffb"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:7db2e2cfd498377624b4910b57c37aa5b1d2c186c866fd3dbb64665959bfc750"
+        }
+      },
+      "factHash": "sha256:68711cb00b9451ee3b247275a6fab4f3504e66fb64d09a0200151e07f8d5a4f5"
+    },
+    "job-17000-184": {
+      "sourceHash": "sha256:81af2030ad9bf614889ddec73b3edbac9870d7d97319e01c41c5728c7159bc00",
+      "evidenceHash": "sha256:81af2030ad9bf614889ddec73b3edbac9870d7d97319e01c41c5728c7159bc00",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-osu-05",
+      "reviewedAt": "2026-09-13T17:21:14Z",
+      "reviewNote": "Requires bachelor's or master's education in biology/biotechnology or related — minimum recorded as bachelor; English at least B1 for work with international researchers; deadline 2026-10-04.",
+      "title": {
+        "zh-CN": "血液肿瘤学方向实验室技术员／研究技术员",
+        "en": "Laboratory Technician / Research Technician in Haemato-oncology",
+        "cs": "Laborant/laborantka nebo technik/technička se zaměřením na hematoonkologii"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:3e706af159da9061eed2dec0fd9e34bf9439530c71f0a558dda3070432a26acf"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:db007fb8c61a611cff7962b731a4d1a2851e6f3535ceaed3f016d096256155d8"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:2eb6cf41daa55533741dbbb2e3641af75d180c6ab5a51ac1b7b30ad318284050"
+        }
+      },
+      "factHash": "sha256:ccd1ba3a4b5945fcf20dc7b064aa5e9a1e3402397e468f6ab76545e8e5944aaa"
+    },
+    "job-17000-186": {
+      "sourceHash": "sha256:42d58ddc10bc589ba578c91098ad047d7bbeb3d0a3ad777724d3adcdd5f7a8b6",
+      "evidenceHash": "sha256:42d58ddc10bc589ba578c91098ad047d7bbeb3d0a3ad777724d3adcdd5f7a8b6",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5-osu-06",
+      "reviewedAt": "2026-09-13T17:21:14Z",
+      "reviewNote": "Requires at least secondary education with maturita (medical/science/technical) — recorded as degree level 'other'; no doctorate in the enumerated requirements; English at communicative level; start possible from October 2026; deadline 2026-10-07.",
+      "title": {
+        "zh-CN": "实验室技术员／医疗实验室员",
+        "en": "Laboratory Technician / Medical Laboratory Technician",
+        "cs": "Laborant / Zdravotní laborant"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:82d9cd30e472e754e7e294cdee7483f4486be8882b97db3b03c942e914b5deaf"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:b81e21505a0388c929f6d6a1c78f375d4045de3ab2486dbda606af4f8f81d7dd"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:21:14Z",
+          "contentHash": "sha256:6d5ec39419b6997c906bfe65d19853fbf49028a24a8f4b1bbee5a2061aa1aea1"
+        }
+      },
+      "factHash": "sha256:745cef724089d7ca24a3f70f3583f6880a14c7e21a6761b9dd54b429944a9fda"
+    },
+    "job-17000-179": {
+      "sourceHash": "sha256:63754984616dff74bfa30b12ef30f87686a5098b1a2847d65116529a559c5c11",
+      "evidenceHash": "sha256:63754984616dff74bfa30b12ef30f87686a5098b1a2847d65116529a559c5c11",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-clear--179",
+      "reviewedAt": "2026-09-13T17:51:36Z",
+      "reviewNote": "Concurrent head-of-department and professor/associate-professor appointment at the OSU Faculty of Medicine — academic role with research leadership; requires specialisation in infectious medicine and an academic Ph.D. Salary not stated; deadline 2026-09-24.",
+      "title": {
+        "zh-CN": "传染病临床科主任暨教授/副教授（奥斯特拉发大学医院与医学院）",
+        "en": "Head of the Department of Infectious Diseases (FNO and OSU Faculty of Medicine), concurrently Professor/Associate Professor",
+        "cs": "Přednosta/přednostka Kliniky infekčního lékařství FNO a LF OU a současně profesor/ka nebo docent/ka se zaměřením na infekční lékařství"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:51:36Z",
+          "contentHash": "sha256:5fe272d129c2cdb48e8000adc874e826229c326fda43a9c93de2c10c76fe0fc2"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:51:36Z",
+          "contentHash": "sha256:da9db2a627295592a330398a18770356703123592c5d81f75e09ed0b0758e546"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:51:36Z",
+          "contentHash": "sha256:b0abb79df99baf6c2633d9f8579310db3c5bebfbe7062aca8a938b476d16cfb8"
+        }
+      },
+      "factHash": "sha256:3551dd6634c392a261a328c978b1c5d0f6db5e88d57e657841a5d021ad3f9381"
+    },
+    "job-17000-180": {
+      "sourceHash": "sha256:d4fda2ca60c5ef193f11de8f7e6fb04010b93a43a1eaaa36f5fca74f126638c4",
+      "evidenceHash": "sha256:d4fda2ca60c5ef193f11de8f7e6fb04010b93a43a1eaaa36f5fca74f126638c4",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-clear--180",
+      "reviewedAt": "2026-09-13T17:51:36Z",
+      "reviewNote": "Concurrent head and professor/associate-professor appointment; requires specialisation in pathology or medical genetics and an academic Ph.D. Salary not stated; deadline 2026-09-24.",
+      "title": {
+        "zh-CN": "临床与分子病理学及医学遗传学研究所主任暨教授/副教授",
+        "en": "Head of the Institute of Clinical and Molecular Pathology and Medical Genetics, concurrently Professor/Associate Professor",
+        "cs": "Přednosta/přednostka Ústavu klinické a molekulární patologie a lékařské genetiky a současně profesor/ka nebo docent/ka"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:51:36Z",
+          "contentHash": "sha256:36372eec130d96bc210100133e6c29b86ffcd22d10010a53432d6ff5312a0cfd"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:51:36Z",
+          "contentHash": "sha256:e9b1c7333ed7765c519f72d8d21c1b1ffdaf6b4996c2feffc9ab1d6febd1ac2f"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:51:36Z",
+          "contentHash": "sha256:c480f0488751db0ebb587971e2669535552966f2c4090ef8edb5c8b5ad7460d4"
+        }
+      },
+      "factHash": "sha256:9ff85e77d6d43116b2dfa83ecf8e14f0d4a16b5c32b5c3dded44005e851a1a00"
+    },
+    "job-17000-178": {
+      "sourceHash": "sha256:01d32b0ecf02ed5a95c028b8bc6cd59c1bc1294ec50bf5b34989bb681a8ea282",
+      "evidenceHash": "sha256:01d32b0ecf02ed5a95c028b8bc6cd59c1bc1294ec50bf5b34989bb681a8ea282",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-clear--178",
+      "reviewedAt": "2026-09-13T17:51:36Z",
+      "reviewNote": "Concurrent head and professor/associate-professor appointment; requires specialisation in clinical biochemistry or haematology/transfusion medicine and an academic Ph.D. Salary not stated; deadline 2026-09-24.",
+      "title": {
+        "zh-CN": "实验医学研究所主任暨教授/副教授",
+        "en": "Head of the Institute of Laboratory Medicine (FNO and OSU Faculty of Medicine), concurrently Professor/Associate Professor",
+        "cs": "Přednosta/přednostka Ústavu laboratorní medicíny FNO a LF OU a současně profesor/ka nebo docent/ka"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:51:36Z",
+          "contentHash": "sha256:46ab110b76f5f2ee38f2385abb8fd68513cd187de9362811632e78ddc46e5966"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:51:36Z",
+          "contentHash": "sha256:fab86968c2bce04d47130796dd701c7ad46a38b9091dbbe13e703db8fea0dcdf"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:51:36Z",
+          "contentHash": "sha256:f6cd1d4e0a6da6599be6be64c43efd187bf451cc713ca1cbe0169a736461c07e"
+        }
+      },
+      "factHash": "sha256:302bc895e642959c058686d70c85455c77132370755b82918440b3882f482bf6"
+    },
+    "job-18000-7df6b2fc08b7": {
+      "sourceHash": "sha256:831b93a0e7d44d52be7c0bdbce1246cc4b8b4e04afb38c6bf5f5c8577c64dffe",
+      "evidenceHash": "sha256:831b93a0e7d44d52be7c0bdbce1246cc4b8b4e04afb38c6bf5f5c8577c64dffe",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-uhk2-01",
+      "reviewedAt": "2026-09-13T17:57:14Z",
+      "reviewNote": "Pay evidence: fixed-term employment (pracovní poměr na dobu určitou) with tariff wage and benefits — amount not published; minimum education master's (MUDr./Mgr.; Ph.D. as one alternative field qualification); Czech C1/C2 required; part-time by agreement, exceptionally full-time; expected start per agreement, usually 2027-09-01; application by e-mail (ilona.lankasova@uhk.cz) until 2026-10-16.",
+      "title": {
+        "zh-CN": "护理学学术人员（护理临床学科方向讲师/助理教授/教授）",
+        "en": "Academic staff member (lecturer/assistant professor/professor) in nursing-related clinical subjects",
+        "cs": "Akademický a pracovník/ce Ústavu zdravotnických studií PřF UHK — docent/ka, odborný asistent/ka nebo lektor/ka"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:57:14Z",
+          "contentHash": "sha256:0ba13472b273d3f252b06c6519ea51898f465c73089a08f625157f8bf74daf58"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:57:14Z",
+          "contentHash": "sha256:0e23c31df23ab04f5127d05a9f1ae33746eaf09a9cde8150c4434dc1e914483e"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:57:14Z",
+          "contentHash": "sha256:23599ab5e9bdb6fb5fb487d8f8502482ac6993ee3edba4734d1f4a9981f4aefc"
+        }
+      },
+      "factHash": "sha256:bf2424f2c3df62fe87cd0b7712aef764972502cc838ce32524abd9ed38efdf63"
+    },
+    "job-18000-ebb5341d8eaa": {
+      "sourceHash": "sha256:951350ce3d9f0290a2d86a5f534e3ce8eb0adf5e2f998f15452167724367ff14",
+      "evidenceHash": "sha256:951350ce3d9f0290a2d86a5f534e3ce8eb0adf5e2f998f15452167724367ff14",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-uhk2-02",
+      "reviewedAt": "2026-09-13T17:57:14Z",
+      "reviewNote": "Pay evidence: full working time (1.0) offered as employment with benefits — salary amount follows university rules and is not published; doctorate (Ph.D.) plus pedagogical and research record required; application documents by e-mail (jana.rubackova@uhk.cz) no later than 2026-10-08; expected start 2027-01-01 or by agreement.",
+      "title": {
+        "zh-CN": "管理学院英语授课市场营销与管理课程学术人员",
+        "en": "Academic staff member for teaching management and marketing courses in English (Department of Management)",
+        "cs": "Akademický pracovník / pracovnice pro výuku předmětů zaměřených na management a marketing v angličtině (katedra managementu FIM)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:57:14Z",
+          "contentHash": "sha256:d064f9d51992f537f382f5dd00ae5346c207c26543d1a8257dd23eb508e1a119"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:57:14Z",
+          "contentHash": "sha256:74cf82419c5808dd3c9a9d8deaaf52bc84d616f6f1279a920c48c7c413c2b00e"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T17:57:14Z",
+          "contentHash": "sha256:9310c4dbc05e3457a1453418bd0e9541b7981718d082505570d12a2064b09483"
+        }
+      },
+      "factHash": "sha256:2e7c2402cb74619c423205d4e42c124fe121d8c5a0a62747a534cd700534e2c6"
+    },
+    "job-24000-15196": {
+      "sourceHash": "sha256:a45571c1f95d39707f3b48a7461346a13f244ecc7280799eb8f57836793b783d",
+      "evidenceHash": "sha256:a45571c1f95d39707f3b48a7461346a13f244ecc7280799eb8f57836793b783d",
+      "normalizationVersion": "fact-v1",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-09-13-pkt5c-tul-01",
+      "reviewedAt": "2026-09-13T18:27:38Z",
+      "reviewNote": "Reviewed against the official PDF: Education: Ph.D. in Physics, Chemistry, Materials Science, Nanotechnology or related field; 100% time (40 hours/week), start preferably immediately; tariff wage with possible supplement (no amount published); English at least B2 for foreign applicants; no application deadline stated — window stays unknown. Selection by TUL HR (hr@tul.cz). Postdoc: all-track scope only.",
+      "title": {
+        "zh-CN": "环境技术系环境纳米机器人实验室博士后研究员（利贝雷茨技术大学）",
+        "en": "Postdoctoral Researcher (Department of Environmental Technology – Laboratory of Environmental Nanorobots)",
+        "cs": "Postdoktorand (Katedra environmentálních technologií – Laboratoř environmentálních nanorobotů)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T18:27:38Z",
+          "contentHash": "sha256:5d6706eae1e4fbce014c100a00c60755183f4d7746df9e8d1bb6de7b82a11cf4"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T18:27:38Z",
+          "contentHash": "sha256:4c1e6972b15696ab21893d068218a3901dc2c3a0f08c1125c3b6c6a3c76e1673"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-09-13T18:27:38Z",
+          "contentHash": "sha256:da134212ade4a1975e004f84eed4d7cf0c8162b9ff83e22f095efa1835690b3d"
+        }
+      },
+      "factHash": "sha256:51cfe56dbe09bd79727f93262b9a79b99414d331916e88158b20ee96cf38e57b"
+    }
+  }
+}

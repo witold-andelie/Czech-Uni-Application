@@ -1,0 +1,77 @@
+digraph SD3A {
+// Explicit OPM-to-DOT mapping; see README.md. Layout is not execution order.
+  graph [rankdir="LR", compound="true", bgcolor="#FFFFFF", pad="0.3", nodesep="0.38", ranksep="0.65", splines="spline", fontname="Microsoft YaHei", fontsize="18", labelloc="t", label="SD3A  原子发布与不可变构建绑定\nISO 19450:2024 · OPM semantic mapping / DOT"];
+  node [fontname="Microsoft YaHei", fontsize="11", margin="0.14,0.10", penwidth="1.3"];
+  edge [fontname="Segoe UI", fontsize="9", arrowsize="0.7", penwidth="1.1"];
+  subgraph cluster_bundle {
+    graph [label="三语内容包\nTranslation Bundle", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="bundle"];
+    reviewed [label="三语已复核\nreviewed", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="bundle"];
+    translated [label="翻译草稿\ndraft", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="bundle"];
+  }
+  subgraph cluster_facts {
+    graph [label="结构化记录\nStructured Record", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="facts"];
+    draft [label="待核验\ndraft", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
+    rejected [label="不符合发布要求\nrejected", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
+    verified [label="已核验\nverified", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
+  }
+  subgraph cluster_localereview {
+    graph [label="逐语种审核记录\nLocale Review Record", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="localereview"];
+    reviewbound [label="已绑定源哈希\nhash bound", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
+    reviewinvalid [label="源变更后失效\ninvalidated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
+    reviewpending [label="待人工复核\npending", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
+  }
+  subgraph cluster_revision {
+    graph [label="仓库修订\nRepository Revision", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="revision"];
+    revisionpending [label="等待持续集成\nawaiting CI", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="revision"];
+    revisionvalidated [label="持续集成已通过\nCI validated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="revision"];
+  }
+  subgraph cluster_snapshot {
+    graph [label="发布快照\nPublication Snapshot", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="snapshot"];
+    archived [label="已归档\narchived", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    live [label="当前版本\ncurrent", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    stagedsnapshot [label="已暂存\nstaged", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    stale [label="待复核\nneeds review", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    validatedsnapshot [label="门禁已通过\nvalidated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+  }
+  activepointer [label="当前版本原子指针\nActive Version Pointer", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  browserasset [label="带版本浏览器资源\nVersioned Browser Asset", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  browserpublish [label="导出版本化浏览器资源\nBrowser Asset Exporting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  buildbinding [label="不可变构建版本绑定\nImmutable Build Binding", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  buildpin [label="固定构建版本\nBuild Version Pinning", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  cache [label="发布数据缓存\nStatic HTML / JSON\nPublished Data Cache", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  civalidate [label="持续集成校验\nContinuous Integration Validating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  ciworkflow [label="固定依赖的持续集成工作流\nPinned CI Workflow", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  deliveryartifact [label="绑定提交的交付制品\nCommit-bound Delivery Artifact", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  deliverypackage [label="打包静态交付制品\nStatic Delivery Packaging", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  osmutex [label="操作系统文件互斥锁\nOperating System File Mutex", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  pubpolicy [label="发布业务契约\nPublication Contract", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  snapshotactivate [label="原子激活快照\nSnapshot Activating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  snapshotstage [label="隔离暂存候选快照\nSnapshot Staging", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  snapshotvalidate [label="校验发布业务契约\nPublication Contract Validating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  verified -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  reviewed -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  reviewbound -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  snapshotstage -> stagedsnapshot [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  stagedsnapshot -> snapshotvalidate [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  snapshotvalidate -> validatedsnapshot [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  pubpolicy -> snapshotvalidate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  validatedsnapshot -> snapshotactivate [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  snapshotactivate -> live [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  osmutex -> snapshotactivate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  snapshotactivate -> activepointer [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+  live -> buildpin [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  activepointer -> buildpin [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  buildpin -> buildbinding [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  buildbinding -> browserpublish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  live -> browserpublish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  browserpublish -> browserasset [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  browserpublish -> cache [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+  revisionpending -> civalidate [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  civalidate -> revisionvalidated [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  ciworkflow -> civalidate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  pubpolicy -> civalidate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  revisionvalidated -> deliverypackage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  browserasset -> deliverypackage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  ciworkflow -> deliverypackage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  deliverypackage -> deliveryartifact [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+}

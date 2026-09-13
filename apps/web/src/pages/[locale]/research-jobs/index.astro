@@ -2,19 +2,27 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import JobResults from "../../../components/JobResults.svelte";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
-import { loadCatalog } from "../../../lib/loadCatalog";
+import { loadPublishedManifest } from "../../../lib/loadPublishedManifest";
+import { loadSafetyOverlayFromDisk } from "../../../lib/loadSafetyOverlay";
 
 export function getStaticPaths() {
   return LOCALES.map((locale) => ({ params: { locale } }));
 }
 
 const locale = localeFromParam(Astro.params.locale);
-const catalog = loadCatalog();
+const manifest = loadPublishedManifest();
+const snapshotDate = manifest.publishedAt.slice(0, 10);
+const overlay = loadSafetyOverlayFromDisk();
 ---
 <BaseLayout locale={locale} title={t(locale, "nav.research")}>
   <main id="main" class="page">
     <h1>{t(locale, "nav.research")}</h1>
-    <p class="lede">{t(locale, "jobs.prompt")}</p>
-    <JobResults client:load catalog={catalog} locale={locale} />
+    <p class="lede">{t(locale, "jobs.prompt", {
+      version: manifest.version,
+      date: snapshotDate,
+      jobs: manifest.counts.jobs,
+    })}</p>
+    <noscript><p>{t(locale, "noscript.jobs")}</p></noscript>
+    <JobResults client:load locale={locale} initialOverlay={overlay} />
   </main>
 </BaseLayout>

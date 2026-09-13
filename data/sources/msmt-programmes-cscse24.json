@@ -1,0 +1,1018 @@
+{
+  "generatedAt": "2026-09-06T22:33:17Z",
+  "dataClass": "official_register_extract",
+  "catalogKind": "inventory_not_published",
+  "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+  "scope": "msmt_register_harvested",
+  "extraction": "ASP.NET POST of Export CSV from csplist.aspx after institution Detail",
+  "note": "Accredited/delivered programme inventory from the official register. Not an admissions catalogue: no application window, tuition or apply URL. Not written to data/published/.",
+  "counts": {
+    "institutionsExpected": 54,
+    "institutionsParsed": 53,
+    "institutionsFailed": 1,
+    "requiredFailed": 0,
+    "programmes": 5126,
+    "languages": {
+      "cs": 3804,
+      "en": 1298,
+      "de": 12,
+      "ru": 7,
+      "it": 1,
+      "fr": 3,
+      "pl": 1
+    },
+    "degrees": {
+      "master": 1889,
+      "bachelor": 1724,
+      "doctorate": 1513
+    }
+  },
+  "failed": [
+    {
+      "msmtCode": "VS_7L000",
+      "reason": "csv_empty_or_unparsed",
+      "bytes": 8916,
+      "required": false
+    }
+  ],
+  "institutions": [
+    {
+      "msmtCode": "VS_51000",
+      "institutionId": "msmt-vs_51000",
+      "officialName": "Akademie múzických umění v Praze",
+      "listedNameZh": "布拉格表演艺术学院",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_51000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 86,
+          "en": 21
+        },
+        "degrees": {
+          "master": 52,
+          "bachelor": 41,
+          "doctorate": 14
+        },
+        "total": 107
+      }
+    },
+    {
+      "msmtCode": "VS_52000",
+      "institutionId": "msmt-vs_52000",
+      "officialName": "Akademie výtvarných umění v Praze",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_52000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 11,
+          "en": 1
+        },
+        "degrees": {
+          "master": 7,
+          "doctorate": 4,
+          "bachelor": 1
+        },
+        "total": 12
+      }
+    },
+    {
+      "msmtCode": "VS_61000",
+      "institutionId": "msmt-vs_61000",
+      "officialName": "AMBIS vysoká škola, a.s.",
+      "listedNameZh": "AMBIS大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_61000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 30,
+          "en": 2
+        },
+        "degrees": {
+          "bachelor": 24,
+          "master": 8
+        },
+        "total": 32
+      }
+    },
+    {
+      "msmtCode": "VS_6U000",
+      "institutionId": "msmt-vs_6u000",
+      "officialName": "Anglo-americká vysoká škola, a. s.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_6u000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 11,
+          "cs": 2
+        },
+        "degrees": {
+          "bachelor": 10,
+          "master": 3
+        },
+        "total": 13
+      }
+    },
+    {
+      "msmtCode": "VS_7M000",
+      "institutionId": "msmt-vs_7m000",
+      "officialName": "ARCHIP s.r.o.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7m000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 2
+        },
+        "degrees": {
+          "bachelor": 1,
+          "master": 1
+        },
+        "total": 2
+      }
+    },
+    {
+      "msmtCode": "VS_7R000",
+      "institutionId": "msmt-vs_7r000",
+      "officialName": "ART & DESIGN INSTITUT, s.r.o.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7r000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 1,
+          "cs": 1
+        },
+        "degrees": {
+          "bachelor": 2
+        },
+        "total": 2
+      }
+    },
+    {
+      "msmtCode": "VS_7D000",
+      "institutionId": "msmt-vs_7d000",
+      "officialName": "CEVRO Univerzita z.ú.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7d000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 13,
+          "en": 2
+        },
+        "degrees": {
+          "bachelor": 8,
+          "master": 6,
+          "doctorate": 1
+        },
+        "total": 15
+      }
+    },
+    {
+      "msmtCode": "VS_7J000",
+      "institutionId": "msmt-vs_7j000",
+      "officialName": "Evropská výzkumná univerzita, z.ú.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7j000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 6,
+          "cs": 6
+        },
+        "degrees": {
+          "bachelor": 6,
+          "master": 4,
+          "doctorate": 2
+        },
+        "total": 12
+      }
+    },
+    {
+      "msmtCode": "VS_6N000",
+      "institutionId": "msmt-vs_6n000",
+      "officialName": "Filmová akademie Miroslava Ondříčka v Písku, o.p.s.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_6n000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 2,
+          "cs": 2
+        },
+        "degrees": {
+          "bachelor": 2,
+          "master": 2
+        },
+        "total": 4
+      }
+    },
+    {
+      "msmtCode": "VS_54000",
+      "institutionId": "msmt-vs_54000",
+      "officialName": "Janáčkova akademie múzických umění",
+      "listedNameZh": "雅纳切克音乐艺术学院",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_54000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 34,
+          "en": 1
+        },
+        "degrees": {
+          "master": 17,
+          "bachelor": 14,
+          "doctorate": 4
+        },
+        "total": 35
+      }
+    },
+    {
+      "msmtCode": "VS_12000",
+      "institutionId": "msmt-vs_12000",
+      "officialName": "Jihočeská univerzita v Českých Budějovicích",
+      "listedNameZh": "捷克布杰约维采南波西米亚大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_12000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 183,
+          "en": 29
+        },
+        "degrees": {
+          "bachelor": 91,
+          "doctorate": 52,
+          "master": 69
+        },
+        "total": 212
+      }
+    },
+    {
+      "msmtCode": "VS_14000",
+      "institutionId": "msmt-vs_14000",
+      "officialName": "Masarykova univerzita",
+      "listedNameZh": "马萨里克大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_14000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 124,
+          "cs": 416,
+          "de": 2
+        },
+        "degrees": {
+          "doctorate": 178,
+          "bachelor": 157,
+          "master": 207
+        },
+        "total": 542
+      }
+    },
+    {
+      "msmtCode": "VS_43000",
+      "institutionId": "msmt-vs_43000",
+      "officialName": "Mendelova univerzita v Brně",
+      "listedNameZh": "布尔诺孟德尔大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_43000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 110,
+          "en": 36
+        },
+        "degrees": {
+          "bachelor": 46,
+          "master": 44,
+          "doctorate": 56
+        },
+        "total": 146
+      }
+    },
+    {
+      "msmtCode": "VS_75000",
+      "institutionId": "msmt-vs_75000",
+      "officialName": "Metropolitní univerzita Praha, o. p. s.",
+      "listedNameZh": "布拉格城市大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_75000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 9,
+          "cs": 20
+        },
+        "degrees": {
+          "bachelor": 12,
+          "master": 10,
+          "doctorate": 7
+        },
+        "total": 29
+      }
+    },
+    {
+      "msmtCode": "VS_7C000",
+      "institutionId": "msmt-vs_7c000",
+      "officialName": "Moravská vysoká škola Olomouc, o.p.s.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7c000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 1,
+          "cs": 5
+        },
+        "degrees": {
+          "bachelor": 3,
+          "master": 3
+        },
+        "total": 6
+      }
+    },
+    {
+      "msmtCode": "VS_17000",
+      "institutionId": "msmt-vs_17000",
+      "officialName": "Ostravská univerzita",
+      "listedNameZh": "奥斯特拉发大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_17000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 160,
+          "en": 13
+        },
+        "degrees": {
+          "master": 57,
+          "bachelor": 76,
+          "doctorate": 40
+        },
+        "total": 173
+      }
+    },
+    {
+      "msmtCode": "VS_7S000",
+      "institutionId": "msmt-vs_7s000",
+      "officialName": "Panevropská univerzita, a.s.",
+      "listedNameZh": "泛欧大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7s000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 3,
+          "cs": 19,
+          "ru": 1
+        },
+        "degrees": {
+          "bachelor": 15,
+          "master": 7,
+          "doctorate": 1
+        },
+        "total": 23
+      }
+    },
+    {
+      "msmtCode": "VS_94000",
+      "institutionId": "msmt-vs_94000",
+      "officialName": "Policejní akademie České republiky v Praze",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_94000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 8
+        },
+        "degrees": {
+          "doctorate": 1,
+          "master": 2,
+          "bachelor": 5
+        },
+        "total": 8
+      }
+    },
+    {
+      "msmtCode": "VS_79000",
+      "institutionId": "msmt-vs_79000",
+      "officialName": "Pražská vysoká škola psychosociálních studií, s.r.o.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_79000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 4
+        },
+        "degrees": {
+          "bachelor": 2,
+          "master": 2
+        },
+        "total": 4
+      }
+    },
+    {
+      "msmtCode": "VS_19000",
+      "institutionId": "msmt-vs_19000",
+      "officialName": "Slezská univerzita v Opavě",
+      "listedNameZh": "奥帕瓦西里西亚大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_19000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 72,
+          "en": 4
+        },
+        "degrees": {
+          "master": 22,
+          "bachelor": 48,
+          "doctorate": 6
+        },
+        "total": 76
+      }
+    },
+    {
+      "msmtCode": "VS_24000",
+      "institutionId": "msmt-vs_24000",
+      "officialName": "Technická univerzita v Liberci",
+      "listedNameZh": "利贝雷茨技术大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_24000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 90,
+          "en": 32
+        },
+        "degrees": {
+          "bachelor": 54,
+          "master": 42,
+          "doctorate": 26
+        },
+        "total": 122
+      }
+    },
+    {
+      "msmtCode": "VS_7E000",
+      "institutionId": "msmt-vs_7e000",
+      "officialName": "Unicorn Vysoká škola s.r.o.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7e000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 5,
+          "en": 2
+        },
+        "degrees": {
+          "master": 2,
+          "bachelor": 5
+        },
+        "total": 7
+      }
+    },
+    {
+      "msmtCode": "VS_63000",
+      "institutionId": "msmt-vs_63000",
+      "officialName": "University College Prague - Vysoká škola mezinárodních vztahů a Vysoká škola hotelová a ekonomická s.r.o.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_63000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 1,
+          "cs": 5
+        },
+        "degrees": {
+          "bachelor": 5,
+          "master": 1
+        },
+        "total": 6
+      }
+    },
+    {
+      "msmtCode": "VS_6D000",
+      "institutionId": "msmt-vs_6d000",
+      "officialName": "University of New York in Prague, s.r.o.",
+      "listedNameZh": "纽约大学布拉格分校",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_6d000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 6
+        },
+        "degrees": {
+          "bachelor": 5,
+          "master": 1
+        },
+        "total": 6
+      }
+    },
+    {
+      "msmtCode": "VS_18000",
+      "institutionId": "msmt-vs_18000",
+      "officialName": "Univerzita Hradec Králové",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_18000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 98,
+          "en": 31
+        },
+        "degrees": {
+          "bachelor": 66,
+          "doctorate": 25,
+          "master": 38
+        },
+        "total": 129
+      }
+    },
+    {
+      "msmtCode": "VS_13000",
+      "institutionId": "msmt-vs_13000",
+      "officialName": "Univerzita Jana Evangelisty Purkyně v Ústí nad Labem",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_13000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 8,
+          "cs": 134
+        },
+        "degrees": {
+          "doctorate": 23,
+          "master": 54,
+          "bachelor": 65
+        },
+        "total": 142
+      }
+    },
+    {
+      "msmtCode": "VS_11000",
+      "institutionId": "msmt-vs_11000",
+      "officialName": "Univerzita Karlova",
+      "listedNameZh": "查理大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_11000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 320,
+          "cs": 587,
+          "de": 10,
+          "ru": 4,
+          "it": 1,
+          "fr": 2,
+          "pl": 1
+        },
+        "degrees": {
+          "doctorate": 399,
+          "master": 329,
+          "bachelor": 197
+        },
+        "total": 925
+      }
+    },
+    {
+      "msmtCode": "VS_95000",
+      "institutionId": "msmt-vs_95000",
+      "officialName": "Univerzita obrany",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_95000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 32
+        },
+        "degrees": {
+          "bachelor": 6,
+          "master": 14,
+          "doctorate": 12
+        },
+        "total": 32
+      }
+    },
+    {
+      "msmtCode": "VS_15000",
+      "institutionId": "msmt-vs_15000",
+      "officialName": "Univerzita Palackého v Olomouci",
+      "listedNameZh": "帕拉茨基大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_15000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 77,
+          "cs": 417,
+          "ru": 1,
+          "fr": 1
+        },
+        "degrees": {
+          "doctorate": 157,
+          "master": 168,
+          "bachelor": 171
+        },
+        "total": 496
+      }
+    },
+    {
+      "msmtCode": "VS_25000",
+      "institutionId": "msmt-vs_25000",
+      "officialName": "Univerzita Pardubice",
+      "listedNameZh": "帕尔杜比采大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_25000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 30,
+          "cs": 125
+        },
+        "degrees": {
+          "doctorate": 42,
+          "master": 54,
+          "bachelor": 59
+        },
+        "total": 155
+      }
+    },
+    {
+      "msmtCode": "VS_28000",
+      "institutionId": "msmt-vs_28000",
+      "officialName": "Univerzita Tomáše Bati ve Zlíně",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_28000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 89,
+          "en": 34
+        },
+        "degrees": {
+          "master": 49,
+          "bachelor": 43,
+          "doctorate": 31
+        },
+        "total": 123
+      }
+    },
+    {
+      "msmtCode": "VS_16000",
+      "institutionId": "msmt-vs_16000",
+      "officialName": "Veterinární univerzita Brno",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_16000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 22,
+          "cs": 26
+        },
+        "degrees": {
+          "doctorate": 24,
+          "bachelor": 10,
+          "master": 14
+        },
+        "total": 48
+      }
+    },
+    {
+      "msmtCode": "VS_7N000",
+      "institutionId": "msmt-vs_7n000",
+      "officialName": "Vysoká škola aplikované psychologie, s.r.o.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7n000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 1
+        },
+        "degrees": {
+          "bachelor": 1
+        },
+        "total": 1
+      }
+    },
+    {
+      "msmtCode": "VS_27000",
+      "institutionId": "msmt-vs_27000",
+      "officialName": "Vysoká škola báňská – Technická univerzita Ostrava",
+      "listedNameZh": "奥斯特拉发技术大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_27000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 115,
+          "cs": 180
+        },
+        "degrees": {
+          "master": 119,
+          "bachelor": 98,
+          "doctorate": 78
+        },
+        "total": 295
+      }
+    },
+    {
+      "msmtCode": "VS_22000",
+      "institutionId": "msmt-vs_22000",
+      "officialName": "Vysoká škola chemicko-technologická v Praze",
+      "listedNameZh": "布拉格化工大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_22000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 39,
+          "cs": 88
+        },
+        "degrees": {
+          "doctorate": 45,
+          "bachelor": 39,
+          "master": 43
+        },
+        "total": 127
+      }
+    },
+    {
+      "msmtCode": "VS_31000",
+      "institutionId": "msmt-vs_31000",
+      "officialName": "Vysoká škola ekonomická v Praze",
+      "listedNameZh": "布拉格经济大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_31000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 32,
+          "cs": 83,
+          "ru": 1
+        },
+        "degrees": {
+          "doctorate": 29,
+          "bachelor": 36,
+          "master": 51
+        },
+        "total": 116
+      }
+    },
+    {
+      "msmtCode": "VS_7V000",
+      "institutionId": "msmt-vs_7v000",
+      "officialName": "Vysoká škola ekonomie a managementu, a.s.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7v000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 4
+        },
+        "degrees": {
+          "bachelor": 2,
+          "master": 2
+        },
+        "total": 4
+      }
+    },
+    {
+      "msmtCode": "VS_6K000",
+      "institutionId": "msmt-vs_6k000",
+      "officialName": "Vysoká škola evropských a regionálních studií, z. ú.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_6k000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 2
+        },
+        "degrees": {
+          "bachelor": 2
+        },
+        "total": 2
+      }
+    },
+    {
+      "msmtCode": "VS_7U000",
+      "institutionId": "msmt-vs_7u000",
+      "officialName": "Vysoká škola finanční a správní, a.s.",
+      "listedNameZh": "金融与管理大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7u000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 15,
+          "en": 5
+        },
+        "degrees": {
+          "bachelor": 9,
+          "master": 9,
+          "doctorate": 2
+        },
+        "total": 20
+      }
+    },
+    {
+      "msmtCode": "VS_7T000",
+      "institutionId": "msmt-vs_7t000",
+      "officialName": "Vysoká škola kreativní komunikace, s.r.o.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7t000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 3,
+          "cs": 4
+        },
+        "degrees": {
+          "bachelor": 6,
+          "master": 1
+        },
+        "total": 7
+      }
+    },
+    {
+      "msmtCode": "VS_6R000",
+      "institutionId": "msmt-vs_6r000",
+      "officialName": "Vysoká škola logistiky o.p.s.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_6r000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 3
+        },
+        "degrees": {
+          "master": 1,
+          "bachelor": 2
+        },
+        "total": 3
+      }
+    },
+    {
+      "msmtCode": "VS_6Q000",
+      "institutionId": "msmt-vs_6q000",
+      "officialName": "Vysoká škola NEWTON, a.s.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_6q000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 2,
+          "cs": 2
+        },
+        "degrees": {
+          "master": 2,
+          "bachelor": 2
+        },
+        "total": 4
+      }
+    },
+    {
+      "msmtCode": "VS_55000",
+      "institutionId": "msmt-vs_55000",
+      "officialName": "Vysoká škola polytechnická Jihlava",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_55000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 11
+        },
+        "degrees": {
+          "bachelor": 8,
+          "master": 3
+        },
+        "total": 11
+      }
+    },
+    {
+      "msmtCode": "VS_73000",
+      "institutionId": "msmt-vs_73000",
+      "officialName": "Vysoká škola Sting, o.p.s.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_73000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 1
+        },
+        "degrees": {
+          "bachelor": 1
+        },
+        "total": 1
+      }
+    },
+    {
+      "msmtCode": "VS_56000",
+      "institutionId": "msmt-vs_56000",
+      "officialName": "Vysoká škola technická a ekonomická v Českých Budějovicích",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_56000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 4,
+          "cs": 9
+        },
+        "degrees": {
+          "master": 5,
+          "bachelor": 8
+        },
+        "total": 13
+      }
+    },
+    {
+      "msmtCode": "VS_6P000",
+      "institutionId": "msmt-vs_6p000",
+      "officialName": "Vysoká škola tělesné výchovy a sportu PALESTRA, spol. s r.o.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_6p000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 5
+        },
+        "degrees": {
+          "bachelor": 4,
+          "master": 1
+        },
+        "total": 5
+      }
+    },
+    {
+      "msmtCode": "VS_53000",
+      "institutionId": "msmt-vs_53000",
+      "officialName": "Vysoká škola uměleckoprůmyslová v Praze",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_53000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 5,
+          "cs": 13
+        },
+        "degrees": {
+          "master": 12,
+          "bachelor": 3,
+          "doctorate": 3
+        },
+        "total": 18
+      }
+    },
+    {
+      "msmtCode": "VS_6S000",
+      "institutionId": "msmt-vs_6s000",
+      "officialName": "Vysoká škola zdravotnická, o.p.s.",
+      "listedNameZh": null,
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_6s000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 5
+        },
+        "degrees": {
+          "bachelor": 4,
+          "master": 1
+        },
+        "total": 5
+      }
+    },
+    {
+      "msmtCode": "VS_26000",
+      "institutionId": "msmt-vs_26000",
+      "officialName": "Vysoké učení technické v Brně",
+      "listedNameZh": "布尔诺理工大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_26000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 56,
+          "cs": 145
+        },
+        "degrees": {
+          "doctorate": 60,
+          "master": 83,
+          "bachelor": 58
+        },
+        "total": 201
+      }
+    },
+    {
+      "msmtCode": "VS_23000",
+      "institutionId": "msmt-vs_23000",
+      "officialName": "Západočeská univerzita v Plzni",
+      "listedNameZh": "比尔森西波西米亚大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_23000.csv.txt",
+      "counts": {
+        "languages": {
+          "cs": 141,
+          "en": 22
+        },
+        "degrees": {
+          "bachelor": 68,
+          "master": 62,
+          "doctorate": 33
+        },
+        "total": 163
+      }
+    },
+    {
+      "msmtCode": "VS_41000",
+      "institutionId": "msmt-vs_41000",
+      "officialName": "Česká zemědělská univerzita v Praze",
+      "listedNameZh": "捷克生命科学大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_41000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 73,
+          "cs": 118
+        },
+        "degrees": {
+          "bachelor": 53,
+          "master": 77,
+          "doctorate": 61
+        },
+        "total": 191
+      }
+    },
+    {
+      "msmtCode": "VS_21000",
+      "institutionId": "msmt-vs_21000",
+      "officialName": "České vysoké učení technické v Praze",
+      "listedNameZh": "布拉格捷克技术大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_21000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 109,
+          "cs": 178
+        },
+        "degrees": {
+          "doctorate": 97,
+          "master": 124,
+          "bachelor": 66
+        },
+        "total": 287
+      }
+    },
+    {
+      "msmtCode": "VS_7P000",
+      "institutionId": "msmt-vs_7p000",
+      "officialName": "Škoda Auto Vysoká škola o.p.s.",
+      "listedNameZh": "斯科达汽车大学",
+      "sourceFile": "work/raw/2026-09-06/msmt-programmes-vs_7p000.csv.txt",
+      "counts": {
+        "languages": {
+          "en": 2,
+          "cs": 6
+        },
+        "degrees": {
+          "master": 4,
+          "bachelor": 4
+        },
+        "total": 8
+      }
+    }
+  ]
+}

@@ -1,31 +1,31 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ProgrammeResults from "../../../components/ProgrammeResults.svelte";
+import TeachingChooser from "../../../components/TeachingChooser.astro";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
-import { loadCatalog } from "../../../lib/loadCatalog";
+import { loadPublishedManifest } from "../../../lib/loadPublishedManifest";
 
 export function getStaticPaths() {
   return LOCALES.map((locale) => ({ params: { locale } }));
 }
 
 const locale = localeFromParam(Astro.params.locale);
-const catalog = loadCatalog();
+const manifest = loadPublishedManifest();
+const snapshotDate = manifest.publishedAt.slice(0, 10);
 ---
 <BaseLayout locale={locale} title={t(locale, "nav.programmes")}>
   <main id="main" class="page">
     <h1>{t(locale, "nav.programmes")}</h1>
-    <p class="lede">{t(locale, "teaching.prompt")}</p>
-    <div class="chooser two">
-      <a class="choice-card" href={`/${locale}/programmes?teachingLanguage=en`}>
-        <h2>{t(locale, "teaching.en")}</h2>
-        <p>{t(locale, "teaching.en.help")}</p>
-      </a>
-      <a class="choice-card" href={`/${locale}/programmes?teachingLanguage=cs`}>
-        <h2>{t(locale, "teaching.cs")}</h2>
-        <p>{t(locale, "teaching.cs.help")}</p>
-      </a>
+    <p class="disclaimer">{t(locale, "programmes.browse.disclaimer", {
+      version: manifest.version,
+      date: snapshotDate,
+      programmes: new Intl.NumberFormat(locale).format(manifest.counts.inventoryOfferings),
+      schools: new Intl.NumberFormat(locale).format(manifest.counts.inventorySchools),
+    })}</p>
+    <div class="ssr-teaching-chooser">
+      <TeachingChooser locale={locale} compact />
     </div>
-    <p><a class="secondary-link" href={`/${locale}/programmes?teachingLanguage=all`}>{t(locale, "teaching.all")}</a></p>
-    <ProgrammeResults client:load catalog={catalog} locale={locale} />
+    <noscript><p>{t(locale, "noscript.lists")}</p></noscript>
+    <ProgrammeResults client:load locale={locale} />
   </main>
 </BaseLayout>

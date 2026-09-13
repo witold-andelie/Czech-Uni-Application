@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "2026-09-09.1",
+  "version": "v2026-09-12.5",
+  "publishedAt": "2026-09-12T19:38:09Z",
+  "status": "published",
+  "counts": {
+    "institutions": 54,
+    "portals": 54,
+    "inventoryOfferings": 5019,
+    "inventorySchools": 53,
+    "jobs": 8,
+    "coordinates": 54,
+    "reviewedOfferings": 4
+  },
+  "checksums": {
+    "msmt-hei-baseline.json": "sha256:d66ecdcf24ec4c737a971d08119cc55901d59835f42555d88991da8a2a21fe8a",
+    "admissions/apply-portals.json": "sha256:e941de121f398ec76d6b82bbf33586f9f806088ebfd698f1107c912ba2896309",
+    "admissions/cuni-mff-cs-tracer.json": "sha256:2097d59931d85c0a3ecc1fcf016d502231eb57ce570f00dd36dc432ef2ffa871",
+    "admissions/muni-fi-tracer.json": "sha256:354658db3b27961ef61d1f2c77365edd68a600191684b356a083132d14336039",
+    "admissions/reviewed-offerings.json": "sha256:15a9231be74a0254f6b8398ff93ad868c27bb827c5b105f55283a150898ee714",
+    "browse/nine-hei-inventory.json": "sha256:f37e9a05ce94c1a6b30b570eb30b47cc5d290c1ce9bd2b4644a797d43d0e4efe",
+    "browse/nine-hei-jobs.json": "sha256:c5aae481ba29cf86b2871a1b41760b2b00035a36439d5cd41059dd8a80f41409",
+    "browse/hei-coordinates.json": "sha256:6fd30f0433d137f845ff8269892bf45171b029be5c6aeae9312fbb9193f11f96",
+    "browse/czechia-outline.json": "sha256:8400bb29cc76510fa5ac5c9807284ba2271d331d896fad94398558ad649f6ebb",
+    "browse/czechia-basemap.json": "sha256:8ee09fd2f095063de7ef5a4e10c83e19641f1535aecbf38f919c48dda108093b"
+  },
+  "validation": {
+    "passed": true,
+    "errors": []
+  },
+  "candidateGeneration": {
+    "id": "cg-9c94d8809f524e0fae621226784f29a9",
+    "pinnedAt": "2026-09-12T19:38:09Z",
+    "checksums": {
+      "msmt-hei-baseline.json": "sha256:d66ecdcf24ec4c737a971d08119cc55901d59835f42555d88991da8a2a21fe8a",
+      "admissions/apply-portals.json": "sha256:e941de121f398ec76d6b82bbf33586f9f806088ebfd698f1107c912ba2896309",
+      "admissions/cuni-mff-cs-tracer.json": "sha256:2097d59931d85c0a3ecc1fcf016d502231eb57ce570f00dd36dc432ef2ffa871",
+      "admissions/muni-fi-tracer.json": "sha256:354658db3b27961ef61d1f2c77365edd68a600191684b356a083132d14336039",
+      "admissions/reviewed-offerings.json": "sha256:15a9231be74a0254f6b8398ff93ad868c27bb827c5b105f55283a150898ee714",
+      "browse/nine-hei-inventory.json": "sha256:f37e9a05ce94c1a6b30b570eb30b47cc5d290c1ce9bd2b4644a797d43d0e4efe",
+      "browse/nine-hei-jobs.json": "sha256:c6bdef02958d191df97369b1abc55687b4cff711ff86083611e383dd807255e9",
+      "browse/hei-coordinates.json": "sha256:6fd30f0433d137f845ff8269892bf45171b029be5c6aeae9312fbb9193f11f96",
+      "browse/czechia-outline.json": "sha256:8400bb29cc76510fa5ac5c9807284ba2271d331d896fad94398558ad649f6ebb",
+      "browse/czechia-basemap.json": "sha256:8ee09fd2f095063de7ef5a4e10c83e19641f1535aecbf38f919c48dda108093b"
+    },
+    "lockOrder": [
+      "work/runs/refresh.lock",
+      "data/published/.publish.lock"
+    ]
+  }
+}

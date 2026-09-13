@@ -1,0 +1,191 @@
+name: CI
+
+# Hosted GitHub execution, branch protection and public deploy are not claimed
+# from this file. Report: CI configured; local checks passed; hosted CI/CD not verified.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  data:
+    name: Data and ingestion
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: services/ingestion/requirements-ci.txt
+
+      - name: Install ingestion test dependencies
+        run: python -m pip install --disable-pip-version-check -r services/ingestion/requirements-ci.txt
+
+      - name: Run ingestion tests
+        run: python -m pytest services/ingestion/tests tests/test_opm_generation.py -q
+
+      - name: Verify clean-checkout required files
+        run: python scripts/checkout_inventory.py --check
+
+      - name: Check three-locale parity
+        run: python scripts/sync_locales.py
+
+      - name: Verify active immutable snapshot
+        run: python services/ingestion/src/publish.py --check
+
+      - name: Validate next publication selection
+        run: python services/ingestion/src/publish.py --check-sources
+
+      - name: Validate docs and OPM framework
+        run: python scripts/check_framework.py
+
+  go:
+    name: Go services
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: "1.25.0"
+          cache-dependency-path: |
+            apps/api/go.sum
+            services/catalog/go.sum
+
+      - name: Test catalog service
+        working-directory: services/catalog
+        run: go test ./...
+
+      - name: Test API service
+        working-directory: apps/api
+        run: go test ./...
+
+  web:
+    name: Web checks and static build
+    needs: [data, go]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install locked web dependencies
+        working-directory: apps/web
+        run: npm ci
+
+      - name: Run web unit and publication-contract tests
+        working-directory: apps/web
+        run: npm test
+
+      - name: Run Astro and TypeScript checks
+        working-directory: apps/web
+        run: npm run check
+
+      - name: Verify browser publication assets
+        working-directory: apps/web
+        run: npm run verify:published
+
+      - name: Build deployable static site
+        working-directory: apps/web
+        run: npm run build
+
+      - name: Record publication provenance in the artifact
+        run: python scripts/checkout_inventory.py --write-provenance apps/web/dist/publication-provenance.json
+
+      - name: Upload built site for browser checks
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: site-build-${{ github.sha }}
+          path: apps/web/dist
+          if-no-files-found: error
+          retention-days: 2
+
+  browser:
+    name: Browser acceptance
+    needs: [web]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install locked web dependencies
+        working-directory: apps/web
+        run: npm ci
+
+      - name: Download built site
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        with:
+          name: site-build-${{ github.sha }}
+          path: apps/web/dist
+
+      - name: Install Playwright Chromium
+        working-directory: apps/web
+        run: npx playwright install --with-deps chromium
+
+      - name: Run browser acceptance against the built artifact
+        working-directory: apps/web
+        run: npm run test:e2e
+
+      - name: Upload Playwright traces on failure
+        if: failure()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: playwright-failure-${{ github.sha }}
+          path: |
+            apps/web/test-results
+            apps/web/playwright-report
+          if-no-files-found: error
+          retention-days: 14
+
+  deliver:
+    name: Delivery artifact
+    needs: [web, browser]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Download built site
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        with:
+          name: site-build-${{ github.sha }}
+          path: site
+
+      - name: Upload deployable static site
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: czech-uni-apply-site-${{ github.sha }}
+          path: site
+          if-no-files-found: error
+          retention-days: 14

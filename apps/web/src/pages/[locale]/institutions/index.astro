@@ -1,0 +1,56 @@
+---
+import { withBase } from "../../../lib/base.ts";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import InstitutionResults from "../../../components/InstitutionResults.svelte";
+import ExternalIcon from "../../../components/ExternalIcon.svelte";
+import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
+import { loadBaseline } from "../../../lib/loadBaseline";
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const locale = localeFromParam(Astro.params.locale);
+const baseline = loadBaseline();
+const operatorListed = baseline.institutions.filter((item) => item.cscseReference?.operatorListStatus === "listed");
+const operatorAbsent = baseline.institutions.filter((item) => item.cscseReference?.operatorListStatus !== "listed");
+const officialListed = baseline.institutions.filter((item) => item.cscseLookupStatus === "listed");
+const unmatched = baseline.cscseUnmatched ?? [];
+---
+<BaseLayout locale={locale} title={t(locale, "institutions.title")}>
+  <main id="main" class="page">
+    <h1>{t(locale, "institutions.title")}</h1>
+    <p class="lede">{t(locale, "institutions.intro")}</p>
+    <p>
+      <a class="external" href={baseline.sourceUrl} rel="noopener noreferrer" target="_blank">
+        {t(locale, "institutions.source")}
+        <ExternalIcon />
+        <span class="visually-hidden">{t(locale, "action.external")}</span>
+      </a>
+      · {t(locale, "institutions.count", { n: baseline.counts.total })}
+      · {t(locale, "institutions.cscseCountOperatorListed", { n: operatorListed.length })}
+      · {t(locale, "institutions.cscseCountOperatorAbsent", { n: operatorAbsent.length })}
+      · {t(locale, "institutions.cscseCountOfficialListed", { n: officialListed.length })}
+      · <a href={withBase(`/${locale}/map`)}>{t(locale, "institutions.openMap")}</a>
+    </p>
+    <p class="disclaimer">{t(locale, "institutions.cscseOperatorNote")}</p>
+    <p class="disclaimer">{t(locale, "recognition.disclaimer")}</p>
+    <p class="disclaimer">{t(locale, "institutions.websiteArchive")}</p>
+    <InstitutionResults client:load locale={locale} />
+    {unmatched.length > 0 && (
+      <section class="panel unmatched-panel">
+        <h2>{t(locale, "institutions.cscseUnmatchedGroup")} ({unmatched.length})</h2>
+        <div class="institution-grid">
+          {unmatched.map((item) => (
+            <article class="card institution-card">
+              <h3>{locale === "zh-CN" ? item.zh : item.en}</h3>
+              <p class="muted">{locale === "zh-CN" ? item.en : item.zh}</p>
+              <span class="tag cscse-operator-listed">{t(locale, "recognition.operatorListedUnmatched")}</span>
+              <p class="disclaimer">{locale === "zh-CN" ? (item.reasonZh ?? item.reason) : item.reason}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+</BaseLayout>

@@ -1,0 +1,3301 @@
+{
+  "generatedAt": "2026-09-11T19:42:37Z",
+  "dataClass": "official_admissions_extract",
+  "catalogKind": "candidate_not_published",
+  "institutionId": "msmt-vs_41000",
+  "institutionName": "Česká zemědělská univerzita v Praze",
+  "academicYear": "2026/2027",
+  "legalBaseline": {
+    "source": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+    "sourceGeneratedAt": "2026-09-07T12:34:24Z",
+    "inventoryAcademicYear": "register"
+  },
+  "counts": {
+    "programmes": 60,
+    "faculties": 6,
+    "teachingLanguages": {
+      "cs": 30,
+      "en": 30
+    },
+    "matchedToFacultyAdmissionEvidence": 60,
+    "withAnyOfficialWindow": 60,
+    "withAtLeastOneCompleteWindow": 34,
+    "applicationWindowRecords": 92,
+    "conditionalWindowRecords": 3,
+    "openByOfficialDates": 0,
+    "upcomingByOfficialDates": 0,
+    "closedByOfficialDates": 60,
+    "unknownByOfficialDates": 0,
+    "awaitingNextAcademicYearWindow": 60
+  },
+  "coverage": {
+    "complete": true,
+    "declaredScope": "All CZU doctoral offerings in the current compact MŠMT register baseline, cross-checked against the six faculties' official 2026/2027 admissions evidence",
+    "baselineOfferings": 60,
+    "matchedOfferings": 60,
+    "baselineFaculties": 6,
+    "facultiesWithProgrammeAndWindowEvidence": 6,
+    "facultyCoverage": [
+      {
+        "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+        "facultySlug": "fappz",
+        "baselineOfferings": 20,
+        "matchedOfferings": 20,
+        "offeringsWithOfficialWindow": 20,
+        "studyLanguages": {
+          "cs": 10,
+          "en": 10
+        },
+        "applicationStatuses": {
+          "closed": 20
+        },
+        "sourceIds": [
+          "czu-dsp-fappz-2026-2027"
+        ]
+      },
+      {
+        "faculty": "Fakulta lesnická a dřevařská",
+        "facultySlug": "fld",
+        "baselineOfferings": 17,
+        "matchedOfferings": 17,
+        "offeringsWithOfficialWindow": 17,
+        "studyLanguages": {
+          "cs": 8,
+          "en": 9
+        },
+        "applicationStatuses": {
+          "closed": 17
+        },
+        "sourceIds": [
+          "czu-dsp-fld-2026-2027"
+        ]
+      },
+      {
+        "faculty": "Fakulta tropického zemědělství",
+        "facultySlug": "ftz",
+        "baselineOfferings": 3,
+        "matchedOfferings": 3,
+        "offeringsWithOfficialWindow": 3,
+        "studyLanguages": {
+          "en": 3
+        },
+        "applicationStatuses": {
+          "closed": 3
+        },
+        "sourceIds": [
+          "czu-dsp-ftz-2026-2027"
+        ]
+      },
+      {
+        "faculty": "Fakulta životního prostředí",
+        "facultySlug": "fzp",
+        "baselineOfferings": 6,
+        "matchedOfferings": 6,
+        "offeringsWithOfficialWindow": 6,
+        "studyLanguages": {
+          "cs": 3,
+          "en": 3
+        },
+        "applicationStatuses": {
+          "closed": 6
+        },
+        "sourceIds": [
+          "czu-dsp-fzp-cs-2026-2027",
+          "czu-dsp-fzp-en-2026-2027"
+        ]
+      },
+      {
+        "faculty": "Provozně ekonomická fakulta",
+        "facultySlug": "pef",
+        "baselineOfferings": 8,
+        "matchedOfferings": 8,
+        "offeringsWithOfficialWindow": 8,
+        "studyLanguages": {
+          "cs": 4,
+          "en": 4
+        },
+        "applicationStatuses": {
+          "closed": 8
+        },
+        "sourceIds": [
+          "czu-dsp-pef-2026-2027",
+          "czu-dsp-pef-czech-programmes"
+        ]
+      },
+      {
+        "faculty": "Technická fakulta",
+        "facultySlug": "tf",
+        "baselineOfferings": 6,
+        "matchedOfferings": 6,
+        "offeringsWithOfficialWindow": 6,
+        "studyLanguages": {
+          "cs": 5,
+          "en": 1
+        },
+        "applicationStatuses": {
+          "closed": 6
+        },
+        "sourceIds": [
+          "czu-dsp-tf-2026-2027-page",
+          "czu-dsp-tf-2026-2027-scan"
+        ]
+      }
+    ],
+    "allApplicationWindowsClosedAtFetch": true,
+    "nextAcademicYearWindowEvidenceInThisArtifact": false,
+    "claimBoundary": "Completeness is limited to matching the MŠMT CZU doctoral baseline to the configured 2026/2027 faculty evidence. It does not assert that a 2027/2028 round has or has not been published elsewhere, does not infer an unannounced second round, and does not publish untranslated candidate records."
+  },
+  "sources": [
+    {
+      "id": "czu-dsp-fappz-2026-2027",
+      "url": "https://www.af.czu.cz/dl/150405?lang=cs",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "bytes": 288442,
+      "sha256": "4055f32ab038e011d51ec301a4e20f5f43df8e63a4c7421ab94b24e2b795b62b",
+      "sourceLanguage": "cs",
+      "extractionMethod": "pypdf_text_layer",
+      "reviewedAt": null
+    },
+    {
+      "id": "czu-dsp-fld-2026-2027",
+      "url": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 58841,
+      "sha256": "9419ad7fad616ffa074f8832fbe3b5f893abb87ae652e56ea8308538053b8f67",
+      "sourceLanguage": "en",
+      "extractionMethod": "static_html_visible_text",
+      "reviewedAt": null
+    },
+    {
+      "id": "czu-dsp-ftz-2026-2027",
+      "url": "https://www.ftz.czu.cz/dl/147891?lang=en",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "bytes": 300741,
+      "sha256": "bb3637477df49eb60f1e8f3b104cc1d907f5431d08a6abb9e42a7cdd97055cbc",
+      "sourceLanguage": "en",
+      "extractionMethod": "pypdf_text_layer",
+      "reviewedAt": null
+    },
+    {
+      "id": "czu-dsp-fzp-cs-2026-2027",
+      "url": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "bytes": 300476,
+      "sha256": "0d47be685d5d8d4fb3c81970b7bb25f2b5a65a1c1fd24484b87b64290e862915",
+      "sourceLanguage": "cs",
+      "extractionMethod": "pypdf_text_layer",
+      "reviewedAt": null
+    },
+    {
+      "id": "czu-dsp-fzp-en-2026-2027",
+      "url": "https://www.fzp.czu.cz/dl/151488?lang=en",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "bytes": 345006,
+      "sha256": "8079270177e866b210667f32e43945d03af0da7f8f35f1215acfcc2157f8fc86",
+      "sourceLanguage": "en",
+      "extractionMethod": "pypdf_text_layer",
+      "reviewedAt": null
+    },
+    {
+      "id": "czu-dsp-pef-2026-2027",
+      "url": "https://www.pef.czu.cz/dl/113306?lang=en",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "bytes": 289842,
+      "sha256": "1b8f5020dc0d579cb91e795a30c911d94e84c6e65556a1f01cdf575a6d0ca23d",
+      "sourceLanguage": "en",
+      "extractionMethod": "pypdf_text_layer",
+      "reviewedAt": null
+    },
+    {
+      "id": "czu-dsp-pef-czech-programmes",
+      "url": "https://www.pef.czu.cz/cs/r-7009-veda-a-vyzkum/r-7028-doktorske-studium/r-8126-doktorske-programy",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 53034,
+      "sha256": "df57cad9daf2a6845d9d5b9379e3f22be5214bee1fc751f5c0774ede8cbe3d85",
+      "sourceLanguage": "cs",
+      "extractionMethod": "static_html_visible_text",
+      "reviewedAt": null
+    },
+    {
+      "id": "czu-dsp-tf-2026-2027-page",
+      "url": "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 40839,
+      "sha256": "4e8c5bc67f1441212ceee73ad63b5ae8ab3c86a99a047145210914326b20f7d5",
+      "sourceLanguage": "cs",
+      "extractionMethod": "static_html_visible_text",
+      "reviewedAt": null
+    },
+    {
+      "id": "czu-dsp-tf-2026-2027-scan",
+      "url": "https://www.tf.czu.cz/dl/152519?lang=cs",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "bytes": 138567,
+      "sha256": "3034c9b0dd94266697daf5a862a9bdb42a0d81a3005920574a5ab0dfe0987f0c",
+      "sourceLanguage": "cs",
+      "extractionMethod": "human_reviewed_scan_transcription_sha256_guarded",
+      "reviewedAt": "2026-09-11"
+    }
+  ],
+  "programmes": [
+    {
+      "id": "inv-330bf56297af",
+      "titleOriginal": "Aplikovaná a krajinná ekologie",
+      "degree": "d",
+      "faculty": "Fakulta životního prostředí",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0521",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fzp",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151487?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151487?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fzp-cs-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "1. etapa",
+          "academicYear": "2026/2027",
+          "start": "2026-01-31",
+          "end": "2026-05-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+          "sourceId": "czu-dsp-fzp-cs-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "2. etapa",
+          "academicYear": "2026/2027",
+          "start": "2026-07-01",
+          "end": "2026-08-20",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+          "sourceId": "czu-dsp-fzp-cs-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-e632b20b3cf1",
+      "titleOriginal": "Aplikovaná geoinformatika a DPZ v lesnictví",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in Czech",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-06-07",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-84217713e596",
+      "titleOriginal": "Aplikovaná zoologie",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0511",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-17a59c30c847",
+      "titleOriginal": "Biologie lesa",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in Czech",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-06-07",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-4f951a10c07a",
+      "titleOriginal": "Ekologie",
+      "degree": "d",
+      "faculty": "Fakulta životního prostředí",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0521",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fzp",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151487?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151487?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fzp-cs-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "1. etapa",
+          "academicYear": "2026/2027",
+          "start": "2026-01-31",
+          "end": "2026-05-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+          "sourceId": "czu-dsp-fzp-cs-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "2. etapa",
+          "academicYear": "2026/2027",
+          "start": "2026-07-01",
+          "end": "2026-08-20",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+          "sourceId": "czu-dsp-fzp-cs-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-8916986e79be",
+      "titleOriginal": "Ekonomika a management lesnictví a dřevařství",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in Czech",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-06-07",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-f3ccd48d3dbb",
+      "titleOriginal": "Energetika",
+      "degree": "d",
+      "faculty": "Technická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0716",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "tf",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html",
+        "https://www.tf.czu.cz/dl/152519?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-tf-2026-2027-page",
+        "czu-dsp-tf-2026-2027-scan"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Nařízení děkana TF č. 1/2026",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-05-31",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.tf.czu.cz/dl/152519?lang=cs",
+          "sourceId": "czu-dsp-tf-2026-2027-scan",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "human_reviewed_scan_transcription_sha256_guarded",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/zaloz_eosobu.pl?fakulta=30;",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-1c97ec0cdd88",
+      "titleOriginal": "Environmentální vědy o Zemi",
+      "degree": "d",
+      "faculty": "Fakulta životního prostředí",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0532",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fzp",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151487?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151487?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fzp-cs-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "1. etapa",
+          "academicYear": "2026/2027",
+          "start": "2026-01-31",
+          "end": "2026-05-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+          "sourceId": "czu-dsp-fzp-cs-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "2. etapa",
+          "academicYear": "2026/2027",
+          "start": "2026-07-01",
+          "end": "2026-08-20",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+          "sourceId": "czu-dsp-fzp-cs-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-01a8cd49617a",
+      "titleOriginal": "Hospodářská úprava lesa",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in Czech",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-06-07",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-b62d69e777bb",
+      "titleOriginal": "Krajinářská architektura",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0731",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-de7b687fa40f",
+      "titleOriginal": "Kvalita a spolehlivost strojů a zařízení",
+      "degree": "d",
+      "faculty": "Technická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0715",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "tf",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html",
+        "https://www.tf.czu.cz/dl/152519?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-tf-2026-2027-page",
+        "czu-dsp-tf-2026-2027-scan"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Nařízení děkana TF č. 1/2026",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-05-31",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.tf.czu.cz/dl/152519?lang=cs",
+          "sourceId": "czu-dsp-tf-2026-2027-scan",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "human_reviewed_scan_transcription_sha256_guarded",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/zaloz_eosobu.pl?fakulta=30;",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-a27f3a477e1f",
+      "titleOriginal": "Management",
+      "degree": "d",
+      "faculty": "Provozně ekonomická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0413",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "pef",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.pef.czu.cz/cs/r-7009-veda-a-vyzkum/r-7028-doktorske-studium/r-8126-doktorske-programy"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en",
+        "https://www.pef.czu.cz/cs/r-7009-veda-a-vyzkum/r-7028-doktorske-studium/r-8126-doktorske-programy"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-pef-2026-2027",
+        "czu-dsp-pef-czech-programmes"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure 2026",
+          "academicYear": "2026/2027",
+          "start": "2026-03-16",
+          "end": "2026-04-30",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.pef.czu.cz/dl/113306?lang=en",
+          "sourceId": "czu-dsp-pef-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-0e55717ea2c8",
+      "titleOriginal": "Obecná produkce rostlinná",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-5b6b080405e4",
+      "titleOriginal": "Ochrana lesů a myslivosti",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": "Ochrana lesů a myslivost",
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in Czech",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-06-07",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-eac9684c7aec",
+      "titleOriginal": "Podniková a odvětvová ekonomika",
+      "degree": "d",
+      "faculty": "Provozně ekonomická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0311",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "pef",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.pef.czu.cz/cs/r-7009-veda-a-vyzkum/r-7028-doktorske-studium/r-8126-doktorske-programy"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en",
+        "https://www.pef.czu.cz/cs/r-7009-veda-a-vyzkum/r-7028-doktorske-studium/r-8126-doktorske-programy"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-pef-2026-2027",
+        "czu-dsp-pef-czech-programmes"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure 2026",
+          "academicYear": "2026/2027",
+          "start": "2026-03-16",
+          "end": "2026-04-30",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.pef.czu.cz/dl/113306?lang=en",
+          "sourceId": "czu-dsp-pef-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-89228b13220d",
+      "titleOriginal": "Procesní a informační inženýrství v agrárním sektoru",
+      "degree": "d",
+      "faculty": "Technická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "tf",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html",
+        "https://www.tf.czu.cz/dl/152519?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-tf-2026-2027-page",
+        "czu-dsp-tf-2026-2027-scan"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Nařízení děkana TF č. 1/2026",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-05-31",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.tf.czu.cz/dl/152519?lang=cs",
+          "sourceId": "czu-dsp-tf-2026-2027-scan",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "human_reviewed_scan_transcription_sha256_guarded",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/zaloz_eosobu.pl?fakulta=30;",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-0cd3de7101c2",
+      "titleOriginal": "Protipožární ochrana lesa, dřevěných materiálů a materiálů na bázi dřeva",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in Czech",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-06-07",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-e4ebca8eefdb",
+      "titleOriginal": "Pěstování lesa",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in Czech",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-06-07",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-97d5f931ae9d",
+      "titleOriginal": "Regionální a sociální rozvoj",
+      "degree": "d",
+      "faculty": "Provozně ekonomická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0388",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "pef",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.pef.czu.cz/cs/r-7009-veda-a-vyzkum/r-7028-doktorske-studium/r-8126-doktorske-programy"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en",
+        "https://www.pef.czu.cz/cs/r-7009-veda-a-vyzkum/r-7028-doktorske-studium/r-8126-doktorske-programy"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-pef-2026-2027",
+        "czu-dsp-pef-czech-programmes"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure 2026",
+          "academicYear": "2026/2027",
+          "start": "2026-03-16",
+          "end": "2026-04-30",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.pef.czu.cz/dl/113306?lang=en",
+          "sourceId": "czu-dsp-pef-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-d3a2dbad4606",
+      "titleOriginal": "Rostlinolékařství",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-7153382299eb",
+      "titleOriginal": "Speciální produkce rostlinná",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-4462fe472289",
+      "titleOriginal": "Systémové inženýrství a informatika",
+      "degree": "d",
+      "faculty": "Provozně ekonomická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0688",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "pef",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.pef.czu.cz/cs/r-7009-veda-a-vyzkum/r-7028-doktorske-studium/r-8126-doktorske-programy"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en",
+        "https://www.pef.czu.cz/cs/r-7009-veda-a-vyzkum/r-7028-doktorske-studium/r-8126-doktorske-programy"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-pef-2026-2027",
+        "czu-dsp-pef-czech-programmes"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure 2026",
+          "academicYear": "2026/2027",
+          "start": "2026-03-16",
+          "end": "2026-04-30",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.pef.czu.cz/dl/113306?lang=en",
+          "sourceId": "czu-dsp-pef-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-06b159fd4e61",
+      "titleOriginal": "Technika výrobních procesů",
+      "degree": "d",
+      "faculty": "Technická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "tf",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html",
+        "https://www.tf.czu.cz/dl/152519?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-tf-2026-2027-page",
+        "czu-dsp-tf-2026-2027-scan"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Nařízení děkana TF č. 1/2026",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-05-31",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.tf.czu.cz/dl/152519?lang=cs",
+          "sourceId": "czu-dsp-tf-2026-2027-scan",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "human_reviewed_scan_transcription_sha256_guarded",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/zaloz_eosobu.pl?fakulta=30;",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-c30e6acf3d4c",
+      "titleOriginal": "Technika zemědělských technologických systémů",
+      "degree": "d",
+      "faculty": "Technická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "tf",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html",
+        "https://www.tf.czu.cz/dl/152519?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-tf-2026-2027-page",
+        "czu-dsp-tf-2026-2027-scan"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Nařízení děkana TF č. 1/2026",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-05-31",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.tf.czu.cz/dl/152519?lang=cs",
+          "sourceId": "czu-dsp-tf-2026-2027-scan",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "human_reviewed_scan_transcription_sha256_guarded",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/zaloz_eosobu.pl?fakulta=30;",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-efcdb4dbc544",
+      "titleOriginal": "Využití a ochrana přírodních zdrojů",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0712",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-8b2a1e17863f",
+      "titleOriginal": "Výživa a potraviny",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0721",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-edd0c26672f0",
+      "titleOriginal": "Vědy o zvířatech",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-fdca6c205f14",
+      "titleOriginal": "Zemědělská chemie",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0888",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-193b2586e165",
+      "titleOriginal": "Zootechnika",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Řádný termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Náhradní termín",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-08-25",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-5aa89905a7d8",
+      "titleOriginal": "Zpracování dřeva a technika v lesním hospodářství",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "cs",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "cs",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in Czech",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-06-07",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-014a23b28bf9",
+      "titleOriginal": "Agricultural Chemistry",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0888",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-810b096bc928",
+      "titleOriginal": "Agriculture in Tropics and subtropics",
+      "degree": "d",
+      "faculty": "Fakulta tropického zemědělství",
+      "durationYears": 3.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0888",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "ftz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.ftz.czu.cz/dl/147891?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.ftz.czu.cz/dl/147891?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-ftz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure stage 1",
+          "academicYear": "2026/2027",
+          "start": "2026-01-05",
+          "end": "2026-02-10",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.ftz.czu.cz/dl/147891?lang=en",
+          "sourceId": "czu-dsp-ftz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Admission procedure stage 2",
+          "academicYear": "2026/2027",
+          "start": "2026-04-06",
+          "end": "2026-05-12",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.ftz.czu.cz/dl/147891?lang=en",
+          "sourceId": "czu-dsp-ftz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Admission procedure stage 3 (may not open)",
+          "academicYear": "2026/2027",
+          "start": "2026-07-07",
+          "end": "2026-08-11",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.ftz.czu.cz/dl/147891?lang=en",
+          "sourceId": "czu-dsp-ftz-2026-2027",
+          "conditionalOnVacancies": true,
+          "confirmedOpened": false,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-d88e18cff52d",
+      "titleOriginal": "Animal Science",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-3521dfa22751",
+      "titleOriginal": "Applied and Landscape Ecology",
+      "degree": "d",
+      "faculty": "Fakulta životního prostředí",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0521",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fzp",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151488?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151488?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fzp-en-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Stage 1",
+          "academicYear": "2026/2027",
+          "start": "2025-11-19",
+          "end": "2026-03-20",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151488?lang=en",
+          "sourceId": "czu-dsp-fzp-en-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Stage 2",
+          "academicYear": "2026/2027",
+          "start": "2026-07-01",
+          "end": "2026-08-20",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151488?lang=en",
+          "sourceId": "czu-dsp-fzp-en-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-2abefe2b89ee",
+      "titleOriginal": "Applied Animal Science",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-a60b8847d28b",
+      "titleOriginal": "Applied Geoinformatics and Remote Sensing in Forestry",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in English",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-03-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-8a022139e75a",
+      "titleOriginal": "Applied Zoology",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0511",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-e969467ef7af",
+      "titleOriginal": "Crop Science",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-9eaf061e5022",
+      "titleOriginal": "Ecology",
+      "degree": "d",
+      "faculty": "Fakulta životního prostředí",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0521",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fzp",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151488?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151488?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fzp-en-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Stage 1",
+          "academicYear": "2026/2027",
+          "start": "2025-11-19",
+          "end": "2026-03-20",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151488?lang=en",
+          "sourceId": "czu-dsp-fzp-en-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Stage 2",
+          "academicYear": "2026/2027",
+          "start": "2026-07-01",
+          "end": "2026-08-20",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151488?lang=en",
+          "sourceId": "czu-dsp-fzp-en-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-d7e87f6a65df",
+      "titleOriginal": "Economics and Management of Forestry and Wood Industry",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in English",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-03-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-eb53af7aeb81",
+      "titleOriginal": "Engineering of Agricultural Technological Systems",
+      "degree": "d",
+      "faculty": "Technická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "tf",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.tf.czu.cz/cs/r-6970-veda-a-vyzkum/r-7923-aktuality-vav/prijimaci-rizeni-pro-doktorske-studium-v-akademickem-roce-20.html",
+        "https://www.tf.czu.cz/dl/152519?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-tf-2026-2027-page",
+        "czu-dsp-tf-2026-2027-scan"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Nařízení děkana TF č. 1/2026",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-05-31",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.tf.czu.cz/dl/152519?lang=cs",
+          "sourceId": "czu-dsp-tf-2026-2027-scan",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "human_reviewed_scan_transcription_sha256_guarded",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/zaloz_eosobu.pl?fakulta=30;",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-88b85b2f6ac1",
+      "titleOriginal": "Environmental Earth Sciences",
+      "degree": "d",
+      "faculty": "Fakulta životního prostředí",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0532",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fzp",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151488?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/dl/151488?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fzp-en-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Stage 1",
+          "academicYear": "2026/2027",
+          "start": "2025-11-19",
+          "end": "2026-03-20",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151488?lang=en",
+          "sourceId": "czu-dsp-fzp-en-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Stage 2",
+          "academicYear": "2026/2027",
+          "start": "2026-07-01",
+          "end": "2026-08-20",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fzp.czu.cz/dl/151488?lang=en",
+          "sourceId": "czu-dsp-fzp-en-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-70f7be584e93",
+      "titleOriginal": "Exploitation and Conservation of Natural Resources",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0712",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-201c49933ef8",
+      "titleOriginal": "Fire Protection of Forest, Timber and Wood-Based Materials",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in English",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-03-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-1c2e4289ac0f",
+      "titleOriginal": "Forest Biology",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in English",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-03-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-042f10a1336c",
+      "titleOriginal": "Forest Management",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in English",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-03-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-72bd561b1670",
+      "titleOriginal": "Forest Protection and Game Management",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in English",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-03-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-fef092183279",
+      "titleOriginal": "Global Change Forestry",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in English",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-03-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-002cb72ad8c5",
+      "titleOriginal": "Landscape Architecture",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0731",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-05dfeac3ce0d",
+      "titleOriginal": "Management",
+      "degree": "d",
+      "faculty": "Provozně ekonomická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0413",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "pef",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-pef-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure 2026",
+          "academicYear": "2026/2027",
+          "start": "2026-03-16",
+          "end": "2026-04-30",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.pef.czu.cz/dl/113306?lang=en",
+          "sourceId": "czu-dsp-pef-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-49d856829cc4",
+      "titleOriginal": "Nutrition and Food",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0721",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-2d674311dc49",
+      "titleOriginal": "Plant Protection",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-1b9a440c4adc",
+      "titleOriginal": "Plant Sciences",
+      "degree": "d",
+      "faculty": "Fakulta agrobiologie, potravinových a přírodních zdrojů",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0811",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fappz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/dl/150405?lang=cs"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fappz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Regular deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-03-06",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Alternative deadline",
+          "academicYear": "2026/2027",
+          "start": null,
+          "end": "2026-04-21",
+          "datePrecision": "end_only",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.af.czu.cz/dl/150405?lang=cs",
+          "sourceId": "czu-dsp-fappz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-47abf2b754dc",
+      "titleOriginal": "Regional and Social Development",
+      "degree": "d",
+      "faculty": "Provozně ekonomická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0388",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "pef",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-pef-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure 2026",
+          "academicYear": "2026/2027",
+          "start": "2026-03-16",
+          "end": "2026-04-30",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.pef.czu.cz/dl/113306?lang=en",
+          "sourceId": "czu-dsp-pef-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-353654c5001c",
+      "titleOriginal": "Sector Economics and Economics of Enterprises",
+      "degree": "d",
+      "faculty": "Provozně ekonomická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0311",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "pef",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-pef-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure 2026",
+          "academicYear": "2026/2027",
+          "start": "2026-03-16",
+          "end": "2026-04-30",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.pef.czu.cz/dl/113306?lang=en",
+          "sourceId": "czu-dsp-pef-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-58dc708a9f7b",
+      "titleOriginal": "Silviculture",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in English",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-03-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-2095b8e67376",
+      "titleOriginal": "Sustainable Rural Development",
+      "degree": "d",
+      "faculty": "Fakulta tropického zemědělství",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0888",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "ftz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.ftz.czu.cz/dl/147891?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.ftz.czu.cz/dl/147891?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-ftz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure stage 1",
+          "academicYear": "2026/2027",
+          "start": "2026-01-05",
+          "end": "2026-02-10",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.ftz.czu.cz/dl/147891?lang=en",
+          "sourceId": "czu-dsp-ftz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Admission procedure stage 2",
+          "academicYear": "2026/2027",
+          "start": "2026-04-06",
+          "end": "2026-05-12",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.ftz.czu.cz/dl/147891?lang=en",
+          "sourceId": "czu-dsp-ftz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Admission procedure stage 3 (may not open)",
+          "academicYear": "2026/2027",
+          "start": "2026-07-07",
+          "end": "2026-08-11",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.ftz.czu.cz/dl/147891?lang=en",
+          "sourceId": "czu-dsp-ftz-2026-2027",
+          "conditionalOnVacancies": true,
+          "confirmedOpened": false,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-a32d5ffbd91c",
+      "titleOriginal": "Systems Engineering and Informatics",
+      "degree": "d",
+      "faculty": "Provozně ekonomická fakulta",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0688",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "pef",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/dl/113306?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-pef-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure 2026",
+          "academicYear": "2026/2027",
+          "start": "2026-03-16",
+          "end": "2026-04-30",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.pef.czu.cz/dl/113306?lang=en",
+          "sourceId": "czu-dsp-pef-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-987fa99d96f8",
+      "titleOriginal": "Tropical Agrobiology and Bioresource Management",
+      "degree": "d",
+      "faculty": "Fakulta tropického zemědělství",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0888",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "ftz",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.ftz.czu.cz/dl/147891?lang=en"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.ftz.czu.cz/dl/147891?lang=en"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-ftz-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "Admission procedure stage 1",
+          "academicYear": "2026/2027",
+          "start": "2026-01-05",
+          "end": "2026-02-10",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.ftz.czu.cz/dl/147891?lang=en",
+          "sourceId": "czu-dsp-ftz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Admission procedure stage 2",
+          "academicYear": "2026/2027",
+          "start": "2026-04-06",
+          "end": "2026-05-12",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.ftz.czu.cz/dl/147891?lang=en",
+          "sourceId": "czu-dsp-ftz-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        },
+        {
+          "roundOriginal": "Admission procedure stage 3 (may not open)",
+          "academicYear": "2026/2027",
+          "start": "2026-07-07",
+          "end": "2026-08-11",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.ftz.czu.cz/dl/147891?lang=en",
+          "sourceId": "czu-dsp-ftz-2026-2027",
+          "conditionalOnVacancies": true,
+          "confirmedOpened": false,
+          "extractionMethod": "pypdf_text_layer",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "inv-809bdeead2d7",
+      "titleOriginal": "Wood Processing and Forest Machinery",
+      "degree": "d",
+      "faculty": "Fakulta lesnická a dřevařská",
+      "durationYears": 4.0,
+      "studyLanguage": "en",
+      "iscedBroadOrNarrowCode": "0821",
+      "institutionId": "msmt-vs_41000",
+      "sourceLanguage": "en",
+      "facultySlug": "fld",
+      "academicYear": "2026/2027",
+      "officialProgrammeEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html"
+      ],
+      "matchedSourceIds": [
+        "czu-dsp-fld-2026-2027"
+      ],
+      "sourceTitleVariant": null,
+      "applicationWindows": [
+        {
+          "roundOriginal": "DSPs taught in English",
+          "academicYear": "2026/2027",
+          "start": "2025-10-01",
+          "end": "2026-03-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "sourceUrl": "https://www.fld.czu.cz/en/r-9414-study/r-10989-visual-study/admission-procedures-for-doctoral-study-for-the-2026-2027-ac.html",
+          "sourceId": "czu-dsp-fld-2026-2027",
+          "conditionalOnVacancies": false,
+          "confirmedOpened": true,
+          "extractionMethod": "static_html_visible_text",
+          "statusAtFetch": "closed"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "publicationStatus": "candidate_not_published"
+    }
+  ],
+  "publicationStatus": "candidate_not_published",
+  "note": "Language is a programme attribute, independent of UI locale. Source-listed application end dates are closed as of the fetch time; no future round is inferred."
+}

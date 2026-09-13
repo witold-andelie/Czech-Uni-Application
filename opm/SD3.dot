@@ -14,15 +14,25 @@ digraph SD3 {
     rejected [label="不符合发布要求\nrejected", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
     verified [label="已核验\nverified", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="facts"];
   }
+  subgraph cluster_localereview {
+    graph [label="逐语种审核记录\nLocale Review Record", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="localereview"];
+    reviewbound [label="已绑定源哈希\nhash bound", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
+    reviewinvalid [label="源变更后失效\ninvalidated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
+    reviewpending [label="待人工复核\npending", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
+  }
   subgraph cluster_snapshot {
     graph [label="发布快照\nPublication Snapshot", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="snapshot"];
     archived [label="已归档\narchived", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     live [label="当前版本\ncurrent", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    stagedsnapshot [label="已暂存\nstaged", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     stale [label="待复核\nneeds review", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    validatedsnapshot [label="门禁已通过\nvalidated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
   }
   acquire [label="获取官方证据\nEvidence Acquiring", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   archive [label="归档截止或撤回记录\nSnapshot Archiving", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  bindreview [label="绑定逐语种人工审核\nLocale Review Binding", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  contenthash [label="源内容哈希\nSource Content Hash", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   deadline [label="截止与源更新信号\nDeadline and Source Change", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   editor [label="内容审核者\nContent Reviewer", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
   evidence [label="来源证据\nSource Evidence", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
@@ -33,6 +43,7 @@ digraph SD3 {
   reject [label="标记不符合发布要求\nRecord Rejecting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   retry [label="准备新核验版本\nRecord Repreparing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   review [label="复核三语内容\nTranslation Reviewing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  reviewinvalidate [label="使旧审核失效\nLocale Review Invalidating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   source [label="官方来源\nOfficial Source", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   translate [label="生成三语译文\nContent Translating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   verify [label="核验关键字段\nRecord Verifying", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
@@ -50,12 +61,24 @@ digraph SD3 {
   editor -> reject [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
   verified -> translate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   translate -> translated [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  translate -> reviewpending [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   translated -> review [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
   review -> reviewed [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
   editor -> review [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
   evidence -> review [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  evidence -> contenthash [dir="none", color="#64748B", style="dashed", label="exhibition", opm_relation="exhibition"];
+  reviewpending -> bindreview [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  bindreview -> reviewbound [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  editor -> bindreview [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
+  contenthash -> bindreview [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  evidence -> bindreview [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  reviewbound -> reviewinvalidate [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  reviewinvalidate -> reviewinvalid [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  deadline -> reviewinvalidate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  contenthash -> reviewinvalidate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   verified -> publish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   reviewed -> publish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  reviewbound -> publish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   quality -> publish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   publish -> live [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   publish -> catalog [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];

@@ -99,7 +99,7 @@ func TestWholeJobClosureBeatsFutureRound(t *testing.T) {
 
 func TestDefaultJobsExcludePostdocAndClosed(t *testing.T) {
 	s := load(t)
-	_, page := s.FilterJobs(JobFilterQuery{MasterEligible: true, DoctoralEnrollment: "all", WorkingLanguage: "all", Page: 1, PageSize: 20}, now(), "en")
+	_, page := s.FilterJobs(JobFilterQuery{MasterEligible: Bool(true), DoctoralEnrollment: "all", WorkingLanguage: "all", Page: 1, PageSize: 20}, now(), "en")
 	for _, view := range page {
 		if view.Job.ID == "job-postdoc" || view.Job.ID == "job-closed" || view.Job.ID == "job-filled" {
 			t.Fatalf("unexpected %s", view.Job.ID)
@@ -119,5 +119,107 @@ func TestUnpublishedTuitionIsNotZero(t *testing.T) {
 	item := offering(load(t), "off-cs-en-2026")
 	if item.Tuition.Published || item.Tuition.Amount != nil {
 		t.Fatalf("%+v", item.Tuition)
+	}
+}
+
+func str(v string) *string { return &v }
+
+func TestCityAndOrientationFilters(t *testing.T) {
+	s := load(t)
+	cs := "cs"
+	_, total, page := s.FilterOfferings(FilterQuery{TeachingLanguage: &cs, City: "Prague", Page: 1, PageSize: 20}, now(), "en")
+	if total != 2 {
+		t.Fatalf("Prague Czech offerings want 2 got %d", total)
+	}
+	for _, view := range page {
+		if view.Institution.City.En != "Prague" {
+			t.Fatalf("%s city %s", view.Offering.ID, view.Institution.City.En)
+		}
+	}
+	_, applied, _ := s.FilterOfferings(FilterQuery{TeachingLanguage: &cs, Orientation: "applied", Page: 1, PageSize: 20}, now(), "en")
+	if applied != 1 {
+		t.Fatalf("applied Czech offerings want 1 got %d", applied)
+	}
+}
+
+func TestMissingStartNeverOpens(t *testing.T) {
+	tz := "Europe/Prague"
+	close := "2026-12-15"
+	window := ApplicationWindow{ClosesAt: &close, Timezone: &tz, DatePrecision: "date", Status: "open"}
+	if got := EvaluateWindow(window, now()); got != "unknown" {
+		t.Fatalf("got %s", got)
+	}
+}
+
+func TestConditionalOpportunityIsNotOpen(t *testing.T) {
+	s := load(t)
+	summary := SummarizeWindows(windows(s, "offering", "off-biz-en-supp"), now(), false)
+	if summary.OpportunityStatus != "conditional" {
+		t.Fatalf("got %s", summary.OpportunityStatus)
+	}
+}
+
+func TestDatetimeCloseUsesClock(t *testing.T) {
+	tz := "Europe/Prague"
+	opens := "2026-09-01T00:00:00+02:00"
+	closes := "2026-09-06T10:00:00+02:00"
+	window := ApplicationWindow{OpensAt: &opens, ClosesAt: &closes, Timezone: &tz, DatePrecision: "datetime", Status: "open"}
+	if got := EvaluateWindow(window, now()); got != "closed" {
+		t.Fatalf("got %s", got)
+	}
+}
+
+func TestExplicitClosedWinsWithoutStart(t *testing.T) {
+	tz := "Europe/Prague"
+	closes := "2026-09-30"
+	window := ApplicationWindow{ClosesAt: &closes, Timezone: &tz, DatePrecision: "date", Status: "closed"}
+	if got := EvaluateWindow(window, now()); got != "closed" {
+		t.Fatalf("got %s", got)
+	}
+}
+
+func TestInstitutionFilterExcludesUnknown(t *testing.T) {
+	s := load(t)
+	cs := "cs"
+	_, total, page := s.FilterOfferings(FilterQuery{TeachingLanguage: &cs, InstitutionID: "does-not-exist", Page: 1, PageSize: 20}, now(), "en")
+	if total != 0 || len(page) != 0 {
+		t.Fatalf("unknown institution should yield zero, got %d", total)
+	}
+}
+
+func TestJobTrackPostdoc(t *testing.T) {
+	s := load(t)
+	_, page := s.FilterJobs(JobFilterQuery{Track: "postdoc", Page: 1, PageSize: 20}, now(), "en")
+	if len(page) == 0 {
+		t.Fatal("expected public postdocs")
+	}
+	for _, view := range page {
+		if !view.Job.IsPostdoc && JobTrackOf(view.Job) != "postdoc" {
+			t.Fatalf("non-postdoc %s", view.Job.ID)
+		}
+	}
+}
+
+func TestZeroValueJobFilterExcludesPostdocs(t *testing.T) {
+	s := load(t)
+	_, page := s.FilterJobs(JobFilterQuery{Page: 1, PageSize: 20}, now(), "en")
+	for _, view := range page {
+		if view.Job.ID == "job-postdoc" {
+			t.Fatal("nil MasterEligible must keep the product default")
+		}
+	}
+}
+
+func TestMasterEligibleFalseKeepsPublicPostdoc(t *testing.T) {
+	s := load(t)
+	_, page := s.FilterJobs(JobFilterQuery{MasterEligible: Bool(false), Page: 1, PageSize: 20}, now(), "en")
+	found := false
+	for _, view := range page {
+		if view.Job.ID == "job-postdoc" {
+			found = true
+		}
+	}
+	if !found {
+		t.Fatal("masterEligible=false must not hide public postdocs")
 	}
 }

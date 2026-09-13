@@ -1,0 +1,2321 @@
+{
+  "generatedAt": "2026-09-11T19:31:12Z",
+  "dataClass": "official_university_admissions_extract",
+  "catalogKind": "candidate_not_published",
+  "institutionId": "msmt-vs_41000",
+  "institutionNameOriginal": "Czech University of Life Sciences Prague",
+  "sourceLanguage": "en",
+  "scope": {
+    "teachingLanguages": [
+      "en"
+    ],
+    "degrees": [
+      "b",
+      "m"
+    ],
+    "claim": "official_czu_english_bachelor_master_catalogue_on_source",
+    "excludes": [
+      "czech-taught programmes",
+      "doctoral programmes"
+    ]
+  },
+  "sourceUrls": {
+    "catalogue": "https://study.czu.cz/",
+    "api": "https://study.czu.cz/wp-json/wp/v2/programmes?per_page=100&_embed=wp%3Aterm",
+    "openProgrammes": "https://study.czu.cz/open-programmes/",
+    "admissions": "https://study.czu.cz/admission/",
+    "generalApplyPortal": "https://is.czu.cz/prihlaska/?lang=en"
+  },
+  "applicationFee": {
+    "amount": 850.0,
+    "currency": "CZK",
+    "displayOriginal": "admission fee is CZK 850 "
+  },
+  "counts": {
+    "programmes": 36,
+    "degrees": {
+      "bachelor": 10,
+      "master": 26
+    },
+    "faculties": {
+      "fappz": 6,
+      "fld": 2,
+      "ftz": 8,
+      "fzp": 8,
+      "pef": 9,
+      "tf": 3
+    },
+    "detailsWithCompleteWindow": 36,
+    "openByDetailDates": 0,
+    "upcomingByDetailDates": 35,
+    "closedByDetailDates": 1,
+    "unknownByDetailDates": 0,
+    "openPageReported": 0
+  },
+  "coverage": {
+    "apiReportedTotal": 36,
+    "apiReportedPages": 1,
+    "receivedUniqueProgrammeIds": 36,
+    "detailPagesExpected": 36,
+    "detailPagesParsed": 36,
+    "complete": true,
+    "availabilityCrosscheck": "agrees",
+    "claimBoundary": "Completeness applies only to the English bachelor/master catalogue exposed by study.czu.cz. It does not claim all CZU programmes or automatic formal publication."
+  },
+  "attempts": [
+    {
+      "url": "https://study.czu.cz/wp-json/wp/v2/programmes?per_page=100&_embed=wp%3Aterm",
+      "httpStatus": 200,
+      "bytes": 1195048
+    },
+    {
+      "url": "https://study.czu.cz/open-programmes/",
+      "httpStatus": 200,
+      "bytes": 81883
+    },
+    {
+      "url": "https://study.czu.cz/admission/",
+      "httpStatus": 200,
+      "bytes": 94620
+    },
+    {
+      "url": "https://study.czu.cz/programmes/agriculture-and-food/",
+      "httpStatus": 200,
+      "bytes": 107553
+    },
+    {
+      "url": "https://study.czu.cz/programmes/sustainable-use-of-natural-resources/",
+      "httpStatus": 200,
+      "bytes": 108213
+    },
+    {
+      "url": "https://study.czu.cz/programmes/testovaci-program-3/",
+      "httpStatus": 200,
+      "bytes": 108244
+    },
+    {
+      "url": "https://study.czu.cz/programmes/natural-resources-management/",
+      "httpStatus": 200,
+      "bytes": 108588
+    },
+    {
+      "url": "https://study.czu.cz/programmes/sustainable-agriculture-and-food-security/",
+      "httpStatus": 200,
+      "bytes": 108012
+    },
+    {
+      "url": "https://study.czu.cz/programmes/forest-science-in-global-change/",
+      "httpStatus": 200,
+      "bytes": 110289
+    },
+    {
+      "url": "https://study.czu.cz/programmes/forestry/",
+      "httpStatus": 200,
+      "bytes": 109657
+    },
+    {
+      "url": "https://study.czu.cz/programmes/agricultural-engineering/",
+      "httpStatus": 200,
+      "bytes": 109770
+    },
+    {
+      "url": "https://study.czu.cz/programmes/technology-and-environmental-engineering/",
+      "httpStatus": 200,
+      "bytes": 109685
+    },
+    {
+      "url": "https://study.czu.cz/programmes/environmental-engineering/",
+      "httpStatus": 200,
+      "bytes": 107673
+    },
+    {
+      "url": "https://study.czu.cz/programmes/environmental-data-science/",
+      "httpStatus": 200,
+      "bytes": 107680
+    },
+    {
+      "url": "https://study.czu.cz/programmes/agricultural-engineering-2/",
+      "httpStatus": 200,
+      "bytes": 109663
+    },
+    {
+      "url": "https://study.czu.cz/programmes/international-cooperation-in-agriculture-and-rural-development/",
+      "httpStatus": 200,
+      "bytes": 108530
+    },
+    {
+      "url": "https://study.czu.cz/programmes/wildlife-and-livestock-production-management-and-conservation/",
+      "httpStatus": 200,
+      "bytes": 109010
+    },
+    {
+      "url": "https://study.czu.cz/programmes/international-development-and-agricultural-economics/",
+      "httpStatus": 200,
+      "bytes": 109435
+    },
+    {
+      "url": "https://study.czu.cz/programmes/tropical-crop-management-and-ecology/",
+      "httpStatus": 200,
+      "bytes": 108327
+    },
+    {
+      "url": "https://study.czu.cz/programmes/business-administration/",
+      "httpStatus": 200,
+      "bytes": 109339
+    },
+    {
+      "url": "https://study.czu.cz/programmes/informatics/",
+      "httpStatus": 200,
+      "bytes": 108847
+    },
+    {
+      "url": "https://study.czu.cz/programmes/economics-and-management/",
+      "httpStatus": 200,
+      "bytes": 109604
+    },
+    {
+      "url": "https://study.czu.cz/programmes/global-information-security-management/",
+      "httpStatus": 200,
+      "bytes": 110478
+    },
+    {
+      "url": "https://study.czu.cz/programmes/business-administration-2/",
+      "httpStatus": 200,
+      "bytes": 109866
+    },
+    {
+      "url": "https://study.czu.cz/programmes/informatics-2/",
+      "httpStatus": 200,
+      "bytes": 109340
+    },
+    {
+      "url": "https://study.czu.cz/programmes/economics-and-management-2/",
+      "httpStatus": 200,
+      "bytes": 109151
+    },
+    {
+      "url": "https://study.czu.cz/programmes/environmental-geosciences/",
+      "httpStatus": 200,
+      "bytes": 107839
+    },
+    {
+      "url": "https://study.czu.cz/programmes/agri-food-systems-and-rural-development/",
+      "httpStatus": 200,
+      "bytes": 109534
+    },
+    {
+      "url": "https://study.czu.cz/programmes/european-agrarian-diplomacy/",
+      "httpStatus": 200,
+      "bytes": 109067
+    },
+    {
+      "url": "https://study.czu.cz/programmes/international-trade-and-business/",
+      "httpStatus": 200,
+      "bytes": 110608
+    },
+    {
+      "url": "https://study.czu.cz/programmes/nature-conservation/",
+      "httpStatus": 200,
+      "bytes": 107974
+    },
+    {
+      "url": "https://study.czu.cz/programmes/environmental-modelling/",
+      "httpStatus": 200,
+      "bytes": 107882
+    },
+    {
+      "url": "https://study.czu.cz/programmes/landscape-planning/",
+      "httpStatus": 200,
+      "bytes": 107667
+    },
+    {
+      "url": "https://study.czu.cz/programmes/tropical-forestry-and-agroforestry/",
+      "httpStatus": 200,
+      "bytes": 108413
+    },
+    {
+      "url": "https://study.czu.cz/programmes/tropical-agroecology/",
+      "httpStatus": 200,
+      "bytes": 108184
+    },
+    {
+      "url": "https://study.czu.cz/programmes/danube-agrifood-master/",
+      "httpStatus": 200,
+      "bytes": 105586
+    },
+    {
+      "url": "https://study.czu.cz/programmes/smart-sustainable-solutions/",
+      "httpStatus": 200,
+      "bytes": 108547
+    },
+    {
+      "url": "https://study.czu.cz/programmes/environmental-data-science-2/",
+      "httpStatus": 200,
+      "bytes": 108250
+    },
+    {
+      "url": "https://study.czu.cz/programmes/agricultural-development-international-development-and-agricultural-economics-double-degree/",
+      "httpStatus": 200,
+      "bytes": 109275
+    }
+  ],
+  "programmes": [
+    {
+      "id": "czu-study-15",
+      "sourceStableId": "15",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Agriculture and Food"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "15",
+        "slug": "fappz",
+        "nameOriginal": "Faculty of Agrobiology Food and Natural Resources"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Food"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/agriculture-and-food/",
+      "sourceModifiedAt": "2026-08-03T12:20:05",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/agriculture-and-food/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "83763526f56903a2b13ff7f067ce6b688b5b8829d8d075a47a1e7dd904d2fc09",
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/en/r-9372-study/r-9479-study-at-faculty/r-15288-admission-procedure"
+      ],
+      "sourceHtmlSha256": "ad490f510e21af2093a7c1c5bee87ceb00337adb7a0d4aad0c7bdcca98976a35",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-165",
+      "sourceStableId": "165",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Sustainable Use of Natural Resources"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "15",
+        "slug": "fappz",
+        "nameOriginal": "Faculty of Agrobiology Food and Natural Resources"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Food",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/sustainable-use-of-natural-resources/",
+      "sourceModifiedAt": "2026-08-03T08:47:08",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/sustainable-use-of-natural-resources/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "83763526f56903a2b13ff7f067ce6b688b5b8829d8d075a47a1e7dd904d2fc09",
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/en/r-9372-study/r-9479-study-at-faculty/r-15288-admission-procedure"
+      ],
+      "sourceHtmlSha256": "507972cf5314b70b8b60b04005571646f8f9ccd5d6bfd413e9c5c4cfa3a31cf1",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-166",
+      "sourceStableId": "166",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Natural Resources and Environment"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "15",
+        "slug": "fappz",
+        "nameOriginal": "Faculty of Agrobiology Food and Natural Resources"
+      },
+      "fieldsOriginal": [
+        "Environment",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/testovaci-program-3/",
+      "sourceModifiedAt": "2026-08-03T08:57:21",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 3600.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 3,600 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/testovaci-program-3/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "dc977a450910363f84d2f5f398e075e69248a32e7ef848f732157702214e2af2",
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/en/r-9372-study/r-9479-study-at-faculty/r-15288-admission-procedure"
+      ],
+      "sourceHtmlSha256": "dfc218e9ee4d90d93502fcd142abdf6eb65a56e78de8840e6cb407590de4c030",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-167",
+      "sourceStableId": "167",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Natural Resources Management and Ecological Engineering"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "15",
+        "slug": "fappz",
+        "nameOriginal": "Faculty of Agrobiology Food and Natural Resources"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Environment",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/natural-resources-management/",
+      "sourceModifiedAt": "2026-08-03T12:04:19",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 3600.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 3,600 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/natural-resources-management/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "dc977a450910363f84d2f5f398e075e69248a32e7ef848f732157702214e2af2",
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/en/r-9372-study/r-9479-study-at-faculty/r-15288-admission-procedure"
+      ],
+      "sourceHtmlSha256": "a6331d5681ef77eb097155fe49f01830bd1a02aabe83842a959129bf2979e3c2",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-491",
+      "sourceStableId": "491",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Sustainable Agriculture and Food Security"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "15",
+        "slug": "fappz",
+        "nameOriginal": "Faculty of Agrobiology Food and Natural Resources"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Environment",
+        "Food"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/sustainable-agriculture-and-food-security/",
+      "sourceModifiedAt": "2026-08-03T11:57:24",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 3600.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 3,600 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/sustainable-agriculture-and-food-security/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "cc158c221c09c41d309dc1308d98f6d17600b8eecdb97aa1e6cea099f459e96e",
+      "admissionEvidenceUrls": [
+        "https://www.af.czu.cz/en/r-9372-study/r-9479-study-at-faculty/r-15288-admission-procedure."
+      ],
+      "sourceHtmlSha256": "fde7e503ac51d708c55273d13ef1b19318a2bb62e27631d9d050ff6e4dfd17dd",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-493",
+      "sourceStableId": "493",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Forest Science in Global Change"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "20",
+        "slug": "fld",
+        "nameOriginal": "Faculty of Forestry and Wood Sciences"
+      },
+      "fieldsOriginal": [
+        "Environment",
+        "Forestry"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/forest-science-in-global-change/",
+      "sourceModifiedAt": "2026-09-01T10:37:02",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 3600.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 3,600 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/forest-science-in-global-change/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "cda10e236b084705cf53e551de9e8aade0d02fb91638327c58a2bafe75fc3a74",
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-11075-admission-procedures/r-13200-bachelors-admission-procedure"
+      ],
+      "sourceHtmlSha256": "2de6c7c11889c4c963d59be21b588ffe7e168e4cb460978837628802d3205a8a",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-494",
+      "sourceStableId": "494",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Sustainable Forestry and Natural Resource Management"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "20",
+        "slug": "fld",
+        "nameOriginal": "Faculty of Forestry and Wood Sciences"
+      },
+      "fieldsOriginal": [
+        "Forestry"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/forestry/",
+      "sourceModifiedAt": "2026-09-01T10:38:38",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/forestry/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "dde493672e6fe2add6426db8e8fa9d5c110523f9e07f5eb43fe75c6c3d21abec",
+      "admissionEvidenceUrls": [
+        "https://www.fld.czu.cz/en/r-9414-study/r-11075-admission-procedures/r-13200-bachelors-admission-procedure"
+      ],
+      "sourceHtmlSha256": "3471f04436f5b27061974b6242bed1736d19592e67c7ecfea4ce8971719824e1",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-495",
+      "sourceStableId": "495",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Agricultural Engineering"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "18",
+        "slug": "tf",
+        "nameOriginal": "Faculty of Engineering"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Engineering"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/agricultural-engineering/",
+      "sourceModifiedAt": "2026-08-31T13:28:23",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 1000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 1,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/agricultural-engineering/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "0477d37e31f76bce1f1ce5ef07b98d0dadec7b30d04fd2397fc50955d95c7950",
+      "admissionEvidenceUrls": [],
+      "sourceHtmlSha256": "3176a486e63e0854bc2e61865e5838bba091b3ecd90008641ff740b3101061b2",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-497",
+      "sourceStableId": "497",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Technology and Environmental Engineering"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "18",
+        "slug": "tf",
+        "nameOriginal": "Faculty of Engineering"
+      },
+      "fieldsOriginal": [
+        "Engineering",
+        "Environment"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/technology-and-environmental-engineering/",
+      "sourceModifiedAt": "2026-08-31T13:24:26",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/technology-and-environmental-engineering/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "a41900302a75028d40c93d4ec6a4c6c2dd363c046085a175befe552dd3f09cc9",
+      "admissionEvidenceUrls": [],
+      "sourceHtmlSha256": "ead31e2bf56af4a436c4f897b147e4af39da03018d621da22208156da20e24ad",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-499",
+      "sourceStableId": "499",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Environmental Engineering"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "19",
+        "slug": "fzp",
+        "nameOriginal": "Faculty of Environmental Sciences"
+      },
+      "fieldsOriginal": [
+        "Engineering",
+        "Environment",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/environmental-engineering/",
+      "sourceModifiedAt": "2026-07-23T13:42:59",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/environmental-engineering/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "ac4ac2f70fe2584eb7aed0cd4beb5687aa4e5254f4ff04673072cb2a7198b954",
+      "admissionEvidenceUrls": [
+        "https://www.scioexams.com/general-academic-prerequisites",
+        "https://www.fzp.czu.cz/en/r-9408-study/r-9494-study-at-fzp/r-9792-admission-procedures/r-14065-bachelor-s-study-programmes"
+      ],
+      "sourceHtmlSha256": "07aca07624da1b26105281f48965291f344f4434f9839d02d1148dbaccd12c36",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-500",
+      "sourceStableId": "500",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Environmental Data Science"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "19",
+        "slug": "fzp",
+        "nameOriginal": "Faculty of Environmental Sciences"
+      },
+      "fieldsOriginal": [
+        "Environment",
+        "Informatics"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/environmental-data-science/",
+      "sourceModifiedAt": "2026-07-23T13:42:28",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/environmental-data-science/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "ac4ac2f70fe2584eb7aed0cd4beb5687aa4e5254f4ff04673072cb2a7198b954",
+      "admissionEvidenceUrls": [
+        "https://www.scioexams.com/general-academic-prerequisites",
+        "https://www.fzp.czu.cz/en/r-9408-study/r-9494-study-at-fzp/r-9792-admission-procedures/r-14065-bachelor-s-study-programmes"
+      ],
+      "sourceHtmlSha256": "8ba21085adffdbee5d4cfe2100d1e6f54363494ee1be95923e5119ba81143057",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-501",
+      "sourceStableId": "501",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Agricultural Engineering"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "18",
+        "slug": "tf",
+        "nameOriginal": "Faculty of Engineering"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Engineering"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/agricultural-engineering-2/",
+      "sourceModifiedAt": "2026-08-31T13:16:47",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/agricultural-engineering-2/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "dce5d185bc325192bbe7103f596f8e158477b1d72a795e3a13e98a9b87cf8fc1",
+      "admissionEvidenceUrls": [],
+      "sourceHtmlSha256": "026cc4ce2beb9b432e7b704ed7540d27c1161401fc4a8750309884754e83fc8f",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-502",
+      "sourceStableId": "502",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "International Cooperation in Agriculture and Rural Development"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "21",
+        "slug": "ftz",
+        "nameOriginal": "Faculty of Tropical AgriSciences"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Environment"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/international-cooperation-in-agriculture-and-rural-development/",
+      "sourceModifiedAt": "2026-08-10T13:09:24",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 1000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 1,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 520.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 520 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/international-cooperation-in-agriculture-and-rural-development/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "0e69f82fb2237b03148589add235f1df0224a164f054ef1fe207e4c4ad542fc4",
+      "admissionEvidenceUrls": [
+        "https://www.ftz.czu.cz/en/r-9420-study/r-9505-study-programmes/r-10422-bachelor-s-degree-programmes/r-10431-international-cooperation-in-agricultural-and-rural-development"
+      ],
+      "sourceHtmlSha256": "33c4b6714607e43ad6fe5e931561599d61a87e4fff8893cb61c077ad30d5abbd",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-503",
+      "sourceStableId": "503",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Wildlife and Livestock Production, Management and Conservation"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "21",
+        "slug": "ftz",
+        "nameOriginal": "Faculty of Tropical AgriSciences"
+      },
+      "fieldsOriginal": [
+        "Animal Science",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/wildlife-and-livestock-production-management-and-conservation/",
+      "sourceModifiedAt": "2026-08-07T13:40:04",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 1000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 1,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 320.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 320 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/wildlife-and-livestock-production-management-and-conservation/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "be2164c9ae8022bd8d7b88f7d69e3e0225f4c7089b512d1b39b9d6d04391a443",
+      "admissionEvidenceUrls": [
+        "https://www.ftz.czu.cz/en/r-9420-study/r-10784-study-applicants/r-12063-masters-degree-programmes-information-about-admission-procedure"
+      ],
+      "sourceHtmlSha256": "65544ce4d3130577f735df4a8af357d6455fa820182db847f570a5d41b1be08a",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-504",
+      "sourceStableId": "504",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "International Development and Agricultural Economics"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "21",
+        "slug": "ftz",
+        "nameOriginal": "Faculty of Tropical AgriSciences"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Business",
+        "Environment"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/international-development-and-agricultural-economics/",
+      "sourceModifiedAt": "2026-08-07T13:36:32",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 1000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 1,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 320.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 320 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/international-development-and-agricultural-economics/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "be2164c9ae8022bd8d7b88f7d69e3e0225f4c7089b512d1b39b9d6d04391a443",
+      "admissionEvidenceUrls": [
+        "https://www.ftz.czu.cz/en/r-9420-study/r-10784-study-applicants/r-12063-masters-degree-programmes-information-about-admission-procedure"
+      ],
+      "sourceHtmlSha256": "ebea00bd3285830898162d90b4c4ade6444ad20ba1b47815b9224d5cb9f0f7bc",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-505",
+      "sourceStableId": "505",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Tropical Crop Management and Ecology"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "21",
+        "slug": "ftz",
+        "nameOriginal": "Faculty of Tropical AgriSciences"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Food"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/tropical-crop-management-and-ecology/",
+      "sourceModifiedAt": "2026-08-10T13:14:23",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 1000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 1,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 320.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 320 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/tropical-crop-management-and-ecology/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "be2164c9ae8022bd8d7b88f7d69e3e0225f4c7089b512d1b39b9d6d04391a443",
+      "admissionEvidenceUrls": [
+        "https://www.ftz.czu.cz/en/r-9420-study/r-10784-study-applicants/r-12063-masters-degree-programmes-information-about-admission-procedure"
+      ],
+      "sourceHtmlSha256": "36bb107651762049a46e7809948aeea222ed8d45f8eda37430b2c180031834b0",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-506",
+      "sourceStableId": "506",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Business Administration"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "16",
+        "slug": "pef",
+        "nameOriginal": "Faculty of Economics and Management"
+      },
+      "fieldsOriginal": [
+        "Business"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/business-administration/",
+      "sourceModifiedAt": "2026-08-31T13:35:25",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 2600.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,600 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-03-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "31 March, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/business-administration/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "854fd56a70adc770e8ef8071f44eb31db25fb63dfefec8748447ca085269c2cf",
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10434-business-administration-ba"
+      ],
+      "sourceHtmlSha256": "4ff478c50d975341e24714ddf521364790663046814cf5b078256c4b827d5324",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-507",
+      "sourceStableId": "507",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Informatics"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "16",
+        "slug": "pef",
+        "nameOriginal": "Faculty of Economics and Management"
+      },
+      "fieldsOriginal": [
+        "Informatics"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/informatics/",
+      "sourceModifiedAt": "2026-08-06T11:38:56",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 3200.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 3,200 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-03-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "31 March, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/informatics/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "9b2d7ed93544915a1e259a8be17e54f542f5acee63a60df037911e9734e2ca68",
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10432-informatics-infoa"
+      ],
+      "sourceHtmlSha256": "d46c7b7db846a13ee71b93c67c4f20a376ce233ecde7330873ff45a31e3ef56b",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-508",
+      "sourceStableId": "508",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Economics and Management"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "b",
+      "faculty": {
+        "sourceId": "16",
+        "slug": "pef",
+        "nameOriginal": "Faculty of Economics and Management"
+      },
+      "fieldsOriginal": [
+        "Business"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/economics-and-management/",
+      "sourceModifiedAt": "2026-08-06T11:41:19",
+      "durationYears": 3.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-03-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "31 March, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/economics-and-management/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "9b2d7ed93544915a1e259a8be17e54f542f5acee63a60df037911e9734e2ca68",
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10433-economics-and-management-em"
+      ],
+      "sourceHtmlSha256": "7a04d350c08a67962f1e98c256d809cd0ea19f622ce8a3fc3c1847e1e735dc65",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-509",
+      "sourceStableId": "509",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Global Information Security Management"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "16",
+        "slug": "pef",
+        "nameOriginal": "Faculty of Economics and Management"
+      },
+      "fieldsOriginal": [
+        "Business",
+        "Informatics"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/global-information-security-management/",
+      "sourceModifiedAt": "2026-08-06T11:45:25",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 5400.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 5,400 per year*"
+      },
+      "tuitionEu": {
+        "amount": 5400.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 5,400 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-04-30",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "30 April, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/global-information-security-management/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "cd6057ca4060f6d5ec63a7407174b19f8b51dfcf76c36228805c6b4be90c0257",
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10299-masters-study/r-17928-global-information-security-management-gism/gism.html"
+      ],
+      "sourceHtmlSha256": "b4ece19b168ea6a2cb1e61f3a31defdc70baee0a7579c1cc5974e6caf8eee0c0",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-510",
+      "sourceStableId": "510",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Business Administration"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "16",
+        "slug": "pef",
+        "nameOriginal": "Faculty of Economics and Management"
+      },
+      "fieldsOriginal": [
+        "Business"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/business-administration-2/",
+      "sourceModifiedAt": "2026-08-06T12:29:17",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 4400.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 4,400 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-03-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "31 March, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/business-administration-2/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "f6819e295a7bc28aa55084b8709808e4834f17ec23867b7ee317792f90290fcb",
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10434-business-administration-ba/business.html"
+      ],
+      "sourceHtmlSha256": "a60cf378ebb6d76f29cffc7e5bf36aabd7a064bbceb700a0e38b90f4398d4e3e",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-511",
+      "sourceStableId": "511",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Informatics"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "16",
+        "slug": "pef",
+        "nameOriginal": "Faculty of Economics and Management"
+      },
+      "fieldsOriginal": [
+        "Informatics"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/informatics-2/",
+      "sourceModifiedAt": "2026-08-06T12:32:33",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 3200.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 3,200 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-03-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "31 March, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/informatics-2/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "caef71382f2ea1c70f1f8f4ee4821696658dda1cbd37b063f1ead911a448a495",
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10299-masters-study/r-10525-informatics"
+      ],
+      "sourceHtmlSha256": "8b327936d4656cd2f9ac6ec388fb0c7227915099088c9ac0ede21c9b94ead209",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-512",
+      "sourceStableId": "512",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Economics and Management"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "16",
+        "slug": "pef",
+        "nameOriginal": "Faculty of Economics and Management"
+      },
+      "fieldsOriginal": [
+        "Business"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/economics-and-management-2/",
+      "sourceModifiedAt": "2026-08-06T13:06:52",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-03-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "31 March, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/economics-and-management-2/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "883930c8c9d4f2b6c07a3438bfe807fcde6f1b9736f425ddf45aeb623442602e",
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10299-masters-study/r-10526-economics-and-management"
+      ],
+      "sourceHtmlSha256": "d01ebf6b1e9fda834a9b7d305a6076c6b6f02cde82993ce864f80fe1c17d517b",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-577",
+      "sourceStableId": "577",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Environmental Geosciences"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "19",
+        "slug": "fzp",
+        "nameOriginal": "Faculty of Environmental Sciences"
+      },
+      "fieldsOriginal": [
+        "Engineering",
+        "Environment",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/environmental-geosciences/",
+      "sourceModifiedAt": "2026-07-23T13:41:44",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/environmental-geosciences/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "255130c13a1b8330ae5a990334c09aa0a4caec28489dbbc1cf06cb5a5224311c",
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18992-admission-procedure-first-round/r-20004-online-admission-test/online-admission-test.html",
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18993-admission-procedure-interview/admission-procedure-interview.html",
+        "https://www.fzp.czu.cz/en/r-9408-study/r-9494-study-at-fes/r-9792-admission-procedures/r-14066-master-s-degree-programmes"
+      ],
+      "sourceHtmlSha256": "94f2dfcfdab49dd67471d5de722c50b295d225aa0c396ebc8638117f418f0f3a",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-582",
+      "sourceStableId": "582",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Agri-food Systems and Rural Development"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "21",
+        "slug": "ftz",
+        "nameOriginal": "Faculty of Tropical AgriSciences"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Food"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/agri-food-systems-and-rural-development/",
+      "sourceModifiedAt": "2026-08-31T13:33:37",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 1000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 1,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 320.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 320 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/agri-food-systems-and-rural-development/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "be2164c9ae8022bd8d7b88f7d69e3e0225f4c7089b512d1b39b9d6d04391a443",
+      "admissionEvidenceUrls": [
+        "https://www.ftz.czu.cz/en/r-9420-study/r-10784-study-applicants/r-12063-masters-degree-programmes-information-about-admission-procedure"
+      ],
+      "sourceHtmlSha256": "0b4d3ca816f35e7aed14e9ed084436bfde7f8bbd5d94f9710eca631abbfe9e8e",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-601",
+      "sourceStableId": "601",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "European Agrarian Diplomacy"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "16",
+        "slug": "pef",
+        "nameOriginal": "Faculty of Economics and Management"
+      },
+      "fieldsOriginal": [
+        "Business"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/european-agrarian-diplomacy/",
+      "sourceModifiedAt": "2026-08-06T12:59:03",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 1680.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 1,680 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-03-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "31 March, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/european-agrarian-diplomacy/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "b3bd175a381ecf5a42eb2032cd7b31a721a114e43c22f0dc888f84d9e13b78ec",
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10299-masters-study/r-10524-european-agrarian-diplomacy"
+      ],
+      "sourceHtmlSha256": "3f349c3f2a4e80db156ca5dfa8e192833a0d97d73e420bb82375c09ababb735c",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-618",
+      "sourceStableId": "618",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "International Trade and Business"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "16",
+        "slug": "pef",
+        "nameOriginal": "Faculty of Economics and Management"
+      },
+      "fieldsOriginal": [
+        "Business"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/international-trade-and-business/",
+      "sourceModifiedAt": "2026-08-06T13:09:15",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-03-31",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "31 March, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/international-trade-and-business/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "252126ef3f39489b723fe8552bb694ab18024afdae021e7b1b27cd786d0fa109",
+      "admissionEvidenceUrls": [
+        "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10299-masters-study/r-19246-international-trade-and-business-itb/about.html"
+      ],
+      "sourceHtmlSha256": "35ad58fb65ca71b7c3884a89aa4d5ebe84ac9398b22b01bc0f1a710d9c7a37c8",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-771",
+      "sourceStableId": "771",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Nature Conservation"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "19",
+        "slug": "fzp",
+        "nameOriginal": "Faculty of Environmental Sciences"
+      },
+      "fieldsOriginal": [
+        "Environment",
+        "Forestry",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/nature-conservation/",
+      "sourceModifiedAt": "2026-07-24T09:15:16",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/nature-conservation/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "255130c13a1b8330ae5a990334c09aa0a4caec28489dbbc1cf06cb5a5224311c",
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18992-admission-procedure-first-round/r-20004-online-admission-test/online-admission-test.html",
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18993-admission-procedure-interview/admission-procedure-interview.html",
+        "https://www.fzp.czu.cz/en/r-9408-study/r-9494-study-at-fes/r-9792-admission-procedures/r-14066-master-s-degree-programmes"
+      ],
+      "sourceHtmlSha256": "4b76aeb2b487ed75fdd95710c3f6d017a63fc7475bd548d4fff0483591efd1d0",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-773",
+      "sourceStableId": "773",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Environmental Modelling"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "19",
+        "slug": "fzp",
+        "nameOriginal": "Faculty of Environmental Sciences"
+      },
+      "fieldsOriginal": [
+        "Environment",
+        "Informatics",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/environmental-modelling/",
+      "sourceModifiedAt": "2026-07-24T09:04:39",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/environmental-modelling/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "255130c13a1b8330ae5a990334c09aa0a4caec28489dbbc1cf06cb5a5224311c",
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18992-admission-procedure-first-round/r-20004-online-admission-test/online-admission-test.html",
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18993-admission-procedure-interview/admission-procedure-interview.html",
+        "https://www.fzp.czu.cz/en/r-9408-study/r-9494-study-at-fes/r-9792-admission-procedures/r-14066-master-s-degree-programmes"
+      ],
+      "sourceHtmlSha256": "9263469916b9389ec715b15abc999c1da8bb686fdc4390c8d93b7d195b0359e1",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-774",
+      "sourceStableId": "774",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Landscape Planning"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "19",
+        "slug": "fzp",
+        "nameOriginal": "Faculty of Environmental Sciences"
+      },
+      "fieldsOriginal": [
+        "Engineering",
+        "Environment",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/landscape-planning/",
+      "sourceModifiedAt": "2026-07-24T09:06:52",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/landscape-planning/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "255130c13a1b8330ae5a990334c09aa0a4caec28489dbbc1cf06cb5a5224311c",
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18992-admission-procedure-first-round/r-20004-online-admission-test/online-admission-test.html",
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18993-admission-procedure-interview/admission-procedure-interview.html",
+        "https://www.fzp.czu.cz/en/r-9408-study/r-9494-study-at-fes/r-9792-admission-procedures/r-14066-master-s-degree-programmes"
+      ],
+      "sourceHtmlSha256": "1ccbd0c91c1c323622267564b4941e7f1cc43612fdfaa31eee159b836c1ef8b4",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-778",
+      "sourceStableId": "778",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Tropical Forestry and Agroforestry"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "21",
+        "slug": "ftz",
+        "nameOriginal": "Faculty of Tropical AgriSciences"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Forestry",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/tropical-forestry-and-agroforestry/",
+      "sourceModifiedAt": "2026-08-10T12:24:58",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 1000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 1,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 320.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 320 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/tropical-forestry-and-agroforestry/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "be2164c9ae8022bd8d7b88f7d69e3e0225f4c7089b512d1b39b9d6d04391a443",
+      "admissionEvidenceUrls": [
+        "https://www.ftz.czu.cz/en/r-9420-study/r-10784-study-applicants/r-12063-masters-degree-programmes-information-about-admission-procedure"
+      ],
+      "sourceHtmlSha256": "5c0d1200d8de43c6ef2c4be5b278818b124608f517b2ea37b163927855b52125",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-779",
+      "sourceStableId": "779",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Tropical Agroecology (online)"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "21",
+        "slug": "ftz",
+        "nameOriginal": "Faculty of Tropical AgriSciences"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Forestry",
+        "Natural resources"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/tropical-agroecology/",
+      "sourceModifiedAt": "2026-08-10T12:25:31",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 4400.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 4,400 per year*"
+      },
+      "tuitionEu": {
+        "amount": 4400.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 4,400 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/tropical-agroecology/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "4a58f14de55534484449ae518161a862655379ce3c79bf948900d4c175a8475c",
+      "admissionEvidenceUrls": [
+        "https://tropag.ftz.czu.cz/en/r-19487-applications"
+      ],
+      "sourceHtmlSha256": "f394fca69c41535f2bfb6e44fba8615339d945f579edfe5a09ba0637a8ea5667",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-1023",
+      "sourceStableId": "1023",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Danube AgriFood Master"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "15",
+        "slug": "fappz",
+        "nameOriginal": "Faculty of Agrobiology Food and Natural Resources"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Food"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/danube-agrifood-master/",
+      "sourceModifiedAt": "2026-02-18T09:52:10",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 6000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 6,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 6000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 6,000 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-01-15",
+          "end": "2026-02-28",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "closed",
+          "startOriginal": "15 January, 2026",
+          "endOriginal": "28 February, 2026",
+          "sourceUrl": "https://study.czu.cz/programmes/danube-agrifood-master/"
+        }
+      ],
+      "applicationStatus": "closed",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "82ffed7b16849a7f134cbf580c9fabb0005670cc41243ca9ce5005f6155c2b31",
+      "admissionEvidenceUrls": [
+        "https://agrifoodmaster.eu/index.html"
+      ],
+      "sourceHtmlSha256": "57f8d9cbb3e75f7784a9720a3daaf661ef623b6cda8ca7cbae444ef3ff42d6ca",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-1121",
+      "sourceStableId": "1121",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Smart Sustainable Solutions"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "19",
+        "slug": "fzp",
+        "nameOriginal": "Faculty of Environmental Sciences"
+      },
+      "fieldsOriginal": [
+        "Environment"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/smart-sustainable-solutions/",
+      "sourceModifiedAt": "2026-07-24T09:20:53",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 4000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 4,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 750.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 750 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/smart-sustainable-solutions/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "148fedfc0d90f8eecc1f92f90523332174644665447a188710ed03153a46ec0d",
+      "admissionEvidenceUrls": [
+        "https://www.ecolutionmsc.eu/formal-application-form/"
+      ],
+      "sourceHtmlSha256": "beb96583bbf296401071d0b9413ca31fc3d01ff161e047e63bfb81c4dbb8efcc",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-1338",
+      "sourceStableId": "1338",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Environmental Data Science"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "19",
+        "slug": "fzp",
+        "nameOriginal": "Faculty of Environmental Sciences"
+      },
+      "fieldsOriginal": [
+        "Environment"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/environmental-data-science-2/",
+      "sourceModifiedAt": "2026-07-23T13:38:42",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 2,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 500.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 500 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-15",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "15 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/environmental-data-science-2/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "255130c13a1b8330ae5a990334c09aa0a4caec28489dbbc1cf06cb5a5224311c",
+      "admissionEvidenceUrls": [
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18992-admission-procedure-first-round/r-20004-online-admission-test/online-admission-test.html",
+        "https://www.fzp.czu.cz/en/r-20074-applicants/r-9792-admission-procedures/r-14066-master-s-degree-programmes/r-18993-admission-procedure-interview/admission-procedure-interview.html",
+        "https://www.fzp.czu.cz/en/r-9408-study/r-9494-study-at-fes/r-9792-admission-procedures/r-14066-master-s-degree-programmes"
+      ],
+      "sourceHtmlSha256": "69ed4ab7f3bc2e8236691547d5eda451765b033cf8d4f88e0c3c84ff9e60201b",
+      "publicationStatus": "candidate_not_published"
+    },
+    {
+      "id": "czu-study-1455",
+      "sourceStableId": "1455",
+      "institutionId": "msmt-vs_41000",
+      "titles": {
+        "en": "Agricultural Development – International Development and Agricultural Economics (double degree)"
+      },
+      "sourceLanguage": "en",
+      "studyLanguage": "en",
+      "degree": "m",
+      "faculty": {
+        "sourceId": "21",
+        "slug": "ftz",
+        "nameOriginal": "Faculty of Tropical AgriSciences"
+      },
+      "fieldsOriginal": [
+        "Agriculture",
+        "Business",
+        "Environment"
+      ],
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/agricultural-development-international-development-and-agricultural-economics-double-degree/",
+      "sourceModifiedAt": "2026-08-31T13:34:28",
+      "durationYears": 2.0,
+      "tuition": {
+        "amount": 1000.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 1,000 per year*"
+      },
+      "tuitionEu": {
+        "amount": 320.0,
+        "currency": "EUR",
+        "period": "year",
+        "displayOriginal": "€ 320 per year*"
+      },
+      "applicationWindows": [
+        {
+          "roundOriginal": "Application",
+          "start": "2026-09-14",
+          "end": "2027-01-15",
+          "datePrecision": "day",
+          "sourceTimezone": "Europe/Prague",
+          "statusAtFetch": "upcoming",
+          "startOriginal": "14 September, 2026",
+          "endOriginal": "15 January, 2027",
+          "sourceUrl": "https://study.czu.cz/programmes/agricultural-development-international-development-and-agricultural-economics-double-degree/"
+        }
+      ],
+      "applicationStatus": "upcoming",
+      "applyUrl": null,
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "admissionRequirementsTextSha256": "1ebaa336bd573034eb8ed40050fd26f289c2af25f33b19c434f2383990da58ab",
+      "admissionEvidenceUrls": [],
+      "sourceHtmlSha256": "f39e9ebb6e8f1cf2c0ffb7349e7fd4ca05067a0b5e5506a622c6d2f6c255ab6b",
+      "publicationStatus": "candidate_not_published"
+    }
+  ]
+}

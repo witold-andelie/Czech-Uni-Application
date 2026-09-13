@@ -1,55 +1,19 @@
-const SAVED_KEY = "czech-uni-apply:saved";
-const COMPARE_KEY = "czech-uni-apply:compare";
+// A80: public shortlist/comparison storage was removed by owner decision.
+// The site is an anonymous browse experience; only browsing utilities
+// (teaching-language choice, UI locale) persist.
 const TEACHING_KEY = "czech-uni-apply:teachingLanguage";
 const LOCALE_KEY = "czech-uni-apply:uiLocale";
-const COMPARE_LIMIT = 4;
-
-function readList(key: string): string[] {
-  if (typeof localStorage === "undefined") return [];
-  try {
-    const raw = localStorage.getItem(key);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw) as unknown;
-    return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === "string") : [];
-  } catch {
-    return [];
-  }
-}
-
-function writeList(key: string, ids: string[]): void {
-  localStorage.setItem(key, JSON.stringify([...new Set(ids)]));
-}
-
-export function loadSavedIds(): string[] {
-  return readList(SAVED_KEY);
-}
-
-export function toggleSaved(id: string): string[] {
-  const current = loadSavedIds();
-  const next = current.includes(id) ? current.filter((item) => item !== id) : [...current, id];
-  writeList(SAVED_KEY, next);
-  return next;
-}
-
-export function loadCompareIds(): string[] {
-  return readList(COMPARE_KEY);
-}
-
-export function toggleCompare(id: string): { ids: string[]; limited: boolean } {
-  const current = loadCompareIds();
-  if (current.includes(id)) {
-    const ids = current.filter((item) => item !== id);
-    writeList(COMPARE_KEY, ids);
-    return { ids, limited: false };
-  }
-  if (current.length >= COMPARE_LIMIT) return { ids: current, limited: true };
-  const ids = [...current, id];
-  writeList(COMPARE_KEY, ids);
-  return { ids, limited: false };
-}
 
 export function saveTeachingLanguage(value: string): void {
+  if (value !== "en" && value !== "cs" && value !== "all") return;
   localStorage.setItem(TEACHING_KEY, value);
+}
+
+export function readTeachingLanguage(): "en" | "cs" | "all" | null {
+  if (typeof localStorage === "undefined") return null;
+  const value = localStorage.getItem(TEACHING_KEY);
+  if (value === "en" || value === "cs" || value === "all") return value;
+  return null;
 }
 
 export function saveUiLocale(value: string): void {

@@ -1,0 +1,58 @@
+digraph SD4A {
+// Explicit OPM-to-DOT mapping; see README.md. Layout is not execution order.
+  graph [rankdir="LR", compound="true", bgcolor="#FFFFFF", pad="0.3", nodesep="0.38", ranksep="0.65", splines="spline", fontname="Microsoft YaHei", fontsize="18", labelloc="t", label="SD4A  注册来源驱动的动态岗位发现\nISO 19450:2024 · OPM semantic mapping / DOT"];
+  node [fontname="Microsoft YaHei", fontsize="11", margin="0.14,0.10", penwidth="1.3"];
+  edge [fontname="Segoe UI", fontsize="9", arrowsize="0.7", penwidth="1.1"];
+  subgraph cluster_jobs {
+    graph [label="科研岗位记录\nResearch Job Record", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="jobs"];
+    eligiblejob [label="硕士可申请且确认带薪\nmaster eligible and paid", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
+    otherjob [label="其他资格或证据不足\nother or unresolved", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
+    uncheckedjob [label="资格未核验\nunchecked", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
+  }
+  subgraph cluster_vacancycandidate {
+    graph [label="动态发现岗位候选\nDynamic Vacancy Candidate", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="vacancycandidate"];
+    vacancydiscovered [label="已发现\ndiscovered", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="vacancycandidate"];
+    vacancyexcluded [label="不再符合研究或技术岗位范围\noutside supported catalogue scope", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="vacancycandidate"];
+    vacancyquarantined [label="法定雇主未明待核验\nquarantined", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="vacancycandidate"];
+    vacancyready [label="正文已定界且雇主可归属\nscoped and attributable", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="vacancycandidate"];
+    vacancyunavailable [label="完整目录中已消失\nunavailable", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="vacancycandidate"];
+  }
+  discoverycursor [label="发现游标与分页完整性\nDiscovery Cursor and Completeness", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  evidence [label="来源证据\nSource Evidence", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  legalemployer [label="已辨认法定雇主\nResolved Legal Employer", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  listingpage [label="分页岗位目录\nPaginated Vacancy Listing", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  registry [label="捷克官方高校来源名录\nOfficial Institution Source Registry", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  source [label="官方来源\nOfficial Source", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  vacancydetail [label="岗位官方正文与附件\nOfficial Vacancy Body and Attachment", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  vacancydisappear [label="记录完整目录中的岗位消失\nListing Disappearance Recording", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  vacancydiscover [label="按注册来源发现岗位\nRegistered Vacancy Discovering", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  vacancyexclude [label="记录岗位范围排除\nCatalogue Scope Exclusion Recording", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  vacancynormalize [label="结构化动态岗位候选\nVacancy Candidate Structuring", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  vacancyqualify [label="定界岗位正文并辨认雇主\nVacancy Scope and Employer Resolving", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  vacancyquarantine [label="隔离雇主不明候选\nUnresolved Employer Quarantining", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  source -> vacancydiscover [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  registry -> vacancydiscover [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  listingpage -> vacancydiscover [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  discoverycursor -> vacancydiscover [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  vacancydiscover -> vacancydiscovered [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  vacancydiscover -> evidence [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  vacancydiscovered -> vacancyqualify [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  vacancyqualify -> vacancyready [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  evidence -> vacancyqualify [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  vacancydetail -> vacancyqualify [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  legalemployer -> vacancyqualify [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  vacancydiscovered -> vacancyquarantine [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  vacancyquarantine -> vacancyquarantined [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  registry -> vacancyquarantine [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  vacancyready -> vacancydisappear [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  vacancydisappear -> vacancyunavailable [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  listingpage -> vacancydisappear [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  discoverycursor -> vacancydisappear [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  vacancyready -> vacancyexclude [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  vacancyexclude -> vacancyexcluded [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  listingpage -> vacancyexclude [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  vacancydetail -> vacancyexclude [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  vacancyready -> vacancynormalize [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  evidence -> vacancynormalize [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  vacancynormalize -> uncheckedjob [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+}

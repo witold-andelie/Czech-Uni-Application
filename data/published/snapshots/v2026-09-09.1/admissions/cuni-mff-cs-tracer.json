@@ -1,0 +1,496 @@
+{
+  "generatedAt": "2026-09-06T19:29:34Z",
+  "dataClass": "official_admissions_extract",
+  "catalogKind": "tracer_not_published",
+  "institutionId": "msmt-vs_11000",
+  "institutionOfficialName": "Univerzita Karlova",
+  "msmtCode": "VS_11000",
+  "facultyOriginal": "Matematicko-fyzikální fakulta",
+  "note": "Charles University MFF bachelor Computer Science (English) and Informatika (Czech) admissions tracer. Not a published catalogue. Not written to data/published/. Register inventory is not an offering.",
+  "sources": {
+    "enSis": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+    "csSis": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+    "mffCosts": "https://www.mff.cuni.cz/en/admissions/costs-and-dates",
+    "csFacultySis": "https://is.cuni.cz/studium/prijimacky/index.php?do=info_fakulta&fak=11320",
+    "register": "https://regvssp.msmt.cz/registrvssp/csplist.aspx"
+  },
+  "offerings": [
+    {
+      "id": "cuni-mff-cs-en-2026",
+      "institutionId": "msmt-vs_11000",
+      "facultyOriginal": "Matematicko-fyzikální fakulta",
+      "facultySisOriginal": "Faculty of Mathematics and Physics",
+      "registerMatch": {
+        "titleOriginal": "Computer Science",
+        "facultyName": "Matematicko-fyzikální fakulta",
+        "degree": "bachelor",
+        "teachingLanguage": "en",
+        "iscedF": "0613",
+        "standardYears": "3"
+      },
+      "academicYear": "2026/2027",
+      "academicYearEvidence": "MFF costs page: Academic year 2026/2027. SIS English Computer Science page refers to the admission round for 2026/27.",
+      "teachingLanguages": [
+        "en"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+      "titleOriginal": "Computer Science",
+      "title": {
+        "zh-CN": "计算机科学",
+        "en": "Computer Science",
+        "cs": "Computer Science"
+      },
+      "degree": "bachelor",
+      "durationOriginal": "3 years",
+      "formOriginal": "full-time",
+      "sisIdObor": "34738",
+      "additionalLanguageRequirements": [
+        {
+          "language": "en",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+          "note": {
+            "zh-CN": "英语授课项目要求英语水平证明（SIS 列出 TOEFL iBT 85、IELTS 6.5 等）。",
+            "en": "English proficiency is required (SIS lists TOEFL iBT 85, IELTS 6.5, and other accepted tests).",
+            "cs": "Je požadována znalost angličtiny (SIS uvádí TOEFL iBT 85, IELTS 6.5 a další uznávané testy)."
+          }
+        }
+      ],
+      "applicationUrl": "https://is.cuni.cz/studium/eng/prihlaska/",
+      "applicationUrlNote": "Faculty costs page links this electronic-application server. SIS states the window is not open now.",
+      "tuition": {
+        "amount": null,
+        "currency": "EUR",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+        "unpublishedReason": null,
+        "variants": [
+          {
+            "amount": 7100,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "7100 EUR / year",
+            "sourceEvidenceId": "ev-cuni-sis-34738-tuition"
+          },
+          {
+            "amount": 4200,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "The tuition fee for students from the EU/EEA/Ukraine is 4200 EUR per academic year.",
+            "sourceEvidenceId": "ev-cuni-sis-34738-tuition-note"
+          }
+        ],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "onlineOriginal": "1500 CZK",
+        "paperOriginal": "1500 CZK",
+        "amount": 1500,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738"
+      },
+      "window": {
+        "id": "win-cuni-mff-cs-en-2026",
+        "ownerType": "offering",
+        "ownerId": "cuni-mff-cs-en-2026",
+        "academicYear": "2026/2027",
+        "roundNumber": null,
+        "roundLabelOriginal": "Application submission date",
+        "roundType": "unspecified",
+        "applicantScope": null,
+        "opensAt": null,
+        "opensAtNotInferredFrom": "December 2025",
+        "opensAtFacultyNotePrecision": "month",
+        "closesAt": "2026-04-30",
+        "timezone": "Europe/Prague",
+        "datePrecision": "date",
+        "status": "closed",
+        "conditionalOnVacancies": false,
+        "applicationUrl": "https://is.cuni.cz/studium/eng/prihlaska/",
+        "sourceEvidenceId": "ev-cuni-sis-34738-close",
+        "sisCannotApplyNow": true
+      },
+      "dataClass": "official_admissions_extract",
+      "catalogKind": "tracer_not_published",
+      "windows": [
+        {
+          "id": "win-cuni-mff-cs-en-2026",
+          "ownerType": "offering",
+          "ownerId": "cuni-mff-cs-en-2026",
+          "academicYear": "2026/2027",
+          "roundNumber": null,
+          "roundLabelOriginal": "Application submission date",
+          "roundType": "unspecified",
+          "applicantScope": null,
+          "opensAt": null,
+          "opensAtNotInferredFrom": "December 2025",
+          "opensAtFacultyNotePrecision": "month",
+          "closesAt": "2026-04-30",
+          "timezone": "Europe/Prague",
+          "datePrecision": "date",
+          "status": "closed",
+          "conditionalOnVacancies": false,
+          "applicationUrl": "https://is.cuni.cz/studium/eng/prihlaska/",
+          "sourceEvidenceId": "ev-cuni-sis-34738-close",
+          "sisCannotApplyNow": true
+        }
+      ]
+    },
+    {
+      "id": "cuni-mff-cs-cs-2026",
+      "institutionId": "msmt-vs_11000",
+      "facultyOriginal": "Matematicko-fyzikální fakulta",
+      "facultySisOriginal": "Matematicko-fyzikální fakulta",
+      "registerMatch": {
+        "titleOriginal": "Informatika",
+        "facultyName": "Matematicko-fyzikální fakulta",
+        "degree": "bachelor",
+        "teachingLanguage": "cs",
+        "iscedF": "0613",
+        "standardYears": "3"
+      },
+      "academicYear": "2026/2027",
+      "academicYearEvidence": "Current SIS Informatika bachelor detail harvested 2026-09-06 has application submission date 31.03.2026. The bachelor block does not print the 2026/2027 label; the year is taken from that live cycle, not invented as round 1.",
+      "teachingLanguages": [
+        "cs"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+      "titleOriginal": "Informatika",
+      "title": {
+        "zh-CN": "信息学",
+        "en": "Informatika",
+        "cs": "Informatika"
+      },
+      "degree": "bachelor",
+      "durationOriginal": "3 roky",
+      "formOriginal": "prezenční",
+      "sisIdObor": "34456",
+      "additionalLanguageRequirements": [
+        {
+          "language": "cs",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+          "note": {
+            "zh-CN": "无捷克语或斯洛伐克语高考者须另行证明捷克语水平（B2/C1 或 SIS 列出的同等证明）。",
+            "en": "Applicants without Czech or Slovak school-leaving Czech/Slovak must document Czech at B2 or C1, or another equivalent listed on SIS.",
+            "cs": "Uchazeči bez maturity z češtiny nebo slovenštiny musí doložit znalost češtiny na úrovni B2/C1 nebo jiný ekvivalent uvedený v SIS."
+          }
+        }
+      ],
+      "applicationUrl": "http://www.mff.cuni.cz/eprihlaska",
+      "applicationUrlNote": "MFF faculty SIS page links http://www.mff.cuni.cz/eprihlaska. SIS states electronic applications cannot be submitted now.",
+      "tuition": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "published": false,
+        "evidenceUrl": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+        "unpublishedReason": "SIS programme page has no tuition field for this Czech-taught offering. Unpublished is not 0 and not free.",
+        "variants": [],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "onlineOriginal": "940 Kč",
+        "paperOriginal": "990 Kč",
+        "amount": 940,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456"
+      },
+      "window": {
+        "id": "win-cuni-mff-cs-cs-2026",
+        "ownerType": "offering",
+        "ownerId": "cuni-mff-cs-cs-2026",
+        "academicYear": "2026/2027",
+        "roundNumber": null,
+        "roundLabelOriginal": "Termín podání přihlášky",
+        "roundType": "unspecified",
+        "applicantScope": null,
+        "opensAt": null,
+        "opensAtNotInferredFrom": null,
+        "opensAtFacultyNotePrecision": null,
+        "closesAt": "2026-03-31",
+        "timezone": "Europe/Prague",
+        "datePrecision": "date",
+        "status": "closed",
+        "conditionalOnVacancies": false,
+        "applicationUrl": "http://www.mff.cuni.cz/eprihlaska",
+        "sourceEvidenceId": "ev-cuni-sis-34456-close",
+        "sisCannotApplyNow": true
+      },
+      "dataClass": "official_admissions_extract",
+      "catalogKind": "tracer_not_published",
+      "windows": [
+        {
+          "id": "win-cuni-mff-cs-cs-2026",
+          "ownerType": "offering",
+          "ownerId": "cuni-mff-cs-cs-2026",
+          "academicYear": "2026/2027",
+          "roundNumber": null,
+          "roundLabelOriginal": "Termín podání přihlášky",
+          "roundType": "unspecified",
+          "applicantScope": null,
+          "opensAt": null,
+          "opensAtNotInferredFrom": null,
+          "opensAtFacultyNotePrecision": null,
+          "closesAt": "2026-03-31",
+          "timezone": "Europe/Prague",
+          "datePrecision": "date",
+          "status": "closed",
+          "conditionalOnVacancies": false,
+          "applicationUrl": "http://www.mff.cuni.cz/eprihlaska",
+          "sourceEvidenceId": "ev-cuni-sis-34456-close",
+          "sisCannotApplyNow": true
+        }
+      ]
+    }
+  ],
+  "windows": [
+    {
+      "id": "win-cuni-mff-cs-en-2026",
+      "ownerType": "offering",
+      "ownerId": "cuni-mff-cs-en-2026",
+      "academicYear": "2026/2027",
+      "roundNumber": null,
+      "roundLabelOriginal": "Application submission date",
+      "roundType": "unspecified",
+      "applicantScope": null,
+      "opensAt": null,
+      "opensAtNotInferredFrom": "December 2025",
+      "opensAtFacultyNotePrecision": "month",
+      "closesAt": "2026-04-30",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "closed",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://is.cuni.cz/studium/eng/prihlaska/",
+      "sourceEvidenceId": "ev-cuni-sis-34738-close",
+      "sisCannotApplyNow": true
+    },
+    {
+      "id": "win-cuni-mff-cs-cs-2026",
+      "ownerType": "offering",
+      "ownerId": "cuni-mff-cs-cs-2026",
+      "academicYear": "2026/2027",
+      "roundNumber": null,
+      "roundLabelOriginal": "Termín podání přihlášky",
+      "roundType": "unspecified",
+      "applicantScope": null,
+      "opensAt": null,
+      "opensAtNotInferredFrom": null,
+      "opensAtFacultyNotePrecision": null,
+      "closesAt": "2026-03-31",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "closed",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "http://www.mff.cuni.cz/eprihlaska",
+      "sourceEvidenceId": "ev-cuni-sis-34456-close",
+      "sisCannotApplyNow": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-cuni-sis-34738-close",
+      "url": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Application submission date: 30.04.2026",
+      "supports": [
+        "window.closesAt",
+        "window.datePrecision"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-cs-bachelor-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-sis-34738-cannot-apply",
+      "url": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "You cannot apply for study of this programme/branch now.",
+      "supports": [
+        "window.sisCannotApplyNow"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-cs-bachelor-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-sis-34738-tuition",
+      "url": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "7100 EUR / year",
+      "supports": [
+        "tuition.variants"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-cs-bachelor-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-sis-34738-tuition-note",
+      "url": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "The tuition fee for students from the EU/EEA/Ukraine is 4200 EUR per academic year.",
+      "supports": [
+        "tuition.variants"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-cs-bachelor-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-sis-34738-fee",
+      "url": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Charge for an on-line application: 1500 CZK",
+      "supports": [
+        "applicationFee"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-cs-bachelor-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-mff-costs-opens-month",
+      "url": "https://www.mff.cuni.cz/en/admissions/costs-and-dates",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Application server opens: December 2025",
+      "supports": [
+        "window.opensAtNotInferredFrom"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-mff-costs.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-sis-34456-close",
+      "url": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Termín podání přihlášky: 31.03.2026",
+      "supports": [
+        "window.closesAt"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-cs-bachelor-cs.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-sis-34456-cannot-apply",
+      "url": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Na tento program/obor nyní nelze podat elektronickou přihlášku.",
+      "supports": [
+        "window.sisCannotApplyNow"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-cs-bachelor-cs.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-sis-34456-no-tuition",
+      "url": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "SIS Czech-taught Informatika bachelor page has no tuition field",
+      "supports": [
+        "tuition.published"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-cs-bachelor-cs.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-sis-34456-fee",
+      "url": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Poplatek za elektronickou formu přihlášky: 940 Kč",
+      "supports": [
+        "applicationFee"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-cs-bachelor-cs.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-cuni-mff-faculty-cs-apply",
+      "url": "https://is.cuni.cz/studium/prijimacky/index.php?do=info_fakulta&fak=11320",
+      "institution": "Univerzita Karlova",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "http://www.mff.cuni.cz/eprihlaska",
+      "supports": [
+        "applicationUrl"
+      ],
+      "localPath": "work/raw/2026-09-06/cuni-sis-mff-faculty-cs.html",
+      "timezoneAssumed": "Europe/Prague"
+    }
+  ],
+  "parsed": {
+    "en": {
+      "url": "https://is.cuni.cz/studium/eng/prijimacky/index.php?do=detail_obor&id_obor=34738",
+      "sourceLanguage": "en",
+      "sisIdObor": "34738",
+      "headingOriginal": "Computer Science (0613RA1400070000)",
+      "titleOriginal": "Computer Science",
+      "sisCodeOriginal": "0613RA1400070000",
+      "facultyOriginal": "Faculty of Mathematics and Physics",
+      "programmeOriginal": "Computer Science (B0613A140007)",
+      "formOriginal": "full-time",
+      "degreeOriginal": "Bachelor's",
+      "languageOriginal": "English",
+      "lengthOriginal": "3 years",
+      "applicationTypeOriginal": "Online, Paper",
+      "submissionDateOriginal": "30.04.2026",
+      "submissionDateIso": "2026-04-30",
+      "dateNoteOriginal": "Programme with specializations.",
+      "cannotApplyNow": true,
+      "applicationFeeOnlineOriginal": "1500 CZK",
+      "applicationFeePaperOriginal": "1500 CZK",
+      "tuitionOriginal": "7100 EUR / year",
+      "tuitionNoteOriginal": "The tuition fee for students from the EU/EEA/Ukraine is 4200 EUR per academic year.",
+      "hasTuitionField": true
+    },
+    "cs": {
+      "url": "https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34456",
+      "sourceLanguage": "cs",
+      "sisIdObor": "34456",
+      "headingOriginal": "Informatika (0613RA1400060000)",
+      "titleOriginal": "Informatika",
+      "sisCodeOriginal": "0613RA1400060000",
+      "facultyOriginal": "Matematicko-fyzikální fakulta",
+      "programmeOriginal": "Informatika (B0613A140006)",
+      "formOriginal": "prezenční",
+      "degreeOriginal": "bakalářské",
+      "languageOriginal": "čeština",
+      "lengthOriginal": "3 roky",
+      "applicationTypeOriginal": "Elektronická, Listinná",
+      "submissionDateOriginal": "31.03.2026",
+      "submissionDateIso": "2026-03-31",
+      "dateNoteOriginal": null,
+      "cannotApplyNow": true,
+      "applicationFeeOnlineOriginal": "940 Kč",
+      "applicationFeePaperOriginal": "990 Kč",
+      "tuitionOriginal": null,
+      "tuitionNoteOriginal": null,
+      "hasTuitionField": false
+    },
+    "mffCosts": {
+      "url": "https://www.mff.cuni.cz/en/admissions/costs-and-dates",
+      "academicYearOriginal": "Academic year 2026/2027",
+      "applicationFeeOriginal": "1500 CZK",
+      "tuitionEuOriginal": "tuition fee for students from the EU is 4200 EUR per academic year",
+      "tuitionNonEuOriginal": "students from outside the EU 7100 EUR per academic year from 2026/27",
+      "applicationServerOpensOriginal": "December 2025",
+      "applicationDeadlineOriginal": "April 30, 2026",
+      "applicationDeadlineIso": "2026-04-30",
+      "applicationUrl": "https://is.cuni.cz/studium/eng/prihlaska/",
+      "opensAtNotInferred": true,
+      "opensAtPrecisionIfUsed": "month"
+    }
+  }
+}

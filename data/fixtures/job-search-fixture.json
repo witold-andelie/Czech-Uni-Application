@@ -1,0 +1,428 @@
+{
+  "fixtureVersion": "job-search-2026-09-13",
+  "note": "A90: dated immutable fixture for exact job-search assertions. Invariants: CZU alias equality across acronym/diacritic/full names; funded-doctoral facts only; short aliases never substring-match. Lives outside the changing active publication.",
+  "institutions": [
+    {
+      "id": "msmt-vs_41000",
+      "officialName": "Česká zemědělská univerzita v Praze",
+      "displayName": {
+        "zh-CN": "捷克布拉格生命科学大学",
+        "en": "Czech University of Life Sciences Prague",
+        "cs": "Česká zemědělská univerzita v Praze"
+      },
+      "country": "CZ",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "ownership": "public",
+      "ownershipEvidenceId": "fixture",
+      "legalType": "university",
+      "orientation": "research",
+      "officialUrl": "https://www.czu.cz",
+      "cscseReference": {
+        "lookupStatus": "unverified"
+      },
+      "msmtCode": "msmt-vs_41000",
+      "region": "Jihomoravský",
+      "seat": "Prague",
+      "officialNameEn": "Czech University of Life Sciences Prague"
+    },
+    {
+      "id": "msmt-vs_14000",
+      "officialName": "Masarykova univerzita",
+      "displayName": {
+        "zh-CN": "马萨里克大学",
+        "en": "Masaryk University",
+        "cs": "Masarykova univerzita"
+      },
+      "country": "CZ",
+      "city": {
+        "zh-CN": "布尔诺",
+        "en": "Brno",
+        "cs": "Brno"
+      },
+      "ownership": "public",
+      "ownershipEvidenceId": "fixture",
+      "legalType": "university",
+      "orientation": "research",
+      "officialUrl": "https://www.muni.cz",
+      "cscseReference": {
+        "lookupStatus": "unverified"
+      },
+      "msmtCode": "msmt-vs_14000",
+      "region": "Jihomoravský",
+      "seat": "Brno",
+      "officialNameEn": "Masaryk University"
+    },
+    {
+      "id": "msmt-vs_11000",
+      "officialName": "Univerzita Karlova",
+      "displayName": {
+        "zh-CN": "查理大学",
+        "en": "Charles University",
+        "cs": "Univerzita Karlova"
+      },
+      "country": "CZ",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "ownership": "public",
+      "ownershipEvidenceId": "fixture",
+      "legalType": "university",
+      "orientation": "research",
+      "officialUrl": "https://cuni.cz",
+      "cscseReference": {
+        "lookupStatus": "unverified"
+      },
+      "msmtCode": "msmt-vs_11000",
+      "region": "Jihomoravský",
+      "seat": "Prague",
+      "officialNameEn": "Charles University"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "fixture-czu-transfer-t1",
+      "employerId": "msmt-vs_41000",
+      "title": {
+        "zh-CN": "知识转移助理（T1）",
+        "en": "Knowledge Transfer Assistant (T1)",
+        "cs": "Transferový asistent (T1)"
+      },
+      "laboratory": null,
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "not_required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 60000,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": 1.0
+      },
+      "employmentFte": 0.5,
+      "employmentStartsAt": "2026-10-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://jobs.czuFixture.test/job/t1",
+      "applicationUrl": "https://jobs.czuFixture.test/job/t1",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "originalText": "Transfer Assistant (T1)",
+      "verifiedAt": "2026-09-12",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false
+    },
+    {
+      "id": "fixture-czu-assistant-a2",
+      "employerId": "msmt-vs_41000",
+      "title": {
+        "zh-CN": "技术转移助理（A2）",
+        "en": "Transfer Assistant (A2)",
+        "cs": "Transferový asistent (A2)"
+      },
+      "laboratory": null,
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "not_required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 60000,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": 1.0
+      },
+      "employmentFte": 1.0,
+      "employmentStartsAt": "2026-10-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://jobs.czuFixture.test/job/a2",
+      "applicationUrl": "https://jobs.czuFixture.test/job/a2",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "originalText": "Transfer Assistant (A2)",
+      "verifiedAt": "2026-09-12",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false
+    },
+    {
+      "id": "fixture-muni-phd-recetox",
+      "employerId": "msmt-vs_14000",
+      "title": {
+        "zh-CN": "RECETOX 博士奖学金职位",
+        "en": "Ph.D. Fellowship (RECETOX)",
+        "cs": "Doktorandské stipendium RECETOX"
+      },
+      "laboratory": null,
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "employmentFte": 0.5,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://muniFixture.test/vacancies/81652",
+      "applicationUrl": "https://muniFixture.test/vacancies/81652",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布尔诺",
+        "en": "Brno",
+        "cs": "Brno"
+      },
+      "originalText": "Ph.D. Fellowship",
+      "verifiedAt": "2026-09-12",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false
+    },
+    {
+      "id": "fixture-muni-phd-translation",
+      "employerId": "msmt-vs_14000",
+      "title": {
+        "zh-CN": "真核翻译调控结构生物学全资助博士职位",
+        "en": "Fully Funded PhD Position in Structural Biology",
+        "cs": "Plně financovaná doktorská pozice"
+      },
+      "laboratory": null,
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 30000,
+        "currency": "CZK",
+        "cycle": "unspecified",
+        "tax": "net",
+        "basisFte": null
+      },
+      "employmentFte": null,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://muniFixture.test/vacancies/81701",
+      "applicationUrl": "https://muniFixture.test/vacancies/81701",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布尔诺",
+        "en": "Brno",
+        "cs": "Brno"
+      },
+      "originalText": "Fully Funded PhD Position in Structural Biology",
+      "verifiedAt": "2026-09-12",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false
+    },
+    {
+      "id": "fixture-muni-multidisciplinary-staff",
+      "employerId": "msmt-vs_14000",
+      "title": {
+        "zh-CN": "多学科研究专员",
+        "en": "Multidisciplinary Research Specialist",
+        "cs": "Multidisciplinární výzkumný pracovník"
+      },
+      "laboratory": null,
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "employmentFte": null,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://muniFixture.test/vacancies/81700",
+      "applicationUrl": "https://muniFixture.test/vacancies/81700",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "布尔诺",
+        "en": "Brno",
+        "cs": "Brno"
+      },
+      "originalText": "Multidisciplinary Research Specialist",
+      "verifiedAt": "2026-09-12",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false
+    },
+    {
+      "id": "fixture-cuni-postdoc",
+      "employerId": "msmt-vs_11000",
+      "title": {
+        "zh-CN": "博士后研究员",
+        "en": "Postdoctoral Researcher",
+        "cs": "Postdoktorand"
+      },
+      "laboratory": null,
+      "minimumDegree": "doctorate",
+      "doctorateRequired": true,
+      "doctoralEnrollment": "not_required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 2900,
+        "currency": "EUR",
+        "cycle": "unspecified",
+        "tax": "gross",
+        "basisFte": null
+      },
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://cuniFixture.test/postdoc",
+      "applicationUrl": "https://cuniFixture.test/postdoc",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "isPostdoc": true,
+      "track": "postdoc",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "originalText": "Postdoctoral Researcher",
+      "verifiedAt": "2026-09-12",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false
+    },
+    {
+      "id": "fixture-unpaid-lead",
+      "employerId": "msmt-vs_11000",
+      "title": {
+        "zh-CN": "自费博士项目线索",
+        "en": "Self-funded PhD lead",
+        "cs": "Vlastně financované doktorské studium"
+      },
+      "laboratory": null,
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "unconfirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "employmentFte": null,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://cuniFixture.test/selffunded",
+      "applicationUrl": "https://cuniFixture.test/selffunded",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "originalText": "Self-funded PhD lead",
+      "verifiedAt": "2026-09-12",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false
+    }
+  ],
+  "windows": [
+    {
+      "id": "win-fixture-muni-phd-recetox",
+      "ownerType": "research_job",
+      "ownerId": "fixture-muni-phd-recetox",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "81652",
+      "roundType": "unspecified",
+      "applicantScope": null,
+      "opensAt": null,
+      "closesAt": "2026-09-20",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://muniFixture.test/vacancies/81652",
+      "sourceEvidenceId": "ev-fixture-muni-phd-recetox"
+    },
+    {
+      "id": "win-fixture-muni-phd-translation",
+      "ownerType": "research_job",
+      "ownerId": "fixture-muni-phd-translation",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "81701",
+      "roundType": "unspecified",
+      "applicantScope": null,
+      "opensAt": null,
+      "closesAt": "2027-01-08",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://muniFixture.test/vacancies/81701",
+      "sourceEvidenceId": "ev-fixture-muni-phd-translation"
+    }
+  ]
+}

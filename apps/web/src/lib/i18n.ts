@@ -2,7 +2,7 @@ import cs from "../../../../locales/cs.json";
 import en from "../../../../locales/en.json";
 import zh from "../../../../locales/zh-CN.json";
 import type { UiLocale } from "./types";
-import { isLocale } from "./catalog";
+import { isLocale } from "./catalog.ts";
 
 const bundles: Record<UiLocale, Record<string, string>> = {
   "zh-CN": zh,
@@ -31,12 +31,7 @@ export function htmlLang(locale: UiLocale): string {
   return locale;
 }
 
-export function switchLocalePath(pathname: string, search: string, next: UiLocale): string {
-  const parts = pathname.split("/");
-  if (parts[1] && isLocale(parts[1])) parts[1] = next;
-  else parts.splice(1, 0, next);
-  return `${parts.join("/")}${search}`;
-}
+export { isModifiedLocaleClick, localeFromPathname, switchLocalePath } from "./localePath.ts";
 
 export function parseTeachingLanguage(value: string | null): "en" | "cs" | "all" | null {
   if (value === "en" || value === "cs" || value === "all") return value;

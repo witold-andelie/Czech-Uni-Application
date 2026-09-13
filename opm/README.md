@@ -10,9 +10,12 @@ ISO 官方介绍：https://www.iso.org/standard/84612.html 。模型参考依据
 - SD0.dot：Opportunity Finding 主过程展开。
 - SD1.dot：Programme Discovering 展开，授课语言优先。
 - SD2.dot：Interface Presenting 展开，三语界面独立切换。
-- OPS.dot：目录维护的支撑环境。
+- SD2A.dot：正式地图的在线瓦片、点位聚合、键盘交互与内置概览回退。
+- OPS.dot：目录维护的支撑环境，包括 120 小时稳定覆盖、1／4／2 小时高波动任务、CZU 两条本科／硕士源和一条博士学院证据源，以及固定分母覆盖报告。
 - SD3.dot：Catalogue Maintaining 展开，核验、三语复核、版本发布与归档。
+- SD3A.dot：发布候选暂存、业务门禁、原子激活、构建版本固定与浏览器资源导出。
 - SD4.dot：Evidence Acquiring 展开，Scrapling 与失败队列。
+- SD4A.dot：来源注册表驱动的岗位分页发现、实体定界、雇主隔离与消失处理。
 - SD5.dot：科研机会与资格核验细化视图。
 - SD6.dot：平台及数据的对象结构视图。
 - OPL.md：与图同源生成的英文关系描述。
@@ -53,6 +56,16 @@ SD5 是科研领域细化，包含后台资格核验与前台检索的不同职�
 - 难页面 Scrapling：SD4 → A09。
 - 硕士带薪岗位：SD5 → A07 / A10 / A11。
 - 独立学校和语言轨道：SD6 → A12。
+- 逐来源重试、SLA、并发租约与高波动独立周期：OPS → A18 / A35 / A36 / A42 / A43 / A47 / A48 / A49。
+- 岗位薪资基准、实际工时与可到岗日期分离：SD5 → A51。
+- 原子发布和哈希审核：SD3 / SD3A → A08 / A31 / A32 / A33 / A39 / A52 / A53 / A54 / A56 / A59 / A60 / A65。
+- 中留服官方查询与运营方名单分列：SD6 → A23 / A55。
+- 动态岗位发现、实体定界与覆盖边界：SD4A / SD5 / OPS → A37 / A38 / A43 / A45 / A57 / A66。
+- Retry-After 与来源冷却：OPS / SD4 → A64。
+- 状态下架与不可变发布衔接：OPS / SD3A → A20 / A46 / A58。
+- 生产 API 与干净检出：SD3A → A59 / A60。
+- 候选世代钉扎与调度：OPS / SD3A → A65。
+- 地图聚合、普通滚轮、键盘与瓦片失败回退：SD2A → A14 / A40 / A41 / A44；A16 的真实大陆线路仍须外部验收。
 
 ## 重生成与检查
 
@@ -60,7 +73,10 @@ SD5 是科研领域细化，包含后台资格核验与前台检索的不同职�
 
 ```powershell
 py -3 scripts/render_opm.py
+py -3 scripts/render_opm.py --check
 ```
+
+`--check` 把已提交的 DOT／OPL 与 `model.json` 比对，并用 SVG 节点／边 `<title>` 与 PNG 文件头做语义检查；不要求不同 Graphviz 版本的图像字节相等。生成 SVG／PNG 仍需要 Graphviz `dot`。
 
 Python 3 与 Graphviz dot 即可，无需联网。编辑 model.json 后重新生成；若直接调整 DOT 视觉布局，应同步生成器，以免下次覆盖。
 validation.json 记录本项目的对象／过程类型、状态配对、过程变换和 Graphviz 解析结果；不代表经过完整 ISO 合规审计。

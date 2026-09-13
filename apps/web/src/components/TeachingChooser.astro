@@ -1,34 +1,47 @@
 ---
+import { withBase } from "../lib/base.ts";
 import { t } from "../lib/i18n";
 import type { TeachingLanguageChoice, UiLocale } from "../lib/types";
+import TeachingLastChoice from "./TeachingLastChoice.svelte";
 
 interface Props {
   locale: UiLocale;
   selected?: TeachingLanguageChoice;
+  compact?: boolean;
 }
 
-const { locale, selected = null } = Astro.props;
+const { locale, selected = null, compact = false } = Astro.props;
 ---
 <section aria-labelledby="teaching-prompt">
-  <h1 id="teaching-prompt">{t(locale, "teaching.prompt")}</h1>
-  <p class="lede">{t(locale, "brand.tagline")}</p>
+  {compact ? (
+    <h2 id="teaching-prompt">{t(locale, "teaching.prompt")}</h2>
+  ) : (
+    <h1 id="teaching-prompt">{t(locale, "teaching.prompt")}</h1>
+  )}
+  {!compact && <p class="lede">{t(locale, "brand.tagline")}</p>}
+  {compact && <p>{t(locale, "teaching.unset.notice")}</p>}
   <div class="chooser two">
-    <a class:list={["choice-card", { selected: selected === "en" }]} href={`/${locale}/programmes?teachingLanguage=en`}>
+    <a class:list={["choice-card", { selected: selected === "en" }]} href={withBase(`/${locale}/programmes?teachingLanguage=en`)}>
       <p class="muted">{t(locale, "teaching.label")}</p>
       <h2>{t(locale, "teaching.en")}</h2>
       <p>{t(locale, "teaching.en.help")}</p>
     </a>
-    <a class:list={["choice-card", { selected: selected === "cs" }]} href={`/${locale}/programmes?teachingLanguage=cs`}>
+    <a class:list={["choice-card", { selected: selected === "cs" }]} href={withBase(`/${locale}/programmes?teachingLanguage=cs`)}>
       <p class="muted">{t(locale, "teaching.label")}</p>
       <h2>{t(locale, "teaching.cs")}</h2>
       <p>{t(locale, "teaching.cs.help")}</p>
     </a>
   </div>
+  <TeachingLastChoice client:load locale={locale} />
   <p>
-    <a class="secondary-link" href={`/${locale}/programmes?teachingLanguage=all`}>{t(locale, "teaching.all")}</a>
+    <a class="secondary-link" href={withBase(`/${locale}/programmes?teachingLanguage=all`)}>{t(locale, "teaching.all")}</a>
   </p>
-  <p class="disclaimer">{t(locale, "home.researchHelp")}</p>
-  <p>
-    <a class="btn" href={`/${locale}/research-jobs`}>{t(locale, "home.researchCta")}</a>
-  </p>
+  {!compact && (
+    <>
+      <p class="disclaimer">{t(locale, "home.researchHelp")}</p>
+      <p>
+        <a class="btn" href={withBase(`/${locale}/research-jobs`)}>{t(locale, "home.researchCta")}</a>
+      </p>
+    </>
+  )}
 </section>

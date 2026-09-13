@@ -1,11 +1,15 @@
 ---
+import { withBase } from "../../../lib/base.ts";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import InstitutionTags from "../../../components/InstitutionTags.astro";
-import SaveButton from "../../../components/SaveButton.svelte";
-import { findJob, primaryApplicationUrl } from "../../../lib/catalog";
-import { hostOf, roundLabel, text, windowRange, windowStatusLabel } from "../../../lib/format";
+import LiveWindows from "../../../components/LiveWindows.svelte";
+import { findJob, isMasterEligible, jobOpportunityClosed, jobTrackOf, safeHttpUrl } from "../../../lib/catalog";
+import { dataClassKey, fieldSep, formatDate, formatSalary, jobSourceTitle, languageName, salaryTaxKey, text } from "../../../lib/format";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
 import { loadCatalog } from "../../../lib/loadCatalog";
+import { loadSafetyOverlayFromDisk } from "../../../lib/loadSafetyOverlay";
+import { applySafetyOverlay } from "../../../lib/safetyStatus";
+import ExternalIcon from "../../../components/ExternalIcon.svelte";
 
 export function getStaticPaths() {
   const catalog = loadCatalog();
@@ -13,12 +17,12 @@ export function getStaticPaths() {
 }
 
 const locale = localeFromParam(Astro.params.locale);
-const catalog = loadCatalog();
+const overlay = loadSafetyOverlayFromDisk();
+const catalog = applySafetyOverlay(loadCatalog(), overlay);
 const view = findJob(catalog, Astro.params.id ?? "", new Date());
 if (!view) throw new Error("Missing job");
-const applyUrl = primaryApplicationUrl(view.summary, view.job.applicationUrl);
 const applyLabel = view.job.applicationMethod === "official_instructions" ? t(locale, "action.officialInstructions") : t(locale, "action.applyNow");
-const closed = view.summary.opportunityStatus === "closed" || view.job.wholeOpportunityClosed;
+const sourceUrl = safeHttpUrl(view.job.sourceUrl);
 const phdKey =
   view.job.doctoralEnrollment === "not_required"
     ? "jobs.phd.no"
@@ -28,22 +32,15 @@ const phdKey =
 ---
 <BaseLayout locale={locale} title={text(view.job.title, locale)}>
   <main id="main" class="page detail-grid">
-    <p><a href={`/${locale}/research-jobs`}>{t(locale, "action.back")}</a></p>
-    <p class="muted">{t(locale, "fixture.card")}</p>
-    <h1>
-      {closed || !applyUrl ? (
-        text(view.job.title, locale)
-      ) : (
-        <a href={applyUrl} rel="noopener noreferrer" target="_blank">{text(view.job.title, locale)}</a>
-      )}
-    </h1>
-    <p>{text(view.employer.displayName, locale)} · {text(view.job.city, locale)}</p>
-    {view.employer.legalType === "research_institute" ? (
-      <InstitutionTags locale={locale} institution={view.employer} />
-    ) : (
-      <InstitutionTags locale={locale} institution={view.employer} />
+    <p><a href={withBase(`/${locale}/research-jobs`)}>{t(locale, "action.back")}</a></p>
+    <p class="muted">{t(locale, dataClassKey(view.job.dataClass))} · {t(locale, `jobs.track.${jobTrackOf(view.job)}`)}</p>
+    <h1>{text(view.job.title, locale)}</h1>
+    {jobSourceTitle(view.job) !== text(view.job.title, locale) && (
+      <p class="muted">{t(locale, "detail.originalTitle")}{fieldSep(locale)}{jobSourceTitle(view.job)}</p>
     )}
-    {closed && <p class="notice">{t(locale, "jobs.closedNotice")}</p>}
+    <p>{text(view.employer.displayName, locale)}{view.job.city ? ` · ${text(view.job.city, locale)}` : ''}</p>
+    <InstitutionTags locale={locale} institution={view.employer} />
+    {jobOpportunityClosed(view.job) && <p class="notice">{t(locale, "jobs.closedNotice")}</p>}
     <section class="summary-grid">
       <div class="panel">
         <p class="muted">{t(locale, "jobs.phd")}</p>
@@ -51,41 +48,70 @@ const phdKey =
       </div>
       <div class="panel">
         <p class="muted">{t(locale, "jobs.language")}</p>
-        <p>{view.job.workingLanguages.join(", ")}</p>
+        <p>{view.job.workingLanguages.map((code) => languageName(code, locale)).join(", ")}</p>
       </div>
       <div class="panel">
-        <p class="muted">{t(locale, "jobs.gross")}</p>
+        <p class="muted">{t(locale, salaryTaxKey(view.job.salary.tax) === "salary.tax.gross" ? "jobs.gross" : "jobs.salary")} · {t(locale, salaryTaxKey(view.job.salary.tax))}</p>
         <p>
           {view.job.paidStatus === "confirmed" && view.job.salary.amount == null
             ? t(locale, "jobs.salaryUnknown")
             : view.job.salary.amount != null
-              ? `${view.job.salary.amount} ${view.job.salary.currency} / ${view.job.salary.cycle} (${view.job.salary.tax})`
+              ? formatSalary(view.job.salary, locale)
               : t(locale, "status.unknown")}
         </p>
+        {view.job.salary.basisFte != null && (
+          <p>{t(locale, "jobs.fte")}{fieldSep(locale)}{view.job.salary.basisFte}</p>
+        )}
+        {view.job.employmentFte != null && (
+          <p>{t(locale, "jobs.workloadFte")}{fieldSep(locale)}{view.job.employmentFte}</p>
+        )}
+        {view.job.employmentStartsAt && (
+          <p>{t(locale, "jobs.employmentStart")}{fieldSep(locale)}{formatDate(view.job.employmentStartsAt, locale, "date")}</p>
+        )}
       </div>
       <div class="panel">
-        <p class="muted">{t(locale, "application.currentRound")}</p>
-        <p>{windowStatusLabel(view.summary.opportunityStatus, locale)}</p>
+        <p class="muted">{t(locale, "jobs.master")}</p>
+        <p>{isMasterEligible(view.job) ? t(locale, "jobs.master") : t(locale, "jobs.notMaster")}</p>
+        <p class="disclaimer">{t(locale, "jobs.masterMeansDegree")}</p>
       </div>
     </section>
     <section class="panel">
-      <h2>{t(locale, "application.timeline")}</h2>
-      {view.windows.map((window) => (
-        <article>
-          <h3>{roundLabel(window, locale)} {window.roundLabelOriginal ? `· ${window.roundLabelOriginal}` : ""}</h3>
-          <p>{windowRange(window, locale)}</p>
-          {window.applicantScope && <p>{t(locale, "application.scope")}：{text(window.applicantScope, locale)}</p>}
-        </article>
-      ))}
-    </section>
-    <div class="actions">
-      {!closed && applyUrl && (
-        <a class="btn primary" href={applyUrl} rel="noopener noreferrer" target="_blank">
-          {applyLabel} · {hostOf(applyUrl)}
-        </a>
+      <h2>{t(locale, "jobs.roleSummary")}</h2>
+      <p>{view.job.roleSummary ? text(view.job.roleSummary, locale) : t(locale, "status.unknown")}</p>
+      <h2>{t(locale, "jobs.qualificationEvidence")}</h2>
+      <p>{view.job.qualificationEvidence ? text(view.job.qualificationEvidence, locale) : t(locale, "status.unknown")}</p>
+      <h2>{t(locale, "jobs.applicationMaterials")}</h2>
+      <p>{view.job.applicationMaterials ? text(view.job.applicationMaterials, locale) : t(locale, "status.unknown")}</p>
+      {view.job.sourceLanguage && (
+        <p class="muted">{t(locale, "jobs.sourceLanguage")}{fieldSep(locale)}{languageName(view.job.sourceLanguage, locale)}</p>
       )}
-      <SaveButton client:load locale={locale} id={`job:${view.job.id}`} />
-    </div>
-    <p class="muted">{t(locale, "source.label")}: {view.job.sourceUrl}</p>
+      {view.job.factsReviewedAt && (
+        <p class="muted">{t(locale, "detail.factsReviewedAt")}{fieldSep(locale)}{view.job.factsReviewedAt.slice(0, 10)}</p>
+      )}
+    </section>
+    <LiveWindows
+      client:load
+      locale={locale}
+      windows={view.windows}
+      wholeClosed={jobOpportunityClosed(view.job)}
+      fallbackUrl={view.job.applicationUrl || view.job.sourceUrl}
+      applyLabel={applyLabel}
+      noticeIsNotApplication={view.job.applicationMethod === "official_instructions"}
+      entityId={view.job.id}
+      initialOverlay={overlay}
+    >
+    </LiveWindows>
+    <p class="muted">
+      {t(locale, "source.label")}{fieldSep(locale)}
+      {sourceUrl ? (
+        <a class="external" href={sourceUrl} rel="noopener noreferrer" target="_blank">
+          {sourceUrl}
+          <ExternalIcon />
+          <span class="visually-hidden">{t(locale, "action.external")}</span>
+        </a>
+      ) : (
+        t(locale, "status.unknown")
+      )}
+    </p>
   </main>
 </BaseLayout>

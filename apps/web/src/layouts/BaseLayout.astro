@@ -1,8 +1,11 @@
 ---
+import { withBase } from "../lib/base.ts";
 import "../styles/global.css";
 import { htmlLang, t, LOCALES } from "../lib/i18n";
+import { NAV_ITEMS, navHref } from "../lib/nav";
 import type { UiLocale } from "../lib/types";
 import LocaleSwitcher from "../components/LocaleSwitcher.svelte";
+import MobileNav from "../components/MobileNav.svelte";
 
 interface Props {
   locale: UiLocale;
@@ -11,16 +14,15 @@ interface Props {
 }
 
 const { locale, title, description } = Astro.props;
-const path = Astro.url.pathname;
+const path = Astro.url.pathname.replace(/^\/Czech-Uni-Application/, "");
+const search = Astro.url.search;
 const brand = t(locale, "brand.name");
 const documentTitle = title === brand ? brand : `${title} · ${brand}`;
-const nav = [
-  { href: `/${locale}/programmes`, key: "nav.programmes", match: "/programmes" },
-  { href: `/${locale}/research-jobs`, key: "nav.research", match: "/research-jobs" },
-  { href: `/${locale}/guides`, key: "nav.guides", match: "/guides" },
-  { href: `/${locale}/saved`, key: "nav.saved", match: "/saved" },
-  { href: `/${locale}/compare`, key: "nav.compare", match: "/compare" },
-] as const;
+const nav = NAV_ITEMS.map((item) => ({
+  href: navHref(locale, item.path),
+  key: item.key,
+  match: item.match,
+}));
 ---
 <!doctype html>
 <html lang={htmlLang(locale)}>
@@ -29,31 +31,42 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description ?? t(locale, "meta.description")} />
     <title>{documentTitle}</title>
-    {LOCALES.map((item) => (
-      <link rel="alternate" hreflang={htmlLang(item)} href={`/${item}/`} />
-    ))}
-    <link rel="alternate" hreflang="x-default" href="/zh-CN/" />
+    {LOCALES.map((item) => {
+      const parts = path.replace(/^\/Czech-Uni-Application/, "").split("/");
+      if (parts[1]) parts[1] = item;
+      const href = withBase(`${parts.join("/")}${search}`);
+      return <link rel="alternate" hreflang={htmlLang(item)} href={href} />;
+    })}
+    <link rel="alternate" hreflang="x-default" href={withBase("/zh-CN/")} />
+    <script is:inline>
+      (function () {
+        try {
+          var teaching = new URLSearchParams(location.search).get("teachingLanguage");
+          if (teaching === "en" || teaching === "cs" || teaching === "all") {
+            document.documentElement.setAttribute("data-teaching", teaching);
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">{t(locale, "skip.nav")}</a>
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href={`/${locale}/`}>{t(locale, "brand.name")}</a>
-        <nav class="nav-main" aria-label={t(locale, "brand.name")}>
+        <a class="brand" href={withBase(`/${locale}/`)}>{t(locale, "brand.name")}</a>
+        <nav class="nav-main nav-desktop" aria-label={t(locale, "nav.main")}>
           {nav.map((item) => (
             <a href={item.href} aria-current={path.includes(item.match) ? "page" : undefined}>
               {t(locale, item.key)}
             </a>
           ))}
         </nav>
-        <div class="header-tools">
-          <LocaleSwitcher client:load locale={locale} pathname={path} />
+        <div class="header-tools tools-desktop">
+          <LocaleSwitcher client:load locale={locale} pathname={path} search={search} />
         </div>
+        <MobileNav client:load locale={locale} pathname={path} search={search} />
       </div>
     </header>
-    <div class="banner" role="status">
-      <div class="chooser-wrap">{t(locale, "fixture.banner")}</div>
-    </div>
     <slot />
     <footer class="site-footer">
       <div class="footer-inner">

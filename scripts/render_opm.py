@@ -3,6 +3,7 @@ Requires Python 3 and Graphviz dot on PATH. No network or application dependenci
 The checks cover this project's semantic mapping, not complete ISO conformance.
 """
 from pathlib import Path
+from datetime import date
 import html
 import json
 import shutil
@@ -131,7 +132,124 @@ def dot(d):
     lines.append('}')
     return '\n'.join(lines)+'\n'
 
-def main():
+def diagram_ids(d):
+    ids={e[x] for e in d['edges'] for x in ['source','target']}
+    owners={N[i]['owner'] for i in ids if N[i]['kind']=='state'}
+    owners.update(i for i in ids if any(n.get('owner')==i for n in N.values()))
+    for owner in list(owners):
+        ids.add(owner)
+        ids.update(i for i,n in N.items() if n.get('owner')==owner)
+    return ids, owners
+
+def opl_text():
+    lines=['# OPL semantic companion','',
+      'Generated from model.json, together with DOT. English sentences express the same typed relations. State pairs below are a readable OPL subset, not a certified OPL parser export.', '']
+    for d in D:
+        lines += [f'## {d["id"]} — {d["title"]}', '', 'Refines: '+(name(d['parent']) if d['parent'] else 'Context / structural view'), '', d['notes'], '']
+        represented={e[x] for e in d['edges'] for x in ['source','target']}
+        represented.update(N[i]['owner'] for i in list(represented) if N[i]['kind']=='state')
+        for i in sorted(represented):
+            states=[n['en'] for n in N.values() if n.get('owner')==i]
+            if states: lines.append(f'- {name(i)} can be '+', '.join(states)+'.')
+        for e in d['edges']:
+            if e['type']=='input':
+                out=next(x for x in d['edges'] if x['type']=='output' and x['source']==e['target'] and N[x['target']]['owner']==N[e['source']]['owner'])
+                lines.append(f'- {name(e["target"])} changes {N[N[e["source"]]["owner"]]["en"]} from {N[e["source"]]["en"]} to {N[out["target"]]["en"]}.')
+            elif e['type']!='output': lines.append('- '+opl(e))
+        lines.append('')
+    return '\n'.join(lines)
+
+def svg_titles(text):
+    import re
+    titles=set()
+    for raw in re.findall(r'<title>(.*?)</title>', text, flags=re.S):
+        titles.add(html.unescape(raw).replace('\n', '').strip())
+    return titles
+
+def expected_svg_titles(d):
+    ids, owners = diagram_ids(d)
+    titles={d['id']}
+    for i in ids:
+        titles.add(f'cluster_{i}' if i in owners else i)
+    for e in d['edges']:
+        titles.add(f'{e["source"]}->{e["target"]}')
+    return titles
+
+def check_generated(opm_dir=None):
+    """Compare committed DOT/OPL/SVG/PNG with model.json. SVG/PNG are semantic, not byte-equal."""
+    global model, N, D
+    directory=Path(opm_dir) if opm_dir else OPM
+    previous=(model, N, D)
+    errors=[]
+    try:
+        model=json.loads((directory/'model.json').read_text(encoding='utf-8'))
+        N=model['nodes']
+        D=model['diagrams']
+    except Exception as ex:
+        return [f'{directory}: cannot read model.json ({ex})']
+    try:
+        try:
+            validate()
+        except ValueError as ex:
+            return str(ex).splitlines()
+        expected_opl=opl_text()
+        committed_opl=(directory/'OPL.md').read_text(encoding='utf-8')
+        if committed_opl != expected_opl:
+            errors.append('OPL.md is stale relative to model.json')
+        png_magic=b'\x89PNG\r\n\x1a\n'
+        for d in D:
+            dot_path=directory/f'{d["id"]}.dot'
+            svg_path=directory/f'{d["id"]}.svg'
+            png_path=directory/f'{d["id"]}.png'
+            expected=dot(d)
+            if not dot_path.exists():
+                errors.append(f'Missing {dot_path.name}')
+            elif dot_path.read_text(encoding='utf-8') != expected:
+                errors.append(f'{dot_path.name} is stale relative to model.json')
+            if not svg_path.exists() or svg_path.stat().st_size==0:
+                errors.append(f'Missing output {svg_path.name}')
+            else:
+                found=svg_titles(svg_path.read_text(encoding='utf-8'))
+                missing=expected_svg_titles(d)-found
+                if missing:
+                    errors.append(f'{svg_path.name} is stale; missing titles {sorted(missing)}')
+            if not png_path.exists() or png_path.stat().st_size==0:
+                errors.append(f'Missing output {png_path.name}')
+            elif png_path.read_bytes()[:8] != png_magic:
+                errors.append(f'{png_path.name} is not a PNG artifact')
+        executable=shutil.which('dot')
+        if executable:
+            import tempfile
+            with tempfile.TemporaryDirectory(prefix='opm-check-') as raw:
+                tmp=Path(raw)
+                for d in D:
+                    source=tmp/f'{d["id"]}.dot'
+                    rendered=tmp/f'{d["id"]}.svg'
+                    source.write_text(dot(d), encoding='utf-8')
+                    try:
+                        subprocess.run([executable,'-Tsvg',str(source),'-o',str(rendered)],check=True,capture_output=True,text=True)
+                    except subprocess.CalledProcessError as ex:
+                        errors.append(f'{d["id"]}.dot failed Graphviz render: {ex.stderr or ex}')
+                        continue
+                    regenerated=svg_titles(rendered.read_text(encoding='utf-8'))
+                    missing=expected_svg_titles(d)-regenerated
+                    if missing:
+                        errors.append(f'{d["id"]} fresh Graphviz SVG is missing titles {sorted(missing)}')
+        return errors
+    finally:
+        model, N, D = previous
+
+def main(argv=None):
+    import argparse
+    parser=argparse.ArgumentParser(description='Generate or check OPM artifacts from model.json')
+    parser.add_argument('--check', action='store_true', help='Fail if committed DOT/OPL/SVG/PNG are stale')
+    args=parser.parse_args(argv)
+    if args.check:
+        errors=check_generated()
+        report=dict(result='passed' if not errors else 'failed', mode='check', diagrams=len(D), errors=errors, formalIsoCertification=False)
+        print(json.dumps(report, ensure_ascii=False))
+        if errors: raise SystemExit(1)
+        return
     validate()
     executable=shutil.which('dot')
     if not executable: raise RuntimeError('Graphviz dot is required on PATH.')
@@ -162,9 +280,10 @@ def main():
         cards.append(f'<section id="{d["id"]}"><h2>{title}</h2><p>{html.escape(d["notes"])}</p><p><a href="{d["id"]}.svg" target="_blank">打开可缩放 SVG</a> · <a href="{d["id"]}.dot">DOT 源码</a> · <a href="{d["id"]}.png">PNG</a></p><div class="figure"><img src="{d["id"]}.svg" alt="{title}"></div></section>')
     (OPM/'OPL.md').write_text('\n'.join(opl_lines),encoding='utf-8')
     nav=' · '.join(f'<a href="#{d["id"]}">{html.escape(d["id"])}</a>' for d in D)
-    page='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>捷克留学与科研平台 · OPM 图集</title><style>body{font-family:system-ui,"Microsoft YaHei",sans-serif;color:#16263d;background:#f5f7fb;margin:0;line-height:1.7}main{max-width:1240px;margin:auto;padding:32px 20px}h1{font-size:30px}section{background:white;border:1px solid #cbd5e1;border-radius:12px;padding:24px;margin:24px 0}a{color:#174da6}nav{position:sticky;top:0;background:#f5f7fb;padding:12px 0}.figure{overflow:auto;border-top:1px solid #e2e8f0;padding-top:16px}.figure img{display:block;max-width:100%;height:auto}aside{border-left:4px solid #174da6;padding-left:16px}small{color:#526175}</style><main><h1>捷克留学与带薪科研平台</h1><p>ISO 19450:2024 · OPM 对象过程模型 · DOT 可编辑框架</p><aside>方框＝对象，椭圆＝过程，所属对象框内的圆角框＝状态。边上的标签是关系语义；图的排版不表示执行顺序。DOT 图形映射与标准原生符号存在差异，见 <a href="README.md">模型说明</a>。本图集是项目文档，不是最终产品界面。</aside><p><a href="OPL.md">对应英文 OPL</a> · <a href="../docs/UI_RULES.md">UI 约束</a> · <a href="../docs/DATABASE.md">数据库建议</a></p><nav>'''+nav+'</nav>'+''.join(cards)+'<small>生成日期：2026-09-06。所有图使用本地资源，无外部字体、翻译或脚本。</small></main></html>'
+    page='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>捷克留学与科研平台 · OPM 图集</title><style>body{font-family:system-ui,"Microsoft YaHei",sans-serif;color:#16263d;background:#f5f7fb;margin:0;line-height:1.7}main{max-width:1240px;margin:auto;padding:32px 20px}h1{font-size:30px}section{background:white;border:1px solid #cbd5e1;border-radius:12px;padding:24px;margin:24px 0}a{color:#174da6}nav{position:sticky;top:0;background:#f5f7fb;padding:12px 0}.figure{overflow:auto;border-top:1px solid #e2e8f0;padding-top:16px}.figure img{display:block;max-width:100%;height:auto}aside{border-left:4px solid #174da6;padding-left:16px}small{color:#526175}</style><main><h1>捷克留学与带薪科研平台</h1><p>ISO 19450:2024 · OPM 对象过程模型 · DOT 可编辑框架</p><aside>方框＝对象，椭圆＝过程，所属对象框内的圆角框＝状态。边上的标签是关系语义；图的排版不表示执行顺序。DOT 图形映射与标准原生符号存在差异，见 <a href="README.md">模型说明</a>。本图集是项目文档，不是最终产品界面。</aside><p><a href="OPL.md">对应英文 OPL</a> · <a href="../docs/UI_RULES.md">UI 约束</a> · <a href="../docs/DATABASE.md">数据库建议</a></p><nav>'''+nav+'</nav>'+''.join(cards)+f'<small>生成日期：{date.today().isoformat()}。所有图使用本地资源，无外部字体、翻译或脚本。</small></main></html>'
     (OPM/'index.html').write_text(page,encoding='utf-8')
     report=dict(result='passed',scope='Project OPM mapping checks and Graphviz syntax/rendering; not complete ISO certification',diagrams=len(D),relationships=sum(len(d['edges']) for d in D),dot=True,svg=True,png=True)
     (OPM/'validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': main()
+

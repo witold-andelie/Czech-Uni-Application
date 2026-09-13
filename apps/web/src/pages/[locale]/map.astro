@@ -1,0 +1,63 @@
+---
+import { withBase } from "../../lib/base.ts";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import InstitutionMap from "../../components/InstitutionMap.svelte";
+import "maplibre-gl/dist/maplibre-gl.css";
+import { LOCALES, localeFromParam, t } from "../../lib/i18n";
+import { loadMappedInstitutions } from "../../lib/loadCoordinates";
+import { loadBaseline } from "../../lib/loadBaseline";
+import { hasCoordinates } from "../../lib/mapProjection";
+import { institutionDisplayName } from "../../lib/institutions";
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const locale = localeFromParam(Astro.params.locale);
+const baseline = loadBaseline();
+const { schools, outlinePath, snapshot, basemap } = loadMappedInstitutions(baseline.institutions);
+const mappedCount = schools.filter((row) => hasCoordinates(row.lat, row.lon)).length;
+const missingCount = schools.length - mappedCount;
+---
+<BaseLayout locale={locale} title={t(locale, "map.title")}>
+  <main id="main" class="page page-map">
+    <div class="map-page-head">
+      <h1>{t(locale, "map.title")}</h1>
+      <p class="muted">
+        {t(locale, "map.coverage", { n: schools.length, mapped: mappedCount, missing: missingCount })}
+        · {t(locale, "map.harvestedAt", { date: snapshot.generatedAt.slice(0, 10) })}
+      </p>
+    </div>
+    <noscript><p>{t(locale, "noscript.map")}</p></noscript>
+    <InstitutionMap
+      client:load
+      locale={locale}
+      schools={schools}
+      outlinePath={outlinePath}
+      regions={basemap.regions}
+      cities={basemap.cities}
+      neighbors={basemap.neighbors ?? []}
+      rivers={basemap.rivers ?? []}
+      lakes={basemap.lakes ?? []}
+    />
+    <p class="disclaimer">{t(locale, "map.intro")}</p>
+    <p class="disclaimer">{t(locale, "map.disclaimer")}</p>
+    <noscript>
+      <section class="panel">
+        <h2>{t(locale, "map.list")}</h2>
+        <ul>
+          {schools.map((row) => (
+            <li>
+              <a href={withBase(`/${locale}/institutions/${row.institution.id}`)}>
+                {institutionDisplayName(row.institution, locale)}
+              </a>
+              {hasCoordinates(row.lat, row.lon)
+                ? ` · ${row.lat}, ${row.lon}`
+                : ` · ${t(locale, "map.noCoordinates")}`}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </noscript>
+  </main>
+</BaseLayout>

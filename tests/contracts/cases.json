@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "normalizationVersion": "fact-v1",
+  "note": "Shared A52/A53 counterexamples. Expected values are rule identifiers, not error sentence text.",
+  "cases": [
+    {
+      "id": "baseline",
+      "expect": "accept",
+      "rules": []
+    },
+    {
+      "id": "invalid_window",
+      "expect": "reject",
+      "rules": ["WINDOW_DATE_INVALID", "WINDOW_TIMEZONE_INVALID"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "windows.0",
+          "set": {
+            "opensAt": "2026-99-99",
+            "closesAt": "yesterday",
+            "timezone": "Mars/Olympus"
+          }
+        }
+      ]
+    },
+    {
+      "id": "missing_required_urls",
+      "expect": "reject",
+      "rules": ["URL_REQUIRED_SOURCE", "URL_REQUIRED_EVIDENCE"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0",
+          "delete": ["sourceUrl", "applicationUrl"]
+        },
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "evidence.0",
+          "delete": ["url"]
+        }
+      ]
+    },
+    {
+      "id": "changed_source_text_old_review",
+      "expect": "reject",
+      "rules": ["REVIEW_FACT_HASH_MISMATCH"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0",
+          "set": {
+            "originalText": "This audit deliberately removes the supporting vacancy text."
+          }
+        }
+      ]
+    },
+    {
+      "id": "changed_translation_old_review",
+      "expect": "reject",
+      "rules": ["REVIEW_TRANSLATION_HASH_MISMATCH"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0.title",
+          "set": {
+            "zh-CN": "审计测试：未经重新审核的替换标题"
+          }
+        }
+      ]
+    },
+    {
+      "id": "changed_valid_fact_old_review",
+      "expect": "reject",
+      "rules": ["REVIEW_FACT_HASH_MISMATCH"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.-1.salary",
+          "set": {
+            "amount": 123456
+          }
+        }
+      ]
+    },
+    {
+      "id": "mismatched_evidence_hash",
+      "expect": "reject",
+      "rules": ["REVIEW_EVIDENCE_HASH_MISMATCH"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "evidence.0",
+          "set": {
+            "sourceHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "negative_salary",
+      "expect": "reject",
+      "rules": ["SALARY_AMOUNT_INVALID", "SALARY_CURRENCY_INVALID", "SALARY_CYCLE_INVALID", "SALARY_TAX_INVALID"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0.salary",
+          "set": {
+            "amount": -60000,
+            "currency": "ZZZ",
+            "cycle": "banana",
+            "tax": "banana"
+          }
+        }
+      ]
+    },
+    {
+      "id": "impossible_employment_date",
+      "expect": "reject",
+      "rules": ["EMPLOYMENT_DATE_INVALID"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0",
+          "set": {
+            "employmentStartsAt": "2026-02-30"
+          }
+        }
+      ]
+    },
+    {
+      "id": "unapproved_tracer",
+      "expect": "reject",
+      "rules": ["TRACER_NOT_APPROVED"],
+      "mutations": [
+        {
+          "file": "admissions/cuni-mff-cs-tracer.json",
+          "path": "offerings.0",
+          "set": {
+            "publicationStatus": "review_pending",
+            "translationStatus": "unreviewed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "invalid_nested_tracer_window",
+      "expect": "reject",
+      "rules": ["WINDOW_DATE_INVALID", "WINDOW_TIMEZONE_INVALID", "WINDOW_EVIDENCE_MISSING"],
+      "mutations": [
+        {
+          "file": "admissions/cuni-mff-cs-tracer.json",
+          "path": "offerings.0.windows.0",
+          "set": {
+            "opensAt": "2026-99-99",
+            "timezone": "Mars/Olympus",
+            "sourceEvidenceId": "ev-does-not-exist"
+          }
+        }
+      ]
+    },
+    {
+      "id": "missing_reviewer",
+      "expect": "reject",
+      "rules": ["REVIEW_REVIEWER_MISSING"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0.translationReview",
+          "delete": ["reviewer"]
+        }
+      ]
+    },
+    {
+      "id": "changed_doctoral_requirement",
+      "expect": "reject",
+      "rules": ["REVIEW_FACT_HASH_MISMATCH"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0",
+          "set": {
+            "doctorateRequired": false,
+            "minimumDegree": "master"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cscse_operator_as_official_listed",
+      "expect": "reject",
+      "rules": ["CSCSE_OPERATOR_AS_OFFICIAL"],
+      "mutations": [
+        {
+          "file": "msmt-hei-baseline.json",
+          "path": "institutions.0",
+          "set": {
+            "cscseLookupStatus": "listed"
+          }
+        },
+        {
+          "file": "msmt-hei-baseline.json",
+          "path": "institutions.0.cscseReference",
+          "set": {
+            "lookupStatus": "listed",
+            "evidenceKind": "operator_supplied_list",
+            "checkedAt": "2026-09-06"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fetch_timestamp_only",
+      "expect": "accept",
+      "rules": [],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0",
+          "set": {
+            "lastStatusCheckedAt": "2099-01-01T00:00:00Z",
+            "lastAttemptAt": "2099-01-01T00:00:00Z"
+          }
+        }
+      ]
+    }
+  ]
+}

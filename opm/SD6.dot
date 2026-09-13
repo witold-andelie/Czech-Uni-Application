@@ -20,7 +20,7 @@ digraph SD6 {
     graph [label="中留服官方查询参考状态\nCSCSE Reference Status", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="recognition"];
     recognition [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
     listed [label="官方查询可查\nlisted", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="recognition"];
-    notfound [label="官方查询暂未查到\nnot found", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="recognition"];
+    notfound [label="中留服暂未收录（捷克官方认可）\nnot found", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="recognition"];
     unverifiedrecognition [label="待核验\nunverified", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="recognition"];
   }
   admin [label="审核后台\nTypeScript / Svelte\nEditorial Console", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];

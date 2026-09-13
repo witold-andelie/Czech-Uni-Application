@@ -1,6 +1,6 @@
 ---
 import { t } from "../lib/i18n";
-import { ownershipLabel, recognitionKey } from "../lib/format";
+import { dataClassKey, fieldSep, operatorListKey, ownershipLabel, recognitionKey } from "../lib/format";
 import type { Institution, UiLocale } from "../lib/types";
 
 interface Props {
@@ -12,25 +12,34 @@ interface Props {
 const { locale, institution, compact = false } = Astro.props;
 const rec = institution.cscseReference;
 const recKey = recognitionKey(rec.lookupStatus);
+const operatorKey = operatorListKey(rec.operatorListStatus);
 const ownershipClass = `ownership-${institution.ownership}`;
 const recClass = `cscse-${rec.lookupStatus}`;
+const operatorClass = rec.operatorListStatus === "listed" ? "cscse-operator-listed" : "cscse-operator-absent";
 const legal = institution.legalType === "research_institute" ? t(locale, "institution.researchOrg") : null;
 ---
 <div class="tags">
   {legal ? (
     <span class="tag">{legal}</span>
   ) : (
-    <span class:list={["tag", ownershipClass]}>{t(locale, "institution.ownership")}：{ownershipLabel(institution.ownership, locale)}</span>
+    <span class:list={["tag", ownershipClass]}>{t(locale, "institution.ownership")}{fieldSep(locale)}{ownershipLabel(institution.ownership, locale)}</span>
   )}
   <span class:list={["tag", recClass]}>{t(locale, recKey)}</span>
-  <span class="tag">{t(locale, "fixture.card")}</span>
+  {rec.evidenceKind === "operator_supplied_list" && (
+    <span class:list={["tag", operatorClass]}>{t(locale, operatorKey)}</span>
+  )}
+  <span class="tag">{t(locale, dataClassKey(institution.dataClass))}</span>
 </div>
 {!compact && (
   <div class="disclaimer">
     <p>{t(locale, "recognition.disclaimer")}</p>
+    {rec.evidenceKind === "operator_supplied_list" && <p>{t(locale, "recognition.operatorProvenance")}</p>}
     {rec.lookupStatus === "not_found" && <p>{t(locale, "recognition.notFound.help")}</p>}
-    {rec.checkedAt && <p>{t(locale, "recognition.lookupDate")}：{rec.checkedAt}</p>}
-    {rec.officialMatchedName && <p>{t(locale, "recognition.matchedName")}：{rec.officialMatchedName}</p>}
+    {rec.checkedAt && rec.evidenceKind === "official_lookup" && <p>{t(locale, "recognition.lookupDate")}{fieldSep(locale)}{rec.checkedAt}</p>}
+    {rec.operatorListDated && rec.evidenceKind === "operator_supplied_list" && (
+      <p>{t(locale, "recognition.operatorListDate")}{fieldSep(locale)}{rec.operatorListDated}</p>
+    )}
+    {rec.officialMatchedName && rec.lookupStatus === "listed" && <p>{t(locale, "recognition.matchedName")}{fieldSep(locale)}{rec.officialMatchedName}</p>}
     {rec.notices.filter((item) => item.active).map((notice) => (
       <p class="notice"><strong>{t(locale, "recognition.notice")}</strong> {notice.text[locale]}</p>
     ))}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "requiredForTestsAndBuild": [
+    "config/publication-policy.json",
+    "config/refresh-policy.json",
+    "config/checkout-manifest.json",
+    "data/published/current.json",
+    "data/published/safety/current.json",
+    "data/published/safety-status.json",
+    "data/fixtures/catalog.json",
+    "locales/zh-CN.json",
+    "locales/en.json",
+    "locales/cs.json",
+    "locales/glossary.json",
+    "opm/model.json",
+    "apps/web/package-lock.json",
+    "apps/api/go.mod",
+    "apps/api/go.sum",
+    "services/catalog/go.mod",
+    "services/catalog/go.sum",
+    "services/ingestion/requirements-ci.txt",
+    ".github/workflows/ci.yml"
+  ],
+  "requiredActiveSnapshotFiles": [
+    "manifest.json",
+    "msmt-hei-baseline.json",
+    "admissions/apply-portals.json",
+    "admissions/cuni-mff-cs-tracer.json",
+    "admissions/muni-fi-tracer.json",
+    "admissions/reviewed-offerings.json",
+    "browse/nine-hei-inventory.json",
+    "browse/nine-hei-jobs.json",
+    "browse/hei-coordinates.json",
+    "browse/czechia-outline.json",
+    "browse/czechia-basemap.json"
+  ],
+  "neverCommit": [
+    "data/published/.publish.lock",
+    "data/published/.publish.lock.owner.json",
+    "data/published/safety/.safety.lock",
+    "data/published/safety/.safety.lock.owner.json",
+    "apps/api/server.exe",
+    "apps/api/server.exe~",
+    "apps/api/server"
+  ],
+  "deliberatelyUntracked": [
+    "work/",
+    "data/published/staging/",
+    "data/published/current/",
+    "apps/web/.generated/",
+    "apps/web/dist/"
+  ]
+}

@@ -15,16 +15,11 @@ digraph SD1 {
   choose_all [label="选择全部授课语言\nAll Teaching Choosing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   choose_cs [label="选择捷克语授课\nCzech Teaching Choosing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   choose_en [label="选择英语授课\nEnglish Teaching Choosing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
-  compare [label="比较机会\nOpportunity Comparing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
-  comparison [label="比较视图\nComparison View", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   detail [label="机会详情\nOpportunity Detail", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   filter [label="按语言优先筛选\nProgramme Filtering", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   inspect [label="查看资格与来源\nDetail Inspecting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   query [label="检索条件\nSearch Criteria", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   results [label="专业检索结果\nProgramme Results", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
-  save [label="收藏机会\nOpportunity Saving", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
-  selection [label="比较项选择\nComparison Selection", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
-  shortlist [label="机会候选清单\nOpportunity Shortlist", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   user [label="申请者\nApplicant", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
   user -> choose_en [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
   choose_en -> english [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
@@ -42,10 +37,4 @@ digraph SD1 {
   results -> inspect [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   user -> inspect [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
   inspect -> detail [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
-  detail -> save [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
-  user -> save [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
-  save -> shortlist [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
-  selection -> compare [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
-  catalog -> compare [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
-  compare -> comparison [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
 }
