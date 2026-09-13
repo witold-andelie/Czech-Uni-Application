@@ -109,7 +109,7 @@ jobs:
         working-directory: apps/web
         run: npm run verify:published
 
-      - name: Build deployable static site
+      - name: Build static site (root-relative; browser acceptance)
         working-directory: apps/web
         run: npm run build
 
@@ -170,22 +170,99 @@ jobs:
           retention-days: 14
 
   deliver:
-    name: Delivery artifact
+    name: Pages bundle (prefixed build)
     needs: [web, browser]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - name: Download built site
-        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          name: site-build-${{ github.sha }}
-          path: site
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install locked web dependencies
+        working-directory: apps/web
+        run: npm ci
+
+      - name: Build the Pages-prefixed bundle
+        working-directory: apps/web
+        env:
+          SITE_BASE: /Czech-Uni-Application
+        run: npm run build
+
+      - name: Verify bundled publication contract
+        working-directory: apps/web
+        run: npm run verify:published
 
       - name: Upload deployable static site
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: czech-uni-apply-site-${{ github.sha }}
-          path: site
+          path: apps/web/dist
           if-no-files-found: error
           retention-days: 14
+
+  # Public beta: deploy the already-tested artifact (built with SITE_BASE=/Czech-Uni-Application)
+  # to GitHub Pages. Runs only after every gate + browser acceptance on main.
+  pages-deploy:
+    name: GitHub Pages deployment
+    needs: [deliver, browser]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install locked web dependencies
+        working-directory: apps/web
+        run: npm ci
+
+      - name: Download tested site artifact
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        with:
+          name: czech-uni-apply-site-${{ github.sha }}
+          path: apps/web/dist
+
+      - name: Install Playwright Chromium for the prefix smoke
+        working-directory: apps/web
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser smoke under the /Czech-Uni-Application prefix
+        working-directory: apps/web
+        run: node tests/pages-smoke.mjs
+
+      - name: Configure Pages
+        uses: actions/configure-pages@983d773c7c20b732d1bfd6022ad5a101e7b80455 # v5.0.0
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e162f44e8e5ddba2 # v3.0.1
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

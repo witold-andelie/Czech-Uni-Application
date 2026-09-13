@@ -64,3 +64,16 @@ out.consoleErrors = errors.slice(0, 5);
 console.log(JSON.stringify(out, null, 1));
 await browser.close();
 server.close();
+const problems = [];
+if (out["zh-CN"] !== 200 || out.en !== 200 || out.cs !== 200) problems.push("locale status");
+if (!(out.czuCards >= 4)) problems.push("CZU cards");
+if (!(out.fundedCards >= 3)) problems.push("funded cards");
+if (!String(out.savedRedirect || "").endsWith("/zh-CN/programmes")) problems.push("legacy redirect");
+if (!(out.notFoundHeading >= 1)) problems.push("404 recovery");
+if (out.requestFailures.length) problems.push("request failures");
+if (out.consoleErrors.length) problems.push("console errors");
+if (problems.length) {
+  console.error("PAGES SMOKE FAILED:", problems.join("; "));
+  process.exit(1);
+}
+console.log("PAGES SMOKE PASSED");
