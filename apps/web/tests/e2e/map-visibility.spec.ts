@@ -7,6 +7,7 @@ import { LOCALES, STUB_PNG, msg } from "./helpers";
 const SIZES = [
   { width: 390, height: 844 },
   { width: 1280, height: 500 },
+  { width: 1280, height: 720 },
   { width: 1440, height: 600 },
   { width: 1440, height: 900 },
 ];
@@ -30,6 +31,9 @@ for (const locale of LOCALES) {
         page.getByRole("link", { name: msg(locale, "institutions.open") }).first(),
       ).toBeVisible({ timeout: 20_000 });
       await expectVisibleMap(page);
+
+      const resultsBox = await page.locator(".map-school-list").boundingBox();
+      expect(resultsBox!.height, "school results must not collapse below the filters").toBeGreaterThanOrEqual(200);
 
       const pick = page.locator(".map-school-pick:not([disabled])").first();
       await pick.click();

@@ -1,14 +1,14 @@
 # Czech University Application
 
 A three-language (简体中文 / English / Čeština) anonymous browse platform for
-study programmes and paid research positions at Czech public universities,
+study programmes and paid research positions at Czech higher education institutions,
 built for applicants evaluating Czech higher education.
 
 **Live beta:** <https://witold-andelie.github.io/Czech-Uni-Application/>
 
 ## What it does
 
-- **Degree programmes**: 5,019 register-recorded programmes across all 54
+- **Degree programmes**: 5,019 register-recorded programmes across 53 of the 54
   MŠMT-baseline institutions, filtered teaching-language-first
   (English/Czech), with application windows, tuition where officially
   published, and official application links.

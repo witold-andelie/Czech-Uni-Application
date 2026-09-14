@@ -1,7 +1,7 @@
 name: CI
 
-# Hosted GitHub execution, branch protection and public deploy are not claimed
-# from this file. Report: CI configured; local checks passed; hosted CI/CD not verified.
+# Deployment is gated by data, service, web and browser checks.
+# Inspect the run result before reporting a public release as successful.
 
 on:
   push:
@@ -199,6 +199,9 @@ jobs:
       - name: Verify bundled publication contract
         working-directory: apps/web
         run: npm run verify:published
+
+      - name: Record the deployed commit and publication
+        run: python scripts/checkout_inventory.py --write-provenance apps/web/dist/publication-provenance.json
 
       - name: Upload deployable static site
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0

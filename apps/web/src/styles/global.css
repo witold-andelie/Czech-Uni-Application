@@ -761,7 +761,9 @@ a.external {
   order: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto minmax(0, 1fr);
+  /* Keep school results usable when translated filters fill a laptop sidebar.
+     The sidebar can scroll instead of shrinking the result list to one line. */
+  grid-template-rows: auto minmax(240px, 1fr);
   min-height: 0;
   min-width: 0;
 }
