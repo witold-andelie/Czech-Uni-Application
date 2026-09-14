@@ -259,12 +259,10 @@ jobs:
         run: node tests/pages-smoke.mjs
 
       - name: Configure Pages
-        uses: actions/configure-pages@983d773c7c20b732d1bfd6022ad5a101e7b80455 # v5.0.0
-        with:
-          enabled: true
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e162f44e8e5ddba2 # v3.0.1
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
           path: apps/web/dist
 
