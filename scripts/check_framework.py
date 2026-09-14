@@ -36,6 +36,7 @@ sys.path.insert(0, str(root/'scripts'))
 from render_opm import check_generated
 errors.extend(check_generated())
 report={'status':'passed' if not errors else 'failed','jsonFilesChecked':len(json_files),'localeKeysPerLanguage':len(locales[0]),'diagramsChecked':len(m['diagrams']),'opmGenerationCheck':'semantic DOT/OPL/SVG titles and PNG magic; Graphviz metadata is not compared as bytes','errors':errors,'applicationTests':'run separately; see PROGRESS.md','formalIsoCertification':False}
+(root/'work').mkdir(exist_ok=True)
 (root/'work/framework-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report,ensure_ascii=False))
 if errors: raise SystemExit(1)

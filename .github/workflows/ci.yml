@@ -263,7 +263,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e162f44e8e5ddba2 # v3.0.1
         with:
-          path: site
+          path: apps/web/dist
 
       - name: Deploy to GitHub Pages
         id: deployment

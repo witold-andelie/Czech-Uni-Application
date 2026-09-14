@@ -2,33 +2,38 @@
 import { chromium } from "@playwright/test";
 import http from "node:http";
 import { createReadStream, existsSync as _es, statSync } from "node:fs";
-import { cpSync, existsSync, rmSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import path from "node:path";
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, "$1")), "../../..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const DIST = path.join(ROOT, "apps/web/dist");
 const REPO = "Czech-Uni-Application";
-const SERVE_ROOT = path.join(ROOT, "apps/web/.generated/pages-root");
-const target = path.join(SERVE_ROOT, REPO);
-if (existsSync(SERVE_ROOT)) rmSync(SERVE_ROOT, { recursive: true, force: true });
-cpSync(DIST, target, { recursive: true });
+const target = DIST;
 
 const server = http.createServer((req, res) => {
   const urlPath = decodeURIComponent(new URL(req.url, "http://x").pathname);
-  let rel = urlPath.replace(new RegExp("^/" + REPO), "") || "/";
+  if (urlPath !== `/${REPO}` && !urlPath.startsWith(`/${REPO}/`)) {
+    res.writeHead(404); res.end("outside the deployed prefix"); return;
+  }
+  let rel = urlPath.slice(REPO.length + 1) || "/";
   let file = path.join(target, rel);
+  if (!file.startsWith(target + path.sep) && file !== target) {
+    res.writeHead(404); res.end("not found"); return;
+  }
+  let status = 200;
   const stat0 = _es(file) ? statSync(file) : null;
   if (!stat0 || stat0.isDirectory()) file = path.join(file, "index.html");
   if (!_es(file)) {
     // GH-style 404 document
     file = path.join(target, "404.html");
+    status = 404;
   }
   if (!_es(file)) {
     res.writeHead(404); res.end("not found"); return;
   }
   const ext = path.extname(file);
   const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".png": "image/png", ".svg": "image/svg+xml" };
-  res.writeHead(200, { "content-type": types[ext] || "application/octet-stream" });
+  res.writeHead(status, { "content-type": types[ext] || "application/octet-stream" });
   createReadStream(file).pipe(res);
 });
 await new Promise((r) => server.listen(4199, "127.0.0.1", r));
@@ -39,7 +44,10 @@ const errors = [];
 const browser = await chromium.launch();
 const page = await browser.newPage();
 page.on("requestfailed", (r) => failures.push(r.url()));
-page.on("console", (m) => { if (m.type() === "error") errors.push(m.text().slice(0, 120)); });
+page.on("pageerror", (error) => errors.push(error.message));
+page.on("response", (r) => {
+  if (r.status() >= 400 && ["script", "stylesheet", "fetch", "xhr"].includes(r.request().resourceType())) failures.push(r.url());
+});
 const out = {};
 for (const loc of ["zh-CN", "en", "cs"]) {
   const resp = await page.goto(`${base}/${loc}/`, { waitUntil: "load" });
@@ -57,7 +65,7 @@ out.savedRedirect = page.url();
 await page.goto(`${base}/zh-CN/research-jobs/job-18000-0b0de28455a7`, { waitUntil: "load" });
 await page.waitForTimeout(500);
 out.detailH1 = (await page.locator("h1").innerText()).slice(0, 70);
-await page.goto(`${base}/no-such-page`, { waitUntil: "load" });
+out.notFoundStatus = (await page.goto(`${base}/no-such-page`, { waitUntil: "load" })).status();
 out.notFoundHeading = await page.locator("h1").count();
 out.requestFailures = failures.slice(0, 5);
 out.consoleErrors = errors.slice(0, 5);
@@ -69,7 +77,7 @@ if (out["zh-CN"] !== 200 || out.en !== 200 || out.cs !== 200) problems.push("loc
 if (!(out.czuCards >= 4)) problems.push("CZU cards");
 if (!(out.fundedCards >= 3)) problems.push("funded cards");
 if (!String(out.savedRedirect || "").endsWith("/zh-CN/programmes")) problems.push("legacy redirect");
-if (!(out.notFoundHeading >= 1)) problems.push("404 recovery");
+if (!(out.notFoundHeading >= 1) || out.notFoundStatus !== 404) problems.push("404 recovery");
 if (out.requestFailures.length) problems.push("request failures");
 if (out.consoleErrors.length) problems.push("console errors");
 if (problems.length) {

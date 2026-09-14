@@ -30,7 +30,7 @@ const publication = selectedPublication();
 const pagesBase = process.env.SITE_BASE || "/";
 
 export default defineConfig({
-  site: process.env.SITE_URL || "https://witold-andelie.github.io/Czech-Uni-Application",
+  site: process.env.SITE_URL || "https://witold-andelie.github.io",
   base: pagesBase,
   output: "static",
   publicDir: publication.publicDirectory,

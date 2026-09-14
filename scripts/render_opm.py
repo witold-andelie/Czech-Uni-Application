@@ -193,8 +193,10 @@ def check_generated(opm_dir=None):
         except ValueError as ex:
             return str(ex).splitlines()
         expected_opl=opl_text()
-        committed_opl=(directory/'OPL.md').read_text(encoding='utf-8')
-        if committed_opl != expected_opl:
+        # OPL is local documentation excluded from the public repository.
+        # Validate it when present; committed DOT/SVG still check model semantics.
+        opl_path=directory/'OPL.md'
+        if opl_path.exists() and opl_path.read_text(encoding='utf-8') != expected_opl:
             errors.append('OPL.md is stale relative to model.json')
         png_magic=b'\x89PNG\r\n\x1a\n'
         for d in D:
@@ -286,4 +288,3 @@ def main(argv=None):
     (OPM/'validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': main()
-

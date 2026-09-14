@@ -111,8 +111,9 @@ def test_track_classification() -> None:
 
 
 def test_past_deadline_is_not_open() -> None:
-    assert parse_date("31 Jan 2026") < TODAY
-    assert parse_date("14 September 2026") > TODAY
+    reference_date = parse_date("2026-09-06")
+    assert parse_date("31 Jan 2026") < reference_date
+    assert parse_date("14 September 2026") > reference_date
     assert parse_date("2026-09-14") == parse_date("14. 9. 2026")
     assert str(parse_date("September 24, 2026")) == "2026-09-24"
     assert str(parse_date("Sep 24th, 2026")) == "2026-09-24"

@@ -18,6 +18,13 @@ def test_committed_opm_matches_model():
     assert errors == []
 
 
+def test_public_checkout_without_local_opl(tmp_path: Path):
+    staged = tmp_path / "opm"
+    shutil.copytree(ROOT / "opm", staged)
+    (staged / "OPL.md").unlink(missing_ok=True)
+    assert check_generated(staged) == []
+
+
 def test_model_change_without_generated_semantics_fails(tmp_path: Path):
     source = ROOT / "opm"
     staged = tmp_path / "opm"

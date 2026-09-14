@@ -1,0 +1,5 @@
+# Evidence/publications are hashed as bytes. Git must not convert their newlines.
+data/published/** -text
+data/sources/** -text
+tests/fixtures/** -text
+services/ingestion/tests/fixtures/** -text
