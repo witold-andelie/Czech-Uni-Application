@@ -29,6 +29,7 @@ digraph SD2 {
   intent [label="用户界面语言选择\nLocale Choice", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   present [label="渲染当前语言页面\nLocalized Page Rendering", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   screen [label="当前语言界面\nLocalized Interface", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  searchmetadata [label="公开检索元数据\nPublic Search Metadata", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   switch [label="切换界面语言\nLocale Switching", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   tokens [label="UI 设计规则\nDesign Rules", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   user [label="申请者\nApplicant", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
@@ -43,4 +44,5 @@ digraph SD2 {
   catalog -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   present -> screen [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   authorcontact -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  searchmetadata -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
 }

@@ -17,8 +17,18 @@ interface Props {
 const { locale, title, description } = Astro.props;
 const path = pathnameWithoutBase(Astro.url.pathname);
 const search = Astro.url.search;
+const indexable = LOCALES.some((item) => path.startsWith(`/${item}/`)) && !path.split("/").includes("404");
+const absolute = (pathname: string) => new URL(withBase(pathname), Astro.site!).href;
+const canonical = absolute(path);
+const alternate = (item: string) => absolute(["", item, ...path.split("/").slice(2)].join("/"));
 const brand = t(locale, "brand.name");
 const documentTitle = title === brand ? brand : `${title} · ${brand}`;
+const structuredData = JSON.stringify({
+        "@context": "https://schema.org", "@type": "WebPage",
+        url: canonical, name: documentTitle, inLanguage: htmlLang(locale),
+        description: description ?? t(locale, "meta.description"),
+        isPartOf: { "@type": "WebSite", name: brand, url: absolute("/") },
+      }).replace(/</g, "\\u003c");
 const nav = NAV_ITEMS.map((item) => ({
   href: navHref(locale, item.path),
   key: item.key,
@@ -32,13 +42,16 @@ const nav = NAV_ITEMS.map((item) => ({
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description ?? t(locale, "meta.description")} />
     <title>{documentTitle}</title>
-    {LOCALES.map((item) => {
-      const parts = path.split("/");
-      if (parts[1]) parts[1] = item;
-      const href = withBase(`${parts.join("/")}${search}`);
-      return <link rel="alternate" hreflang={htmlLang(item)} href={href} />;
-    })}
-    <link rel="alternate" hreflang="x-default" href={withBase("/zh-CN/")} />
+    {indexable ? <>
+      <link rel="canonical" href={canonical} />
+      {LOCALES.map((item) => <link rel="alternate" hreflang={htmlLang(item)} href={alternate(item)} />)}
+      <link rel="alternate" hreflang="x-default" href={alternate("zh-CN")} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:title" content={documentTitle} />
+      <meta property="og:description" content={description ?? t(locale, "meta.description")} />
+      <script is:inline type="application/ld+json" set:html={structuredData}></script>
+    </> : <meta name="robots" content="noindex, follow" />}
     <script is:inline>
       (function () {
         try {

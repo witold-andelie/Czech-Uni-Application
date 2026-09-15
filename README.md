@@ -128,10 +128,20 @@ workflows. Artifact/runner quotas still apply.
 
 ## Status and limits
 
-- Public beta: data coverage is partial — a subset of institutions is fully
-  reviewed; the per-school assessment and candidate-disposition pipeline is
+- Public beta: data coverage is partial — published records are reviewed, but no institution
+  has a verified exhaustive vacancy inventory; the per-school assessment and candidate-disposition pipeline is
   expanded release by release with per-record evidence.
 - GitHub scheduled collection is configured; its first hosted result must be
   checked before claiming automatic collection is operational. New records
   require review; the persistent Go/Supabase service remains a later option.
 - Mainland-China network paths and real-device checks are not yet verified.
+
+## Search discovery
+
+Production builds emit `robots.txt` and `sitemap.xml` from generated localized
+HTML, excluding legacy redirects and error pages. Set `SITE_URL` to the canonical
+public origin (currently https://czech-uni-application.com). Shared pages emit
+absolute canonical URLs, equivalent-language links, and factual WebPage metadata.
+Submit `/sitemap.xml` through Google Search Console and Bing Webmaster Tools after
+verifying domain ownership. Crawl eligibility does not guarantee indexing, ranking,
+or citation by an AI service. No special AI-only content or fabricated reviews are used.

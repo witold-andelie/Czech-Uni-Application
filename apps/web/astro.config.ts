@@ -30,7 +30,7 @@ const publication = selectedPublication();
 const siteBase = process.env.SITE_BASE || "/";
 
 export default defineConfig({
-  site: process.env.SITE_URL || undefined,
+  site: process.env.SITE_URL || "https://czech-uni-application.com",
   base: siteBase,
   output: "static",
   publicDir: publication.publicDirectory,
