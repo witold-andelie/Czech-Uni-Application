@@ -6,6 +6,7 @@ import { NAV_ITEMS, navHref } from "../lib/nav";
 import type { UiLocale } from "../lib/types";
 import LocaleSwitcher from "../components/LocaleSwitcher.svelte";
 import MobileNav from "../components/MobileNav.svelte";
+import AuthorContact from "../components/AuthorContact.astro";
 
 interface Props {
   locale: UiLocale;
@@ -74,5 +75,6 @@ const nav = NAV_ITEMS.map((item) => ({
         <p>{t(locale, "footer.disclaimer")}</p>
       </div>
     </footer>
+    <AuthorContact locale={locale} />
   </body>
 </html>

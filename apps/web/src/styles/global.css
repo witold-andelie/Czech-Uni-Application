@@ -1,5 +1,54 @@
 @import "./tokens.css";
 
+.author-contact {
+  position: fixed;
+  right: max(var(--space-16), env(safe-area-inset-right));
+  bottom: max(var(--space-16), env(safe-area-inset-bottom));
+  z-index: 12;
+  font-size: var(--small-size);
+}
+.author-contact > summary {
+  list-style: none;
+  cursor: pointer;
+  min-height: 44px;
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-card);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  box-shadow: 0 2px 8px #16263d26;
+}
+.author-contact > summary::-webkit-details-marker { display: none; }
+.author-contact-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + var(--space-8));
+  width: min(340px, calc(100vw - 32px));
+  max-height: calc(100dvh - 112px);
+  overflow-y: auto;
+  padding: var(--space-24);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: 0 4px 20px #16263d26;
+  font-size: var(--body-size);
+  overflow-wrap: anywhere;
+}
+.author-contact-panel .contact-intro { margin-top: 24px; font-weight: 600; }
+.contact-close { position: absolute; right: 4px; top: 4px; }
+.contact-close, .contact-copy {
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  color: var(--color-primary);
+  background: var(--color-surface);
+  cursor: pointer;
+  font: inherit;
+}
+.contact-copy { padding: var(--space-8) var(--space-12); }
+.contact-id { user-select: all; }
+.contact-status { display: block; color: var(--color-muted); font-size: var(--small-size); }
+
 *,
 *::before,
 *::after {
@@ -510,7 +559,7 @@ button.primary {
 
 .site-footer {
   border-top: 1px solid var(--color-border);
-  padding: var(--space-24) 0 var(--space-32);
+  padding: var(--space-24) 0 calc(80px + env(safe-area-inset-bottom));
   color: var(--color-muted);
   font-size: var(--small-size);
 }

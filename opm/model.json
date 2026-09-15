@@ -1475,6 +1475,14 @@
       "kind": "object",
       "en": "Public Browse Website",
       "zh": "公网浏览网站"
+    },
+    "authorcontact": {
+      "id": "authorcontact",
+      "kind": "object",
+      "en": "Author Contact Details",
+      "zh": "作者联系方式",
+      "physical": false,
+      "external": false
     }
   },
   "diagrams": [
@@ -1745,6 +1753,11 @@
           "source": "present",
           "target": "screen",
           "type": "result"
+        },
+        {
+          "source": "authorcontact",
+          "target": "present",
+          "type": "instrument"
         }
       ],
       "requirements": [
@@ -1752,9 +1765,10 @@
         "A03",
         "A13",
         "A14",
-        "A16"
+        "A16",
+        "A92"
       ],
-      "notes": "switch 仅改变 UI Locale，不改变 Teaching Language Choice 或 Browsing Context；locale 三个状态互斥。翻译包已复核状态是界面呈现所需资源，原文附录允许保留源语言。"
+      "notes": "switch 仅改变 UI Locale，不改变 Teaching Language Choice 或 Browsing Context；locale 三个状态互斥。翻译包已复核状态是界面呈现所需资源，原文附录允许保留源语言。 A92: owner-approved contact details are available from every shared layout; the contact disclosure is collapsed initially and expanded only by the visitor, with keyboard closing and no stored visitor data."
     },
     {
       "id": "OPS",

@@ -1,0 +1,36 @@
+---
+import { t } from "../lib/i18n";
+import type { UiLocale } from "../lib/types";
+const { locale } = Astro.props as { locale: UiLocale };
+---
+<details class="author-contact">
+  <summary>{t(locale, "contact.author")}</summary>
+  <section class="author-contact-panel" aria-label={t(locale, "contact.author")}>
+    <button class="contact-close" type="button" aria-label={t(locale, "contact.close")}>×</button>
+    <p class="contact-intro">{t(locale, "contact.intro")}</p>
+    <p><span>{t(locale, "contact.email")}</span><br /><a href="mailto:andelie1892@gmail.com">andelie1892@gmail.com</a></p>
+    <p><span>WeChat</span><br /><span class="contact-id">wxid_vtl13ojnba0d22</span></p>
+    <button class="contact-copy" type="button" data-copied={t(locale, "contact.copied")} data-failed={t(locale, "contact.copyFailed")}>{t(locale, "contact.copy")}</button>
+    <span class="contact-status" role="status"></span>
+  </section>
+</details>
+<script>
+  document.querySelectorAll<HTMLDetailsElement>(".author-contact").forEach((contact) => {
+    const trigger = contact.querySelector("summary")!;
+    const close = () => { contact.open = false; trigger.focus(); };
+    contact.querySelector(".contact-close")!.addEventListener("click", close);
+    contact.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
+    document.addEventListener("click", (event) => {
+      if (contact.open && event.target instanceof Node && !contact.contains(event.target)) contact.open = false;
+    });
+    contact.querySelector<HTMLButtonElement>(".contact-copy")!.addEventListener("click", async (event) => {
+      const button = event.currentTarget as HTMLButtonElement;
+      const status = contact.querySelector(".contact-status")!;
+      try {
+        await navigator.clipboard.writeText("wxid_vtl13ojnba0d22");
+        status.textContent = button.dataset.copied!;
+      } catch { status.textContent = button.dataset.failed!; }
+    });
+    contact.addEventListener("toggle", () => { if (!contact.open) contact.querySelector(".contact-status")!.textContent = ""; });
+  });
+</script>

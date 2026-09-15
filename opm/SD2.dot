@@ -23,6 +23,7 @@ digraph SD2 {
     enui [label="English\nen", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="locale"];
     zh [label="简体中文\nzh-CN", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="locale"];
   }
+  authorcontact [label="作者联系方式\nAuthor Contact Details", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   context [label="浏览上下文与收藏\nBrowsing Context", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   intent [label="用户界面语言选择\nLocale Choice", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
@@ -41,4 +42,5 @@ digraph SD2 {
   tokens -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   catalog -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   present -> screen [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  authorcontact -> present [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
 }
