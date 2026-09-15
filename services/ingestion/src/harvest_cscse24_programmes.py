@@ -72,6 +72,8 @@ def valid_csv(path: Path) -> bool:
 
 
 def harvest_one(school: dict, force: bool) -> dict:
+    # The scheduler calls this directly, without the CLI's main() initializer.
+    RAW.mkdir(parents=True, exist_ok=True)
     code = school["msmtCode"]
     name = school["officialName"]
     out = csv_path(code)
