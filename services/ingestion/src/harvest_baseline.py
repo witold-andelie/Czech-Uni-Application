@@ -7,6 +7,7 @@ programmes, tuition, deadlines, or CSCSE status, and it does not start the
 from __future__ import annotations
 
 import subprocess
+import shutil
 import sys
 from pathlib import Path
 
@@ -14,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[3]
 RAW_DIR = ROOT / "work" / "raw" / "2026-09-06"
 REGISTER_URL = "https://regvssp.msmt.cz/registrvssp/cvslist.aspx"
 WEBSITES_URL = "https://archiv.msmt.gov.cz/areas-of-work/tertiary-education/public-higher-education-institutions-websites"
-SCRAPLING = Path(r"C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Scripts\scrapling.exe")
+SCRAPLING = shutil.which("scrapling") or "scrapling"
 
 
 def scrapling_get(url: str, output: Path, timeout: int = 45) -> int:

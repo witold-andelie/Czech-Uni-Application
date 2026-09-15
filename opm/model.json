@@ -1451,6 +1451,30 @@
       "kind": "process",
       "en": "Map Wheel Zooming",
       "zh": "用普通滚轮缩放地图"
+    },
+    "runnercheckpoint": {
+      "id": "runnercheckpoint",
+      "kind": "object",
+      "en": "Persisted Runner Checkpoint",
+      "zh": "采集运行检查点"
+    },
+    "statichost": {
+      "id": "statichost",
+      "kind": "object",
+      "en": "Cloudflare Pages Host",
+      "zh": "第三方静态托管"
+    },
+    "hostdeploy": {
+      "id": "hostdeploy",
+      "kind": "process",
+      "en": "Tested Artifact Deploying",
+      "zh": "部署已测试制品"
+    },
+    "publicwebsite": {
+      "id": "publicwebsite",
+      "kind": "object",
+      "en": "Public Browse Website",
+      "zh": "公网浏览网站"
     }
   },
   "diagrams": [
@@ -2146,6 +2170,21 @@
           "source": "run",
           "target": "maintain",
           "type": "instrument"
+        },
+        {
+          "source": "ciworkflow",
+          "target": "schedule",
+          "type": "instrument"
+        },
+        {
+          "source": "schedule",
+          "target": "runnercheckpoint",
+          "type": "effect"
+        },
+        {
+          "source": "runnercheckpoint",
+          "target": "schedule",
+          "type": "instrument"
         }
       ],
       "requirements": [
@@ -2166,9 +2205,10 @@
         "A59",
         "A64",
         "A65",
-        "A66"
+        "A66",
+        "A91"
       ],
-      "notes": "独立支撑过程的上下文，SD3 展开 maintain；采集与审核不阻塞在线用户查询。稳定来源保持 120 小时全覆盖，高波动任务分别以 1 小时复核已知岗位状态、4 小时发现全部已登记岗位目录、2 小时刷新 DZS 项目目录、2 小时刷新 CZU 英语本科／硕士目录及窗口、2 小时刷新 CZU 捷克入口本科／硕士目录、2 小时刷新 CZU 博士学院证据。普通漏跑等到下一个同余日；超过 120 小时未成功才做单分片 SLA 补跑。官方高校名录是覆盖分母；覆盖报告分开表示来源完整、学校接入、current／supported 候选与正式发布，单源刷新不能冒充全源成功。CZU 两条本科／硕士来源各自按官网声明范围报告完整性并保留交叉差异；博士来源以 MŠMT 60 个 offering 和六学院年度证据为边界，未知开始日、条件轮次及未公告轮次不推断为开放。候选仍受三语和来源哈希发布门禁约束。持久队列在操作系统互斥锁内改变；租约带拥有者、续期与过期回收。锁顺序为 refresh → publish → safety。已核验关闭走独立安全状态覆盖，网络失败不是关闭。幂等官方读取只对短暂失败作两次有限请求重试，并尊重 Retry-After；过长延迟交给调度。最终抓取或解析失败不推进成功时间，按逐来源退避时间重试，不触发目录缺席归档，并继续参加 SLA 监测。成功和失败、租约释放和到期是互斥分支。"
+      "notes": "独立支撑过程的上下文，SD3 展开 maintain；采集与审核不阻塞在线用户查询。稳定来源保持 120 小时全覆盖，高波动任务分别以 1 小时复核已知岗位状态、4 小时发现全部已登记岗位目录、2 小时刷新 DZS 项目目录、2 小时刷新 CZU 英语本科／硕士目录及窗口、2 小时刷新 CZU 捷克入口本科／硕士目录、2 小时刷新 CZU 博士学院证据。普通漏跑等到下一个同余日；超过 120 小时未成功才做单分片 SLA 补跑。官方高校名录是覆盖分母；覆盖报告分开表示来源完整、学校接入、current／supported 候选与正式发布，单源刷新不能冒充全源成功。CZU 两条本科／硕士来源各自按官网声明范围报告完整性并保留交叉差异；博士来源以 MŠMT 60 个 offering 和六学院年度证据为边界，未知开始日、条件轮次及未公告轮次不推断为开放。候选仍受三语和来源哈希发布门禁约束。持久队列在操作系统互斥锁内改变；租约带拥有者、续期与过期回收。锁顺序为 refresh → publish → safety。已核验关闭走独立安全状态覆盖，网络失败不是关闭。幂等官方读取只对短暂失败作两次有限请求重试，并尊重 Retry-After；过长延迟交给调度。最终抓取或解析失败不推进成功时间，按逐来源退避时间重试，不触发目录缺席归档，并继续参加 SLA 监测。成功和失败、租约释放和到期是互斥分支。 2026-09-15 所有者选择 GitHub Actions 有界定时运行，检查点保存调度与重试状态；外部失败继续保留待重试状态，未审核候选仅进入交接制品。定时唤醒为尽力执行，不声称精确 SLA。"
     },
     {
       "id": "SD3",
@@ -3036,6 +3076,21 @@
           "source": "deliverypackage",
           "target": "deliveryartifact",
           "type": "result"
+        },
+        {
+          "source": "deliveryartifact",
+          "target": "hostdeploy",
+          "type": "instrument"
+        },
+        {
+          "source": "statichost",
+          "target": "hostdeploy",
+          "type": "instrument"
+        },
+        {
+          "source": "hostdeploy",
+          "target": "publicwebsite",
+          "type": "result"
         }
       ],
       "requirements": [
@@ -3058,9 +3113,10 @@
         "A58",
         "A59",
         "A60",
-        "A65"
+        "A65",
+        "A91"
       ],
-      "notes": "候选数据先在 refresh 锁内钉扎世代并复制到唯一 staging，再释放该锁，按固定文件集合、结构、关系、证据、URL、资格及逐语种哈希审核规则校验。窗口日期、时区、必需来源／证据 URL、受控薪资码和会被渲染的嵌套 tracer 窗口必须同时由 Python 与 Node 拒绝。岗位批准绑定事实哈希、译文哈希、证据哈希和审核角色，抓取时间戳单独保存。DZS 与 CZU 的来源完整性只说明各自声明范围抓取完整，不等于已经完成三语正式发布；CZU 英语目录和捷克入口本科／硕士候选必须逐字段保留来源证据、内容哈希及跨源差异，博士候选还须保留 MŠMT offering 匹配、六学院证据、窗口状态和图像 PDF 的受审哈希。岗位公告未说明工作语言时使用 BCP 47 und 状态，不从公告语言推断。只有合格候选才能成为不可变快照并通过单一原子指针激活；force 不能绕过门禁。已核验关闭另有独立安全状态覆盖，快照回滚不能重新打开之后的关闭。构建启动时只解析一次当前版本，固定到该快照，并只从该版本生成浏览器资源；发布、回滚或采集并发不会让一个构建混读版本。生产 API 绑定该不可变发布，拒绝 fixture。Pull request 与 main 提交运行固定依赖的确定性 CI；main 仅在数据、Go 与 Web 检查全部通过后生成绑定提交 SHA 的静态交付制品。该制品不代表已经部署公网；在托管 run 出现前报告 CI configured; local checks passed; hosted CI/CD not verified。"
+      "notes": "候选数据先在 refresh 锁内钉扎世代并复制到唯一 staging，再释放该锁，按固定文件集合、结构、关系、证据、URL、资格及逐语种哈希审核规则校验。窗口日期、时区、必需来源／证据 URL、受控薪资码和会被渲染的嵌套 tracer 窗口必须同时由 Python 与 Node 拒绝。岗位批准绑定事实哈希、译文哈希、证据哈希和审核角色，抓取时间戳单独保存。DZS 与 CZU 的来源完整性只说明各自声明范围抓取完整，不等于已经完成三语正式发布；CZU 英语目录和捷克入口本科／硕士候选必须逐字段保留来源证据、内容哈希及跨源差异，博士候选还须保留 MŠMT offering 匹配、六学院证据、窗口状态和图像 PDF 的受审哈希。岗位公告未说明工作语言时使用 BCP 47 und 状态，不从公告语言推断。只有合格候选才能成为不可变快照并通过单一原子指针激活；force 不能绕过门禁。已核验关闭另有独立安全状态覆盖，快照回滚不能重新打开之后的关闭。构建启动时只解析一次当前版本，固定到该快照，并只从该版本生成浏览器资源；发布、回滚或采集并发不会让一个构建混读版本。生产 API 绑定该不可变发布，拒绝 fixture。Pull request 与 main 提交运行固定依赖的确定性 CI；main 仅在数据、Go 与 Web 检查全部通过后生成绑定提交 SHA 的静态交付制品。该制品不代表已经部署公网；在托管 run 出现前报告 CI configured; local checks passed; hosted CI/CD not verified。 2026-09-15 所有者选择独立域名与 Cloudflare Pages；部署仅在浏览器验收后使用相同提交制品。采集复核的安全覆盖通过 CI 后传播，源码托管不是网站托管。账户配置或作业存在不等于实际发布成功。"
     },
     {
       "id": "SD4A",

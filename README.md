@@ -4,7 +4,7 @@ A three-language (简体中文 / English / Čeština) anonymous browse platform 
 study programmes and paid research positions at Czech higher education institutions,
 built for applicants evaluating Czech higher education.
 
-**Deployment:** custom domain and third-party static hosting are being prepared.
+**Deployment:** Cloudflare Pages + custom domain; account setup pending.
 GitHub hosts the source code and CI, not the public website.
 
 ## What it does
@@ -78,15 +78,60 @@ GitHub Pages deployment has been removed.
 Set the repository variable `SITE_URL` to the purchased domain's HTTPS origin
 before the production build. The host must serve `index.html` for directory
 URLs and the bundled `404.html` with HTTP status 404 for unknown URLs.
-Do not enable a single-page-app catch-all rewrite. Automated delivery to the
-selected provider still needs account configuration; retaining an artifact
-alone does not mean the website has been deployed.
+Do not enable a single-page-app catch-all rewrite.
+
+### Connect Cloudflare Pages
+
+Create a **Direct Upload** Pages project named `czech-uni-application` (not a
+Worker, and not a second automatic Git build). In GitHub repository Settings →
+Secrets and variables → Actions, configure:
+
+| Type | Name | Value |
+|---|---|---|
+| Variable | `CLOUDFLARE_PAGES_PROJECT` | Actual Pages project name |
+| Variable | `CLOUDFLARE_ACCOUNT_ID` | Account owning that project |
+| Secret | `CLOUDFLARE_API_TOKEN` | Token scoped to that account, Pages Edit |
+| Variable | `SITE_URL` | HTTPS temporary Pages URL, then purchased domain |
+
+Run CI manually on main after saving the settings. The deploy job uses the
+exact artifact that passed browser acceptance. It is skipped while the project
+variable is unset; configuration alone is not proof of a live deployment.
+Set the Pages production branch to `main`. Bind the purchased domain in the
+Pages Custom domains screen and follow its DNS instructions. The requested
+name is `czech-uni-application.online`; registration and payment remain pending.
+Never commit API tokens or paste them into issues or logs.
+
+### Scheduled collection
+
+`refresh.yml` wakes twice per hour and executes only tasks due under the
+existing 1/4/2-hour and five-day policies. A tick is bounded to 35 minutes;
+individual tasks have a 15-minute ceiling. Source failures and deferred tasks
+remain visible as failures and retain retry state. GitHub scheduling is best
+effort, not an exact timing SLA. Paused/inactive workflows and exhausted quotas
+require operator intervention.
+
+The last two scheduler checkpoints are retained as Actions artifacts.
+Candidate/evidence bundles expire after three days; download them for review
+before expiry. They are not deleted on the next scheduler tick. Artifact storage
+usage must be monitored against the account quota. Candidate files do not
+overwrite source reviews in main. New jobs and
+programme changes still need the existing evidence-bound three-language review
+and immutable snapshot publication. Verified closure/status overlays can be
+committed automatically, explicitly dispatch CI, and reach the same gated host
+deployment. A bot push alone does not trigger another Actions push workflow.
+No failed request becomes a closure. A concurrent main update rejects the bot
+push rather than force-overwriting it; the next run retries from current main.
+
+The frontend stays anonymous and static; no Supabase account or database is
+required for this initial deployment. No paid hosting plan is enabled by these
+workflows. Artifact/runner quotas still apply.
 
 ## Status and limits
 
 - Public beta: data coverage is partial — a subset of institutions is fully
   reviewed; the per-school assessment and candidate-disposition pipeline is
   expanded release by release with per-record evidence.
-- The refresh scheduler is **not** deployed; data updates are reviewed manual
-  releases until the Go scheduler + Supabase state store ship.
+- GitHub scheduled collection is configured; its first hosted result must be
+  checked before claiming automatic collection is operational. New records
+  require review; the persistent Go/Supabase service remains a later option.
 - Mainland-China network paths and real-device checks are not yet verified.

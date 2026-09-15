@@ -8,13 +8,14 @@ from __future__ import annotations
 
 import json
 import subprocess
+import shutil
 import sys
 import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 RAW = ROOT / "work" / "raw" / "2026-09-06"
-SCRAPLING = Path(r"C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Scripts\scrapling.exe")
+SCRAPLING = shutil.which("scrapling") or "scrapling"
 SLEEP_SECONDS = 3
 
 PAGES = [

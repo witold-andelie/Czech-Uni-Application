@@ -13,6 +13,7 @@ import os
 import re
 import ssl
 import subprocess
+import shutil
 import sys
 import tempfile
 import time
@@ -1523,7 +1524,9 @@ def extract_pdf_text(body: bytes) -> str:
         direct = ""
     if len(direct) >= 80:
         return direct
-    if os.name != "nt" or not WINDOWS_OCR.is_file():
+    if os.name == "nt" and not WINDOWS_OCR.is_file():
+        return ""
+    if os.name != "nt" and not shutil.which("tesseract"):
         return ""
     try:
         import fitz
@@ -1548,7 +1551,7 @@ def extract_pdf_text(body: bytes) -> str:
                         str(WINDOWS_OCR),
                         "-Path",
                         str(image_path),
-                    ],
+                    ] if os.name == "nt" else ["tesseract", str(image_path), "stdout", "-l", "ces+eng"],
                     capture_output=True,
                     check=False,
                     encoding="utf-8",

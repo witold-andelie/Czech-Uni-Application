@@ -43,11 +43,14 @@ digraph SD3A {
   ciworkflow [label="固定依赖的持续集成工作流\nPinned CI Workflow", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   deliveryartifact [label="绑定提交的交付制品\nCommit-bound Delivery Artifact", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   deliverypackage [label="打包静态交付制品\nStatic Delivery Packaging", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  hostdeploy [label="部署已测试制品\nTested Artifact Deploying", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   osmutex [label="操作系统文件互斥锁\nOperating System File Mutex", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  publicwebsite [label="公网浏览网站\nPublic Browse Website", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   pubpolicy [label="发布业务契约\nPublication Contract", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   snapshotactivate [label="原子激活快照\nSnapshot Activating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   snapshotstage [label="隔离暂存候选快照\nSnapshot Staging", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   snapshotvalidate [label="校验发布业务契约\nPublication Contract Validating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  statichost [label="第三方静态托管\nCloudflare Pages Host", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   verified -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   reviewed -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   reviewbound -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
@@ -74,4 +77,7 @@ digraph SD3A {
   browserasset -> deliverypackage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   ciworkflow -> deliverypackage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   deliverypackage -> deliveryartifact [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  deliveryartifact -> hostdeploy [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  statichost -> hostdeploy [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  hostdeploy -> publicwebsite [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
 }

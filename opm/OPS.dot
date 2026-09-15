@@ -39,6 +39,7 @@ digraph OPS {
     vacancyunavailable [label="完整目录中已消失\nunavailable", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="vacancycandidate"];
   }
   catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  ciworkflow [label="固定依赖的持续集成工作流\nPinned CI Workflow", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   clock [label="每五天调度（120 小时）\nFive Day Schedule", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   coveragecalculate [label="计算来源覆盖与缺口\nSource Coverage Calculating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   coveragereport [label="绑定固定分母的覆盖报告\nDenominator Bound Coverage Report", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
@@ -70,6 +71,7 @@ digraph OPS {
   registry [label="捷克官方高校来源名录\nOfficial Institution Source Registry", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   run [label="采集批次与覆盖报告\nCrawl Run", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   runfail [label="记录来源失败\nSource Failure Recording", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  runnercheckpoint [label="采集运行检查点\nPersisted Runner Checkpoint", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   runretry [label="按退避时间重排来源\nSource Retry Scheduling", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   runstart [label="启动逐来源尝试\nSource Attempt Starting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   runsucceed [label="记录来源成功\nSource Success Recording", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
@@ -160,4 +162,7 @@ digraph OPS {
   catalog -> coveragecalculate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   coveragecalculate -> coveragereport [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   run -> maintain [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  ciworkflow -> schedule [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  schedule -> runnercheckpoint [dir="both", arrowhead="normal", arrowtail="normal", color="#174DA6", label="effect", opm_relation="effect"];
+  runnercheckpoint -> schedule [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
 }
