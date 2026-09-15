@@ -1,5 +1,5 @@
 ---
-import { withBase } from "../lib/base.ts";
+import { pathnameWithoutBase, withBase } from "../lib/base.ts";
 import "../styles/global.css";
 import { htmlLang, t, LOCALES } from "../lib/i18n";
 import { NAV_ITEMS, navHref } from "../lib/nav";
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { locale, title, description } = Astro.props;
-const path = Astro.url.pathname.replace(/^\/Czech-Uni-Application/, "");
+const path = pathnameWithoutBase(Astro.url.pathname);
 const search = Astro.url.search;
 const brand = t(locale, "brand.name");
 const documentTitle = title === brand ? brand : `${title} · ${brand}`;
@@ -32,7 +32,7 @@ const nav = NAV_ITEMS.map((item) => ({
     <meta name="description" content={description ?? t(locale, "meta.description")} />
     <title>{documentTitle}</title>
     {LOCALES.map((item) => {
-      const parts = path.replace(/^\/Czech-Uni-Application/, "").split("/");
+      const parts = path.split("/");
       if (parts[1]) parts[1] = item;
       const href = withBase(`${parts.join("/")}${search}`);
       return <link rel="alternate" hreflang={htmlLang(item)} href={href} />;

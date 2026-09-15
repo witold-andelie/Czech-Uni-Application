@@ -4,7 +4,8 @@ A three-language (简体中文 / English / Čeština) anonymous browse platform 
 study programmes and paid research positions at Czech higher education institutions,
 built for applicants evaluating Czech higher education.
 
-**Live beta:** <https://witold-andelie.github.io/Czech-Uni-Application/>
+**Deployment:** custom domain and third-party static hosting are being prepared.
+GitHub hosts the source code and CI, not the public website.
 
 ## What it does
 
@@ -36,7 +37,7 @@ built for applicants evaluating Czech higher education.
 
 | Layer | Technology | Runs where |
 |---|---|---|
-| Public site | TypeScript + Astro static output, Svelte islands | GitHub Pages (this repo) |
+| Public site | TypeScript + Astro static output, Svelte islands | Third-party static host + custom domain (pending) |
 | Publication validation | Python + Node dual contract checks | offline / CI |
 | Ingestion | Python (Scrapling) registry-driven discovery | offline, scheduled |
 | Scheduler / API design | Go + PostgreSQL | separate deployment (planned) |
@@ -55,9 +56,8 @@ npm run dev        # dev server, root-relative paths
 npm test           # unit + contract tests
 npm run check      # astro-check type gate
 npm run build      # production build with base "/"
-# Pages build with the repository prefix:
-MSYS_NO_PATHCONV=1 SITE_BASE=/Czech-Uni-Application npm run build
-node tests/pages-smoke.mjs   # browser smoke of dist under the prefix
+# Production domain: set SITE_URL to the purchased domain's HTTPS origin.
+# Keep SITE_BASE unset for a domain-root deployment.
 ```
 
 Ingestion tests (Python 3.11+; deps in `services/ingestion/requirements-ci.txt`):
@@ -69,10 +69,18 @@ py -3 -m pytest services/ingestion/tests tests/test_opm_generation.py -q
 ## Deployment
 
 GitHub Actions (`.github/workflows/ci.yml`) validates data, Go, web, and
-browser acceptance on every push/PR. On `main`, a dedicated job rebuilds with
-the repository prefix (`SITE_BASE=/Czech-Uni-Application`), runs a real
-browser smoke **under that prefix**, then deploys the tested artifact to
-GitHub Pages (source: GitHub Actions).
+browser acceptance on every push/PR. After all checks pass on `main`, it
+retains the exact tested root-path build as `production-site-<commit>` for
+14 days. Download and extract that artifact for third-party deployment;
+`publication-provenance.json` identifies the commit and data snapshot.
+GitHub Pages deployment has been removed.
+
+Set the repository variable `SITE_URL` to the purchased domain's HTTPS origin
+before the production build. The host must serve `index.html` for directory
+URLs and the bundled `404.html` with HTTP status 404 for unknown URLs.
+Do not enable a single-page-app catch-all rewrite. Automated delivery to the
+selected provider still needs account configuration; retaining an artifact
+alone does not mean the website has been deployed.
 
 ## Status and limits
 

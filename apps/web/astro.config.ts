@@ -27,17 +27,17 @@ function selectedPublication(): { version: string; directory: string; publicDire
 
 const publication = selectedPublication();
 
-const pagesBase = process.env.SITE_BASE || "/";
+const siteBase = process.env.SITE_BASE || "/";
 
 export default defineConfig({
-  site: process.env.SITE_URL || "https://witold-andelie.github.io",
-  base: pagesBase,
+  site: process.env.SITE_URL || undefined,
+  base: siteBase,
   output: "static",
   publicDir: publication.publicDirectory,
   integrations: [svelte()],
   // A80: legacy saved/compare routes are real base-aware redirect pages now
   // (src/pages/[locale]/saved|compare.astro) so the refresh target carries
-  // the repository prefix on GitHub Pages.
+  // the configured base path on any static host.
   vite: {
     server: {
       fs: {
