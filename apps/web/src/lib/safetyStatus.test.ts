@@ -44,12 +44,17 @@ function overlayFor(id: string, extra: Partial<SafetyOverlay["entities"][number]
 }
 
 describe("safety overlay", () => {
-  it("parses the checked-in empty overlay", () => {
+  it("parses an empty overlay", () => {
+    const raw = emptySafetyOverlay();
+    assert.deepEqual(parseSafetyOverlay(raw), raw);
+  });
+
+  it("preserves the current published generation and closure records", () => {
     const raw = JSON.parse(readFileSync(resolve(root, "data/published/safety-status.json"), "utf8"));
     const parsed = parseSafetyOverlay(raw);
     assert.ok(parsed);
-    assert.equal(parsed.generationId, emptySafetyOverlay().generationId);
-    assert.equal(parsed.entities.length, 0);
+    assert.equal(parsed.generationId, raw.generationId);
+    assert.deepEqual(parsed.entities, raw.entities);
   });
 
   it("hides a listed job from public results but keeps the saved/detail tombstone", () => {
