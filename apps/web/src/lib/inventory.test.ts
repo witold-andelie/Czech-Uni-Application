@@ -327,7 +327,7 @@ describe("nine-HEI official career jobs", () => {
     assert.ok(postdocs.page.every((item) => item.job.isPostdoc));
   });
 
-  it("does not auto-open a job that only has a future close date", () => {
+  it("keeps a source-rechecked expired job closed even with an earlier fixture clock", () => {
     const mff = browse.jobs.find((item) => item.id === "job-cuni-mff-research-fellow-ucjf");
     if (!mff) return;
     const window = browse.windows.find((item) => item.ownerId === mff.id);
@@ -335,6 +335,7 @@ describe("nine-HEI official career jobs", () => {
     assert.equal(window.opensAt, null);
     assert.ok(window.closesAt);
     assert.equal(window.datePrecision, "date");
-    assert.equal(window.status, "unknown");
+    assert.equal(mff.lifecycleStatus, "expired");
+    assert.equal(window.status, "closed");
   });
 });

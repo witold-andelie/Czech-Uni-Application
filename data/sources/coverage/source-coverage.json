@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T17:06:13Z",
+  "generatedAt": "2026-09-16T22:38:38Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,8 +12,8 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-09-16.2",
-    "publishedAt": "2026-09-16T17:05:51Z",
+    "activeVersion": "v2026-09-17.1",
+    "publishedAt": "2026-09-16T22:25:20Z",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -134,58 +134,51 @@
     "claimBoundary": "The DZS source snapshot is complete for its reported directory result, but it is not the legal register or the authority for each university application window. Candidate records remain outside formal publication until source and zh-CN/en/cs review passes."
   },
   "jobs": {
-    "registeredOfficialListingSources": 25,
+    "registeredOfficialListingSources": 33,
     "lastRunCompleteSources": 1,
-    "lastDiscoverySuccessAt": "2026-09-11T20:25:25Z",
+    "lastDiscoverySuccessAt": "2026-09-16T22:35:14Z",
     "discoveryIntervalHours": 4,
     "lastStatusRecheckSuccessAt": "2026-09-11T19:43:39Z",
     "statusRecheckIntervalHours": 1,
-    "mappedBaselineInstitutions": 23,
-    "baselineInstitutionCoveragePercent": 42.6,
-    "baselineInstitutionsWithoutRegisteredSource": 31,
-    "institutionAggregatorConnections": 23,
-    "facultyOnlyConnections": 0,
+    "mappedBaselineInstitutions": 31,
+    "baselineInstitutionCoveragePercent": 57.4,
+    "baselineInstitutionsWithoutRegisteredSource": 23,
+    "assessedBaselineInstitutions": 54,
+    "notAssessedBaselineInstitutions": 0,
+    "assessmentStatusCounts": {
+      "registered_executed": 29,
+      "registered_never_executed": 2,
+      "assessed_no_central_source": 23,
+      "not_assessed": 0
+    },
+    "institutionAggregatorConnections": 30,
+    "facultyOnlyConnections": 1,
     "assertedCompleteInstitutionSources": 0,
     "coverageScopeCounts": {
-      "institution_aggregator": 23,
-      "faculty": 1,
+      "institution_aggregator": 30,
+      "faculty": 2,
       "research_network": 1
     },
     "independentNonHeiOfficialSources": 1,
     "inventoryRows": 5019,
-    "discoveredCandidates": 163,
+    "discoveredCandidates": 174,
     "currentCandidates": 125,
-    "supportedCandidates": 112,
-    "unspecifiedScopeCandidates": 13,
-    "reviewPending": 80,
-    "approved": 32,
-    "public": 34,
-    "currentOpenOrUnknown": 112,
-    "currentPaidMasterScopeCandidates": 17,
-    "supportedPaidMasterScopeCandidates": 16,
-    "publishedRecords": 34,
-    "publishedPaidMasterScopeJobs": 11,
-    "sourceConnectedSchools": 23,
+    "supportedCandidates": 115,
+    "unspecifiedScopeCandidates": 10,
+    "reviewPending": 101,
+    "approved": 14,
+    "public": 15,
+    "currentOpenOrUnknown": 115,
+    "currentPaidMasterScopeCandidates": 18,
+    "supportedPaidMasterScopeCandidates": 17,
+    "publishedRecords": 15,
+    "publishedPaidMasterScopeJobs": 8,
+    "sourceConnectedSchools": 31,
     "fullyAssessedSchoolScope": 0,
     "missingInstitutions": [
       {
-        "institutionId": "msmt-vs_51000",
-        "officialName": "Akademie múzických umění v Praze",
-        "ownership": "public"
-      },
-      {
-        "institutionId": "msmt-vs_52000",
-        "officialName": "Akademie výtvarných umění v Praze",
-        "ownership": "public"
-      },
-      {
         "institutionId": "msmt-vs_53000",
         "officialName": "Vysoká škola uměleckoprůmyslová v Praze",
-        "ownership": "public"
-      },
-      {
-        "institutionId": "msmt-vs_54000",
-        "officialName": "Janáčkova akademie múzických umění",
         "ownership": "public"
       },
       {
@@ -196,11 +189,6 @@
       {
         "institutionId": "msmt-vs_63000",
         "officialName": "University College Prague - Vysoká škola mezinárodních vztahů a Vysoká škola hotelová a ekonomická s.r.o.",
-        "ownership": "private"
-      },
-      {
-        "institutionId": "msmt-vs_6d000",
-        "officialName": "University of New York in Prague, s.r.o.",
         "ownership": "private"
       },
       {
@@ -244,18 +232,8 @@
         "ownership": "private"
       },
       {
-        "institutionId": "msmt-vs_75000",
-        "officialName": "Metropolitní univerzita Praha, o. p. s.",
-        "ownership": "private"
-      },
-      {
         "institutionId": "msmt-vs_79000",
         "officialName": "Pražská vysoká škola psychosociálních studií, s.r.o.",
-        "ownership": "private"
-      },
-      {
-        "institutionId": "msmt-vs_7c000",
-        "officialName": "Moravská vysoká škola Olomouc, o.p.s.",
         "ownership": "private"
       },
       {
@@ -299,11 +277,6 @@
         "ownership": "private"
       },
       {
-        "institutionId": "msmt-vs_7s000",
-        "officialName": "Panevropská univerzita, a.s.",
-        "ownership": "private"
-      },
-      {
         "institutionId": "msmt-vs_7t000",
         "officialName": "Vysoká škola kreativní komunikace, s.r.o.",
         "ownership": "private"
@@ -317,31 +290,26 @@
         "institutionId": "msmt-vs_7v000",
         "officialName": "Vysoká škola ekonomie a managementu, a.s.",
         "ownership": "private"
-      },
-      {
-        "institutionId": "msmt-vs_94000",
-        "officialName": "Policejní akademie České republiky v Praze",
-        "ownership": "state"
       }
     ],
     "lastDiscoveryRun": {
       "runKind": "all_registered_sources",
       "expectedSourceIds": [
-        "zcu-central-vacancies"
+        "peuni-central-careers"
       ],
       "completeSourceIds": [
-        "zcu-central-vacancies"
+        "peuni-central-careers"
       ],
       "deferredSourceIds": [],
-      "lastScheduledSuccessAt": "2026-09-11T20:25:25Z",
-      "lastAllSourceSuccessAt": "2026-09-11T20:25:25Z",
+      "lastScheduledSuccessAt": "2026-09-16T22:35:14Z",
+      "lastAllSourceSuccessAt": "2026-09-16T22:35:14Z",
       "singleSourceRefreshCannotCountAsAllSourceSuccess": false,
       "perSourceRunStatus": [
         {
-          "sourceId": "zcu-central-vacancies",
-          "parserVersion": "zcu_document_feed",
+          "sourceId": "peuni-central-careers",
+          "parserVersion": "generic_listing_links",
           "attempted": true,
-          "attempts": 19,
+          "attempts": 2,
           "failedAttempts": 0,
           "lastAttemptAt": null,
           "runComplete": true,
@@ -350,7 +318,7 @@
       ]
     },
     "completeSchoolJobCoverageClaim": false,
-    "claimBoundary": "A successful run covers only registered official listings. A central aggregator connection is not an institution-wide completeness claim, and a faculty source is only partial. Unregistered institutions and units may still have vacancies.",
+    "claimBoundary": "A successful run covers only registered official listings. A central aggregator connection is not an institution-wide completeness claim, and a faculty source is only partial. An official-domain check that found no central listing records an assessed discovery channel, not zero vacancies. Assessed-institution and source-connected counts are separate; unregistered institutions and units may still have vacancies.",
     "nonHeiSources": [
       {
         "sourceId": "avcr-selection-procedures",
@@ -369,11 +337,11 @@
             "url": "https://cuni.cz/vyberova-rizeni/ajax.php?lang=en&stav=active&apo=all",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": "2026-09-16T22:21:46Z"
           }
         ],
-        "currentCandidateJobs": 13,
-        "currentPaidMasterScopeCandidates": 1,
+        "currentCandidateJobs": 10,
+        "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
       {
@@ -387,10 +355,10 @@
             "url": "https://www.jcu.cz/cz/univerzita/volna-mista",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": "2026-09-16T22:23:28Z"
           }
         ],
-        "currentCandidateJobs": 9,
+        "currentCandidateJobs": 10,
         "currentPaidMasterScopeCandidates": 1,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -408,7 +376,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 5,
+        "currentCandidateJobs": 6,
         "currentPaidMasterScopeCandidates": 2,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -456,7 +424,7 @@
         "sources": [
           {
             "sourceId": "vetuni-central-vacancies",
-            "url": "https://www.vetuni.cz/novinky/nabidka-volnych-pracovnich-mist",
+            "url": "https://www.vetuni.cz/nabidka-volnych-pracovnich-mist",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
             "lastSuccessAt": null
@@ -477,12 +445,12 @@
             "url": "https://www.osu.cz/kariera/kariera-akademicke-pozice/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": null
+            "lastSuccessAt": "2026-09-16T17:56:15Z"
           }
         ],
         "currentCandidateJobs": 9,
         "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 1
+        "publishedPaidMasterScopeJobs": 0
       },
       {
         "institutionId": "msmt-vs_18000",
@@ -495,12 +463,12 @@
             "url": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": null
+            "lastSuccessAt": "2026-09-16T18:09:32Z"
           }
         ],
         "currentCandidateJobs": 7,
-        "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 1
+        "currentPaidMasterScopeCandidates": 0,
+        "publishedPaidMasterScopeJobs": 0
       },
       {
         "institutionId": "msmt-vs_19000",
@@ -513,7 +481,7 @@
             "url": "https://www.slu.cz/slu/cz/volnamista",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": null
+            "lastSuccessAt": "2026-09-16T17:57:06Z"
           }
         ],
         "currentCandidateJobs": 0,
@@ -559,9 +527,9 @@
             "lastSuccessAt": "2026-09-11T20:25:25Z"
           }
         ],
-        "currentCandidateJobs": 7,
+        "currentCandidateJobs": 5,
         "currentPaidMasterScopeCandidates": 2,
-        "publishedPaidMasterScopeJobs": 1
+        "publishedPaidMasterScopeJobs": 0
       },
       {
         "institutionId": "msmt-vs_23000",
@@ -574,12 +542,12 @@
             "url": "https://dumbledore.zcu.cz/document/data/folder/workspace://SpacesStore/bd09d1ff-712d-46ac-803a-f4b32201ec68?folderSort=az&fileSort=lu_desc",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": null
+            "lastSuccessAt": "2026-09-16T22:24:10Z"
           }
         ],
         "currentCandidateJobs": 13,
-        "currentPaidMasterScopeCandidates": 0,
-        "publishedPaidMasterScopeJobs": 0
+        "currentPaidMasterScopeCandidates": 1,
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_24000",
@@ -592,7 +560,7 @@
             "url": "https://www.tul.cz/kariera/probihajici-vyberova-rizeni/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": null
+            "lastSuccessAt": "2026-09-16T18:10:21Z"
           }
         ],
         "currentCandidateJobs": 1,
@@ -649,7 +617,7 @@
             "lastSuccessAt": "2026-09-11T20:25:25Z"
           }
         ],
-        "currentCandidateJobs": 5,
+        "currentCandidateJobs": 3,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -705,7 +673,7 @@
         ],
         "currentCandidateJobs": 5,
         "currentPaidMasterScopeCandidates": 4,
-        "publishedPaidMasterScopeJobs": 4
+        "publishedPaidMasterScopeJobs": 3
       },
       {
         "institutionId": "msmt-vs_43000",
@@ -729,18 +697,34 @@
         "institutionId": "msmt-vs_51000",
         "officialName": "Akademie múzických umění v Praze",
         "ownership": "public",
-        "registeredOfficialJobSource": false,
-        "sources": [],
-        "currentCandidateJobs": 0,
-        "currentPaidMasterScopeCandidates": 0,
+        "registeredOfficialJobSource": true,
+        "sources": [
+          {
+            "sourceId": "amu-central-vacancies",
+            "url": "https://www.amu.cz/cs/uredni-deska/volna-mista-konkurzy/",
+            "coverageScope": "institution_aggregator",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": "2026-09-16T22:32:57Z"
+          }
+        ],
+        "currentCandidateJobs": 2,
+        "currentPaidMasterScopeCandidates": 2,
         "publishedPaidMasterScopeJobs": 0
       },
       {
         "institutionId": "msmt-vs_52000",
         "officialName": "Akademie výtvarných umění v Praze",
         "ownership": "public",
-        "registeredOfficialJobSource": false,
-        "sources": [],
+        "registeredOfficialJobSource": true,
+        "sources": [
+          {
+            "sourceId": "avu-selection-procedures",
+            "url": "https://avu.cz/stranka/vyberova-rizeni",
+            "coverageScope": "institution_aggregator",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": "2026-09-16T22:33:06Z"
+          }
+        ],
         "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
@@ -759,8 +743,16 @@
         "institutionId": "msmt-vs_54000",
         "officialName": "Janáčkova akademie múzických umění",
         "ownership": "public",
-        "registeredOfficialJobSource": false,
-        "sources": [],
+        "registeredOfficialJobSource": true,
+        "sources": [
+          {
+            "sourceId": "jamu-faculty-vacancies",
+            "url": "https://hf.jamu.cz/fakulta-hf/o-fakulte/volna-mista/",
+            "coverageScope": "faculty",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": "2026-09-16T22:33:06Z"
+          }
+        ],
         "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
@@ -776,7 +768,7 @@
             "url": "https://www.vspj.cz/cs/skola/uredni-deska/nabidky-zamestnani/akademicke-pozice/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": null
+            "lastSuccessAt": "2026-09-16T18:02:47Z"
           }
         ],
         "currentCandidateJobs": 0,
@@ -794,10 +786,10 @@
             "url": "https://www.vstecb.cz/volna-pracovni-mista/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": null
+            "lastSuccessAt": "2026-09-16T18:07:05Z"
           }
         ],
-        "currentCandidateJobs": 0,
+        "currentCandidateJobs": 3,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -825,8 +817,16 @@
         "institutionId": "msmt-vs_6d000",
         "officialName": "University of New York in Prague, s.r.o.",
         "ownership": "private",
-        "registeredOfficialJobSource": false,
-        "sources": [],
+        "registeredOfficialJobSource": true,
+        "sources": [
+          {
+            "sourceId": "unyp-central-careers",
+            "url": "https://www.unyp.cz/jobs-at-unyp/",
+            "coverageScope": "institution_aggregator",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": "2026-09-16T22:33:37Z"
+          }
+        ],
         "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
@@ -915,8 +915,16 @@
         "institutionId": "msmt-vs_75000",
         "officialName": "Metropolitní univerzita Praha, o. p. s.",
         "ownership": "private",
-        "registeredOfficialJobSource": false,
-        "sources": [],
+        "registeredOfficialJobSource": true,
+        "sources": [
+          {
+            "sourceId": "mup-central-vacancies",
+            "url": "https://www.mup.cz/job/",
+            "coverageScope": "institution_aggregator",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": "2026-09-16T22:33:11Z"
+          }
+        ],
         "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
@@ -935,8 +943,16 @@
         "institutionId": "msmt-vs_7c000",
         "officialName": "Moravská vysoká škola Olomouc, o.p.s.",
         "ownership": "private",
-        "registeredOfficialJobSource": false,
-        "sources": [],
+        "registeredOfficialJobSource": true,
+        "sources": [
+          {
+            "sourceId": "mvso-central-careers",
+            "url": "https://www.mvso.cz/kariera",
+            "coverageScope": "institution_aggregator",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": "2026-09-16T22:33:12Z"
+          }
+        ],
         "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
@@ -1025,8 +1041,16 @@
         "institutionId": "msmt-vs_7s000",
         "officialName": "Panevropská univerzita, a.s.",
         "ownership": "private",
-        "registeredOfficialJobSource": false,
-        "sources": [],
+        "registeredOfficialJobSource": true,
+        "sources": [
+          {
+            "sourceId": "peuni-central-careers",
+            "url": "https://www.peuni.cz/kariera/",
+            "coverageScope": "institution_aggregator",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": "2026-09-16T22:35:14Z"
+          }
+        ],
         "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
@@ -1065,8 +1089,16 @@
         "institutionId": "msmt-vs_94000",
         "officialName": "Policejní akademie České republiky v Praze",
         "ownership": "state",
-        "registeredOfficialJobSource": false,
-        "sources": [],
+        "registeredOfficialJobSource": true,
+        "sources": [
+          {
+            "sourceId": "polac-central-vacancies",
+            "url": "https://www.polac.cz/urde/volna.html",
+            "coverageScope": "institution_aggregator",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": "2026-09-16T22:33:13Z"
+          }
+        ],
         "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
@@ -1082,7 +1114,7 @@
             "url": "https://unob.cz/univerzita/kariera/vyberova-rizeni-na-mista-akademickych-pracovniku/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": null
+            "lastSuccessAt": "2026-09-16T18:02:32Z"
           }
         ],
         "currentCandidateJobs": 0,

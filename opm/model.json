@@ -756,6 +756,33 @@
       "en": "Official Institution Source Registry",
       "zh": "捷克官方高校来源名录"
     },
+    "sourceassessment": {
+      "id": "sourceassessment",
+      "kind": "object",
+      "en": "Institution Vacancy Channel Assessment",
+      "zh": "高校岗位渠道评估"
+    },
+    "sourcecheckpending": {
+      "id": "sourcecheckpending",
+      "kind": "state",
+      "owner": "sourceassessment",
+      "en": "not assessed",
+      "zh": "尚未评估"
+    },
+    "sourceconnected": {
+      "id": "sourceconnected",
+      "kind": "state",
+      "owner": "sourceassessment",
+      "en": "official source registered",
+      "zh": "已登记官方来源"
+    },
+    "sourcenocentral": {
+      "id": "sourcenocentral",
+      "kind": "state",
+      "owner": "sourceassessment",
+      "en": "official site checked; no central listing found",
+      "zh": "已查官网但未找到集中岗位页"
+    },
     "run": {
       "id": "run",
       "kind": "object",
@@ -1243,6 +1270,12 @@
       "kind": "process",
       "en": "Source Coverage Calculating",
       "zh": "计算来源覆盖与缺口"
+    },
+    "sourceassess": {
+      "id": "sourceassess",
+      "kind": "process",
+      "en": "Official Vacancy Channel Assessing",
+      "zh": "评估官方岗位渠道"
     },
     "listingpage": {
       "id": "listingpage",
@@ -2160,6 +2193,36 @@
           "type": "instrument"
         },
         {
+          "source": "source",
+          "target": "sourceassess",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "sourceassess",
+          "type": "instrument"
+        },
+        {
+          "source": "sourcecheckpending",
+          "target": "sourceassess",
+          "type": "input"
+        },
+        {
+          "source": "sourceassess",
+          "target": "sourceconnected",
+          "type": "output"
+        },
+        {
+          "source": "sourceassess",
+          "target": "sourcenocentral",
+          "type": "output"
+        },
+        {
+          "source": "sourceassessment",
+          "target": "coveragecalculate",
+          "type": "instrument"
+        },
+        {
           "source": "programmedirectory",
           "target": "coveragecalculate",
           "type": "instrument"
@@ -2234,9 +2297,10 @@
         "A64",
         "A65",
         "A66",
-        "A91"
+        "A91",
+        "A95"
       ],
-      "notes": "独立支撑过程的上下文，SD3 展开 maintain；采集与审核不阻塞在线用户查询。稳定来源保持 120 小时全覆盖，高波动任务分别以 1 小时复核已知岗位状态、4 小时发现全部已登记岗位目录、2 小时刷新 DZS 项目目录、2 小时刷新 CZU 英语本科／硕士目录及窗口、2 小时刷新 CZU 捷克入口本科／硕士目录、2 小时刷新 CZU 博士学院证据。普通漏跑等到下一个同余日；超过 120 小时未成功才做单分片 SLA 补跑。官方高校名录是覆盖分母；覆盖报告分开表示来源完整、学校接入、current／supported 候选与正式发布，单源刷新不能冒充全源成功。CZU 两条本科／硕士来源各自按官网声明范围报告完整性并保留交叉差异；博士来源以 MŠMT 60 个 offering 和六学院年度证据为边界，未知开始日、条件轮次及未公告轮次不推断为开放。候选仍受三语和来源哈希发布门禁约束。持久队列在操作系统互斥锁内改变；租约带拥有者、续期与过期回收。锁顺序为 refresh → publish → safety。已核验关闭走独立安全状态覆盖，网络失败不是关闭。幂等官方读取只对短暂失败作两次有限请求重试，并尊重 Retry-After；过长延迟交给调度。最终抓取或解析失败不推进成功时间，按逐来源退避时间重试，不触发目录缺席归档，并继续参加 SLA 监测。成功和失败、租约释放和到期是互斥分支。 2026-09-15 所有者选择 GitHub Actions 有界定时运行，检查点保存调度与重试状态；外部失败继续保留待重试状态，未审核候选仅进入交接制品。定时唤醒为尽力执行，不声称精确 SLA。"
+      "notes": "独立支撑过程的上下文，SD3 展开 maintain；采集与审核不阻塞在线用户查询。稳定来源保持 120 小时全覆盖，高波动任务分别以 1 小时复核已知岗位状态、4 小时发现全部已登记岗位目录、2 小时刷新 DZS 项目目录、2 小时刷新 CZU 英语本科／硕士目录及窗口、2 小时刷新 CZU 捷克入口本科／硕士目录、2 小时刷新 CZU 博士学院证据。普通漏跑等到下一个同余日；超过 120 小时未成功才做单分片 SLA 补跑。官方高校名录是覆盖分母；覆盖报告分开表示已评估学校、已接入来源学校、来源完整、current／supported 候选与正式发布，单源刷新不能冒充全源成功。官网检查时未找到集中岗位页只是一种渠道评估结果，不表示该校没有岗位，并保留证据和下次检查时间。CZU 两条本科／硕士来源各自按官网声明范围报告完整性并保留交叉差异；博士来源以 MŠMT 60 个 offering 和六学院年度证据为边界，未知开始日、条件轮次及未公告轮次不推断为开放。候选仍受三语和来源哈希发布门禁约束。持久队列在操作系统互斥锁内改变；租约带拥有者、续期与过期回收。锁顺序为 refresh → publish → safety。已核验关闭走独立安全状态覆盖，网络失败不是关闭。幂等官方读取只对短暂失败作两次有限请求重试，并尊重 Retry-After；过长延迟交给调度。最终抓取或解析失败不推进成功时间，按逐来源退避时间重试，不触发目录缺席归档，并继续参加 SLA 监测。成功和失败、租约释放和到期是互斥分支。 2026-09-15 所有者选择 GitHub Actions 有界定时运行，检查点保存调度与重试状态；外部失败继续保留待重试状态，未审核候选仅进入交接制品。定时唤醒为尽力执行，不声称精确 SLA。"
     },
     {
       "id": "SD3",
@@ -3280,6 +3344,31 @@
           "source": "vacancynormalize",
           "target": "uncheckedjob",
           "type": "result"
+        },
+        {
+          "source": "source",
+          "target": "sourceassess",
+          "type": "instrument"
+        },
+        {
+          "source": "registry",
+          "target": "sourceassess",
+          "type": "instrument"
+        },
+        {
+          "source": "sourcecheckpending",
+          "target": "sourceassess",
+          "type": "input"
+        },
+        {
+          "source": "sourceassess",
+          "target": "sourceconnected",
+          "type": "output"
+        },
+        {
+          "source": "sourceassess",
+          "target": "sourcenocentral",
+          "type": "output"
         }
       ],
       "requirements": [
@@ -3291,9 +3380,10 @@
         "A46",
         "A57",
         "A64",
-        "A94"
+        "A94",
+        "A95"
       ],
-      "notes": "来源注册表每 4 小时独立驱动已登记官方岗位列表、分页、详情和必要附件发现。全源运行逐来源执行，每个来源完成后原子写入候选与检查点；后续来源超时或失败保留此前成果。调度优先从未尝试的到期任务，避免长任务反复失败后饿死其他来源。Charles 使用官方 AJAX 真分页；VUT 读取公开 GraphQL 全分页与逐项详情；CTU 核对公告总数并提取 PDF，扫描件走有上限的本地 OCR；CZU 将 WP Job Manager 公共分页与同站 REST 全文按岗位 ID、标题和 URL 对齐；ZCU 读取官方文档树 JSON 和逐份官方 PDF。提取以逐项全文判断研究或技术职责、学历、博士注册与带薪证据，纯教学、行政、研究支持及科学传播岗位不因背景关键词进入候选；否定语义优先，缺证据保持 unknown。AVCR 中无法辨认实际研究所的候选进入隔离区。只有源级完整时，完整目录中缺席才记 unavailable；仍在目录但不符合范围则进入 outside supported catalogue scope 状态。覆盖报告区分校级聚合、院系局部、研究网络和有证据的完整声明；登记学校覆盖与已审核公开岗位覆盖必须分列，0 个完整声明不等于高校岗位齐全。动态发现仍须经过事实核验和三语人工审核，不能直接发布。"
+      "notes": "来源注册表每 4 小时独立驱动已登记官方岗位列表、分页、详情和必要附件发现。全源运行逐来源执行，每个来源完成后原子写入候选与检查点；后续来源超时或失败保留此前成果。调度优先从未尝试的到期任务，避免长任务反复失败后饿死其他来源。未接入学校先执行带官方 URL、检查时间和下次检查时间的岗位渠道评估；未找到集中岗位页不等于没有岗位。Charles 使用官方 AJAX 真分页；VUT 读取公开 GraphQL 全分页与逐项详情；CTU 核对公告总数并提取 PDF，扫描件走有上限的本地 OCR；CZU 将 WP Job Manager 公共分页与同站 REST 全文按岗位 ID、标题和 URL 对齐；ZCU 读取官方文档树 JSON 和逐份官方 PDF。提取以逐项全文判断研究或技术职责、学历、博士注册与带薪证据，纯教学、行政、研究支持及科学传播岗位不因背景关键词进入候选；否定语义优先，缺证据保持 unknown。AVCR 中无法辨认实际研究所的候选进入隔离区。只有源级完整时，完整目录中缺席才记 unavailable；仍在目录但不符合范围则进入 outside supported catalogue scope 状态。覆盖报告区分已评估、已接入、校级聚合、院系局部、研究网络和有证据的完整声明；登记学校覆盖与已审核公开岗位覆盖必须分列，0 个完整声明不等于高校岗位齐全。动态发现仍须经过事实核验和三语人工审核，不能直接发布。"
     }
   ]
 }

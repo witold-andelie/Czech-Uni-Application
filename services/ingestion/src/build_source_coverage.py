@@ -28,6 +28,9 @@ PUBLISHED_DIR = ROOT / "data" / "published"
 CURRENT_META = PUBLISHED_DIR / "current.json"
 SCHEDULE = ROOT / "work" / "runs" / "schedule-state.json"
 OUT = ROOT / "data" / "sources" / "coverage" / "source-coverage.json"
+JOB_SOURCE_ASSESSMENT = (
+    ROOT / "data" / "sources" / "coverage" / "job-source-assessment.json"
+)
 
 CLOSED_LIFECYCLES = {"closed", "expired", "unavailable"}
 COVERAGE_SCHEMA_VERSION = 2
@@ -146,6 +149,7 @@ def build_coverage(
     *,
     generated_at: str | None = None,
     publication_pointer: dict | None = None,
+    job_source_assessment: dict | None = None,
 ) -> dict:
     institutions = baseline.get("institutions", [])
     institution_by_id = {row["id"]: row for row in institutions}
@@ -244,6 +248,27 @@ def build_coverage(
         for source in mapped_sources
         if source.get("sourceCoverageClaim") == "complete"
     }
+    assessment = job_source_assessment or {}
+    assessment_rows = [
+        row
+        for row in assessment.get("rows", [])
+        if isinstance(row, dict) and row.get("institutionId") in institution_by_id
+    ]
+    assessment_status_counts = {
+        "registered_executed": 0,
+        "registered_never_executed": 0,
+        "assessed_no_central_source": 0,
+        "not_assessed": 0,
+    }
+    for row in assessment_rows:
+        status = row.get("assessmentStatus")
+        if status in assessment_status_counts:
+            assessment_status_counts[status] += 1
+    assessed_baseline_institutions = sum(
+        count
+        for status, count in assessment_status_counts.items()
+        if status != "not_assessed"
+    )
     studyin_counts = studyin.get("counts", {})
     studyin_coverage = studyin.get("coverage", {})
     inventory_counts = published_inventory.get("counts", {})
@@ -550,6 +575,11 @@ def build_coverage(
             "mappedBaselineInstitutions": len(mapped_institution_ids),
             "baselineInstitutionCoveragePercent": percent(len(mapped_institution_ids), denominator),
             "baselineInstitutionsWithoutRegisteredSource": denominator - len(mapped_institution_ids),
+            "assessedBaselineInstitutions": assessed_baseline_institutions,
+            "notAssessedBaselineInstitutions": max(
+                denominator - assessed_baseline_institutions, 0
+            ),
+            "assessmentStatusCounts": assessment_status_counts,
             "institutionAggregatorConnections": len(aggregator_institution_ids),
             "facultyOnlyConnections": len(faculty_institution_ids - aggregator_institution_ids),
             "assertedCompleteInstitutionSources": len(asserted_complete_institution_ids),
@@ -596,7 +626,10 @@ def build_coverage(
             "claimBoundary": (
                 "A successful run covers only registered official listings. A central aggregator "
                 "connection is not an institution-wide completeness claim, and a faculty source is "
-                "only partial. Unregistered institutions and units may still have vacancies."
+                "only partial. An official-domain check that found no central listing records an "
+                "assessed discovery channel, not zero vacancies. Assessed-institution and "
+                "source-connected counts are separate; unregistered institutions and units may "
+                "still have vacancies."
             ),
             "nonHeiSources": [
                 {"sourceId": source["id"], "url": source["url"]} for source in non_hei_sources
@@ -621,6 +654,7 @@ def write_current_coverage(*, output: Path = OUT, generated_at: str | None = Non
         read_json(CZU_DOCTORAL_PROGRAMMES, {}),
         generated_at=generated_at,
         publication_pointer=pointer,
+        job_source_assessment=read_json(JOB_SOURCE_ASSESSMENT, {}),
     )
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

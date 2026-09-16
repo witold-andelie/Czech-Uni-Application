@@ -997,6 +997,22 @@ def test_configured_generic_links_follow_only_official_detail_paths() -> None:
     assert rows[0]["sourceUrl"].endswith("36448-research-engineer")
 
 
+def test_configured_generic_links_allow_only_explicit_official_faculty_hosts() -> None:
+    html = """
+    <a href="https://www.famu.cz/cs/aktuality/vyberove-rizeni-123/">FAMU vacancy</a>
+    <a href="https://evil.example/cs/aktuality/vyberove-rizeni-999/">Copied vacancy</a>
+    """
+    rows = parse_generic_listing_links(
+        html,
+        "https://www.amu.cz/cs/uredni-deska/volna-mista-konkurzy/",
+        [r"/cs/aktuality/vyberove-rizeni-"],
+        ["www.famu.cz", "www.damu.cz", "www.hamu.cz"],
+    )
+    assert [row["sourceUrl"] for row in rows] == [
+        "https://www.famu.cz/cs/aktuality/vyberove-rizeni-123/"
+    ]
+
+
 def test_generic_pdf_listing_uses_attachment_text_and_hashed_identity() -> None:
     listing_url = "https://jcu.test/cz/univerzita/volna-mista"
     first_pdf = "https://jcu.test/images/UNIVERZITA/volna-mista/2026/09/07092026-postdoc.pdf"
@@ -1852,6 +1868,26 @@ def test_bind_review_payloads_is_noop_for_consistent_fact_bound_entry(tmp_path) 
     assert reviews_path.read_text(encoding="utf-8") == before
 
 
+def test_reconcile_reviews_preserves_collector_scoped_evidence_hash(tmp_path, monkeypatch) -> None:
+    job = _a75_review_job()
+    payload = _a75_payload(job)
+    entry = _a75_review_entry(job, fact_bound=True)
+    # A raw capture may be the entire careers page, not the scoped vacancy text.
+    # Its hash must not replace the evidence identity established by collection.
+    (tmp_path / f"{job['id']}.html").write_text(
+        "<html><body>navigation and several unrelated vacancies</body></html>",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(jobs_harvester, "load_job_reviews", lambda: {job["id"]: entry})
+
+    reconciled = jobs_harvester.reconcile_stored_reviews(payload, raw_dir=tmp_path)
+
+    actual = reconciled["jobs"][0]
+    assert actual["sourceHash"] == "sha256:legacy-evidence"
+    assert actual["translationStatus"] == "verified"
+    assert actual["publicationStatus"] == "approved"
+
+
 def test_bind_review_payloads_legacy_migration_requires_explicit_inputs(tmp_path) -> None:
     from publication_rules import job_fact_hash
 
@@ -1966,6 +2002,15 @@ def test_salary_extraction_czech_and_range_and_cycle_variants() -> None:
     assert rng["amountMax"] == 35000
     assert rng["cycle"] == "month"
 
+    repeated_currency = jobs_harvester.extract_salary_facts(
+        "Salary: Starting salary from 65,000 CZK to 75,000 CZK."
+    )
+    assert repeated_currency["amount"] is None
+    assert repeated_currency["amountMin"] == 65000
+    assert repeated_currency["amountMax"] == 75000
+    assert repeated_currency["currency"] == "CZK"
+    assert repeated_currency["cycle"] is None
+
     annual = jobs_harvester.extract_salary_facts(
         "The annual salary for this fellowship is 360,000 CZK."
     )
@@ -1978,6 +2023,18 @@ def test_salary_extraction_czech_and_range_and_cycle_variants() -> None:
     assert thin["amount"] == 30000
     assert thin["tax"] == "gross"
     assert thin["cycle"] == "month"
+
+
+def test_combined_assistant_call_treats_started_doctorate_as_eligible_path() -> None:
+    facts = jobs_harvester.extract_qualifications(
+        "Odborný asistent / asistent",
+        "Požadavky: ukončené/zahájené doktorské studium v požadované oblasti.",
+    )
+    assert facts == {
+        "minimumDegree": "master",
+        "doctorateRequired": False,
+        "doctoralEnrollment": "required",
+    }
 
 
 def test_salary_extraction_negative_controls_reject_non_salary_amounts() -> None:

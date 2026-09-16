@@ -26,15 +26,19 @@ GitHub hosts the source code and CI, not the public website.
 
 ## Current release
 
-- Publication `v2026-09-16.2`: **34 reviewed public jobs from 11 universities**
-  (OSU 9, UHK 7, CZU 4, MUNI 4, Charles University 2, University of South
-  Bohemia 2, Tomas Bata University 2, CTU 1, UCT Prague 1, University of
-  Pardubice 1, TUL 1), 4 reviewed admissions excerpts, 54 baseline
-  institutions, and map coverage for all 54.
-- Candidate pipeline: 163 discovered records; 125 are current, of which 34 are
-  public and 91 remain blocked with explicit reasons. Official job sources are
-  registered for 23 of 54 universities. No source currently supports an
-  exhaustive institution-wide coverage claim.
+- Publication `v2026-09-17.1`: **15 reviewed public jobs from 5 universities**
+  (Charles University 5, Masaryk University 4, CZU 4, University of South
+  Bohemia 1, University of West Bohemia 1), 4 reviewed admissions excerpts,
+  54 baseline institutions, and map coverage for all 54. The lower public
+  count reflects verified expiry/closure removal, not data loss.
+- Candidate pipeline: 174 discovered records; 125 are current, of which 15 are
+  public and 110 remain blocked with explicit reasons. Official job sources are
+  registered for 31 of 54 universities. All 54 institutions now have an
+  auditable vacancy-channel assessment: 29 have executed sources, 2 have
+  registered sources awaiting a successful run, and 23 official-site checks
+  found no central listing at that time. The last category does not mean the
+  institution has no vacancies. No source currently supports an exhaustive
+  institution-wide coverage claim.
 
 ## Architecture
 

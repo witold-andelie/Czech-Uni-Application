@@ -24,6 +24,13 @@ digraph OPS {
     schedpending [label="已排队\nscheduled", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="schedulequeue"];
     schedrunning [label="运行中\nrunning", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="schedulequeue"];
   }
+  subgraph cluster_sourceassessment {
+    graph [label="高校岗位渠道评估\nInstitution Vacancy Channel Assessment", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="sourceassessment"];
+    sourceassessment [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
+    sourcecheckpending [label="尚未评估\nnot assessed", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="sourceassessment"];
+    sourceconnected [label="已登记官方来源\nofficial source registered", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="sourceassessment"];
+    sourcenocentral [label="已查官网但未找到集中岗位页\nofficial site checked; no central listing found", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="sourceassessment"];
+  }
   subgraph cluster_sourceattempt {
     graph [label="逐来源刷新尝试\nSource Refresh Attempt", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="sourceattempt"];
     attemptfailed [label="抓取或解析失败\nfailed", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="sourceattempt"];
@@ -79,6 +86,7 @@ digraph OPS {
   slalog [label="来源 SLA 违约记录\nSLA Breach Log", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   slamonitor [label="监测来源 SLA\nSource SLA Monitoring", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   source [label="官方来源\nOfficial Source", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  sourceassess [label="评估官方岗位渠道\nOfficial Vacancy Channel Assessing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   vacancydiscover [label="按注册来源发现岗位\nRegistered Vacancy Discovering", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   editor -> maintain [arrowhead="dot", color="#1F2937", label="agent", opm_relation="agent"];
   platform -> maintain [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
@@ -154,6 +162,12 @@ digraph OPS {
   osmutex -> czudoctoralprogrammeavailability [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   czudoctoralprogrammeavailability -> czudoctoralprogrammedirectory [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   registry -> coveragecalculate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  source -> sourceassess [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  registry -> sourceassess [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  sourcecheckpending -> sourceassess [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  sourceassess -> sourceconnected [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  sourceassess -> sourcenocentral [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  sourceassessment -> coveragecalculate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument", ltail="cluster_sourceassessment"];
   programmedirectory -> coveragecalculate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   czuprogrammedirectory -> coveragecalculate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   czuczechprogrammedirectory -> coveragecalculate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];

@@ -9,6 +9,12 @@ digraph SD4A {
     otherjob [label="其他资格或证据不足\nother or unresolved", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
     uncheckedjob [label="资格未核验\nunchecked", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="jobs"];
   }
+  subgraph cluster_sourceassessment {
+    graph [label="高校岗位渠道评估\nInstitution Vacancy Channel Assessment", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="sourceassessment"];
+    sourcecheckpending [label="尚未评估\nnot assessed", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="sourceassessment"];
+    sourceconnected [label="已登记官方来源\nofficial source registered", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="sourceassessment"];
+    sourcenocentral [label="已查官网但未找到集中岗位页\nofficial site checked; no central listing found", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="sourceassessment"];
+  }
   subgraph cluster_vacancycandidate {
     graph [label="动态发现岗位候选\nDynamic Vacancy Candidate", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="vacancycandidate"];
     vacancydiscovered [label="已发现\ndiscovered", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="vacancycandidate"];
@@ -24,6 +30,7 @@ digraph SD4A {
   registry [label="捷克官方高校来源名录\nOfficial Institution Source Registry", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   runnercheckpoint [label="采集运行检查点\nPersisted Runner Checkpoint", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   source [label="官方来源\nOfficial Source", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  sourceassess [label="评估官方岗位渠道\nOfficial Vacancy Channel Assessing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   vacancydetail [label="岗位官方正文与附件\nOfficial Vacancy Body and Attachment", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   vacancydisappear [label="记录完整目录中的岗位消失\nListing Disappearance Recording", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   vacancydiscover [label="按注册来源发现岗位\nRegistered Vacancy Discovering", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
@@ -57,4 +64,9 @@ digraph SD4A {
   vacancyready -> vacancynormalize [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   evidence -> vacancynormalize [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   vacancynormalize -> uncheckedjob [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  source -> sourceassess [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  registry -> sourceassess [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  sourcecheckpending -> sourceassess [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  sourceassess -> sourceconnected [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  sourceassess -> sourcenocentral [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
 }

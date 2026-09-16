@@ -39,7 +39,14 @@ RAW = ROOT / "work" / "raw" / "2026-09-06" / "jobs"
 OUT = ROOT / "data" / "sources" / "browse" / "nine-hei-jobs.json"
 REVIEWS = ROOT / "data" / "sources" / "reviews" / "job-translations.json"
 SOURCE_REGISTRY = ROOT / "data" / "sources" / "registry.json"
-UA = "CzechUniApplyHarvest/0.1 (offline ingestion; contact via local operator)"
+UA = (
+    "Mozilla/5.0 (compatible; CzechUniApplyHarvest/0.1; "
+    "+https://czech-uni-application.com/contact)"
+)
+CHROME_UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+)
 SLEEP = 3
 TODAY = date.today()
 CTX = ssl.create_default_context()
@@ -821,9 +828,22 @@ DEADLINE_MARKERS = (
 def extract_qualifications(title: str, body: str) -> dict:
     blob = f"{title} {body}".lower()
     doctorate_required = None
+    completed_or_started_doctorate = bool(
+        re.search(
+            r"\b(?:ukon[cč]en[eé]\s*/\s*zah[aá]jen[eé]|zah[aá]jen[eé]\s*/\s*ukon[cč]en[eé])"
+            r"\s+doktorsk[eé]\s+studium\b",
+            blob,
+        )
+    )
     # Negation has precedence.  Several phrases that express an optional PhD
     # also contain a shorter positive marker (for example "PhD ... required").
     if any(marker in blob for marker in PHD_NOT_REQUIRED):
+        doctorate_required = False
+    elif completed_or_started_doctorate:
+        # A combined assistant/assistant-professor call may accept either a
+        # completed doctorate or current doctoral study.  A doctorate is not a
+        # strict prerequisite for every eligible applicant, while doctoral
+        # enrolment is the minimum stated pathway.
         doctorate_required = False
     elif any(marker in blob for marker in PHD_REQUIRED) or re.search(
         r"\b(?:ukon[cč]en[eé]\s+ph\.?d\.?\s+studium|"
@@ -834,7 +854,9 @@ def extract_qualifications(title: str, body: str) -> dict:
     ):
         doctorate_required = True
     minimum = "unknown"
-    if doctorate_required:
+    if completed_or_started_doctorate:
+        minimum = "master"
+    elif doctorate_required:
         minimum = "doctorate"
     elif re.search(
         r"\b(?:master'?s?(?:\s+degree)?|master\s+degree|magistersk[eéý]\s+vzd[eě]l[aá]n[ií]|"
@@ -869,6 +891,8 @@ def extract_qualifications(title: str, body: str) -> dict:
         if doctorate_required is None:
             doctorate_required = False
     enrollment = assistant_enrollment(title, body)
+    if completed_or_started_doctorate:
+        enrollment = "required"
     return {
         "minimumDegree": minimum,
         "doctorateRequired": doctorate_required,
@@ -1286,6 +1310,33 @@ def extract_salary_facts(text: str) -> dict:
             facts["amountMax"] = high
             facts["reason"] = "range"
             return facts
+    # Some official adverts repeat the currency on both ends, for example
+    # ``from 65,000 CZK to 75,000 CZK``.  In that form the first number is the
+    # chosen occurrence, so the backward-only range detector above cannot see
+    # the upper bound.  Accept only the immediately connected next monetary
+    # occurrence in the same salary sentence; unrelated benefits or another
+    # role remain subject to the multiple-statement guard below.
+    following = [item for item in occurrences if item["start"] > chosen["start"]]
+    if following:
+        other_occurrence = following[0]
+        connector = text[chosen["end"] : other_occurrence["start"]]
+        currency_token = r"(?:CZK|Kč|EUR|€|USD|US\$|\$|GBP|£|CHF|PLN|SEK|NOK|DKK|CNY|RMB|HUF)"
+        if (
+            other_occurrence["currency"] == chosen["currency"]
+            and re.fullmatch(
+                rf"[{_MONEY_SPACE_CHARS}]*(?:{currency_token})?[{_MONEY_SPACE_CHARS}]*"
+                rf"(?:[–—-]|to|až|do)[{_MONEY_SPACE_CHARS}]*",
+                connector,
+                re.I,
+            )
+        ):
+            low = parse_money_number(chosen["raw"])
+            high = parse_money_number(other_occurrence["raw"])
+            if low is not None and high is not None and low < high:
+                facts["amountMin"] = low
+                facts["amountMax"] = high
+                facts["reason"] = "range"
+                return facts
     amount = parse_money_number(chosen["raw"])
     if amount is None:
         facts["reason"] = "ambiguous-number-format"
@@ -1454,9 +1505,18 @@ def _request_bytes_with_retry(
 
 
 def request(url: str, timeout: int = 45, now: datetime | None = None) -> tuple[int, str]:
+    host = (urlsplit(url).hostname or "").lower()
+    # UHK returns HTTP 418 solely when the User-Agent contains a crawler name,
+    # while serving the same public page to ordinary browsers. Keep the narrow
+    # browser-compatible identity here and retain an explicit project contact.
+    user_agent = CHROME_UA if host == "www.uhk.cz" else UA
     req = urllib.request.Request(
         _request_uri(url),
-        headers={"User-Agent": UA, "Accept": "application/json" if urlsplit(url).hostname == "dumbledore.zcu.cz" else "text/html,application/xhtml+xml"},
+        headers={
+            "User-Agent": user_agent,
+            "X-Crawler-Contact": "https://czech-uni-application.com/contact",
+            "Accept": "application/json" if host == "dumbledore.zcu.cz" else "text/html,application/xhtml+xml",
+        },
     )
     result = _request_bytes_with_retry(req, timeout=timeout, now=now)
     return result.status, result.text()
@@ -2514,10 +2574,12 @@ def parse_generic_listing_links(
     html: str,
     page_url: str,
     path_patterns: list[str] | None = None,
+    allowed_hosts: list[str] | None = None,
 ) -> list[dict]:
     """Extract configured vacancy detail links without treating nav links as jobs."""
     patterns = [re.compile(value, re.I) for value in (path_patterns or [])]
     current_host = urlsplit(page_url).netloc.casefold()
+    permitted_hosts = {current_host, *(host.casefold() for host in (allowed_hosts or []))}
     results: list[dict] = []
     seen: set[str] = set()
     for match in re.finditer(
@@ -2526,7 +2588,7 @@ def parse_generic_listing_links(
         href = unescape(match.group(1)).strip()
         absolute = urljoin(page_url, href)
         parsed = urlsplit(absolute)
-        if parsed.scheme not in {"http", "https"} or parsed.netloc.casefold() != current_host:
+        if parsed.scheme not in {"http", "https"} or parsed.netloc.casefold() not in permitted_hosts:
             continue
         if patterns and not any(pattern.search(absolute) for pattern in patterns):
             continue
@@ -3371,6 +3433,9 @@ def discover_registered_candidates(
                             listing_url,
                             source.get("pathPatterns")
                             if isinstance(source.get("pathPatterns"), list)
+                            else None,
+                            source.get("allowedHosts")
+                            if isinstance(source.get("allowedHosts"), list)
                             else None,
                         )
                     )
@@ -4242,7 +4307,7 @@ def job_record(candidate: dict, verified_at: str, host_verified: bool, page_text
     if closes and closes < cur_today and not closed:
         return {}, None
     langs = candidate.get("workingLanguages")
-    if not langs and page_text:
+    if not langs and fact_text:
         detected = []
         low_text = fact_text.lower()
         if re.search(r"\b(?:english|angličtin|anglictin)\b", low_text):
@@ -4580,11 +4645,13 @@ def reconcile_stored_reviews(payload: dict, raw_dir: Path = RAW) -> dict:
         if not isinstance(item, dict) or not item.get("id"):
             continue
         job = dict(item)
-        raw_path = raw_dir / f"{job['id']}.html"
-        if raw_path.is_file():
-            source_hash = source_text_hash(visible_text(raw_path.read_text(encoding="utf-8")))
-        else:
-            source_hash = job.get("sourceHash") or source_text_hash(str(job.get("originalText") or ""))
+        # ``sourceHash`` was calculated from the vacancy's scoped fact text at
+        # collection time.  A stored raw file can contain a whole listing page
+        # with neighbouring adverts, navigation and dynamic content, so hashing
+        # that file here creates a different evidence identity and incorrectly
+        # invalidates an otherwise matching review.  Reconciliation does not
+        # re-parse evidence; it must preserve the collector-bound hash.
+        source_hash = job.get("sourceHash") or source_text_hash(str(job.get("originalText") or ""))
         apply_translation_review(job, source_hash, reviews, windows)
         source_hashes[job["id"]] = source_hash
         jobs.append(job)

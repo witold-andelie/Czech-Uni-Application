@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -7,6 +8,26 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 import harvest_nine_hei_jobs as harvest
 import worker
+
+
+def test_atomic_write_retries_transient_windows_sharing_failure(tmp_path, monkeypatch):
+    target = tmp_path / "jobs.json"
+    real_replace = os.replace
+    calls = 0
+
+    def flaky_replace(source, destination):
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            raise PermissionError("temporary sharing violation")
+        return real_replace(source, destination)
+
+    monkeypatch.setattr(worker.os, "replace", flaky_replace)
+    monkeypatch.setattr(worker.time, "sleep", lambda _seconds: None)
+    worker.atomic_write(target, {"jobs": [{"id": "job-a"}]})
+
+    assert calls == 2
+    assert json.loads(target.read_text(encoding="utf-8"))["jobs"][0]["id"] == "job-a"
 
 
 def test_completed_source_survives_later_interruption(tmp_path, monkeypatch):
@@ -66,3 +87,20 @@ def test_zcu_attachment_accepts_gateway_response(monkeypatch):
     assert status == 200
     assert body == b"%PDF-test"
     assert seen["accept"] == "*/*"
+
+
+def test_uhk_request_uses_browser_compatible_identity_with_contact(monkeypatch):
+    seen = {}
+
+    def fake_request(req, **kwargs):
+        seen["user_agent"] = req.get_header("User-agent")
+        seen["contact"] = req.get_header("X-crawler-contact")
+        return harvest.TransportResult(status=200, body=b"ok")
+
+    monkeypatch.setattr(harvest, "_request_bytes_with_retry", fake_request)
+    status, body = harvest.request("https://www.uhk.cz/cs/jobs")
+
+    assert status == 200
+    assert body == "ok"
+    assert "Chrome/" in seen["user_agent"]
+    assert seen["contact"] == "https://czech-uni-application.com/contact"

@@ -141,6 +141,15 @@ def test_coverage_keeps_directory_completeness_separate_from_admissions_and_job_
             },
         },
         generated_at="2026-09-10T02:00:00Z",
+        job_source_assessment={
+            "rows": [
+                {"institutionId": "hei-1", "assessmentStatus": "registered_executed"},
+                {
+                    "institutionId": "hei-2",
+                    "assessmentStatus": "assessed_no_central_source",
+                },
+            ]
+        },
     )
 
     assert report["programmes"]["directoryHarvestComplete"] is True
@@ -178,6 +187,15 @@ def test_coverage_keeps_directory_completeness_separate_from_admissions_and_job_
     assert report["jobs"]["mappedBaselineInstitutions"] == 1
     assert report["jobs"]["baselineInstitutionCoveragePercent"] == 50.0
     assert report["jobs"]["baselineInstitutionsWithoutRegisteredSource"] == 1
+    assert report["jobs"]["assessedBaselineInstitutions"] == 2
+    assert report["jobs"]["notAssessedBaselineInstitutions"] == 0
+    assert report["jobs"]["assessmentStatusCounts"] == {
+        "registered_executed": 1,
+        "registered_never_executed": 0,
+        "assessed_no_central_source": 1,
+        "not_assessed": 0,
+    }
+    assert "not zero vacancies" in report["jobs"]["claimBoundary"]
     assert report["jobs"]["institutionAggregatorConnections"] == 0
     assert report["jobs"]["facultyOnlyConnections"] == 1
     assert report["jobs"]["assertedCompleteInstitutionSources"] == 0

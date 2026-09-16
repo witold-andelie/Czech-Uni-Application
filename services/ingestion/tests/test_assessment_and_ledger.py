@@ -44,6 +44,7 @@ def test_assessment_labels_all_54_states_honestly() -> None:
         schedule,
         {"jobs": []},
         {"activeVersion": "v2026-09-12.6", "snapshotDir": "snapshots/v2026-09-12.6"},
+        {},
         generated_at="2026-09-13T06:00:00Z",
     )
     assert len(payload["rows"]) == 3
@@ -55,11 +56,41 @@ def test_assessment_labels_all_54_states_honestly() -> None:
     assert payload["summary"] == {
         "registered_executed": 1,
         "registered_never_executed": 1,
+        "assessed_no_central_source": 0,
         "not_assessed": 1,
     }
     assert payload["publicationVersion"] == "v2026-09-12.6"
     # The claim boundary explicitly denies whole-institution coverage.
     assert "No row claims whole-institution coverage" in payload["claimBoundary"]
+
+
+def test_assessment_records_official_site_check_without_claiming_no_vacancies() -> None:
+    payload = build_assessment(
+        _baseline([("msmt-vs_x", "Small University")]),
+        [],
+        {"sources": {}},
+        {"jobs": []},
+        {"activeVersion": "v1"},
+        {
+            "rows": [
+                {
+                    "institutionId": "msmt-vs_x",
+                    "checkedAt": "2026-09-17T12:00:00Z",
+                    "nextCheckAt": "2026-09-22T12:00:00Z",
+                    "method": "official_domain_search",
+                    "evidenceUrls": ["https://small.example/"],
+                    "result": "official_site_checked_no_central_listing",
+                    "note": "No central public vacancy listing was found.",
+                }
+            ]
+        },
+        generated_at="2026-09-17T12:00:00Z",
+    )
+    row = payload["rows"][0]
+    assert row["assessmentStatus"] == "assessed_no_central_source"
+    assert row["assessmentEvidence"]["evidenceUrls"] == ["https://small.example/"]
+    assert row["nextCheckAt"] == "2026-09-22T12:00:00Z"
+    assert "not that the institution has no vacancies" in payload["claimBoundary"]
 
 
 def test_disposition_ledger_one_decision_per_candidate() -> None:

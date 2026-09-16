@@ -74,7 +74,17 @@ def atomic_write(path: Path, payload: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(f"{path.suffix}.tmp.{os.getpid()}.{uuid.uuid4().hex[:8]}")
     tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    tmp.replace(path)
+    # Windows virus scanners and indexers can briefly hold the destination
+    # between the write and replace operations. Retry only that transient
+    # sharing failure; the unique temporary file remains a valid checkpoint.
+    for attempt in range(5):
+        try:
+            os.replace(tmp, path)
+            return
+        except PermissionError:
+            if attempt == 4:
+                raise
+            time.sleep(0.1 * (attempt + 1))
 
 
 def pid_alive(pid: int) -> bool:
