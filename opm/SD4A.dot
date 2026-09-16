@@ -22,6 +22,7 @@ digraph SD4A {
   legalemployer [label="已辨认法定雇主\nResolved Legal Employer", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   listingpage [label="分页岗位目录\nPaginated Vacancy Listing", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   registry [label="捷克官方高校来源名录\nOfficial Institution Source Registry", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  runnercheckpoint [label="采集运行检查点\nPersisted Runner Checkpoint", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   source [label="官方来源\nOfficial Source", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   vacancydetail [label="岗位官方正文与附件\nOfficial Vacancy Body and Attachment", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   vacancydisappear [label="记录完整目录中的岗位消失\nListing Disappearance Recording", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
@@ -34,6 +35,7 @@ digraph SD4A {
   registry -> vacancydiscover [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   listingpage -> vacancydiscover [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   discoverycursor -> vacancydiscover [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  runnercheckpoint -> vacancydiscover [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   vacancydiscover -> vacancydiscovered [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   vacancydiscover -> evidence [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   vacancydiscovered -> vacancyqualify [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];

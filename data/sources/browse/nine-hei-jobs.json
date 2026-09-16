@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-13T17:17:18Z",
+  "generatedAt": "2026-09-16T17:00:00Z",
   "dataClass": "official_career_extract",
   "catalogKind": "jobs_not_published",
   "note": "Research vacancies harvested from official university career pages registered in the source inventory. EURAXESS is not stored as the apply URL. A reachable page is not an open window. Past deadlines are omitted. Not written to data/published/.",
   "counts": {
-    "jobs": 150,
+    "jobs": 163,
     "skipped": 69
   },
   "skipped": [
@@ -5194,18 +5194,18 @@
       "id": "job-22000-55dab25c16c1",
       "employerId": "msmt-vs_22000",
       "title": {
-        "zh-CN": "PhD researcher position in Chemistry – 1 FTE",
-        "en": "PhD researcher position in Chemistry – 1 FTE",
-        "cs": "PhD researcher position in Chemistry – 1 FTE"
+        "zh-CN": "化学博士研究岗位：MAX相与MXene材料",
+        "en": "PhD Researcher in Chemistry: MAX Phases and MXenes",
+        "cs": "Doktorandská výzkumná pozice v chemii: MAX fáze a MXeny"
       },
       "laboratory": null,
       "originalText": "PhD researcher position in Chemistry – 1 FTE",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-09-16T08:57:29Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
-      "doctoralEnrollment": "unspecified",
+      "doctoralEnrollment": "required",
       "paidStatus": "confirmed",
       "salary": {
         "amount": null,
@@ -5215,24 +5215,23 @@
         "basisFte": null
       },
       "workingLanguages": [
-        "en",
-        "cs"
+        "en"
       ],
       "sourceUrl": "https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice",
       "applicationUrl": "https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice",
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
-      "lifecycleStatus": "open",
-      "visibility": "review_pending",
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
-      "track": "post_master",
+      "track": "assistant",
       "city": {
         "zh-CN": "布拉格",
         "en": "Prague",
         "cs": "Praha"
       },
-      "verifiedAt": "2026-09-11",
+      "verifiedAt": "2026-09-16",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "uct-academic-scientific-positions",
@@ -5241,32 +5240,34 @@
       "noticePostedAt": null,
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
-      "sourceHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
-      "publicationStatus": "review_pending",
+      "sourceHash": "sha256:995e3f77111b5c1fc9c577d43c2674355393189f01b07a771d1d6b4f6e8fca42",
+      "publicationStatus": "approved",
       "translationReview": {
-        "sourceHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
-        "factHash": "sha256:49168ab65c0ac2a737beeeae23749fc31bdc8fe9f73f8b2ef29392db53e6fa5e",
-        "evidenceHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
+        "sourceHash": "sha256:995e3f77111b5c1fc9c577d43c2674355393189f01b07a771d1d6b4f6e8fca42",
+        "factHash": "sha256:0b057892642359db69515d09269468f3c03383c3bf83dcf713792590ca150800",
+        "evidenceHash": "sha256:995e3f77111b5c1fc9c577d43c2674355393189f01b07a771d1d6b4f6e8fca42",
         "normalizationVersion": "fact-v1",
-        "reviewer": null,
+        "reviewer": {
+          "role": "operator_source_review"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:995e3f77111b5c1fc9c577d43c2674355393189f01b07a771d1d6b4f6e8fca42",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:bd025d086c213a1f401fafc5ee18a18c25ab2aa1e848b444f3863d39bb30a134"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:995e3f77111b5c1fc9c577d43c2674355393189f01b07a771d1d6b4f6e8fca42",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:00c1b275e07659443dc10c047ea6406954db6e23e35a0206240c947062f0910d"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:995e3f77111b5c1fc9c577d43c2674355393189f01b07a771d1d6b4f6e8fca42",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:9d9a8095dfbc72c9c03bf28c5f2fd16b3a1834a6d05c007f66695a7a7eaaa90e"
           }
         }
       },
@@ -5276,8 +5277,8 @@
       "employmentFte": 1.0,
       "employmentStartsAt": null,
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
-      "sourceFetchedAt": "2026-09-11"
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
+      "sourceFetchedAt": "2026-09-16T08:57:29Z"
     },
     {
       "id": "job-21000-5488",
@@ -6099,21 +6100,17 @@
       "id": "job-21000-5441",
       "employerId": "msmt-vs_21000",
       "title": {
-        "zh-CN": "Embedded & Hardware Engineer - Robotic drones",
-        "en": "Embedded & Hardware Engineer - Robotic drones",
-        "cs": "Embedded & Hardware Engineer - Robotic drones"
+        "zh-CN": "机器人无人机嵌入式与硬件工程师",
+        "en": "Embedded and Hardware Engineer – Robotic Drones",
+        "cs": "Inženýr/ka embedded systémů a hardwaru – robotické drony"
       },
-      "laboratory": {
-        "zh-CN": "Fakulta elektrotechnická",
-        "en": "Fakulta elektrotechnická",
-        "cs": "Fakulta elektrotechnická"
-      },
+      "laboratory": null,
       "originalText": "Embedded & Hardware Engineer - Robotic drones",
       "sourceLanguage": "cs",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-09-16T08:57:29Z",
       "minimumDegree": "unknown",
-      "doctorateRequired": null,
+      "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
       "paidStatus": "confirmed",
       "salary": {
@@ -6123,13 +6120,16 @@
         "tax": "unknown",
         "basisFte": null
       },
-      "workingLanguages": [],
+      "workingLanguages": [
+        "cs",
+        "en"
+      ],
       "sourceUrl": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/5441",
       "applicationUrl": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/5441",
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -6138,7 +6138,7 @@
         "en": "Prague",
         "cs": "Praha"
       },
-      "verifiedAt": "2026-09-11",
+      "verifiedAt": "2026-09-16",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "ctu-central-notice-board",
@@ -6147,43 +6147,45 @@
       "noticePostedAt": "2026-08-10",
       "noticeRemoveAt": "2026-09-30",
       "eligibilityGranularity": "vacancy",
-      "sourceHash": "sha256:b0799fb19d967c8487e67c545d0e0255e3bdfd0dd81f35af92deb807cdc00048",
-      "publicationStatus": "review_pending",
+      "sourceHash": "sha256:b94f11f4baa1c26c1fa0402c6c561ad741e5eeac7e2e38493f10ece3b1d4de09",
+      "publicationStatus": "approved",
       "translationReview": {
-        "sourceHash": "sha256:b0799fb19d967c8487e67c545d0e0255e3bdfd0dd81f35af92deb807cdc00048",
-        "factHash": "sha256:3ca809bfeb3885ad6f6f35cde1503b64622951138c375dd558b0aded7bb4bf3a",
-        "evidenceHash": "sha256:b0799fb19d967c8487e67c545d0e0255e3bdfd0dd81f35af92deb807cdc00048",
+        "sourceHash": "sha256:b94f11f4baa1c26c1fa0402c6c561ad741e5eeac7e2e38493f10ece3b1d4de09",
+        "factHash": "sha256:a11e94a8b6d36b961bc24e228d709297e6bffb9b1827d54c35bae0a965389ccc",
+        "evidenceHash": "sha256:b94f11f4baa1c26c1fa0402c6c561ad741e5eeac7e2e38493f10ece3b1d4de09",
         "normalizationVersion": "fact-v1",
-        "reviewer": null,
+        "reviewer": {
+          "role": "operator_source_review"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b94f11f4baa1c26c1fa0402c6c561ad741e5eeac7e2e38493f10ece3b1d4de09",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:4d7602300670e90f5dfd716ac6a1e02c73ef48f572f379ecf5436ede5ccb3039"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b94f11f4baa1c26c1fa0402c6c561ad741e5eeac7e2e38493f10ece3b1d4de09",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:a83f2bcf61517f8d7f03d542871eb2c669487339a40f4345d8ffd25836b7cef8"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b94f11f4baa1c26c1fa0402c6c561ad741e5eeac7e2e38493f10ece3b1d4de09",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:fb03e15ed5c63163f7d98d2a6ccdcede89b479aacc9f1f9982c07571ab34bc93"
           }
         }
       },
       "salaryAmountMin": null,
       "salaryAmountMax": null,
       "fundingType": "employment",
-      "employmentFte": null,
+      "employmentFte": 1.0,
       "employmentStartsAt": null,
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
-      "sourceFetchedAt": "2026-09-11"
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
+      "sourceFetchedAt": "2026-09-16T08:57:29Z"
     },
     {
       "id": "job-21000-5434",
@@ -7422,17 +7424,17 @@
       "id": "job-12000-955d7a8b0745",
       "employerId": "msmt-vs_12000",
       "title": {
-        "zh-CN": "Postdoctoral Researcher in (Bio)Physics (PRF JU)",
-        "en": "Postdoctoral Researcher in (Bio)Physics (PRF JU)",
-        "cs": "Postdoctoral Researcher in (Bio)Physics (PRF JU)"
+        "zh-CN": "生物物理与物理学博士后研究员",
+        "en": "Postdoctoral Researcher in (Bio)Physics",
+        "cs": "Postdoktorand/ka v oboru (bio)fyziky"
       },
       "laboratory": null,
       "originalText": "Postdoctoral Researcher in (Bio)Physics (PRF JU)",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
-      "minimumDegree": "unknown",
-      "doctorateRequired": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-09-16T08:57:29Z",
+      "minimumDegree": "doctorate",
+      "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
       "paidStatus": "confirmed",
       "salary": {
@@ -7442,13 +7444,15 @@
         "tax": "unknown",
         "basisFte": null
       },
-      "workingLanguages": [],
+      "workingLanguages": [
+        "und"
+      ],
       "sourceUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/07092026-ufy-postdok-fyzik-final.pdf",
       "applicationUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/07092026-ufy-postdok-fyzik-final.pdf",
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -7457,7 +7461,7 @@
         "en": "České Budějovice",
         "cs": "České Budějovice"
       },
-      "verifiedAt": "2026-09-11",
+      "verifiedAt": "2026-09-16",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "jcu-central-vacancies",
@@ -7466,32 +7470,34 @@
       "noticePostedAt": null,
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
-      "sourceHash": "sha256:5ae5032d1dfc9d128b77ecef64976f47e102e035cd18e350e281b0e729a1a810",
-      "publicationStatus": "review_pending",
+      "sourceHash": "sha256:64f6e1b0c67e37d17bda7dae27067656259bd9d7b87cebf707ccff7bf54c1530",
+      "publicationStatus": "approved",
       "translationReview": {
-        "sourceHash": "sha256:5ae5032d1dfc9d128b77ecef64976f47e102e035cd18e350e281b0e729a1a810",
-        "factHash": "sha256:9c02a18d80a5ffe094e000390e2a9eecce324e66483dc35ad9f416dddb4e6dcc",
-        "evidenceHash": "sha256:5ae5032d1dfc9d128b77ecef64976f47e102e035cd18e350e281b0e729a1a810",
+        "sourceHash": "sha256:64f6e1b0c67e37d17bda7dae27067656259bd9d7b87cebf707ccff7bf54c1530",
+        "factHash": "sha256:179b1ce654dec5e9de8365540b86c691d18b9cafbfb89c23fe9b7649ff85abb9",
+        "evidenceHash": "sha256:64f6e1b0c67e37d17bda7dae27067656259bd9d7b87cebf707ccff7bf54c1530",
         "normalizationVersion": "fact-v1",
-        "reviewer": null,
+        "reviewer": {
+          "role": "operator_source_review"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:64f6e1b0c67e37d17bda7dae27067656259bd9d7b87cebf707ccff7bf54c1530",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:a83fb8b5ba0a3aaa136168b5ec6e43c7aced4e9bbc8df3f76fb9ee2bf89ec976"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:64f6e1b0c67e37d17bda7dae27067656259bd9d7b87cebf707ccff7bf54c1530",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:d5c572fbaf210102ac0bfbdc47e9dab0510e382ed5f6d220b142f8f8c8f5bc81"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:64f6e1b0c67e37d17bda7dae27067656259bd9d7b87cebf707ccff7bf54c1530",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:0d402757a613b23d44a8ddda6f238975e83e79b1343a436c8a6e0c5eb360d612"
           }
         }
       },
@@ -7501,8 +7507,8 @@
       "employmentFte": null,
       "employmentStartsAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
-      "sourceFetchedAt": "2026-09-11"
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
+      "sourceFetchedAt": "2026-09-16T08:57:29Z"
     },
     {
       "id": "job-12000-e35a581a7ddf",
@@ -7594,15 +7600,15 @@
       "id": "job-12000-0734174e7128",
       "employerId": "msmt-vs_12000",
       "title": {
-        "zh-CN": "Vědecký pracovník/Vědecká pracovnice do Laboratoře výživy (FROV JU)",
-        "en": "Vědecký pracovník/Vědecká pracovnice do Laboratoře výživy (FROV JU)",
-        "cs": "Vědecký pracovník/Vědecká pracovnice do Laboratoře výživy (FROV JU)"
+        "zh-CN": "营养实验室研究员",
+        "en": "Researcher in the Laboratory of Nutrition",
+        "cs": "Vědecký pracovník / vědecká pracovnice v Laboratoři výživy"
       },
       "laboratory": null,
       "originalText": "Vědecký pracovník/Vědecká pracovnice do Laboratoře výživy (FROV JU)",
       "sourceLanguage": "cs",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-09-16T08:57:29Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -7614,13 +7620,15 @@
         "tax": "unknown",
         "basisFte": null
       },
-      "workingLanguages": [],
+      "workingLanguages": [
+        "en"
+      ],
       "sourceUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/02092026-vedecky-pracovnik-lv.pdf",
       "applicationUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/02092026-vedecky-pracovnik-lv.pdf",
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -7629,7 +7637,7 @@
         "en": "České Budějovice",
         "cs": "České Budějovice"
       },
-      "verifiedAt": "2026-09-11",
+      "verifiedAt": "2026-09-16",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "jcu-central-vacancies",
@@ -7638,32 +7646,34 @@
       "noticePostedAt": null,
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
-      "sourceHash": "sha256:8489b9e0d604b0b9c01dca4be82b1d49f9d996218a24f6ebaca3ee65e3bcd6ec",
-      "publicationStatus": "review_pending",
+      "sourceHash": "sha256:8a5dff1cadd648ec47a36f928e7c40b040c345f421c0c7c85ae7b5fd4d575e35",
+      "publicationStatus": "approved",
       "translationReview": {
-        "sourceHash": "sha256:8489b9e0d604b0b9c01dca4be82b1d49f9d996218a24f6ebaca3ee65e3bcd6ec",
-        "factHash": "sha256:502423ca1f04253b5a250678e6f5b73243975e10a636c9cb261704f52e1c690c",
-        "evidenceHash": "sha256:8489b9e0d604b0b9c01dca4be82b1d49f9d996218a24f6ebaca3ee65e3bcd6ec",
+        "sourceHash": "sha256:8a5dff1cadd648ec47a36f928e7c40b040c345f421c0c7c85ae7b5fd4d575e35",
+        "factHash": "sha256:69e7d0364a4faf4b803ce48a5693cf9d2ee663d3bb5cf2585b764ad7127e1ead",
+        "evidenceHash": "sha256:8a5dff1cadd648ec47a36f928e7c40b040c345f421c0c7c85ae7b5fd4d575e35",
         "normalizationVersion": "fact-v1",
-        "reviewer": null,
+        "reviewer": {
+          "role": "operator_source_review"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8a5dff1cadd648ec47a36f928e7c40b040c345f421c0c7c85ae7b5fd4d575e35",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:66cdeef6cd006eb54adc8a76a21a51f83dc03e2bc3c3680cc259cc4d0c0a22f4"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8a5dff1cadd648ec47a36f928e7c40b040c345f421c0c7c85ae7b5fd4d575e35",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:cea6d36bd211e86ccf7378bf284192fcace6e5c64705da5d747b17fb4a44fd73"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8a5dff1cadd648ec47a36f928e7c40b040c345f421c0c7c85ae7b5fd4d575e35",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:888907c072d284f6dde77949d70999060d895642db025609b8b8c1f62fc0a5bc"
           }
         }
       },
@@ -7673,8 +7683,8 @@
       "employmentFte": 1.0,
       "employmentStartsAt": null,
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
-      "sourceFetchedAt": "2026-09-11"
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
+      "sourceFetchedAt": "2026-09-16T08:57:29Z"
     },
     {
       "id": "job-12000-ffb62950f8a3",
@@ -8360,17 +8370,17 @@
       "id": "job-25000-e0c3d1dfdd91",
       "employerId": "msmt-vs_25000",
       "title": {
-        "zh-CN": "Výzkumný pracovník - doktorand M/Ž",
-        "en": "Výzkumný pracovník - doktorand M/Ž",
-        "cs": "Výzkumný pracovník - doktorand M/Ž"
+        "zh-CN": "城市物流人工智能研究博士生岗位",
+        "en": "Doctoral Researcher in AI for City Logistics",
+        "cs": "Výzkumný pracovník – doktorand pro AI v city logistice"
       },
       "laboratory": null,
       "originalText": "Výzkumný pracovník - doktorand M/Ž",
       "sourceLanguage": "cs",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-09-16T08:57:29Z",
       "minimumDegree": "unknown",
-      "doctorateRequired": null,
+      "doctorateRequired": false,
       "doctoralEnrollment": "required",
       "paidStatus": "confirmed",
       "salary": {
@@ -8380,18 +8390,24 @@
         "tax": "unknown",
         "basisFte": null
       },
-      "workingLanguages": [],
+      "workingLanguages": [
+        "und"
+      ],
       "sourceUrl": "https://www.upce.cz/sites/default/files/global/2026-09/7240/INZERAT_doktorandi_2026_fin_20260904_140701.pdf",
       "applicationUrl": "https://www.upce.cz/sites/default/files/global/2026-09/7240/INZERAT_doktorandi_2026_fin_20260904_140701.pdf",
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
-      "city": null,
-      "verifiedAt": "2026-09-11",
+      "city": {
+        "zh-CN": "帕尔杜比采",
+        "en": "Pardubice",
+        "cs": "Pardubice"
+      },
+      "verifiedAt": "2026-09-16",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "upce-central-vacancies",
@@ -8400,32 +8416,34 @@
       "noticePostedAt": null,
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
-      "sourceHash": "sha256:6be71c3ac8fcd4be35b078cbab529ea27960bb5fe5412d401b293f85c9d3250e",
-      "publicationStatus": "review_pending",
+      "sourceHash": "sha256:29462bcf4a4a40b08b287c1a6b5f67ff70480ca7dd46e1866774003fd7cf77c4",
+      "publicationStatus": "approved",
       "translationReview": {
-        "sourceHash": "sha256:6be71c3ac8fcd4be35b078cbab529ea27960bb5fe5412d401b293f85c9d3250e",
-        "factHash": "sha256:07b9ca9ac6718e830016937a467cf5975b474594ea64e947d63dfe17d7f26b92",
-        "evidenceHash": "sha256:6be71c3ac8fcd4be35b078cbab529ea27960bb5fe5412d401b293f85c9d3250e",
+        "sourceHash": "sha256:29462bcf4a4a40b08b287c1a6b5f67ff70480ca7dd46e1866774003fd7cf77c4",
+        "factHash": "sha256:60b2c556415939adf5a918b63f801c30494c0532f0371f9c33a009bbac9e7617",
+        "evidenceHash": "sha256:29462bcf4a4a40b08b287c1a6b5f67ff70480ca7dd46e1866774003fd7cf77c4",
         "normalizationVersion": "fact-v1",
-        "reviewer": null,
+        "reviewer": {
+          "role": "operator_source_review"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:29462bcf4a4a40b08b287c1a6b5f67ff70480ca7dd46e1866774003fd7cf77c4",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:389f75963655cd8743e0fb837eb2d9fbeed765477c23c003f6e88e562ee2b2b6"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:29462bcf4a4a40b08b287c1a6b5f67ff70480ca7dd46e1866774003fd7cf77c4",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:4c6efc315ec5cb9389223cd3d77042ad150fd329a3d4274ac5a43307b330ba8a"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:29462bcf4a4a40b08b287c1a6b5f67ff70480ca7dd46e1866774003fd7cf77c4",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:cf029001fa7f25cd7fe21d5779b343e5786811cab86079e3631dea29170f1557"
           }
         }
       },
@@ -8433,10 +8451,10 @@
       "salaryAmountMax": null,
       "fundingType": "employment",
       "employmentFte": null,
-      "employmentStartsAt": null,
+      "employmentStartsAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
-      "sourceFetchedAt": "2026-09-11"
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
+      "sourceFetchedAt": "2026-09-16T08:57:29Z"
     },
     {
       "id": "job-25000-13b514548365",
@@ -8934,15 +8952,15 @@
       "id": "job-28000-01261172b175",
       "employerId": "msmt-vs_28000",
       "title": {
-        "zh-CN": "Vědecký pracovník/vědecká pracovnice pro UNI – pokročilé polovodičové a heterostrukturované nanomateriály pro fotoelektrochemii, elektrokatalýzu a udržitelnou konverzi energie",
-        "en": "Vědecký pracovník/vědecká pracovnice pro UNI – pokročilé polovodičové a heterostrukturované nanomateriály pro fotoelektrochemii, elektrokatalýzu a udržitelnou konverzi energie",
-        "cs": "Vědecký pracovník/vědecká pracovnice pro UNI – pokročilé polovodičové a heterostrukturované nanomateriály pro fotoelektrochemii, elektrokatalýzu a udržitelnou konverzi energie"
+        "zh-CN": "半导体纳米材料与可持续能源转化研究员",
+        "en": "Researcher in Semiconductor Nanomaterials and Sustainable Energy Conversion",
+        "cs": "Vědecký pracovník / vědecká pracovnice pro polovodičové nanomateriály a udržitelnou konverzi energie"
       },
       "laboratory": null,
       "originalText": "Vědecký pracovník/vědecká pracovnice pro UNI – pokročilé polovodičové a heterostrukturované nanomateriály pro fotoelektrochemii, elektrokatalýzu a udržitelnou konverzi energie",
       "sourceLanguage": "cs",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-09-16T08:57:29Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -8954,18 +8972,24 @@
         "tax": "unknown",
         "basisFte": null
       },
-      "workingLanguages": [],
+      "workingLanguages": [
+        "en"
+      ],
       "sourceUrl": "https://kariera.utb.cz/vedecky-pracovnik-vedecka-pracovnice-pro-uni-pokrocile-polovodicove-a-heterostrukturovane-nanomaterialy-pro-fotoelektrochemii-elektrokatalyzu-a-udrzitelnou-konverzi-energie/",
       "applicationUrl": "https://kariera.utb.cz/vedecky-pracovnik-vedecka-pracovnice-pro-uni-pokrocile-polovodicove-a-heterostrukturovane-nanomaterialy-pro-fotoelektrochemii-elektrokatalyzu-a-udrzitelnou-konverzi-energie/",
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
-      "city": null,
-      "verifiedAt": "2026-09-11",
+      "city": {
+        "zh-CN": "兹林",
+        "en": "Zlín",
+        "cs": "Zlín"
+      },
+      "verifiedAt": "2026-09-16",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "utb-central-careers",
@@ -8974,32 +8998,34 @@
       "noticePostedAt": null,
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
-      "sourceHash": "sha256:8f70b94b8f34a5ac42378cc874ca1c1c52fbcf5341066505117b6e5530c9be80",
-      "publicationStatus": "review_pending",
+      "sourceHash": "sha256:500ca5bf75c8463c031aca8343b651c695cf79c9f7b49f91b90807b26d82e0f2",
+      "publicationStatus": "approved",
       "translationReview": {
-        "sourceHash": "sha256:8f70b94b8f34a5ac42378cc874ca1c1c52fbcf5341066505117b6e5530c9be80",
-        "factHash": "sha256:6d539d6d7c9aabd590beb4e9817973618fec7dbcb0b483f89202bdf5b5b9ab8a",
-        "evidenceHash": "sha256:8f70b94b8f34a5ac42378cc874ca1c1c52fbcf5341066505117b6e5530c9be80",
+        "sourceHash": "sha256:500ca5bf75c8463c031aca8343b651c695cf79c9f7b49f91b90807b26d82e0f2",
+        "factHash": "sha256:b11ed40d5ab5fd1caf39c9a44b98680e576e9850d90355879bda70851d95730d",
+        "evidenceHash": "sha256:500ca5bf75c8463c031aca8343b651c695cf79c9f7b49f91b90807b26d82e0f2",
         "normalizationVersion": "fact-v1",
-        "reviewer": null,
+        "reviewer": {
+          "role": "operator_source_review"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:500ca5bf75c8463c031aca8343b651c695cf79c9f7b49f91b90807b26d82e0f2",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:8d73a1437a12605029dff8dfbcba0964ace9ff39790bca4ccc7531aa6f764390"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:500ca5bf75c8463c031aca8343b651c695cf79c9f7b49f91b90807b26d82e0f2",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:370cb18919cd429c941f583a21dcb30738159ff5dfc9a5d31065a8e3073b5fcc"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:500ca5bf75c8463c031aca8343b651c695cf79c9f7b49f91b90807b26d82e0f2",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:a3f511ae127027f8fccdfa251369e095c48d121161e860efa66a31834ebc6a9c"
           }
         }
       },
@@ -9009,22 +9035,22 @@
       "employmentFte": 1.0,
       "employmentStartsAt": "2026-11-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
-      "sourceFetchedAt": "2026-09-11"
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
+      "sourceFetchedAt": "2026-09-16T08:57:29Z"
     },
     {
       "id": "job-28000-0b4c39224ec3",
       "employerId": "msmt-vs_28000",
       "title": {
-        "zh-CN": "Vědecký pracovník/vědecká pracovnice pro UNI – řízená syntéza a charakterizace polymerních materiálů pro biomedicínské aplikace.",
-        "en": "Vědecký pracovník/vědecká pracovnice pro UNI – řízená syntéza a charakterizace polymerních materiálů pro biomedicínské aplikace.",
-        "cs": "Vědecký pracovník/vědecká pracovnice pro UNI – řízená syntéza a charakterizace polymerních materiálů pro biomedicínské aplikace."
+        "zh-CN": "生物医学应用聚合物合成与表征研究员",
+        "en": "Researcher in Polymer Synthesis and Characterisation for Biomedical Applications",
+        "cs": "Vědecký pracovník / vědecká pracovnice pro syntézu a charakterizaci polymerů pro biomedicínské aplikace"
       },
       "laboratory": null,
       "originalText": "Vědecký pracovník/vědecká pracovnice pro UNI – řízená syntéza a charakterizace polymerních materiálů pro biomedicínské aplikace.",
       "sourceLanguage": "cs",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-09-16T08:57:29Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -9036,18 +9062,24 @@
         "tax": "unknown",
         "basisFte": null
       },
-      "workingLanguages": [],
+      "workingLanguages": [
+        "en"
+      ],
       "sourceUrl": "https://kariera.utb.cz/vedecky-pracovnik-vedecka-pracovnice-pro-uni-rizena-synteza-a-charakterizace-polymernich-materialu-pro-biomedicinske-aplikace/",
       "applicationUrl": "https://kariera.utb.cz/vedecky-pracovnik-vedecka-pracovnice-pro-uni-rizena-synteza-a-charakterizace-polymernich-materialu-pro-biomedicinske-aplikace/",
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
-      "city": null,
-      "verifiedAt": "2026-09-11",
+      "city": {
+        "zh-CN": "兹林",
+        "en": "Zlín",
+        "cs": "Zlín"
+      },
+      "verifiedAt": "2026-09-16",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "utb-central-careers",
@@ -9056,32 +9088,34 @@
       "noticePostedAt": null,
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
-      "sourceHash": "sha256:c7c63be8112c9bdd4ba1e1774bcb4502793e8acbc8b4800afa7bfd2d3209f92a",
-      "publicationStatus": "review_pending",
+      "sourceHash": "sha256:b774c298678dd4b4be5f8e6b4640f502dbcfd47d5aa2862cc5b97ec65b0b7ae7",
+      "publicationStatus": "approved",
       "translationReview": {
-        "sourceHash": "sha256:c7c63be8112c9bdd4ba1e1774bcb4502793e8acbc8b4800afa7bfd2d3209f92a",
-        "factHash": "sha256:949aa81fca8f37c09de5bd73f444f39c08113a6c325c67cb3de9f6e10bb750ac",
-        "evidenceHash": "sha256:c7c63be8112c9bdd4ba1e1774bcb4502793e8acbc8b4800afa7bfd2d3209f92a",
+        "sourceHash": "sha256:b774c298678dd4b4be5f8e6b4640f502dbcfd47d5aa2862cc5b97ec65b0b7ae7",
+        "factHash": "sha256:70b604a4871713724fed9c76286a9237ca0e044700f162464a3df8ae66a1a927",
+        "evidenceHash": "sha256:b774c298678dd4b4be5f8e6b4640f502dbcfd47d5aa2862cc5b97ec65b0b7ae7",
         "normalizationVersion": "fact-v1",
-        "reviewer": null,
+        "reviewer": {
+          "role": "operator_source_review"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b774c298678dd4b4be5f8e6b4640f502dbcfd47d5aa2862cc5b97ec65b0b7ae7",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:3b65a19366eebb00c7ee20b9b7b3f9d18a39437b1b71ee5acbcb1480f2a1ccee"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b774c298678dd4b4be5f8e6b4640f502dbcfd47d5aa2862cc5b97ec65b0b7ae7",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:f2bdff1da1a768917a17ba18b70b0b3bba12b2c1a8e684307f0982fc715aa072"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b774c298678dd4b4be5f8e6b4640f502dbcfd47d5aa2862cc5b97ec65b0b7ae7",
+            "reviewedAt": "2026-09-16T08:57:29Z",
+            "contentHash": "sha256:5d49e7cfd7cc70aa497b8ef719a4d58e3f38fa8c157876973a998d8f90fb1805"
           }
         }
       },
@@ -9091,8 +9125,8 @@
       "employmentFte": 1.0,
       "employmentStartsAt": "2026-11-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
-      "sourceFetchedAt": "2026-09-11"
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
+      "sourceFetchedAt": "2026-09-16T08:57:29Z"
     },
     {
       "id": "job-28000-7f7d7e2a7a9f",
@@ -13059,6 +13093,1150 @@
           }
         }
       }
+    },
+    {
+      "id": "job-23000-1230b810-efab-4d26-87dd-c91660bb1c84",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Akademický pracovník / akademická pracovnice - vedoucí katedry sociologie a sociální práce Fakulty filozofické ZČU v Plzni",
+        "en": "Akademický pracovník / akademická pracovnice - vedoucí katedry sociologie a sociální práce Fakulty filozofické ZČU v Plzni",
+        "cs": "Akademický pracovník / akademická pracovnice - vedoucí katedry sociologie a sociální práce Fakulty filozofické ZČU v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry sociologie a sociální práce Fakulty filozofické ZČU v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": null,
+      "employmentStartsAt": "2027-07-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=1230b810-efab-4d26-87dd-c91660bb1c84;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=1230b810-efab-4d26-87dd-c91660bb1c84;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "1230b810-efab-4d26-87dd-c91660bb1c84",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:0e57692ffad4ce4a4b164361138e6d81c20f2416bd97b3f546b2de2da47a8dd2",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:0e57692ffad4ce4a4b164361138e6d81c20f2416bd97b3f546b2de2da47a8dd2",
+        "factHash": "sha256:e3752f1b01b3fd3b9aceb1d769c9f3bad7cb2a24a1c3d81a7b1359107332ca3e",
+        "evidenceHash": "sha256:0e57692ffad4ce4a4b164361138e6d81c20f2416bd97b3f546b2de2da47a8dd2",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-645f02ab-b46f-4742-be7d-494d4bbc0811",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Akademický pracovník / akademická pracovnice - vedoucí katedry filologických studií Fakulty filozofické ZČU v Plzni",
+        "en": "Akademický pracovník / akademická pracovnice - vedoucí katedry filologických studií Fakulty filozofické ZČU v Plzni",
+        "cs": "Akademický pracovník / akademická pracovnice - vedoucí katedry filologických studií Fakulty filozofické ZČU v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry filologických studií Fakulty filozofické ZČU v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": null,
+      "employmentStartsAt": "2027-04-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=645f02ab-b46f-4742-be7d-494d4bbc0811;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=645f02ab-b46f-4742-be7d-494d4bbc0811;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "645f02ab-b46f-4742-be7d-494d4bbc0811",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:5fca3057043c776965070679cd01b7c65fc7a382e7b2b9c66b2a5b0ca42c0282",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:5fca3057043c776965070679cd01b7c65fc7a382e7b2b9c66b2a5b0ca42c0282",
+        "factHash": "sha256:b041139f0053fe33944baff8f4cd620725bb89382ed60c7e538e4f8cc99c5a53",
+        "evidenceHash": "sha256:5fca3057043c776965070679cd01b7c65fc7a382e7b2b9c66b2a5b0ca42c0282",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-ac7b38a7-0717-4916-889a-739d0a39c81e",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Akademický pracovník / akademická pracovnice - vedoucí katedry filozofie Fakulty filozofické ZČU v Plzni",
+        "en": "Akademický pracovník / akademická pracovnice - vedoucí katedry filozofie Fakulty filozofické ZČU v Plzni",
+        "cs": "Akademický pracovník / akademická pracovnice - vedoucí katedry filozofie Fakulty filozofické ZČU v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry filozofie Fakulty filozofické ZČU v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": null,
+      "employmentStartsAt": "2027-01-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=ac7b38a7-0717-4916-889a-739d0a39c81e;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=ac7b38a7-0717-4916-889a-739d0a39c81e;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "ac7b38a7-0717-4916-889a-739d0a39c81e",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:9df6e5f5e4125aaffd581aa90e6a47e3aeaa4b5c5ea8b39f9c55de168622e316",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:9df6e5f5e4125aaffd581aa90e6a47e3aeaa4b5c5ea8b39f9c55de168622e316",
+        "factHash": "sha256:0a5c4779fe2750cfb5e9a8e6dd1ce7603a4eb13ffb2e3a98ee8ac6276ff6e727",
+        "evidenceHash": "sha256:9df6e5f5e4125aaffd581aa90e6a47e3aeaa4b5c5ea8b39f9c55de168622e316",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-12d5811e-022b-41df-81c8-78e3800139a2",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Akademický pracovník / akademická pracovnice - vedoucí katedry archeologie Fakulty filozofické ZČU v Plzni",
+        "en": "Akademický pracovník / akademická pracovnice - vedoucí katedry archeologie Fakulty filozofické ZČU v Plzni",
+        "cs": "Akademický pracovník / akademická pracovnice - vedoucí katedry archeologie Fakulty filozofické ZČU v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry archeologie Fakulty filozofické ZČU v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": null,
+      "employmentStartsAt": "2027-01-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=12d5811e-022b-41df-81c8-78e3800139a2;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=12d5811e-022b-41df-81c8-78e3800139a2;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "12d5811e-022b-41df-81c8-78e3800139a2",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:5680a7095ce2bcec3554491d4fe8cfbfaa4447981644ba5830f946e559c9276a",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:5680a7095ce2bcec3554491d4fe8cfbfaa4447981644ba5830f946e559c9276a",
+        "factHash": "sha256:50547464e9ba6fe268ebd7e4a93933d7b1251879ea8d28aaf7a8718f7bb4931b",
+        "evidenceHash": "sha256:5680a7095ce2bcec3554491d4fe8cfbfaa4447981644ba5830f946e559c9276a",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-6cbee7a8-ea92-4508-9e13-7b591dfc84d2",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Akademický pracovník / akademická pracovnice - vedoucí katedry politologie a mezinárodních vztahů Fakulty filozofické ZČU v Plzni",
+        "en": "Akademický pracovník / akademická pracovnice - vedoucí katedry politologie a mezinárodních vztahů Fakulty filozofické ZČU v Plzni",
+        "cs": "Akademický pracovník / akademická pracovnice - vedoucí katedry politologie a mezinárodních vztahů Fakulty filozofické ZČU v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry politologie a mezinárodních vztahů Fakulty filozofické ZČU v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": null,
+      "employmentStartsAt": "2027-01-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=6cbee7a8-ea92-4508-9e13-7b591dfc84d2;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=6cbee7a8-ea92-4508-9e13-7b591dfc84d2;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "6cbee7a8-ea92-4508-9e13-7b591dfc84d2",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:80a4944e7e11a007f218ec75f5da66b789040e4aa05095e12878d80b439fe83d",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:80a4944e7e11a007f218ec75f5da66b789040e4aa05095e12878d80b439fe83d",
+        "factHash": "sha256:2eddb5a7c3e1a8721c59d8c693d130bdda8eea0dbf9e3257a1833644fc4f4f86",
+        "evidenceHash": "sha256:80a4944e7e11a007f218ec75f5da66b789040e4aa05095e12878d80b439fe83d",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-259cd152-726f-4888-8308-4ae5e41133a7",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Akademický pracovník / akademická pracovnice - vedoucí katedry historických věd Fakulty filozofické ZČU v Plzni",
+        "en": "Akademický pracovník / akademická pracovnice - vedoucí katedry historických věd Fakulty filozofické ZČU v Plzni",
+        "cs": "Akademický pracovník / akademická pracovnice - vedoucí katedry historických věd Fakulty filozofické ZČU v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry historických věd Fakulty filozofické ZČU v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": null,
+      "employmentStartsAt": "2027-01-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=259cd152-726f-4888-8308-4ae5e41133a7;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=259cd152-726f-4888-8308-4ae5e41133a7;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "259cd152-726f-4888-8308-4ae5e41133a7",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:eb50989aa80f242857921d427eb7df6a56f1c96fb337c09627352bf9a102852e",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:eb50989aa80f242857921d427eb7df6a56f1c96fb337c09627352bf9a102852e",
+        "factHash": "sha256:0599f70d783bd4737903b899f257b2b37dd3d4cdd91a7a7a5d4d347879774aea",
+        "evidenceHash": "sha256:eb50989aa80f242857921d427eb7df6a56f1c96fb337c09627352bf9a102852e",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-1fef677c-9c9c-4791-a77a-5d83d74f9a8e",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Akademický pracovník - odborný asistent / akademická PRACOVNICE - odborná asistentka vedoucí katedry na Katedře výpočetní a didaktické techniky Fakulty pedagogické ZČU v plzni",
+        "en": "Akademický pracovník - odborný asistent / akademická PRACOVNICE - odborná asistentka vedoucí katedry na Katedře výpočetní a didaktické techniky Fakulty pedagogické ZČU v plzni",
+        "cs": "Akademický pracovník - odborný asistent / akademická PRACOVNICE - odborná asistentka vedoucí katedry na Katedře výpočetní a didaktické techniky Fakulty pedagogické ZČU v plzni"
+      },
+      "laboratory": null,
+      "originalText": "Akademický pracovník - odborný asistent / akademická PRACOVNICE - odborná asistentka vedoucí katedry na Katedře výpočetní a didaktické techniky Fakulty pedagogické ZČU v plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": null,
+      "employmentStartsAt": "2026-09-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=1fef677c-9c9c-4791-a77a-5d83d74f9a8e;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=1fef677c-9c9c-4791-a77a-5d83d74f9a8e;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "1fef677c-9c9c-4791-a77a-5d83d74f9a8e",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:d2f15281eb7622ef9678d62da91f6cab0d9e6237c90e89c7abe96596d9f3ec3d",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:d2f15281eb7622ef9678d62da91f6cab0d9e6237c90e89c7abe96596d9f3ec3d",
+        "factHash": "sha256:60918e747360ee110c9cdef47ceccf2dca11bcb8182c3f94e00d1dd0da3f3b26",
+        "evidenceHash": "sha256:d2f15281eb7622ef9678d62da91f6cab0d9e6237c90e89c7abe96596d9f3ec3d",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-e3f218c2-9524-4730-9f25-54d6502bf835",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Odborný pracovník ve výzkumu R2 - Odborná pracovnice ve výzkumu (R2) se zaměřením na nové technologie v distribučních sítích, na pracovišti  RICE Fakulty elektrotechnické ZČU v Plzni",
+        "en": "Odborný pracovník ve výzkumu R2 - Odborná pracovnice ve výzkumu (R2) se zaměřením na nové technologie v distribučních sítích, na pracovišti  RICE Fakulty elektrotechnické ZČU v Plzni",
+        "cs": "Odborný pracovník ve výzkumu R2 - Odborná pracovnice ve výzkumu (R2) se zaměřením na nové technologie v distribučních sítích, na pracovišti  RICE Fakulty elektrotechnické ZČU v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Odborný pracovník ve výzkumu R2 - Odborná pracovnice ve výzkumu (R2) se zaměřením na nové technologie v distribučních sítích, na pracovišti  RICE Fakulty elektrotechnické ZČU v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "doctorate",
+      "doctorateRequired": true,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=e3f218c2-9524-4730-9f25-54d6502bf835;1.1&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=e3f218c2-9524-4730-9f25-54d6502bf835;1.1&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "e3f218c2-9524-4730-9f25-54d6502bf835",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:9fbcd83cd2a60325c21f511cce163f617f05d0bdd9337c28973df2bf34cefa4d",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:9fbcd83cd2a60325c21f511cce163f617f05d0bdd9337c28973df2bf34cefa4d",
+        "factHash": "sha256:8dccc97290f3ee906b362cd55fc792ef6319eefa959f376845d3fefeea1e40c4",
+        "evidenceHash": "sha256:9fbcd83cd2a60325c21f511cce163f617f05d0bdd9337c28973df2bf34cefa4d",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-db5b1a33-b03b-42d9-83c6-a7d334afdb30",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Researcher (R2)  with a focus on new technologies in electrical distribution networks at RICE Faculty of Electrical Engineering University of West Bohemia In Pilsen",
+        "en": "Researcher (R2)  with a focus on new technologies in electrical distribution networks at RICE Faculty of Electrical Engineering University of West Bohemia In Pilsen",
+        "cs": "Researcher (R2)  with a focus on new technologies in electrical distribution networks at RICE Faculty of Electrical Engineering University of West Bohemia In Pilsen"
+      },
+      "laboratory": null,
+      "originalText": "Researcher (R2)  with a focus on new technologies in electrical distribution networks at RICE Faculty of Electrical Engineering University of West Bohemia In Pilsen",
+      "sourceLanguage": "en",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "doctorate",
+      "doctorateRequired": true,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=db5b1a33-b03b-42d9-83c6-a7d334afdb30;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=db5b1a33-b03b-42d9-83c6-a7d334afdb30;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "db5b1a33-b03b-42d9-83c6-a7d334afdb30",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:d5b8802087c3ee4513dc1a51df5d13e960c9c5826a78b6cdfe1e09838c5a5117",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:d5b8802087c3ee4513dc1a51df5d13e960c9c5826a78b6cdfe1e09838c5a5117",
+        "factHash": "sha256:c53e701b355775aa3afbe64e819b78ef473c34be23cd431aa26ef016ae1d932d",
+        "evidenceHash": "sha256:d5b8802087c3ee4513dc1a51df5d13e960c9c5826a78b6cdfe1e09838c5a5117",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Výzkumný pracovník / výzkumná pracovnice - asistent / asistentka pro Centrum pedagogického výzkumu Fakulty pedagogické ZČU v Plzni",
+        "en": "Výzkumný pracovník / výzkumná pracovnice - asistent / asistentka pro Centrum pedagogického výzkumu Fakulty pedagogické ZČU v Plzni",
+        "cs": "Výzkumný pracovník / výzkumná pracovnice - asistent / asistentka pro Centrum pedagogického výzkumu Fakulty pedagogické ZČU v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Výzkumný pracovník / výzkumná pracovnice - asistent / asistentka pro Centrum pedagogického výzkumu Fakulty pedagogické ZČU v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 0.15,
+      "employmentStartsAt": "2026-10-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=5ba6abde-7df2-43f7-9e5f-250caa8a4169;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=5ba6abde-7df2-43f7-9e5f-250caa8a4169;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "5ba6abde-7df2-43f7-9e5f-250caa8a4169",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:57c355c739d9fb4d1e29c9f2058390b5d3e50aee2b0d9328845ce5dc816c94fe",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:57c355c739d9fb4d1e29c9f2058390b5d3e50aee2b0d9328845ce5dc816c94fe",
+        "factHash": "sha256:3e64d71609e2536b5be2ce2f4e08397fe425eed93844b6483005d97daf004d1a",
+        "evidenceHash": "sha256:57c355c739d9fb4d1e29c9f2058390b5d3e50aee2b0d9328845ce5dc816c94fe",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-29a3d552-56ea-4cf7-adc2-7d34fc14f6c3",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Akademický pracovník / akademická pracovnice - odborný asistent / odborná asistentka / asistent / asistentka na katedře ekonomie a kvantitativních metod Fakulty ekonomické ZČU v Plzni",
+        "en": "Akademický pracovník / akademická pracovnice - odborný asistent / odborná asistentka / asistent / asistentka na katedře ekonomie a kvantitativních metod Fakulty ekonomické ZČU v Plzni",
+        "cs": "Akademický pracovník / akademická pracovnice - odborný asistent / odborná asistentka / asistent / asistentka na katedře ekonomie a kvantitativních metod Fakulty ekonomické ZČU v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Akademický pracovník / akademická pracovnice - odborný asistent / odborná asistentka / asistent / asistentka na katedře ekonomie a kvantitativních metod Fakulty ekonomické ZČU v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": null,
+      "employmentStartsAt": "2026-10-01",
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=29a3d552-56ea-4cf7-adc2-7d34fc14f6c3;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=29a3d552-56ea-4cf7-adc2-7d34fc14f6c3;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "29a3d552-56ea-4cf7-adc2-7d34fc14f6c3",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:b85ca0ebf9e121a5f961b37267faabf53d2158dc7f6ae61bdb18e4c8066d8aa4",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:b85ca0ebf9e121a5f961b37267faabf53d2158dc7f6ae61bdb18e4c8066d8aa4",
+        "factHash": "sha256:4b8d875775dee0b7afca9dfcc8e3eddf026d8e5fb86400bed92bfadc5f829919",
+        "evidenceHash": "sha256:b85ca0ebf9e121a5f961b37267faabf53d2158dc7f6ae61bdb18e4c8066d8aa4",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-74fc20c7-139d-4c69-95e0-dd773466fd7a",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Technik/technička – operátor/operátorka bezpečnostních systémů pro Odbor bezpečnosti Západočeské univerzity v Plzni",
+        "en": "Technik/technička – operátor/operátorka bezpečnostních systémů pro Odbor bezpečnosti Západočeské univerzity v Plzni",
+        "cs": "Technik/technička – operátor/operátorka bezpečnostních systémů pro Odbor bezpečnosti Západočeské univerzity v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Technik/technička – operátor/operátorka bezpečnostních systémů pro Odbor bezpečnosti Západočeské univerzity v Plzni",
+      "sourceLanguage": "en",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "unconfirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "unknown",
+      "employmentFte": null,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=74fc20c7-139d-4c69-95e0-dd773466fd7a;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=74fc20c7-139d-4c69-95e0-dd773466fd7a;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "74fc20c7-139d-4c69-95e0-dd773466fd7a",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:008252d554fae018309761b55e76d044c54f5d1aa0f08fbb7070c813468b5bc1",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:008252d554fae018309761b55e76d044c54f5d1aa0f08fbb7070c813468b5bc1",
+        "factHash": "sha256:c23f176c4d690e4098244386f30a1e05bb3a320c7cfb4e6ed1f74172359fc7ad",
+        "evidenceHash": "sha256:008252d554fae018309761b55e76d044c54f5d1aa0f08fbb7070c813468b5bc1",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
+    },
+    {
+      "id": "job-23000-a56b8340-fe46-4873-8c55-28fe339fc370",
+      "employerId": "msmt-vs_23000",
+      "title": {
+        "zh-CN": "Technik/technička Metalografické laboratoře, Regionální technologický institut Západočeské univerzity v Plzni",
+        "en": "Technik/technička Metalografické laboratoře, Regionální technologický institut Západočeské univerzity v Plzni",
+        "cs": "Technik/technička Metalografické laboratoře, Regionální technologický institut Západočeské univerzity v Plzni"
+      },
+      "laboratory": null,
+      "originalText": "Technik/technička Metalografické laboratoře, Regionální technologický institut Západočeské univerzity v Plzni",
+      "sourceLanguage": "cs",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": null,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=a56b8340-fe46-4873-8c55-28fe339fc370;1.0&download=0",
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=a56b8340-fe46-4873-8c55-28fe339fc370;1.0&download=0",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "review_pending",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "比尔森",
+        "en": "Plzeň",
+        "cs": "Plzeň"
+      },
+      "verifiedAt": "2026-09-16",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-09-16T17:00:00Z",
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "zcu-central-vacancies",
+      "sourceItemId": "a56b8340-fe46-4873-8c55-28fe339fc370",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:5a1d82cecb4057316fc58879cb0c8f9aee30a39da013757b7fc01eb7f654656d",
+      "publicationStatus": "review_pending",
+      "translationReview": {
+        "sourceHash": "sha256:5a1d82cecb4057316fc58879cb0c8f9aee30a39da013757b7fc01eb7f654656d",
+        "factHash": "sha256:d18327a8e24fdec509cb6ba9e48780a95893dfc2ce6b44aa32f33e8a3cd07989",
+        "evidenceHash": "sha256:5a1d82cecb4057316fc58879cb0c8f9aee30a39da013757b7fc01eb7f654656d",
+        "normalizationVersion": "fact-v1",
+        "reviewer": null,
+        "locales": {
+          "zh-CN": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "en": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          },
+          "cs": {
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
+          }
+        }
+      }
     }
   ],
   "windows": [
@@ -13745,14 +14923,14 @@
       "academicYear": null,
       "roundNumber": null,
       "roundLabelOriginal": null,
-      "roundType": "regular",
+      "roundType": "rolling",
       "applicantScope": null,
-      "opensAt": "2026-01-22",
+      "opensAt": null,
       "closesAt": null,
       "timezone": "Europe/Prague",
-      "datePrecision": "date",
+      "datePrecision": "unknown",
       "status": "unknown",
-      "conditionalOnVacancies": false,
+      "conditionalOnVacancies": true,
       "applicationUrl": "https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice",
       "sourceEvidenceId": "ev-job-22000-55dab25c16c1"
     },
@@ -14619,6 +15797,114 @@
       "conditionalOnVacancies": false,
       "applicationUrl": "https://www.osu.cz/kariera/kariera-neakademicke-pozice/?inzeratid=184",
       "sourceEvidenceId": "ev-job-17000-184"
+    },
+    {
+      "id": "win-job-25000-e0c3d1dfdd91",
+      "ownerType": "research_job",
+      "ownerId": "job-25000-e0c3d1dfdd91",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": null,
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": null,
+      "closesAt": "2026-09-18",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://www.upce.cz/sites/default/files/global/2026-09/7240/INZERAT_doktorandi_2026_fin_20260904_140701.pdf",
+      "sourceEvidenceId": "ev-job-25000-e0c3d1dfdd91"
+    },
+    {
+      "id": "win-job-23000-1fef677c-9c9c-4791-a77a-5d83d74f9a8e",
+      "ownerType": "research_job",
+      "ownerId": "job-23000-1fef677c-9c9c-4791-a77a-5d83d74f9a8e",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "1fef677c-9c9c-4791-a77a-5d83d74f9a8e",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": null,
+      "closesAt": "2026-10-12",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=1fef677c-9c9c-4791-a77a-5d83d74f9a8e;1.0&download=0",
+      "sourceEvidenceId": "ev-job-23000-1fef677c-9c9c-4791-a77a-5d83d74f9a8e"
+    },
+    {
+      "id": "win-job-23000-e3f218c2-9524-4730-9f25-54d6502bf835",
+      "ownerType": "research_job",
+      "ownerId": "job-23000-e3f218c2-9524-4730-9f25-54d6502bf835",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "e3f218c2-9524-4730-9f25-54d6502bf835",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": null,
+      "closesAt": "2026-10-04",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=e3f218c2-9524-4730-9f25-54d6502bf835;1.1&download=0",
+      "sourceEvidenceId": "ev-job-23000-e3f218c2-9524-4730-9f25-54d6502bf835"
+    },
+    {
+      "id": "win-job-23000-db5b1a33-b03b-42d9-83c6-a7d334afdb30",
+      "ownerType": "research_job",
+      "ownerId": "job-23000-db5b1a33-b03b-42d9-83c6-a7d334afdb30",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "db5b1a33-b03b-42d9-83c6-a7d334afdb30",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": null,
+      "closesAt": "2026-10-04",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=db5b1a33-b03b-42d9-83c6-a7d334afdb30;1.0&download=0",
+      "sourceEvidenceId": "ev-job-23000-db5b1a33-b03b-42d9-83c6-a7d334afdb30"
+    },
+    {
+      "id": "win-job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169",
+      "ownerType": "research_job",
+      "ownerId": "job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "5ba6abde-7df2-43f7-9e5f-250caa8a4169",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": null,
+      "closesAt": "2026-09-30",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=5ba6abde-7df2-43f7-9e5f-250caa8a4169;1.0&download=0",
+      "sourceEvidenceId": "ev-job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169"
+    },
+    {
+      "id": "win-job-23000-29a3d552-56ea-4cf7-adc2-7d34fc14f6c3",
+      "ownerType": "research_job",
+      "ownerId": "job-23000-29a3d552-56ea-4cf7-adc2-7d34fc14f6c3",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "29a3d552-56ea-4cf7-adc2-7d34fc14f6c3",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": null,
+      "closesAt": "2026-09-20",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://xdoc.zcu.cz/api/alfresco?id=29a3d552-56ea-4cf7-adc2-7d34fc14f6c3;1.0&download=0",
+      "sourceEvidenceId": "ev-job-23000-29a3d552-56ea-4cf7-adc2-7d34fc14f6c3"
     }
   ],
   "evidence": [
@@ -15215,7 +16501,7 @@
     {
       "id": "ev-job-22000-55dab25c16c1",
       "url": "https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice",
-      "sourceHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
+      "sourceHash": "sha256:995e3f77111b5c1fc9c577d43c2674355393189f01b07a771d1d6b4f6e8fca42",
       "note": {
         "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
         "en": "Harvested from an official career page. A missing start date is not treated as open.",
@@ -15315,7 +16601,7 @@
     {
       "id": "ev-job-21000-5441",
       "url": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/5441",
-      "sourceHash": "sha256:b0799fb19d967c8487e67c545d0e0255e3bdfd0dd81f35af92deb807cdc00048",
+      "sourceHash": "sha256:b94f11f4baa1c26c1fa0402c6c561ad741e5eeac7e2e38493f10ece3b1d4de09",
       "note": {
         "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
         "en": "Harvested from an official career page. A missing start date is not treated as open.",
@@ -15465,7 +16751,7 @@
     {
       "id": "ev-job-12000-955d7a8b0745",
       "url": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/07092026-ufy-postdok-fyzik-final.pdf",
-      "sourceHash": "sha256:5ae5032d1dfc9d128b77ecef64976f47e102e035cd18e350e281b0e729a1a810",
+      "sourceHash": "sha256:64f6e1b0c67e37d17bda7dae27067656259bd9d7b87cebf707ccff7bf54c1530",
       "note": {
         "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
         "en": "Harvested from an official career page. A missing start date is not treated as open.",
@@ -15485,7 +16771,7 @@
     {
       "id": "ev-job-12000-0734174e7128",
       "url": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/02092026-vedecky-pracovnik-lv.pdf",
-      "sourceHash": "sha256:8489b9e0d604b0b9c01dca4be82b1d49f9d996218a24f6ebaca3ee65e3bcd6ec",
+      "sourceHash": "sha256:8a5dff1cadd648ec47a36f928e7c40b040c345f421c0c7c85ae7b5fd4d575e35",
       "note": {
         "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
         "en": "Harvested from an official career page. A missing start date is not treated as open.",
@@ -15575,7 +16861,7 @@
     {
       "id": "ev-job-25000-e0c3d1dfdd91",
       "url": "https://www.upce.cz/sites/default/files/global/2026-09/7240/INZERAT_doktorandi_2026_fin_20260904_140701.pdf",
-      "sourceHash": "sha256:6be71c3ac8fcd4be35b078cbab529ea27960bb5fe5412d401b293f85c9d3250e",
+      "sourceHash": "sha256:29462bcf4a4a40b08b287c1a6b5f67ff70480ca7dd46e1866774003fd7cf77c4",
       "note": {
         "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
         "en": "Harvested from an official career page. A missing start date is not treated as open.",
@@ -15645,7 +16931,7 @@
     {
       "id": "ev-job-28000-01261172b175",
       "url": "https://kariera.utb.cz/vedecky-pracovnik-vedecka-pracovnice-pro-uni-pokrocile-polovodicove-a-heterostrukturovane-nanomaterialy-pro-fotoelektrochemii-elektrokatalyzu-a-udrzitelnou-konverzi-energie/",
-      "sourceHash": "sha256:8f70b94b8f34a5ac42378cc874ca1c1c52fbcf5341066505117b6e5530c9be80",
+      "sourceHash": "sha256:500ca5bf75c8463c031aca8343b651c695cf79c9f7b49f91b90807b26d82e0f2",
       "note": {
         "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
         "en": "Harvested from an official career page. A missing start date is not treated as open.",
@@ -15655,7 +16941,7 @@
     {
       "id": "ev-job-28000-0b4c39224ec3",
       "url": "https://kariera.utb.cz/vedecky-pracovnik-vedecka-pracovnice-pro-uni-rizena-synteza-a-charakterizace-polymernich-materialu-pro-biomedicinske-aplikace/",
-      "sourceHash": "sha256:c7c63be8112c9bdd4ba1e1774bcb4502793e8acbc8b4800afa7bfd2d3209f92a",
+      "sourceHash": "sha256:b774c298678dd4b4be5f8e6b4640f502dbcfd47d5aa2862cc5b97ec65b0b7ae7",
       "note": {
         "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
         "en": "Harvested from an official career page. A missing start date is not treated as open.",
@@ -16121,580 +17407,269 @@
         "en": "Harvested from an official career page. A missing start date is not treated as open.",
         "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
       }
+    },
+    {
+      "id": "ev-job-23000-1230b810-efab-4d26-87dd-c91660bb1c84",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=1230b810-efab-4d26-87dd-c91660bb1c84;1.0&download=0",
+      "sourceHash": "sha256:0e57692ffad4ce4a4b164361138e6d81c20f2416bd97b3f546b2de2da47a8dd2",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-645f02ab-b46f-4742-be7d-494d4bbc0811",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=645f02ab-b46f-4742-be7d-494d4bbc0811;1.0&download=0",
+      "sourceHash": "sha256:5fca3057043c776965070679cd01b7c65fc7a382e7b2b9c66b2a5b0ca42c0282",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-ac7b38a7-0717-4916-889a-739d0a39c81e",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=ac7b38a7-0717-4916-889a-739d0a39c81e;1.0&download=0",
+      "sourceHash": "sha256:9df6e5f5e4125aaffd581aa90e6a47e3aeaa4b5c5ea8b39f9c55de168622e316",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-12d5811e-022b-41df-81c8-78e3800139a2",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=12d5811e-022b-41df-81c8-78e3800139a2;1.0&download=0",
+      "sourceHash": "sha256:5680a7095ce2bcec3554491d4fe8cfbfaa4447981644ba5830f946e559c9276a",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-6cbee7a8-ea92-4508-9e13-7b591dfc84d2",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=6cbee7a8-ea92-4508-9e13-7b591dfc84d2;1.0&download=0",
+      "sourceHash": "sha256:80a4944e7e11a007f218ec75f5da66b789040e4aa05095e12878d80b439fe83d",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-259cd152-726f-4888-8308-4ae5e41133a7",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=259cd152-726f-4888-8308-4ae5e41133a7;1.0&download=0",
+      "sourceHash": "sha256:eb50989aa80f242857921d427eb7df6a56f1c96fb337c09627352bf9a102852e",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-1fef677c-9c9c-4791-a77a-5d83d74f9a8e",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=1fef677c-9c9c-4791-a77a-5d83d74f9a8e;1.0&download=0",
+      "sourceHash": "sha256:d2f15281eb7622ef9678d62da91f6cab0d9e6237c90e89c7abe96596d9f3ec3d",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-e3f218c2-9524-4730-9f25-54d6502bf835",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=e3f218c2-9524-4730-9f25-54d6502bf835;1.1&download=0",
+      "sourceHash": "sha256:9fbcd83cd2a60325c21f511cce163f617f05d0bdd9337c28973df2bf34cefa4d",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-db5b1a33-b03b-42d9-83c6-a7d334afdb30",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=db5b1a33-b03b-42d9-83c6-a7d334afdb30;1.0&download=0",
+      "sourceHash": "sha256:d5b8802087c3ee4513dc1a51df5d13e960c9c5826a78b6cdfe1e09838c5a5117",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=5ba6abde-7df2-43f7-9e5f-250caa8a4169;1.0&download=0",
+      "sourceHash": "sha256:57c355c739d9fb4d1e29c9f2058390b5d3e50aee2b0d9328845ce5dc816c94fe",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-29a3d552-56ea-4cf7-adc2-7d34fc14f6c3",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=29a3d552-56ea-4cf7-adc2-7d34fc14f6c3;1.0&download=0",
+      "sourceHash": "sha256:b85ca0ebf9e121a5f961b37267faabf53d2158dc7f6ae61bdb18e4c8066d8aa4",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-74fc20c7-139d-4c69-95e0-dd773466fd7a",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=74fc20c7-139d-4c69-95e0-dd773466fd7a;1.0&download=0",
+      "sourceHash": "sha256:008252d554fae018309761b55e76d044c54f5d1aa0f08fbb7070c813468b5bc1",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-23000-a56b8340-fe46-4873-8c55-28fe339fc370",
+      "url": "https://xdoc.zcu.cz/api/alfresco?id=a56b8340-fe46-4873-8c55-28fe339fc370;1.0&download=0",
+      "sourceHash": "sha256:5a1d82cecb4057316fc58879cb0c8f9aee30a39da013757b7fc01eb7f654656d",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
     }
   ],
   "discovery": {
     "attempts": [
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://www.tul.cz/kariera/probihajici-vyberova-rizeni/",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://dumbledore.zcu.cz/document/data/folder/workspace://SpacesStore/bd09d1ff-712d-46ac-803a-f4b32201ec68?folderSort=az&fileSort=lu_desc",
         "status": 200,
         "ok": true,
         "kind": "listing"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15778",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=1230b810-efab-4d26-87dd-c91660bb1c84;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15688",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=645f02ab-b46f-4742-be7d-494d4bbc0811;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15786",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=ac7b38a7-0717-4916-889a-739d0a39c81e;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15681",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=12d5811e-022b-41df-81c8-78e3800139a2;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15737",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=6cbee7a8-ea92-4508-9e13-7b591dfc84d2;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15719",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=259cd152-726f-4888-8308-4ae5e41133a7;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15674",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=1fef677c-9c9c-4791-a77a-5d83d74f9a8e;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15205",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=e3f218c2-9524-4730-9f25-54d6502bf835;1.1&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15496",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=db5b1a33-b03b-42d9-83c6-a7d334afdb30;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15540",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=5ba6abde-7df2-43f7-9e5f-250caa8a4169;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15502",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=29a3d552-56ea-4cf7-adc2-7d34fc14f6c3;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15450",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=74fc20c7-139d-4c69-95e0-dd773466fd7a;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15489",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=4e0dbfc5-4d4f-43f2-8b7d-b94fa55556dc;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15417",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=6f60661c-946a-4394-b61e-61cd07adf522;1.1&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15405",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=01e871c7-b57a-4a60-8925-35fe3da9c833;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15404",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=a56b8340-fe46-4873-8c55-28fe339fc370;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15373",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=7e9b7cf9-06e6-4087-8720-047ef78580a3;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
       },
       {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15371",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15337",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15392",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15308",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15196",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15190",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15018",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15178",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15184",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15140",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15133",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14824",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15122",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/15032",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14995",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14823",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14822",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14982",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14890",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14900",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14852",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14797",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14756",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14714",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14728",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14729",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14616",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14618",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14567",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14583",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14538",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14517",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14383",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14401",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14395",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14384",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14373",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14264",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14327",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14204",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14207",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14126",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13746",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/14019",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13959",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13745",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13830",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13759",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13719",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13813",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13814",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13718",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13703",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13631",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13709",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13494",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13487",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13430",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13390",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13389",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13188",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13070",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/13161",
-        "status": 200,
-        "ok": true,
-        "kind": "detail-attachment"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "url": "https://doc.tul.cz/12782",
+        "sourceId": "zcu-central-vacancies",
+        "url": "https://xdoc.zcu.cz/api/alfresco?id=766c8566-08d4-481a-b2c9-34344be5bcbc;1.0&download=0",
         "status": 200,
         "ok": true,
         "kind": "detail-attachment"
@@ -16702,360 +17677,62 @@
     ],
     "quarantined": [
       {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15778",
-        "title": "Kuchař/ka univerzitní menzy",
+        "sourceId": "zcu-central-vacancies",
+        "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=4e0dbfc5-4d4f-43f2-8b7d-b94fa55556dc;1.0&download=0",
+        "title": "Systémový analytik/systémová analytička, Odbor kvality Západočeské univerzity v Plzni",
         "reason": "detail-not-a-supported-research-vacancy"
       },
       {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15688",
-        "title": "Kuchař/ka ve společném stravování a výdej stravy",
+        "sourceId": "zcu-central-vacancies",
+        "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=6f60661c-946a-4394-b61e-61cd07adf522;1.1&download=0",
+        "title": "Operátor/ operátorka bezpečnostního velínu, Odbor bezpečnosti Západočeské univerzity v Plzni",
         "reason": "detail-not-a-supported-research-vacancy"
       },
       {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15786",
-        "title": "Vedoucí technické správy kolejí a menz",
+        "sourceId": "zcu-central-vacancies",
+        "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=01e871c7-b57a-4a60-8925-35fe3da9c833;1.0&download=0",
+        "title": "Administrátorka, administrátor projektu, Fakulta ekonomická, Středisko projektových aktivit",
         "reason": "detail-not-a-supported-research-vacancy"
       },
       {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15737",
-        "title": "Administrátor/ka projektů Zahraničního oddělení",
+        "sourceId": "zcu-central-vacancies",
+        "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=7e9b7cf9-06e6-4087-8720-047ef78580a3;1.0&download=0",
+        "title": "Šéfkuchař/šéfkuchařka, Správa kolejí a menz ZČU",
         "reason": "detail-not-a-supported-research-vacancy"
       },
       {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15719",
-        "title": "Koordinátor/ka mobilit",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15674",
-        "title": "Specialista/ka komunikace a marketingu",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15496",
-        "title": "Domovník/Domovnice",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15540",
-        "title": "Metodik/metodička účetnictví a hlavní účetní",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15502",
-        "title": "Projektový koordinátor/Projektová koordinátorka",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15450",
-        "title": "Metodik/Metodička účetnictví a hlavní účetní",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15489",
-        "title": "Administrátor projektů Zahraničního oddělení",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15417",
-        "title": "Koordinátor/ka marketingu a vnějších vztahů",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15405",
-        "title": "HR Specialista/tka rozvoje a implementace procesů",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15404",
-        "title": "Metodik a správce spisové služby",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15337",
-        "title": "Sekretář/ka – Samostatný/á administrativní pracovník/pracovnice",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15392",
-        "title": "Uklízeč/uklízečka",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15308",
-        "title": "Výdej stravy – expedient spol. stravování a kuchař minutkové kuchyně",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15018",
-        "title": "Prodavač/ka v kantýně Husova",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15184",
-        "title": "Koordinátor/ka marketingu a vnějších vztahů",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15140",
-        "title": "Uklízeč/ka",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15133",
-        "title": "Kuchař/ka univerzitní menzy (jednosměnný provoz, 6 týdnů dovolené, stabilní zaměstnavatel)",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15122",
-        "title": "Specialista/specialistka marketingu a komunikace",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/15032",
-        "title": "Samostatný/á účetní včetně přípravy účetních dokladů pro fakturaci a pod.",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14995",
-        "title": "Pomocný pracovník ve stravování, úklid a mytí nádobí",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14982",
-        "title": "Řidič/skladník",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14900",
-        "title": "Pracovník/Pracovnice administrátor projektů Zahraničního oddělení",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14852",
-        "title": "Kuchař/ka univerzitní menzy",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14756",
-        "title": "Administrátor/ka projektů",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14714",
-        "title": "Právník/Právnička",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14728",
-        "title": "Recepční sportovní haly a stadionu",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14729",
-        "title": "Vedoucí stravovacího provozu",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14618",
-        "title": "Samostatný/á odborný/á referent/ka na Oddělení pro rozvoj TUL",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14583",
-        "title": "Šéfkuchař/ka univerzitní menzy (jednosměnný provoz, 6 týdnů dovolené, stabilní zaměstnavatel)",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14538",
-        "title": "Asistent/Asistentka vedoucího katedry",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14517",
-        "title": "Šéfkuchař společného stravování",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14383",
-        "title": "Samostatný/á účetní",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14401",
-        "title": "Finanční a datový/á analytik/čka",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14395",
-        "title": "Odborný/á referent/ka na úseku studijním FP",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14384",
-        "title": "Správce síťové infrastruktury",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14264",
-        "title": "Personalista/ka – Nastavení HR procesů, Kompetenční modely, Mentoring",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14327",
-        "title": "Uklízeč/ka",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14207",
-        "title": "Vrátný/á do nepřetržitého provozu na recepci kolejí Harcov",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/14019",
-        "title": "Výdej stravy – expedient společného stravování",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/13959",
-        "title": "Pracovník/Pracovnice do Oddělení pro vzdělávání a vnitřní legislativu",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/13830",
-        "title": "Provozní stravovacího provozu – Catering",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/13719",
-        "title": "Samostatný/á účetní",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/13813",
-        "title": "Recepční sportovní haly a stadionu",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/13814",
-        "title": "Uklízeč/ka",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/13703",
-        "title": "Odborný/á samostatný/á referent/ka pro administraci projektů Katedry geografie",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/13709",
-        "title": "Prodavač/ka v kantýně",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/13430",
-        "title": "Referent/ka pro zahraniční studium",
-        "reason": "detail-not-a-supported-research-vacancy"
-      },
-      {
-        "sourceId": "tul-central-careers",
-        "sourceUrl": "https://doc.tul.cz/13161",
-        "title": "Projektový/á manažer/ka pro Fakultu zdravotnických studií",
+        "sourceId": "zcu-central-vacancies",
+        "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=766c8566-08d4-481a-b2c9-34344be5bcbc;1.0&download=0",
+        "title": "Pomocná síla do kuchyně, Školící a ubytovací zařízení Nečtiny Západočeské univerzity v Plzni ",
         "reason": "detail-not-a-supported-research-vacancy"
       }
     ],
-    "discoveredCount": 29,
+    "discoveredCount": 13,
     "disappearedCount": 0,
     "completeSourceIds": [
-      "tul-central-careers"
+      "zcu-central-vacancies"
     ],
     "expectedSourceIds": [
-      "tul-central-careers"
+      "zcu-central-vacancies"
     ],
     "deferredSourceIds": [],
     "runKind": "all_registered_sources",
     "hostCooldowns": {}
   },
   "processedCandidateIds": [
-    "job-24000-12782",
-    "job-24000-13070",
-    "job-24000-13188",
-    "job-24000-13389",
-    "job-24000-13390",
-    "job-24000-13487",
-    "job-24000-13494",
-    "job-24000-13631",
-    "job-24000-13718",
-    "job-24000-13745",
-    "job-24000-13746",
-    "job-24000-13759",
-    "job-24000-14126",
-    "job-24000-14204",
-    "job-24000-14373",
-    "job-24000-14567",
-    "job-24000-14616",
-    "job-24000-14797",
-    "job-24000-14822",
-    "job-24000-14823",
-    "job-24000-14824",
-    "job-24000-14890",
-    "job-24000-15178",
-    "job-24000-15190",
-    "job-24000-15196",
-    "job-24000-15205",
-    "job-24000-15371",
-    "job-24000-15373",
-    "job-24000-15681"
+    "job-23000-1230b810-efab-4d26-87dd-c91660bb1c84",
+    "job-23000-12d5811e-022b-41df-81c8-78e3800139a2",
+    "job-23000-1fef677c-9c9c-4791-a77a-5d83d74f9a8e",
+    "job-23000-259cd152-726f-4888-8308-4ae5e41133a7",
+    "job-23000-29a3d552-56ea-4cf7-adc2-7d34fc14f6c3",
+    "job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169",
+    "job-23000-645f02ab-b46f-4742-be7d-494d4bbc0811",
+    "job-23000-6cbee7a8-ea92-4508-9e13-7b591dfc84d2",
+    "job-23000-74fc20c7-139d-4c69-95e0-dd773466fd7a",
+    "job-23000-a56b8340-fe46-4873-8c55-28fe339fc370",
+    "job-23000-ac7b38a7-0717-4916-889a-739d0a39c81e",
+    "job-23000-db5b1a33-b03b-42d9-83c6-a7d334afdb30",
+    "job-23000-e3f218c2-9524-4730-9f25-54d6502bf835"
   ],
   "lastRecheckedAt": "2026-09-11T19:43:39Z",
   "lastRecheckResult": {

@@ -39,7 +39,12 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
     tasks = manager.get_pending_tasks()
     # Status checks get first use of the bounded runner; the existing queue
     # determines the other tasks, including today's ordinary daily shard.
-    tasks.sort(key=lambda task: task["type"] != "job_recheck")
+    state = manager.load_state()
+    def task_order(task):
+        info = (state["shards"].get(str(task["shardIndex"]), {}) if task["type"] == "shard_refresh"
+                else state.get(VOLATILE_TASKS[task["type"]]["stateKey"], {}))
+        return (task["type"] != "job_recheck", info.get("lastAttemptAt") or "")
+    tasks.sort(key=task_order)
     deadline = clock() + budget
     report = {"tasks": [], "deferred": [], "failed": False}
     for task in tasks:

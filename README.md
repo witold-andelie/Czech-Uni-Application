@@ -4,7 +4,7 @@ A three-language (简体中文 / English / Čeština) anonymous browse platform 
 study programmes and paid research positions at Czech higher education institutions,
 built for applicants evaluating Czech higher education.
 
-**Deployment:** Cloudflare Pages + custom domain; account setup pending.
+**Deployment:** Cloudflare Pages at https://czech-uni-application.com.
 GitHub hosts the source code and CI, not the public website.
 
 ## What it does
@@ -26,18 +26,21 @@ GitHub hosts the source code and CI, not the public website.
 
 ## Current release
 
-- Publication `v2026-09-13.5`: **27 reviewed public jobs** (CZU 4, MUNI 4,
-  Charles University 2, UHK 7, OSU 9, TUL 1), 4 reviewed admissions excerpts,
-  54 baseline institutions, map coverage for all 54.
-- Candidate pipeline: 150+ records under evidence-based per-record
-  disposition (expired / blocked with reasons / awaiting trilingual review) —
-  never silently dropped, never published without review.
+- Publication `v2026-09-16.2`: **34 reviewed public jobs from 11 universities**
+  (OSU 9, UHK 7, CZU 4, MUNI 4, Charles University 2, University of South
+  Bohemia 2, Tomas Bata University 2, CTU 1, UCT Prague 1, University of
+  Pardubice 1, TUL 1), 4 reviewed admissions excerpts, 54 baseline
+  institutions, and map coverage for all 54.
+- Candidate pipeline: 163 discovered records; 125 are current, of which 34 are
+  public and 91 remain blocked with explicit reasons. Official job sources are
+  registered for 23 of 54 universities. No source currently supports an
+  exhaustive institution-wide coverage claim.
 
 ## Architecture
 
 | Layer | Technology | Runs where |
 |---|---|---|
-| Public site | TypeScript + Astro static output, Svelte islands | Third-party static host + custom domain (pending) |
+| Public site | TypeScript + Astro static output, Svelte islands | Cloudflare Pages + custom domain |
 | Publication validation | Python + Node dual contract checks | offline / CI |
 | Ingestion | Python (Scrapling) registry-driven discovery | offline, scheduled |
 | Scheduler / API design | Go + PostgreSQL | separate deployment (planned) |
@@ -97,8 +100,8 @@ Run CI manually on main after saving the settings. The deploy job uses the
 exact artifact that passed browser acceptance. It is skipped while the project
 variable is unset; configuration alone is not proof of a live deployment.
 Set the Pages production branch to `main`. Bind the purchased domain in the
-Pages Custom domains screen and follow its DNS instructions. The requested
-name is `czech-uni-application.online`; registration and payment remain pending.
+Pages Custom domains screen and follow its DNS instructions. The active
+production domain is `czech-uni-application.com`.
 Never commit API tokens or paste them into issues or logs.
 
 ### Scheduled collection
@@ -131,9 +134,9 @@ workflows. Artifact/runner quotas still apply.
 - Public beta: data coverage is partial — published records are reviewed, but no institution
   has a verified exhaustive vacancy inventory; the per-school assessment and candidate-disposition pipeline is
   expanded release by release with per-record evidence.
-- GitHub scheduled collection is configured; its first hosted result must be
-  checked before claiming automatic collection is operational. New records
-  require review; the persistent Go/Supabase service remains a later option.
+- GitHub scheduled collection is configured with bounded tasks, persisted
+  retry state, and per-source vacancy checkpoints. New records require review;
+  the persistent Go/Supabase service remains a later option.
 - Mainland-China network paths and real-device checks are not yet verified.
 
 ## Search discovery

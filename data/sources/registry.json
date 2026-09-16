@@ -664,5 +664,23 @@
     "purpose": "institution classification sample",
     "official": true,
     "collectionStatus": "not_started"
+  },
+  {
+    "id": "zcu-central-vacancies",
+    "url": "https://dumbledore.zcu.cz/document/data/folder/workspace://SpacesStore/bd09d1ff-712d-46ac-803a-f4b32201ec68?folderSort=az&fileSort=lu_desc",
+    "discoveryPageUrl": "https://www.zcu.cz/cs/University/Career/vacancies.html",
+    "purpose": "Official ZCU central vacancy documents, recursive public JSON tree and PDF full text",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "msmt-vs_23000",
+    "coverageScope": "institution_aggregator",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "zcu_document_feed",
+    "detailFormat": "pdf",
+    "followDetails": true,
+    "refreshIntervalHours": 4,
+    "collectionStatus": "adapter_verified_2026-09-16",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Endpoint and folder ID verified from official career-page scripts and Scrapling rendered document list. Central source is not asserted exhaustive; bilingual notices require duplicate review."
   }
 ]

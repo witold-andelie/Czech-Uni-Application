@@ -200,7 +200,7 @@ def test_harvest_skips_http_failures_and_keeps_title_match() -> None:
             return 200, "<h1>Post-doctoral Researcher in Regional Economics</h1><p>Deadline 31 Jan 2026</p>"
         return 200, "<h1>Research Fellow at the Institute of Particle and Nuclear Physics</h1><p>Deadline 15 September 2026</p>"
 
-    payload = harvest_candidates(candidates, fetch)
+    payload = harvest_candidates(candidates, fetch, as_of=date(2026, 9, 14))
     ids = [job["id"] for job in payload["jobs"]]
     assert ids == ["job-keep"]
     assert payload["jobs"][0]["dataClass"] == "official_career_extract"

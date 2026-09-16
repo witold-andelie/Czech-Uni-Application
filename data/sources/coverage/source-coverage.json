@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-13T18:27:39Z",
+  "generatedAt": "2026-09-16T17:06:13Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,8 +12,8 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-09-13.5",
-    "publishedAt": "2026-09-13T18:27:38Z",
+    "activeVersion": "v2026-09-16.2",
+    "publishedAt": "2026-09-16T17:05:51Z",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -134,45 +134,40 @@
     "claimBoundary": "The DZS source snapshot is complete for its reported directory result, but it is not the legal register or the authority for each university application window. Candidate records remain outside formal publication until source and zh-CN/en/cs review passes."
   },
   "jobs": {
-    "registeredOfficialListingSources": 24,
+    "registeredOfficialListingSources": 25,
     "lastRunCompleteSources": 1,
     "lastDiscoverySuccessAt": "2026-09-11T20:25:25Z",
     "discoveryIntervalHours": 4,
     "lastStatusRecheckSuccessAt": "2026-09-11T19:43:39Z",
     "statusRecheckIntervalHours": 1,
-    "mappedBaselineInstitutions": 22,
-    "baselineInstitutionCoveragePercent": 40.7,
-    "baselineInstitutionsWithoutRegisteredSource": 32,
-    "institutionAggregatorConnections": 22,
+    "mappedBaselineInstitutions": 23,
+    "baselineInstitutionCoveragePercent": 42.6,
+    "baselineInstitutionsWithoutRegisteredSource": 31,
+    "institutionAggregatorConnections": 23,
     "facultyOnlyConnections": 0,
     "assertedCompleteInstitutionSources": 0,
     "coverageScopeCounts": {
-      "institution_aggregator": 22,
+      "institution_aggregator": 23,
       "faculty": 1,
       "research_network": 1
     },
     "independentNonHeiOfficialSources": 1,
     "inventoryRows": 5019,
-    "discoveredCandidates": 150,
-    "currentCandidates": 112,
-    "supportedCandidates": 99,
+    "discoveredCandidates": 163,
+    "currentCandidates": 125,
+    "supportedCandidates": 112,
     "unspecifiedScopeCandidates": 13,
-    "reviewPending": 74,
-    "approved": 25,
-    "public": 27,
-    "currentOpenOrUnknown": 99,
+    "reviewPending": 80,
+    "approved": 32,
+    "public": 34,
+    "currentOpenOrUnknown": 112,
     "currentPaidMasterScopeCandidates": 17,
     "supportedPaidMasterScopeCandidates": 16,
-    "publishedRecords": 27,
-    "publishedPaidMasterScopeJobs": 10,
-    "sourceConnectedSchools": 22,
+    "publishedRecords": 34,
+    "publishedPaidMasterScopeJobs": 11,
+    "sourceConnectedSchools": 23,
     "fullyAssessedSchoolScope": 0,
     "missingInstitutions": [
-      {
-        "institutionId": "msmt-vs_23000",
-        "officialName": "Západočeská univerzita v Plzni",
-        "ownership": "public"
-      },
       {
         "institutionId": "msmt-vs_51000",
         "officialName": "Akademie múzických umění v Praze",
@@ -332,10 +327,10 @@
     "lastDiscoveryRun": {
       "runKind": "all_registered_sources",
       "expectedSourceIds": [
-        "tul-central-careers"
+        "zcu-central-vacancies"
       ],
       "completeSourceIds": [
-        "tul-central-careers"
+        "zcu-central-vacancies"
       ],
       "deferredSourceIds": [],
       "lastScheduledSuccessAt": "2026-09-11T20:25:25Z",
@@ -343,10 +338,10 @@
       "singleSourceRefreshCannotCountAsAllSourceSuccess": false,
       "perSourceRunStatus": [
         {
-          "sourceId": "tul-central-careers",
-          "parserVersion": "tul_careers",
+          "sourceId": "zcu-central-vacancies",
+          "parserVersion": "zcu_document_feed",
           "attempted": true,
-          "attempts": 82,
+          "attempts": 19,
           "failedAttempts": 0,
           "lastAttemptAt": null,
           "runComplete": true,
@@ -566,15 +561,23 @@
         ],
         "currentCandidateJobs": 7,
         "currentPaidMasterScopeCandidates": 2,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_23000",
         "officialName": "Západočeská univerzita v Plzni",
         "ownership": "public",
-        "registeredOfficialJobSource": false,
-        "sources": [],
-        "currentCandidateJobs": 0,
+        "registeredOfficialJobSource": true,
+        "sources": [
+          {
+            "sourceId": "zcu-central-vacancies",
+            "url": "https://dumbledore.zcu.cz/document/data/folder/workspace://SpacesStore/bd09d1ff-712d-46ac-803a-f4b32201ec68?folderSort=az&fileSort=lu_desc",
+            "coverageScope": "institution_aggregator",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": null
+          }
+        ],
+        "currentCandidateJobs": 13,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },

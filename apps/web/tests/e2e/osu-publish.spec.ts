@@ -17,7 +17,9 @@ test("OSU records land in the correct tracks (zh-CN)", async ({ page }) => {
   expect(defaultBody.includes(POSTDOC), "postdoc out of default master's results").toBeFalsy();
   expect(defaultBody.includes(DOC_ONLY), "doctorate-only role out of default results").toBeFalsy();
 
-  await page.goto("/zh-CN/research-jobs/?applied=1&track=postdoc");
+  // The published catalogue now spans multiple pages. Narrow the list before
+  // asserting track membership so this test does not depend on page ordering.
+  await page.goto("/zh-CN/research-jobs/?applied=1&track=postdoc&q=MRI");
   await expect(page.locator("article.result-card").first()).toBeVisible();
   const postdocBody = await page.evaluate(() => document.body.innerHTML);
   expect(postdocBody.includes(POSTDOC), "postdoc visible in postdoc track").toBeTruthy();

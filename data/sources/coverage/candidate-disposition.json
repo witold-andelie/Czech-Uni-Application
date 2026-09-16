@@ -1,28 +1,28 @@
 {
   "ledgerSchemaVersion": 1,
-  "generatedAt": "2026-09-13T17:59:14Z",
-  "publicationVersion": "v2026-09-13.4",
-  "currentCandidates": 112,
+  "generatedAt": "2026-09-16T17:06:13Z",
+  "publicationVersion": "v2026-09-16.2",
+  "currentCandidates": 125,
   "summary": {
-    "approved_public": 26,
-    "blocked": 86,
+    "approved_public": 34,
+    "blocked": 91,
     "blockerCounts": {
-      "unconfirmed_pay_evidence": 28,
+      "unconfirmed_pay_evidence": 29,
       "unspecified_scope": 11,
       "evidence_changed_since_review": 2,
-      "trilingual_review_missing": 84,
+      "trilingual_review_missing": 89,
       "review_incomplete": 0
     },
     "unknownAttributeCounts": {
-      "degree_unstated": 45,
-      "doctoral_enrollment_unspecified": 100
+      "degree_unstated": 54,
+      "doctoral_enrollment_unspecified": 112
     }
   },
   "bySchool": {
     "msmt-vs_22000": {
       "current": 7,
-      "approved_public": 0,
-      "blocked": 7
+      "approved_public": 1,
+      "blocked": 6
     },
     "msmt-vs_27000": {
       "current": 5,
@@ -41,13 +41,18 @@
     },
     "msmt-vs_28000": {
       "current": 8,
-      "approved_public": 0,
-      "blocked": 8
+      "approved_public": 2,
+      "blocked": 6
     },
     "msmt-vs_41000": {
       "current": 5,
       "approved_public": 4,
       "blocked": 1
+    },
+    "msmt-vs_25000": {
+      "current": 4,
+      "approved_public": 1,
+      "blocked": 3
     },
     "msmt-vs_14000": {
       "current": 5,
@@ -59,15 +64,20 @@
       "approved_public": 0,
       "blocked": 2
     },
+    "msmt-vs_23000": {
+      "current": 13,
+      "approved_public": 0,
+      "blocked": 13
+    },
     "msmt-vs_12000": {
       "current": 9,
-      "approved_public": 0,
-      "blocked": 9
+      "approved_public": 2,
+      "blocked": 7
     },
     "msmt-vs_21000": {
       "current": 17,
-      "approved_public": 0,
-      "blocked": 17
+      "approved_public": 1,
+      "blocked": 16
     },
     "msmt-vs_26000": {
       "current": 10,
@@ -79,11 +89,6 @@
       "approved_public": 7,
       "blocked": 0
     },
-    "msmt-vs_25000": {
-      "current": 4,
-      "approved_public": 0,
-      "blocked": 4
-    },
     "msmt-vs_13000": {
       "current": 5,
       "approved_public": 0,
@@ -91,8 +96,8 @@
     },
     "msmt-vs_24000": {
       "current": 1,
-      "approved_public": 0,
-      "blocked": 1
+      "approved_public": 1,
+      "blocked": 0
     },
     "msmt-vs_31000": {
       "current": 1,
@@ -385,6 +390,27 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-25000-e0c3d1dfdd91",
+      "employerId": "msmt-vs_25000",
+      "originalText": "Výzkumný pracovník - doktorand M/Ž",
+      "sourceUrl": "https://www.upce.cz/sites/default/files/global/2026-09/7240/INZERAT_doktorandi_2026_fin_20260904_140701.pdf",
+      "track": "assistant",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "required",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-09-18",
+      "decision": "approved_public",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": false
+      },
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-11000-202609-ap2-lfpl-dk-115",
       "employerId": "msmt-vs_11000",
       "originalText": "Assistant Professor at the Department of Paediatrics, LFP UK",
@@ -450,6 +476,29 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-09-12T19:28:06Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-29a3d552-56ea-4cf7-adc2-7d34fc14f6c3",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Akademický pracovník / akademická pracovnice - odborný asistent / odborná asistentka / asistent / asistentka na katedře ekonomie a kvantitativních metod Fakulty ekonomické ZČU v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=29a3d552-56ea-4cf7-adc2-7d34fc14f6c3;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-09-20",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -804,15 +853,13 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-09-29",
-      "decision": "blocked",
-      "blockers": [
-        "trilingual_review_missing"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -827,15 +874,13 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-09-29",
-      "decision": "blocked",
-      "blockers": [
-        "trilingual_review_missing"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -880,6 +925,29 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-09-13T17:17:12Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Výzkumný pracovník / výzkumná pracovnice - asistent / asistentka pro Centrum pedagogického výzkumu Fakulty pedagogické ZČU v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=5ba6abde-7df2-43f7-9e5f-250caa8a4169;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-09-30",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1102,6 +1170,52 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-23000-db5b1a33-b03b-42d9-83c6-a7d334afdb30",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Researcher (R2)  with a focus on new technologies in electrical distribution networks at RICE Faculty of Electrical Engineering University of West Bohemia In Pilsen",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=db5b1a33-b03b-42d9-83c6-a7d334afdb30;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-04",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-e3f218c2-9524-4730-9f25-54d6502bf835",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Odborný pracovník ve výzkumu R2 - Odborná pracovnice ve výzkumu (R2) se zaměřením na nové technologie v distribučních sítích, na pracovišti  RICE Fakulty elektrotechnické ZČU v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=e3f218c2-9524-4730-9f25-54d6502bf835;1.1&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-04",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-17000-183",
       "employerId": "msmt-vs_17000",
       "originalText": "Odborný asistent / odborná asistentka se zaměřením na andragogiku, evaluaci ve vzdělávání dospělých a řízení lidských zdrojů",
@@ -1238,6 +1352,29 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-23000-1fef677c-9c9c-4791-a77a-5d83d74f9a8e",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Akademický pracovník - odborný asistent / akademická PRACOVNICE - odborná asistentka vedoucí katedry na Katedře výpočetní a didaktické techniky Fakulty pedagogické ZČU v plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=1fef677c-9c9c-4791-a77a-5d83d74f9a8e;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-12",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-12000-0734174e7128",
       "employerId": "msmt-vs_12000",
       "originalText": "Vědecký pracovník/Vědecká pracovnice do Laboratoře výživy (FROV JU)",
@@ -1249,15 +1386,13 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-10-31",
-      "decision": "blocked",
-      "blockers": [
-        "trilingual_review_missing"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1444,19 +1579,17 @@
       "track": "postdoc",
       "isPostdoc": true,
       "paidStatus": "confirmed",
-      "minimumDegree": "unknown",
+      "minimumDegree": "doctorate",
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "trilingual_review_missing"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
-        "degree": true,
+        "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1818,15 +1951,13 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "trilingual_review_missing"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2097,22 +2228,20 @@
       "employerId": "msmt-vs_22000",
       "originalText": "PhD researcher position in Chemistry – 1 FTE",
       "sourceUrl": "https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice",
-      "track": "post_master",
+      "track": "assistant",
       "isPostdoc": false,
       "paidStatus": "confirmed",
       "minimumDegree": "master",
-      "doctoralEnrollment": "unspecified",
+      "doctoralEnrollment": "required",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "trilingual_review_missing"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
-        "doctoralEnrollment": true
+        "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
+      "factsExtractedAt": "2026-09-16T08:57:29Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2187,12 +2316,12 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
-      "candidateId": "job-24000-15196",
-      "employerId": "msmt-vs_24000",
-      "originalText": "Postdoctoral Researcher (Department of Environmental Technology – Laboratory of Environmental Nanorobots)",
-      "sourceUrl": "https://doc.tul.cz/15196",
-      "track": "postdoc",
-      "isPostdoc": true,
+      "candidateId": "job-23000-1230b810-efab-4d26-87dd-c91660bb1c84",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry sociologie a sociální práce Fakulty filozofické ZČU v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=1230b810-efab-4d26-87dd-c91660bb1c84;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
       "paidStatus": "confirmed",
       "minimumDegree": "unknown",
       "doctoralEnrollment": "unspecified",
@@ -2204,6 +2333,189 @@
       ],
       "unknownAttributes": {
         "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-12d5811e-022b-41df-81c8-78e3800139a2",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry archeologie Fakulty filozofické ZČU v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=12d5811e-022b-41df-81c8-78e3800139a2;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": null,
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-259cd152-726f-4888-8308-4ae5e41133a7",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry historických věd Fakulty filozofické ZČU v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=259cd152-726f-4888-8308-4ae5e41133a7;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": null,
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-645f02ab-b46f-4742-be7d-494d4bbc0811",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry filologických studií Fakulty filozofické ZČU v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=645f02ab-b46f-4742-be7d-494d4bbc0811;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": null,
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-6cbee7a8-ea92-4508-9e13-7b591dfc84d2",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry politologie a mezinárodních vztahů Fakulty filozofické ZČU v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=6cbee7a8-ea92-4508-9e13-7b591dfc84d2;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": null,
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-74fc20c7-139d-4c69-95e0-dd773466fd7a",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Technik/technička – operátor/operátorka bezpečnostních systémů pro Odbor bezpečnosti Západočeské univerzity v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=74fc20c7-139d-4c69-95e0-dd773466fd7a;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": null,
+      "decision": "blocked",
+      "blockers": [
+        "unconfirmed_pay_evidence",
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-a56b8340-fe46-4873-8c55-28fe339fc370",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Technik/technička Metalografické laboratoře, Regionální technologický institut Západočeské univerzity v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=a56b8340-fe46-4873-8c55-28fe339fc370;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": null,
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-23000-ac7b38a7-0717-4916-889a-739d0a39c81e",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry filozofie Fakulty filozofické ZČU v Plzni",
+      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=ac7b38a7-0717-4916-889a-739d0a39c81e;1.0&download=0",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": null,
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-09-16T17:00:00Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-24000-15196",
+      "employerId": "msmt-vs_24000",
+      "originalText": "Postdoctoral Researcher (Department of Environmental Technology – Laboratory of Environmental Nanorobots)",
+      "sourceUrl": "https://doc.tul.cz/15196",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": null,
+      "decision": "approved_public",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-09-13T17:17:18Z",
@@ -2251,29 +2563,6 @@
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-09-12T19:28:06Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-25000-e0c3d1dfdd91",
-      "employerId": "msmt-vs_25000",
-      "originalText": "Výzkumný pracovník - doktorand M/Ž",
-      "sourceUrl": "https://www.upce.cz/sites/default/files/global/2026-09/7240/INZERAT_doktorandi_2026_fin_20260904_140701.pdf",
-      "track": "assistant",
-      "isPostdoc": false,
-      "paidStatus": "confirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": false
       },
       "factsExtractedAt": "2026-09-12T19:28:06Z",
       "parserVersion": "jobs-parser-2026-09-12.2"

@@ -232,6 +232,34 @@ def harvest_jobs(
     from harvest_nine_hei_jobs import harvest_with_registered_discovery, request
 
     target = jobs_path or JOBS_OUT
+    # Production discovery checkpoints each source. A killed slow source must
+    # not discard candidates already fetched from unrelated universities.
+    if registry is None and not candidates and employer_ids is None:
+        from harvest_nine_hei_jobs import load_registered_job_sources
+        sources = load_registered_job_sources()
+        aggregate = {"runKind": "partial_checkpoint", "expectedSourceIds": [s["id"] for s in sources],
+                     "completeSourceIds": [], "deferredSourceIds": [], "attempts": [],
+                     "discoveredCount": 0, "hostCooldowns": {}}
+        processed = set()
+        skipped = []
+        for source in sources:
+            part = harvest_jobs([], fetch_page=fetch_page, jobs_path=target, registry=[source])
+            discovery = part.get("discovery") or {}
+            for key in ("completeSourceIds", "deferredSourceIds", "attempts"):
+                aggregate[key].extend(discovery.get(key) or [])
+            aggregate["discoveredCount"] += int(discovery.get("discoveredCount") or 0)
+            aggregate["hostCooldowns"].update(discovery.get("hostCooldowns") or {})
+            processed.update(part.get("processedCandidateIds") or [])
+            skipped.extend(part.get("skipped") or [])
+            checkpoint = load_json(target)
+            checkpoint["discovery"] = aggregate
+            atomic_write(target, checkpoint)
+        aggregate["runKind"] = "all_registered_sources"
+        checkpoint = load_json(target)
+        checkpoint["discovery"] = aggregate
+        atomic_write(target, checkpoint)
+        return {"counts": checkpoint.get("counts"), "skipped": skipped,
+                "discovery": aggregate, "processedCandidateIds": sorted(processed)}
     previous = load_json(target)
     shard_result = harvest_with_registered_discovery(
         candidates,

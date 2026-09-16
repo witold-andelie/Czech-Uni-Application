@@ -1,12 +1,12 @@
 {
   "assessmentSchemaVersion": 1,
-  "generatedAt": "2026-09-13T17:59:14Z",
-  "publicationVersion": "v2026-09-13.4",
+  "generatedAt": "2026-09-16T17:06:13Z",
+  "publicationVersion": "v2026-09-16.2",
   "baselineInstitutions": 54,
   "summary": {
     "registered_executed": 13,
-    "registered_never_executed": 9,
-    "not_assessed": 32
+    "registered_never_executed": 10,
+    "not_assessed": 31
   },
   "claimBoundary": "assessmentStatus labels honest pipeline state only: registered_executed means at least one registered source has a scheduler success timestamp; registered_never_executed means a source is registered but no successful run is recorded; not_assessed means no registered source exists and the careers-channel assessment has not happened. No row claims whole-institution vacancy coverage. No row claims whole-institution coverage; fully assessed scopes remain 0 until documented per-institution scope assessments exist.",
   "rows": [
@@ -179,7 +179,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 9,
-      "publicJobs": 0,
+      "publicJobs": 2,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -389,7 +389,7 @@
       "sourcesWithSuccessCount": 0,
       "latestSourceSuccessAt": null,
       "currentCandidates": 1,
-      "publicJobs": 0,
+      "publicJobs": 1,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -578,7 +578,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 4,
-      "publicJobs": 0,
+      "publicJobs": 1,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -602,7 +602,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 8,
-      "publicJobs": 0,
+      "publicJobs": 2,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -689,7 +689,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 7,
-      "publicJobs": 0,
+      "publicJobs": 1,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -944,12 +944,21 @@
       "institutionId": "msmt-vs_23000",
       "officialName": "Západočeská univerzita v Plzni",
       "ownership": "public",
-      "assessmentStatus": "not_assessed",
-      "registeredSources": [],
-      "registeredSourceCount": 0,
+      "assessmentStatus": "registered_never_executed",
+      "registeredSources": [
+        {
+          "sourceId": "zcu-central-vacancies",
+          "url": "https://dumbledore.zcu.cz/document/data/folder/workspace://SpacesStore/bd09d1ff-712d-46ac-803a-f4b32201ec68?folderSort=az&fileSort=lu_desc",
+          "scope": null,
+          "parser": "zcu_document_feed",
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
+        }
+      ],
+      "registeredSourceCount": 1,
       "sourcesWithSuccessCount": 0,
       "latestSourceSuccessAt": null,
-      "currentCandidates": 0,
+      "currentCandidates": 13,
       "publicJobs": 0,
       "assessmentEvidence": null,
       "nextCheckAt": null,
@@ -1006,7 +1015,7 @@
       "sourcesWithSuccessCount": 2,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 17,
-      "publicJobs": 0,
+      "publicJobs": 1,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null

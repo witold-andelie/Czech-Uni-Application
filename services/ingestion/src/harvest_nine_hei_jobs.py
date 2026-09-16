@@ -1456,7 +1456,7 @@ def _request_bytes_with_retry(
 def request(url: str, timeout: int = 45, now: datetime | None = None) -> tuple[int, str]:
     req = urllib.request.Request(
         _request_uri(url),
-        headers={"User-Agent": UA, "Accept": "text/html,application/xhtml+xml"},
+        headers={"User-Agent": UA, "Accept": "application/json" if urlsplit(url).hostname == "dumbledore.zcu.cz" else "text/html,application/xhtml+xml"},
     )
     result = _request_bytes_with_retry(req, timeout=timeout, now=now)
     return result.status, result.text()
@@ -1497,9 +1497,13 @@ def _request_uri(url: str) -> str:
 
 def request_binary(url: str, timeout: int = 60) -> tuple[int, bytes]:
     """Read a bounded official attachment without decoding its binary body."""
+    # ZCU's official xdoc gateway returns HTTP 406 for a PDF-specific Accept
+    # header even though the response is a PDF. Keep this host exception narrow
+    # so other attachment sources retain the stricter content negotiation.
+    accept = "*/*" if urlsplit(url).hostname == "xdoc.zcu.cz" else "application/pdf,application/octet-stream"
     req = urllib.request.Request(
         _request_uri(url),
-        headers={"User-Agent": UA, "Accept": "application/pdf,application/octet-stream"},
+        headers={"User-Agent": UA, "Accept": accept},
     )
     result = _request_bytes_with_retry(req, timeout=timeout, max_bytes=MAX_PDF_BYTES)
     return result.status, result.body
@@ -3150,6 +3154,29 @@ def parse_avcr_vacancies(html: str, base_url: str = "https://www.avcr.cz") -> li
     return results
 
 
+def parse_zcu_document_feed(payload: str) -> list[dict]:
+    """Read the same recursive public document tree used by ZCU's career page."""
+    root = json.loads(payload)
+    found = []
+    seen = set()
+    def visit(folder):
+        if not isinstance(folder, dict) or not isinstance(folder.get("documents"), list) or not isinstance(folder.get("folders"), list):
+            raise ValueError("Incomplete ZCU document folder")
+        for item in folder["documents"]:
+            ident = str(item.get("cmisId") or "")
+            title = item.get("title") or item.get("nameNice")
+            if not ident or not title or item.get("mimeType", {}).get("subtype") != "pdf":
+                raise ValueError("Unsupported ZCU vacancy document")
+            if ident not in seen:
+                seen.add(ident)
+                found.append({"title": title, "code": ident.split(";")[0],
+                              "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=" + ident + "&download=0"})
+        for child in folder["folders"]:
+            visit(child)
+    visit(root)
+    return found
+
+
 def load_registered_job_sources(path: Path = SOURCE_REGISTRY) -> list[dict]:
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -3258,6 +3285,7 @@ def discover_registered_candidates(
             "recruitis_widget",
             "ujep_open_positions",
             "tul_careers",
+            "zcu_document_feed",
         }:
             attempts.append(
                 {
@@ -3273,7 +3301,20 @@ def discover_registered_candidates(
 
         found: list[dict] = []
         source_complete = True
-        if parser == "lmc_graphql":
+        if parser == "zcu_document_feed":
+            status, payload = fetch_page(source["url"])
+            try:
+                if status != 200:
+                    raise ValueError(f"HTTP {status}")
+                found.extend(parse_zcu_document_feed(payload))
+            except (ValueError, TypeError, KeyError) as exc:
+                source_complete = False
+                attempts.append({"sourceId": source["id"], "url": source["url"], "status": status,
+                                 "ok": False, "kind": "listing", "reason": str(exc)})
+            else:
+                attempts.append({"sourceId": source["id"], "url": source["url"], "status": status,
+                                 "ok": True, "kind": "listing"})
+        elif parser == "lmc_graphql":
             lmc_result = discover_lmc_graphql_source(source, fetch_page, post_json_fn)
             found.extend(lmc_result["candidates"])
             attempts.extend(lmc_result["attempts"])

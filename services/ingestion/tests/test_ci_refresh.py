@@ -53,3 +53,17 @@ def test_exhausted_budget_does_not_advance_success(tmp_path):
     assert report["deferred"]
     assert not report["tasks"]
     assert manager.load_state()["jobDiscovery"]["lastSuccessAt"] is None
+
+
+def test_never_attempted_source_precedes_recent_long_retry(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.record_volatile_failure("job_discovery", "timeout")
+    manager.get_pending_tasks = lambda: [{"type": "job_discovery"}, {"type": "czu_doctoral_programme_availability"}]
+    seen = []
+    def run(command, **kwargs):
+        seen.append(command[-1])
+        kind = "job_discovery" if command[-1] == "--discover-jobs" else "czu_doctoral_programme_availability"
+        manager.record_volatile_success(kind)
+        return SimpleNamespace(returncode=0)
+    run_tick(manager, run=run, output=tmp_path / "report.json")
+    assert seen[0] == "--refresh-czu-doctoral-programmes"
