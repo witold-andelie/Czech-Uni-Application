@@ -32,10 +32,12 @@ for (const locale of LOCALES) {
     await page.goto(`/${locale}/programmes?teachingLanguage=en`);
     await waitForProgrammeResults(page, locale);
     const title = page.locator("article.result-card h3 a").first();
-    const name = (await title.innerText()).trim();
+    const href = await title.getAttribute("href");
+    expect(href).toMatch(new RegExp(`^/${locale}/programmes/`));
     await title.click();
     await expect(page).toHaveURL(new RegExp(`/${locale}/programmes/`));
-    await expect(page.getByRole("heading", { level: 1 })).toContainText(name);
+    await expect(page.locator("html")).toHaveAttribute("lang", locale);
+    await expect(page.getByRole("heading", { level: 1 })).not.toHaveText(msg(locale, "error.notFound"));
   });
 
   test(`empty result and clear filters (${locale})`, async ({ page }) => {

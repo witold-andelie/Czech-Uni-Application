@@ -1,45 +1,27 @@
 import { expect, test } from "@playwright/test";
 import { LOCALES, msg } from "./helpers";
 
-// Packet 5 acceptance: the new UHK postdocs are public in the all-tracks
-// route, link to official application instructions, and stay out of the
-// funded-doctoral filter, in all three locales.
-const NEW_ID = "job-18000-0b0de28455a7";
+// The latest official-source check invalidated the evidence previously used to
+// publish this UHK postdoc. Keep a browser-level regression around the safety
+// boundary: a review-invalidated candidate must disappear from every public
+// list and its former detail URL must resolve to the localized not-found page.
+const REVIEW_INVALIDATED_ID = "job-18000-0b0de28455a7";
 
 for (const locale of LOCALES) {
-  test(`UHK postdoc visible in all-tracks and hidden from funded (${locale})`, async ({ page }) => {
+  test(`review-invalidated UHK postdoc is not public (${locale})`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto(`/${locale}/research-jobs?applied=1&track=all`);
-    await expect(page.locator("article.result-card").first()).toBeVisible();
-    const newId = NEW_ID;
-    const allIds = await page.evaluate((id) => document.body.innerHTML.includes(id) ? "yes" : "no", newId);
-    // Search by the institution name to land on the UHK records deterministically.
-    await page.goto(`/${locale}/research-jobs?applied=1&track=all&q=Hradec`);
-    await expect(page.locator("article.result-card").first()).toBeVisible({ timeout: 20_000 });
-    const found = await page.locator("article.result-card", { hasText: "Bioorganic" }).count();
-    expect(found, "bioorganic postdoc should be searchable by topic").toBeGreaterThan(0);
-    expect(allIds === "yes" || found > 0).toBeTruthy();
 
-    await page.goto(`/${locale}/research-jobs?applied=1&funded=1`);
-    await expect(page.locator("article.result-card").first()).toBeVisible();
-    const fundedIds = await page.evaluate((id) => document.body.innerHTML.includes(id), newId);
-    expect(fundedIds, "postdoc must stay out of funded-doctoral results").toBeFalsy();
-
-    await page.goto(`/${locale}/research-jobs/${NEW_ID}`);
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(page.locator("main").getByRole("link", { name: /www\.uhk\.cz/ }).first()).toBeVisible();
-  });
-
-  test(`UHK postdoc title renders in ${locale}`, async ({ page }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto(`/${locale}/research-jobs/${NEW_ID}`);
-    const h1 = await page.locator("h1").innerText();
-    if (locale === "zh-CN") {
-      expect(h1).toContain("生物有机化学博士后");
-    } else if (locale === "cs") {
-      expect(h1).toContain("Postdoktorand v bioorganické chemii");
-    } else {
-      expect(h1).toContain("Postdoctoral Researcher in Bioorganic Chemistry");
+    for (const query of ["applied=1&track=all", "applied=1&funded=1"]) {
+      await page.goto(`/${locale}/research-jobs?${query}`);
+      await expect(page.locator("article.result-card").first()).toBeVisible();
+      const isPresent = await page.evaluate(
+        (id) => document.body.innerHTML.includes(id),
+        REVIEW_INVALIDATED_ID,
+      );
+      expect(isPresent, "review-invalidated job must not remain in public results").toBeFalsy();
     }
+
+    await page.goto(`/${locale}/research-jobs/${REVIEW_INVALIDATED_ID}`);
+    await expect(page.getByRole("heading", { level: 1, name: msg(locale, "error.notFound") })).toBeVisible();
   });
 }
