@@ -79,7 +79,8 @@ GitHub Actions (`.github/workflows/ci.yml`) validates data, Go, web, and
 browser acceptance on every push/PR. After all checks pass on `main`, it
 retains the exact tested root-path build as `production-site-<commit>` for
 14 days. Download and extract that artifact for third-party deployment;
-`publication-provenance.json` identifies the commit and data snapshot.
+`publication-provenance.json` identifies the commit, data snapshot, and GitHub
+Actions run whose final result records the deployment outcome.
 GitHub Pages deployment has been removed.
 
 Set the repository variable `SITE_URL` to the purchased domain's HTTPS origin

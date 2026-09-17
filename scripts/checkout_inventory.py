@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -51,6 +52,21 @@ def provenance() -> dict:
     published_manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.is_file() else {}
     safety_pointer = ROOT / "data" / "published" / "safety" / "current.json"
     safety = json.loads(safety_pointer.read_text(encoding="utf-8")) if safety_pointer.is_file() else {}
+    github_actions = os.environ.get("GITHUB_ACTIONS", "").lower() == "true"
+    commit_sha = os.environ.get("GITHUB_SHA") if github_actions else None
+    repository = os.environ.get("GITHUB_REPOSITORY") if github_actions else None
+    run_id = os.environ.get("GITHUB_RUN_ID") if github_actions else None
+    server_url = os.environ.get("GITHUB_SERVER_URL", "https://github.com").rstrip("/")
+    run_url = (
+        f"{server_url}/{repository}/actions/runs/{run_id}"
+        if repository and run_id
+        else None
+    )
+    commit_url = (
+        f"{server_url}/{repository}/commit/{commit_sha}"
+        if repository and commit_sha
+        else None
+    )
     return {
         "activeVersion": pointer.get("activeVersion"),
         "snapshotDir": pointer.get("snapshotDir"),
@@ -58,8 +74,16 @@ def provenance() -> dict:
         "manifestVersion": published_manifest.get("version"),
         "manifestCounts": published_manifest.get("counts"),
         "safetyGeneration": safety.get("activeGeneration"),
-        "hostedCICD": "not_verified",
-        "status": "CI configured; local inventory check passed; hosted CI/CD not verified",
+        "buildEnvironment": "github_actions" if github_actions else "local",
+        "commitSha": commit_sha,
+        "commitUrl": commit_url,
+        "workflowRunUrl": run_url,
+        "hostedCICD": "workflow_run" if run_url else "not_verified",
+        "status": (
+            "Built by GitHub Actions; workflowRunUrl records the final gate and deployment outcome"
+            if run_url
+            else "Local inventory check passed; hosted CI/CD not verified"
+        ),
     }
 
 

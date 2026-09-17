@@ -36,7 +36,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check -r services/ingestion/requirements-ci.txt
 
       - name: Run ingestion tests
-        run: python -m pytest services/ingestion/tests tests/test_opm_generation.py -q
+        run: python -m pytest services/ingestion/tests tests/test_opm_generation.py tests/test_checkout_inventory.py -q
 
       - name: Verify clean-checkout required files
         run: python scripts/checkout_inventory.py --check
