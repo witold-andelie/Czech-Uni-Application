@@ -111,8 +111,11 @@ Never commit API tokens or paste them into issues or logs.
 
 ### Scheduled collection
 
-`refresh.yml` wakes once per day at 02:17 UTC and executes only tasks due under the
-existing 1/4/2-hour and five-day policies. Each tick installs Scrapling 0.4.9
+`refresh.yml` wakes once per day at 02:17 UTC in full mode and executes only tasks due under the
+existing 1/4/2-hour and five-day policies. Manual **Run workflow** defaults to
+`adapters` (about 8–15 minutes): it harvests registered HTML job adapters into
+Supabase and skips programme catalogues and shards. Choose `full` only when you
+need the complete tick. Each tick installs Scrapling 0.4.9
 fetchers plus Playwright Chromium (`scrapling[fetchers]` then
 `playwright install chromium`) so hard official pages use the same HTTP then
 browser escalation as a local machine. A tick is bounded to 35 minutes;

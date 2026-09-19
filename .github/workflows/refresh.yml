@@ -4,18 +4,26 @@ on:
   schedule:
     - cron: '17 2 * * *'
   workflow_dispatch:
+    inputs:
+      mode:
+        description: full tick includes programmes and shards; adapters skips those
+        type: choice
+        default: adapters
+        options:
+          - adapters
+          - full
 
 permissions:
   contents: read
 
 concurrency:
-  group: official-source-refresh
+  group: official-source-refresh-${{ github.event.inputs.mode || 'full' }}
   cancel-in-progress: false
 
 jobs:
   refresh:
     runs-on: ubuntu-24.04
-    timeout-minutes: 50
+    timeout-minutes: ${{ github.event.inputs.mode == 'adapters' && 20 || 50 }}
     permissions:
       contents: write
       actions: write
@@ -53,8 +61,24 @@ jobs:
         run: |
           python services/ingestion/src/cli/check_supabase.py
           python services/ingestion/src/cli/sync_sources.py
+      - name: Harvest adapter job sources only
+        id: adapters
+        if: ${{ github.event.inputs.mode == 'adapters' }}
+        continue-on-error: true
+        env:
+          PYTHONUNBUFFERED: "1"
+          PLAYWRIGHT_LAUNCH_TIMEOUT: "30000"
+          SCRAPLING_REQUIRED: "1"
+          SCRAPLING_ALLOW_BROWSER: "1"
+          SUPABASE_REQUIRED: "1"
+          SUPABASE_USE_REST: "1"
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: python -u services/ingestion/src/cli/ingest_adapters.py --live --budget-seconds 480
       - name: CZU official job tracer into Supabase
         id: czu_jobs
+        if: ${{ github.event.inputs.mode != 'adapters' }}
         continue-on-error: true
         env:
           PYTHONUNBUFFERED: "1"
@@ -69,6 +93,7 @@ jobs:
         run: python -u services/ingestion/src/cli/ingest_source.py --source-id czu-central-jobs --live
       - name: Charles University job tracer into Supabase
         id: cuni_jobs
+        if: ${{ github.event.inputs.mode != 'adapters' }}
         continue-on-error: true
         env:
           PYTHONUNBUFFERED: "1"
@@ -82,6 +107,7 @@ jobs:
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
         run: python -u services/ingestion/src/cli/ingest_source.py --source-id cuni-central-open-positions --live
       - name: Restore the last scheduler checkpoint
+        if: ${{ github.event.inputs.mode != 'adapters' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -92,6 +118,7 @@ jobs:
           fi
       - name: Run due tasks with bounded time and persisted retries
         id: crawl
+        if: ${{ github.event.inputs.mode != 'adapters' }}
         continue-on-error: true
         env:
           PYTHONUNBUFFERED: "1"
@@ -128,6 +155,7 @@ jobs:
             work/runs/scrapling-runtime.json
             work/runs/czu-central-jobs-tracer.json
             work/runs/cuni-central-open-positions-tracer.json
+            work/runs/ingest-adapters.json
             work/raw/
           if-no-files-found: error
           retention-days: 3
@@ -166,3 +194,7 @@ jobs:
         if: always() && steps.crawl.outcome == 'success'
         run: |
           echo 'Bounded tick finished. Remaining due tasks stay queued for the next wake.'
+      - name: Note adapter-only pass
+        if: ${{ github.event.inputs.mode == 'adapters' }}
+        run: |
+          echo 'Adapter-only pass finished. Programme catalogues and shards were not run.'

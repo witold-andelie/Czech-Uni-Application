@@ -20,3 +20,10 @@ def adapter_for(source: dict) -> object | None:
     if not parser or uses_binary_or_private_api(source):
         return None
     return HarvestListingAdapter(source)
+
+
+def adapter_sources(registry: list[dict] | None = None) -> list[dict]:
+    from harvest_nine_hei_jobs import load_registered_job_sources
+
+    sources = registry if registry is not None else load_registered_job_sources()
+    return [item for item in sources if adapter_for(item) is not None]
