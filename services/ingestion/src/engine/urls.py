@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 
 GENERIC_PATHS = {
@@ -28,6 +28,16 @@ def is_http_url(value: str | None) -> bool:
     return bool(host)
 
 
+def vacancy_query_id(url: str) -> tuple[str, str] | None:
+    parsed = urlsplit(url)
+    query = parse_qs(parsed.query)
+    for key in ("pracid", "id"):
+        values = query.get(key) or []
+        if values and values[0].strip():
+            return key, values[0].strip()
+    return None
+
+
 def same_resource(left: str, right: str) -> bool:
     def norm(url: str) -> tuple[str, str]:
         parsed = urlsplit(url.strip())
@@ -47,6 +57,10 @@ def is_generic_listing_url(url: str, source: dict) -> bool:
         return False
     listing = source.get("url") or source.get("publicUrl") or source.get("listingUrl")
     if isinstance(listing, str) and listing.strip() and same_resource(url, listing):
+        url_id = vacancy_query_id(url)
+        listing_id = vacancy_query_id(listing)
+        if url_id and url_id != listing_id:
+            return False
         return True
     parsed = urlsplit(url)
     path = parsed.path.rstrip("/") or "/"
@@ -54,6 +68,15 @@ def is_generic_listing_url(url: str, source: dict) -> bool:
         return True
     host = (parsed.hostname or "").casefold()
     if host == "www.d3s.mff.cuni.cz" and path.casefold() == "/positions":
+        return True
+    if host in {"cuni.cz", "www.cuni.cz"} and path.casefold().endswith("/uken-1573.html"):
+        if not parse_qs(parsed.query).get("pracid"):
+            return True
+    if host == "www.muni.cz":
+        parts = [item for item in path.casefold().split("/") if item]
+        if parts[:4] == ["en", "about-us", "careers", "vacancies"] and (len(parts) < 5 or not parts[4].isdigit()):
+            return True
+    if host == "jobs.czu.cz" and not path.casefold().startswith("/job/"):
         return True
     return False
 
