@@ -111,7 +111,7 @@ Never commit API tokens or paste them into issues or logs.
 
 ### Scheduled collection
 
-`refresh.yml` wakes twice per hour and executes only tasks due under the
+`refresh.yml` wakes once per day at 02:17 UTC and executes only tasks due under the
 existing 1/4/2-hour and five-day policies. Each tick installs Scrapling 0.4.9
 fetchers plus Playwright Chromium (`scrapling[fetchers]` then
 `playwright install chromium`) so hard official pages use the same HTTP then
