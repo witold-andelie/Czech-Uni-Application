@@ -142,4 +142,10 @@ if __name__ == "__main__":
         require_http_fetcher(runtime)
         result = run_tick()
         print(json.dumps(result, indent=2), flush=True)
+        store = store_from_env()
+        if store is not None:
+            from storage.retention import prune_ingest_history
+
+            print(json.dumps({"retention": prune_ingest_history(store)}, indent=2), flush=True)
+            store.close()
         sys.exit(tick_exit_code(result))

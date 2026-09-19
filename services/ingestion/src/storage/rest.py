@@ -307,3 +307,32 @@ class RestStore:
             {"consecutive_complete_run_absence": current + 1},
             extra={"Prefer": "return=minimal"},
         )
+
+    def list_source_runs(self, source_id: str | None = None) -> list[dict[str, Any]]:
+        path = "ingest_source_run?select=id,source_id,started_at,scheduled_for,status&order=started_at.desc&limit=1000"
+        if source_id:
+            path = (
+                "ingest_source_run?source_id=eq."
+                + quote(source_id, safe="")
+                + "&select=id,source_id,started_at,scheduled_for,status&order=started_at.desc&limit=1000"
+            )
+        return self._request("GET", path) or []
+
+    def delete_run(self, run_id: str) -> None:
+        ident = quote(run_id, safe="")
+        extra = {"Prefer": "return=minimal"}
+        self._request("DELETE", f"ingest_listing_observation?run_id=eq.{ident}", extra=extra)
+        self._request(
+            "PATCH",
+            f"catalog_research_job_version?source_run_id=eq.{ident}",
+            {"source_run_id": None},
+            extra=extra,
+        )
+        self._request(
+            "PATCH",
+            f"ingest_raw_document?run_id=eq.{ident}",
+            {"run_id": None},
+            extra=extra,
+        )
+        self._request("DELETE", f"ingest_source_run?id=eq.{ident}", extra=extra)
+        self.runs.pop(run_id, None)

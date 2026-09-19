@@ -121,6 +121,11 @@ they do not fail the GitHub job after the checkpoint is saved. GitHub scheduling
 effort, not an exact timing SLA. Paused/inactive workflows and exhausted quotas
 require operator intervention.
 
+Ingest keeps catalog identities and fact versions. Each source keeps only the
+latest 14 process runs and their listing observations (`INGEST_KEEP_RUNS`).
+Official HTML is hashed, not stored in Postgres, so the free-plan database
+cannot grow with every daily harvest.
+
 The last two scheduler checkpoints are retained as Actions artifacts.
 Candidate/evidence bundles expire after three days; download them for review
 before expiry. They are not deleted on the next scheduler tick. Artifact storage
