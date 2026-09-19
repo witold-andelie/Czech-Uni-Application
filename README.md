@@ -124,7 +124,10 @@ require operator intervention.
 Ingest keeps catalog identities and fact versions. Each source keeps only the
 latest 14 process runs and their listing observations (`INGEST_KEEP_RUNS`).
 Official HTML is hashed, not stored in Postgres, so the free-plan database
-cannot grow with every daily harvest.
+cannot grow with every daily harvest. HTML listing parsers share the adapter
+engine; `python services/ingestion/src/cli/probe_job_sources.py` reports HEIs
+still missing a registered job source without fetching the network unless
+`--live` is passed.
 
 The last two scheduler checkpoints are retained as Actions artifacts.
 Candidate/evidence bundles expire after three days; download them for review
