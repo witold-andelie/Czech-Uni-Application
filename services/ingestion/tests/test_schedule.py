@@ -147,6 +147,25 @@ def test_failed_job_recheck_does_not_advance_last_success(tmp_path: Path) -> Non
     assert state["jobRecheck"]["retryAt"] == to_iso(first + timedelta(hours=24, seconds=300))
 
 
+def test_partial_job_recheck_advances_hourly_cadence_and_keeps_error(tmp_path: Path) -> None:
+    state_file = tmp_path / "schedule-state.json"
+    mgr = ScheduleManager(state_file)
+    now = datetime(2026, 9, 19, 14, 0, tzinfo=timezone.utc)
+    mgr.record_job_recheck_partial(
+        "1/125 job status checks failed",
+        checked_count=125,
+        closed_count=5,
+        now=now,
+    )
+    state = mgr.load_state(now)
+    assert state["jobRecheck"]["status"] == "completed"
+    assert state["jobRecheck"]["lastSuccessAt"] == to_iso(now)
+    assert state["jobRecheck"]["lastError"] == "1/125 job status checks failed"
+    assert state["jobRecheck"]["retryAt"] is None
+    assert state["jobRecheck"]["nextDueAt"] == to_iso(now + timedelta(hours=1))
+    assert not any(task["type"] == "job_recheck" for task in mgr.get_pending_tasks(now + timedelta(minutes=10)))
+
+
 def test_expired_owner_cannot_release_reacquired_lease(tmp_path: Path) -> None:
     state_file = tmp_path / "schedule-state.json"
     first = ScheduleManager(state_file)

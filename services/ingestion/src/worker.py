@@ -1096,8 +1096,15 @@ def _recheck_open_jobs_unlocked(
         safety_dir=safety_dir,
     )
 
-    if failure_count:
+    if failure_count and http_success_count == 0:
         schedule_manager.record_job_recheck_failure(
+            f"{failure_count}/{checked_count} job status checks failed",
+            checked_count=checked_count,
+            closed_count=closed_count,
+            now=now,
+        )
+    elif failure_count:
+        schedule_manager.record_job_recheck_partial(
             f"{failure_count}/{checked_count} job status checks failed",
             checked_count=checked_count,
             closed_count=closed_count,

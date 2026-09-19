@@ -56,6 +56,26 @@ def test_exhausted_budget_does_not_advance_success(tmp_path):
     assert tick_exit_code(report) == 0
 
 
+def test_partial_job_recheck_does_not_fail_the_github_tick(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [{"type": "job_recheck"}]
+
+    def run(*args, **kwargs):
+        manager.record_job_recheck_partial(
+            "1/125 job status checks failed",
+            checked_count=125,
+            closed_count=5,
+        )
+        return SimpleNamespace(returncode=0)
+
+    report = run_tick(manager, run=run, output=tmp_path / "report.json")
+    assert not report["failed"]
+    assert tick_exit_code(report) == 0
+    assert "1/125" in (report["tasks"][0]["error"] or "")
+    assert manager.load_state()["jobRecheck"]["status"] == "completed"
+    assert manager.load_state()["jobRecheck"]["lastSuccessAt"]
+
+
 def test_started_task_failure_still_fails_the_tick(tmp_path):
     manager = ScheduleManager(tmp_path / "state.json")
     manager.get_pending_tasks = lambda: [{"type": "job_discovery"}]

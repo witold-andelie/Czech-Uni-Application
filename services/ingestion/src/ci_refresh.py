@@ -113,7 +113,11 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
 
 
 def tick_exit_code(report: dict) -> int:
-    """A bounded tick that defers leftover work is success. Started-task failure is not."""
+    """A bounded tick that defers leftover work is success. Started-task failure is not.
+
+    A mixed job recheck (for example 124/125 official pages answered) records the
+    miss and still completes the hourly sweep; that does not fail the GitHub job.
+    """
     return 1 if report.get("failed") else 0
 
 

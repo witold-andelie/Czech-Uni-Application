@@ -125,6 +125,39 @@ def test_official_whole_closure_overrides_future_round(tmp_path: Path) -> None:
     assert payload["windows"][0]["status"] == "closed"
 
 
+def test_mixed_http_results_complete_the_hourly_sweep(tmp_path: Path) -> None:
+    jobs_path = tmp_path / "jobs.json"
+    gone = job()
+    gone["id"] = "job-gone"
+    gone["sourceUrl"] = "https://example.invalid/gone"
+    jobs_path.write_text(
+        json.dumps({"jobs": [job(), gone], "windows": []}),
+        encoding="utf-8",
+    )
+    manager = ScheduleManager(tmp_path / "schedule.json")
+
+    def fetch(url: str):
+        if url.endswith("/gone"):
+            return 404, ""
+        return 200, "<h1>Research assistant</h1><p>Applications remain open.</p>"
+
+    result = worker.recheck_open_jobs(
+        fetch_page=fetch,
+        now=NOW,
+        jobs_path=jobs_path,
+        schedule_manager=manager,
+        use_lock=False,
+    )
+    state = manager.load_state(NOW)
+    assert result["status"] == "partial"
+    assert result["httpSucceeded"] == 1
+    assert result["failed"] == 1
+    assert state["jobRecheck"]["status"] == "completed"
+    assert state["jobRecheck"]["lastSuccessAt"] == to_iso(NOW)
+    assert state["jobRecheck"]["lastError"] == "1/2 job status checks failed"
+    assert state["jobRecheck"]["retryAt"] is None
+
+
 def test_failed_recheck_keeps_previous_success_timestamp(tmp_path: Path) -> None:
     jobs_path = tmp_path / "jobs.json"
     jobs_path.write_text(json.dumps({"jobs": [job()], "windows": []}), encoding="utf-8")
