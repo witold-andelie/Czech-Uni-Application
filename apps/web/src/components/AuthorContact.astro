@@ -9,7 +9,7 @@ const { locale } = Astro.props as { locale: UiLocale };
     <button class="contact-close" type="button" aria-label={t(locale, "contact.close")}>×</button>
     <p class="contact-intro">{t(locale, "contact.intro")}</p>
     <p><span>{t(locale, "contact.email")}</span><br /><a href="mailto:andelie1892@gmail.com">andelie1892@gmail.com</a></p>
-    <p><span>WeChat</span><br /><span class="contact-id">wxid_vtl13ojnba0d22</span></p>
+    <p><span>WeChat</span><br /><span class="contact-id">CZ_1892</span></p>
     <button class="contact-copy" type="button" data-copied={t(locale, "contact.copied")} data-failed={t(locale, "contact.copyFailed")}>{t(locale, "contact.copy")}</button>
     <span class="contact-status" role="status"></span>
   </section>
@@ -27,7 +27,7 @@ const { locale } = Astro.props as { locale: UiLocale };
       const button = event.currentTarget as HTMLButtonElement;
       const status = contact.querySelector(".contact-status")!;
       try {
-        await navigator.clipboard.writeText("wxid_vtl13ojnba0d22");
+        await navigator.clipboard.writeText("CZ_1892");
         status.textContent = button.dataset.copied!;
       } catch { status.textContent = button.dataset.failed!; }
     });
