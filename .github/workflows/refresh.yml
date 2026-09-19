@@ -2,7 +2,7 @@ name: Scheduled official-source refresh
 
 on:
   schedule:
-    - cron: '17,47 * * * *'
+    - cron: '17 2 * * *'
   workflow_dispatch:
 
 permissions:

@@ -111,7 +111,7 @@ Never commit API tokens or paste them into issues or logs.
 
 ### Scheduled collection
 
-`refresh.yml` wakes twice per hour and executes only tasks due under the
+`refresh.yml` wakes once per day at 02:17 UTC and executes only tasks due under the
 existing 1/4/2-hour and five-day policies. A tick is bounded to 35 minutes;
 individual tasks have a 15-minute ceiling. Source failures and deferred tasks
 remain visible as failures and retain retry state. GitHub scheduling is best
