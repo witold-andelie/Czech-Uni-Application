@@ -382,9 +382,14 @@ def harvest_catalog(
     admissions = parse_admissions_page(admissions_body)
 
     programmes: list[dict] = []
+    print(f"czu_english_programmes: {len(catalogue)} catalogue pages", flush=True)
     for index, item in enumerate(catalogue):
         if delay_seconds:
             sleep(delay_seconds)
+        print(
+            f"czu_english_programmes: {index + 1}/{len(catalogue)} {item['sourceStableId']}",
+            flush=True,
+        )
         _, detail_body = fetch(
             item["officialProgrammeUrl"],
             f"programmes/{item['sourceStableId']}-{item['officialProgrammeUrl'].rstrip('/').split('/')[-1]}.html",

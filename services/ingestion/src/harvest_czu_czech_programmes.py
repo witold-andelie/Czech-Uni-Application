@@ -439,10 +439,15 @@ def harvest_catalog(
 
     programmes: list[dict] = []
     seen_ids: set[str] = set()
+    print(f"czu_czech_programmes: {len(catalogue)} sitemap pages", flush=True)
     for item in catalogue:
         if delay_seconds:
             sleep(delay_seconds)
         slug = item["officialProgrammeUrl"].rstrip("/").split("/")[-1]
+        print(
+            f"czu_czech_programmes: {len(programmes) + 1}/{len(catalogue)} {slug}",
+            flush=True,
+        )
         detail = fetch(item["officialProgrammeUrl"], f"programmes/{slug}.html")
         parsed = parse_detail(detail, item, current)
         if parsed["sourceStableId"] in seen_ids:
