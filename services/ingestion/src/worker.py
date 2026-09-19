@@ -246,6 +246,24 @@ def harvest_jobs(
     injected_fetch = fetch_page
     if fetch_page is None:
         fetch_page = live_fetcher(registry[0] if registry else {})
+    if registry is not None and len(registry) == 1:
+        from adapters.jobs import adapter_for
+        from engine.adapter_harvest import harvest_adapter_source
+
+        source = registry[0]
+        if adapter_for(source) is not None:
+            previous = load_json(target)
+            result = harvest_adapter_source(source, fetch_page=fetch_page, previous=previous)
+            snapshot = result["snapshot"]
+            atomic_write(target, snapshot)
+            return {
+                "counts": snapshot.get("counts") or result.get("counts"),
+                "skipped": snapshot.get("skipped") or [],
+                "discovery": result["discovery"],
+                "processedCandidateIds": result["processedCandidateIds"],
+                "supabase": result.get("supabase"),
+                "complete": result["complete"],
+            }
     # Production discovery checkpoints each source. A killed slow source must
     # not discard candidates already fetched from unrelated universities.
     if registry is None and not candidates and employer_ids is None:

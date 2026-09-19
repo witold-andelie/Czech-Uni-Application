@@ -219,6 +219,14 @@ class RestStore:
         )
         rows = self._request("GET", f"catalog_research_job?external_id=eq.{quote(external_id, safe='')}&select=id")
         job_id = rows[0]["id"]
+        existing_versions = (
+            self._request(
+                "GET",
+                f"catalog_research_job_version?job_id=eq.{job_id}&select=id,fact_hash",
+            )
+            or []
+        )
+        known_hashes = {row.get("fact_hash") for row in existing_versions}
         self._request(
             "POST",
             "catalog_research_job_version?on_conflict=job_id,fact_hash",
@@ -241,6 +249,13 @@ class RestStore:
             f"catalog_research_job_version?job_id=eq.{job_id}&fact_hash=eq.{digest}&select=id",
         )
         version_id = versions[0]["id"]
+        if digest not in known_hashes:
+            self._request(
+                "PATCH",
+                f"catalog_research_job_version?job_id=eq.{job_id}&fact_hash=neq.{quote(digest, safe='')}",
+                {"review_state": "stale"},
+                extra={"Prefer": "return=minimal"},
+            )
         self._request(
             "PATCH",
             f"catalog_research_job?id=eq.{job_id}",
@@ -248,6 +263,13 @@ class RestStore:
             extra={"Prefer": "return=minimal"},
         )
         return {"id": external_id, "job_id": str(job_id), "version_id": str(version_id)}
+
+    def list_external_ids(self, *, employer_id: str | None = None) -> list[str]:
+        path = "catalog_research_job?select=external_id"
+        if employer_id:
+            path += f"&employer_id=eq.{quote(employer_id, safe='')}"
+        rows = self._request("GET", path) or []
+        return [str(row["external_id"]) for row in rows if row.get("external_id")]
 
     def finish_run(
         self,

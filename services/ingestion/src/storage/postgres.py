@@ -285,6 +285,13 @@ class PostgresStore:
             (external_id, employer_id, remote_id, official_detail_url),
         ).fetchone()
         job_id = row[0]
+        known = {
+            item[0]
+            for item in self._conn.execute(
+                "select fact_hash from catalog.research_job_version where job_id = %s",
+                (job_id,),
+            ).fetchall()
+        }
         version = self._conn.execute(
             """
             INSERT INTO catalog.research_job_version (
@@ -311,7 +318,22 @@ class PostgresStore:
             "UPDATE catalog.research_job SET preferred_version_id = %s WHERE id = %s",
             (version[0], job_id),
         )
+        if digest not in known:
+            self._conn.execute(
+                "update catalog.research_job_version set review_state = 'stale' where job_id = %s and fact_hash <> %s",
+                (job_id, digest),
+            )
         return {"id": external_id, "job_id": str(job_id), "version_id": str(version[0])}
+
+    def list_external_ids(self, *, employer_id: str | None = None) -> list[str]:
+        if employer_id:
+            rows = self._conn.execute(
+                "select external_id from catalog.research_job where employer_id = %s",
+                (employer_id,),
+            ).fetchall()
+        else:
+            rows = self._conn.execute("select external_id from catalog.research_job").fetchall()
+        return [row[0] for row in rows]
 
     def finish_run(
         self,

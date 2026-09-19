@@ -15,7 +15,6 @@ ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
 from adapters.jobs import adapter_for  # noqa: E402
-from engine.run_source import run_source  # noqa: E402
 from harvest_nine_hei_jobs import load_registered_job_sources  # noqa: E402
 
 
@@ -36,40 +35,44 @@ def main(argv: list[str] | None = None) -> int:
     if not args.live:
         print(json.dumps({"error": "live-flag-required-for-network", "sourceId": args.source_id}))
         return 2
+    from engine.adapter_harvest import harvest_adapter_source
     from engine.runtime import require_http_fetcher, write_runtime_report
     from engine.transport import live_fetcher
+    from worker import JOBS_OUT, atomic_write, load_json
 
     os.environ.setdefault("SCRAPLING_REQUIRED", "1")
     os.environ.setdefault("SUPABASE_WRITE", "1")
     runtime = write_runtime_report(ROOT / "work" / "runs" / "scrapling-runtime.json")
     require_http_fetcher(runtime)
-    from storage.memory import MemoryStore
-    from storage.postgres import store_from_env
-
     fetch_page = live_fetcher(source)
-    store = store_from_env() or MemoryStore()
+    previous = load_json(JOBS_OUT)
+    result = harvest_adapter_source(source, fetch_page=fetch_page, previous=previous)
+    store = result.get("store")
     try:
-        outcome = run_source(adapter, source, {"fetch_page": fetch_page}, store=store)
+        atomic_write(JOBS_OUT, result["snapshot"])
     finally:
         closer = getattr(store, "close", None)
         if callable(closer):
             closer()
-    print(
-        json.dumps(
-            {
-                "sourceId": source["id"],
-                "status": outcome["run"]["status"],
-                "listed": outcome["completeness"].listed_count,
-                "parsed": outcome["completeness"].parsed_count,
-                "candidates": len(outcome["candidates"]),
-                "reasons": outcome["completeness"].reasons,
-                "transport": getattr(fetch_page, "attempts", []),
-            },
-            ensure_ascii=False,
-            indent=2,
-        )
+    report = {
+        "sourceId": source["id"],
+        "status": result["run"]["status"],
+        "listed": result["completeness"].listed_count,
+        "parsed": result["completeness"].parsed_count,
+        "candidates": len(result["candidates"]),
+        "reasons": result["completeness"].reasons,
+        "complete": result["complete"],
+        "supabase": result.get("supabase"),
+        "transport": getattr(fetch_page, "attempts", []),
+    }
+    runs_dir = ROOT / "work" / "runs"
+    runs_dir.mkdir(parents=True, exist_ok=True)
+    (runs_dir / f"{source['id']}-tracer.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
     )
-    return 0 if outcome["run"]["status"] == "succeeded" else 1
+    print(json.dumps(report, ensure_ascii=False, indent=2), flush=True)
+    return 0 if result["run"]["status"] == "succeeded" else 1
 
 
 if __name__ == "__main__":

@@ -12,11 +12,15 @@ from engine.urls import official_detail_allowed
 from storage.memory import MemoryStore
 
 
+def _external_id(source: dict, employer_id: str | None, remote_id: str) -> str:
+    return f"{employer_id or source['id']}:{remote_id}"
+
+
 def run_source(
     adapter: SourceAdapter,
     source: dict,
     context: dict[str, Any],
-    store: MemoryStore | None = None,
+    store: Any | None = None,
 ) -> dict[str, Any]:
     store = store or MemoryStore()
     run = store.start_run(source)
@@ -37,6 +41,7 @@ def run_source(
         candidates = adapter.normalize(documents, context)
         completeness: CompletenessResult = adapter.validate_completeness(context)
         if completeness.ok:
+            seen: set[str] = set()
             for candidate in candidates:
                 allowed, reason = official_detail_allowed(candidate.official_detail_url, source)
                 facts = {
@@ -56,7 +61,14 @@ def run_source(
                     remote_id=candidate.remote_id,
                     official_detail_url=candidate.official_detail_url,
                     facts=facts,
+                    run_id=run["id"],
                 )
+                seen.add(_external_id(source, candidate.employer_id, candidate.remote_id))
+            list_ids = getattr(store, "list_external_ids", None)
+            if callable(list_ids):
+                for external_id in list_ids(employer_id=source.get("employerId")):
+                    if external_id not in seen:
+                        store.mark_absent(external_id)
             store.finish_run(
                 run["id"],
                 status="succeeded",

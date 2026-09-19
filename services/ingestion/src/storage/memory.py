@@ -66,7 +66,12 @@ class MemoryStore:
             }
         )
 
-    def upsert_job(self, *, source_id: str, employer_id: str | None, remote_id: str, official_detail_url: str, facts: dict[str, Any]) -> dict[str, Any]:
+    def list_external_ids(self, *, employer_id: str | None = None) -> list[str]:
+        if employer_id is None:
+            return list(self.jobs)
+        return [key for key, job in self.jobs.items() if job.get("employer_id") == employer_id]
+
+    def upsert_job(self, *, source_id: str, employer_id: str | None, remote_id: str, official_detail_url: str, facts: dict[str, Any], run_id: str | None = None) -> dict[str, Any]:
         key = f"{employer_id or source_id}:{remote_id}"
         existing = self.jobs.get(key)
         digest = fact_hash(

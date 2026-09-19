@@ -356,8 +356,8 @@
     "followDetails": false,
     "refreshIntervalHours": 4,
     "collectionStatus": "adapter_live_verified_2026-09-10",
-    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
-    "note": "The portal navigation spans CZU faculties and other university units. Each public result is matched by WordPress post ID to its full official body before eligibility and pay classification. Registration does not assert that every CZU unit publishes every vacancy here."
+    "adapter": "services/ingestion/src/adapters/jobs/czu_wp_job_manager.py",
+    "note": "The portal navigation spans CZU faculties and other university units. Each public result is matched by WordPress post ID to its full official body before eligibility and pay classification. Production harvest uses the adapter engine and keeps every official vacancy, including out-of-scope rows. Registration does not assert that every CZU unit publishes every vacancy here."
   },
   {
     "id": "jcu-central-vacancies",
