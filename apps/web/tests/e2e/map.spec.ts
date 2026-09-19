@@ -10,6 +10,7 @@ test("stubbed map tiles keep the institution list", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1, name: msg("en", "map.title") })).toBeVisible();
   await expect(page.getByRole("link", { name: msg("en", "institutions.open") }).first()).toBeVisible({ timeout: 20_000 });
   await expect(page.getByText(msg("en", "map.tilesFallback"))).toHaveCount(0);
+  await expect(page.locator(".map-viewport.svg-basemap")).toBeVisible();
 });
 
 test("blocked map tiles fall back to the bundled overview", async ({ page }) => {

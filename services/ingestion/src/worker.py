@@ -239,9 +239,13 @@ def harvest_jobs(
     jobs_path: Path | None = None,
     registry: list[dict] | None = None,
 ) -> dict:
-    from harvest_nine_hei_jobs import harvest_with_registered_discovery, request
+    from harvest_nine_hei_jobs import harvest_with_registered_discovery
+    from engine.transport import live_fetcher
 
     target = jobs_path or JOBS_OUT
+    injected_fetch = fetch_page
+    if fetch_page is None:
+        fetch_page = live_fetcher(registry[0] if registry else {})
     # Production discovery checkpoints each source. A killed slow source must
     # not discard candidates already fetched from unrelated universities.
     if registry is None and not candidates and employer_ids is None:
@@ -253,7 +257,8 @@ def harvest_jobs(
         processed = set()
         skipped = []
         for source in sources:
-            part = harvest_jobs([], fetch_page=fetch_page, jobs_path=target, registry=[source])
+            page = injected_fetch if injected_fetch is not None else live_fetcher(source)
+            part = harvest_jobs([], fetch_page=page, jobs_path=target, registry=[source])
             discovery = part.get("discovery") or {}
             for key in ("completeSourceIds", "deferredSourceIds", "attempts"):
                 aggregate[key].extend(discovery.get(key) or [])
@@ -273,7 +278,7 @@ def harvest_jobs(
     previous = load_json(target)
     shard_result = harvest_with_registered_discovery(
         candidates,
-        fetch_page or request,
+        fetch_page,
         previous,
         employer_ids=employer_ids,
         registry=registry,
@@ -281,11 +286,25 @@ def harvest_jobs(
     processed_ids = set(shard_result.get("processedCandidateIds") or []) | {item["id"] for item in candidates}
     merged = merge_sharded_jobs(previous, shard_result, processed_ids)
     atomic_write(target, merged)
+    discovery = shard_result.get("discovery") or {}
+    from storage.persist import persist_job_harvest
+
+    supabase = persist_job_harvest(
+        expected_source_ids=list(discovery.get("expectedSourceIds") or []),
+        complete_source_ids=list(discovery.get("completeSourceIds") or []),
+        deferred_source_ids=list(discovery.get("deferredSourceIds") or []),
+        attempts=list(discovery.get("attempts") or []),
+        jobs=list(merged.get("jobs") or []),
+    )
+    discovery = {**discovery, "supabase": supabase}
+    merged["discovery"] = discovery
+    atomic_write(target, merged)
     return {
         "counts": merged.get("counts"),
         "skipped": shard_result.get("skipped") or [],
-        "discovery": shard_result.get("discovery") or {},
+        "discovery": discovery,
         "processedCandidateIds": sorted(processed_ids),
+        "supabase": supabase,
     }
 
 
@@ -847,14 +866,15 @@ def _recheck_open_jobs_unlocked(
         _lmc_job_ad,
         page_is_closed,
         parse_lmc_widget_config,
-        request,
         request_json,
         visible_text,
     )
     from urllib.parse import parse_qs, urlsplit
 
+    from engine.transport import live_fetcher
+
     live_request = fetch_page is None
-    fetch_fn = fetch_page or request
+    fetch_fn = fetch_page or live_fetcher()
     post_fn = post_json or request_json
     response_cache: dict[str, tuple[int, str]] = {}
     post_response_cache: dict[str, tuple[int, str]] = {}
@@ -1420,6 +1440,13 @@ def main() -> None:
     shard_arg = None
     if "--shard" in args:
         shard_arg = int(args[args.index("--shard") + 1])
+
+    if "--recheck-jobs" in args or "--discover-jobs" in args:
+        from engine.runtime import require_http_fetcher, write_runtime_report
+
+        runtime = write_runtime_report(RUNS / "scrapling-runtime.json")
+        print(json.dumps({"scrapling": runtime}, ensure_ascii=False))
+        require_http_fetcher(runtime)
 
     if "--recheck-jobs" in args:
         res = recheck_open_jobs()

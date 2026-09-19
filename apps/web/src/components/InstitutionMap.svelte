@@ -70,6 +70,7 @@
 
   // MapLibre state
   let mapMode = $state<"maplibre" | "svg">("maplibre");
+  let mapStatus = $state<"initializing" | "loading" | "healthy" | "degraded">("initializing");
   let fallbackReason = $state<"webgl" | "tiles" | "initialization" | "manual" | null>(null);
   let mapContainerEl: HTMLDivElement | undefined;
   let mapInstance: any = null;
@@ -278,6 +279,7 @@
   function switchToSvg(reason: "webgl" | "tiles" | "initialization" | "manual") {
     fallbackReason = reason;
     mapMode = "svg";
+    mapStatus = "degraded";
     destroyInteractiveMap();
   }
 
@@ -289,6 +291,7 @@
     fallbackReason = null;
     tileErrorCount = 0;
     mapMode = "maplibre";
+    mapStatus = "initializing";
     await tick();
     try {
       if (!maplibreglLib) {
@@ -353,10 +356,16 @@
       mapInstance.addControl(new maplibreglLib.FullscreenControl(), "top-right");
       mapInstance.addControl(new maplibreglLib.ScaleControl({ unit: "metric" }), "bottom-left");
 
+      mapStatus = "loading";
       mapInstance.on("load", () => {
         mapInstance.resize();
         syncMapLibreMarkers(visible);
         syncMarkerSelection(selectedId);
+      });
+      mapInstance.on("idle", () => {
+        if (mapMode === "maplibre" && mapInstance?.areTilesLoaded()) {
+          mapStatus = "healthy";
+        }
       });
       mapInstance.on("zoomend", () => {
         syncMapLibreMarkers(visible);
@@ -368,6 +377,7 @@
       mapInstance.on("sourcedata", (event: any) => {
         if (event.sourceId === "osm-tiles" && event.isSourceLoaded && mapInstance?.areTilesLoaded()) {
           tileErrorCount = 0;
+          mapStatus = "healthy";
           if (tileFailureTimer !== null) {
             window.clearTimeout(tileFailureTimer);
             tileFailureTimer = null;
@@ -611,26 +621,33 @@
     </div>
 
     <!-- Map Viewport Container -->
-    <div class="map-viewport-container">
-      {#if mapMode === "maplibre"}
-        <div class="maplibre-viewport" bind:this={mapContainerEl}></div>
-        <!-- Floating CSCSE Legend on Map -->
-        <div class="maplibre-legend card" role="note">
-          <div class="legend-header">{t(locale, "map.legend.cscseTitle")}</div>
-          <div class="legend-item">
-            <span class="legend-dot listed">✓</span>
-            <span>{t(locale, "map.legend.cscseOperatorListed", { n: operatorListedCount })}</span>
+    <div
+      class="map-viewport-container"
+      data-map-status={mapStatus}
+      data-map-provider="osm-raster"
+    >
+      {#if mapStatus !== "degraded"}
+        <div class="maplibre-viewport" class:revealed={mapStatus === "healthy"} bind:this={mapContainerEl}></div>
+        {#if mapStatus === "healthy"}
+          <div class="maplibre-legend card" role="note">
+            <div class="legend-header">{t(locale, "map.legend.cscseTitle")}</div>
+            <div class="legend-item">
+              <span class="legend-dot listed">✓</span>
+              <span>{t(locale, "map.legend.cscseOperatorListed", { n: operatorListedCount })}</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot not-found">○</span>
+              <span>{t(locale, "map.legend.cscseOperatorAbsent", { n: operatorAbsentCount })}</span>
+            </div>
+            <button class="btn btn-sm" type="button" onclick={() => switchToSvg("manual")}>
+              {t(locale, "map.useOverview")}
+            </button>
           </div>
-          <div class="legend-item">
-            <span class="legend-dot not-found">○</span>
-            <span>{t(locale, "map.legend.cscseOperatorAbsent", { n: operatorAbsentCount })}</span>
-          </div>
-          <button class="btn btn-sm" type="button" onclick={() => switchToSvg("manual")}>
-            {t(locale, "map.useOverview")}
-          </button>
-        </div>
-      {:else}
-        {#if fallbackReason}
+        {:else}
+          <p class="map-loading-banner">{t(locale, "map.loadingStatus")}</p>
+        {/if}
+      {/if}
+      {#if fallbackReason}
           <div class="webgl-fallback-banner card" role="status">
             <p>
               ⚠️ {t(locale,
@@ -646,8 +663,9 @@
               {t(locale, "map.tryInteractive")}
             </button>
           </div>
-        {/if}
+      {/if}
 
+        {#if mapStatus !== "healthy"}
         <div class="map-legend" role="group" aria-label={t(locale, "map.legend")}>
           <span class="legend-item">
             <span class="pin-mark listed" aria-hidden="true"></span>
@@ -659,13 +677,16 @@
           </span>
           <span class="legend-item">{t(locale, "map.legend.cities")}</span>
         </div>
+        {/if}
 
         <div
-          class="map-viewport"
+          class="map-viewport svg-basemap"
           class:dragging
+          class:interactive={mapStatus !== "healthy"}
           bind:this={viewportEl}
           tabindex="0"
           role="application"
+          aria-hidden={mapStatus === "healthy"}
           aria-label={t(locale, "map.canvas")}
           onwheel={onWheel}
           onpointerdown={onPointerDown}
@@ -728,13 +749,14 @@
               </button>
             {/each}
           </div>
+          {#if mapStatus !== "healthy"}
           <div class="map-zoom" role="group" aria-label={t(locale, "map.zoom")} onpointerdown={(event) => event.stopPropagation()}>
             <button class="btn" type="button" onclick={() => zoomBy(1.25)} disabled={view.scale >= MAX_ZOOM}>{t(locale, "map.zoomIn")}</button>
             <button class="btn" type="button" onclick={() => zoomBy(1 / 1.25)} disabled={view.scale <= MIN_ZOOM}>{t(locale, "map.zoomOut")}</button>
             <button class="btn" type="button" onclick={resetView} disabled={view.scale === 1 && view.tx === 0 && view.ty === 0}>{t(locale, "map.zoomReset")}</button>
           </div>
+          {/if}
         </div>
-      {/if}
 
     </div>
 
@@ -934,6 +956,40 @@
     inset: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .maplibre-viewport.revealed {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .svg-basemap {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .svg-basemap.interactive {
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  .map-loading-banner {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 3;
+    margin: 0;
+    padding: 0.4rem 0.7rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.92);
+    font-size: 0.8rem;
+    pointer-events: none;
   }
 
   /* Floating Legend */

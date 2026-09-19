@@ -21,18 +21,35 @@ jobs:
       actions: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          ref: main
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: '3.13'
           cache: pip
           cache-dependency-path: services/ingestion/requirements-runtime.txt
-      - name: Install offline worker dependencies
+      - name: Cache Playwright Chromium for Scrapling
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: ms-playwright-chromium-${{ runner.os }}-scrapling-0.4.9
+      - name: Install offline worker, Scrapling fetchers, and Chromium
         run: |
           python -m pip install -r services/ingestion/requirements-runtime.txt
+          python -c "import scrapling; from scrapling.fetchers import Fetcher, DynamicFetcher; print('scrapling', scrapling.__version__)"
+          python -m playwright install chromium
+          sudo python -m playwright install-deps chromium
           sudo apt-get update -qq
           sudo apt-get install -y tesseract-ocr tesseract-ocr-ces tesseract-ocr-eng
+          SCRAPLING_REQUIRED=1 python services/ingestion/src/cli/check_scrapling.py
+      - name: Connect the collector to Supabase over HTTPS
+        env:
+          SUPABASE_REQUIRED: "1"
+          SUPABASE_USE_REST: "1"
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: |
+          python services/ingestion/src/cli/check_supabase.py
+          python services/ingestion/src/cli/sync_sources.py
       - name: Restore the last scheduler checkpoint
         env:
           GH_TOKEN: ${{ github.token }}
@@ -45,6 +62,14 @@ jobs:
       - name: Run due tasks with bounded time and persisted retries
         id: crawl
         continue-on-error: true
+        env:
+          SCRAPLING_REQUIRED: "1"
+          SCRAPLING_ALLOW_BROWSER: "1"
+          SUPABASE_REQUIRED: "1"
+          SUPABASE_USE_REST: "1"
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
         run: python services/ingestion/src/ci_refresh.py
       - name: Save scheduler checkpoint even after partial source failure
         if: always()
@@ -65,6 +90,7 @@ jobs:
           path: |
             data/sources/
             work/runs/ci-refresh-summary.json
+            work/runs/scrapling-runtime.json
             work/raw/
           if-no-files-found: error
           retention-days: 3
@@ -92,5 +118,9 @@ jobs:
       - name: Report incomplete refresh honestly
         if: steps.crawl.outcome == 'failure'
         run: |
-          echo 'Some sources failed or were deferred. Check candidate-review and scheduler artifacts.'
+          echo 'A started refresh task failed. Deferred leftover work is not a failure; check candidate-review and scheduler artifacts.'
           exit 1
+      - name: Note deferred remainder
+        if: steps.crawl.outcome == 'success'
+        run: |
+          echo 'Bounded tick finished. Remaining due tasks stay queued for the next wake.'

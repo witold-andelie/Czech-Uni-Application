@@ -34,6 +34,7 @@ from publication_rules import (  # noqa: E402
     reviewer_role,
     translation_content_hash,
 )
+from source_types import JOB_LISTING_SOURCE_TYPES  # noqa: E402
 
 RAW = ROOT / "work" / "raw" / "2026-09-06" / "jobs"
 OUT = ROOT / "data" / "sources" / "browse" / "nine-hei-jobs.json"
@@ -57,7 +58,6 @@ MAX_PDF_PAGES = 12
 TRANSIENT_HTTP_STATUSES = {0, 408, 425, 429, 500, 502, 503, 504}
 REQUEST_RETRY_DELAYS = (3.0, 12.0)
 MAX_IN_PROCESS_RETRY_SECONDS = 30.0
-JOB_LISTING_SOURCE_TYPES = {"official_job_listing", "official_job_listing_candidate"}
 # A69: bumped whenever extraction logic changes. Stored records remember which
 # parser version produced their facts so offline replay can target stale ones.
 PARSER_VERSION = "jobs-parser-2026-09-12.2"
@@ -3251,6 +3251,7 @@ def load_registered_job_sources(path: Path = SOURCE_REGISTRY) -> list[dict]:
         for item in payload
         if isinstance(item, dict)
         and item.get("sourceType") in JOB_LISTING_SOURCE_TYPES
+        and item.get("enabled", True) is not False
         and isinstance(item.get("url"), str)
         and isinstance(item.get("parser"), str)
     ]

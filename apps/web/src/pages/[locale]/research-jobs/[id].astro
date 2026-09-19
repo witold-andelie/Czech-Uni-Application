@@ -3,7 +3,7 @@ import { withBase } from "../../../lib/base.ts";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import InstitutionTags from "../../../components/InstitutionTags.astro";
 import LiveWindows from "../../../components/LiveWindows.svelte";
-import { findJob, isMasterEligible, jobOpportunityClosed, jobTrackOf, safeHttpUrl } from "../../../lib/catalog";
+import { findJob, isMasterEligible, jobOpportunityClosed, jobTrackOf, officialJobHref, safeHttpUrl } from "../../../lib/catalog";
 import { dataClassKey, fieldSep, formatDate, formatSalary, jobSourceTitle, languageName, salaryTaxKey, text } from "../../../lib/format";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
 import { loadCatalog } from "../../../lib/loadCatalog";
@@ -22,7 +22,7 @@ const catalog = applySafetyOverlay(loadCatalog(), overlay);
 const view = findJob(catalog, Astro.params.id ?? "", new Date());
 if (!view) throw new Error("Missing job");
 const applyLabel = view.job.applicationMethod === "official_instructions" ? t(locale, "action.officialInstructions") : t(locale, "action.applyNow");
-const sourceUrl = safeHttpUrl(view.job.sourceUrl);
+const sourceUrl = officialJobHref(view.job) || safeHttpUrl(view.job.sourceUrl);
 const phdKey =
   view.job.doctoralEnrollment === "not_required"
     ? "jobs.phd.no"
@@ -104,7 +104,7 @@ const phdKey =
     <p class="muted">
       {t(locale, "source.label")}{fieldSep(locale)}
       {sourceUrl ? (
-        <a class="external" href={sourceUrl} rel="noopener noreferrer" target="_blank">
+        <a class="external" href={sourceUrl} rel="noopener noreferrer" target="_blank" data-official-detail>
           {sourceUrl}
           <ExternalIcon />
           <span class="visually-hidden">{t(locale, "action.external")}</span>

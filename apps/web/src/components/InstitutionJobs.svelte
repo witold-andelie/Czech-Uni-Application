@@ -58,8 +58,8 @@
         {t(locale, `jobs.track.${jobTrackOf(view.job)}`)}
         {#if officialUrl}
           {" · "}
-          <a class="external" href={officialUrl} rel="noopener noreferrer" target="_blank">
-            {t(locale, "action.officialLink")}
+          <a class="external" href={officialUrl} rel="noopener noreferrer" target="_blank" data-official-detail>
+            {t(locale, "action.officialVacancyDescription")}
             <ExternalIcon />
             <span class="muted">({hostOf(officialUrl)})</span>
             <span class="visually-hidden">{t(locale, "action.external")}</span>

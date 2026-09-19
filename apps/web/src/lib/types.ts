@@ -172,6 +172,7 @@ export interface ResearchJob {
   employmentStartsAt: string | null;
   workingLanguages: string[];
   sourceUrl: string;
+  officialDetailUrl?: string | null;
   applicationUrl: string | null;
   applicationMethod: "web_form" | "official_instructions";
   applicationHostVerified: boolean;

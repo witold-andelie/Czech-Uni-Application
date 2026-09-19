@@ -4,7 +4,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from ci_refresh import run_tick, task_command
+from ci_refresh import run_tick, task_command, tick_exit_code
 from schedule import ScheduleManager
 
 
@@ -53,6 +53,18 @@ def test_exhausted_budget_does_not_advance_success(tmp_path):
     assert report["deferred"]
     assert not report["tasks"]
     assert manager.load_state()["jobDiscovery"]["lastSuccessAt"] is None
+    assert tick_exit_code(report) == 0
+
+
+def test_started_task_failure_still_fails_the_tick(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [{"type": "job_discovery"}]
+    def run(*args, **kwargs):
+        manager.record_volatile_failure("job_discovery", "one source failed")
+        return SimpleNamespace(returncode=0)
+    report = run_tick(manager, run=run, output=tmp_path / "report.json")
+    assert report["failed"]
+    assert tick_exit_code(report) == 1
 
 
 def test_never_attempted_source_precedes_recent_long_retry(tmp_path):

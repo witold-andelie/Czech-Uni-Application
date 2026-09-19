@@ -11,6 +11,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from source_types import JOB_LISTING_SOURCE_TYPES
 
 ROOT = Path(__file__).resolve().parents[3]
 BASELINE = ROOT / "data" / "sources" / "msmt-hei-baseline.json"
@@ -35,7 +36,6 @@ JOB_SOURCE_ASSESSMENT = (
 CLOSED_LIFECYCLES = {"closed", "expired", "unavailable"}
 COVERAGE_SCHEMA_VERSION = 2
 PREDICATE_VERSION = "coverage-predicates-v2"
-JOB_LISTING_SOURCE_TYPES = {"official_job_listing", "official_job_listing_candidate"}
 
 
 def read_json(path: Path, default: object | None = None) -> object:
@@ -160,6 +160,7 @@ def build_coverage(
         for source in registry
         if source.get("official") is True
         and source.get("sourceType") in JOB_LISTING_SOURCE_TYPES
+        and source.get("enabled", True) is not False
         and isinstance(source.get("parser"), str)
     ]
     mapped_sources = [source for source in job_sources if source.get("employerId") in institution_by_id]

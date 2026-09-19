@@ -588,6 +588,8 @@ def _validate_jobs(data: dict[str, Any], institution_ids: set[str], errors: list
         if not isinstance(languages, list) or not languages or any(not isinstance(lang, str) or not LANGUAGE_RE.fullmatch(lang) for lang in languages):
             errors.append(f"{label} has invalid workingLanguages")
         _require_url(job, "sourceUrl", label, errors, "URL_REQUIRED_SOURCE", https_only=True)
+        if job.get("officialDetailUrl"):
+            _urls(job, ("officialDetailUrl",), label, errors, https_only=True)
         if job.get("applicationMethod") == "official_instructions":
             _urls(job, ("applicationUrl",), label, errors, https_only=True)
         else:

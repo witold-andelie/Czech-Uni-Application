@@ -8,7 +8,9 @@ import sys
 import time
 from pathlib import Path
 
+from engine.runtime import require_http_fetcher, write_runtime_report
 from schedule import ScheduleManager, VOLATILE_TASKS
+from storage.postgres import load_database_env, require_database, store_from_env
 
 ROOT = Path(__file__).resolve().parents[3]
 FLAGS = {
@@ -76,6 +78,11 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
     return report
 
 
+def tick_exit_code(report: dict) -> int:
+    """A bounded tick that defers leftover work is success. Started-task failure is not."""
+    return 1 if report.get("failed") else 0
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--plan", action="store_true")
@@ -83,6 +90,15 @@ if __name__ == "__main__":
     if args.plan:
         print(json.dumps(ScheduleManager().get_pending_tasks(), indent=2))
     else:
+        load_database_env()
+        require_database()
+        store = store_from_env()
+        if store is not None:
+            print(json.dumps({"supabase": store.ping()}, indent=2))
+            store.close()
+        runtime = write_runtime_report(ROOT / "work" / "runs" / "scrapling-runtime.json")
+        print(json.dumps({"scrapling": runtime}, indent=2))
+        require_http_fetcher(runtime)
         result = run_tick()
         print(json.dumps(result, indent=2))
-        sys.exit(1 if result["failed"] or result["deferred"] else 0)
+        sys.exit(tick_exit_code(result))
