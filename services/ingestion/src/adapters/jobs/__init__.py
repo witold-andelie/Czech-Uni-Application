@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from adapters.jobs.cuni_ajax import CuniAjaxAdapter
 from adapters.jobs.czu_wp_job_manager import CzuWpJobManagerAdapter
 
 ADAPTERS_BY_PARSER = {
+    "cuni_ajax": CuniAjaxAdapter,
     "czu_wp_job_manager": CzuWpJobManagerAdapter,
 }
 

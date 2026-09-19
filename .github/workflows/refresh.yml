@@ -67,6 +67,20 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
         run: python -u services/ingestion/src/cli/ingest_source.py --source-id czu-central-jobs --live
+      - name: Charles University job tracer into Supabase
+        id: cuni_jobs
+        continue-on-error: true
+        env:
+          PYTHONUNBUFFERED: "1"
+          PLAYWRIGHT_LAUNCH_TIMEOUT: "30000"
+          SCRAPLING_REQUIRED: "1"
+          SCRAPLING_ALLOW_BROWSER: "1"
+          SUPABASE_REQUIRED: "1"
+          SUPABASE_USE_REST: "1"
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: python -u services/ingestion/src/cli/ingest_source.py --source-id cuni-central-open-positions --live
       - name: Restore the last scheduler checkpoint
         env:
           GH_TOKEN: ${{ github.token }}
@@ -113,6 +127,7 @@ jobs:
             work/runs/ci-refresh-summary.json
             work/runs/scrapling-runtime.json
             work/runs/czu-central-jobs-tracer.json
+            work/runs/cuni-central-open-positions-tracer.json
             work/raw/
           if-no-files-found: error
           retention-days: 3

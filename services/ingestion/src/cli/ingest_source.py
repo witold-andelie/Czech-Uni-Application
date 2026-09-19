@@ -48,8 +48,13 @@ def main(argv: list[str] | None = None) -> int:
     previous = load_json(JOBS_OUT)
     result = harvest_adapter_source(source, fetch_page=fetch_page, previous=previous)
     store = result.get("store")
+    retention = None
     try:
         atomic_write(JOBS_OUT, result["snapshot"])
+        if store is not None:
+            from storage.retention import prune_ingest_history
+
+            retention = prune_ingest_history(store)
     finally:
         closer = getattr(store, "close", None)
         if callable(closer):
@@ -63,6 +68,7 @@ def main(argv: list[str] | None = None) -> int:
         "reasons": result["completeness"].reasons,
         "complete": result["complete"],
         "supabase": result.get("supabase"),
+        "retention": retention,
         "transport": getattr(fetch_page, "attempts", []),
     }
     runs_dir = ROOT / "work" / "runs"

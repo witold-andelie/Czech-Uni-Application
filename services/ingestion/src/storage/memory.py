@@ -115,3 +115,15 @@ class MemoryStore:
     def mark_absent(self, job_id: str) -> None:
         job = self.jobs[job_id]
         job["consecutive_absence"] = int(job.get("consecutive_absence") or 0) + 1
+
+    def list_source_runs(self, source_id: str | None = None) -> list[dict[str, Any]]:
+        rows = list(self.runs.values())
+        if source_id:
+            rows = [row for row in rows if row.get("source_id") == source_id]
+        rows.sort(key=lambda row: row.get("started_at") or "", reverse=True)
+        return rows
+
+    def delete_run(self, run_id: str) -> None:
+        self.observations = [row for row in self.observations if row.get("run_id") != run_id]
+        self.documents = [row for row in self.documents if row.get("run_id") != run_id]
+        self.runs.pop(run_id, None)

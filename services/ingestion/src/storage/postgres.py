@@ -367,3 +367,43 @@ class PostgresStore:
             """,
             (job_id,),
         )
+
+    def list_source_runs(self, source_id: str | None = None) -> list[dict[str, Any]]:
+        if source_id:
+            rows = self._conn.execute(
+                """
+                select id, source_id, started_at, scheduled_for, status
+                from ingest.source_run
+                where source_id = %s
+                order by started_at desc nulls last
+                """,
+                (source_id,),
+            ).fetchall()
+        else:
+            rows = self._conn.execute(
+                """
+                select id, source_id, started_at, scheduled_for, status
+                from ingest.source_run
+                order by started_at desc nulls last
+                """
+            ).fetchall()
+        return [
+            {
+                "id": str(row[0]),
+                "source_id": row[1],
+                "started_at": row[2].isoformat() if row[2] else None,
+                "scheduled_for": row[3].isoformat() if row[3] else None,
+                "status": row[4],
+            }
+            for row in rows
+        ]
+
+    def delete_run(self, run_id: str) -> None:
+        self._conn.execute("delete from ingest.listing_observation where run_id = %s", (run_id,))
+        self._conn.execute(
+            "update catalog.research_job_version set source_run_id = null where source_run_id = %s",
+            (run_id,),
+        )
+        self._conn.execute("update ingest.raw_document set run_id = null where run_id = %s", (run_id,))
+        self._conn.execute("delete from ingest.source_run where id = %s", (run_id,))
+        self.runs.pop(run_id, None)
