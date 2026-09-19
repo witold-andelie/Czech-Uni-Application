@@ -127,9 +127,11 @@ before expiry. They are not deleted on the next scheduler tick. Artifact storage
 usage must be monitored against the account quota. Candidate files do not
 overwrite source reviews in main. New jobs and
 programme changes still need the existing evidence-bound three-language review
-and immutable snapshot publication. Verified closure/status overlays can be
-committed automatically, explicitly dispatch CI, and reach the same gated host
-deployment. A bot push alone does not trigger another Actions push workflow.
+and immutable snapshot publication. Verified closure/status overlays are
+committed automatically only from `main`; a feature-branch tick keeps them in
+the candidate-review artifact and does not push to `main`. On `main` the bot
+commit explicitly dispatches CI and reaches the same gated host deployment. A
+bot push alone does not trigger another Actions push workflow.
 No failed request becomes a closure. A concurrent main update rejects the bot
 push rather than force-overwriting it; the next run retries from current main.
 

@@ -94,6 +94,8 @@ jobs:
           name: candidate-review-${{ github.run_id }}
           path: |
             data/sources/
+            data/published/safety
+            data/published/safety-status.json
             work/runs/ci-refresh-summary.json
             work/runs/scrapling-runtime.json
             work/raw/
@@ -105,7 +107,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/prune_refresh_artifacts.py
       - name: Publish only verified closure status changes
-        if: always() && steps.crawl.outcome != 'skipped'
+        if: always() && steps.crawl.outcome != 'skipped' && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -116,16 +118,22 @@ jobs:
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -m 'Refresh verified official vacancy closure status'
-            git push origin HEAD:main
+            git push origin HEAD
             # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
             gh workflow run ci.yml --ref main
           fi
+      - name: Hold verified closures on this branch for review
+        if: always() && steps.crawl.outcome != 'skipped' && github.ref != 'refs/heads/main'
+        run: |
+          python services/ingestion/src/publish.py --check
+          python services/ingestion/src/safety_status.py --check
+          echo 'This run is not on main. Verified closures stay in candidate-review artifacts; they are not pushed to main.'
       - name: Report incomplete refresh honestly
-        if: steps.crawl.outcome == 'failure'
+        if: always() && steps.crawl.outcome == 'failure'
         run: |
           echo 'A started refresh task failed. Deferred leftover work is not a failure; check candidate-review and scheduler artifacts.'
           exit 1
       - name: Note deferred remainder
-        if: steps.crawl.outcome == 'success'
+        if: always() && steps.crawl.outcome == 'success'
         run: |
           echo 'Bounded tick finished. Remaining due tasks stay queued for the next wake.'
