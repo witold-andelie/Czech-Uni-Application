@@ -31,15 +31,18 @@ jobs:
         with:
           path: ~/.cache/ms-playwright
           key: ms-playwright-chromium-${{ runner.os }}-scrapling-0.4.9
-      - name: Install offline worker, Scrapling fetchers, and Chromium
+      - name: Install Python collector and Scrapling HTTP fetcher
         run: |
           python -m pip install -r services/ingestion/requirements-runtime.txt
-          python -c "import scrapling; from scrapling.fetchers import Fetcher, DynamicFetcher; print('scrapling', scrapling.__version__)"
-          python -m playwright install chromium
-          sudo python -m playwright install-deps chromium
           sudo apt-get update -qq
           sudo apt-get install -y tesseract-ocr tesseract-ocr-ces tesseract-ocr-eng
+          python -c "import scrapling; from scrapling.fetchers import Fetcher; print('scrapling', scrapling.__version__)"
           SCRAPLING_REQUIRED=1 python services/ingestion/src/cli/check_scrapling.py
+      - name: Install Playwright Chromium for dynamic pages
+        continue-on-error: true
+        run: |
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
       - name: Connect the collector to Supabase over HTTPS
         env:
           SUPABASE_REQUIRED: "1"
@@ -80,7 +83,7 @@ jobs:
             work/runs/schedule-state.json
             work/runs/shard-assignments.json
             work/runs/refresh-state.json
-          if-no-files-found: error
+          if-no-files-found: ignore
           retention-days: 30
       - name: Retain candidates and evidence for review
         if: always()
