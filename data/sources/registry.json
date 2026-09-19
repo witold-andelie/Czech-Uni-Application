@@ -213,10 +213,11 @@
     "sourceCoverageClaim": "not_asserted",
     "parser": "cuni_ajax",
     "followDetails": true,
+    "maxPages": 20,
     "refreshIntervalHours": 4,
-    "collectionStatus": "adapter_integrated_2026-09-10",
-    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
-    "note": "The central feed is broader than the former MFF-only source. It still does not prove every faculty and research centre publishes every vacancy into this feed."
+    "collectionStatus": "adapter_engine_wired_2026-09-19",
+    "adapter": "services/ingestion/src/adapters/jobs/cuni_ajax.py",
+    "note": "The central feed is broader than the former MFF-only source. Production harvest uses the adapter engine and keeps every official vacancy, including teaching and administrative rows. It still does not prove every faculty and research centre publishes every vacancy into this feed."
   },
   {
     "id": "muni-careers",
