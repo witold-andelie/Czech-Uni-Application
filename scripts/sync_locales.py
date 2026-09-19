@@ -477,9 +477,9 @@ MESSAGES: dict[str, dict[str, str]] = {
     },
     "map.title": {"zh-CN": "高校地图", "en": "Institution map", "cs": "Mapa vysokých škol"},
     "map.intro": {
-        "zh-CN": "地图是辅助视图，列表才是数据。底图是捷克 14 个州的开源行政区划，城市名为 Wikidata／Nominatim 标注。可滚轮或按钮放大缩小、拖动平移。不使用 Google 地图或境外瓦片。",
-        "en": "The map is an auxiliary view; the list is the data. The base map is the 14 open Czech administrative regions, with city names from Wikidata / Nominatim. Zoom with the wheel or buttons, and pan by dragging. It does not use Google Maps or foreign map tiles.",
-        "cs": "Mapa je pomocný pohled; seznam je zdrojem dat. Podklad tvoří 14 otevřených českých krajů, názvy měst pocházejí z Wikidat / Nominatim. Přibližujte kolečkem nebo tlačítky a posouvejte tažením. Nepoužívá Google Maps ani zahraniční mapové dlaždice.",
+        "zh-CN": "地图是辅助视图，列表才是数据。默认显示项目内置的捷克详图：14 个州、主要城市和水系。可滚轮或按钮放大缩小、拖动平移。不依赖 Google 地图或境外瓦片。",
+        "en": "The map is an auxiliary view; the list is the data. The default view is the bundled Czech map: 14 regions, major cities, and waterways. Zoom with the wheel or buttons, and pan by dragging. It does not depend on Google Maps or foreign map tiles.",
+        "cs": "Mapa je pomocný pohled; seznam je zdrojem dat. Výchozí zobrazení je vestavěná mapa Česka: 14 krajů, hlavní města a vodstvo. Přibližujte kolečkem nebo tlačítky a posouvejte tažením. Nezávisí na Google Maps ani zahraničních mapových dlaždicích.",
     },
     "map.coverage": {
         "zh-CN": "教育部登记 {n} 所高校，其中 {mapped} 所有坐标，{missing} 所未收录坐标。",
@@ -497,6 +497,12 @@ MESSAGES: dict[str, dict[str, str]] = {
     "map.legend.notFound": {"zh-CN": "方点：登记册有、但不在本次中留服名单", "en": "Square: on the register, not on this CSCSE list", "cs": "Čtverec: v registru, mimo tento seznam CSCSE"},
     "map.legend.unmapped": {"zh-CN": "无点位：坐标未收录，只出现在列表", "en": "No pin: coordinates not recorded; list only", "cs": "Bez špendlíku: souřadnice chybí; pouze seznam"},
     "map.legend.cities": {"zh-CN": "文字：城市名", "en": "Text: city name", "cs": "Text: název města"},
+    "map.legend.regions": {"zh-CN": "色块：14 个州", "en": "Colour: 14 regions", "cs": "Barva: 14 krajů"},
+    "map.primaryMode": {
+        "zh-CN": "当前为项目内置捷克详图，不依赖境外瓦片。学校列表仍可核对。",
+        "en": "The bundled Czech detailed map is active and does not use foreign tiles. The institution list remains available.",
+        "cs": "Je aktivní vestavěná podrobná mapa Česka bez zahraničních dlaždic. Seznam škol zůstává k dispozici.",
+    },
     "map.zoom": {"zh-CN": "地图缩放", "en": "Map zoom", "cs": "Přiblížení mapy"},
     "map.zoomIn": {"zh-CN": "放大", "en": "Zoom in", "cs": "Přiblížit"},
     "map.zoomOut": {"zh-CN": "缩小", "en": "Zoom out", "cs": "Oddálit"},

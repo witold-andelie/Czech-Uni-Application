@@ -974,7 +974,7 @@ a.external {
   fill: #e7efd4;
 }
 
-.czechia-region.praha {
+.czechia-region.CZ010 {
   fill: #c5d4b3;
 }
 
@@ -1028,6 +1028,19 @@ a.external {
 
 .map-city.major {
   font-size: 15px;
+}
+
+.map-region-label {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #3d4f36;
+  text-shadow: 0 0 4px #f4f7ee, 0 1px 0 #fff;
+  white-space: nowrap;
+  opacity: 0.9;
 }
 
 .map-zoom {
