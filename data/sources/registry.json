@@ -348,6 +348,7 @@
     "employerId": "msmt-vs_41000",
     "coverageScope": "institution_aggregator",
     "sourceCoverageClaim": "not_asserted",
+    "unitInventory": "data/sources/coverage/czu-unit-inventory.json",
     "parser": "czu_wp_job_manager",
     "waitSelector": "li.job_listing, .job_listings",
     "allowBrowser": true,
@@ -357,7 +358,7 @@
     "refreshIntervalHours": 4,
     "collectionStatus": "adapter_live_verified_2026-09-10",
     "adapter": "services/ingestion/src/adapters/jobs/czu_wp_job_manager.py",
-    "note": "The portal navigation spans CZU faculties and other university units. Each public result is matched by WordPress post ID to its full official body before eligibility and pay classification. Production harvest uses the adapter engine and keeps every official vacancy, including out-of-scope rows. Registration does not assert that every CZU unit publishes every vacancy here."
+    "note": "The portal navigation spans CZU faculties and other university units. Each public result is matched by WordPress post ID to its full official body before eligibility and pay classification. Production harvest uses the adapter engine and keeps every official vacancy, including out-of-scope rows. The 2026-09-19 official structure inventory is in data/sources/coverage/czu-unit-inventory.json. jobs.czu.cz does not state that every unit publishes every vacancy there, so sourceCoverageClaim stays not_asserted."
   },
   {
     "id": "jcu-central-vacancies",
