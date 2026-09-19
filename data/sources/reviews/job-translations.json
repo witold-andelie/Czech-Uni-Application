@@ -37,15 +37,9 @@
       "factHash": "sha256:02cd9b7c39dd9b03356da755fc96bde134d4d0da942e547f12c7630e15fc1f8d"
     },
     "job-cuni-d3s-postdoc": {
-      "sourceHash": "sha256:3270a2b40a0495f1220c3dfac325bb668ef59e5dc854f31d72a4ab11915b11dc",
-      "evidenceHash": "sha256:3270a2b40a0495f1220c3dfac325bb668ef59e5dc854f31d72a4ab11915b11dc",
-      "normalizationVersion": "fact-v1",
-      "reviewer": {
-        "role": "operator_source_review"
-      },
-      "reviewEventId": "rev-2026-09-12-a70b-02",
-      "reviewedAt": "2026-09-12T19:50:41Z",
-      "reviewNote": "Re-review after extractor correction (A67). The notice states 'competitive salary - approx. 2900 EUR gross' without a payroll period, so the cycle stays unspecified instead of an inferred monthly value. Title translations unchanged from the prior review.",
+      "sourceHash": "sha256:d25a985ab50109caa7b180884ae3de9630d1770fff205726b14d6a8b2366a77b",
+      "evidenceHash": "sha256:d25a985ab50109caa7b180884ae3de9630d1770fff205726b14d6a8b2366a77b",
+      "revokedReason": "Official vacancy description is now https://www.d3s.mff.cuni.cz/positions/2026-1/. Previous listing-page approval cannot be inherited.",
       "title": {
         "zh-CN": "高可靠可信系统软件架构博士后研究员",
         "en": "Postdoctoral Research Positions in software architectures for dependable and trustworthy systems",
@@ -53,22 +47,18 @@
       },
       "locales": {
         "zh-CN": {
-          "status": "reviewed",
-          "reviewedAt": "2026-09-12T19:50:41Z",
-          "contentHash": "sha256:f14de9fa9118615ca07fac4ff9f11c5f5368e64d1aa550df1440cc7df7e1cc49"
+          "status": "revoked",
+          "reviewedAt": "2026-09-12T19:50:41Z"
         },
         "en": {
-          "status": "reviewed",
-          "reviewedAt": "2026-09-12T19:50:41Z",
-          "contentHash": "sha256:d4430fccc1d98ebb1b571f37066670fe059ead15f56a9fdd2633e490d5be4fd8"
+          "status": "revoked",
+          "reviewedAt": "2026-09-12T19:50:41Z"
         },
         "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-09-12T19:50:41Z",
-          "contentHash": "sha256:d4430fccc1d98ebb1b571f37066670fe059ead15f56a9fdd2633e490d5be4fd8"
+          "status": "revoked",
+          "reviewedAt": "2026-09-12T19:50:41Z"
         }
-      },
-      "factHash": "sha256:b415c587a9d504e9dec99d00f570018e03101718ee0150b0eb7a684a66b53fb5"
+      }
     },
     "job-cuni-mff-academic-researcher-ksvi": {
       "sourceHash": "sha256:6b9beb964967f876a33982156ba318fd8b917c5fb984e95feb049be7a5a0f6d2",

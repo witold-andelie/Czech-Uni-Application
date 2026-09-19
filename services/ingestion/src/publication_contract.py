@@ -15,6 +15,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
 from urllib.parse import urlsplit
 
+from engine.urls import official_detail_allowed
 from publication_rules import (
     FACT_NORMALIZATION_VERSION,
     UNAPPROVED_PUBLICATION,
@@ -39,6 +40,7 @@ VERSION_RE = re.compile(r"^v\d{4}-\d{2}-\d{2}\.\d+$")
 SHA256_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
 SAFE_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]*$")
+LEGACY_GENERIC_LISTING_JOBS = {("v2026-09-17.1", "job-cuni-d3s-postdoc")}
 
 
 def load_policy(path: Path = POLICY_PATH) -> dict[str, Any]:
@@ -501,7 +503,13 @@ def _validate_reviewed_offerings(data: dict[str, Any], institution_ids: set[str]
     return len(offering_ids)
 
 
-def _validate_jobs(data: dict[str, Any], institution_ids: set[str], errors: list[str]) -> int:
+def _validate_jobs(
+    data: dict[str, Any],
+    institution_ids: set[str],
+    errors: list[str],
+    *,
+    snapshot_version: str | None = None,
+) -> int:
     jobs = data.get("jobs")
     job_ids = _unique_ids(jobs, "research jobs", errors)
     evidence = data.get("evidence")
@@ -590,6 +598,23 @@ def _validate_jobs(data: dict[str, Any], institution_ids: set[str], errors: list
         _require_url(job, "sourceUrl", label, errors, "URL_REQUIRED_SOURCE", https_only=True)
         if job.get("officialDetailUrl"):
             _urls(job, ("officialDetailUrl",), label, errors, https_only=True)
+        detail = job.get("officialDetailUrl") or job.get("sourceUrl")
+        if isinstance(detail, str) and detail.strip():
+            allowed, reason = official_detail_allowed(
+                detail,
+                {
+                    "url": job.get("listingUrl") or "",
+                    "singleVacancyDocument": job.get("singleVacancyDocument") is True,
+                },
+            )
+            if not allowed and reason == "official-detail-url-is-generic-listing":
+                if (snapshot_version, ident) not in LEGACY_GENERIC_LISTING_JOBS:
+                    errors.append(
+                        rule(
+                            "URL_GENERIC_LISTING",
+                            f"{label} official vacancy description is a generic listing URL",
+                        )
+                    )
         if job.get("applicationMethod") == "official_instructions":
             _urls(job, ("applicationUrl",), label, errors, https_only=True)
         else:
@@ -656,7 +681,13 @@ def validate_dataset(snapshot_root: Path) -> ValidationResult:
     _validate_tracer(loaded["admissions/cuni-mff-cs-tracer.json"] or {}, "CUNI tracer", institution_ids, errors)
     _validate_tracer(loaded["admissions/muni-fi-tracer.json"] or {}, "MUNI tracer", institution_ids, errors)
     reviewed_count = _validate_reviewed_offerings(loaded["admissions/reviewed-offerings.json"] or {}, institution_ids, errors)
-    job_count = _validate_jobs(loaded["browse/nine-hei-jobs.json"] or {}, institution_ids, errors)
+    snapshot_version = snapshot_root.name if VERSION_RE.fullmatch(snapshot_root.name) else None
+    job_count = _validate_jobs(
+        loaded["browse/nine-hei-jobs.json"] or {},
+        institution_ids,
+        errors,
+        snapshot_version=snapshot_version,
+    )
     coordinate_count = _validate_coordinates(loaded["browse/hei-coordinates.json"] or {}, institution_ids, errors)
 
     outline = loaded["browse/czechia-outline.json"] or {}

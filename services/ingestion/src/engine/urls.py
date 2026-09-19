@@ -52,6 +52,9 @@ def is_generic_listing_url(url: str, source: dict) -> bool:
     path = parsed.path.rstrip("/") or "/"
     if path.casefold() in GENERIC_PATHS:
         return True
+    host = (parsed.hostname or "").casefold()
+    if host == "www.d3s.mff.cuni.cz" and path.casefold() == "/positions":
+        return True
     return False
 
 
