@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from adapters.jobs.cuni_ajax import CuniAjaxAdapter
 from adapters.jobs.czu_wp_job_manager import CzuWpJobManagerAdapter
+from adapters.jobs.registered_listing import HarvestListingAdapter, uses_binary_or_private_api
 
 ADAPTERS_BY_PARSER = {
     "cuni_ajax": CuniAjaxAdapter,
@@ -14,6 +15,8 @@ ADAPTERS_BY_PARSER = {
 def adapter_for(source: dict) -> object | None:
     parser = source.get("parser")
     cls = ADAPTERS_BY_PARSER.get(parser)
-    if cls is None:
+    if cls is not None:
+        return cls(source)
+    if not parser or uses_binary_or_private_api(source):
         return None
-    return cls(source)
+    return HarvestListingAdapter(source)
