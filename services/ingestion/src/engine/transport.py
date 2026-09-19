@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from typing import Any, Callable
 from urllib.parse import urlsplit
 
-from engine.runtime import allow_browser as env_allow_browser
+from engine.runtime import allow_browser as env_allow_browser, chromium_ready
 
 OrdinaryGet = Callable[[str], tuple[int, str]]
 ScraplingCall = Callable[..., tuple[int, str]]
@@ -128,20 +128,26 @@ def _live_scrapling_get(url: str, timeout: int = 40) -> tuple[int, str]:
     return int(getattr(page, "status", 0) or 0), text
 
 
-def _live_scrapling_fetch(url: str, timeout_ms: int = 45_000, wait_selector: str | None = None) -> tuple[int, str]:
-    try:
-        from scrapling.fetchers import DynamicFetcher
-    except ImportError:
-        return 0, ""
+def dynamic_fetch_kwargs(timeout_ms: int = 20_000, wait_selector: str | None = None) -> dict[str, Any]:
+    """Playwright options for JS shells. network_idle waits out analytics forever."""
     kwargs: dict[str, Any] = {
         "headless": True,
         "timeout": timeout_ms,
         "wait": 1500,
         "disable_resources": False,
-        "network_idle": True,
+        "network_idle": False,
     }
     if wait_selector:
         kwargs["wait_selector"] = wait_selector
+    return kwargs
+
+
+def _live_scrapling_fetch(url: str, timeout_ms: int = 20_000, wait_selector: str | None = None) -> tuple[int, str]:
+    try:
+        from scrapling.fetchers import DynamicFetcher
+    except ImportError:
+        return 0, ""
+    kwargs = dynamic_fetch_kwargs(timeout_ms=timeout_ms, wait_selector=wait_selector)
     page = DynamicFetcher.fetch(url, **kwargs)
     body = page.body
     if isinstance(body, bytes):
@@ -204,7 +210,10 @@ def fetch_official_page(
         reasons.append(weak)
         status, body = get_status, get_body
 
-    if not allow_browser or not env_allow_browser() or _looks_json(url, body):
+    use_browser = allow_browser and env_allow_browser() and not _looks_json(url, body)
+    if use_browser and scrapling_fetch is None and not chromium_ready():
+        use_browser = False
+    if not use_browser:
         reasons.append("browser-not-used")
         return FetchResult(status, body, attempts[-1]["tool"], url, False, reasons, attempts)
 

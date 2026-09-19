@@ -16,8 +16,30 @@ def allow_browser() -> bool:
     return os.environ.get("SCRAPLING_ALLOW_BROWSER", "1").strip().lower() not in {"0", "false", "no", "off"}
 
 
+_chromium_probe: bool | None = None
+
+
+def chromium_ready() -> bool:
+    """True when Playwright Chromium exists locally. Does not open a university URL."""
+    global _chromium_probe
+    if _chromium_probe is not None:
+        return _chromium_probe
+    try:
+        from playwright.sync_api import sync_playwright
+    except Exception:
+        _chromium_probe = False
+        return False
+    try:
+        with sync_playwright() as playwright:
+            executable = playwright.chromium.executable_path
+        _chromium_probe = bool(executable) and Path(executable).is_file()
+    except Exception:
+        _chromium_probe = False
+    return _chromium_probe
+
+
 def probe_scrapling() -> dict[str, Any]:
-    """Import-only probe. Does not fetch university pages."""
+    """Import-only probe. Does not fetch university pages or launch Chromium."""
     report: dict[str, Any] = {
         "version": None,
         "httpFetcher": False,
@@ -51,6 +73,7 @@ def probe_scrapling() -> dict[str, Any]:
 
 def write_runtime_report(path: Path) -> dict[str, Any]:
     report = probe_scrapling()
+    report["chromiumReady"] = bool(report.get("playwrightImport")) and chromium_ready()
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return report

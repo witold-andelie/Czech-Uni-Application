@@ -19,6 +19,7 @@ def test_probe_does_not_fetch_network() -> None:
     assert "httpFetcher" in report
     assert "dynamicFetcherImport" in report
     assert report["required"] is False
+    assert "chromiumReady" not in report
 
 
 def test_require_http_fetcher_exits_when_cloud_runner_is_missing_scrapling() -> None:

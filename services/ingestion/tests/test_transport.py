@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from engine.transport import OfficialFetcher, fetch_official_page  # noqa: E402
+from engine.transport import OfficialFetcher, dynamic_fetch_kwargs, fetch_official_page  # noqa: E402
 
 
 SHELL = "<html><body><p>Please enable JavaScript to continue.</p></body></html>"
@@ -112,6 +112,29 @@ def test_json_api_never_starts_a_browser() -> None:
         ordinary=ordinary,
         scrapling_get=scrapling_get,
         scrapling_fetch=lambda *_a, **_k: (_ for _ in ()).throw(AssertionError("browser")),
+    )
+    assert "browser-not-used" in result.reasons
+    assert result.tool == "scrapling_get"
+
+
+def test_dynamic_fetch_does_not_wait_for_network_idle() -> None:
+    kwargs = dynamic_fetch_kwargs(wait_selector="li.job_listing")
+    assert kwargs["network_idle"] is False
+    assert kwargs["timeout"] <= 20_000
+    assert kwargs["wait_selector"] == "li.job_listing"
+
+
+def test_missing_chromium_does_not_launch_browser(monkeypatch) -> None:
+    monkeypatch.setattr("engine.transport.chromium_ready", lambda: False)
+
+    def boom(*_args, **_kwargs):
+        raise AssertionError("browser must stay off when Chromium is missing")
+
+    monkeypatch.setattr("engine.transport._live_scrapling_fetch", boom)
+    result = fetch_official_page(
+        "https://jobs.czu.test/",
+        ordinary=lambda _url: (200, SHELL),
+        scrapling_get=lambda _url: (200, SHELL),
     )
     assert "browser-not-used" in result.reasons
     assert result.tool == "scrapling_get"

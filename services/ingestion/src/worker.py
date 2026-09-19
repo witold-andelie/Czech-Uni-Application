@@ -257,6 +257,7 @@ def harvest_jobs(
         processed = set()
         skipped = []
         for source in sources:
+            print(f"job_discovery: source={source.get('id')}", flush=True)
             page = injected_fetch if injected_fetch is not None else live_fetcher(source)
             part = harvest_jobs([], fetch_page=page, jobs_path=target, registry=[source])
             discovery = part.get("discovery") or {}
@@ -901,6 +902,8 @@ def _recheck_open_jobs_unlocked(
         return post_response_cache[key]
     previous = load_json(jobs_path)
     jobs = previous.get("jobs") or []
+    if live_request:
+        print(f"job_recheck: stored_jobs={len(jobs)}", flush=True)
     raw_windows = previous.get("windows") or []
     windows_by_owner: dict[str, list[dict]] = {}
     updated_windows: list[dict] = []
@@ -932,6 +935,8 @@ def _recheck_open_jobs_unlocked(
             continue
 
         checked_count += 1
+        if live_request:
+            print(f"job_recheck: start id={job.get('id')}", flush=True)
         job_copy = dict(job)
         job_windows = windows_by_owner.get(job["id"], [])
         expired_any = False
@@ -1062,6 +1067,12 @@ def _recheck_open_jobs_unlocked(
         if all_windows_closed:
             closed_count += 1
         updated_jobs.append(job_copy)
+        if live_request:
+            print(
+                f"job_recheck: id={job.get('id')} status={status} "
+                f"checked={checked_count} failed={failure_count}",
+                flush=True,
+            )
 
     merged = dict(previous)
     merged["jobs"] = updated_jobs
@@ -1445,42 +1456,42 @@ def main() -> None:
         from engine.runtime import require_http_fetcher, write_runtime_report
 
         runtime = write_runtime_report(RUNS / "scrapling-runtime.json")
-        print(json.dumps({"scrapling": runtime}, ensure_ascii=False))
+        print(json.dumps({"scrapling": runtime}, ensure_ascii=False), flush=True)
         require_http_fetcher(runtime)
 
     if "--recheck-jobs" in args:
         res = recheck_open_jobs()
-        print(json.dumps(res, ensure_ascii=False, indent=2))
+        print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
         return
 
     if "--discover-jobs" in args:
         res = discover_all_jobs()
-        print(json.dumps(res, ensure_ascii=False, indent=2))
+        print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
         return
 
     if "--refresh-programme-availability" in args:
         res = refresh_programme_availability()
-        print(json.dumps(res, ensure_ascii=False, indent=2))
+        print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
         return
 
     if "--refresh-czu-programmes" in args:
         res = refresh_czu_programme_availability()
-        print(json.dumps(res, ensure_ascii=False, indent=2))
+        print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
         return
 
     if "--refresh-czu-czech-programmes" in args:
         res = refresh_czu_czech_programme_availability()
-        print(json.dumps(res, ensure_ascii=False, indent=2))
+        print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
         return
 
     if "--refresh-czu-doctoral-programmes" in args:
         res = refresh_czu_doctoral_programme_availability()
-        print(json.dumps(res, ensure_ascii=False, indent=2))
+        print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
         return
 
     if "--catch-up" in args:
         res = run_catch_up(force=force, skip_portals=skip_portals)
-        print(json.dumps(res, ensure_ascii=False, indent=2))
+        print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
         return
 
     day = utc_today()

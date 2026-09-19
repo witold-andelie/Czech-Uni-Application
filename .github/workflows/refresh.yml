@@ -66,6 +66,8 @@ jobs:
         id: crawl
         continue-on-error: true
         env:
+          PYTHONUNBUFFERED: "1"
+          PLAYWRIGHT_LAUNCH_TIMEOUT: "30000"
           SCRAPLING_REQUIRED: "1"
           SCRAPLING_ALLOW_BROWSER: "1"
           SUPABASE_REQUIRED: "1"
@@ -73,7 +75,7 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
-        run: python services/ingestion/src/ci_refresh.py
+        run: python -u services/ingestion/src/ci_refresh.py
       - name: Save scheduler checkpoint even after partial source failure
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
