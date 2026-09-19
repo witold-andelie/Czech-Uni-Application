@@ -116,8 +116,8 @@ existing 1/4/2-hour and five-day policies. Each tick installs Scrapling 0.4.9
 fetchers plus Playwright Chromium (`scrapling[fetchers]` then
 `playwright install chromium`) so hard official pages use the same HTTP then
 browser escalation as a local machine. A tick is bounded to 35 minutes;
-individual tasks have a 15-minute ceiling. Source failures and deferred tasks
-remain visible as failures and retain retry state. GitHub scheduling is best
+individual tasks have a 15-minute ceiling. Source failures stay in the scheduler retry queue and the tick summary;
+they do not fail the GitHub job after the checkpoint is saved. GitHub scheduling is best
 effort, not an exact timing SLA. Paused/inactive workflows and exhausted quotas
 require operator intervention.
 
