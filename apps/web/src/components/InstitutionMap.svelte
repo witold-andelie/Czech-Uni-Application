@@ -18,6 +18,7 @@
     MAX_ZOOM,
     MIN_ZOOM,
     clusterMapPoints,
+    svgPathCentroid,
     coordFilterFromSearch,
     defaultMapView,
     hasCoordinates,
@@ -68,9 +69,9 @@
   let selectedId = $state<string | null>(null);
   let activeCity = $state<string>("cz");
 
-  // MapLibre state
-  let mapMode = $state<"maplibre" | "svg">("maplibre");
-  let mapStatus = $state<"initializing" | "loading" | "healthy" | "degraded">("initializing");
+  // First-party Czech SVG is the detailed map. OSM is optional and never required.
+  let mapMode = $state<"maplibre" | "svg">("svg");
+  let mapStatus = $state<"initializing" | "loading" | "healthy" | "degraded">("healthy");
   let fallbackReason = $state<"webgl" | "tiles" | "initialization" | "manual" | null>(null);
   let mapContainerEl: HTMLDivElement | undefined;
   let mapInstance: any = null;
@@ -112,21 +113,6 @@
     };
     window.addEventListener("popstate", onPop);
 
-    // Check WebGL and load MapLibre GL
-    if (!hasWebGL()) {
-      switchToSvg("webgl");
-    } else {
-      import("maplibre-gl").then(async (mod) => {
-        // MapLibre GL exports named exports in ESM (Map, Marker, etc.), handle both default and namespace export
-        maplibreglLib = mod.default || mod;
-        await tick();
-        initMapLibre();
-      }).catch((err) => {
-        console.warn("MapLibre GL load error, falling back to SVG map:", err);
-        switchToSvg("initialization");
-      });
-    }
-
     return () => {
       window.removeEventListener("popstate", onPop);
       destroyInteractiveMap();
@@ -153,7 +139,15 @@
   );
 
   let selected = $derived(visible.find((row) => row.institution.id === selectedId) ?? null);
-  let labeledCities = $derived(cities.filter((city) => city.rank <= 2 || view.scale >= 1.8));
+  let labeledCities = $derived(cities.filter((city) => city.rank <= 3 || view.scale >= 1.6));
+  let regionLabels = $derived(
+    regions
+      .map((region) => {
+        const point = svgPathCentroid(region.path);
+        return point ? { ...region, ...point } : null;
+      })
+      .filter((row): row is MapRegion & { x: number; y: number } => Boolean(row)),
+  );
   let cityOptions = $derived(uniqueBaselineCities(schools.map((row) => row.institution), locale));
 
   let operatorListedCount = $derived(visible.filter((r) => operatorListStatus(r.institution) === "listed").length);
@@ -261,7 +255,15 @@
         essential: true,
         duration: 1100,
       });
+      return;
     }
+    if (cityKey === "cz") {
+      resetView();
+      return;
+    }
+    const point = projectLonLat(vp.center[0], vp.center[1]);
+    const scale = cityKey === "prague" || cityKey === "brno" || cityKey === "ostrava" ? 6 : 2.4;
+    view = zoomMapAt(defaultMapView(), scale, point.x, point.y);
   }
 
   function destroyInteractiveMap() {
@@ -624,9 +626,9 @@
     <div
       class="map-viewport-container"
       data-map-status={mapStatus}
-      data-map-provider="osm-raster"
+      data-map-provider={mapMode === "maplibre" ? "osm-raster" : "czechia-svg"}
     >
-      {#if mapStatus !== "degraded"}
+      {#if mapMode === "maplibre"}
         <div class="maplibre-viewport" class:revealed={mapStatus === "healthy"} bind:this={mapContainerEl}></div>
         {#if mapStatus === "healthy"}
           <div class="maplibre-legend card" role="note">
@@ -663,9 +665,16 @@
               {t(locale, "map.tryInteractive")}
             </button>
           </div>
+      {:else if mapMode === "svg"}
+          <div class="webgl-fallback-banner card" role="status">
+            <p>{t(locale, "map.primaryMode")}</p>
+            <button class="btn btn-sm" type="button" onclick={retryInteractiveMap}>
+              {t(locale, "map.tryInteractive")}
+            </button>
+          </div>
       {/if}
 
-        {#if mapStatus !== "healthy"}
+        {#if mapMode === "svg"}
         <div class="map-legend" role="group" aria-label={t(locale, "map.legend")}>
           <span class="legend-item">
             <span class="pin-mark listed" aria-hidden="true"></span>
@@ -676,17 +685,18 @@
             {t(locale, "map.legend.operatorAbsent")}
           </span>
           <span class="legend-item">{t(locale, "map.legend.cities")}</span>
+          <span class="legend-item">{t(locale, "map.legend.regions")}</span>
         </div>
         {/if}
 
         <div
           class="map-viewport svg-basemap"
           class:dragging
-          class:interactive={mapStatus !== "healthy"}
+          class:interactive={mapMode === "svg"}
           bind:this={viewportEl}
           tabindex="0"
           role="application"
-          aria-hidden={mapStatus === "healthy"}
+          aria-hidden={mapMode === "maplibre" && mapStatus === "healthy"}
           aria-label={t(locale, "map.canvas")}
           onwheel={onWheel}
           onpointerdown={onPointerDown}
@@ -722,6 +732,16 @@
                 <path class="map-river" d={path}></path>
               {/each}
             </svg>
+            {#if view.scale < 8}
+              {#each regionLabels as region (`label-${region.id}`)}
+                <span
+                  class="map-region-label"
+                  style={`left: ${(region.x / MAP_SIZE.width) * 100}%; top: ${(region.y / MAP_SIZE.height) * 100}%; transform: translate(-50%, -50%) scale(${1 / view.scale});`}
+                >
+                  {region.name[locale]}
+                </span>
+              {/each}
+            {/if}
             {#each labeledCities as city (city.id)}
               {@const point = projectLonLat(city.lon, city.lat)}
               <span
@@ -749,7 +769,7 @@
               </button>
             {/each}
           </div>
-          {#if mapStatus !== "healthy"}
+          {#if mapMode === "svg"}
           <div class="map-zoom" role="group" aria-label={t(locale, "map.zoom")} onpointerdown={(event) => event.stopPropagation()}>
             <button class="btn" type="button" onclick={() => zoomBy(1.25)} disabled={view.scale >= MAX_ZOOM}>{t(locale, "map.zoomIn")}</button>
             <button class="btn" type="button" onclick={() => zoomBy(1 / 1.25)} disabled={view.scale <= MIN_ZOOM}>{t(locale, "map.zoomOut")}</button>

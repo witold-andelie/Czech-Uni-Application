@@ -7,6 +7,7 @@ import {
   MAP_SIZE,
   attachCoordinates,
   clusterMapPoints,
+  svgPathCentroid,
   coordFilterFromSearch,
   defaultMapView,
   geojsonToPath,
@@ -26,6 +27,13 @@ import {
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../../..");
 
 describe("map projection", () => {
+  it("places a region label on the first ring of an SVG path", () => {
+    const point = svgPathCentroid("M10 10 L30 10 L30 30 L10 30 Z M50 50 L60 50 L60 60 Z");
+    assert.ok(point);
+    assert.equal(point.x, 20);
+    assert.equal(point.y, 20);
+  });
+
   it("places Prague inside the SVG and keeps Berlin outside the Czech bbox", () => {
     const prague = projectLonLat(14.42076, 50.08781);
     assert.ok(prague.x > 80 && prague.x < MAP_SIZE.width - 80);

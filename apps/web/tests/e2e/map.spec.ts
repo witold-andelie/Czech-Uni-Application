@@ -17,10 +17,18 @@ test("blocked map tiles fall back to the bundled overview", async ({ page }) => 
   await page.setViewportSize(VIEWPORTS.phone);
   await page.route("https://tile.openstreetmap.org/**", (route) => route.abort());
   await page.goto("/zh-CN/map");
-  const tiles = msg("zh-CN", "map.tilesFallback");
-  const webgl = msg("zh-CN", "map.webglFallback");
-  await expect(page.getByRole("status")).toBeVisible({ timeout: 20_000 });
-  const text = await page.getByRole("status").innerText();
-  expect(text.includes(tiles) || text.includes(webgl)).toBeTruthy();
+  await expect(page.locator(".map-viewport.svg-basemap")).toBeVisible();
+  await expect(page.locator(".czechia-region")).toHaveCount(14);
+  await expect(page.getByRole("status")).toContainText(msg("zh-CN", "map.primaryMode"));
+  await expect(page.getByText(msg("zh-CN", "map.tilesFallback"))).toHaveCount(0);
   await expect(page.getByRole("link", { name: msg("zh-CN", "institutions.open") }).first()).toBeVisible();
+});
+
+test("Czech SVG map shows region and city labels without OSM", async ({ page }) => {
+  await page.setViewportSize(VIEWPORTS.desktop);
+  await page.route("https://tile.openstreetmap.org/**", (route) => route.abort());
+  await page.goto("/en/map");
+  await expect(page.locator("[data-map-provider=czechia-svg]")).toBeVisible();
+  await expect(page.locator(".map-region-label").first()).toBeVisible();
+  await expect(page.locator(".map-city.major").first()).toBeVisible();
 });

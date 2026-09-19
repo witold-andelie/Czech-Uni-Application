@@ -95,6 +95,23 @@ export function matchesCoordFilter(lat: number | null, lon: number | null, filte
   return filter === "mapped" ? mapped : !mapped;
 }
 
+export function svgPathCentroid(d: string): ProjectedPoint | null {
+  const ring = d.split(/M/i).find((part) => part.trim().length > 0);
+  if (!ring) return null;
+  const nums = [...ring.matchAll(/-?\d+(?:\.\d+)?/g)].map((match) => Number(match[0]));
+  if (nums.length < 4) return null;
+  let sumX = 0;
+  let sumY = 0;
+  let count = 0;
+  for (let i = 0; i + 1 < nums.length; i += 2) {
+    sumX += nums[i];
+    sumY += nums[i + 1];
+    count += 1;
+  }
+  if (count === 0) return null;
+  return { x: sumX / count, y: sumY / count };
+}
+
 export function projectLonLat(
   lon: number,
   lat: number,
