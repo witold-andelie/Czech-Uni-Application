@@ -18,6 +18,41 @@ sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
 from adapters.jobs import adapter_for, adapter_sources  # noqa: E402
 
+CURSOR_PATH = ROOT / "work" / "runs" / "ingest-adapters.json"
+
+
+def load_previous_report(path: Path = CURSOR_PATH) -> dict:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, TypeError):
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def prefer_ids_from_env() -> list[str]:
+    raw = os.environ.get("ADAPTER_PREFER_IDS", "")
+    return [item.strip() for item in raw.split(",") if item.strip()]
+
+
+def prioritize_sources(
+    sources: list[dict],
+    previous: dict | None = None,
+    prefer_ids: list[str] | None = None,
+) -> list[dict]:
+    by_id = {str(item.get("id")): item for item in sources if item.get("id")}
+    ordered_ids: list[str] = []
+    seen: set[str] = set()
+    for ident in list((previous or {}).get("deferred") or []) + list(prefer_ids or []):
+        if ident in by_id and ident not in seen:
+            ordered_ids.append(ident)
+            seen.add(ident)
+    for item in sources:
+        ident = str(item.get("id") or "")
+        if ident and ident not in seen:
+            ordered_ids.append(ident)
+            seen.add(ident)
+    return [by_id[ident] for ident in ordered_ids]
+
 
 def run_adapter_pass(
     sources: list[dict],
@@ -77,7 +112,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--live", action="store_true")
     parser.add_argument("--budget-seconds", type=int, default=480)
     args = parser.parse_args(argv)
-    sources = adapter_sources()
+    sources = prioritize_sources(
+        adapter_sources(),
+        previous=load_previous_report(),
+        prefer_ids=prefer_ids_from_env(),
+    )
     if not args.live:
         print(
             json.dumps(

@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
 from adapters.jobs import adapter_sources  # noqa: E402
-from cli.ingest_adapters import main, run_adapter_pass  # noqa: E402
+from cli.ingest_adapters import main, prioritize_sources, run_adapter_pass  # noqa: E402
 
 
 def test_adapter_pass_stops_when_budget_is_gone() -> None:
@@ -39,6 +39,19 @@ def test_adapter_pass_stops_when_budget_is_gone() -> None:
     assert [item["sourceId"] for item in report["started"]] == ["a"]
     assert report["deferred"] == ["b", "c"]
     assert report["snapshot"] == {"jobs": ["a"]}
+
+
+def test_prioritize_sources_puts_deferred_first() -> None:
+    sources = [{"id": "cuni-central-open-positions"}, {"id": "muni-careers"}, {"id": "osu-central-careers"}]
+    ordered = prioritize_sources(
+        sources,
+        previous={"deferred": ["osu-central-careers", "muni-careers"]},
+    )
+    assert [item["id"] for item in ordered] == [
+        "osu-central-careers",
+        "muni-careers",
+        "cuni-central-open-positions",
+    ]
 
 
 def test_ingest_adapters_requires_live_flag() -> None:

@@ -61,6 +61,17 @@ jobs:
         run: |
           python services/ingestion/src/cli/check_supabase.py
           python services/ingestion/src/cli/sync_sources.py
+      - name: Restore adapter harvest cursor
+        if: ${{ github.event.inputs.mode == 'adapters' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p work/runs
+          cursor=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?name=adapter-cursor&per_page=5" --jq '[.artifacts[] | select(.expired == false)][0].id // empty')
+          if [ -n "$cursor" ]; then
+            gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$cursor/zip" > /tmp/adapter-cursor.zip
+            python -c "import zipfile; zipfile.ZipFile('/tmp/adapter-cursor.zip').extractall('work/runs')"
+          fi
       - name: Harvest adapter job sources only
         id: adapters
         if: ${{ github.event.inputs.mode == 'adapters' }}
@@ -75,6 +86,7 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          ADAPTER_PREFER_IDS: osu-central-careers,slu-central-vacancies,vetuni-central-vacancies,unob-academic-selection,vstecb-central-vacancies,vspj-academic-vacancies,avcr-selection-procedures,amu-central-vacancies,avu-selection-procedures,jamu-faculty-vacancies,mup-central-vacancies,mvso-central-careers,peuni-central-careers,polac-central-vacancies,unyp-central-careers
         run: python -u services/ingestion/src/cli/ingest_adapters.py --live --budget-seconds 480
       - name: CZU official job tracer into Supabase
         id: czu_jobs
@@ -131,6 +143,14 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
         run: python -u services/ingestion/src/ci_refresh.py
+      - name: Save adapter harvest cursor
+        if: ${{ always() && github.event.inputs.mode == 'adapters' }}
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: adapter-cursor
+          path: work/runs/ingest-adapters.json
+          if-no-files-found: ignore
+          retention-days: 30
       - name: Save scheduler checkpoint even after partial source failure
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
