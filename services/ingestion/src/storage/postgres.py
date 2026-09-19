@@ -11,6 +11,8 @@ from uuid import uuid4
 import json
 import os
 
+from storage.facts import job_fact_hash
+
 ROOT = Path(__file__).resolve().parents[4]
 
 
@@ -102,11 +104,6 @@ def store_from_env():
     from storage.rest import RestStore
 
     return RestStore()
-
-
-def _fact_hash(payload: dict[str, Any]) -> str:
-    canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, default=str)
-    return sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def job_title(job: dict[str, Any]) -> str:
@@ -259,15 +256,7 @@ class PostgresStore:
         run_id: str | None = None,
     ) -> dict[str, Any]:
         external_id = f"{employer_id or source_id}:{remote_id}"
-        digest = _fact_hash(
-            {
-                "title": facts.get("title"),
-                "official_detail_url": official_detail_url,
-                "scope": facts.get("scope_classification"),
-                "paid": facts.get("paid_status"),
-                "track": facts.get("track"),
-            }
-        )
+        digest = job_fact_hash(facts, official_detail_url)
         row = self._conn.execute(
             """
             INSERT INTO catalog.research_job (

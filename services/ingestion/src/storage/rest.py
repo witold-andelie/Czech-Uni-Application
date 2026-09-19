@@ -13,14 +13,11 @@ import ssl
 import urllib.error
 import urllib.request
 
+from storage.facts import job_fact_hash
+
 
 def _now() -> datetime:
     return datetime.now(timezone.utc)
-
-
-def _fact_hash(payload: dict[str, Any]) -> str:
-    canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, default=str)
-    return sha256(canonical.encode("utf-8")).hexdigest()
 
 
 class RestStore:
@@ -194,15 +191,7 @@ class RestStore:
         run_id: str | None = None,
     ) -> dict[str, Any]:
         external_id = f"{employer_id or source_id}:{remote_id}"
-        digest = _fact_hash(
-            {
-                "title": facts.get("title"),
-                "official_detail_url": official_detail_url,
-                "scope": facts.get("scope_classification"),
-                "paid": facts.get("paid_status"),
-                "track": facts.get("track"),
-            }
-        )
+        digest = job_fact_hash(facts, official_detail_url)
         self._request(
             "POST",
             "catalog_research_job?on_conflict=external_id",
@@ -239,6 +228,7 @@ class RestStore:
                 "application_url": facts.get("application_url"),
                 "scope_classification": facts.get("scope_classification"),
                 "paid_status": facts.get("paid_status"),
+                "url_directness": facts.get("url_directness"),
                 "facts": facts,
                 "review_state": "required",
             },

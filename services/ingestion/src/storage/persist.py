@@ -9,15 +9,24 @@ from storage.postgres import job_title, persist_enabled, store_from_env
 
 def harvest_job_facts(job: dict[str, Any]) -> dict[str, Any]:
     return {
-        "title": job_title(job),
-        "official_detail_url": job.get("sourceUrl"),
+        "title": job.get("originalText") or job_title(job),
+        "official_detail_url": job.get("officialDetailUrl") or job.get("sourceUrl"),
         "application_url": job.get("applicationUrl"),
-        "scope_classification": job.get("catalogueScopeStatus") or "unspecified",
+        "scope_classification": job.get("scopeClassification") or job.get("catalogueScopeStatus") or "unspecified",
         "catalogue_scope_status": job.get("catalogueScopeStatus") or "unspecified",
         "track": job.get("track"),
         "paid_status": job.get("paidStatus") or "unconfirmed",
-        "lifecycle": job.get("lifecycleStatus"),
-        "publication_status": job.get("publicationStatus"),
+    }
+
+
+def _adapter_owned_source_ids() -> set[str]:
+    from adapters.jobs import ADAPTERS_BY_PARSER
+    from harvest_nine_hei_jobs import load_registered_job_sources
+
+    return {
+        str(item["id"])
+        for item in load_registered_job_sources()
+        if item.get("parser") in ADAPTERS_BY_PARSER
     }
 
 
@@ -35,8 +44,13 @@ def persist_job_harvest(
     store = store_from_env()
     if store is None:
         return {"ok": True, "skipped": "supabase-not-configured", "runs": 0, "jobs": 0}
-    complete = set(complete_source_ids)
-    deferred = set(deferred_source_ids)
+    owned = _adapter_owned_source_ids()
+    expected_source_ids = [item for item in expected_source_ids if item not in owned]
+    complete = set(complete_source_ids) - owned
+    deferred = set(deferred_source_ids) - owned
+    if not expected_source_ids:
+        store.close()
+        return {"ok": True, "skipped": "adapter-owned", "runs": 0, "jobs": 0}
     failed_reason: dict[str, str] = {}
     for attempt in attempts:
         source_id = attempt.get("sourceId")

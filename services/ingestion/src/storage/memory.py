@@ -8,14 +8,11 @@ from hashlib import sha256
 from typing import Any
 from uuid import uuid4
 
+from storage.facts import job_fact_hash
+
 
 def _now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
-def fact_hash(payload: dict[str, Any]) -> str:
-    canonical = repr(sorted((key, payload[key]) for key in payload)).encode("utf-8")
-    return sha256(canonical).hexdigest()
 
 
 @dataclass
@@ -74,15 +71,7 @@ class MemoryStore:
     def upsert_job(self, *, source_id: str, employer_id: str | None, remote_id: str, official_detail_url: str, facts: dict[str, Any], run_id: str | None = None) -> dict[str, Any]:
         key = f"{employer_id or source_id}:{remote_id}"
         existing = self.jobs.get(key)
-        digest = fact_hash(
-            {
-                "title": facts.get("title"),
-                "official_detail_url": official_detail_url,
-                "scope": facts.get("scope_classification"),
-                "paid": facts.get("paid_status"),
-                "track": facts.get("track"),
-            }
-        )
+        digest = job_fact_hash(facts, official_detail_url)
         if existing is None:
             job = {
                 "id": key,

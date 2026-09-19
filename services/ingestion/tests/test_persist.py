@@ -50,16 +50,16 @@ def test_failed_source_does_not_upsert_jobs(monkeypatch) -> None:
     monkeypatch.setattr("storage.persist.persist_enabled", lambda: True)
     monkeypatch.setattr("storage.persist.store_from_env", lambda: fake)
     persist_job_harvest(
-        expected_source_ids=["czu-central-jobs"],
+        expected_source_ids=["jcu-central-vacancies"],
         complete_source_ids=[],
         deferred_source_ids=[],
-        attempts=[{"sourceId": "czu-central-jobs", "ok": False, "reason": "timeout"}],
+        attempts=[{"sourceId": "jcu-central-vacancies", "ok": False, "reason": "timeout"}],
         jobs=[
             {
-                "id": "job-41000-1604",
-                "discoverySourceId": "czu-central-jobs",
-                "sourceUrl": "https://jobs.czu.cz/job/tf_asistent-znalostniho-transferu-t1/",
-                "employerId": "msmt-vs_41000",
+                "id": "job-12000-1",
+                "discoverySourceId": "jcu-central-vacancies",
+                "sourceUrl": "https://www.jcu.cz/cz/univerzita/volna-mista/notice.pdf",
+                "employerId": "msmt-vs_12000",
             }
         ],
     )
@@ -89,6 +89,39 @@ def test_complete_source_upserts_official_detail_urls(monkeypatch) -> None:
     monkeypatch.setattr("storage.persist.persist_enabled", lambda: True)
     monkeypatch.setattr("storage.persist.store_from_env", lambda: fake)
     persist_job_harvest(
+        expected_source_ids=["jcu-central-vacancies"],
+        complete_source_ids=["jcu-central-vacancies"],
+        deferred_source_ids=[],
+        attempts=[],
+        jobs=[
+            {
+                "id": "job-12000-1",
+                "discoverySourceId": "jcu-central-vacancies",
+                "sourceUrl": "https://www.jcu.cz/cz/univerzita/volna-mista/notice.pdf",
+                "employerId": "msmt-vs_12000",
+                "title": "Researcher",
+                "paidStatus": "confirmed",
+            }
+        ],
+    )
+    assert len(fake.jobs) == 1
+    assert fake.jobs[0]["official_detail_url"].endswith("/notice.pdf")
+    assert fake.status == "succeeded"
+
+
+def test_adapter_owned_source_is_not_written_by_generic_persist(monkeypatch) -> None:
+    class FakeStore:
+        def __init__(self) -> None:
+            self.jobs: list[dict] = []
+            self.closed = False
+
+        def close(self) -> None:
+            self.closed = True
+
+    fake = FakeStore()
+    monkeypatch.setattr("storage.persist.persist_enabled", lambda: True)
+    monkeypatch.setattr("storage.persist.store_from_env", lambda: fake)
+    result = persist_job_harvest(
         expected_source_ids=["czu-central-jobs"],
         complete_source_ids=["czu-central-jobs"],
         deferred_source_ids=[],
@@ -99,11 +132,10 @@ def test_complete_source_upserts_official_detail_urls(monkeypatch) -> None:
                 "discoverySourceId": "czu-central-jobs",
                 "sourceUrl": "https://jobs.czu.cz/job/tf_asistent-znalostniho-transferu-t1/",
                 "employerId": "msmt-vs_41000",
-                "title": "TF T1",
-                "paidStatus": "confirmed",
             }
         ],
     )
-    assert len(fake.jobs) == 1
-    assert fake.jobs[0]["official_detail_url"].endswith("/tf_asistent-znalostniho-transferu-t1/")
-    assert fake.status == "succeeded"
+    assert result["skipped"] == "adapter-owned"
+    assert result["jobs"] == 0
+    assert fake.jobs == []
+    assert fake.closed is True
