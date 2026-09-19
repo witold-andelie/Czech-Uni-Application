@@ -216,7 +216,7 @@ export function officialOfferingHref(
 }
 
 export function officialJobHref(job: ResearchJob): string | null {
-  return safeHttpUrl(job.applicationUrl) || safeHttpUrl(job.sourceUrl);
+  return safeHttpUrl(job.officialDetailUrl) || safeHttpUrl(job.sourceUrl);
 }
 
 export function windowIsOpen(window: ApplicationWindow, now: Date): boolean {

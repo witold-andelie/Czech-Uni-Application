@@ -183,7 +183,7 @@
             </div>
             <h3>
               {#if officialUrl}
-                <a class="external" href={officialUrl} rel="noopener noreferrer" target="_blank">
+                <a class="external" href={officialUrl} rel="noopener noreferrer" target="_blank" data-official-detail>
                   {text(view.job.title, locale)}
                   <ExternalIcon />
                   <span class="visually-hidden">{t(locale, "action.external")}</span>
@@ -247,13 +247,11 @@
               </div>
             </details>
             <div class="actions">
-              {#if applyUrl && canApply(view.summary)}
+              {#if officialUrl}
+                <OfficialLink {locale} href={officialUrl} label={t(locale, "action.officialVacancyDescription")} />
+              {/if}
+              {#if applyUrl && canApply(view.summary) && applyUrl !== officialUrl}
                 <OfficialLink {locale} href={applyUrl} label={applyLabel} primary />
-                {#if officialUrl && officialUrl !== applyUrl}
-                  <OfficialLink {locale} href={officialUrl} />
-                {/if}
-              {:else if officialUrl}
-                <OfficialLink {locale} href={officialUrl} label={applyLabel} />
               {/if}
               <a class="btn" href={withBase(`/${locale}/research-jobs/${view.job.id}`)}>{t(locale, "action.siteInterpretation")}</a>
             </div>

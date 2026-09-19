@@ -4,7 +4,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from ci_refresh import run_tick, task_command
+from ci_refresh import run_tick, task_command, tick_exit_code
 from schedule import ScheduleManager
 
 
@@ -53,6 +53,38 @@ def test_exhausted_budget_does_not_advance_success(tmp_path):
     assert report["deferred"]
     assert not report["tasks"]
     assert manager.load_state()["jobDiscovery"]["lastSuccessAt"] is None
+    assert tick_exit_code(report) == 0
+
+
+def test_partial_job_recheck_does_not_fail_the_github_tick(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [{"type": "job_recheck"}]
+
+    def run(*args, **kwargs):
+        manager.record_job_recheck_partial(
+            "1/125 job status checks failed",
+            checked_count=125,
+            closed_count=5,
+        )
+        return SimpleNamespace(returncode=0)
+
+    report = run_tick(manager, run=run, output=tmp_path / "report.json")
+    assert not report["failed"]
+    assert tick_exit_code(report) == 0
+    assert "1/125" in (report["tasks"][0]["error"] or "")
+    assert manager.load_state()["jobRecheck"]["status"] == "completed"
+    assert manager.load_state()["jobRecheck"]["lastSuccessAt"]
+
+
+def test_started_task_failure_still_fails_the_tick(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [{"type": "job_discovery"}]
+    def run(*args, **kwargs):
+        manager.record_volatile_failure("job_discovery", "one source failed")
+        return SimpleNamespace(returncode=0)
+    report = run_tick(manager, run=run, output=tmp_path / "report.json")
+    assert report["failed"]
+    assert tick_exit_code(report) == 1
 
 
 def test_never_attempted_source_precedes_recent_long_retry(tmp_path):
@@ -67,3 +99,29 @@ def test_never_attempted_source_precedes_recent_long_retry(tmp_path):
         return SimpleNamespace(returncode=0)
     run_tick(manager, run=run, output=tmp_path / "report.json")
     assert seen[0] == "--refresh-czu-doctoral-programmes"
+
+
+def test_worker_is_started_unbuffered():
+    command = task_command({"type": "job_recheck"})
+    assert command[1] == "-u"
+    assert command[-1] == "--recheck-jobs"
+
+
+def test_run_tick_logs_before_waiting_for_worker(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [{"type": "job_recheck"}]
+    order = []
+
+    def run(command, **kwargs):
+        assert kwargs.get("env", {}).get("PYTHONUNBUFFERED") == "1"
+        order.append("run")
+        manager.record_volatile_success("job_recheck")
+        return SimpleNamespace(returncode=0)
+
+    def log(message):
+        order.append(message)
+
+    run_tick(manager, run=run, output=tmp_path / "report.json", log=log)
+    start = next(item for item in order if item.startswith("ci_refresh: start job_recheck"))
+    assert order.index(start) < order.index("run")
+    assert any(item.startswith("ci_refresh: finish job_recheck") for item in order)

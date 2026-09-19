@@ -189,6 +189,7 @@
     "purpose": "official dynamic research-vacancy discovery for Charles University MFF; shared listing facts remain review-pending until source-bound locale review",
     "official": true,
     "sourceType": "official_job_listing_supplemental",
+    "enabled": false,
     "employerId": "msmt-vs_11000",
     "coverageScope": "faculty",
     "sourceCoverageClaim": "not_asserted",
@@ -347,14 +348,17 @@
     "employerId": "msmt-vs_41000",
     "coverageScope": "institution_aggregator",
     "sourceCoverageClaim": "not_asserted",
+    "unitInventory": "data/sources/coverage/czu-unit-inventory.json",
     "parser": "czu_wp_job_manager",
+    "waitSelector": "li.job_listing, .job_listings",
+    "allowBrowser": true,
     "perPage": 100,
     "maxPages": 20,
     "followDetails": false,
     "refreshIntervalHours": 4,
     "collectionStatus": "adapter_live_verified_2026-09-10",
-    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
-    "note": "The portal navigation spans CZU faculties and other university units. Each public result is matched by WordPress post ID to its full official body before eligibility and pay classification. Registration does not assert that every CZU unit publishes every vacancy here."
+    "adapter": "services/ingestion/src/adapters/jobs/czu_wp_job_manager.py",
+    "note": "The portal navigation spans CZU faculties and other university units. Each public result is matched by WordPress post ID to its full official body before eligibility and pay classification. Production harvest uses the adapter engine and keeps every official vacancy, including out-of-scope rows. The 2026-09-19 official structure inventory is in data/sources/coverage/czu-unit-inventory.json. jobs.czu.cz does not state that every unit publishes every vacancy there, so sourceCoverageClaim stays not_asserted."
   },
   {
     "id": "jcu-central-vacancies",

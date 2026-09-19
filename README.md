@@ -112,9 +112,12 @@ Never commit API tokens or paste them into issues or logs.
 ### Scheduled collection
 
 `refresh.yml` wakes once per day at 02:17 UTC and executes only tasks due under the
-existing 1/4/2-hour and five-day policies. A tick is bounded to 35 minutes;
-individual tasks have a 15-minute ceiling. Source failures and deferred tasks
-remain visible as failures and retain retry state. GitHub scheduling is best
+existing 1/4/2-hour and five-day policies. Each tick installs Scrapling 0.4.9
+fetchers plus Playwright Chromium (`scrapling[fetchers]` then
+`playwright install chromium`) so hard official pages use the same HTTP then
+browser escalation as a local machine. A tick is bounded to 35 minutes;
+individual tasks have a 15-minute ceiling. Source failures stay in the scheduler retry queue and the tick summary;
+they do not fail the GitHub job after the checkpoint is saved. GitHub scheduling is best
 effort, not an exact timing SLA. Paused/inactive workflows and exhausted quotas
 require operator intervention.
 
@@ -124,15 +127,21 @@ before expiry. They are not deleted on the next scheduler tick. Artifact storage
 usage must be monitored against the account quota. Candidate files do not
 overwrite source reviews in main. New jobs and
 programme changes still need the existing evidence-bound three-language review
-and immutable snapshot publication. Verified closure/status overlays can be
-committed automatically, explicitly dispatch CI, and reach the same gated host
-deployment. A bot push alone does not trigger another Actions push workflow.
+and immutable snapshot publication. Verified closure/status overlays are
+committed automatically only from `main`; a feature-branch tick keeps them in
+the candidate-review artifact and does not push to `main`. On `main` the bot
+commit explicitly dispatches CI and reaches the same gated host deployment. A
+bot push alone does not trigger another Actions push workflow.
 No failed request becomes a closure. A concurrent main update rejects the bot
 push rather than force-overwriting it; the next run retries from current main.
 
-The frontend stays anonymous and static; no Supabase account or database is
-required for this initial deployment. No paid hosting plan is enabled by these
-workflows. Artifact/runner quotas still apply.
+The public site stays anonymous and static. The GitHub Actions collector
+writes durable ingest state to Supabase over **HTTPS Data API** (no dedicated
+IPv4, no extra paid networking). Set repository secrets `SUPABASE_URL` and
+`SUPABASE_SERVICE_ROLE_KEY`. Never put those values in `PUBLIC_*` variables
+or browser JavaScript. Do not enable the paid Dedicated IPv4 add-on.
+No paid hosting plan is enabled by these workflows. Artifact/runner quotas
+still apply.
 
 ## Status and limits
 

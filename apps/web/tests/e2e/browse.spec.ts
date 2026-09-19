@@ -81,3 +81,22 @@ test("job list and detail stay in the active locale", async ({ page }) => {
   await expect(page).toHaveURL(new RegExp(`/${locale}/research-jobs/`));
   await expect(page.locator("html")).toHaveAttribute("lang", "cs");
 });
+
+test("every public job card title is the official vacancy page, not a school homepage", async ({ page }) => {
+  await page.setViewportSize(VIEWPORTS.desktop);
+  await page.goto("/zh-CN/research-jobs?track=all");
+  const cards = page.locator("article.result-card");
+  await expect(cards.first()).toBeVisible();
+  const hrefs = await cards.locator("h3 a[data-official-detail]").evaluateAll((nodes) =>
+    nodes.map((node) => node.getAttribute("href") || ""),
+  );
+  expect(hrefs.length).toBeGreaterThan(0);
+  for (const href of hrefs) {
+    expect(href).toMatch(/^https:\/\//);
+    expect(href).not.toMatch(/^https:\/\/(?:www\.)?cuni\.cz\/?$/i);
+    expect(href).not.toMatch(/^https:\/\/(?:www\.)?muni\.cz\/?$/i);
+    expect(href).not.toMatch(/^https:\/\/(?:www\.)?czu\.cz\/?$/i);
+    expect(href).not.toMatch(/^https:\/\/jobs\.czu\.cz\/?$/i);
+  }
+  await expect(page.getByRole("link", { name: msg("zh-CN", "action.officialVacancyDescription") }).first()).toBeVisible();
+});

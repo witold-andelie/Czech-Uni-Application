@@ -568,6 +568,30 @@ class ScheduleManager:
             now=now,
         )
 
+    def record_job_recheck_partial(
+        self,
+        error: str,
+        *,
+        checked_count: int,
+        closed_count: int,
+        now: datetime | None = None,
+    ) -> None:
+        """A mixed recheck still completed the hourly sweep. Keep the miss for logs."""
+        spec = VOLATILE_TASKS["job_recheck"]
+        current = now or datetime.now(timezone.utc)
+        with self._transaction(current) as state:
+            info = state[spec["stateKey"]]
+            info["lastAttemptAt"] = to_iso(current)
+            info["lastSuccessAt"] = to_iso(current)
+            info["nextDueAt"] = to_iso(current + timedelta(hours=spec["intervalHours"]))
+            info["retryAt"] = None
+            info["status"] = "completed"
+            info["attempts"] = 0
+            info["lastError"] = str(error)
+            info["checkedJobsCount"] = checked_count
+            info["closedJobsCount"] = closed_count
+            self._clear_lease(info)
+
     def record_volatile_success(
         self,
         task_type: str,

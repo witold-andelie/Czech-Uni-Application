@@ -366,7 +366,25 @@ describe("recognition and tuition", () => {
     assert.ok(closed);
     assert.equal(canApply(closed.summary), false);
     assert.equal(primaryApplicationUrl(closed.summary, closed.job.applicationUrl), null);
-    assert.equal(officialJobHref(closed.job), closed.job.applicationUrl || closed.job.sourceUrl);
+    assert.equal(officialJobHref(closed.job), closed.job.sourceUrl);
+    assert.equal(
+      officialJobHref({
+        ...closed.job,
+        officialDetailUrl: "https://www.d3s.mff.cuni.cz/positions/2026-1/",
+        sourceUrl: "https://www.d3s.mff.cuni.cz/positions/",
+        applicationUrl: "https://www.d3s.mff.cuni.cz/positions/apply",
+      }),
+      "https://www.d3s.mff.cuni.cz/positions/2026-1/",
+    );
+    assert.equal(
+      officialJobHref({
+        ...closed.job,
+        officialDetailUrl: null,
+        sourceUrl: "https://jobs.czu.cz/job/tf_asistent-znalostniho-transferu-t1/",
+        applicationUrl: "https://jobs.czu.cz/apply-form",
+      }),
+      "https://jobs.czu.cz/job/tf_asistent-znalostniho-transferu-t1/",
+    );
     const listSrc = readFileSync(resolve(root, "apps/web/src/components/ProgrammeResults.svelte"), "utf8");
     const jobSrc = readFileSync(resolve(root, "apps/web/src/components/JobResults.svelte"), "utf8");
     const linkSrc = readFileSync(resolve(root, "apps/web/src/components/OfficialLink.svelte"), "utf8");
