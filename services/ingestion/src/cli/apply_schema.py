@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-import sys
+import re
 from pathlib import Path
 from urllib.parse import quote, urlparse
 
@@ -39,12 +39,23 @@ def _dsn() -> str:
 def split_statements(sql: str) -> list[str]:
     statements: list[str] = []
     buf: list[str] = []
+    in_dollar = False
+    delim = ""
+    dollar = re.compile(r"\$[A-Za-z_0-9]*\$")
     for line in sql.splitlines():
         stripped = line.strip()
-        if stripped.startswith("--") or stripped == "":
+        if not in_dollar and (stripped.startswith("--") or stripped == ""):
             continue
         buf.append(line)
-        if stripped.endswith(";"):
+        for match in dollar.finditer(line):
+            tag = match.group(0)
+            if not in_dollar:
+                in_dollar = True
+                delim = tag
+            elif tag == delim:
+                in_dollar = False
+                delim = ""
+        if not in_dollar and stripped.endswith(";"):
             statement = "\n".join(buf).strip().rstrip(";")
             if statement:
                 statements.append(statement)

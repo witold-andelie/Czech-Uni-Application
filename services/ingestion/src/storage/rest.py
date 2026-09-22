@@ -21,6 +21,14 @@ def _now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+def _default_lease_owner() -> str:
+    run = os.environ.get("GITHUB_RUN_ID")
+    if run:
+        return f"github-actions-{run}"
+    host = os.environ.get("COMPUTERNAME") or os.environ.get("HOSTNAME") or "unknown"
+    return f"local-{host}"
+
+
 class RestStore:
     def __init__(self, url: str | None = None, key: str | None = None):
         self.url = (url or os.environ.get("SUPABASE_URL") or "").rstrip("/")
@@ -122,7 +130,37 @@ class RestStore:
             }
         )
 
-    def start_run(self, source: dict, scheduled_for: datetime | None = None) -> dict[str, Any]:
+    def claim_run(self, run_id: str, owner: str | None = None, lease_seconds: int = 900) -> str | None:
+        payload = {
+            "p_run": run_id,
+            "p_owner": owner or _default_lease_owner(),
+            "p_lease_seconds": lease_seconds,
+        }
+        rows = self._request("POST", "rpc/rpc_claim_run", payload, extra={"Prefer": "return=representation"})
+        if not rows:
+            return None
+        token = rows.get("token")
+        return str(token) if token else None
+
+    def heartbeat_run(self, run_id: str, token: str, lease_seconds: int = 900) -> bool:
+        rows = self._request(
+            "POST",
+            "rpc/rpc_heartbeat_run",
+            {"p_run": run_id, "p_token": token, "p_lease_seconds": lease_seconds},
+            extra={"Prefer": "return=representation"},
+        )
+        return bool(rows and rows.get("ok") is True)
+
+    def release_run(self, run_id: str, token: str) -> bool:
+        rows = self._request(
+            "POST",
+            "rpc/rpc_release_run",
+            {"p_run": run_id, "p_token": token},
+            extra={"Prefer": "return=representation"},
+        )
+        return bool(rows and rows.get("ok") is True)
+
+    def start_run(self, source: dict, scheduled_for: datetime | None = None, lease_seconds: int = 900) -> dict[str, Any]:
         source_id = source["id"]
         self.ensure_source(source_id)
         run_id = str(uuid4())
@@ -137,6 +175,15 @@ class RestStore:
             "git_commit": os.environ.get("GITHUB_SHA"),
         }
         self._request("POST", "ingest_source_run", payload, extra={"Prefer": "return=minimal"})
+        token = self.claim_run(run_id, lease_seconds=lease_seconds)
+        if token is None:
+            self._request(
+                "PATCH",
+                f"ingest_source_run?id=eq.{run_id}",
+                {"status": "failed", "error_class": "lease-conflict"},
+                extra={"Prefer": "return=minimal"},
+            )
+            raise RuntimeError(f"could not claim run lease for source {source_id}")
         run = {
             "id": run_id,
             "source_id": source_id,
@@ -146,6 +193,7 @@ class RestStore:
             "listed_count": 0,
             "parsed_count": 0,
             "error_class": None,
+            "lease_token": token,
         }
         self.runs[run_id] = run
         return run
@@ -313,6 +361,9 @@ class RestStore:
             },
             extra={"Prefer": "return=minimal"},
         )
+        token = (self.runs.get(run_id) or {}).get("lease_token")
+        if token:
+            self.release_run(run_id, str(token))
         if run_id in self.runs:
             self.runs[run_id].update(
                 {
