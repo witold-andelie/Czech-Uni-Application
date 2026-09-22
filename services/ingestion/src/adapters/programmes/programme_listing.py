@@ -102,6 +102,17 @@ class ProgrammeListingAdapter:
             if reference is None:
                 continue
             listing = reference.extra.get("listing") or {}
+            named = {
+                "code",
+                "degree",
+                "academicYear",
+                "campusMode",
+                "teachingLanguages",
+                "languageEvidenceUrl",
+                "applicationUrl",
+                "sourceUrl",
+                "title",
+            }
             facts = {
                 "official_code": listing.get("code"),
                 "degree": listing.get("degree"),
@@ -111,12 +122,13 @@ class ProgrammeListingAdapter:
                 "language_evidence_url": listing.get("languageEvidenceUrl"),
                 "application_url": listing.get("applicationUrl"),
                 "title": reference.title,
+                **{key: value for key, value in listing.items() if value is not None and key not in named},
             }
             out.append(
                 Candidate(
                     remote_id=reference.remote_id,
                     official_detail_url=reference.detail_url,
-                    application_url=str(listing.get("applicationUrl") or reference.detail_url),
+                    application_url=str(listing.get("applicationUrl") or ""),
                     title=reference.title,
                     body_html=document.body,
                     employer_id=institution_id,
