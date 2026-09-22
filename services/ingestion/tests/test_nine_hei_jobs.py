@@ -424,13 +424,17 @@ def test_parse_muni_and_avcr_vacancies() -> None:
     </div>
     """
     muni_jobs = parse_muni_vacancies(muni_html)
-    assert len(muni_jobs) == 3
+    assert len(muni_jobs) == 4
     assert muni_jobs[0]["code"] == "81652"
     assert muni_jobs[0]["track"] == "assistant"
     assert muni_jobs[1]["code"] == "81445"
     assert muni_jobs[1]["track"] == "postdoc"
     assert muni_jobs[2]["code"] == "76543"
     assert muni_jobs[2]["track"] == "assistant"
+    # Untracked vacancies survive the listing stage so the linked detail text
+    # decides eligibility (degree / doctoral-enrolment), never the listing title.
+    assert muni_jobs[3]["code"] == "99999"
+    assert muni_jobs[3]["track"] is None
 
     avcr_html = """
     <div>

@@ -2554,9 +2554,11 @@ def parse_muni_vacancies(html: str, base_url: str = "https://www.muni.cz") -> li
         title = visible_text(anchor_html)
         if not title or len(title) < 5:
             continue
+        # Do not drop untracked rows at the listing stage: eligibility is judged
+        # from the linked detail page (degree / doctoral-enrolment requirements),
+        # never from the listing title. A teaching or administrative vacancy that
+        # has no research-track label still gets a full-text evaluation.
         track = classify_track(title)
-        if not track:
-            continue
         results.append(
             {
                 "code": code,
