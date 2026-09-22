@@ -676,6 +676,18 @@ export function validateSnapshot(selection) {
       }
     }
   }
+  // §15: a release manifest carries the generation triple. When present it must
+  // match the active pointer so reports and releases never come from different
+  // generations. Legacy snapshots without the triple stay readable.
+  if (manifest.candidateGenerationId != null || manifest.sourceRunSetDigest != null) {
+    if (typeof manifest.candidateGenerationId !== "string" || !manifest.candidateGenerationId.startsWith("cg-")) errors.push("Release candidateGenerationId is invalid");
+    if (typeof manifest.sourceRunSetDigest !== "string" || !SHA_RE.test(manifest.sourceRunSetDigest)) errors.push("Release sourceRunSetDigest must be a sha256 value");
+    if (!isoDateTime(manifest.generatedAt)) errors.push("Release generatedAt must be an ISO date-time");
+    const pointerGen = selection.pointer ? selection.pointer.candidateGenerationId : undefined;
+    const pointerDigest = selection.pointer ? selection.pointer.sourceRunSetDigest : undefined;
+    if (pointerGen !== undefined && pointerGen !== manifest.candidateGenerationId) errors.push("Pointer candidateGenerationId does not match the sealed release manifest");
+    if (pointerDigest !== undefined && pointerDigest !== manifest.sourceRunSetDigest) errors.push("Pointer sourceRunSetDigest does not match the sealed release manifest");
+  }
   return { errors, counts, manifest, passed: errors.length === 0 };
 }
 

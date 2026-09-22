@@ -9,6 +9,7 @@ the selected snapshots/<version> directory directly.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -64,6 +65,19 @@ def atomic_write_json(path: Path, payload: dict) -> None:
     os.replace(temporary, path)
 
 
+def source_run_set_digest(checksums: dict[str, str]) -> str:
+    """Deterministic digest over the pinned source-run artifact set.
+
+    The sourceRunSetDigest ties a release to the exact checked-in candidate
+    files behind it: the same checksum set always yields the same digest, and
+    any file change in the generation shifts it.
+    """
+    canonical = "".join(
+        f"{relative}\0{checksums[relative]}\n" for relative in sorted(checksums)
+    )
+    return f"sha256:{hashlib.sha256(canonical.encode('utf-8')).hexdigest()}"
+
+
 def pin_candidate_generation(source_dir: Path, now: datetime | None = None) -> dict:
     """Hash the required source set under the ingestion lock before any copy."""
     checksums: dict[str, str] = {}
@@ -74,8 +88,10 @@ def pin_candidate_generation(source_dir: Path, now: datetime | None = None) -> d
             errors.append(f"Missing required source file: {relative}")
             continue
         checksums[relative] = sha256_file(source)
+    generation_id = f"cg-{uuid.uuid4().hex}"
     return {
-        "id": f"cg-{uuid.uuid4().hex}",
+        "id": generation_id,
+        "sourceRunSetDigest": source_run_set_digest(checksums),
         "pinnedAt": (now or utc_now()).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "checksums": checksums,
         "lockOrder": list(LOCK_ORDER),
@@ -211,6 +227,9 @@ def _manifest(
         "validation": {"passed": True, "errors": []},
     }
     if generation:
+        payload["candidateGenerationId"] = generation.get("id")
+        payload["sourceRunSetDigest"] = generation.get("sourceRunSetDigest")
+        payload["generatedAt"] = generation.get("pinnedAt")
         payload["candidateGeneration"] = {
             "id": generation.get("id"),
             "pinnedAt": generation.get("pinnedAt"),
@@ -220,14 +239,19 @@ def _manifest(
     return payload
 
 
-def _active_pointer(version: str, published_at: str) -> dict:
-    return {
+def _active_pointer(version: str, published_at: str, generation: dict | None = None) -> dict:
+    pointer = {
         "schemaVersion": POLICY["schemaVersion"],
         "activeVersion": version,
         "snapshotDir": f"snapshots/{version}",
         "publishedAt": published_at,
         "activatedAt": utc_now().strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
+    if generation:
+        pointer["candidateGenerationId"] = generation.get("id")
+        pointer["sourceRunSetDigest"] = generation.get("sourceRunSetDigest")
+        pointer["generatedAt"] = generation.get("pinnedAt")
+    return pointer
 
 
 def publish_snapshot(
@@ -317,14 +341,12 @@ def publish_snapshot(
                 shutil.rmtree(attempt_root)
             except OSError:
                 pass
-            atomic_write_json(current_meta, _active_pointer(version_id, published_at))
+            atomic_write_json(current_meta, _active_pointer(version_id, published_at, generation))
             if published_dir == PUBLISHED_DIR:
                 try:
-                    from build_source_coverage import write_current_coverage
-
-                    write_current_coverage()
+                    regenerate_generation_reports()
                 except Exception as exc:
-                    print(f"Coverage report not rebuilt after {version_id}: {exc}")
+                    print(f"Coverage reports not regenerated after {version_id}: {exc}")
             print(f"Successfully published immutable snapshot {version_id} ({result.counts})")
             return manifest
     except LockUnavailable as exc:
@@ -365,6 +387,119 @@ def verify_current(published_dir: Path = PUBLISHED_DIR) -> tuple[bool, list[str]
     return result.passed, result.errors
 
 
+def regenerate_generation_reports(
+    *, published_dir: Path = PUBLISHED_DIR, generated_at: str | None = None
+) -> None:
+    """Rewrite all three derived coverage reports in one generation.
+
+    Every report resolves the active pointer, so each carries the same
+    activeVersion, candidateGenerationId and sourceRunSetDigest as the release
+    it describes. A single generatedAt keeps the set internally consistent so
+    reports from different generations are never mixed.
+    """
+    snapshot, version, errors = resolve_active_snapshot(published_dir)
+    if errors or snapshot is None or version is None:
+        raise RuntimeError(f"Cannot regenerate coverage reports: {errors}")
+    generated_at = generated_at or utc_now().strftime("%Y-%m-%dT%H:%M:%SZ")
+    pointer = json.loads((published_dir / "current.json").read_text(encoding="utf-8"))
+
+    from build_disposition_ledger import CANDIDATES as LEDGER_CANDIDATES
+    from build_disposition_ledger import OUT as DISPOSITION_OUT
+    from build_disposition_ledger import build_ledger
+    from build_job_source_assessment import BASELINE as ASSESSMENT_BASELINE
+    from build_job_source_assessment import OUT as ASSESSMENT_OUT
+    from build_job_source_assessment import REGISTRY as ASSESSMENT_REGISTRY
+    from build_job_source_assessment import SCHEDULE as ASSESSMENT_SCHEDULE
+    from build_job_source_assessment import SOURCE_CHECKS as ASSESSMENT_CHECKS
+    from build_job_source_assessment import build_assessment
+
+    candidates = json.loads(LEDGER_CANDIDATES.read_text(encoding="utf-8"))
+    snapshot_jobs = json.loads(
+        (snapshot / "browse" / "nine-hei-jobs.json").read_text(encoding="utf-8")
+    )
+    published_ids = {
+        job["id"]
+        for job in snapshot_jobs.get("jobs") or []
+        if isinstance(job, dict) and isinstance(job.get("id"), str)
+    }
+    atomic_write_json(
+        DISPOSITION_OUT,
+        build_ledger(candidates, published_ids, pointer, generated_at=generated_at),
+    )
+    schedule = (
+        json.loads(ASSESSMENT_SCHEDULE.read_text(encoding="utf-8"))
+        if ASSESSMENT_SCHEDULE.is_file()
+        else {}
+    )
+    checks = (
+        json.loads(ASSESSMENT_CHECKS.read_text(encoding="utf-8"))
+        if ASSESSMENT_CHECKS.is_file()
+        else {}
+    )
+    atomic_write_json(
+        ASSESSMENT_OUT,
+        build_assessment(
+            json.loads(ASSESSMENT_BASELINE.read_text(encoding="utf-8")),
+            json.loads(ASSESSMENT_REGISTRY.read_text(encoding="utf-8")),
+            schedule,
+            candidates,
+            pointer,
+            checks,
+            generated_at=generated_at,
+        ),
+    )
+
+    from build_source_coverage import OUT as COVERAGE_OUT
+    from build_source_coverage import write_current_coverage
+
+    write_current_coverage(output=COVERAGE_OUT, generated_at=generated_at)
+
+
+def sync_legacy_mirror(*, published_dir: Path = PUBLISHED_DIR) -> dict:
+    """Regenerate data/published/current/ from the pointer target and verify it.
+
+    The compatibility mirror is not the source of truth and is never read by
+    the publication pipeline; this rebuilds it byte-for-byte from the active
+    snapshot and checksum-tests every file against the snapshot manifest.
+    """
+    snapshot, version, errors = resolve_active_snapshot(published_dir)
+    if errors or snapshot is None or version is None:
+        raise RuntimeError(f"Cannot sync legacy mirror: {errors}")
+    manifest = json.loads((snapshot / "manifest.json").read_text(encoding="utf-8"))
+    mirror = published_dir / "current"
+    lock_path = published_dir / ".publish.lock"
+    try:
+        with FileMutex(lock_path, {"operation": "sync-legacy-mirror", "targetVersion": version}):
+            temporary = mirror.with_name(
+                f".{mirror.name}.sync.{os.getpid()}.{uuid.uuid4().hex}"
+            )
+            shutil.rmtree(temporary, ignore_errors=True)
+            temporary.mkdir(parents=True)
+            copy_errors = _copy_required(snapshot, temporary)
+            shutil.copy2(snapshot / "manifest.json", temporary / "manifest.json")
+            mismatches: list[str] = []
+            for relative, expected in (manifest.get("checksums") or {}).items():
+                if not safe_relative_path(relative):
+                    continue
+                target = temporary / relative
+                if not target.is_file() or sha256_file(target) != expected:
+                    mismatches.append(relative)
+            shutil.rmtree(mirror, ignore_errors=True)
+            os.replace(temporary, mirror)
+    except LockUnavailable as exc:
+        raise RuntimeError("Another publication or rollback is already running") from exc
+    result = {
+        "mirroredVersion": version,
+        "verifiedFiles": len(manifest.get("checksums") or {}),
+        "mismatches": mismatches,
+        "copyErrors": copy_errors,
+    }
+    if mismatches or copy_errors:
+        raise RuntimeError(f"Legacy mirror did not match the active snapshot: {result}")
+    print(f"Synchronised legacy mirror current/ to immutable snapshot {version}")
+    return result
+
+
 def rollback_to_version(target_version: str, *, published_dir: Path = PUBLISHED_DIR) -> dict:
     if not VERSION_RE.fullmatch(target_version):
         raise ValueError(f"Invalid version ID: {target_version!r}")
@@ -376,7 +511,14 @@ def rollback_to_version(target_version: str, *, published_dir: Path = PUBLISHED_
     lock_path = published_dir / ".publish.lock"
     try:
         with FileMutex(lock_path, {"operation": "rollback", "targetVersion": target_version}):
-            pointer = _active_pointer(target_version, manifest["publishedAt"])
+            generation = None
+            if manifest.get("candidateGenerationId") and manifest.get("sourceRunSetDigest"):
+                generation = {
+                    "id": manifest.get("candidateGenerationId"),
+                    "sourceRunSetDigest": manifest.get("sourceRunSetDigest"),
+                    "pinnedAt": manifest.get("generatedAt"),
+                }
+            pointer = _active_pointer(target_version, manifest["publishedAt"], generation)
             pointer["rolledBackAt"] = utc_now().strftime("%Y-%m-%dT%H:%M:%SZ")
             atomic_write_json(published_dir / "current.json", pointer)
     except LockUnavailable as exc:
@@ -394,6 +536,11 @@ def main() -> None:
         help="Validate the exact approved records that a new snapshot would expose",
     )
     parser.add_argument("--rollback", type=str, help="Atomically activate a prior immutable version")
+    parser.add_argument(
+        "--sync-legacy",
+        action="store_true",
+        help="Regenerate the legacy data/published/current/ mirror from the pointer target and checksum-test it",
+    )
     parser.add_argument("--version", type=str, help="Specify version ID for a new snapshot")
     parser.add_argument(
         "--force",
@@ -424,6 +571,14 @@ def main() -> None:
 
     if args.rollback:
         rollback_to_version(args.rollback)
+        try:
+            regenerate_generation_reports()
+        except Exception as exc:
+            print(f"Coverage reports not regenerated after rollback: {exc}")
+        return
+
+    if args.sync_legacy:
+        sync_legacy_mirror()
         return
 
     publish_snapshot(version=args.version, force=args.force)

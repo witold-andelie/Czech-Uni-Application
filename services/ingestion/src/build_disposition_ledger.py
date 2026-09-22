@@ -118,6 +118,8 @@ def build_ledger(
         "generatedAt": generated_at
         or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "publicationVersion": version,
+        "candidateGenerationId": pointer.get("candidateGenerationId") if isinstance(pointer, dict) else None,
+        "sourceRunSetDigest": pointer.get("sourceRunSetDigest") if isinstance(pointer, dict) else None,
         "currentCandidates": len(rows),
         "summary": {
             "approved_public": sum(1 for r in rows if r["decision"] == "approved_public"),

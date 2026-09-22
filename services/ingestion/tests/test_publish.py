@@ -171,6 +171,45 @@ def test_pin_candidate_generation_records_required_checksums() -> None:
     assert generation["id"].startswith("cg-")
 
 
+def test_generation_triple_is_deterministic_for_the_same_source_set() -> None:
+    first = publish.pin_candidate_generation(publish.SOURCES_DIR)
+    second = publish.pin_candidate_generation(publish.SOURCES_DIR)
+    assert first["errors"] == []
+    assert first["sourceRunSetDigest"].startswith("sha256:")
+    assert len(first["sourceRunSetDigest"]) == len("sha256:") + 64
+    assert first["sourceRunSetDigest"] == second["sourceRunSetDigest"]
+    assert first["pinnedAt"] is not None and second["pinnedAt"] is not None
+
+
+def test_snapshot_source_run_set_digest_changes_when_a_file_changes(tmp_path: Path) -> None:
+    sources = tmp_path / "sources"
+    shutil.copytree(active_snapshot(), sources)
+    before = publish.pin_candidate_generation(sources)
+    jobs = sources / "browse" / "nine-hei-jobs.json"
+    jobs.write_text(jobs.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+    after = publish.pin_candidate_generation(sources)
+    assert before["sourceRunSetDigest"] != after["sourceRunSetDigest"]
+
+
+def test_rollback_restores_generation_triple(tmp_path: Path) -> None:
+    published = tmp_path / "published"
+    source = active_snapshot()
+    target = published / "snapshots" / source.name
+    target.parent.mkdir(parents=True)
+    shutil.copytree(source, target)
+    manifest_path = target / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["candidateGenerationId"] = "cg-rollback-1"
+    manifest["sourceRunSetDigest"] = "sha256:" + "0" * 64
+    manifest["generatedAt"] = "2026-09-21T08:00:00Z"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    publish.rollback_to_version(source.name, published_dir=published)
+    pointer = json.loads((published / "current.json").read_text(encoding="utf-8"))
+    assert pointer["candidateGenerationId"] == "cg-rollback-1"
+    assert pointer["sourceRunSetDigest"] == "sha256:" + "0" * 64
+    assert pointer["generatedAt"] == "2026-09-21T08:00:00Z"
+
+
 def test_pinned_copy_detects_source_drift(tmp_path: Path) -> None:
     sources = tmp_path / "sources"
     shutil.copytree(active_snapshot(), sources)

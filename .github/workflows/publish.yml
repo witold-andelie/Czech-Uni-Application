@@ -1,0 +1,78 @@
+name: Publish immutable catalogue snapshot
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Publication operation to run
+        type: choice
+        default: check
+        options:
+          - check
+          - check-sources
+          - publish
+          - rollback
+          - sync-legacy
+      version:
+        description: Version to roll back to, e.g. v2026-09-22.1 (rollback only)
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publication-gate
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: services/ingestion/requirements-ci.txt
+      - name: Install publication dependencies
+        run: |
+          python -m pip install -r services/ingestion/requirements-ci.txt
+      - name: Run publication operation
+        id: publish
+        run: |
+          set -euo pipefail
+          op="${{ github.event.inputs.operation }}"
+          version="${{ github.event.inputs.version }}"
+          case "$op" in
+            check) python services/ingestion/src/publish.py --check ;;
+            check-sources) python services/ingestion/src/publish.py --check-sources ;;
+            sync-legacy) python services/ingestion/src/publish.py --sync-legacy ;;
+            publish) python services/ingestion/src/publish.py ;;
+            rollback)
+              if [ -z "$version" ]; then
+                echo '::error::The version input is required for rollback'
+                exit 1
+              fi
+              python services/ingestion/src/publish.py --rollback "$version"
+              ;;
+          esac
+      - name: Commit publication changes
+        if: ${{ github.event.inputs.operation == 'publish' || github.event.inputs.operation == 'rollback' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add data/published/snapshots data/published/current.json data/sources/coverage
+          if git diff --cached --quiet; then
+            echo 'No publication changes to commit'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Publish verified immutable catalogue snapshot'
+          git push origin HEAD
+          gh workflow run ci.yml --ref main
+          echo 'Publication committed and CI triggered'

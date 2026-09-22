@@ -157,6 +157,8 @@ def build_assessment(
         "generatedAt": generated_at
         or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "publicationVersion": version,
+        "candidateGenerationId": pointer.get("candidateGenerationId") if isinstance(pointer, dict) else None,
+        "sourceRunSetDigest": pointer.get("sourceRunSetDigest") if isinstance(pointer, dict) else None,
         "baselineInstitutions": len(institutions),
         "summary": counts,
         "claimBoundary": (

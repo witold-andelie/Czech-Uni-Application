@@ -392,6 +392,8 @@ def build_coverage(
         "publication": {
             "activeVersion": publication_version,
             "publishedAt": (publication_pointer or {}).get("publishedAt"),
+            "candidateGenerationId": (publication_pointer or {}).get("candidateGenerationId"),
+            "sourceRunSetDigest": (publication_pointer or {}).get("sourceRunSetDigest"),
             "reportBoundToActiveVersion": True,
             "historical": report_is_historical,
         },

@@ -59,7 +59,7 @@ def test_active_snapshot_uses_d3s_vacancy_document() -> None:
         (ROOT / "data" / "published" / pointer["snapshotDir"] / "browse" / "nine-hei-jobs.json").read_text(encoding="utf-8")
     )
     job = next(item for item in payload["jobs"] if item["id"] == "job-cuni-d3s-postdoc")
-    assert pointer["activeVersion"].startswith("v2026-09-19.")
+    assert pointer["snapshotDir"] == f"snapshots/{pointer['activeVersion']}"
     assert job["officialDetailUrl"] == DETAIL
     assert job["sourceUrl"] == DETAIL
     assert job["listingUrl"] == LISTING

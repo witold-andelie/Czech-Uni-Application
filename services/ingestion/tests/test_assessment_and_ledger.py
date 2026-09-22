@@ -1,7 +1,6 @@
 """A82/A83: deterministic tests for the source assessment and disposition ledger."""
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 
@@ -43,7 +42,12 @@ def test_assessment_labels_all_54_states_honestly() -> None:
         registry,
         schedule,
         {"jobs": []},
-        {"activeVersion": "v2026-09-12.6", "snapshotDir": "snapshots/v2026-09-12.6"},
+        {
+            "activeVersion": "v2026-09-12.6",
+            "snapshotDir": "snapshots/v2026-09-12.6",
+            "candidateGenerationId": "cg-assess-1",
+            "sourceRunSetDigest": "sha256:" + "0" * 64,
+        },
         {},
         generated_at="2026-09-13T06:00:00Z",
     )
@@ -60,6 +64,8 @@ def test_assessment_labels_all_54_states_honestly() -> None:
         "not_assessed": 1,
     }
     assert payload["publicationVersion"] == "v2026-09-12.6"
+    assert payload["candidateGenerationId"] == "cg-assess-1"
+    assert payload["sourceRunSetDigest"] == "sha256:" + "0" * 64
     # The claim boundary explicitly denies whole-institution coverage.
     assert "No row claims whole-institution coverage" in payload["claimBoundary"]
 
@@ -141,7 +147,12 @@ def test_disposition_ledger_one_decision_per_candidate() -> None:
     payload = build_ledger(
         candidates,
         {"job-public"},
-        {"activeVersion": "v2026-09-12.6", "snapshotDir": "snapshots/v2026-09-12.6"},
+        {
+            "activeVersion": "v2026-09-12.6",
+            "snapshotDir": "snapshots/v2026-09-12.6",
+            "candidateGenerationId": "cg-ledger-2",
+            "sourceRunSetDigest": "sha256:" + "0" * 64,
+        },
         generated_at="2026-09-13T06:00:00Z",
     )
     rows = {row["candidateId"]: row for row in payload["rows"]}
@@ -155,3 +166,5 @@ def test_disposition_ledger_one_decision_per_candidate() -> None:
     assert payload["summary"]["approved_public"] == 1
     assert payload["summary"]["blocked"] == 2
     assert payload["bySchool"]["msmt-vs_21000"]["blocked"] == 1
+    assert payload["candidateGenerationId"] == "cg-ledger-2"
+    assert payload["sourceRunSetDigest"] == "sha256:" + "0" * 64

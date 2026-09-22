@@ -267,7 +267,12 @@ def test_current_and_supported_predicates_are_not_interchangeable() -> None:
             }
         },
         generated_at="2026-09-12T13:00:00Z",
-        publication_pointer={"activeVersion": "v2026-09-12.4", "publishedAt": "2026-09-12T14:32:50Z"},
+        publication_pointer={
+            "activeVersion": "v2026-09-12.4",
+            "publishedAt": "2026-09-12T14:32:50Z",
+            "candidateGenerationId": "cg-test-abc",
+            "sourceRunSetDigest": "sha256:" + "0" * 64,
+        },
     )
     assert report["jobs"]["currentCandidates"] == 2
     assert report["jobs"]["supportedCandidates"] == 1
@@ -277,6 +282,8 @@ def test_current_and_supported_predicates_are_not_interchangeable() -> None:
     assert report["jobs"]["lastDiscoveryRun"]["singleSourceRefreshCannotCountAsAllSourceSuccess"] is True
     assert report["jobs"]["lastDiscoveryRun"]["lastAllSourceSuccessAt"] == "2026-09-11T19:24:00Z"
     assert report["jobs"]["lastDiscoveryRun"]["lastScheduledSuccessAt"] == "2026-09-12T12:00:00Z"
+    assert report["publication"]["candidateGenerationId"] == "cg-test-abc"
+    assert report["publication"]["sourceRunSetDigest"] == "sha256:" + "0" * 64
     again = build_coverage(
         baseline,
         registry,
