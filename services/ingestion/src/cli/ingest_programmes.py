@@ -10,6 +10,10 @@ write nothing and fail the command.
 --check validates the declared-scope gates only and exits without writing.
 --write-remote writes the same engine result through RestStore to Supabase
 (catalog.programme/programme_version) using the repo .env service-role key.
+--bulk-programmes writes an offline file (currently studyin, ~5k records) in
+a single Postgres transaction through PostgresStore -- no per-record RPC -- and
+registers the ingest_source so reconciliation sees the source. It is mutually
+exclusive with --write-remote.
 After a complete run, offerings are derived from the same evidence: only
 sources that assert an academic year produce offering/admission_window rows
 (currently the CZU doctoral admissions source); sources without a declared
@@ -94,6 +98,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--check", action="store_true", help="validate declared-scope gates only; write nothing")
     parser.add_argument("--write-remote", action="store_true", help="write through RestStore to Supabase")
+    parser.add_argument("--bulk-programmes", action="store_true", help="single-transaction Postgres write for large offline catalogues (studyin)")
     parser.add_argument("--source", default=None, help="restrict to one registered source id")
     parser.add_argument("--status-json", default=None, help="write a JSON status report to this path")
     args = parser.parse_args(argv)
@@ -131,6 +136,62 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.check:
             report["sources"].append({"id": source_id, "gate": [], "records": row_count, "status": "checked"})
+            continue
+
+        if args.bulk_programmes and not args.write_remote:
+            _load_env(ROOT / ".env")
+            from adapters.programmes.evidences import parse_programme_rows  # noqa: E402
+            from storage.postgres import PostgresStore  # noqa: E402
+
+            rows = parse_programme_rows(source_id, payload)
+            store = PostgresStore()
+            store.upsert_source(
+                {
+                    "id": source_id,
+                    "institution_id": None,
+                    "entity_kind": "programme",
+                    "source_kind": "official_university_programme_catalogue",
+                    "adapter_key": "programme",
+                    "entry_url": source.get("url") or f"https://{source_id}.example/",
+                    "official_host": str(source.get("url") or "").split("//")[-1].split("/")[0]
+                    if source.get("url")
+                    else source_id,
+                    "allowed_hosts": [
+                        str(source.get("url") or "").split("//")[-1].split("/")[0] if source.get("url") else source_id
+                    ],
+                    "coverage_scope": "all_programmes",
+                    "coverage_claim": "asserted_offline",
+                    "cadence_seconds": int(source.get("refreshIntervalHours", 2)) * 3600,
+                    "config": json.dumps({"evidence_file": "studyin-programmes.json", "records": row_count}, ensure_ascii=False),
+                    "enabled": bool(source.get("enabled", True)),
+                }
+            )
+            store.patch_source(
+                source_id,
+                {
+                    "entity_kind": "programme",
+                    "source_kind": "official_university_programme_catalogue",
+                    "adapter_key": "programme",
+                    "coverage_claim": "asserted_offline",
+                },
+            )
+            bulk = store.bulk_upsert_programmes(source=source, rows=rows)
+            store.close()
+            print(f"[{source_id}] bulk -> postgres rows={len(rows)} created={bulk['created']} stale={bulk['stale']}")
+            report["sources"].append(
+                {
+                    "id": source_id,
+                    "gate": [],
+                    "records": row_count,
+                    "status": "wrote",
+                    "target": "postgres-bulk",
+                    "wrote": len(rows),
+                    "listed": len(rows),
+                    "parsed": len(rows),
+                    "created": bulk["created"],
+                    "stale": bulk["stale"],
+                }
+            )
             continue
 
         context, _ = evidence_context(source_id, payload=payload)

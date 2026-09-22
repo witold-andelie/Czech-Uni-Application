@@ -20,6 +20,28 @@ def _now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+def _programme_facts_from_row(row: dict[str, Any]) -> dict[str, Any]:
+    """Facts dict for one studyin listing row, matching the shape
+    ``RestStore.upsert_programme`` receives so fact hashes stay canonical."""
+    return {
+        "title": str(row.get("title") or ""),
+        "official_detail_url": str(row.get("sourceUrl") or ""),
+        "degree": row.get("degree"),
+        "application_url": row.get("applicationUrl"),
+        "catalogue": row.get("catalogue"),
+        "evidenceRecordSha256": row.get("evidenceRecordSha256"),
+        "educationalDegree": row.get("degree"),
+        "study_form": row.get("studyForms"),
+        "study_language": row.get("studyLanguage"),
+        "institution_names": row.get("institutionNames"),
+        "faculty_names": row.get("facultyNames"),
+        "fields": row.get("fields"),
+        "duration": row.get("durationYears"),
+        "credit_note": row.get("credits"),
+        "official_title": {row.get("studyLanguage") or "cs": str(row.get("title") or "")},
+    }
+
+
 def env_flag(name: str, default: str = "0") -> bool:
     return os.environ.get(name, default).strip().lower() in {"1", "true", "yes", "on"}
 
@@ -160,6 +182,17 @@ class PostgresStore:
             """,
             row,
         )
+
+    def patch_source(self, source_id: str, fields: dict[str, Any]) -> None:
+        self._conn.execute(
+            "UPDATE ingest.source SET updated_at = now() WHERE id = %s",
+            (source_id,),
+        )
+        for key, value in fields.items():
+            self._conn.execute(
+                f"UPDATE ingest.source SET {key} = %s WHERE id = %s",
+                (value, source_id),
+            )
 
     def source_count(self) -> int:
         return int(self._conn.execute("SELECT COUNT(*) FROM ingest.source").fetchone()[0])
@@ -323,6 +356,112 @@ class PostgresStore:
         else:
             rows = self._conn.execute("select external_id from catalog.research_job").fetchall()
         return [row[0] for row in rows]
+
+    def bulk_upsert_programmes(
+        self,
+        *,
+        source: dict[str, Any],
+        rows: list[dict[str, Any]],
+        run_id: str | None = None,
+    ) -> dict[str, Any]:
+        """Bulk write of offline programme catalogue identities in one transaction.
+
+        Mirrors ``RestStore.upsert_programme`` semantics (external id
+        ``{institutionId}:{remoteId}`` with the source-level ``employerId``,
+        canonical job fact hash over the variant title, private/discovered/
+        required defaults) but executes one parameterised statement per record
+        inside a single connection instead of RPC per record. Stale tiering and
+        preferred-version pointing are preserved so a re-run over the same
+        evidence is idempotent.
+        """
+        if not rows:
+            return {"written": 0, "created": 0, "stale": 0}
+        account = source.get("employerId") or source.get("id") or "studyin"
+        program_rows: list[tuple[str, str, str, str]] = []
+        version_rows: list[tuple[str, str, str, str, str | None]] = []
+        for row in rows:
+            remote_id = str(row.get("code") or row.get("sourceStableId") or "")
+            detail_url = str(row.get("sourceUrl") or "")
+            external_id = f"{account}:{remote_id}"
+            facts = _programme_facts_from_row(row)
+            digest = job_fact_hash(facts, detail_url)
+            program_rows.append((external_id, account, remote_id, detail_url))
+            version_rows.append(
+                (external_id, digest, str(facts.get("title") or ""), detail_url, facts.get("degree"))
+            )
+        external_ids = [external_id for external_id, _account, _code, _url in program_rows]
+        with self._conn.transaction():
+            existing = {
+                str(r[0])
+                for r in self._conn.execute(
+                    "select external_id from catalog.programme where external_id = any(%s)",
+                    (external_ids,),
+                ).fetchall()
+            }
+            created = [external_id for external_id in external_ids if external_id not in existing]
+            programme_ids: dict[str, str] = {}
+            for external_id, account, official_code, detail_url in program_rows:
+                programme_ids[external_id] = str(
+                    self._conn.execute(
+                        """
+                        INSERT INTO catalog.programme (
+                          external_id, institution_id, official_code, official_detail_url,
+                          lifecycle, visibility
+                        ) VALUES (%s, %s, %s, %s, 'discovered', 'private')
+                        ON CONFLICT (external_id) DO UPDATE SET
+                          official_detail_url = EXCLUDED.official_detail_url,
+                          last_seen_at = now()
+                        RETURNING id
+                        """,
+                        (external_id, account, official_code, detail_url),
+                    ).fetchone()[0]
+                )
+            known_by_external: dict[str, set[str]] = {}
+            for external_id, fact_hash in self._conn.execute(
+                """
+                select p.external_id, pv.fact_hash
+                from catalog.programme_version pv
+                join catalog.programme p on p.id = pv.programme_id
+                where p.external_id = any(%s)
+                """,
+                (external_ids,),
+            ).fetchall():
+                known_by_external.setdefault(str(external_id), set()).add(str(fact_hash))
+            version_by_external: dict[str, str] = {}
+            for external_id, digest, title, detail_url, degree in version_rows:
+                version_by_external[external_id] = str(
+                    self._conn.execute(
+                        """
+                        INSERT INTO catalog.programme_version (
+                          programme_id, source_run_id, fact_hash, source_title,
+                          official_detail_url, degree, review_state
+                        ) VALUES (%s, %s, %s, %s, %s, %s, 'required')
+                        ON CONFLICT (programme_id, fact_hash) DO UPDATE SET
+                          official_detail_url = EXCLUDED.official_detail_url
+                        RETURNING id
+                        """,
+                        (programme_ids[external_id], run_id, digest, title, detail_url, degree),
+                    ).fetchone()[0]
+                )
+            stale = 0
+            for external_id, known in known_by_external.items():
+                wanted = next((digest for ext, digest, *_ in version_rows if ext == external_id), None)
+                if wanted is None or wanted in known:
+                    continue
+                self._conn.execute(
+                    """
+                    update catalog.programme_version set review_state = 'stale'
+                    where programme_id = %s and fact_hash <> %s and review_state <> 'stale'
+                    """,
+                    (programme_ids[external_id], wanted),
+                )
+                stale += 1
+            for external_id, version_id in version_by_external.items():
+                self._conn.execute(
+                    "update catalog.programme set preferred_version_id = %s, last_seen_at = now() where id = %s",
+                    (version_id, programme_ids[external_id]),
+                )
+        return {"written": len(rows), "created": len(created), "stale": stale}
 
     def finish_run(
         self,
