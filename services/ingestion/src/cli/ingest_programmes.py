@@ -8,6 +8,8 @@ the same engine path used by live adapters. Incomplete or gate-declining runs
 write nothing and fail the command.
 
 --check validates the declared-scope gates only and exits without writing.
+--write-remote writes the same engine result through RestStore to Supabase
+(catalog.programme/programme_version) using the repo .env service-role key.
 """
 
 from __future__ import annotations
@@ -22,9 +24,11 @@ sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
 from adapters.programmes import programme_adapter_for  # noqa: E402
 from adapters.programmes.evidences import evidence_context, gate_declared_scope, load_payload  # noqa: E402
+from cli.apply_schema import _load_env  # noqa: E402
 from engine.run_source import run_source  # noqa: E402
 from harvest_nine_hei_jobs import load_registered_programme_sources  # noqa: E402
 from storage.memory import MemoryStore  # noqa: E402
+from storage.rest import RestStore  # noqa: E402
 
 
 def _run_one(source: dict, store: MemoryStore, context: dict) -> dict:
@@ -36,6 +40,7 @@ def _run_one(source: dict, store: MemoryStore, context: dict) -> dict:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--check", action="store_true", help="validate declared-scope gates only; write nothing")
+    parser.add_argument("--write-remote", action="store_true", help="write through RestStore to Supabase")
     parser.add_argument("--source", default=None, help="restrict to one registered source id")
     parser.add_argument("--status-json", default=None, help="write a JSON status report to this path")
     args = parser.parse_args(argv)
@@ -76,11 +81,28 @@ def main(argv: list[str] | None = None) -> int:
             continue
 
         context, _ = evidence_context(source_id, payload=payload)
-        outcome = _run_one(source, MemoryStore(), context)
-        wrote = len(outcome["store"].programmes)
+        if args.write_remote:
+            _load_env(ROOT / ".env")
+            store: MemoryStore | RestStore = RestStore()
+            store.patch_source(
+                source_id,
+                {
+                    "entity_kind": "programme",
+                    "source_kind": "official_university_programme_catalogue",
+                    "adapter_key": "programme",
+                    "coverage_claim": "asserted_offline",
+                },
+            )
+            remote = True
+        else:
+            store = MemoryStore()
+            remote = False
+        outcome = _run_one(source, store, context)
+        wrote = len(outcome["store"].programmes) if isinstance(outcome["store"], MemoryStore) else outcome["completeness"].listed_count
         status = "wrote" if outcome["completeness"].ok else outcome["run"]["status"]
+        target = "remote" if remote else "memory"
         print(
-            f"[{source_id}] {status} programmes={wrote} listed={outcome['completeness'].listed_count} "
+            f"[{source_id}] {status} -> {target} programmes={wrote} listed={outcome['completeness'].listed_count} "
             f"parsed={outcome['completeness'].parsed_count}"
         )
         if not outcome["completeness"].ok:
@@ -91,6 +113,7 @@ def main(argv: list[str] | None = None) -> int:
                 "gate": [],
                 "records": row_count,
                 "status": status,
+                "target": "remote" if remote else "memory",
                 "wrote": wrote,
                 "listed": outcome["completeness"].listed_count,
                 "parsed": outcome["completeness"].parsed_count,

@@ -51,7 +51,9 @@ def run_source(
         completeness: CompletenessResult = adapter.validate_completeness(context)
         if completeness.ok:
             seen: set[str] = set()
+            kinds: set[str] = set()
             for candidate in candidates:
+                kinds.add(candidate.entity_kind)
                 allowed, reason = official_detail_allowed(candidate.official_detail_url, source)
                 facts = {
                     "title": candidate.title,
@@ -83,11 +85,12 @@ def run_source(
                         run_id=run["id"],
                     )
                 seen.add(_external_id(source, candidate.employer_id, candidate.remote_id))
-            list_ids = getattr(store, "list_external_ids", None)
-            if callable(list_ids):
-                for external_id in list_ids(employer_id=source.get("employerId")):
-                    if external_id not in seen:
-                        store.mark_absent(external_id)
+            if "research_job" in kinds:
+                list_ids = getattr(store, "list_external_ids", None)
+                if callable(list_ids):
+                    for external_id in list_ids(employer_id=source.get("employerId")):
+                        if external_id not in seen:
+                            store.mark_absent(external_id)
             store.finish_run(
                 run["id"],
                 status="succeeded",

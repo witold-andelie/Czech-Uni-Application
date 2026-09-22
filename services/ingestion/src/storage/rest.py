@@ -43,6 +43,7 @@ class RestStore:
         self.runs: dict[str, dict[str, Any]] = {}
         self.evidence = EvidenceStore(self.url, self.key)
         self._ctx = ssl.create_default_context()
+        self._saved_digests: set[str] = set()
 
     def close(self) -> None:
         return None
@@ -130,6 +131,14 @@ class RestStore:
             }
         )
 
+    def patch_source(self, source_id: str, fields: dict[str, Any]) -> None:
+        self._request(
+            "PATCH",
+            f"ingest_source?id=eq.{quote(source_id, safe='')}",
+            fields,
+            extra={"Prefer": "return=minimal"},
+        )
+
     def claim_run(self, run_id: str, owner: str | None = None, lease_seconds: int = 900) -> str | None:
         payload = {
             "p_run": run_id,
@@ -210,31 +219,35 @@ class RestStore:
     ) -> dict[str, Any]:
         digest = sha256((body or "").encode("utf-8")).hexdigest()
         source_id = (self.runs.get(run_id) or {}).get("source_id")
-        if raw is not None:
-            storage_path = self.evidence.put(raw, content_type or "application/pdf")
-            aux_path = self.evidence.put_text(aux if aux is not None else body)
-        else:
-            storage_path = self.evidence.put(
-                (body or "").encode("utf-8"),
-                content_type or "text/html; charset=utf-8",
+        storage_path: str | None = None
+        aux_path: str | None = None
+        if digest not in self._saved_digests:
+            if raw is not None:
+                storage_path = self.evidence.put(raw, content_type or "application/pdf")
+                aux_path = self.evidence.put_text(aux if aux is not None else body)
+            else:
+                storage_path = self.evidence.put(
+                    (body or "").encode("utf-8"),
+                    content_type or "text/html; charset=utf-8",
+                )
+                aux_path = None
+            self._request(
+                "POST",
+                "ingest_raw_document?on_conflict=sha256",
+                {
+                    "source_id": source_id,
+                    "run_id": run_id,
+                    "requested_url": url,
+                    "final_url": url,
+                    "http_status": status,
+                    "content_type": content_type or "text/html",
+                    "sha256": digest,
+                    "storage_path": storage_path,
+                    "aux_object_path": aux_path,
+                },
+                extra={"Prefer": "resolution=merge-duplicates,return=minimal"},
             )
-            aux_path = None
-        self._request(
-            "POST",
-            "ingest_raw_document?on_conflict=sha256",
-            {
-                "source_id": source_id,
-                "run_id": run_id,
-                "requested_url": url,
-                "final_url": url,
-                "http_status": status,
-                "content_type": content_type or "text/html",
-                "sha256": digest,
-                "storage_path": storage_path,
-                "aux_object_path": aux_path,
-            },
-            extra={"Prefer": "resolution=merge-duplicates,return=minimal"},
-        )
+            self._saved_digests.add(digest)
         return {
             "sha256": digest,
             "url": url,
