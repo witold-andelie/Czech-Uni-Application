@@ -39,7 +39,16 @@ class MemoryStore:
         self.runs[run["id"]] = run
         return run
 
-    def save_document(self, run_id: str, url: str, body: str, status: int = 200) -> dict[str, Any]:
+    def save_document(
+        self,
+        run_id: str,
+        url: str,
+        body: str,
+        status: int = 200,
+        content_type: str | None = None,
+        raw: bytes | None = None,
+        aux: str | None = None,
+    ) -> dict[str, Any]:
         digest = sha256(body.encode("utf-8")).hexdigest()
         row = {
             "id": str(uuid4()),
@@ -48,6 +57,9 @@ class MemoryStore:
             "status": status,
             "sha256": digest,
             "bytes": len(body.encode("utf-8")),
+            "content_type": content_type or "text/html",
+            "storage_path": None,
+            "aux_object_path": None,
         }
         self.documents.append(row)
         return row

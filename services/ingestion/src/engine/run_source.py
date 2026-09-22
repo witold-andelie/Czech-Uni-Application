@@ -35,7 +35,16 @@ def run_source(
             for reference in references:
                 documents.extend(adapter.fetch_detail(reference, context))
         for document in documents:
-            store.save_document(run["id"], document.url, document.body, document.status)
+            extra = document.extra if isinstance(document.extra, dict) else {}
+            store.save_document(
+                run["id"],
+                document.url,
+                document.body,
+                document.status,
+                content_type=document.content_type,
+                raw=extra.get("attachment_bytes"),
+                aux=extra.get("attachment_aux_text"),
+            )
         for reference in references:
             store.save_observation(run["id"], reference.remote_id, reference.detail_url, reference.title)
         candidates = adapter.normalize(documents, context)

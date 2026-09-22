@@ -89,8 +89,8 @@ class PdfListingAdapter:
         if fetch_attachment is None or pdf_text is None:
             self._reasons.append("attachment-extraction-unavailable")
             return []
-        detail_status, body = fetch_attachment(reference.detail_url)
-        text = pdf_text(body) if detail_status == 200 else ""
+        detail_status, attachment = fetch_attachment(reference.detail_url)
+        text = pdf_text(attachment) if detail_status == 200 else ""
         detail_ok = detail_status == 200 and len((text or "").strip()) >= 20
         if not detail_ok:
             self._reasons.append("pdf-text-extraction-failed")
@@ -105,7 +105,12 @@ class PdfListingAdapter:
                 url=reference.detail_url,
                 final_url=reference.detail_url,
                 body=detail_html,
-                extra={"reference": reference},
+                content_type="application/pdf",
+                extra={
+                    "reference": reference,
+                    "attachment_bytes": attachment,
+                    "attachment_aux_text": text,
+                },
             )
         ]
 

@@ -13,6 +13,7 @@ import ssl
 import urllib.error
 import urllib.request
 
+from storage.evidence import EvidenceStore
 from storage.facts import job_fact_hash
 
 
@@ -32,6 +33,7 @@ class RestStore:
         if not self.url or not self.key:
             raise RuntimeError("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY required for HTTPS ingest")
         self.runs: dict[str, dict[str, Any]] = {}
+        self.evidence = EvidenceStore(self.url, self.key)
         self._ctx = ssl.create_default_context()
 
     def close(self) -> None:
@@ -148,9 +150,27 @@ class RestStore:
         self.runs[run_id] = run
         return run
 
-    def save_document(self, run_id: str, url: str, body: str, status: int = 200) -> dict[str, Any]:
+    def save_document(
+        self,
+        run_id: str,
+        url: str,
+        body: str,
+        status: int = 200,
+        content_type: str | None = None,
+        raw: bytes | None = None,
+        aux: str | None = None,
+    ) -> dict[str, Any]:
         digest = sha256((body or "").encode("utf-8")).hexdigest()
         source_id = (self.runs.get(run_id) or {}).get("source_id")
+        if raw is not None:
+            storage_path = self.evidence.put(raw, content_type or "application/pdf")
+            aux_path = self.evidence.put_text(aux if aux is not None else body)
+        else:
+            storage_path = self.evidence.put(
+                (body or "").encode("utf-8"),
+                content_type or "text/html; charset=utf-8",
+            )
+            aux_path = None
         self._request(
             "POST",
             "ingest_raw_document?on_conflict=sha256",
@@ -160,11 +180,20 @@ class RestStore:
                 "requested_url": url,
                 "final_url": url,
                 "http_status": status,
+                "content_type": content_type or "text/html",
                 "sha256": digest,
+                "storage_path": storage_path,
+                "aux_object_path": aux_path,
             },
             extra={"Prefer": "resolution=merge-duplicates,return=minimal"},
         )
-        return {"sha256": digest, "url": url, "status": status}
+        return {
+            "sha256": digest,
+            "url": url,
+            "status": status,
+            "storage_path": storage_path,
+            "aux_object_path": aux_path,
+        }
 
     def save_observation(self, run_id: str, remote_id: str, detail_url: str, title: str, present: bool = True) -> None:
         self._request(
