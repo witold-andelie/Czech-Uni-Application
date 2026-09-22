@@ -257,6 +257,23 @@
     "note": "Provenance for job-cuni-cenmas-asia-postdoc. Application deadline 14 September 2026 23:59 CEST has passed; verified live 2026-09-22 the call is closed for applications. The single vacancy document is registered for provenance only and is disabled for scheduled collection."
   },
   {
+    "id": "vsers-careers",
+    "url": "https://www.vsers.cz/kariera",
+    "purpose": "official careers page of Vysoká škola evropských a regionálních studií (VŠERS); open-ended invitation to send CV for academic and administrative roles, references currently advertised selection procedures",
+    "official": true,
+    "sourceType": "official_job_listing_supplemental",
+    "enabled": false,
+    "employerId": "msmt-vs_6k000",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "generic_listing_links",
+    "followDetails": false,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "live_probe_2026-09-22",
+    "adapter": "services/ingestion/src/engine/probe_job_sources.py",
+    "note": "Registered after the 2026-09-22 live probe (HTTP 200). The page is an open-applications invitation rather than a per-vacancy listing, so it stays disabled and no candidates are claimed from it. 2026-09-17 check had recorded no central listing; this registration documents the real careers entry point."
+  },
+  {
     "id": "muni-careers",
     "url": "https://www.muni.cz/en/about-us/careers",
     "baseUrl": "https://www.muni.cz",

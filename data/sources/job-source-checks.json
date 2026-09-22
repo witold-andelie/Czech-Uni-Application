@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-09-17T12:00:00Z",
-  "nextCheckAt": "2026-09-22T12:00:00Z",
+  "checkedAt": "2026-09-22T21:50:00Z",
+  "nextCheckAt": "2026-09-27T21:50:00Z",
   "method": "Official-domain vacancy/career/selection-procedure search, followed by direct inspection of discovered official pages. Search absence is not vacancy absence.",
   "rows": [
     {
@@ -43,10 +43,10 @@
     {"institutionId":"msmt-vs_6d000","method":"official_domain_search_and_page_inspection","evidenceUrls":["https://www.unyp.cz/jobs-at-unyp/"],"result":"official_public_listing_found","note":"Official UNYP employer-career page states where faculty openings are published and is registered."},
     {"institutionId":"msmt-vs_7n000","method":"official_domain_search","evidenceUrls":["https://www.vsaps.cz"],"result":"official_site_checked_no_central_listing","note":"No central public staff-vacancy listing was found on the official domain."},
     {"institutionId":"msmt-vs_7v000","method":"official_domain_search","evidenceUrls":["https://www.vsem.cz"],"result":"official_site_checked_no_central_listing","note":"The public jobs/stages material found is for students or external employers; no university-employer central listing was identified."},
-    {"institutionId":"msmt-vs_6k000","method":"official_domain_search","evidenceUrls":["https://www.vsers.cz"],"result":"official_site_checked_no_central_listing","note":"No central public staff-vacancy listing was found on the official domain."},
+    {"institutionId":"msmt-vs_6k000","method":"official_domain_search_and_page_inspection","evidenceUrls":["https://www.vsers.cz/kariera"],"result":"official_public_listing_found","note":"2026-09-22 live probe (HTTP 200): official careers page invites open CV submissions and references advertised selection procedures; registered as vsers-careers (disabled, no per-vacancy listing)."},
     {"institutionId":"msmt-vs_7u000","method":"official_domain_search","evidenceUrls":["https://www.vsfs.cz"],"result":"official_site_checked_no_central_listing","note":"No central public university-employer vacancy listing was found on the official domain."},
     {"institutionId":"msmt-vs_7t000","method":"official_domain_search","evidenceUrls":["https://www.vskk.cz"],"result":"official_site_checked_no_central_listing","note":"No central public staff-vacancy listing was found on the official domain."},
-    {"institutionId":"msmt-vs_6r000","method":"official_domain_search","evidenceUrls":["https://www.vslg.cz"],"result":"official_site_checked_no_central_listing","note":"No central public staff-vacancy listing was found on the official domain."},
+    {"institutionId":"msmt-vs_6r000","method":"official_domain_search","evidenceUrls":["https://www.vslg.cz"],"result":"official_site_checked_no_central_listing","note":"2026-09-22 recheck: /uredni-deska returns 200 but is an announcement board with procurement tenders (\"vyberove rizeni\" in the public-procurement sense), so generic_listing_links classification there is a false positive. No central staff-vacancy listing found."},
     {"institutionId":"msmt-vs_6q000","method":"official_domain_search","evidenceUrls":["https://newton.university"],"result":"official_site_checked_no_central_listing","note":"No central public university-employer vacancy listing was found on the official domain."},
     {"institutionId":"msmt-vs_73000","method":"official_domain_search","evidenceUrls":["https://www.sting.cz"],"result":"official_site_checked_no_central_listing","note":"No central public staff-vacancy listing was found on the official domain."},
     {"institutionId":"msmt-vs_6p000","method":"official_domain_search","evidenceUrls":["https://www.palestra.cz"],"result":"official_site_checked_no_central_listing","note":"Search results concerned study places; no central public university-employer vacancy listing was identified."},
