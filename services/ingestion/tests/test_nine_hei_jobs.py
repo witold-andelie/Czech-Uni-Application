@@ -12,6 +12,17 @@ sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 import harvest_nine_hei_jobs as jobs_harvester  # noqa: E402
 jobs_harvest_nine_hei_jobs_visible_text = jobs_harvester.visible_text
 
+
+def test_verified_candidates_live_in_data_file() -> None:
+    path = ROOT / "services" / "ingestion" / "src" / "data" / "verified_candidates.json"
+    assert path.is_file()
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    assert isinstance(payload, list) and payload
+    assert len(payload) == len(jobs_harvester.load_verified_candidates())
+    assert [item["id"] for item in payload] == [
+        item["id"] for item in jobs_harvester.load_verified_candidates()
+    ]
+
 from harvest_nine_hei_jobs import (  # noqa: E402
     TODAY,
     classify_track,
