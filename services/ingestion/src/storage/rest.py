@@ -414,6 +414,169 @@ class RestStore:
         )
         return {"id": external_id, "programme_id": str(programme_id), "version_id": str(version_id)}
 
+    def find_programme_id(self, programme_external_id: str) -> str | None:
+        rows = self._request(
+            "GET",
+            f"catalog_programme?external_id=eq.{quote(programme_external_id, safe='')}&select=id",
+        )
+        if not rows:
+            return None
+        return str(rows[0]["id"])
+
+    def upsert_offering(
+        self,
+        *,
+        programme_external_id: str,
+        external_id: str,
+        institution_id: str | None,
+        academic_year: str,
+        campus_mode: str,
+        teaching_languages: list[str],
+    ) -> str:
+        programme_id = self.find_programme_id(programme_external_id)
+        if programme_id is None:
+            return ""
+        self._request(
+            "POST",
+            "catalog_offering?on_conflict=external_id",
+            {
+                "external_id": external_id,
+                "programme_id": programme_id,
+                "institution_id": institution_id,
+                "academic_year": academic_year,
+                "campus_mode": campus_mode,
+                "teaching_languages": teaching_languages,
+                "visibility": "private",
+            },
+            extra={"Prefer": "resolution=merge-duplicates,return=minimal"},
+        )
+        rows = self._request("GET", f"catalog_offering?external_id=eq.{quote(external_id, safe='')}&select=id")
+        return str(rows[0]["id"])
+
+    def upsert_offering_version(
+        self,
+        *,
+        offering_id: str,
+        official_detail_url: str | None,
+        application_url: str | None,
+        language_evidence_url: str | None,
+        lifecycle: str,
+        facts: dict[str, Any],
+        run_id: str | None = None,
+    ) -> str:
+        digest = job_fact_hash(facts, official_detail_url or "")
+        existing_versions = (
+            self._request(
+                "GET",
+                f"catalog_offering_version?offering_id=eq.{offering_id}&select=id,fact_hash",
+            )
+            or []
+        )
+        known_hashes = {row.get("fact_hash") for row in existing_versions}
+        self._request(
+            "POST",
+            "catalog_offering_version?on_conflict=offering_id,fact_hash",
+            {
+                "offering_id": offering_id,
+                "source_run_id": run_id,
+                "fact_hash": digest,
+                "official_detail_url": official_detail_url,
+                "language_evidence_url": language_evidence_url,
+                "application_url": application_url,
+                "lifecycle": lifecycle,
+                "facts": facts,
+                "review_state": "required",
+            },
+            extra={"Prefer": "resolution=merge-duplicates,return=representation"},
+        )
+        versions = self._request(
+            "GET",
+            f"catalog_offering_version?offering_id=eq.{offering_id}&fact_hash=eq.{digest}&select=id",
+        )
+        version_id = versions[0]["id"]
+        if digest not in known_hashes:
+            self._request(
+                "PATCH",
+                f"catalog_offering_version?offering_id=eq.{offering_id}&fact_hash=neq.{quote(digest, safe='')}",
+                {"review_state": "stale"},
+                extra={"Prefer": "return=minimal"},
+            )
+        self._request(
+            "PATCH",
+            f"catalog_offering?id=eq.{offering_id}",
+            {"preferred_version_id": version_id, "last_seen_at": _now().isoformat()},
+            extra={"Prefer": "return=minimal"},
+        )
+        return str(version_id)
+
+    def set_offering_preferred(self, offering_id: str, version_id: str) -> None:
+        self._request(
+            "PATCH",
+            f"catalog_offering?id=eq.{offering_id}",
+            {"preferred_version_id": version_id},
+            extra={"Prefer": "return=minimal"},
+        )
+
+    def upsert_admission_window(
+        self,
+        *,
+        owner_type: str,
+        owner_id: str,
+        offering_version_id: str | None,
+        academic_year: str | None,
+        round_number: int,
+        round_label_original: str,
+        round_type: str,
+        opens_at: str | None,
+        closes_at: str | None,
+        timezone: str,
+        date_precision: str,
+        status: str,
+        application_url: str | None,
+        source_run_id: str | None = None,
+    ) -> str:
+        existing = self._request(
+            "GET",
+            f"catalog_admission_window?owner_type=eq.{owner_type}&owner_id=eq.{quote(owner_id, safe='')}&round_number=eq.{round_number}&select=id,closes_at,status",
+        )
+        if existing:
+            row = existing[0]
+            self._request(
+                "PATCH",
+                f"catalog_admission_window?id=eq.{row['id']}",
+                {
+                    "closes_at": closes_at,
+                    "opens_at": opens_at,
+                    "status": status,
+                    "round_label_original": round_label_original,
+                    "offering_version_id": offering_version_id,
+                },
+                extra={"Prefer": "return=minimal"},
+            )
+            return str(row["id"])
+        self._request(
+            "POST",
+            "catalog_admission_window?on_conflict=owner_type,owner_id,round_number,opens_at",
+            {
+                "owner_type": owner_type,
+                "owner_id": owner_id,
+                "offering_version_id": offering_version_id,
+                "academic_year": academic_year,
+                "round_number": round_number,
+                "round_label_original": round_label_original,
+                "round_type": round_type,
+                "opens_at": opens_at,
+                "closes_at": closes_at,
+                "timezone": timezone,
+                "date_precision": date_precision,
+                "status": status,
+                "application_url": application_url,
+                "source_run_id": source_run_id,
+            },
+            extra={"Prefer": "resolution=merge-duplicates,return=minimal"},
+        )
+        return ""
+
     def list_external_ids(self, *, employer_id: str | None = None) -> list[str]:
         path = "catalog_research_job?select=external_id"
         if employer_id:

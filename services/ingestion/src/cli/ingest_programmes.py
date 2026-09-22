@@ -10,6 +10,10 @@ write nothing and fail the command.
 --check validates the declared-scope gates only and exits without writing.
 --write-remote writes the same engine result through RestStore to Supabase
 (catalog.programme/programme_version) using the repo .env service-role key.
+After a complete run, offerings are derived from the same evidence: only
+sources that assert an academic year produce offering/admission_window rows
+(currently the CZU doctoral admissions source); sources without a declared
+season contribute none and the reason is recorded.
 """
 
 from __future__ import annotations
@@ -24,6 +28,7 @@ sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
 from adapters.programmes import programme_adapter_for  # noqa: E402
 from adapters.programmes.evidences import evidence_context, gate_declared_scope, load_payload  # noqa: E402
+from adapters.programmes.offerings import derive_offerings, offering_external_id  # noqa: E402
 from cli.apply_schema import _load_env  # noqa: E402
 from engine.run_source import run_source  # noqa: E402
 from harvest_nine_hei_jobs import load_registered_programme_sources  # noqa: E402
@@ -31,10 +36,58 @@ from storage.memory import MemoryStore  # noqa: E402
 from storage.rest import RestStore  # noqa: E402
 
 
-def _run_one(source: dict, store: MemoryStore, context: dict) -> dict:
+def _run_one(source: dict, store: MemoryStore | RestStore, context: dict) -> dict:
     adapter = programme_adapter_for(source)
     assert adapter is not None
     return run_source(adapter, source, context, store=store)
+
+
+def _write_offerings(source_id: str, store: MemoryStore | RestStore, payload: dict, run_id: str | None) -> tuple[int, int, list[str]]:
+    offerings, reasons = derive_offerings(source_id, payload)
+    institution_id = payload.get("institutionId")
+    offering_count = 0
+    window_count = 0
+    for offering in offerings:
+        external_id = offering_external_id(offering.programme_external_id, offering.academic_year)
+        offering_id = store.upsert_offering(
+            programme_external_id=offering.programme_external_id,
+            external_id=external_id,
+            institution_id=institution_id,
+            academic_year=offering.academic_year,
+            campus_mode=offering.campus_mode,
+            teaching_languages=offering.teaching_languages,
+        )
+        if not offering_id:
+            continue
+        version_id = store.upsert_offering_version(
+            offering_id=offering_id,
+            official_detail_url=offering.official_detail_url,
+            application_url=offering.application_url,
+            language_evidence_url=None,
+            lifecycle=offering.lifecycle,
+            facts=offering.facts,
+            run_id=run_id,
+        )
+        for window in offering.windows:
+            store.upsert_admission_window(
+                owner_type="offering",
+                owner_id=external_id,
+                offering_version_id=version_id,
+                academic_year=offering.academic_year,
+                round_number=window.round_number,
+                round_label_original=window.round_label_original,
+                round_type=window.round_type,
+                opens_at=window.opens_at,
+                closes_at=window.closes_at,
+                timezone=window.timezone,
+                date_precision=window.date_precision,
+                status=window.status,
+                application_url=window.application_url,
+                source_run_id=run_id,
+            )
+            window_count += 1
+        offering_count += 1
+    return offering_count, window_count, reasons
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -105,6 +158,20 @@ def main(argv: list[str] | None = None) -> int:
             f"[{source_id}] {status} -> {target} programmes={wrote} listed={outcome['completeness'].listed_count} "
             f"parsed={outcome['completeness'].parsed_count}"
         )
+        offering_count = 0
+        window_count = 0
+        offering_reasons: list[str] = []
+        if outcome["completeness"].ok:
+            offering_count, window_count, offering_reasons = _write_offerings(
+                source_id,
+                store,
+                payload,
+                outcome["run"].get("id"),
+            )
+            if offering_count or window_count:
+                print(f"[{source_id}] offerings={offering_count} windows={window_count}")
+            if offering_reasons:
+                print(f"[{source_id}] offerings declined: {'; '.join(offering_reasons)}")
         if not outcome["completeness"].ok:
             failed = True
         report["sources"].append(
@@ -117,6 +184,9 @@ def main(argv: list[str] | None = None) -> int:
                 "wrote": wrote,
                 "listed": outcome["completeness"].listed_count,
                 "parsed": outcome["completeness"].parsed_count,
+                "offerings": offering_count,
+                "windows": window_count,
+                "offerings_declined": list(offering_reasons),
             }
         )
 

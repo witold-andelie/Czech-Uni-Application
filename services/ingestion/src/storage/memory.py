@@ -23,6 +23,10 @@ class MemoryStore:
     jobs: dict[str, dict[str, Any]] = field(default_factory=dict)
     programmes: dict[str, dict[str, Any]] = field(default_factory=dict)
     versions: list[dict[str, Any]] = field(default_factory=list)
+    offerings: dict[str, dict[str, Any]] = field(default_factory=dict)
+    offering_versions: list[dict[str, Any]] = field(default_factory=list)
+    admission_windows: list[dict[str, Any]] = field(default_factory=list)
+    tuitions: list[dict[str, Any]] = field(default_factory=list)
 
     def start_run(self, source: dict, scheduled_for: str | None = None) -> dict[str, Any]:
         run = {
@@ -173,6 +177,141 @@ class MemoryStore:
     def mark_absent(self, job_id: str) -> None:
         job = self.jobs[job_id]
         job["consecutive_absence"] = int(job.get("consecutive_absence") or 0) + 1
+
+    def find_programme_id(self, programme_external_id: str) -> str | None:
+        return self.programmes.get(programme_external_id, {}).get("id")
+
+    def upsert_offering(
+        self,
+        *,
+        programme_external_id: str,
+        external_id: str,
+        institution_id: str | None,
+        academic_year: str,
+        campus_mode: str,
+        teaching_languages: list[str],
+    ) -> str:
+        programme_id = self.find_programme_id(programme_external_id)
+        if programme_id is None:
+            return ""
+        existing = self.offerings.get(external_id)
+        if existing is None:
+            row = {
+                "id": external_id,
+                "external_id": external_id,
+                "programme_id": programme_id,
+                "institution_id": institution_id,
+                "academic_year": academic_year,
+                "campus_mode": campus_mode,
+                "teaching_languages": list(teaching_languages),
+                "first_seen_at": _now(),
+                "last_seen_at": _now(),
+                "preferred_version_id": None,
+                "visibility": "private",
+            }
+            self.offerings[external_id] = row
+        else:
+            row = existing
+            row["last_seen_at"] = _now()
+            row["teaching_languages"] = list(teaching_languages)
+        return row["id"]
+
+    def upsert_offering_version(
+        self,
+        *,
+        offering_id: str,
+        official_detail_url: str | None,
+        application_url: str | None,
+        language_evidence_url: str | None,
+        lifecycle: str,
+        facts: dict[str, Any],
+        run_id: str | None = None,
+    ) -> str:
+        digest = job_fact_hash(facts, official_detail_url or "")
+        prior = next(
+            (item for item in reversed(self.offering_versions) if item["offering_id"] == offering_id),
+            None,
+        )
+        if prior is not None and prior["fact_hash"] == digest:
+            return prior["id"]
+        version = {
+            "id": str(uuid4()),
+            "offering_id": offering_id,
+            "fact_hash": digest,
+            "official_detail_url": official_detail_url,
+            "application_url": application_url,
+            "language_evidence_url": language_evidence_url,
+            "lifecycle": lifecycle,
+            "facts": dict(facts),
+            "review_state": "required",
+            "source_run_id": run_id,
+            "created_at": _now(),
+        }
+        if prior is not None:
+            prior["review_stale"] = True
+        self.offering_versions.append(version)
+        offering = self.offerings[offering_id]
+        offering["preferred_version_id"] = version["id"]
+        return version["id"]
+
+    def set_offering_preferred(self, offering_id: str, version_id: str) -> None:
+        if offering_id in self.offerings:
+            self.offerings[offering_id]["preferred_version_id"] = version_id
+
+    def upsert_admission_window(
+        self,
+        *,
+        owner_type: str,
+        owner_id: str,
+        offering_version_id: str | None,
+        academic_year: str | None,
+        round_number: int,
+        round_label_original: str,
+        round_type: str,
+        opens_at: str | None,
+        closes_at: str | None,
+        timezone: str,
+        date_precision: str,
+        status: str,
+        application_url: str | None,
+        source_run_id: str | None = None,
+    ) -> str:
+        existing = next(
+            (
+                item
+                for item in self.admission_windows
+                if item["owner_type"] == owner_type
+                and item["owner_id"] == owner_id
+                and item["round_number"] == round_number
+            ),
+            None,
+        )
+        if existing is None:
+            row = {
+                "id": str(uuid4()),
+                "owner_type": owner_type,
+                "owner_id": owner_id,
+                "offering_version_id": offering_version_id,
+                "academic_year": academic_year,
+                "round_number": round_number,
+                "round_label_original": round_label_original,
+                "round_type": round_type,
+                "opens_at": opens_at,
+                "closes_at": closes_at,
+                "timezone": timezone,
+                "date_precision": date_precision,
+                "status": status,
+                "application_url": application_url,
+                "source_run_id": source_run_id,
+            }
+            self.admission_windows.append(row)
+        else:
+            existing["closes_at"] = closes_at
+            existing["opens_at"] = opens_at
+            existing["status"] = status
+            existing["round_label_original"] = round_label_original
+            return existing["id"]
+        return row["id"]
 
     def list_source_runs(self, source_id: str | None = None) -> list[dict[str, Any]]:
         rows = list(self.runs.values())

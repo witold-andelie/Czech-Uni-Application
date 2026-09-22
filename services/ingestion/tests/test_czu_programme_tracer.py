@@ -160,3 +160,85 @@ def test_english_crosscheck_disagreement_is_preserved_not_merged() -> None:
     assert crosscheck and crosscheck.get("status") == "disagrees"
     assert len(crosscheck.get("missingInCzechPortal")) == 3
     assert len(crosscheck.get("extraInCzechPortal")) == 2
+
+
+def _write_states(store: MemoryStore) -> dict:
+    return {
+        "offerings": len(store.offerings),
+        "offering_versions": len(store.offering_versions),
+        "windows": len(store.admission_windows),
+    }
+
+
+def _pipeline_with_offerings(source_id: str, store: MemoryStore) -> dict:
+    outcome, _ = _run(source_id, store)
+    assert outcome["completeness"].ok
+    from cli.ingest_programmes import _write_offerings
+
+    _write_offerings(source_id, store, _payload(source_id), outcome["run"].get("id"))
+    return outcome
+
+
+def test_offerings_only_where_season_is_asserted() -> None:
+    from adapters.programmes.offerings import derive_offerings
+
+    offerings, reasons = derive_offerings("czu-doctoral-faculty-admissions", _payload("czu-doctoral-faculty-admissions"))
+    assert reasons == []
+    assert len(offerings) == 60
+    for offering in offerings:
+        assert offering.academic_year == "2026/2027"
+        assert offering.lifecycle == "closed"
+        assert offering.campus_mode == "unspecified"
+        assert offering.teaching_languages in (["cs"], ["en"])
+        assert offering.facts["windowCount"] == len(offering.windows)
+    assert sum(len(o.windows) for o in offerings) == 92
+
+    for source_id in ("studyin", "czu-study-english-programmes", "czu-studuj-bachelor-master-programmes"):
+        declined, reasons = derive_offerings(source_id, _payload(source_id))
+        assert declined == []
+        assert reasons, source_id
+
+
+def test_dr_offerings_write_to_store_matches_evidence_counts() -> None:
+    store = MemoryStore()
+    _pipeline_with_offerings("czu-doctoral-faculty-admissions", store)
+    assert _write_states(store) == {"offerings": 60, "offering_versions": 60, "windows": 92}
+    offering = next(iter(store.offerings.values()))
+    assert offering["academic_year"] == "2026/2027"
+    assert offering["teaching_languages"] in (["cs"], ["en"])
+    assert offering["visibility"] == "private"
+    version = next(v for v in store.offering_versions if v["offering_id"] == offering["id"])
+    assert version["lifecycle"] == "closed"
+    window = next(w for w in store.admission_windows if w["owner_id"] == offering["id"])
+    assert window["status"] == "closed"
+    assert window["date_precision"] == "date"
+
+
+def test_sources_without_season_never_write_offerings() -> None:
+    for source_id in ("studyin", "czu-study-english-programmes", "czu-studuj-bachelor-master-programmes"):
+        store = MemoryStore()
+        _pipeline_with_offerings(source_id, store)
+        assert _write_states(store) == {"offerings": 0, "offering_versions": 0, "windows": 0}
+
+
+def test_offering_write_is_idempotent_across_reruns() -> None:
+    store = MemoryStore()
+    _pipeline_with_offerings("czu-doctoral-faculty-admissions", store)
+    before = _write_states(store)
+    _pipeline_with_offerings("czu-doctoral-faculty-admissions", store)
+    assert _write_states(store) == before
+
+
+def test_offering_windows_keep_end_only_rows_and_conditional_status() -> None:
+    from adapters.programmes.offerings import derive_offerings
+
+    offerings, _ = derive_offerings("czu-doctoral-faculty-admissions", _payload("czu-doctoral-faculty-admissions"))
+    all_windows = [w for off in offerings for w in off.windows]
+    end_only = [w for w in all_windows if w.opens_at is None]
+    assert len(end_only) == 46
+    conditional = [w for w in all_windows if w.status == "conditional"]
+    assert len(conditional) == 3
+    for w in all_windows:
+        assert w.date_precision == "date"
+        assert w.closes_at is not None
+        assert w.round_number >= 1
