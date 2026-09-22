@@ -331,6 +331,76 @@ class RestStore:
         )
         return {"id": external_id, "job_id": str(job_id), "version_id": str(version_id)}
 
+    def upsert_programme(
+        self,
+        *,
+        source_id: str,
+        institution_id: str | None,
+        remote_id: str,
+        official_detail_url: str,
+        facts: dict[str, Any],
+        run_id: str | None = None,
+    ) -> dict[str, Any]:
+        external_id = f"{institution_id or source_id}:{remote_id}"
+        digest = job_fact_hash(facts, official_detail_url)
+        self._request(
+            "POST",
+            "catalog_programme?on_conflict=external_id",
+            {
+                "external_id": external_id,
+                "institution_id": institution_id,
+                "official_code": remote_id,
+                "official_detail_url": official_detail_url,
+                "lifecycle": "discovered",
+                "visibility": "private",
+            },
+            extra={"Prefer": "resolution=merge-duplicates,return=minimal"},
+        )
+        rows = self._request("GET", f"catalog_programme?external_id=eq.{quote(external_id, safe='')}&select=id")
+        programme_id = rows[0]["id"]
+        existing_versions = (
+            self._request(
+                "GET",
+                f"catalog_programme_version?programme_id=eq.{programme_id}&select=id,fact_hash",
+            )
+            or []
+        )
+        known_hashes = {row.get("fact_hash") for row in existing_versions}
+        self._request(
+            "POST",
+            "catalog_programme_version?on_conflict=programme_id,fact_hash",
+            {
+                "programme_id": programme_id,
+                "source_run_id": run_id,
+                "fact_hash": digest,
+                "source_title": facts.get("title"),
+                "official_detail_url": official_detail_url,
+                "degree": facts.get("degree"),
+                "facts": facts,
+                "review_state": "required",
+            },
+            extra={"Prefer": "resolution=merge-duplicates,return=representation"},
+        )
+        versions = self._request(
+            "GET",
+            f"catalog_programme_version?programme_id=eq.{programme_id}&fact_hash=eq.{digest}&select=id",
+        )
+        version_id = versions[0]["id"]
+        if digest not in known_hashes:
+            self._request(
+                "PATCH",
+                f"catalog_programme_version?programme_id=eq.{programme_id}&fact_hash=neq.{quote(digest, safe='')}",
+                {"review_state": "stale"},
+                extra={"Prefer": "return=minimal"},
+            )
+        self._request(
+            "PATCH",
+            f"catalog_programme?id=eq.{programme_id}",
+            {"preferred_version_id": version_id, "last_seen_at": _now().isoformat()},
+            extra={"Prefer": "return=minimal"},
+        )
+        return {"id": external_id, "programme_id": str(programme_id), "version_id": str(version_id)}
+
     def list_external_ids(self, *, employer_id: str | None = None) -> list[str]:
         path = "catalog_research_job?select=external_id"
         if employer_id:

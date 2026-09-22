@@ -49,6 +49,7 @@ class Candidate:
     catalogue_scope_status: str = "unspecified"
     track: str | None = None
     paid_status: str = "unconfirmed"
+    entity_kind: str = "research_job"
     facts: dict[str, Any] = field(default_factory=dict)
     extra: dict[str, Any] = field(default_factory=dict)
 

@@ -64,14 +64,24 @@ def run_source(
                     "url_directness": "vacancy_document" if allowed else reason,
                     **candidate.facts,
                 }
-                store.upsert_job(
-                    source_id=source["id"],
-                    employer_id=candidate.employer_id,
-                    remote_id=candidate.remote_id,
-                    official_detail_url=candidate.official_detail_url,
-                    facts=facts,
-                    run_id=run["id"],
-                )
+                if candidate.entity_kind == "programme":
+                    store.upsert_programme(
+                        source_id=source["id"],
+                        institution_id=candidate.employer_id,
+                        remote_id=candidate.remote_id,
+                        official_detail_url=candidate.official_detail_url,
+                        facts=facts,
+                        run_id=run["id"],
+                    )
+                else:
+                    store.upsert_job(
+                        source_id=source["id"],
+                        employer_id=candidate.employer_id,
+                        remote_id=candidate.remote_id,
+                        official_detail_url=candidate.official_detail_url,
+                        facts=facts,
+                        run_id=run["id"],
+                    )
                 seen.add(_external_id(source, candidate.employer_id, candidate.remote_id))
             list_ids = getattr(store, "list_external_ids", None)
             if callable(list_ids):

@@ -21,6 +21,7 @@ class MemoryStore:
     documents: list[dict[str, Any]] = field(default_factory=list)
     observations: list[dict[str, Any]] = field(default_factory=list)
     jobs: dict[str, dict[str, Any]] = field(default_factory=dict)
+    programmes: dict[str, dict[str, Any]] = field(default_factory=dict)
     versions: list[dict[str, Any]] = field(default_factory=list)
 
     def start_run(self, source: dict, scheduled_for: str | None = None) -> dict[str, Any]:
@@ -123,6 +124,51 @@ class MemoryStore:
         run["listed_count"] = listed_count
         run["parsed_count"] = parsed_count
         run["error_class"] = error_class
+
+    def upsert_programme(
+        self,
+        *,
+        source_id: str,
+        institution_id: str | None,
+        remote_id: str,
+        official_detail_url: str,
+        facts: dict[str, Any],
+        run_id: str | None = None,
+    ) -> dict[str, Any]:
+        external_id = f"{institution_id or source_id}:{remote_id}"
+        digest = job_fact_hash(facts, official_detail_url)
+        existing = self.programmes.get(external_id)
+        if existing is None:
+            row = {
+                "id": external_id,
+                "remote_id": remote_id,
+                "institution_id": institution_id,
+                "official_detail_url": official_detail_url,
+                "first_seen_at": _now(),
+                "last_seen_at": _now(),
+                "preferred_version_id": None,
+                "lifecycle": "discovered",
+                "visibility": "private",
+            }
+            self.programmes[external_id] = row
+        else:
+            row = existing
+            row["last_seen_at"] = _now()
+            row["official_detail_url"] = official_detail_url
+        prior = next((item for item in reversed(self.versions) if item.get("prog_id") == row["id"]), None)
+        if prior is None or prior["fact_hash"] != digest:
+            version = {
+                "id": str(uuid4()),
+                "prog_id": row["id"],
+                "fact_hash": digest,
+                "facts": dict(facts),
+                "created_at": _now(),
+            }
+            self.versions.append(version)
+            row["preferred_version_id"] = version["id"]
+            if prior is not None:
+                prior["review_stale"] = True
+        return row
 
     def mark_absent(self, job_id: str) -> None:
         job = self.jobs[job_id]

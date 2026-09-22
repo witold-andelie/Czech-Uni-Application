@@ -3259,6 +3259,27 @@ def load_registered_job_sources(path: Path = SOURCE_REGISTRY) -> list[dict]:
     ]
 
 
+def load_registered_programme_sources(path: Path = SOURCE_REGISTRY) -> list[dict]:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    if not isinstance(payload, list):
+        return []
+    programme_types = {
+        "official_programme_directory",
+        "official_university_programme_catalogue",
+    }
+    return [
+        item
+        for item in payload
+        if isinstance(item, dict)
+        and item.get("sourceType") in programme_types
+        and item.get("enabled", True) is not False
+        and isinstance(item.get("url"), str)
+    ]
+
+
 def _stable_discovered_id(item: dict) -> str:
     employer_id = str(item["employerId"])
     code = re.sub(r"[^a-z0-9]+", "-", str(item.get("code") or "").lower()).strip("-")
