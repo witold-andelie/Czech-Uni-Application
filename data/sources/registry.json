@@ -221,6 +221,42 @@
     "note": "The central feed is broader than the former MFF-only source. Production harvest uses the adapter engine and keeps every official vacancy, including teaching and administrative rows. Official page https://cuni.cz/UK-15765.html says most vacancies are advertised on faculty websites, so sourceCoverageClaim stays not_asserted. The 2026-09-19 unit inventory is in data/sources/coverage/cuni-unit-inventory.json."
   },
   {
+    "id": "cuni-d3s-positions",
+    "url": "https://www.d3s.mff.cuni.cz/positions/",
+    "purpose": "official departmental open-positions page of the Charles University MFF Department of Distributed and Dependable Systems (D3S); single postdoc call with flexible deadline until filled",
+    "official": true,
+    "sourceType": "official_job_listing_supplemental",
+    "enabled": false,
+    "employerId": "msmt-vs_11000",
+    "coverageScope": "department",
+    "sourceCoverageClaim": "not_asserted",
+    "singleVacancyDocument": false,
+    "parser": "mff_d3s_positions",
+    "followDetails": false,
+    "refreshIntervalHours": 4,
+    "collectionStatus": "verified_candidate_manual_2026-09-06",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Provenance for job-cuni-d3s-postdoc. Verified live 2026-09-22: call still open, \"applications after 31 August 2026 are still considered until positions are filled\", salary approx 2900 EUR gross, expected start Autumn 2026, no official deadline therefore window stays not open. Departmental page retained for MFF-specific provenance; the scheduled central Charles University feed covers the faculty."
+  },
+  {
+    "id": "cuni-cenmas-positions",
+    "url": "https://cenmas.ff.cuni.cz/2026/06/09/we-are-hiring-researcher-in-comparative-area-studies-with-a-focus-on-asia-postdoctoral-level/",
+    "purpose": "official CenMAS (Center for Multidisciplinary Area Studies), Faculty of Arts, Charles University, single vacancy announcement for postdoctoral researcher in comparative area studies (ERA-AREAS project)",
+    "official": true,
+    "sourceType": "official_job_listing_supplemental",
+    "enabled": false,
+    "employerId": "msmt-vs_11000",
+    "coverageScope": "faculty",
+    "sourceCoverageClaim": "not_asserted",
+    "singleVacancyDocument": true,
+    "parser": "mff_ff_vacancy_document",
+    "followDetails": false,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "verified_candidate_manual_2026-09-06",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Provenance for job-cuni-cenmas-asia-postdoc. Application deadline 14 September 2026 23:59 CEST has passed; verified live 2026-09-22 the call is closed for applications. The single vacancy document is registered for provenance only and is disabled for scheduled collection."
+  },
+  {
     "id": "muni-careers",
     "url": "https://www.muni.cz/en/about-us/careers",
     "baseUrl": "https://www.muni.cz",
@@ -699,8 +735,14 @@
     "coverageScope": "institution_aggregator",
     "sourceCoverageClaim": "not_asserted",
     "parser": "generic_listing_links",
-    "allowedHosts": ["www.famu.cz", "www.damu.cz", "www.hamu.cz"],
-    "pathPatterns": ["/(?:cs/)?(?:aktuality|uredni-deska)/.*(?:vyberove-rizeni|volna-mista|konkurs)"],
+    "allowedHosts": [
+      "www.famu.cz",
+      "www.damu.cz",
+      "www.hamu.cz"
+    ],
+    "pathPatterns": [
+      "/(?:cs/)?(?:aktuality|uredni-deska)/.*(?:vyberove-rizeni|volna-mista|konkurs)"
+    ],
     "followDetails": true,
     "refreshIntervalHours": 4,
     "collectionStatus": "official_entrypoint_verified_2026-09-17",
@@ -717,7 +759,9 @@
     "coverageScope": "institution_aggregator",
     "sourceCoverageClaim": "not_asserted",
     "parser": "generic_listing_links",
-    "pathPatterns": ["/(?:aktualita|app/uploads/).*(?:vyberove-rizeni|konkurz|pozic)"],
+    "pathPatterns": [
+      "/(?:aktualita|app/uploads/).*(?:vyberove-rizeni|konkurz|pozic)"
+    ],
     "followDetails": true,
     "refreshIntervalHours": 4,
     "collectionStatus": "official_entrypoint_verified_2026-09-17",
@@ -726,7 +770,9 @@
   {
     "id": "jamu-faculty-vacancies",
     "url": "https://hf.jamu.cz/fakulta-hf/o-fakulte/volna-mista/",
-    "pages": ["https://df.jamu.cz/fakulta-df/o-fakulte/volna-mista/"],
+    "pages": [
+      "https://df.jamu.cz/fakulta-df/o-fakulte/volna-mista/"
+    ],
     "purpose": "official JAMU music and theatre faculty vacancy pages",
     "official": true,
     "sourceType": "official_job_listing",
@@ -779,7 +825,9 @@
     "coverageScope": "institution_aggregator",
     "sourceCoverageClaim": "not_asserted",
     "parser": "generic_listing_links",
-    "pathPatterns": ["/dokumenty/VR-[^/?#]+\\.pdf(?:$|[?#])"],
+    "pathPatterns": [
+      "/dokumenty/VR-[^/?#]+\\.pdf(?:$|[?#])"
+    ],
     "followDetails": true,
     "refreshIntervalHours": 4,
     "collectionStatus": "official_entrypoint_verified_2026-09-17",
@@ -795,7 +843,9 @@
     "coverageScope": "institution_aggregator",
     "sourceCoverageClaim": "not_asserted",
     "parser": "generic_listing_links",
-    "pathPatterns": ["/urde/.*(?:\\.pdf|volna|vyber)"],
+    "pathPatterns": [
+      "/urde/.*(?:\\.pdf|volna|vyber)"
+    ],
     "followDetails": true,
     "refreshIntervalHours": 4,
     "collectionStatus": "official_entrypoint_verified_2026-09-17",
