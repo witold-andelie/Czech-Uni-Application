@@ -156,4 +156,6 @@ def test_adapter_sources_include_html_listings() -> None:
     assert "czu-central-jobs" in ids
     assert "cuni-central-open-positions" in ids
     assert "muni-careers" in ids
-    assert "vut-central-careers" not in ids
+    assert "vut-central-careers" in ids
+    assert "zcu-central-vacancies" in ids
+    assert "tul-central-careers" in ids

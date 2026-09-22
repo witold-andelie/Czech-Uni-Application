@@ -4,11 +4,16 @@ from __future__ import annotations
 
 from adapters.jobs.cuni_ajax import CuniAjaxAdapter
 from adapters.jobs.czu_wp_job_manager import CzuWpJobManagerAdapter
+from adapters.jobs.lmc_graphql import LmcGraphqlAdapter
+from adapters.jobs.pdf_listing import TulCareersAdapter, ZcuDocumentFeedAdapter
 from adapters.jobs.registered_listing import HarvestListingAdapter, uses_binary_or_private_api
 
 ADAPTERS_BY_PARSER = {
     "cuni_ajax": CuniAjaxAdapter,
     "czu_wp_job_manager": CzuWpJobManagerAdapter,
+    "lmc_graphql": LmcGraphqlAdapter,
+    "tul_careers": TulCareersAdapter,
+    "zcu_document_feed": ZcuDocumentFeedAdapter,
 }
 
 

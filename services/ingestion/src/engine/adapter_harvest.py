@@ -123,6 +123,9 @@ def harvest_adapter_source(
     previous: dict[str, Any] | None = None,
     store=None,
     now_text: str | None = None,
+    post_json=None,
+    fetch_attachment=None,
+    pdf_text=None,
 ) -> dict[str, Any]:
     adapter = adapter_for(source)
     if adapter is None:
@@ -131,8 +134,20 @@ def harvest_adapter_source(
         store = store_from_env() if persist_enabled() else MemoryStore()
         if store is None:
             store = MemoryStore()
+    if post_json is None or fetch_attachment is None or pdf_text is None:
+        from harvest_nine_hei_jobs import extract_pdf_text, request_binary, request_json
+
+        post_json = post_json or request_json
+        fetch_attachment = fetch_attachment or request_binary
+        pdf_text = pdf_text or extract_pdf_text
     stamp = now_text or _now_text()
-    outcome = run_source(adapter, source, {"fetch_page": fetch_page}, store=store)
+    context = {
+        "fetch_page": fetch_page,
+        "post_json": post_json,
+        "fetch_attachment": fetch_attachment,
+        "pdf_text": pdf_text,
+    }
+    outcome = run_source(adapter, source, context, store=store)
     complete = bool(outcome["completeness"].ok)
     snapshot_jobs = (
         [candidate_to_snapshot_job(item, source, stamp) for item in outcome["candidates"]]

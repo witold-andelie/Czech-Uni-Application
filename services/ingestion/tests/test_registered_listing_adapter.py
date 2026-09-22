@@ -66,10 +66,6 @@ def test_harvest_jobs_routes_muni_through_adapter(tmp_path: Path) -> None:
 def test_every_html_registry_parser_has_an_adapter() -> None:
     missing = []
     for source in load_registered_job_sources():
-        if adapter_for(source) is None:
+        if source.get("parser") and adapter_for(source) is None:
             missing.append((source["id"], source.get("parser")))
-    assert missing == [
-        ("vut-central-careers", "lmc_graphql"),
-        ("tul-central-careers", "tul_careers"),
-        ("zcu-central-vacancies", "zcu_document_feed"),
-    ]
+    assert missing == []
