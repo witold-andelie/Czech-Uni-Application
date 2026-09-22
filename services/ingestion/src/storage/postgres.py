@@ -369,27 +369,33 @@ class PostgresStore:
         Mirrors ``RestStore.upsert_programme`` semantics (external id
         ``{institutionId}:{remoteId}`` with the source-level ``employerId``,
         canonical job fact hash over the variant title, private/discovered/
-        required defaults) but executes one parameterised statement per record
-        inside a single connection instead of RPC per record. Stale tiering and
-        preferred-version pointing are preserved so a re-run over the same
-        evidence is idempotent.
+        required defaults) but executes each step as a single set-based
+        statement over ``UNNEST`` arrays instead of RPC per record (or per-row
+        round-trip), so a 5k-row catalogue needs only a handful of round-trips.
+        Stale tiering and preferred-version pointing are preserved so a re-run
+        over the same evidence is idempotent.
         """
         if not rows:
             return {"written": 0, "created": 0, "stale": 0}
         account = source.get("employerId") or source.get("id") or "studyin"
-        program_rows: list[tuple[str, str, str, str]] = []
-        version_rows: list[tuple[str, str, str, str, str | None]] = []
+        program_cols: list[list[Any]] = [[], [], [], []]
+        version_cols: list[list[Any]] = [[], [], [], [], []]
         for row in rows:
             remote_id = str(row.get("code") or row.get("sourceStableId") or "")
             detail_url = str(row.get("sourceUrl") or "")
             external_id = f"{account}:{remote_id}"
             facts = _programme_facts_from_row(row)
             digest = job_fact_hash(facts, detail_url)
-            program_rows.append((external_id, account, remote_id, detail_url))
-            version_rows.append(
-                (external_id, digest, str(facts.get("title") or ""), detail_url, facts.get("degree"))
-            )
-        external_ids = [external_id for external_id, _account, _code, _url in program_rows]
+            program_cols[0].append(external_id)
+            program_cols[1].append(account)
+            program_cols[2].append(remote_id)
+            program_cols[3].append(detail_url)
+            version_cols[0].append(external_id)
+            version_cols[1].append(digest)
+            version_cols[2].append(str(facts.get("title") or ""))
+            version_cols[3].append(detail_url)
+            version_cols[4].append(facts.get("degree"))
+        external_ids = program_cols[0]
         with self._conn.transaction():
             existing = {
                 str(r[0])
@@ -399,23 +405,23 @@ class PostgresStore:
                 ).fetchall()
             }
             created = [external_id for external_id in external_ids if external_id not in existing]
-            programme_ids: dict[str, str] = {}
-            for external_id, account, official_code, detail_url in program_rows:
-                programme_ids[external_id] = str(
-                    self._conn.execute(
-                        """
-                        INSERT INTO catalog.programme (
-                          external_id, institution_id, official_code, official_detail_url,
-                          lifecycle, visibility
-                        ) VALUES (%s, %s, %s, %s, 'discovered', 'private')
-                        ON CONFLICT (external_id) DO UPDATE SET
-                          official_detail_url = EXCLUDED.official_detail_url,
-                          last_seen_at = now()
-                        RETURNING id
-                        """,
-                        (external_id, account, official_code, detail_url),
-                    ).fetchone()[0]
+            self._conn.execute(
+                """
+                INSERT INTO catalog.programme (
+                  external_id, institution_id, official_code, official_detail_url,
+                  lifecycle, visibility
                 )
+                SELECT x.external_id, x.institution_id, x.official_code, x.official_detail_url,
+                       'discovered', 'private'
+                FROM unnest(%s::text[], %s::text[], %s::text[], %s::text[])
+                  AS x(external_id, institution_id, official_code, official_detail_url)
+                ON CONFLICT (external_id) DO UPDATE SET
+                  official_detail_url = EXCLUDED.official_detail_url,
+                  last_seen_at = now()
+                RETURNING id, external_id
+                """,
+                (*program_cols,),
+            ).fetchall()
             known_by_external: dict[str, set[str]] = {}
             for external_id, fact_hash in self._conn.execute(
                 """
@@ -427,41 +433,61 @@ class PostgresStore:
                 (external_ids,),
             ).fetchall():
                 known_by_external.setdefault(str(external_id), set()).add(str(fact_hash))
-            version_by_external: dict[str, str] = {}
-            for external_id, digest, title, detail_url, degree in version_rows:
-                version_by_external[external_id] = str(
-                    self._conn.execute(
-                        """
-                        INSERT INTO catalog.programme_version (
-                          programme_id, source_run_id, fact_hash, source_title,
-                          official_detail_url, degree, review_state
-                        ) VALUES (%s, %s, %s, %s, %s, %s, 'required')
-                        ON CONFLICT (programme_id, fact_hash) DO UPDATE SET
-                          official_detail_url = EXCLUDED.official_detail_url
-                        RETURNING id
-                        """,
-                        (programme_ids[external_id], run_id, digest, title, detail_url, degree),
-                    ).fetchone()[0]
+            self._conn.execute(
+                """
+                INSERT INTO catalog.programme_version (
+                  programme_id, source_run_id, fact_hash, source_title,
+                  official_detail_url, degree, review_state
                 )
-            stale = 0
-            for external_id, known in known_by_external.items():
-                wanted = next((digest for ext, digest, *_ in version_rows if ext == external_id), None)
-                if wanted is None or wanted in known:
-                    continue
+                SELECT p.id, %s, v.fact_hash, v.source_title, v.official_detail_url,
+                       v.degree, 'required'
+                FROM unnest(%s::text[], %s::text[], %s::text[], %s::text[], %s::text[])
+                  AS v(external_id, fact_hash, source_title, official_detail_url, degree)
+                JOIN catalog.programme p ON p.external_id = v.external_id
+                ON CONFLICT (programme_id, fact_hash) DO UPDATE SET
+                  official_detail_url = EXCLUDED.official_detail_url
+                """,
+                (run_id, *version_cols),
+            )
+            version_by_external = dict(
                 self._conn.execute(
                     """
-                    update catalog.programme_version set review_state = 'stale'
-                    where programme_id = %s and fact_hash <> %s and review_state <> 'stale'
+                    select w.external_id, pv.id
+                    from unnest(%s::text[], %s::text[])
+                      as w(external_id, wanted_hash)
+                    join catalog.programme p on p.external_id = w.external_id
+                    join catalog.programme_version pv on pv.programme_id = p.id and pv.fact_hash = w.wanted_hash
                     """,
-                    (programme_ids[external_id], wanted),
-                )
-                stale += 1
-            for external_id, version_id in version_by_external.items():
-                self._conn.execute(
-                    "update catalog.programme set preferred_version_id = %s, last_seen_at = now() where id = %s",
-                    (version_id, programme_ids[external_id]),
-                )
-        return {"written": len(rows), "created": len(created), "stale": stale}
+                    (external_ids, version_cols[1]),
+                ).fetchall()
+            )
+            stale_ids = self._conn.execute(
+                """
+                UPDATE catalog.programme_version pv SET review_state = 'stale'
+                FROM catalog.programme p,
+                     unnest(%s::text[], %s::text[])
+                       AS s(external_id, wanted_hash)
+                WHERE p.id = pv.programme_id
+                  AND p.external_id = s.external_id
+                  AND pv.fact_hash <> s.wanted_hash
+                  AND pv.review_state <> 'stale'
+                RETURNING p.external_id
+                """,
+                (external_ids, version_cols[1]),
+            ).fetchall()
+            self._conn.execute(
+                """
+                UPDATE catalog.programme p SET preferred_version_id = v.version_id, last_seen_at = now()
+                FROM unnest(%s::text[], %s::uuid[])
+                  AS v(external_id, version_id)
+                WHERE p.external_id = v.external_id
+                """,
+                (
+                    list(version_by_external.keys()),
+                    [str(vid) for vid in version_by_external.values()],
+                ),
+            )
+        return {"written": len(rows), "created": len(created), "stale": len(stale_ids)}
 
     def finish_run(
         self,
