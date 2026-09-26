@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../../../lib/base.ts";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
 
@@ -7,15 +8,137 @@ export function getStaticPaths() {
 }
 
 const locale = localeFromParam(Astro.params.locale);
+
+// Anchor ids are language independent so the contents list and any deep link
+// keep working after an interface-language switch; only headings are translated.
+const sections = ["language", "rounds", "tuition", "languages", "jobs", "institutions", "limits"] as const;
 ---
 <BaseLayout locale={locale} title={t(locale, "guides.title")}>
-  <main id="main" class="page">
-    <h1>{t(locale, "guides.title")}</h1>
-    <p class="lede">{t(locale, "guides.intro")}</p>
-    <div class="panel">
+  <main id="main" class="page detail-grid">
+    <div>
+      <h1>{t(locale, "guides.title")}</h1>
+      <p class="lede">{t(locale, "guides.intro")}</p>
       <p>{t(locale, "guides.body")}</p>
-      <p>{t(locale, "recognition.disclaimer")}</p>
-      <p>{t(locale, "detail.notSubmitted")}</p>
+      <nav class="panel" aria-labelledby="guides-contents">
+        <h2 id="guides-contents">{t(locale, "guides.toc")}</h2>
+        <ul>
+          {sections.map((id, index) => (
+            <li>
+              <a href={`#${id}`}>{t(locale, `guides.s${index + 1}.title`)}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
+
+    <section class="panel" id="language" aria-labelledby="language-title">
+      <h2 id="language-title">{t(locale, "guides.s1.title")}</h2>
+      <p>{t(locale, "guides.s1.body")}</p>
+      <p class="notice">{t(locale, "teaching.unset.notice")}</p>
+      <p class="inline-actions">
+        <a href={withBase(`/${locale}/programmes?teachingLanguage=en`)}>{t(locale, "teaching.en")}</a>
+        <a href={withBase(`/${locale}/programmes?teachingLanguage=cs`)}>{t(locale, "teaching.cs")}</a>
+        <a href={withBase(`/${locale}/programmes?teachingLanguage=all`)}>{t(locale, "teaching.all")}</a>
+      </p>
+    </section>
+
+    <section class="panel" id="rounds" aria-labelledby="rounds-title">
+      <h2 id="rounds-title">{t(locale, "guides.s2.title")}</h2>
+      <p>{t(locale, "guides.s2.body")}</p>
+      <p class="notice">{t(locale, "application.vacanciesConditional")}</p>
+      <p class="inline-actions">
+        <a href={withBase(`/${locale}/programmes?status=open`)}>{t(locale, "guides.s2.open")}</a>
+        <a href={withBase(`/${locale}/programmes?status=open&sort=deadline`)}>{t(locale, "guides.s2.deadline")}</a>
+      </p>
+    </section>
+
+    <section class="panel" id="tuition" aria-labelledby="tuition-title">
+      <h2 id="tuition-title">{t(locale, "guides.s3.title")}</h2>
+      <p>{t(locale, "guides.s3.body")}</p>
+      <p class="notice">{t(locale, "tuition.unpublishedNotFree")}</p>
+      <p class="notice">{t(locale, "application.feeNotTuition")}</p>
+      <p class="inline-actions">
+        <a href={withBase(`/${locale}/programmes`)}>{t(locale, "nav.programmes")}</a>
+      </p>
+    </section>
+
+    <section class="panel" id="languages" aria-labelledby="languages-title">
+      <h2 id="languages-title">{t(locale, "guides.s4.title")}</h2>
+      <p>{t(locale, "guides.s4.body")}</p>
+      <p class="notice">{t(locale, "teaching.en.help")}</p>
+      <p class="inline-actions">
+        <a href={withBase(`/${locale}/programmes?teachingLanguage=en`)}>{t(locale, "teaching.en")}</a>
+        <a href={withBase(`/${locale}/research-jobs?applied=1`)}>{t(locale, "nav.research")}</a>
+      </p>
+    </section>
+
+    <section class="panel" id="jobs" aria-labelledby="jobs-title">
+      <h2 id="jobs-title">{t(locale, "guides.s5.title")}</h2>
+      <p>{t(locale, "guides.s5.body")}</p>
+      {/* Labels, plain text and notices alternate so the panel stays readable on
+          a phone; each hint sits under the fact it explains. */}
+      <p class="muted">{t(locale, "jobs.track")}</p>
+      <p>{t(locale, "jobs.trackHint")}</p>
+      <p class="muted">{t(locale, "jobs.threshold")}</p>
+      <p>{t(locale, "jobs.thresholdHint")}</p>
+      <p class="notice">{t(locale, "jobs.masterMeansDegree")}</p>
+      <p class="muted">{t(locale, "jobs.phd")}</p>
+      <ul>
+        <li>{t(locale, "jobs.phd.required")}</li>
+        <li>{t(locale, "jobs.phd.optional")}</li>
+        <li>{t(locale, "jobs.phd.no")}</li>
+        <li>{t(locale, "jobs.phd.unknown")}</li>
+      </ul>
+      <p class="muted">{t(locale, "jobs.salary")}</p>
+      <ul>
+        <li>{t(locale, "jobs.paidConfirmed")}</li>
+        <li>{t(locale, "jobs.payUnstated")}</li>
+        <li>{t(locale, "jobs.payUnpaid")}</li>
+      </ul>
+      <p class="notice">{t(locale, "jobs.paidOnlyHint")}</p>
+      <p class="inline-actions">
+        <a href={withBase(`/${locale}/research-jobs?applied=1`)}>{t(locale, "jobs.track.all")}</a>
+        <a href={withBase(`/${locale}/research-jobs?applied=1&masterEligible=1`)}>{t(locale, "jobs.master")}</a>
+        <a href={withBase(`/${locale}/research-jobs?applied=1&track=postdoc`)}>{t(locale, "jobs.track.postdoc")}</a>
+        <a href={withBase(`/${locale}/research-jobs?applied=1&paid=1`)}>{t(locale, "jobs.paidOnly")}</a>
+        <a href={withBase(`/${locale}/research-jobs?applied=1&funded=1`)}>{t(locale, "jobs.fundedDoctoral")}</a>
+      </p>
+    </section>
+
+    <section class="panel" id="institutions" aria-labelledby="institutions-title">
+      <h2 id="institutions-title">{t(locale, "guides.s6.title")}</h2>
+      <p>{t(locale, "guides.s6.body")}</p>
+      <p class="muted">{t(locale, "institution.ownership")}</p>
+      <ul>
+        <li>{t(locale, "institution.public")}</li>
+        <li>{t(locale, "institution.private")}</li>
+        <li>{t(locale, "institution.state")}</li>
+        <li>{t(locale, "institution.researchOrg")}</li>
+      </ul>
+      <p class="muted">{t(locale, "recognition.label")}</p>
+      <ul>
+        <li>{t(locale, "recognition.listed")}</li>
+        <li>{t(locale, "recognition.notFound")}</li>
+      </ul>
+      <p class="notice">{t(locale, "recognition.notFound.help")}</p>
+      <p class="disclaimer">{t(locale, "recognition.disclaimer")}</p>
+      <p class="inline-actions">
+        <a href={withBase(`/${locale}/institutions`)}>{t(locale, "nav.institutions")}</a>
+        <a href={withBase(`/${locale}/programmes?listedOnly=1`)}>{t(locale, "filter.recognition.listedOnly")}</a>
+      </p>
+    </section>
+
+    <section class="panel" id="limits" aria-labelledby="limits-title">
+      <h2 id="limits-title">{t(locale, "guides.s7.title")}</h2>
+      <p>{t(locale, "guides.s7.body")}</p>
+      <p class="notice">{t(locale, "detail.notSubmitted")}</p>
+      <p class="notice">{t(locale, "jobs.safetyStale")}</p>
+      <p class="disclaimer">{t(locale, "footer.disclaimer")}</p>
+      <p class="inline-actions">
+        <a href={withBase(`/${locale}/`)}>{t(locale, "nav.home")}</a>
+        <a href={withBase(`/${locale}/programmes`)}>{t(locale, "nav.programmes")}</a>
+        <a href={withBase(`/${locale}/research-jobs`)}>{t(locale, "nav.research")}</a>
+      </p>
+    </section>
   </main>
 </BaseLayout>
