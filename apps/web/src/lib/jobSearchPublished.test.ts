@@ -86,17 +86,48 @@ describe("job search invariants on the dated fixture (A90)", () => {
     }
   });
 
-  it("keeps postdocs and unpaid leads out of funded and default results", () => {
+  // The 2026-09-26 owner decision changed both rules this test used to pin:
+  // the default list now shows every published vacancy (a postdoc is a real
+  // position, not a different result set), and a vacancy whose announcement
+  // does not state compensation is published as it stands with that state
+  // visible rather than withheld from the library. What survives is that the
+  // filters which make a promise still make it.
+  it("keeps postdocs and unstated-pay vacancies out of the filters that promise otherwise", () => {
     const funded = publicIds({ fundedDoctoral: true });
     assert.ok(!funded.includes("fixture-cuni-postdoc"));
     assert.ok(!funded.includes("fixture-unpaid-lead"));
+    assert.ok(!funded.includes("fixture-unstated-pay-lead"));
     assert.ok(!funded.includes("fixture-muni-multidisciplinary-staff"));
-    const master = filterJobs(catalog, defaultJobFilterQuery(), now, "en");
-    assert.ok(master.page.every((view) => isMasterEligible(view.job)));
-    const masterIds = master.page.map((view) => view.job.id);
-    assert.ok(masterIds.includes("fixture-muni-multidisciplinary-staff"));
-    assert.ok(!masterIds.includes("fixture-cuni-postdoc"));
-    assert.ok(!masterIds.includes("fixture-unpaid-lead"));
+
+    const everything = filterJobs(catalog, defaultJobFilterQuery(), now, "en");
+    const everythingIds = everything.page.map((view) => view.job.id);
+    assert.ok(everythingIds.includes("fixture-cuni-postdoc"), "a postdoc is a published position");
+    assert.ok(everythingIds.includes("fixture-unstated-pay-lead"), "unstated pay is published, not withheld");
+    assert.ok(everythingIds.includes("fixture-unpaid-lead"));
+    for (const id of ["fixture-unstated-pay-lead", "fixture-unpaid-lead"]) {
+      const job = catalog.jobs.find((item) => item.id === id);
+      assert.ok(job);
+      assert.notEqual(job.paidStatus, "confirmed");
+    }
+
+    // "硕士可申请" stays a labelled synthesis of the announced threshold, so
+    // asking for it still leaves the postdoc and the unstated-threshold posts
+    // out - the default view is where everything appears.
+    const master = publicIds({ track: "master_eligible" });
+    assert.ok(master.includes("fixture-muni-multidisciplinary-staff"));
+    assert.ok(master.includes("fixture-unstated-pay-lead"));
+    assert.ok(!master.includes("fixture-cuni-postdoc"));
+    assert.ok(master.every((id) => isMasterEligible(catalog.jobs.find((item) => item.id === id)!)));
+
+    // The confirmed-pay switch replaces the removed library-wide guarantee. It
+    // promises confirmed pay and nothing else, so a postdoc whose announcement
+    // confirms its pay stays in it.
+    const paid = publicIds({ paidConfirmedOnly: true });
+    assert.ok(paid.every((id) => catalog.jobs.find((item) => item.id === id)!.paidStatus === "confirmed"));
+    assert.ok(!paid.includes("fixture-unstated-pay-lead"));
+    assert.ok(!paid.includes("fixture-unpaid-lead"));
+    const postdoc = catalog.jobs.find((item) => item.id === "fixture-cuni-postdoc")!;
+    assert.equal(paid.includes("fixture-cuni-postdoc"), postdoc.paidStatus === "confirmed");
   });
 
   it("round-trips the funded control through the URL query", () => {

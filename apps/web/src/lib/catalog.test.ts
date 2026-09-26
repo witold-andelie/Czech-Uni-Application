@@ -11,6 +11,7 @@ import {
   filterQueryFromSearch,
   findJob,
   isMasterEligible,
+  isPaidConfirmed,
   isPublicJob,
   jobFilterFromSearch,
   masterEligibilityUnknown,
@@ -202,7 +203,9 @@ describe("research jobs", () => {
       masterEligible: true,
       doctoralEnrollment: "all",
       workingLanguage: "all",
+      minimumDegree: "all",
       fundedDoctoral: false,
+      paidConfirmedOnly: false,
       search: "",
       page: 1,
       pageSize: 20,
@@ -237,6 +240,62 @@ describe("research jobs", () => {
     assert.equal(isMasterEligible(postdoc), false);
   });
 
+  it("keeps a vacancy that does not state pay in the master's results, labelled as unstated", () => {
+    // Owner decision 2026-09-26: the library-wide paid-only guarantee was replaced by a
+    // visible pay state. A62 keeps "master eligible" to the degree threshold only, so the
+    // pay test no longer belongs in this predicate - the card says the vacancy does not
+    // state compensation instead of the record disappearing from the results.
+    const job = catalog.jobs.find((item) => item.id === "job-pay-unstated");
+    assert.ok(job);
+    assert.equal(job.paidStatus, "unconfirmed");
+    assert.equal(job.salary.amount, null, "an unconfirmed record must not carry an amount");
+    assert.equal(isMasterEligible(job), true);
+    assert.equal(isPaidConfirmed(job), false);
+    const result = filterJobs(catalog, {
+      masterEligible: true,
+      doctoralEnrollment: "all",
+      workingLanguage: "all",
+      minimumDegree: "all",
+      fundedDoctoral: false,
+      paidConfirmedOnly: false,
+      search: "",
+      page: 1,
+      pageSize: 20,
+    }, now, "en");
+    assert.ok(result.page.map((item) => item.job.id).includes("job-pay-unstated"));
+  });
+
+  it("keeps the confirmed-pay filter and funded-doctoral results free of unstated pay", () => {
+    const unstated = catalog.jobs.find((item) => item.id === "job-pay-unstated");
+    assert.ok(unstated);
+    const paidOnly = filterJobs(catalog, {
+      masterEligible: true,
+      doctoralEnrollment: "all",
+      workingLanguage: "all",
+      minimumDegree: "all",
+      fundedDoctoral: false,
+      paidConfirmedOnly: true,
+      search: "",
+      page: 1,
+      pageSize: 20,
+    }, now, "en");
+    assert.ok(!paidOnly.page.map((item) => item.job.id).includes("job-pay-unstated"));
+    assert.ok(paidOnly.page.every((item) => isPaidConfirmed(item.job)));
+    const funded = filterJobs(catalog, {
+      masterEligible: true,
+      doctoralEnrollment: "all",
+      workingLanguage: "all",
+      minimumDegree: "all",
+      fundedDoctoral: true,
+      paidConfirmedOnly: false,
+      search: "",
+      page: 1,
+      pageSize: 20,
+    }, now, "en");
+    assert.ok(funded.page.every((item) => isPaidConfirmed(item.job)));
+    assert.ok(!funded.page.map((item) => item.job.id).includes("job-pay-unstated"));
+  });
+
   it("keeps a closed job retrievable through its tombstone detail page", () => {
     const view = findJob(catalog, "job-closed", now);
     assert.ok(view);
@@ -248,7 +307,9 @@ describe("research jobs", () => {
       masterEligible: true,
       doctoralEnrollment: "all",
       workingLanguage: "all",
+      minimumDegree: "all",
       fundedDoctoral: false,
+      paidConfirmedOnly: false,
       search: "",
       page: 1,
       pageSize: 1,
@@ -257,7 +318,9 @@ describe("research jobs", () => {
       masterEligible: true,
       doctoralEnrollment: "all",
       workingLanguage: "all",
+      minimumDegree: "all",
       fundedDoctoral: false,
+      paidConfirmedOnly: false,
       search: "",
       page: 2,
       pageSize: 1,

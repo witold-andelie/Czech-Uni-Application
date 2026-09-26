@@ -235,8 +235,23 @@ export interface JobFilterQuery {
   track?: JobTrackFilter;
   doctoralEnrollment: "required" | "optional" | "not_required" | "unspecified" | "all";
   workingLanguage: string | "all";
+  /**
+   * The entry threshold the announcement itself states - `minimumDegree` in
+   * docs/DATA_MODEL.md. It is not the same thing as the track: a research or
+   * technical post can state a doctoral threshold, and a post whose threshold is
+   * unstated must stay selectable as "not stated" rather than be read as a
+   * master's threshold.
+   */
+  minimumDegree: "bachelor" | "master" | "doctorate" | "other" | "unknown" | "all";
   /** A71: derived funded-doctoral discovery control based on structured facts. */
   fundedDoctoral: boolean;
+  /**
+   * Confirmed-pay only, replacing the library-wide "paid research" guarantee that
+   * the 2026-09-26 owner decision removed. Records whose announcement does not
+   * state compensation are published with that state visible; this switch is how a
+   * visitor asks for only the ones with confirmed pay again.
+   */
+  paidConfirmedOnly: boolean;
   search: string;
   page: number;
   pageSize: number;

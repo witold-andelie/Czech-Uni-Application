@@ -28,8 +28,10 @@ def read_json(path: Path, default=None):
 
 def blockers_for(job: dict, is_public: bool) -> list[str]:
     blockers: list[str] = []
-    if job.get("paidStatus") != "confirmed":
-        blockers.append("unconfirmed_pay_evidence")
+    # Owner direction (2026-09-26): an announcement that does not state
+    # compensation is published as it stands with `paidStatus` unconfirmed and a
+    # site label saying so, so it is no longer a publication blocker. The
+    # confirmed-pay requirement moved into the views that promise pay.
     if job.get("catalogueScopeStatus") != "included":
         blockers.append("unspecified_scope")
     # Owner direction (2026-09-13): unstated degree level / doctoral enrollment

@@ -115,7 +115,7 @@ def test_disposition_ledger_one_decision_per_candidate() -> None:
                 "lifecycleStatus": "unknown",
             },
             {
-                "id": "job-unpaid",
+                "id": "job-unstated-pay",
                 "employerId": "msmt-vs_21000",
                 "originalText": "PhD student",
                 "paidStatus": "unconfirmed",
@@ -140,7 +140,7 @@ def test_disposition_ledger_one_decision_per_candidate() -> None:
             },
         ],
         "windows": [
-            {"ownerId": "job-unpaid", "closesAt": "2026-09-20"},
+            {"ownerId": "job-unstated-pay", "closesAt": "2026-09-20"},
             {"ownerId": "job-public", "closesAt": "2027-01-08"},
         ],
     }
@@ -158,11 +158,15 @@ def test_disposition_ledger_one_decision_per_candidate() -> None:
     rows = {row["candidateId"]: row for row in payload["rows"]}
     assert rows["job-public"]["decision"] == "approved_public"
     assert rows["job-public"]["blockers"] == []
-    assert rows["job-unpaid"]["decision"] == "blocked"
-    assert "unconfirmed_pay_evidence" in rows["job-unpaid"]["blockers"]
+    # 2026-09-26 owner decision: an announcement that states no compensation
+    # is published as it stands, so pay evidence no longer blocks this
+    # candidate - its trilingual review does.
+    assert rows["job-unstated-pay"]["decision"] == "blocked"
+    assert "trilingual_review_missing" in rows["job-unstated-pay"]["blockers"]
+    assert "unconfirmed_pay_evidence" not in rows["job-unstated-pay"]["blockers"]
     assert rows["job-scopeless"]["blockers"].count("unspecified_scope") == 1
     # Near deadlines sort first.
-    assert payload["rows"][0]["candidateId"] == "job-unpaid"
+    assert payload["rows"][0]["candidateId"] == "job-unstated-pay"
     assert payload["summary"]["approved_public"] == 1
     assert payload["summary"]["blocked"] == 2
     assert payload["bySchool"]["msmt-vs_21000"]["blocked"] == 1

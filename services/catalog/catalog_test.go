@@ -200,13 +200,20 @@ func TestJobTrackPostdoc(t *testing.T) {
 	}
 }
 
-func TestZeroValueJobFilterExcludesPostdocs(t *testing.T) {
+func TestZeroValueJobFilterIncludesPostdocs(t *testing.T) {
+	// Owner decision 2026-09-26: the default list shows every published
+	// position, so a request that does not ask for the master's-eligible view
+	// must not quietly drop the postdocs.
 	s := load(t)
 	_, page := s.FilterJobs(JobFilterQuery{Page: 1, PageSize: 20}, now(), "en")
+	found := false
 	for _, view := range page {
 		if view.Job.ID == "job-postdoc" {
-			t.Fatal("nil MasterEligible must keep the product default")
+			found = true
 		}
+	}
+	if !found {
+		t.Fatal("nil MasterEligible must default to every published position")
 	}
 }
 

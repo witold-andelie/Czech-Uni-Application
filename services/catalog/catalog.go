@@ -235,9 +235,14 @@ func Bool(v bool) *bool {
 	return &v
 }
 
+// masterEligibleEnabled reports whether the caller asked for the master's-eligible
+// view. Owner decision 2026-09-26 (docs/PRODUCT.md): the default job list shows
+// every published position, postdocs included, so an unspecified request returns
+// all of them and the caller opts into the derived master's-eligible filter -
+// the same default the web list uses.
 func masterEligibleEnabled(q JobFilterQuery) bool {
 	if q.MasterEligible == nil {
-		return true
+		return false
 	}
 	return *q.MasterEligible
 }
@@ -443,6 +448,13 @@ func MatchesTeachingLanguage(offering Offering, choice string, includeJoint bool
 	return offering.LanguageMode == "single" && len(offering.TeachingLanguages) == 1 && offering.TeachingLanguages[0] == choice
 }
 
+// IsMasterEligible reports the degree threshold of the vacancy.
+//
+// Owner decision 2026-09-26 (docs/PRODUCT.md, docs/DATA_MODEL.md): this is the
+// announced threshold only. The pay test that used to sit here belonged to the
+// library-wide paid-only guarantee, which that decision replaced with a visible
+// pay state plus the explicit confirmed-pay filter - a vacancy whose
+// announcement states no compensation is published as it stands.
 func IsMasterEligible(job ResearchJob) bool {
 	if job.IsPostdoc || job.MinimumDegree == "doctorate" {
 		return false
@@ -450,10 +462,14 @@ func IsMasterEligible(job ResearchJob) bool {
 	if job.DoctorateRequired == nil || *job.DoctorateRequired {
 		return false
 	}
-	if job.PaidStatus != "confirmed" {
-		return false
-	}
 	return job.MinimumDegree == "bachelor" || job.MinimumDegree == "master"
+}
+
+// IsPaidConfirmed reports whether the announcement carries confirmed evidence of
+// pay or remuneration. It gates the views that promise pay (the funded-doctoral
+// discovery and the confirmed-pay filter), not the degree threshold.
+func IsPaidConfirmed(job ResearchJob) bool {
+	return job.PaidStatus == "confirmed"
 }
 
 func JobOpportunityClosed(job ResearchJob) bool {

@@ -1,7 +1,7 @@
 # Czech University Application
 
 A three-language (简体中文 / English / Čeština) anonymous browse platform for
-study programmes and paid research positions at Czech higher education institutions,
+study programmes and research positions at Czech higher education institutions,
 built for applicants evaluating Czech higher education.
 
 **Deployment:** Cloudflare Pages at https://czech-uni-application.com.

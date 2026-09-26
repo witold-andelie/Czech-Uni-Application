@@ -114,7 +114,13 @@ def test_forged_manifest_counts_fail(tmp_path: Path) -> None:
         (lambda job: job.update({"employmentFte": 1.5}), ".employmentFte must be null or a number in (0, 1]"),
         (lambda job: job["salary"].update({"basisFte": 0}), ".salary.basisFte must be null or a number in (0, 1]"),
         (lambda job: job.update({"employmentStartsAt": "2026-02-30"}), ".employmentStartsAt must be null or YYYY-MM-DD"),
-        (lambda job: job.update({"paidStatus": "unconfirmed"}), "lacks confirmed compensation evidence"),
+        # 2026-09-26 owner decision: unconfirmed pay is published as it stands,
+        # so what the contract refuses is an amount the announcement does not
+        # state - not the pay state itself.
+        (
+            lambda job: (job.update({"paidStatus": "unconfirmed"}), job["salary"].update({"amount": 40000})),
+            "states a salary amount without confirmed compensation evidence",
+        ),
         (lambda job: job.update({"workingLanguages": []}), "has invalid workingLanguages"),
     ],
 )

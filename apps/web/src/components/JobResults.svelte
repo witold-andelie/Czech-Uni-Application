@@ -7,6 +7,8 @@
     jobFilterFromSearch,
     jobTrackOf,
     filterJobs,
+    isPaidConfirmed,
+    jobThresholdKey,
     masterEligibilityUnknown,
     officialJobHref,
     primaryApplicationUrl,
@@ -100,7 +102,7 @@
   <FilterDrawer bind:open={sheetOpen} {locale} labelledBy="job-filter-title" resultCount={result.total} id="job-filter-drawer" onsubmit={onSubmit}>
     <p class="disclaimer">{t(locale, "filter.live")}</p>
     <div class="chip-row" role="group" aria-label={t(locale, "jobs.track")}>
-      {#each [["master_eligible", "jobs.master"], ["assistant", "jobs.track.assistant"], ["post_master", "jobs.track.post_master"], ["postdoc", "jobs.track.postdoc"], ["all", "jobs.track.all"]] as [value, key]}
+      {#each [["all", "jobs.track.all"], ["master_eligible", "jobs.master"], ["assistant", "jobs.track.assistant"], ["post_master", "jobs.track.post_master"], ["postdoc", "jobs.track.postdoc"]] as [value, key]}
         <button
           type="button"
           class="chip"
@@ -111,7 +113,7 @@
         </button>
       {/each}
     </div>
-    <p class="disclaimer">{t(locale, "jobs.postdocExcluded")}</p>
+    <p class="disclaimer">{t(locale, "jobs.trackHint")}</p>
     <button
       type="button"
       class="chip"
@@ -121,6 +123,15 @@
       {t(locale, "jobs.fundedDoctoral")}
     </button>
     <p class="disclaimer">{t(locale, "jobs.fundedDoctoralHint")}</p>
+    <button
+      type="button"
+      class="chip"
+      aria-pressed={query.paidConfirmedOnly}
+      onclick={() => patchQuery({ paidConfirmedOnly: !query.paidConfirmedOnly })}
+    >
+      {t(locale, "jobs.paidOnly")}
+    </button>
+    <p class="disclaimer">{t(locale, "jobs.paidOnlyHint")}</p>
     <label>
       {t(locale, "jobs.phd")}
       <select bind:value={query.doctoralEnrollment} onchange={() => patchQuery({})}>
@@ -131,6 +142,18 @@
         <option value="unspecified">{t(locale, "jobs.phd.unknown")}</option>
       </select>
     </label>
+    <label>
+      {t(locale, "jobs.threshold")}
+      <select bind:value={query.minimumDegree} onchange={() => patchQuery({})}>
+        <option value="all">{t(locale, "filter.all")}</option>
+        <option value="bachelor">{t(locale, "degree.bachelor")}</option>
+        <option value="master">{t(locale, "degree.master")}</option>
+        <option value="doctorate">{t(locale, "degree.doctorate")}</option>
+        <option value="other">{t(locale, "degree.other")}</option>
+        <option value="unknown">{t(locale, "degree.unknown")}</option>
+      </select>
+    </label>
+    <p class="disclaimer">{t(locale, "jobs.thresholdHint")}</p>
     <label>
       {t(locale, "jobs.language")}
       <select bind:value={query.workingLanguage} onchange={() => patchQuery({})}>
@@ -207,6 +230,10 @@
                     {t(locale, "jobs.salaryUnknown")}
                   {:else if view.job.salary.amount != null}
                     {formatSalary(view.job.salary, locale)}
+                  {:else if view.job.paidStatus === "unconfirmed"}
+                    {t(locale, "jobs.payUnstated")}
+                  {:else if view.job.paidStatus === "unpaid"}
+                    {t(locale, "jobs.payUnpaid")}
                   {:else}
                     {t(locale, "status.unknown")}
                   {/if}
@@ -236,6 +263,10 @@
                 <span class="tag">{t(locale, "jobs.employmentStart")}{fieldSep(locale)}{formatDate(view.job.employmentStartsAt, locale, "date")}</span>
               {/if}
               <span class="tag">{t(locale, `jobs.track.${jobTrackOf(view.job)}`)}</span>
+              <span class="tag">{t(locale, "jobs.threshold")}{fieldSep(locale)}{t(locale, jobThresholdKey(view.job))}</span>
+              {#if isPaidConfirmed(view.job)}
+                <span class="tag">{t(locale, "jobs.paidConfirmed")}</span>
+              {/if}
             </div>
             {#if current}
               <p><strong>{roundLabel(current, locale)}</strong> · {windowRange(current, locale)}</p>

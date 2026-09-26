@@ -170,15 +170,18 @@ def _select_approved_jobs(staging_root: Path, evidence_path: Path = LIVE_EVIDENC
         item.get("id") for item in jobs
         if isinstance(item, dict) and item.get("id") not in approved_ids
     ]
-    # docs/PRODUCT.md: the public research library publishes only opportunities with
-    # confirmed compensation evidence; a record whose announcement confirms none is a
-    # real position kept in the review background, not a reason to fail the whole
-    # publication.  Withhold it here, by id and reason, and publish the rest.
-    # docs/CRAWLING_RULES.md likewise requires a fresh per-item live verification of
+    # Owner decision 2026-09-26: compensation evidence no longer withholds a
+    # record. A vacancy that does not state pay is published as it stands, with
+    # `paidStatus` unconfirmed and no invented amount, and the site says so; the
+    # paid-only views keep their own confirmed-pay requirement. The comment that
+    # used to sit here ("publish only confirmed compensation evidence") and the
+    # `withholdingRule` text below are updated with it - see docs/PRODUCT.md,
+    # docs/DATA_MODEL.md and ACCEPTANCE A11/A97.
+    # docs/CRAWLING_RULES.md still requires a fresh per-item live verification of
     # the record's own title: a record whose official page no longer verifies it (a
-    # source change, an unposted document) is withheld the same way.  Neither rule is
-    # relaxed - both still gate what the snapshot contains - but neither blocks the
-    # positions that do satisfy them.
+    # source change, an unposted document) is withheld by id and reason instead of
+    # failing the whole publication. Neither route blocks the positions that do
+    # satisfy it.
     blocked: dict[str, list[str]] = {
         str(item.get("id")): withheld_reasons(item, f"research job {item.get('id')}")
         for item in approved
@@ -247,11 +250,15 @@ def _select_approved_jobs(staging_root: Path, evidence_path: Path = LIVE_EVIDENC
         "withheldCount": len(withheld),
         "withheldIds": [item["id"] for item in withheld],
         "withholdingRule": (
-            "docs/PRODUCT.md and docs/CRAWLING_RULES.md: the public research library publishes only "
-            "records with confirmed compensation evidence and a fresh per-item live verification of the "
-            "record's own title. A record that fails one of those gates is a real position kept in the "
-            "review background, withheld here by id and reason instead of failing the publication; "
-            "withholding is never a claim that the vacancy is closed."
+            "Owner decision 2026-09-26 (docs/PRODUCT.md, docs/DATA_MODEL.md): a vacancy "
+            "whose announcement does not state compensation is published as it stands - "
+            "paidStatus stays unconfirmed, no amount is invented, and the site states "
+            "that the vacancy does not state pay; the paid-only views keep their own "
+            "confirmed-pay requirement. docs/CRAWLING_RULES.md still requires a fresh "
+            "per-item live verification of the record's own title: a record whose "
+            "official page no longer verifies it is withheld here by id and reason "
+            "instead of failing the publication, and withholding is never a claim that "
+            "the vacancy is closed."
         ),
     }
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

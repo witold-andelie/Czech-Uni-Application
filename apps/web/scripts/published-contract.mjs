@@ -611,7 +611,14 @@ function validateDataset(snapshotRoot) {
     // docs/DATA_MODEL.md: doctorateRequired is true / false / null. null means the announcement states no doctoral requirement of the applicant; it renders as "公告未说明" and is never read as "not required". The key must still be present.
     if (!("doctorateRequired" in job) || (job.doctorateRequired !== null && typeof job.doctorateRequired !== "boolean")) errors.push(`${label}.doctorateRequired must be true, false or null (announcement silent)`);
     if (!["required", "optional", "not_required", "unspecified"].includes(job.doctoralEnrollment)) errors.push(`${label} has invalid doctoralEnrollment`);
-    if (job.paidStatus !== "confirmed") errors.push(`${label} lacks confirmed compensation evidence`);
+    // Owner decision 2026-09-26: an announcement that does not state compensation is
+    // published as it stands. The record must declare that state honestly - `unconfirmed`
+    // is not `confirmed`, and a record that is not confirmed may not carry a salary
+    // amount, because an amount would claim pay the announcement does not evidence.
+    // The views that promise pay (funded doctoral positions, the confirmed-pay filter)
+    // keep their own confirmed-pay requirement in catalog.ts.
+    if (!["confirmed", "unconfirmed", "unpaid"].includes(job.paidStatus)) errors.push(`PAID_STATUS_INVALID: ${label} has invalid paidStatus`);
+    if (job.paidStatus !== "confirmed" && job.salary && job.salary.amount != null) errors.push(`SALARY_AMOUNT_UNCONFIRMED: ${label} states a salary amount without confirmed compensation evidence`);
     // A67/A68: fundingType is optional for snapshots predating the field but must use the controlled vocabulary once present.
     if (job.fundingType != null && !["employment", "stipend", "mixed", "unknown"].includes(job.fundingType)) errors.push(`${label} has invalid fundingType`);
     if (job.applicationHostVerified !== true) errors.push(`${label} application host is not verified`);

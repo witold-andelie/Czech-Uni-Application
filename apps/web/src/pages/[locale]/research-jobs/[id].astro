@@ -3,7 +3,7 @@ import { withBase } from "../../../lib/base.ts";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import InstitutionTags from "../../../components/InstitutionTags.astro";
 import LiveWindows from "../../../components/LiveWindows.svelte";
-import { findJob, isMasterEligible, jobOpportunityClosed, jobTrackOf, masterEligibilityUnknown, officialJobHref, safeHttpUrl } from "../../../lib/catalog";
+import { findJob, isMasterEligible, jobOpportunityClosed, jobThresholdKey, jobTrackOf, masterEligibilityUnknown, officialJobHref, safeHttpUrl } from "../../../lib/catalog";
 import { dataClassKey, fieldSep, formatDate, formatSalary, jobSourceTitle, languageName, salaryTaxKey, text } from "../../../lib/format";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
 import { loadCatalog } from "../../../lib/loadCatalog";
@@ -47,6 +47,11 @@ const phdKey =
         <p>{t(locale, phdKey)}</p>
       </div>
       <div class="panel">
+        <p class="muted">{t(locale, "jobs.threshold")}</p>
+        <p>{t(locale, jobThresholdKey(view.job))}</p>
+        <p class="disclaimer">{t(locale, "jobs.thresholdHint")}</p>
+      </div>
+      <div class="panel">
         <p class="muted">{t(locale, "jobs.language")}</p>
         <p>{view.job.workingLanguages.map((code) => languageName(code, locale)).join(", ")}</p>
       </div>
@@ -57,7 +62,11 @@ const phdKey =
             ? t(locale, "jobs.salaryUnknown")
             : view.job.salary.amount != null
               ? formatSalary(view.job.salary, locale)
-              : t(locale, "status.unknown")}
+              : view.job.paidStatus === "unconfirmed"
+                ? t(locale, "jobs.payUnstated")
+                : view.job.paidStatus === "unpaid"
+                  ? t(locale, "jobs.payUnpaid")
+                  : t(locale, "status.unknown")}
         </p>
         {view.job.salary.basisFte != null && (
           <p>{t(locale, "jobs.fte")}{fieldSep(locale)}{view.job.salary.basisFte}</p>

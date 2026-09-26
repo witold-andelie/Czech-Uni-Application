@@ -1,16 +1,16 @@
 {
   "ledgerSchemaVersion": 1,
-  "generatedAt": "2026-09-26T19:23:55Z",
-  "publicationVersion": "v2026-09-26.1",
-  "candidateGenerationId": "cg-c7c0bdf9617f499e8b228db7dc1a8f01",
+  "generatedAt": "2026-09-26T20:34:30Z",
+  "publicationVersion": "v2026-09-26.2",
+  "candidateGenerationId": "cg-388d79ee6a4a4b0493aa4dd91b180dda",
   "sourceRunSetDigest": "sha256:760f28deeb40ad3fac3461d3ea21935a016e0e1e43f3c4c708354e192c54b93d",
   "currentCandidates": 125,
   "summary": {
-    "approved_public": 79,
-    "blocked": 46,
+    "approved_public": 96,
+    "blocked": 29,
     "blockerCounts": {
-      "unconfirmed_pay_evidence": 21,
-      "unspecified_scope": 2,
+      "unconfirmed_pay_evidence": 0,
+      "unspecified_scope": 1,
       "evidence_changed_since_review": 25,
       "trilingual_review_missing": 1,
       "review_incomplete": 0
@@ -28,8 +28,8 @@
     },
     "msmt-vs_27000": {
       "current": 3,
-      "approved_public": 2,
-      "blocked": 1
+      "approved_public": 3,
+      "blocked": 0
     },
     "msmt-vs_28000": {
       "current": 8,
@@ -58,13 +58,13 @@
     },
     "msmt-vs_15000": {
       "current": 2,
-      "approved_public": 1,
-      "blocked": 1
+      "approved_public": 2,
+      "blocked": 0
     },
     "msmt-vs_23000": {
       "current": 13,
-      "approved_public": 12,
-      "blocked": 1
+      "approved_public": 13,
+      "blocked": 0
     },
     "msmt-vs_12000": {
       "current": 11,
@@ -78,13 +78,13 @@
     },
     "msmt-vs_21000": {
       "current": 17,
-      "approved_public": 11,
-      "blocked": 6
+      "approved_public": 15,
+      "blocked": 2
     },
     "msmt-vs_26000": {
       "current": 12,
-      "approved_public": 6,
-      "blocked": 6
+      "approved_public": 12,
+      "blocked": 0
     },
     "msmt-vs_51000": {
       "current": 2,
@@ -113,8 +113,8 @@
     },
     "msmt-vs_43000": {
       "current": 4,
-      "approved_public": 0,
-      "blocked": 4
+      "approved_public": 4,
+      "blocked": 0
     }
   },
   "claimBoundary": "One decision per current candidate. blocked rows carry explicit blockers; nothing is approved by this ledger. Counts describe the candidate file at generation time and age with new scans.",
@@ -152,11 +152,8 @@
       "doctoralEnrollment": "required",
       "catalogueScopeStatus": null,
       "nearestDeadline": "2026-09-17",
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence",
-        "unspecified_scope"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": false
@@ -455,7 +452,6 @@
       "nearestDeadline": "2026-09-24",
       "decision": "blocked",
       "blockers": [
-        "unconfirmed_pay_evidence",
         "unspecified_scope",
         "evidence_changed_since_review"
       ],
@@ -983,10 +979,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-10-03",
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -1096,7 +1090,6 @@
       "nearestDeadline": "2026-10-06",
       "decision": "blocked",
       "blockers": [
-        "unconfirmed_pay_evidence",
         "trilingual_review_missing"
       ],
       "unknownAttributes": {
@@ -1141,10 +1134,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-10-09",
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -1737,7 +1728,6 @@
       "nearestDeadline": null,
       "decision": "blocked",
       "blockers": [
-        "unconfirmed_pay_evidence",
         "evidence_changed_since_review"
       ],
       "unknownAttributes": {
@@ -1761,7 +1751,6 @@
       "nearestDeadline": null,
       "decision": "blocked",
       "blockers": [
-        "unconfirmed_pay_evidence",
         "evidence_changed_since_review"
       ],
       "unknownAttributes": {
@@ -1783,10 +1772,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -1806,10 +1793,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -1936,10 +1921,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -1959,10 +1942,8 @@
       "doctoralEnrollment": "required",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": false
@@ -2299,10 +2280,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -2429,10 +2408,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -2452,10 +2429,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -2475,10 +2450,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -2561,10 +2534,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -2626,10 +2597,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -2756,10 +2725,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -2779,10 +2746,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -2802,10 +2767,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -2825,10 +2788,8 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unconfirmed_pay_evidence"
-      ],
+      "decision": "approved_public",
+      "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true

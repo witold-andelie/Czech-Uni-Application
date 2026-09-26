@@ -504,24 +504,26 @@ def _validate_reviewed_offerings(data: dict[str, Any], institution_ids: set[str]
 
 
 def withheld_reasons(job: dict[str, Any], label: str) -> list[str]:
-    """Why an otherwise reviewed record cannot enter the public library.
+    """Why an otherwise reviewed record is kept out of the public library.
 
-    Two of the per-record rules describe what the announcement states rather than
-    whether the record is well formed.  A record that fails one of them is not
-    broken: it is a real position whose evidence does not support the claim the
-    public library makes, and docs/PRODUCT.md puts such a lead in the review
-    background rather than on the site.  Publication selection therefore
-    withholds these records by name and reason instead of failing the whole
-    snapshot for them; validation still refuses to publish one that slips in.
+    A per-record reason describes what the record itself cannot support. Owner
+    decision 2026-09-26 (docs/PRODUCT.md, docs/DATA_MODEL.md): compensation
+    evidence is no longer such a reason. A vacancy whose announcement says
+    nothing about pay is a real position, so it is published as it stands -
+    keeping ``paidStatus`` ``unconfirmed``, no invented amount, and a site label
+    that says the vacancy does not state compensation. The views that promise
+    pay (funded doctoral positions, the confirmed-pay filter, the paidMaster
+    coverage metric) keep their own confirmed-pay requirement; a record that is
+    not confirmed may not carry a salary amount at all, which snapshot
+    validation still refuses.
 
-    The rule itself is unchanged: a published research job must carry confirmed
-    compensation evidence (docs/DATA_MODEL.md, docs/PRODUCT.md, ACCEPTANCE A11).
-    Withholding is how an unconfirmed record is kept out of the library, not a
-    permission to publish it.
+    Withholding therefore now covers only records whose own official page no
+    longer verifies them, which the live-evidence gate records separately. This
+    seam stays so any future per-record reason is stated in one place instead of
+    failing a whole publication again.
     """
     reasons: list[str] = []
-    if job.get("paidStatus") != "confirmed":
-        reasons.append(f"{label} lacks confirmed compensation evidence")
+    del label, job  # no per-record evidence reason withholds today
     return reasons
 
 
@@ -653,7 +655,24 @@ def _validate_jobs(
             _require_url(job, "applicationUrl", label, errors, "URL_REQUIRED_APPLICATION", https_only=True)
         validate_salary(job.get("salary"), label, errors)
         salary = job.get("salary")
+        # Owner decision 2026-09-26 (docs/PRODUCT.md, docs/DATA_MODEL.md): a
+        # vacancy whose announcement does not state compensation, or states that
+        # the post is unpaid, is published as it stands - the pay state itself is
+        # no longer a validation failure. What the record still may not do is
+        # state a number the announcement does not say: an amount on a record
+        # without confirmed compensation evidence is fabrication, so the snapshot
+        # refuses it. This mirrors the built-side rule in
+        # apps/web/scripts/published-contract.mjs.
+        if job.get("paidStatus") not in {"confirmed", "unconfirmed", "unpaid"}:
+            errors.append(f"{label} has invalid paidStatus")
         if isinstance(salary, dict):
+            if job.get("paidStatus") != "confirmed" and salary.get("amount") is not None:
+                errors.append(
+                    rule(
+                        "SALARY_AMOUNT_UNCONFIRMED",
+                        f"{label} states a salary amount without confirmed compensation evidence",
+                    )
+                )
             salary_fte = salary.get("basisFte")
             if salary_fte is not None and (
                 not isinstance(salary_fte, (int, float))

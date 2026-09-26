@@ -354,13 +354,30 @@ function pageStart(page: number, pageSize: number, total: number): number | null
   return start;
 }
 
+/**
+ * Whether the degree threshold of the vacancy admits a master's graduate.
+ *
+ * ACCEPTANCE A62: "master eligible" is the degree threshold only. The pay test
+ * that used to sit here came from the 2026-09-26 owner decision replacing the
+ * library-wide paid-only guarantee: a vacancy whose announcement does not state
+ * compensation is published as it stands, with that state shown on the card, so
+ * pay belongs to the display and to the explicit confirmed-pay filter
+ * (`query.paidConfirmedOnly`) rather than to this threshold. Records whose
+ * `minimumDegree` is unknown stay out of this filter - they are shown with
+ * `masterEligibilityUnknown` instead, the same three-state treatment the
+ * doctoral tag gives `doctorateRequired: null`.
+ */
 export function isMasterEligible(job: ResearchJob): boolean {
   if (job.isPostdoc) return false;
   if (job.minimumDegree === "doctorate") return false;
   if (job.doctorateRequired === true) return false;
   if (job.doctorateRequired === null) return false;
-  if (job.paidStatus !== "confirmed") return false;
   return job.minimumDegree === "bachelor" || job.minimumDegree === "master";
+}
+
+/** Whether the announcement carries confirmed evidence of pay or remuneration. */
+export function isPaidConfirmed(job: ResearchJob): boolean {
+  return job.paidStatus === "confirmed";
 }
 
 /**
@@ -409,11 +426,13 @@ export function buildJobViews(catalog: CatalogSnapshot, now: Date): JobView[] {
 
 export function defaultJobFilterQuery(overrides: Partial<JobFilterQuery> = {}): JobFilterQuery {
   return {
-    masterEligible: true,
-    track: "master_eligible",
+    masterEligible: false,
+    track: "all",
     doctoralEnrollment: "all",
     workingLanguage: "all",
+    minimumDegree: "all",
     fundedDoctoral: false,
+    paidConfirmedOnly: false,
     search: "",
     page: 1,
     pageSize: DEFAULT_PAGE_SIZE,
@@ -422,10 +441,28 @@ export function defaultJobFilterQuery(overrides: Partial<JobFilterQuery> = {}): 
 }
 
 /**
+ * The locale key for the entry threshold the announcement states.
+ *
+ * The browse track says what kind of post the title describes (postdoctoral,
+ * assistant, research or technical); `minimumDegree` says what education the
+ * announcement requires. They are independent facts - several research and
+ * technical posts require an awarded doctorate, and a majority of the current
+ * library states no threshold at all - so the card must show this threshold
+ * separately instead of letting a track label stand in for it. `degree.unknown`
+ * is rendered as "not stated", never as a master's threshold.
+ */
+export function jobThresholdKey(job: ResearchJob): string {
+  return `degree.${job.minimumDegree ?? "unknown"}`;
+}
+
+/**
  * A71: a funded doctoral opportunity for incoming PhD applicants. Derived from
  * structured facts only — confirmed pay, required doctoral enrollment, a
  * master or bachelor entry threshold, and never a postdoc — so no R1 tag or
- * job title can place a post into this result set.
+ * job title can place a post into this result set. The confirmed-pay test stays
+ * here after the 2026-09-26 owner decision because this filter promises funding;
+ * the library-wide paid-only guarantee it used to imply is what that decision
+ * replaced with a visible pay state and the `paidConfirmedOnly` switch.
  */
 export function isFundedDoctoral(job: ResearchJob): boolean {
   if (job.isPostdoc) return false;
@@ -502,8 +539,12 @@ export function filterJobs(
   else if (track === "post_master") views = views.filter((view) => jobTrackOf(view.job) === "post_master");
   else if (track === "postdoc") views = views.filter((view) => view.job.isPostdoc || jobTrackOf(view.job) === "postdoc");
   if (query.fundedDoctoral) views = views.filter((view) => isFundedDoctoral(view.job));
+  if (query.paidConfirmedOnly) views = views.filter((view) => isPaidConfirmed(view.job));
   if (query.doctoralEnrollment !== "all") {
     views = views.filter((view) => view.job.doctoralEnrollment === query.doctoralEnrollment);
+  }
+  if (query.minimumDegree && query.minimumDegree !== "all") {
+    views = views.filter((view) => (view.job.minimumDegree ?? "unknown") === query.minimumDegree);
   }
   if (query.workingLanguage !== "all") {
     views = views.filter((view) => view.job.workingLanguages.includes(query.workingLanguage));
@@ -584,13 +625,15 @@ export function jobFilterFromSearch(search: string): JobFilterQuery {
         ? params.get("masterEligible") === "1"
           ? "master_eligible"
           : "all"
-        : "master_eligible";
+        : "all";
   return defaultJobFilterQuery({
     masterEligible: track === "master_eligible",
     track,
     doctoralEnrollment: (params.get("phd") as JobFilterQuery["doctoralEnrollment"]) || "all",
     workingLanguage: params.get("lang") || "all",
+    minimumDegree: (params.get("degree") as JobFilterQuery["minimumDegree"]) || "all",
     fundedDoctoral: params.get("funded") === "1",
+    paidConfirmedOnly: params.get("paid") === "1",
     search: params.get("q") ?? "",
     page: Number(params.get("page") || "1") || 1,
   });
@@ -603,8 +646,10 @@ export function searchFromJobFilter(query: JobFilterQuery): string {
   if (track === "master_eligible") params.set("masterEligible", "1");
   else if (track !== "all") params.set("track", track);
   if (query.fundedDoctoral) params.set("funded", "1");
+  if (query.paidConfirmedOnly) params.set("paid", "1");
   if (query.doctoralEnrollment !== "all") params.set("phd", query.doctoralEnrollment);
   if (query.workingLanguage !== "all") params.set("lang", query.workingLanguage);
+  if (query.minimumDegree !== "all") params.set("degree", query.minimumDegree);
   if (query.search.trim()) params.set("q", query.search.trim());
   if (query.page > 1) params.set("page", String(query.page));
   return `?${params.toString()}`;

@@ -355,7 +355,7 @@
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
-      "paidStatus": "unconfirmed",
+      "paidStatus": "unpaid",
       "salary": {
         "amount": null,
         "currency": null,
@@ -373,7 +373,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "isPostdoc": false,
       "track": "assistant",
       "city": {
@@ -382,6 +382,49 @@
         "cs": "Praha"
       },
       "originalText": "Self-funded PhD lead",
+      "verifiedAt": "2026-09-12",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false
+    },
+    {
+      "id": "fixture-unstated-pay-lead",
+      "employerId": "msmt-vs_11000",
+      "title": {
+        "zh-CN": "[样例] 公告未说明报酬的科研岗位",
+        "en": "[Fixture] Research post whose vacancy states no compensation",
+        "cs": "[Ukázka] Výzkumná pozice, jejíž nabídka neuvádí odměnu"
+      },
+      "laboratory": null,
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "unconfirmed",
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "employmentFte": null,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "und"
+      ],
+      "sourceUrl": "https://cuniFixture.test/odmena-neuvedena",
+      "applicationUrl": "https://cuniFixture.test/odmena-neuvedena",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "originalText": "Research post; the announcement states no compensation",
       "verifiedAt": "2026-09-12",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false
