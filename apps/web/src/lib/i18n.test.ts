@@ -55,4 +55,23 @@ describe("locale parity", () => {
     assert.match(en["recognition.operatorProvenance"], /not a live query/);
     assert.match(cs["recognition.operatorProvenance"], /Nejde o živý dotaz/);
   });
+
+  it("states no job count in the research-list notice", () => {
+    // The number of records the default list shows is a function of the visitor's
+    // clock (application windows expire between deploys), so no CI run could keep a
+    // printed count equal to it. Only the pinned snapshot version and date belong here.
+    const zh = load("zh-CN.json");
+    const en = load("en.json");
+    const cs = load("cs.json");
+    for (const table of [zh, en, cs]) {
+      assert.doesNotMatch(table["jobs.prompt"], /[0-9]/, "jobs.prompt must not print a number");
+      assert.doesNotMatch(table["jobs.prompt"], /\{jobs\}/, "jobs.prompt must not interpolate a count");
+    }
+    const page = readFileSync(
+      resolve(root, "apps/web/src/pages/[locale]/research-jobs/index.astro"),
+      "utf8",
+    );
+    assert.match(page, /jobs\.prompt/);
+    assert.doesNotMatch(page, /counts\.jobs/, "the notice must not read the snapshot job count");
+  });
 });

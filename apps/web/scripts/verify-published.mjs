@@ -16,7 +16,7 @@ function main() {
   try {
     const { selection, result } = verifyActiveSnapshot();
     console.log(
-      `OK: immutable snapshot ${selection.version} passed checksums, references, URLs, and review gates (${result.counts.jobs} jobs).`,
+      `OK: immutable snapshot ${selection.version} passed checksums, references, URLs, and review gates (${result.counts.jobs} reviewed job records in the snapshot; the public list shows only the ones still listable).`,
     );
   } catch (error) {
     console.error(`FATAL: ${error.message}`);

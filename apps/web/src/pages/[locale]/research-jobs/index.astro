@@ -20,7 +20,6 @@ const overlay = loadSafetyOverlayFromDisk();
     <p class="lede">{t(locale, "jobs.prompt", {
       version: manifest.version,
       date: snapshotDate,
-      jobs: manifest.counts.jobs,
     })}</p>
     <noscript><p>{t(locale, "noscript.jobs")}</p></noscript>
     <JobResults client:load locale={locale} initialOverlay={overlay} />
