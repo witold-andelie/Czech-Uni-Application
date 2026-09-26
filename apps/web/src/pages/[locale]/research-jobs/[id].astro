@@ -3,7 +3,7 @@ import { withBase } from "../../../lib/base.ts";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import InstitutionTags from "../../../components/InstitutionTags.astro";
 import LiveWindows from "../../../components/LiveWindows.svelte";
-import { findJob, isMasterEligible, jobOpportunityClosed, jobTrackOf, officialJobHref, safeHttpUrl } from "../../../lib/catalog";
+import { findJob, isMasterEligible, jobOpportunityClosed, jobTrackOf, masterEligibilityUnknown, officialJobHref, safeHttpUrl } from "../../../lib/catalog";
 import { dataClassKey, fieldSep, formatDate, formatSalary, jobSourceTitle, languageName, salaryTaxKey, text } from "../../../lib/format";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
 import { loadCatalog } from "../../../lib/loadCatalog";
@@ -71,7 +71,13 @@ const phdKey =
       </div>
       <div class="panel">
         <p class="muted">{t(locale, "jobs.master")}</p>
-        <p>{isMasterEligible(view.job) ? t(locale, "jobs.master") : t(locale, "jobs.notMaster")}</p>
+        <p>
+          {isMasterEligible(view.job)
+            ? t(locale, "jobs.master")
+            : masterEligibilityUnknown(view.job)
+              ? t(locale, "jobs.masterUnknown")
+              : t(locale, "jobs.notMaster")}
+        </p>
         <p class="disclaimer">{t(locale, "jobs.masterMeansDegree")}</p>
       </div>
     </section>

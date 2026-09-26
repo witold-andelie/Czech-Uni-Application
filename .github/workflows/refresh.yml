@@ -151,6 +151,39 @@ jobs:
           path: work/runs/ingest-adapters.json
           if-no-files-found: ignore
           retention-days: 30
+      - name: Verify approved candidates live against official sources
+        id: live_verify
+        if: ${{ github.event.inputs.mode != 'adapters' }}
+        continue-on-error: true
+        env:
+          PYTHONUNBUFFERED: "1"
+          SCRAPLING_REQUIRED: "1"
+          SCRAPLING_ALLOW_BROWSER: "1"
+          # Bounded pass: per-host 2 s spacing, documented transport retries,
+          # and a wall-clock budget so a tick can never run away. A 404/403/
+          # 500/timeout is recorded as source evidence change, never as a
+          # closed vacancy (docs/REFRESH_POLICY.md).
+          LIVE_VERIFY_BUDGET_SECONDS: "780"
+        run: |
+          budget="${LIVE_VERIFY_BUDGET_SECONDS:-780}"
+          python -u services/ingestion/src/cli/verify_live_titles.py --budget "$budget" || true
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path("data/sources/coverage/live-title-verification.json").read_text(encoding="utf-8"))
+          print(json.dumps(payload["summary"], ensure_ascii=False))
+          unresolved = [
+              row for row in payload["rows"]
+              if row["status"] not in ("matched", "operator_verified")
+          ]
+          print(f"live verification: {len(unresolved)} candidate(s) still unconfirmed (recorded, not closed)")
+          PY
+      - name: Report the live-evidence publish gate
+        if: ${{ always() && steps.live_verify.outcome != 'skipped' }}
+        run: |
+          python services/ingestion/src/cli/check_live_evidence.py \
+            --jobs data/sources/browse/nine-hei-jobs.json \
+            --evidence data/sources/coverage/live-title-verification.json || true
       - name: Save scheduler checkpoint even after partial source failure
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
@@ -179,6 +212,20 @@ jobs:
             work/raw/
           if-no-files-found: error
           retention-days: 3
+      - name: Commit refreshed live-verification evidence on main
+        if: ${{ always() && steps.live_verify.outcome == 'success' && github.ref == 'refs/heads/main' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add data/sources/coverage/live-title-verification.json
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Refresh live per-candidate title-verification evidence'
+            git push origin HEAD
+            # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
+            gh workflow run ci.yml --ref main
+          fi
       - name: Keep two recovery bundles to bound artifact storage
         if: success() || failure()
         env:

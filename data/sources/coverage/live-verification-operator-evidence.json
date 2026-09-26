@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "recordedBy": "operator (Claude Code) on the owner's instruction",
+  "recordedAt": "2026-09-26T15:08:24Z",
+  "note": "Operator live-verification records for the 2026-09-26 pass of services/ingestion/src/cli/verify_live_titles.py. 'wording_difference_confirmed' means the operator opened the official sourceUrl and read the announcement there; the reviewed trilingual title is a paraphrase/inflected/gender-differed rendering of the official title shown in contextSnippet. 'source_change_noted' means the official page no longer carries the announcement (or is unavailable): per docs/REFRESH_POLICY.md this is evidence change, never a closure, and needs a disposition (re-source or archive).",
+  "evidence": {
+    "job-12000-96a94e814cfc": {
+      "kind": "wording_difference_confirmed",
+      "verifiedAt": "2026-09-26T13:05:00Z",
+      "verifiedBy": "operator",
+      "reason": "Official JČU PDF (Centrum polární ekologie PřF JU) announces 'Postdoktorská pozice (m/ž) Fyzická geografie / Arktický výzkum'. The reviewed zh/en/cs titles translate that announcement; they are not the verbatim Czech string.",
+      "contextSnippet": "Postdoktorská pozice (m/ž) Fyzická geografie / Arktický výzkum Chcete pracovat ve výzkumu, který začíná tam, kde většina světa končí? Centrum polární ekologie Přírodovědecké fakulty rozšiřuje výzkumný tým a hledá postdoktoranda/postdoktorandku"
+    },
+    "job-12000-ae58edbdc909": {
+      "kind": "wording_difference_confirmed",
+      "verifiedAt": "2026-09-26T13:05:00Z",
+      "verifiedBy": "operator",
+      "reason": "Official JČU PDF announces the Department of Zoology assistantship: 'Odborný asistent (m/ž) Katedra zoologie ... v oboru zoologie či ekologie se zaměřením na biologii ... herpetologie'. The reviewed titles are the trilingual rendering of that announcement (masculine stem, herpetology focus), not the verbatim page string.",
+      "contextSnippet": "Odborný asistent (m/ž) Katedra zoologie Přírodovědecké fakulty Jihočeské univerzity v Českých Budějovicích hledá nového kolegu či kolegyni na pozici odborného asistenta v oboru zoologie či ekologie se zaměřením na biologii ... herpetologie"
+    },
+    "job-13000-1b55eabfee0f": {
+      "kind": "wording_difference_confirmed",
+      "verifiedAt": "2026-09-26T13:05:00Z",
+      "verifiedBy": "operator",
+      "reason": "Official UJEP ZAMO page announces 'Academic Staff Member – Department of Geoinformatics'. The reviewed trilingual titles translate the announcement; the Czech title is rendered from the announcement body rather than spelled exactly as on the page.",
+      "contextSnippet": "Academic Staff Member – Department of Geoinformatics - ZAMO Výběr fakulty Fakulta strojního inženýrství Fakulta životního prostředí"
+    },
+    "job-13000-82834adac5d0": {
+      "kind": "wording_difference_confirmed",
+      "verifiedAt": "2026-09-26T13:05:00Z",
+      "verifiedBy": "operator",
+      "reason": "Official UJEP ZAMO page announces 'Academic Staff Member with a Focus on Environmental/Physical Geography (applications by 1 November 2026)'. The reviewed titles translate the announcement; the page title string differs from the reviewed Czech rendering.",
+      "contextSnippet": "Academic Staff Member with a Focus on Environmental/Physical Geography (applications by 1 November 2026) - ZAMO"
+    },
+    "job-upol-msca-pf-2026": {
+      "kind": "wording_difference_confirmed",
+      "verifiedAt": "2026-09-26T13:05:00Z",
+      "verifiedBy": "operator",
+      "reason": "Official UPOL announcement page states 'The MSCA call for postdoctoral fellowships for 2026 is now open'. The reviewed titles name the fellowship call itself; the announcement was read live on this URL.",
+      "contextSnippet": "The MSCA call for postdoctoral fellowships for 2026 is now open: Univerzita Palackého v Olomouci"
+    },
+    "job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169": {
+      "kind": "wording_difference_confirmed",
+      "verifiedAt": "2026-09-26T13:05:00Z",
+      "verifiedBy": "operator",
+      "reason": "Official ZČU PDF announces the vacancy in the grammatical form 'výzkumného pracovníka / výzkumnou pracovnici – asistenta / asistentku do Centra pedagogického výzkumu FPE ZČU'; the reviewed Czech title is the nominative trilingual rendering of the same announcement.",
+      "contextSnippet": "Děkan Fakulty pedagogické ZČU v Plzni vyhlašuje výběrové řízení na místo výzkumného pracovníka / výzkumnou pracovnici – asistenta / asistentku do Centra pedagogického výzkumu FPE ZČU v Plzni se zaměřením na virtuální terénní exkurze"
+    },
+    "job-22000-143": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "The VŠCHT academic-positions listing (HTTP 200) now carries only three announcements: Organická chemie - 110, 'ODBORNÝ/NÁ PRACOVNÍK/CE V ANALYTICKÉ LABORATOŘI (úvazek 1,0) - 560', and 'PhD researcher position in Chemistry – 1 FTE'. The Institute of Informatics and Chemistry (143) bioinformatics announcement referenced by this candidate is no longer on the page. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Výběrová řízení - akademické a vědecké pozice ... Odborný/ná asistent/ka v oboru Organická chemie na Ústav organické chemie (úvazek 1,0) - 110 ... ODBORNÝ/NÁ PRACOVNÍK/CE V ANALYTICKÉ LABORATOŘI (úvazek 1,0) - 560 ... PhD researcher position in Chemistry – 1 FTE"
+    },
+    "job-22000-319": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "The VŠCHT academic-positions listing (HTTP 200) no longer carries the Institute of Biotechnology (319) 'Biotechnologie a bioinženýrství' announcement this candidate was harvested from. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Ústav biotechnologie (319) ... [listing carries only Organická chemie 110, Analytická laboratoř 560, PhD researcher in Chemistry]"
+    },
+    "job-22000-321": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "The VŠCHT academic-positions listing (HTTP 200) no longer carries the Institute of Carbohydrates and Cereals (321) food-technology announcement this candidate was harvested from. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Ústav sacharidů a cereálií (321) ... [listing carries only Organická chemie 110, Analytická laboratoř 560, PhD researcher in Chemistry]"
+    },
+    "job-51000-f7c301b5d9ab": {
+      "kind": "wording_difference_confirmed",
+      "verifiedAt": "2026-09-26T15:08:24Z",
+      "verifiedBy": "operator (Claude Code) on the owner's instruction",
+      "reason": "Re-sourced after the earlier reading: the candidate now points at the current official FAMU announcement .../vyberove-rizeni-na-misto-akademickeho-pracovnice-5524/ (published 23. 9. 2026; applications by e-mail to HR@famu.cz until 30. 9. 2026; interview 7. 10. 2026; planned start 1. 11. 2026; 0,4 FTE). The live page carries the reviewed Czech title as its own heading, so the announcement is confirmed on this URL. This is a re-source, not a closure of the previous URL.",
+      "contextSnippet": "Vybérové řízení na místo akademické/ho pracovnice / pracovníka katedry režie ... Přihlášku do výběrového řízení zasílejte elektronicky nejpozději do 30. 9. 2026 na emailovou adresu: HR@famu.cz ... Výběrové řízení se uskuteční formou pohovoru s výběrovou komisí dne 7. 10. 2026 ... Předpokládaný nástup: 1. 11. 2026 nebo dle dohody.",
+      "supersedes": {
+        "kind": "source_change_noted",
+        "verifiedAt": "2026-09-26T13:10:00Z",
+        "verifiedBy": "operator",
+        "reason": "The FAMU URL recorded for this candidate now hosts a different announcement: 'Výběrové řízení na místo Asistent/ka rektorky FAMU' (applications until 5. 10. 2026). The reviewed academic-staff title can no longer be verified on this URL, and the reviewed cs title additionally starts with page chrome ('31.08.2026 Aktuality (úřední deska), Volná místa, konkursy ...'), which the publication contract now rejects. Evidence change, not a closure: needs re-source (fresh FAMU announcement) or archive.",
+        "contextSnippet": "Výběrové řízení na místo Asistent/ka rektorky FAMU ... Pokud Vás pozice zaujala, zašlete nám prosím: podrobný strukturovaný životopis, motivační dopis ... Výběrové řízení bude probíhat do 5. 10. 2026."
+      }
+    },
+    "job-27000-54": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "The VŠB advert URL (procedureId=54, HTTP 200) renders only the site shell - no advert body is present, also through a dynamic fetch. The VŠB job-opportunities listing exposes only procedureId 73, 67, 71, 70 and 77. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Inzerát - VŠB-TUO Přeskočit na hlavní obsah ... [listing: inzerat/?procedureId=73, 67, 71, 70, 77]"
+    },
+    "job-vsb-cnt-phd": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "The VŠB advert URL (procedureId=61, HTTP 200) renders only the site shell - no advert body is present, also through a dynamic fetch. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Advert - VSB-TUO Skip to main content ... [no announcement text in the served page]"
+    },
+    "job-vsb-msca-dc8": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "The VŠB job-opportunities listing (HTTP 200, also fetched dynamically) no longer carries the MSCA Doctoral Candidate (DC8) announcement this candidate was harvested from. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Job opportunities at VSB-TUO ... Method: Suitable candidate selected [no MSCA / DC8 announcement in the listing]"
+    },
+    "job-vsb-nanotech-researcher": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "The VŠB job-opportunities listing (HTTP 200, also fetched dynamically) no longer carries the 'Vědecko-výzkumný pracovník pro materiálové a nanotechnologické aplikace' announcement this candidate was harvested from. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Pracovní příležitosti na VŠB-TUO ... HPC System specialista/specialistka EL (M) Vědecko-výzkumná pozice [the nanotech announcement is absent]"
+    },
+    "job-41000-1598": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "jobs.czu.cz advert URL returns HTTP 404 (with the documented bounded retries). The official ČZU listing (jobs.czu.cz/volne-pozice, HTTP 200) lists 7 current positions, none of them the FLD forest-bioeconomy assistantship. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Nalezených pozic: 7 TF 24. 09. 2026 TF: Asistent pro obor zařízení v agropotravinářském komplexu Katedra technologických zařízení staveb [FLD bioekonomika advert absent]"
+    },
+    "job-41000-1602": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "jobs.czu.cz advert URL (TF knowledge-transfer assistant A1) returns HTTP 404 (with the documented bounded retries), and the official ČZU listing lists 7 other positions. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Nalezených pozic: 7 ... [TF_Asistent znalostního transferu A1 absent from the listing]"
+    },
+    "job-41000-1603": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "jobs.czu.cz advert URL (TF knowledge-transfer assistant D1) returns HTTP 404 (with the documented bounded retries), and the official ČZU listing lists 7 other positions. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Nalezených pozic: 7 ... [TF_Asistent znalostního transferu D1 absent from the listing]"
+    },
+    "job-41000-1604": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "jobs.czu.cz advert URL (TF knowledge-transfer assistant T1) returns HTTP 404 (with the documented bounded retries), and the official ČZU listing lists 7 other positions. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Nalezených pozic: 7 ... [TF_Asistent znalostního transferu T1 absent from the listing]"
+    },
+    "job-14000-81652": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "The MUNI vacancy URL (…/careers/vacancies/81652) returns HTTP 404 (with the documented bounded retries). The MUNI vacancies page is a JS-rendered search application and does not list the RECETOX Ph.D. fellowship in the served HTML. Evidence change, not a closure: needs re-source or archive disposition.",
+      "contextSnippet": "Find the right job for you | Masaryk University | MUNI ... [RECETOX fellowship absent from the vacancies search application]"
+    },
+    "job-23000-29a3d552-56ea-4cf7-adc2-7d34fc14f6c3": {
+      "kind": "source_change_noted",
+      "verifiedAt": "2026-09-26T13:10:00Z",
+      "verifiedBy": "operator",
+      "reason": "xdoc.zcu.cz returns HTTP 500 for this document after the documented bounded retries (3 s and 12 s), retried again manually on 2026-09-26 with the same result. A 5xx from the source is a source failure, never a closure; the item stays unconfirmed until the source serves the document again.",
+      "contextSnippet": "[xdoc.zcu.cz/api/alfresco?id=29a3d552... returned HTTP 500]"
+    }
+  }
+}

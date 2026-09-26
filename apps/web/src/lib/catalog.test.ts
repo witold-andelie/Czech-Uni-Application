@@ -13,6 +13,7 @@ import {
   isMasterEligible,
   isPublicJob,
   jobFilterFromSearch,
+  masterEligibilityUnknown,
   matchesTeachingLanguage,
   officialJobHref,
   officialOfferingHref,
@@ -218,6 +219,22 @@ describe("research jobs", () => {
     assert.ok(job);
     assert.equal(job.doctoralEnrollment, "unspecified");
     assert.equal(isMasterEligible(job), true);
+  });
+
+  it("does not call an unstated entry threshold a master's exclusion", () => {
+    const job = catalog.jobs.find((item) => item.id === "job-entry-unstated");
+    assert.ok(job);
+    assert.equal(job.minimumDegree, "unknown");
+    assert.equal(job.doctorateRequired, null);
+    assert.equal(isMasterEligible(job), false);
+    assert.equal(masterEligibilityUnknown(job), true);
+  });
+
+  it("keeps a stated doctorate or postdoc threshold out of the unknown case", () => {
+    const postdoc = catalog.jobs.find((item) => item.id === "job-postdoc");
+    assert.ok(postdoc);
+    assert.equal(masterEligibilityUnknown(postdoc), false);
+    assert.equal(isMasterEligible(postdoc), false);
   });
 
   it("keeps a closed job retrievable through its tombstone detail page", () => {

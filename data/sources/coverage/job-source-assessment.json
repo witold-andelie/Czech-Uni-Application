@@ -1,15 +1,15 @@
 {
   "assessmentSchemaVersion": 2,
-  "generatedAt": "2026-09-22T17:32:59Z",
-  "publicationVersion": "v2026-09-22.1",
-  "candidateGenerationId": "cg-b6bdecd36db2450aaca08f0849697e93",
-  "sourceRunSetDigest": "sha256:e6c65aaea8a850244174d77c7720fa7ea8ce0fd1a9b300cc99628b67c335a875",
+  "generatedAt": "2026-09-26T19:23:55Z",
+  "publicationVersion": "v2026-09-26.1",
+  "candidateGenerationId": "cg-c7c0bdf9617f499e8b228db7dc1a8f01",
+  "sourceRunSetDigest": "sha256:760f28deeb40ad3fac3461d3ea21935a016e0e1e43f3c4c708354e192c54b93d",
   "baselineInstitutions": 54,
   "summary": {
     "registered_executed": 29,
     "registered_never_executed": 2,
-    "assessed_no_central_source": 23,
-    "not_assessed": 0
+    "assessed_no_central_source": 22,
+    "not_assessed": 1
   },
   "claimBoundary": "assessmentStatus labels honest pipeline state only: registered_executed means at least one registered source has a scheduler success timestamp; registered_never_executed means a source is registered but no successful run is recorded; assessed_no_central_source means an official-domain check found no central public vacancy listing at that time, not that the institution has no vacancies; not_assessed means no registered source exists and the careers-channel assessment has not happened. No row claims whole-institution vacancy coverage. No row claims whole-institution coverage; fully assessed scopes remain 0 until documented per-institution scope assessments exist.",
   "rows": [
@@ -32,16 +32,16 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-16T22:32:57Z",
       "currentCandidates": 2,
-      "publicJobs": 0,
+      "publicJobs": 2,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search_and_page_inspection",
         "evidenceUrls": [
           "https://www.amu.cz/cs/uredni-deska/volna-mista-konkurzy/"
         ],
         "result": "official_public_listing_found"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Central AMU board links current faculty vacancies; registered for bounded polling."
     },
     {
@@ -65,14 +65,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search_and_page_inspection",
         "evidenceUrls": [
           "https://avu.cz/stranka/vyberova-rizeni"
         ],
         "result": "official_public_listing_found"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Official current selection-procedure page; registered for bounded polling."
     },
     {
@@ -87,14 +87,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.ambis.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain; faculty or ad-hoc publication may still occur."
     },
     {
@@ -109,14 +109,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.aauni.edu"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain; external or ad-hoc publication may still occur."
     },
     {
@@ -131,14 +131,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.archip.eu"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain."
     },
     {
@@ -153,14 +153,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.artdesigninstitut.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain."
     },
     {
@@ -175,14 +175,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.cevro.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "An expired individual recruitment article was found, but no current central public listing was identified."
     },
     {
@@ -197,14 +197,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://eruni.org/cs"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Current official ERUNI site checked; no central public staff-vacancy listing was found."
     },
     {
@@ -219,14 +219,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.filmovka.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain."
     },
     {
@@ -250,7 +250,7 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search_and_page_inspection",
         "evidenceUrls": [
           "https://hf.jamu.cz/fakulta-hf/o-fakulte/volna-mista/",
@@ -258,7 +258,7 @@
         ],
         "result": "official_public_listing_found"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Both faculty vacancy pages are registered; this is not a claim that every JAMU unit is covered."
     },
     {
@@ -279,8 +279,8 @@
       "registeredSourceCount": 1,
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-16T22:23:28Z",
-      "currentCandidates": 10,
-      "publicJobs": 1,
+      "currentCandidates": 11,
+      "publicJobs": 11,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -304,7 +304,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 5,
-      "publicJobs": 4,
+      "publicJobs": 5,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -328,7 +328,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 4,
-      "publicJobs": 0,
+      "publicJobs": 4,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -354,14 +354,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search_and_page_inspection",
         "evidenceUrls": [
           "https://www.mup.cz/job/"
         ],
         "result": "official_public_listing_found"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Official MUP vacancy page currently states that no new colleague is sought; registered so later changes are polled."
     },
     {
@@ -385,14 +385,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search_and_page_inspection",
         "evidenceUrls": [
           "https://www.mvso.cz/kariera"
         ],
         "result": "official_public_listing_found"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Official MVSO career page registered; live access may be rate-limited and remains source-level evidence only."
     },
     {
@@ -414,7 +414,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-16T17:56:15Z",
       "currentCandidates": 9,
-      "publicJobs": 0,
+      "publicJobs": 1,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -440,14 +440,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search_and_page_inspection",
         "evidenceUrls": [
           "https://www.peuni.cz/kariera/"
         ],
         "result": "official_public_listing_found"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Official university-employer career page contains current academic roles and is registered."
     },
     {
@@ -471,14 +471,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search_and_page_inspection",
         "evidenceUrls": [
           "https://www.polac.cz/urde/volna.html"
         ],
         "result": "official_public_listing_found"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Official vacancy board registered; current operational roles are still filtered by full text."
     },
     {
@@ -493,14 +493,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.praguecityuniversity.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain."
     },
     {
@@ -515,14 +515,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.pvsps.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain."
     },
     {
@@ -585,14 +585,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.unicornuniversity.net/cs"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public university-employer vacancy listing was found on the official domain."
     },
     {
@@ -607,14 +607,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.ucp.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public university-employer vacancy listing was found on the official domain."
     },
     {
@@ -638,14 +638,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search_and_page_inspection",
         "evidenceUrls": [
           "https://www.unyp.cz/jobs-at-unyp/"
         ],
         "result": "official_public_listing_found"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Official UNYP employer-career page states where faculty openings are published and is registered."
     },
     {
@@ -691,7 +691,7 @@
       "sourcesWithSuccessCount": 0,
       "latestSourceSuccessAt": null,
       "currentCandidates": 6,
-      "publicJobs": 0,
+      "publicJobs": 6,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -715,7 +715,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-16T22:21:46Z",
       "currentCandidates": 10,
-      "publicJobs": 5,
+      "publicJobs": 15,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -763,7 +763,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 2,
-      "publicJobs": 0,
+      "publicJobs": 2,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -787,7 +787,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 4,
-      "publicJobs": 0,
+      "publicJobs": 5,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -811,7 +811,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 8,
-      "publicJobs": 0,
+      "publicJobs": 6,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -852,14 +852,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.vsaps.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain."
     },
     {
@@ -881,7 +881,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 3,
-      "publicJobs": 0,
+      "publicJobs": 3,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -905,7 +905,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 5,
-      "publicJobs": 0,
+      "publicJobs": 4,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -929,7 +929,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 1,
-      "publicJobs": 0,
+      "publicJobs": 1,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -946,21 +946,21 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.vsem.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "The public jobs/stages material found is for students or external employers; no university-employer central listing was identified."
     },
     {
       "institutionId": "msmt-vs_6k000",
       "officialName": "Vysoká škola evropských a regionálních studií, z. ú.",
       "ownership": "private",
-      "assessmentStatus": "assessed_no_central_source",
+      "assessmentStatus": "not_assessed",
       "registeredSources": [],
       "registeredSourceCount": 0,
       "sourcesWithSuccessCount": 0,
@@ -968,15 +968,15 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
-        "method": "official_domain_search",
+        "checkedAt": "2026-09-22T21:50:00Z",
+        "method": "official_domain_search_and_page_inspection",
         "evidenceUrls": [
-          "https://www.vsers.cz"
+          "https://www.vsers.cz/kariera"
         ],
-        "result": "official_site_checked_no_central_listing"
+        "result": "official_public_listing_found"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
-      "notes": "No central public staff-vacancy listing was found on the official domain."
+      "nextCheckAt": "2026-09-27T21:50:00Z",
+      "notes": "2026-09-22 live probe (HTTP 200): official careers page invites open CV submissions and references advertised selection procedures; registered as vsers-careers (disabled, no per-vacancy listing)."
     },
     {
       "institutionId": "msmt-vs_7u000",
@@ -990,14 +990,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.vsfs.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public university-employer vacancy listing was found on the official domain."
     },
     {
@@ -1012,14 +1012,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.vskk.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain."
     },
     {
@@ -1034,15 +1034,15 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.vslg.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
-      "notes": "No central public staff-vacancy listing was found on the official domain."
+      "nextCheckAt": "2026-09-27T21:50:00Z",
+      "notes": "2026-09-22 recheck: /uredni-deska returns 200 but is an announcement board with procurement tenders (\"vyberove rizeni\" in the public-procurement sense), so generic_listing_links classification there is a false positive. No central staff-vacancy listing found."
     },
     {
       "institutionId": "msmt-vs_6q000",
@@ -1056,14 +1056,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://newton.university"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public university-employer vacancy listing was found on the official domain."
     },
     {
@@ -1102,14 +1102,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.sting.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No central public staff-vacancy listing was found on the official domain."
     },
     {
@@ -1130,7 +1130,7 @@
       "registeredSourceCount": 1,
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-16T18:07:05Z",
-      "currentCandidates": 3,
+      "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": null,
       "nextCheckAt": null,
@@ -1148,14 +1148,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.palestra.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Search results concerned study places; no central public university-employer vacancy listing was identified."
     },
     {
@@ -1170,14 +1170,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.umprum.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "No stable central public staff-vacancy listing was confirmed during this pass; ad-hoc official notices may still occur."
     },
     {
@@ -1192,14 +1192,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.vszdrav.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "The public job exchange is for students and external employers; no university-employer central listing was identified."
     },
     {
@@ -1220,8 +1220,8 @@
       "registeredSourceCount": 1,
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 10,
-      "publicJobs": 0,
+      "currentCandidates": 12,
+      "publicJobs": 13,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -1245,7 +1245,7 @@
       "sourcesWithSuccessCount": 1,
       "latestSourceSuccessAt": "2026-09-16T22:24:10Z",
       "currentCandidates": 13,
-      "publicJobs": 1,
+      "publicJobs": 13,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -1301,7 +1301,7 @@
       "sourcesWithSuccessCount": 2,
       "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
       "currentCandidates": 17,
-      "publicJobs": 0,
+      "publicJobs": 16,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -1318,14 +1318,14 @@
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
-        "checkedAt": "2026-09-17T12:00:00Z",
+        "checkedAt": "2026-09-22T21:50:00Z",
         "method": "official_domain_search",
         "evidenceUrls": [
           "https://www.savs.cz"
         ],
         "result": "official_site_checked_no_central_listing"
       },
-      "nextCheckAt": "2026-09-22T12:00:00Z",
+      "nextCheckAt": "2026-09-27T21:50:00Z",
       "notes": "Official pages found external partner vacancies and recruitment-policy evidence, but no central university-employer vacancy listing."
     }
   ]

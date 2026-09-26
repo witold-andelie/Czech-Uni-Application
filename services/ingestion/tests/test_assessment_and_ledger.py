@@ -168,3 +168,34 @@ def test_disposition_ledger_one_decision_per_candidate() -> None:
     assert payload["bySchool"]["msmt-vs_21000"]["blocked"] == 1
     assert payload["candidateGenerationId"] == "cg-ledger-2"
     assert payload["sourceRunSetDigest"] == "sha256:" + "0" * 64
+
+
+def test_draft_translation_status_blocks_as_missing_review_not_evidence_change() -> None:
+    candidates = {
+        "jobs": [
+            {
+                "id": "job-draft",
+                "employerId": "msmt-vs_14000",
+                "originalText": "Výzkumný specialista",
+                "paidStatus": "confirmed",
+                "minimumDegree": "master",
+                "doctoralEnrollment": "unspecified",
+                "catalogueScopeStatus": "included",
+                "translationStatus": "draft",
+                "visibility": "review_pending",
+                "lifecycleStatus": "unknown",
+            },
+        ],
+        "windows": [],
+    }
+    payload = build_ledger(
+        candidates,
+        set(),
+        {"activeVersion": "v2026-09-22.1"},
+        generated_at="2026-09-22T09:00:00Z",
+    )
+    row = payload["rows"][0]
+    assert row["decision"] == "blocked"
+    assert "trilingual_review_missing" in row["blockers"]
+    assert "evidence_changed_since_review" not in row["blockers"]
+    assert payload["summary"]["blocked"] == 1

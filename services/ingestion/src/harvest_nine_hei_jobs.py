@@ -525,6 +525,67 @@ def load_job_reviews(path: Path = REVIEWS) -> dict[str, dict]:
     return reviews if isinstance(reviews, dict) else {}
 
 
+DISPOSITION_STATUSES = {"rejected"}
+DISPOSITION_VISIBILITIES = {"archived"}
+DISPOSITION_REASON_RE = re.compile(r"^[a-z0-9][a-z0-9_.:-]{3,120}$")
+
+
+def operator_disposition(entry: dict | None) -> dict | None:
+    """Read the operator's recorded publishing decision for one record.
+
+    Reconciliation derives ``publicationStatus`` from the review record alone, so
+    before this hook a publishing decision that was not a review outcome - one
+    advert collected twice, for instance - was silently reverted by every later
+    reconciliation pass, and the same advert could reach the public snapshot
+    twice.  The decision therefore lives in the review file, beside the hashes it
+    was taken against, and is re-applied on every pass and recorded on the job so
+    the candidate file and any published provenance show why the record was
+    withheld.
+
+    The field can only withhold an otherwise reviewed record: the single accepted
+    decision is ``rejected``/``archived``, with a machine-readable ``reason``, the
+    role that decided it and the moment it was decided.  It never widens what is
+    published, and it never touches the review hashes themselves.
+    """
+    record = (entry or {}).get("disposition")
+    if record is None:
+        return None
+    if not isinstance(record, dict):
+        raise ValueError("review disposition must be an object")
+    status = record.get("publicationStatus")
+    if status not in DISPOSITION_STATUSES:
+        raise ValueError(
+            "review disposition publicationStatus must be one of "
+            f"{sorted(DISPOSITION_STATUSES)}, got {status!r}"
+        )
+    visibility = record.get("visibility")
+    if visibility not in DISPOSITION_VISIBILITIES:
+        raise ValueError(
+            "review disposition visibility must be one of "
+            f"{sorted(DISPOSITION_VISIBILITIES)}, got {visibility!r}"
+        )
+    values: dict[str, str] = {}
+    for key in ("reason", "decidedBy", "decidedAt"):
+        value = record.get(key)
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"review disposition needs a non-empty {key}")
+        values[key] = value.strip()
+    if not DISPOSITION_REASON_RE.fullmatch(values["reason"]):
+        raise ValueError(
+            "review disposition reason must be a stable slug such as "
+            f"duplicate_record_of_job-27000-56, got {values['reason']!r}"
+        )
+    disposition = {
+        "publicationStatus": status,
+        "visibility": visibility,
+        **values,
+    }
+    note = record.get("note")
+    if isinstance(note, str) and note.strip():
+        disposition["note"] = note.strip()
+    return disposition
+
+
 def apply_translation_review(
     job: dict,
     source_hash: str,
@@ -593,16 +654,32 @@ def apply_translation_review(
             "locales": review_locales,
         }
     else:
+        draft_locales = (
+            isinstance(locales, dict)
+            and all(
+                isinstance(locales.get(locale), dict) and locales[locale].get("status") == "draft"
+                for locale in ("zh-CN", "en", "cs")
+            )
+        )
         review_locales = {}
         for locale in ("zh-CN", "en", "cs"):
             prior = locales.get(locale) if isinstance(locales, dict) else None
+            if draft_locales and source_matches and isinstance(prior, dict):
+                status = "draft"
+            elif source_matches is False and isinstance(prior, dict):
+                status = "stale"
+            else:
+                status = "missing"
             review_locales[locale] = {
-                "status": "stale" if source_matches is False and isinstance(prior, dict) else "missing",
+                "status": status,
                 "translatedFromHash": entry.get("sourceHash") if entry else None,
                 "reviewedAt": prior.get("reviewedAt") if isinstance(prior, dict) else None,
                 "contentHash": prior.get("contentHash") if isinstance(prior, dict) else None,
             }
-        job["translationStatus"] = "stale" if entry else "unreviewed"
+        if draft_locales and source_matches:
+            job["translationStatus"] = "draft"
+        else:
+            job["translationStatus"] = "stale" if entry else "unreviewed"
         job["publicationStatus"] = "review_pending"
         if job.get("visibility") != "archived":
             job["visibility"] = "review_pending"
@@ -615,6 +692,19 @@ def apply_translation_review(
             "reviewer": {"role": reviewer} if reviewer else None,
             "locales": review_locales,
         }
+    disposition = operator_disposition(entry)
+    if disposition is not None:
+        # A recorded operator decision stands on top of whatever the review state
+        # implies, so a withheld record cannot be re-approved by a later pass.
+        job["publicationStatus"] = disposition["publicationStatus"]
+        job["visibility"] = disposition["visibility"]
+        job["reviewDisposition"] = disposition
+        job["lastAttemptAt"] = disposition["decidedAt"]
+        job["lastAttemptReason"] = disposition["reason"]
+    else:
+        # Never leave a withdrawn decision on a record that is no longer withheld,
+        # so the candidate file cannot contradict the review file.
+        job.pop("reviewDisposition", None)
     return job
 
 
@@ -2572,6 +2662,12 @@ def parse_muni_vacancies(html: str, base_url: str = "https://www.muni.cz") -> li
     return results
 
 
+def _listing_identity(url: str) -> tuple[str, str, str, str]:
+    """Identity of a page ignoring its fragment, for self-link detection."""
+    parsed = urlsplit(url)
+    return (parsed.scheme.casefold(), parsed.netloc.casefold(), parsed.path, parsed.query)
+
+
 def parse_generic_listing_links(
     html: str,
     page_url: str,
@@ -2582,6 +2678,7 @@ def parse_generic_listing_links(
     patterns = [re.compile(value, re.I) for value in (path_patterns or [])]
     current_host = urlsplit(page_url).netloc.casefold()
     permitted_hosts = {current_host, *(host.casefold() for host in (allowed_hosts or []))}
+    listing_identity = _listing_identity(page_url)
     results: list[dict] = []
     seen: set[str] = set()
     for match in re.finditer(
@@ -2593,6 +2690,11 @@ def parse_generic_listing_links(
         if parsed.scheme not in {"http", "https"} or parsed.netloc.casefold() not in permitted_hosts:
             continue
         if patterns and not any(pattern.search(absolute) for pattern in patterns):
+            continue
+        # An anchor that points back at the listing page itself (a bare self
+        # link, "#content", "#top", a skip link) is page chrome, never a
+        # vacancy. The fragment is the only difference, so compare without it.
+        if _listing_identity(absolute) == listing_identity:
             continue
         title = visible_text(match.group(2))
         if not title or absolute in seen:
@@ -4285,9 +4387,14 @@ def canonical_job_facts_public(job: dict, windows: list[dict] | None = None) -> 
     return canonical_job_facts(job, windows)
 
 
-def reconcile_stored_reviews(payload: dict, raw_dir: Path = RAW) -> dict:
-    """Re-evaluate stored candidates against explicit review records without fetching."""
-    reviews = load_job_reviews()
+def reconcile_stored_reviews(payload: dict, raw_dir: Path = RAW, reviews: dict | None = None) -> dict:
+    """Re-evaluate stored candidates against explicit review records without fetching.
+
+    ``reviews`` may be passed by a caller that reviews a copy of the data rather
+    than the file the collector reads; it defaults to the stored review file.
+    """
+    if reviews is None:
+        reviews = load_job_reviews()
     jobs = []
     source_hashes: dict[str, str] = {}
     windows = [item for item in payload.get("windows") or [] if isinstance(item, dict)]
@@ -4484,7 +4591,15 @@ def main() -> None:
         tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         tmp.replace(OUT)
         approved = sum(job.get("publicationStatus") == "approved" for job in payload.get("jobs") or [])
-        print(f"Reconciled {len(payload.get('jobs') or [])} stored jobs; {approved} approved for publication")
+        withheld = [
+            f"{job.get('id')} ({(job.get('reviewDisposition') or {}).get('reason')})"
+            for job in payload.get("jobs") or []
+            if job.get("publicationStatus") != "approved" and job.get("reviewDisposition")
+        ]
+        summary = f"Reconciled {len(payload.get('jobs') or [])} stored jobs; {approved} approved for publication"
+        if withheld:
+            summary += f"; {len(withheld)} withheld by operator disposition: {', '.join(withheld)}"
+        print(summary)
         return
     previous = json.loads(OUT.read_text(encoding="utf-8")) if OUT.is_file() else {}
     payload = harvest_with_registered_discovery(VERIFIED_CANDIDATES, request, previous)

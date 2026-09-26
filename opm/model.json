@@ -1524,6 +1524,35 @@
       "zh": "公开检索元数据",
       "physical": false,
       "external": false
+    },
+    "liveevidence": {
+      "id": "liveevidence",
+      "kind": "object",
+      "en": "Live Verification Evidence",
+      "zh": "实网核验证据",
+      "physical": false,
+      "external": false
+    },
+    "selectrecords": {
+      "id": "selectrecords",
+      "kind": "process",
+      "en": "Record Selecting",
+      "zh": "逐条选择可发布记录"
+    },
+    "selectedsnapshot": {
+      "id": "selectedsnapshot",
+      "kind": "state",
+      "owner": "snapshot",
+      "en": "selected",
+      "zh": "已选择待发布"
+    },
+    "withheldrecords": {
+      "id": "withheldrecords",
+      "kind": "object",
+      "en": "Withheld Records",
+      "zh": "扣留记录（留在审核后台）",
+      "physical": false,
+      "external": false
     }
   },
   "diagrams": [
@@ -2531,6 +2560,16 @@
           "source": "retry",
           "target": "draft",
           "type": "result"
+        },
+        {
+          "source": "liveevidence",
+          "target": "publish",
+          "type": "instrument"
+        },
+        {
+          "source": "publish",
+          "target": "withheldrecords",
+          "type": "result"
         }
       ],
       "requirements": [
@@ -2544,7 +2583,7 @@
         "A32",
         "A39"
       ],
-      "notes": "维护是独立支撑过程，不是用户发现过程的子过程。verified、reviewed 与逐语种 hash bound 审核记录是发布的 AND 条件；源内容哈希变化使旧审核记录失效。更新创建新内容版本，旧快照保留审计。过期状态可优先更新，不能继续表示开放。archive 同步更新公开目录和三语缓存，关闭岗位下架但保留归档；已知截止不等待下一轮五天采集。轮次结束与整个机会关闭分别判断，第二轮仍开放不整体下架。SD3A 展开原子发布与构建固定版本。"
+      "notes": "维护是独立支撑过程，不是用户发现过程的子过程。verified、reviewed 与逐语种 hash bound 审核记录是发布的 AND 条件；源内容哈希变化使旧审核记录失效。更新创建新内容版本，旧快照保留审计。过期状态可优先更新，不能继续表示开放。archive 同步更新公开目录和三语缓存，关闭岗位下架但保留归档；已知截止不等待下一轮五天采集。轮次结束与整个机会关闭分别判断，第二轮仍开放不整体下架。SD3A 展开原子发布与构建固定版本。 2026-09-26 所有者批准的发布选择修正：报酬证据不足或实网核验不新鲜的已批准记录逐条扣留并记录原因（留在审核后台，不是发布数据，也不写成关闭），而不是让一条记录扣住整个快照；没有任何一条记录拿到 7 天内确认时，实网门禁整体按住发布。"
     },
     {
       "id": "SD4",
@@ -3040,21 +3079,6 @@
       "parent": "publish",
       "edges": [
         {
-          "source": "verified",
-          "target": "snapshotstage",
-          "type": "instrument"
-        },
-        {
-          "source": "reviewed",
-          "target": "snapshotstage",
-          "type": "instrument"
-        },
-        {
-          "source": "reviewbound",
-          "target": "snapshotstage",
-          "type": "instrument"
-        },
-        {
           "source": "snapshotstage",
           "target": "stagedsnapshot",
           "type": "result"
@@ -3183,6 +3207,41 @@
           "source": "hostdeploy",
           "target": "publicwebsite",
           "type": "result"
+        },
+        {
+          "source": "verified",
+          "target": "selectrecords",
+          "type": "instrument"
+        },
+        {
+          "source": "reviewed",
+          "target": "selectrecords",
+          "type": "instrument"
+        },
+        {
+          "source": "reviewbound",
+          "target": "selectrecords",
+          "type": "instrument"
+        },
+        {
+          "source": "liveevidence",
+          "target": "selectrecords",
+          "type": "instrument"
+        },
+        {
+          "source": "selectrecords",
+          "target": "selectedsnapshot",
+          "type": "result"
+        },
+        {
+          "source": "selectrecords",
+          "target": "withheldrecords",
+          "type": "result"
+        },
+        {
+          "source": "selectedsnapshot",
+          "target": "snapshotstage",
+          "type": "instrument"
         }
       ],
       "requirements": [
@@ -3208,7 +3267,7 @@
         "A65",
         "A91"
       ],
-      "notes": "候选数据先在 refresh 锁内钉扎世代并复制到唯一 staging，再释放该锁，按固定文件集合、结构、关系、证据、URL、资格及逐语种哈希审核规则校验。窗口日期、时区、必需来源／证据 URL、受控薪资码和会被渲染的嵌套 tracer 窗口必须同时由 Python 与 Node 拒绝。岗位批准绑定事实哈希、译文哈希、证据哈希和审核角色，抓取时间戳单独保存。DZS 与 CZU 的来源完整性只说明各自声明范围抓取完整，不等于已经完成三语正式发布；CZU 英语目录和捷克入口本科／硕士候选必须逐字段保留来源证据、内容哈希及跨源差异，博士候选还须保留 MŠMT offering 匹配、六学院证据、窗口状态和图像 PDF 的受审哈希。岗位公告未说明工作语言时使用 BCP 47 und 状态，不从公告语言推断。只有合格候选才能成为不可变快照并通过单一原子指针激活；force 不能绕过门禁。已核验关闭另有独立安全状态覆盖，快照回滚不能重新打开之后的关闭。构建启动时只解析一次当前版本，固定到该快照，并只从该版本生成浏览器资源；发布、回滚或采集并发不会让一个构建混读版本。生产 API 绑定该不可变发布，拒绝 fixture。Pull request 与 main 提交运行固定依赖的确定性 CI；main 仅在数据、Go 与 Web 检查全部通过后生成绑定提交 SHA 的静态交付制品。该制品不代表已经部署公网；在托管 run 出现前报告 CI configured; local checks passed; hosted CI/CD not verified。 2026-09-15 所有者选择独立域名与 Cloudflare Pages；部署仅在浏览器验收后使用相同提交制品。采集复核的安全覆盖通过 CI 后传播，源码托管不是网站托管。账户配置或作业存在不等于实际发布成功。"
+      "notes": "候选数据先在 refresh 锁内钉扎世代并复制到唯一 staging，再释放该锁，按固定文件集合、结构、关系、证据、URL、资格及逐语种哈希审核规则校验。窗口日期、时区、必需来源／证据 URL、受控薪资码和会被渲染的嵌套 tracer 窗口必须同时由 Python 与 Node 拒绝。岗位批准绑定事实哈希、译文哈希、证据哈希和审核角色，抓取时间戳单独保存。DZS 与 CZU 的来源完整性只说明各自声明范围抓取完整，不等于已经完成三语正式发布；CZU 英语目录和捷克入口本科／硕士候选必须逐字段保留来源证据、内容哈希及跨源差异，博士候选还须保留 MŠMT offering 匹配、六学院证据、窗口状态和图像 PDF 的受审哈希。岗位公告未说明工作语言时使用 BCP 47 und 状态，不从公告语言推断。只有合格候选才能成为不可变快照并通过单一原子指针激活；force 不能绕过门禁。已核验关闭另有独立安全状态覆盖，快照回滚不能重新打开之后的关闭。构建启动时只解析一次当前版本，固定到该快照，并只从该版本生成浏览器资源；发布、回滚或采集并发不会让一个构建混读版本。生产 API 绑定该不可变发布，拒绝 fixture。Pull request 与 main 提交运行固定依赖的确定性 CI；main 仅在数据、Go 与 Web 检查全部通过后生成绑定提交 SHA 的静态交付制品。该制品不代表已经部署公网；在托管 run 出现前报告 CI configured; local checks passed; hosted CI/CD not verified。 2026-09-15 所有者选择独立域名与 Cloudflare Pages；部署仅在浏览器验收后使用相同提交制品。采集复核的安全覆盖通过 CI 后传播，源码托管不是网站托管。账户配置或作业存在不等于实际发布成功。 2026-09-26 所有者批准：发布前按记录逐条选择——已批准且三语终审、报酬证据确认、实网核验 7 天内确认的记录才进入 staging，其余连同原因写入扣留记录；扣留不等于关闭，来源变化（含 404）只作为证据变化记录。"
     },
     {
       "id": "SD4A",

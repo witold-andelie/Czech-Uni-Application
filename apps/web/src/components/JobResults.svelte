@@ -7,6 +7,7 @@
     jobFilterFromSearch,
     jobTrackOf,
     filterJobs,
+    masterEligibilityUnknown,
     officialJobHref,
     primaryApplicationUrl,
     safeHttpUrl,
@@ -176,6 +177,7 @@
           {@const current = view.summary.current[0]}
           {@const applyLabel = view.job.applicationMethod === "official_instructions" ? t(locale, "action.officialInstructions") : t(locale, "action.applyNow")}
           {@const master = isMasterEligible(view.job)}
+          {@const masterUnknown = !master && masterEligibilityUnknown(view.job)}
           <article class="card result-card">
             <div class="card-head">
               <p class="muted">{text(view.employer.displayName, locale)}{view.job.city ? ` · ${text(view.job.city, locale)}` : ''}</p>
@@ -218,6 +220,8 @@
             <div class="tags tags-secondary">
               {#if master}
                 <span class="tag">{t(locale, "jobs.master")}</span>
+              {:else if masterUnknown}
+                <span class="tag">{t(locale, "jobs.masterUnknown")}</span>
               {:else}
                 <span class="tag">{t(locale, "jobs.notMaster")}</span>
               {/if}

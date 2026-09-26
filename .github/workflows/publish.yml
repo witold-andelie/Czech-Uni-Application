@@ -41,6 +41,17 @@ jobs:
       - name: Install publication dependencies
         run: |
           python -m pip install -r services/ingestion/requirements-ci.txt
+      - name: Run the live-evidence publish gate
+        if: ${{ github.event.inputs.operation != 'rollback' }}
+        run: |
+          set -euo pipefail
+          # Offline gate over data/sources/coverage/live-title-verification.json:
+          # every job that would enter the snapshot needs a recent per-item live
+          # verification (matched or operator_verified). It is also enforced
+          # inside publish.py, so this step is the operator-visible report.
+          python services/ingestion/src/cli/check_live_evidence.py \
+            --jobs data/sources/browse/nine-hei-jobs.json \
+            --evidence data/sources/coverage/live-title-verification.json
       - name: Run publication operation
         id: publish
         run: |

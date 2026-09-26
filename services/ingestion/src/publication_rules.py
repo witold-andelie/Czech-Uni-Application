@@ -34,7 +34,7 @@ CSCSE_OFFICIAL = {"listed", "not_found"}
 CSCSE_STATUSES = {"listed", "not_found", "unverified"}
 OPERATOR_LIST_STATUSES = {"listed", "absent"}
 UNAPPROVED_PUBLICATION = {"review_pending", "draft", "rejected"}
-UNAPPROVED_TRANSLATION = {"unreviewed", "stale", "missing"}
+UNAPPROVED_TRANSLATION = {"unreviewed", "draft", "stale", "missing"}
 
 
 def rule(code: str, message: str) -> str:

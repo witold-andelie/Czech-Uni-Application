@@ -24,6 +24,7 @@ digraph SD3 {
     graph [label="发布快照\nPublication Snapshot", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="snapshot"];
     archived [label="已归档\narchived", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     live [label="当前版本\ncurrent", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    selectedsnapshot [label="已选择待发布\nselected", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     stagedsnapshot [label="已暂存\nstaged", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     stale [label="待复核\nneeds review", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     validatedsnapshot [label="门禁已通过\nvalidated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
@@ -37,6 +38,7 @@ digraph SD3 {
   editor [label="内容审核者\nContent Reviewer", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object", penwidth="2.6"];
   evidence [label="来源证据\nSource Evidence", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   invalidate [label="标记源更新待复核\nSnapshot Invalidating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  liveevidence [label="实网核验证据\nLive Verification Evidence", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   normalize [label="结构化来源事实\nRecord Structuring", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   publish [label="发布一致版本\nSnapshot Publishing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   quality [label="数据与翻译发布规则\nContent Rules", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
@@ -47,6 +49,7 @@ digraph SD3 {
   source [label="官方来源\nOfficial Source", shape="box", style="dashed,filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   translate [label="生成三语译文\nContent Translating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   verify [label="核验关键字段\nRecord Verifying", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  withheldrecords [label="扣留记录（留在审核后台）\nWithheld Records", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   source -> acquire [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   acquire -> evidence [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   evidence -> normalize [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
@@ -92,4 +95,6 @@ digraph SD3 {
   stale -> retry [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   evidence -> retry [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   retry -> draft [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  liveevidence -> publish [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  publish -> withheldrecords [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
 }

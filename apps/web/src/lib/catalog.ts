@@ -363,6 +363,25 @@ export function isMasterEligible(job: ResearchJob): boolean {
   return job.minimumDegree === "bachelor" || job.minimumDegree === "master";
 }
 
+/**
+ * Whether the vacancy itself states the entry threshold at all.
+ *
+ * docs/DATA_MODEL.md fixes `minimumDegree` as bachelor / master / doctorate /
+ * other / unknown and `doctorateRequired` as true / false / null, where null
+ * means the announcement states no doctoral requirement of the applicant and
+ * must be shown as "not specified" — never as either "not required" or
+ * "required". A record whose threshold is unknown is therefore not evidence that
+ * master's graduates are excluded, so the card must not say so: it renders
+ * "entry requirement not stated" instead, the same three-state treatment the
+ * doctoral tag already gives `doctorateRequired: null`.
+ */
+export function masterEligibilityUnknown(job: ResearchJob): boolean {
+  if (job.isPostdoc) return false;
+  if (job.minimumDegree === "doctorate" || job.minimumDegree === "other") return false;
+  if (job.doctorateRequired === true) return false;
+  return job.minimumDegree === "unknown" || job.doctorateRequired === null;
+}
+
 export function jobTrackOf(job: ResearchJob): JobTrack {
   if (job.track) return job.track;
   if (job.isPostdoc) return "postdoc";

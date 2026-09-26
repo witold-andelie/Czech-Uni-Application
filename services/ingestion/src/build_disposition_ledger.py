@@ -37,7 +37,7 @@ def blockers_for(job: dict, is_public: bool) -> list[str]:
     # no longer blocks publication by itself.
     if job.get("translationStatus") == "stale":
         blockers.append("evidence_changed_since_review")
-    if job.get("translationStatus") in (None, "unreviewed"):
+    if job.get("translationStatus") in (None, "unreviewed", "draft"):
         blockers.append("trilingual_review_missing")
     if not blockers and not is_public and job.get("publicationStatus") != "approved":
         blockers.append("review_incomplete")

@@ -29,6 +29,7 @@ digraph SD3A {
     graph [label="发布快照\nPublication Snapshot", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="snapshot"];
     archived [label="已归档\narchived", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     live [label="当前版本\ncurrent", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
+    selectedsnapshot [label="已选择待发布\nselected", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     stagedsnapshot [label="已暂存\nstaged", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     stale [label="待复核\nneeds review", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
     validatedsnapshot [label="门禁已通过\nvalidated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
@@ -44,16 +45,16 @@ digraph SD3A {
   deliveryartifact [label="绑定提交的交付制品\nCommit-bound Delivery Artifact", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   deliverypackage [label="打包静态交付制品\nStatic Delivery Packaging", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   hostdeploy [label="部署已测试制品\nTested Artifact Deploying", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
+  liveevidence [label="实网核验证据\nLive Verification Evidence", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   osmutex [label="操作系统文件互斥锁\nOperating System File Mutex", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   publicwebsite [label="公网浏览网站\nPublic Browse Website", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   pubpolicy [label="发布业务契约\nPublication Contract", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  selectrecords [label="逐条选择可发布记录\nRecord Selecting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   snapshotactivate [label="原子激活快照\nSnapshot Activating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   snapshotstage [label="隔离暂存候选快照\nSnapshot Staging", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   snapshotvalidate [label="校验发布业务契约\nPublication Contract Validating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   statichost [label="第三方静态托管\nCloudflare Pages Host", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
-  verified -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
-  reviewed -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
-  reviewbound -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  withheldrecords [label="扣留记录（留在审核后台）\nWithheld Records", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   snapshotstage -> stagedsnapshot [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   stagedsnapshot -> snapshotvalidate [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
   snapshotvalidate -> validatedsnapshot [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
@@ -80,4 +81,11 @@ digraph SD3A {
   deliveryartifact -> hostdeploy [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   statichost -> hostdeploy [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   hostdeploy -> publicwebsite [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  verified -> selectrecords [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  reviewed -> selectrecords [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  reviewbound -> selectrecords [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  liveevidence -> selectrecords [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  selectrecords -> selectedsnapshot [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  selectrecords -> withheldrecords [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  selectedsnapshot -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
 }

@@ -19,6 +19,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from file_lock import FileMutex, LockUnavailable
+from live_evidence import (
+    EVIDENCE as LIVE_EVIDENCE_DEFAULT,
+    confirmed_rows,
+    load_evidence,
+    missing_live_evidence,
+)
 from publication_contract import (
     POLICY,
     REQUIRED_FILES,
@@ -29,6 +35,7 @@ from publication_contract import (
     snapshot_file,
     validate_dataset,
     validate_snapshot,
+    withheld_reasons,
 )
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -40,6 +47,11 @@ CURRENT_META = PUBLISHED_DIR / "current.json"
 PUBLISH_LOCK = PUBLISHED_DIR / ".publish.lock"
 REFRESH_LOCK = ROOT / "work" / "runs" / "refresh.lock"
 LOCK_ORDER = ("work/runs/refresh.lock", "data/published/.publish.lock")
+
+# Per-item live verification evidence (services/ingestion/src/cli/verify_live_titles.py).
+# Publication requires a recent confirmed row for every job entering the snapshot.
+LIVE_EVIDENCE = LIVE_EVIDENCE_DEFAULT
+LIVE_EVIDENCE_MAX_AGE_DAYS = 7
 
 # Compatibility name for diagnostics. The legacy mirror is no longer read,
 # written, or switched by the publication pipeline.
@@ -124,18 +136,33 @@ def _copy_required_pinned(source_dir: Path, destination: Path, expected_checksum
     return errors
 
 
-def _select_approved_jobs(staging_root: Path) -> list[str]:
-    """Keep only records explicitly approved for the public snapshot."""
+def _live_evidence_path(sources_dir: Path = SOURCES_DIR) -> Path:
+    """Where the live verification of this candidate set is read from.
+
+    The evidence must describe the exact bytes being published, so it is read
+    from the source set that was pinned.  A source set without the file has no
+    live verification at all, and the gate must say so rather than borrow rows
+    from another set.
+    """
+    return sources_dir / "coverage" / "live-title-verification.json"
+
+
+def _select_approved_jobs(staging_root: Path, evidence_path: Path = LIVE_EVIDENCE) -> tuple[list[str], list[str]]:
+    """Keep only records explicitly approved for the public snapshot.
+
+    Returns the ids excluded because they are not approved, and any error that
+    must fail the publication rather than a single record.
+    """
     path = staging_root / "browse" / "nine-hei-jobs.json"
     if not path.is_file():
-        return []
+        return [], [f"staged research-job file not found at {path}"]
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return []
+    except Exception as exc:
+        return [], [f"staged research-job file is unreadable: {exc}"]
     jobs = payload.get("jobs") if isinstance(payload, dict) else None
     if not isinstance(jobs, list):
-        return []
+        return [], ["staged research-job file has no jobs array"]
 
     approved = [item for item in jobs if isinstance(item, dict) and item.get("publicationStatus") == "approved"]
     approved_ids = {item.get("id") for item in approved if isinstance(item.get("id"), str)}
@@ -143,27 +170,104 @@ def _select_approved_jobs(staging_root: Path) -> list[str]:
         item.get("id") for item in jobs
         if isinstance(item, dict) and item.get("id") not in approved_ids
     ]
+    # docs/PRODUCT.md: the public research library publishes only opportunities with
+    # confirmed compensation evidence; a record whose announcement confirms none is a
+    # real position kept in the review background, not a reason to fail the whole
+    # publication.  Withhold it here, by id and reason, and publish the rest.
+    # docs/CRAWLING_RULES.md likewise requires a fresh per-item live verification of
+    # the record's own title: a record whose official page no longer verifies it (a
+    # source change, an unposted document) is withheld the same way.  Neither rule is
+    # relaxed - both still gate what the snapshot contains - but neither blocks the
+    # positions that do satisfy them.
+    blocked: dict[str, list[str]] = {
+        str(item.get("id")): withheld_reasons(item, f"research job {item.get('id')}")
+        for item in approved
+    }
+    unverified: dict[str, str] = {}
+    evidence_payload = load_evidence(evidence_path)
+    if evidence_payload:
+        # An evidence set that confirms nothing at all is a verifier failure rather
+        # than a source change: withholding every record would seal an empty public
+        # library, so the live-evidence gate holds the publication instead and says so.
+        fresh, _unconfirmed = confirmed_rows(evidence_payload, LIVE_EVIDENCE_MAX_AGE_DAYS, utc_now())
+        awaiting_live_proof = [item for item in approved if not blocked[str(item.get("id"))]]
+        if any(str(item.get("id")) in fresh for item in awaiting_live_proof):
+            unverified = dict(
+                missing_live_evidence(
+                    payload,
+                    evidence_payload,
+                    max_age_days=LIVE_EVIDENCE_MAX_AGE_DAYS,
+                )
+            )
+            unverified.pop("<evidence>", None)
+    withheld: list[dict[str, object]] = []
+    publishable: list[dict] = []
+    for item in approved:
+        ident = str(item.get("id"))
+        reasons = blocked[ident]
+        live_reason = unverified.get(ident)
+        if reasons or live_reason:
+            entry: dict[str, object] = {
+                "id": ident,
+                "reasons": reasons,
+                "employerId": str(item.get("employerId") or ""),
+                "title": item.get("title") if isinstance(item.get("title"), dict) else {},
+            }
+            if live_reason:
+                entry["liveEvidence"] = f"no live verification within {LIVE_EVIDENCE_MAX_AGE_DAYS} days ({live_reason})"
+            withheld.append(entry)
+        else:
+            publishable.append(item)
+    publishable_ids = {item.get("id") for item in publishable if isinstance(item.get("id"), str)}
     windows = [
         item for item in payload.get("windows") or []
-        if isinstance(item, dict) and item.get("ownerId") in approved_ids
+        if isinstance(item, dict) and item.get("ownerId") in publishable_ids
     ]
-    expected_evidence = {f"ev-{ident}" for ident in approved_ids}
+    expected_evidence = {f"ev-{ident}" for ident in publishable_ids}
     evidence = [
         item for item in payload.get("evidence") or []
         if isinstance(item, dict) and item.get("id") in expected_evidence
     ]
     skipped = payload.get("skipped") if isinstance(payload.get("skipped"), list) else []
-    payload["jobs"] = approved
+    errors: list[str] = []
+    if approved and not publishable:
+        errors.append(
+            "SELECTION_EMPTY: every approved record was withheld, so this candidate set would publish an "
+            "empty research library; see publicationSelection.withheld for the recorded reasons"
+        )
+    payload["jobs"] = publishable
     payload["windows"] = windows
     payload["evidence"] = evidence
-    payload["counts"] = {"jobs": len(approved), "skipped": len(skipped)}
+    payload["counts"] = {"jobs": len(publishable), "skipped": len(skipped)}
     payload["publicationSelection"] = {
-        "approved": len(approved),
+        "approved": len(publishable),
         "reviewPendingExcluded": len(excluded_ids),
         "excludedIds": excluded_ids,
+        "withheld": withheld,
+        "withheldCount": len(withheld),
+        "withheldIds": [item["id"] for item in withheld],
+        "withholdingRule": (
+            "docs/PRODUCT.md and docs/CRAWLING_RULES.md: the public research library publishes only "
+            "records with confirmed compensation evidence and a fresh per-item live verification of the "
+            "record's own title. A record that fails one of those gates is a real position kept in the "
+            "review background, withheld here by id and reason instead of failing the publication; "
+            "withholding is never a claim that the vacancy is closed."
+        ),
     }
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return excluded_ids
+    if withheld:
+        print(
+            f"Withheld {len(withheld)} approved records (kept in the review background, "
+            "see publicationSelection.withheld in the staged file):",
+            file=sys.stderr,
+        )
+        for item in withheld:
+            ident = str(item["id"])
+            short = [str(reason).removeprefix(f"research job {ident} ") for reason in item.get("reasons") or []]
+            if item.get("liveEvidence"):
+                short.append(str(item["liveEvidence"]).removeprefix("no live verification within "))
+            print(f"  - {ident}: {'; '.join(short)}", file=sys.stderr)
+    return excluded_ids, errors
 
 
 def _prepare_candidate(source_dir: Path, staging_root: Path) -> tuple[ValidationResult, dict | None]:
@@ -176,8 +280,13 @@ def _prepare_candidate(source_dir: Path, staging_root: Path) -> tuple[Validation
     errors = list(generation.get("errors") or []) + copy_errors
     if errors:
         return ValidationResult(errors, {}), generation
-    _select_approved_jobs(staging_root)
-    return validate_dataset(staging_root), generation
+    _excluded, selection_errors = _select_approved_jobs(
+        staging_root, _live_evidence_path(source_dir)
+    )
+    result = validate_dataset(staging_root)
+    if selection_errors:
+        return ValidationResult(list(result.errors) + selection_errors, result.counts), generation
+    return result, generation
 
 
 def validate_sources(sources_dir: Path = SOURCES_DIR) -> tuple[bool, list[str], dict[str, int]]:
@@ -254,19 +363,45 @@ def _active_pointer(version: str, published_at: str, generation: dict | None = N
     return pointer
 
 
+def live_evidence_errors(staged_jobs: Path, evidence_path: Path, max_age_days: int) -> list[str]:
+    """Live-evidence gate for a candidate about to enter a snapshot.
+
+    Every job in the staged selection must carry a recent per-item live
+    verification row (status "matched" or "operator_verified", see
+    docs/CRAWLING_RULES.md). Jobs whose announced window has already closed are
+    not required to re-prove a live announcement, and an http_404/403/500/
+    timeout or source_change_noted row never confirms a job, so publication is
+    held until an operator dispositions the item. Returns human-readable errors;
+    empty means the gate passed.
+    """
+    if not staged_jobs.is_file():
+        return [f"LIVE_EVIDENCE_MISSING: staged job file not found at {staged_jobs}"]
+    try:
+        jobs = json.loads(staged_jobs.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        return [f"LIVE_EVIDENCE_MISSING: unreadable staged job file: {exc}"]
+    missing = missing_live_evidence(jobs, load_evidence(evidence_path), max_age_days=max_age_days, now=utc_now())
+    return [
+        f"LIVE_EVIDENCE_MISSING: {job_id} has no live verification within {max_age_days} days ({reason})"
+        for job_id, reason in missing
+    ]
+
+
 def publish_snapshot(
     version: str | None = None,
     force: bool = False,
     *,
     sources_dir: Path = SOURCES_DIR,
     published_dir: Path = PUBLISHED_DIR,
+    live_evidence_max_age_days: int = LIVE_EVIDENCE_MAX_AGE_DAYS,
 ) -> dict:
     """Seal a candidate snapshot and atomically activate it.
 
     Candidate files are pinned under ``refresh.lock``, then the lock is released
     before validation and activation. ``publish.lock`` only serialises version
     allocation and the atomic pointer write. ``force`` cannot bypass a failed
-    gate. Rejected bytes never replace the active pointer.
+    gate, including the live-evidence gate. Rejected bytes never replace the
+    active pointer.
     """
     snapshots_dir = published_dir / "snapshots"
     staging_dir = published_dir / "staging"
@@ -289,6 +424,24 @@ def publish_snapshot(
             },
         )
         raise PublicationRejected(result.errors, attempt_root)
+    evidence_errors = live_evidence_errors(
+        staged_files / "browse" / "nine-hei-jobs.json",
+        _live_evidence_path(sources_dir),
+        live_evidence_max_age_days,
+    )
+    if evidence_errors:
+        atomic_write_json(
+            attempt_root / "rejection.json",
+            {
+                "version": version,
+                "rejectedAt": utc_now().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "forceRequested": bool(force),
+                "errors": evidence_errors,
+                "candidateGeneration": None if generation is None else generation.get("id"),
+                "gate": "live_evidence",
+            },
+        )
+        raise PublicationRejected(evidence_errors, attempt_root)
     try:
         with FileMutex(lock_path, {"operation": "publish"}):
             version_id = version or generate_version_id(snapshots_dir)

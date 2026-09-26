@@ -100,6 +100,10 @@ function localized(value, label, errors) {
   }
   for (const locale of LOCALES) {
     if (typeof value[locale] !== "string" || !value[locale].trim()) errors.push(`${label}.${locale} must be non-empty`);
+    // Harvested titles have picked up page chrome (breadcrumb/date prefixes such
+    // as "31.08.2026 Aktuality (úřední deska), Volná místa, konkursy"). A title
+    // never starts with a calendar date, in any locale.
+    else if (LEADING_DATE_RE.test(value[locale].trim())) errors.push(`TITLE_PAGE_CHROME: ${label}.${locale} starts with a date, so it carries site navigation instead of the position title`);
   }
 }
 
@@ -116,6 +120,9 @@ function requireUrl(item, field, label, errors, code, httpsOnly = false) {
 }
 
 const FACT_NORMALIZATION_VERSION = "fact-v1";
+// A published title never starts with a calendar date: such a prefix means the
+// harvester captured page chrome (a dated news/breadcrumb heading) with it.
+const LEADING_DATE_RE = /^\d{1,2}[./-]\d{1,2}[./-]\d{2,4}\b/;
 const SALARY_CURRENCIES = new Set(["CZK", "EUR", "USD", "GBP", "CHF", "PLN", "SEK", "NOK", "DKK", "CNY", "HUF"]);
 const SALARY_CYCLES = new Set(["month", "year", "hour", "day", "week", "semester", "programme", "unspecified"]);
 const SALARY_TAX = new Set(["gross", "net", "unknown", "unspecified"]);
@@ -123,7 +130,7 @@ const WINDOW_STATUSES = new Set(["open", "closed", "upcoming", "conditional", "u
 const DATE_PRECISIONS = new Set(["date", "datetime", "month", "unknown"]);
 const ROUND_TYPES = new Set(["regular", "supplementary", "rolling", "unspecified"]);
 const UNAPPROVED_PUBLICATION = new Set(["review_pending", "draft", "rejected"]);
-const UNAPPROVED_TRANSLATION = new Set(["unreviewed", "stale", "missing"]);
+const UNAPPROVED_TRANSLATION = new Set(["unreviewed", "draft", "stale", "missing"]);
 const DATE_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
 const MONTH_RE = /^(\d{4})-(\d{2})$/;
 const DATETIME_RE = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
@@ -601,7 +608,8 @@ function validateDataset(snapshotRoot) {
       }
     }
     if (!["bachelor", "master", "doctorate", "other", "unknown"].includes(job.minimumDegree)) errors.push(`${label} has invalid minimumDegree`);
-    if (typeof job.doctorateRequired !== "boolean") errors.push(`${label}.doctorateRequired must be a strict boolean`);
+    // docs/DATA_MODEL.md: doctorateRequired is true / false / null. null means the announcement states no doctoral requirement of the applicant; it renders as "公告未说明" and is never read as "not required". The key must still be present.
+    if (!("doctorateRequired" in job) || (job.doctorateRequired !== null && typeof job.doctorateRequired !== "boolean")) errors.push(`${label}.doctorateRequired must be true, false or null (announcement silent)`);
     if (!["required", "optional", "not_required", "unspecified"].includes(job.doctoralEnrollment)) errors.push(`${label} has invalid doctoralEnrollment`);
     if (job.paidStatus !== "confirmed") errors.push(`${label} lacks confirmed compensation evidence`);
     // A67/A68: fundingType is optional for snapshots predating the field but must use the controlled vocabulary once present.

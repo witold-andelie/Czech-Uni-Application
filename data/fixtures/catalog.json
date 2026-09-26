@@ -12,7 +12,11 @@
         "cs": "Ukázková veřejná univerzita Praha"
       },
       "country": "CZ",
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "ownership": "public",
       "ownershipEvidenceId": "ev-fixture-ownership",
       "legalType": "university",
@@ -41,7 +45,11 @@
         "cs": "Ukázková státní univerzita"
       },
       "country": "CZ",
-      "city": { "zh-CN": "布尔诺", "en": "Brno", "cs": "Brno" },
+      "city": {
+        "zh-CN": "布尔诺",
+        "en": "Brno",
+        "cs": "Brno"
+      },
       "ownership": "state",
       "ownershipEvidenceId": "ev-fixture-ownership",
       "legalType": "university",
@@ -70,7 +78,11 @@
         "cs": "Ukázková soukromá vysoká škola Praha"
       },
       "country": "CZ",
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "ownership": "private",
       "ownershipEvidenceId": "ev-fixture-ownership",
       "legalType": "university",
@@ -99,7 +111,11 @@
         "cs": "Ukázková aplikovaná vysoká škola Jihlava"
       },
       "country": "CZ",
-      "city": { "zh-CN": "伊赫拉瓦", "en": "Jihlava", "cs": "Jihlava" },
+      "city": {
+        "zh-CN": "伊赫拉瓦",
+        "en": "Jihlava",
+        "cs": "Jihlava"
+      },
       "ownership": "public",
       "ownershipEvidenceId": "ev-fixture-ownership",
       "legalType": "non_university",
@@ -128,7 +144,11 @@
         "cs": "Ukázková udělující univerzita (s oznámením)"
       },
       "country": "CZ",
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "ownership": "public",
       "ownershipEvidenceId": "ev-fixture-ownership",
       "legalType": "university",
@@ -170,7 +190,11 @@
         "cs": "Ukázková výzkumná instituce"
       },
       "country": "CZ",
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "ownership": "unknown",
       "ownershipEvidenceId": null,
       "legalType": "research_institute",
@@ -197,7 +221,11 @@
       "institutionId": "inst-public-prague",
       "officialCode": "FIX-CS-EN",
       "degree": "master",
-      "field": { "zh-CN": "计算机科学", "en": "Computer science", "cs": "Informatika" },
+      "field": {
+        "zh-CN": "计算机科学",
+        "en": "Computer science",
+        "cs": "Informatika"
+      },
       "orientation": "research"
     },
     {
@@ -205,7 +233,11 @@
       "institutionId": "inst-public-prague",
       "officialCode": "FIX-LAW-CS",
       "degree": "master",
-      "field": { "zh-CN": "法学", "en": "Law", "cs": "Právo" },
+      "field": {
+        "zh-CN": "法学",
+        "en": "Law",
+        "cs": "Právo"
+      },
       "orientation": "research"
     },
     {
@@ -213,7 +245,11 @@
       "institutionId": "inst-state",
       "officialCode": "FIX-JOINT",
       "degree": "master",
-      "field": { "zh-CN": "国际关系", "en": "International relations", "cs": "Mezinárodní vztahy" },
+      "field": {
+        "zh-CN": "国际关系",
+        "en": "International relations",
+        "cs": "Mezinárodní vztahy"
+      },
       "orientation": "research"
     },
     {
@@ -221,7 +257,11 @@
       "institutionId": "inst-listed-notice",
       "officialCode": "FIX-MED",
       "degree": "master",
-      "field": { "zh-CN": "医学", "en": "Medicine", "cs": "Medicína" },
+      "field": {
+        "zh-CN": "医学",
+        "en": "Medicine",
+        "cs": "Medicína"
+      },
       "orientation": "research"
     },
     {
@@ -229,7 +269,11 @@
       "institutionId": "inst-applied",
       "officialCode": "FIX-NURSE",
       "degree": "bachelor",
-      "field": { "zh-CN": "护理", "en": "Nursing", "cs": "Ošetřovatelství" },
+      "field": {
+        "zh-CN": "护理",
+        "en": "Nursing",
+        "cs": "Ošetřovatelství"
+      },
       "orientation": "applied"
     },
     {
@@ -237,7 +281,11 @@
       "institutionId": "inst-private",
       "officialCode": "FIX-BIZ",
       "degree": "master",
-      "field": { "zh-CN": "管理", "en": "Management", "cs": "Management" },
+      "field": {
+        "zh-CN": "管理",
+        "en": "Management",
+        "cs": "Management"
+      },
       "orientation": "applied"
     }
   ],
@@ -247,7 +295,9 @@
       "programmeId": "prog-cs-en",
       "institutionId": "inst-public-prague",
       "academicYear": "2026/2027",
-      "teachingLanguages": ["en"],
+      "teachingLanguages": [
+        "en"
+      ],
       "languageMode": "single",
       "languageEvidenceUrl": "https://www.studyin.cz/faq/",
       "additionalLanguageRequirements": [],
@@ -258,8 +308,18 @@
       },
       "degree": "master",
       "durationSemesters": 4,
-      "field": { "zh-CN": "计算机科学", "en": "Computer science", "cs": "Informatika" },
-      "tuition": { "amount": null, "currency": null, "cycle": null, "published": false, "evidenceUrl": null },
+      "field": {
+        "zh-CN": "计算机科学",
+        "en": "Computer science",
+        "cs": "Informatika"
+      },
+      "tuition": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "published": false,
+        "evidenceUrl": null
+      },
       "applicationUrl": "https://www.studyin.cz/faq/",
       "verifiedAt": null,
       "dataClass": "ui_fixture",
@@ -270,7 +330,9 @@
       "programmeId": "prog-law-cs",
       "institutionId": "inst-public-prague",
       "academicYear": "2026/2027",
-      "teachingLanguages": ["cs"],
+      "teachingLanguages": [
+        "cs"
+      ],
       "languageMode": "single",
       "languageEvidenceUrl": "https://www.studyin.cz/faq/",
       "additionalLanguageRequirements": [],
@@ -281,8 +343,18 @@
       },
       "degree": "master",
       "durationSemesters": 4,
-      "field": { "zh-CN": "法学", "en": "Law", "cs": "Právo" },
-      "tuition": { "amount": 0, "currency": "CZK", "cycle": "year", "published": true, "evidenceUrl": "https://www.studyin.cz/faq/" },
+      "field": {
+        "zh-CN": "法学",
+        "en": "Law",
+        "cs": "Právo"
+      },
+      "tuition": {
+        "amount": 0,
+        "currency": "CZK",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://www.studyin.cz/faq/"
+      },
       "applicationUrl": "https://www.studyin.cz/faq/",
       "verifiedAt": null,
       "dataClass": "ui_fixture",
@@ -293,7 +365,10 @@
       "programmeId": "prog-joint",
       "institutionId": "inst-state",
       "academicYear": "2026/2027",
-      "teachingLanguages": ["en", "cs"],
+      "teachingLanguages": [
+        "en",
+        "cs"
+      ],
       "languageMode": "joint_required",
       "languageEvidenceUrl": "https://www.studyin.cz/faq/",
       "additionalLanguageRequirements": [],
@@ -304,8 +379,18 @@
       },
       "degree": "master",
       "durationSemesters": 4,
-      "field": { "zh-CN": "国际关系", "en": "International relations", "cs": "Mezinárodní vztahy" },
-      "tuition": { "amount": null, "currency": null, "cycle": null, "published": false, "evidenceUrl": null },
+      "field": {
+        "zh-CN": "国际关系",
+        "en": "International relations",
+        "cs": "Mezinárodní vztahy"
+      },
+      "tuition": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "published": false,
+        "evidenceUrl": null
+      },
       "applicationUrl": "https://www.studyin.cz/faq/",
       "verifiedAt": null,
       "dataClass": "ui_fixture",
@@ -316,7 +401,9 @@
       "programmeId": "prog-med",
       "institutionId": "inst-listed-notice",
       "academicYear": "2026/2027",
-      "teachingLanguages": ["en"],
+      "teachingLanguages": [
+        "en"
+      ],
       "languageMode": "single",
       "languageEvidenceUrl": "https://www.studyin.cz/faq/",
       "additionalLanguageRequirements": [
@@ -339,8 +426,18 @@
       },
       "degree": "master",
       "durationSemesters": 12,
-      "field": { "zh-CN": "医学", "en": "Medicine", "cs": "Medicína" },
-      "tuition": { "amount": null, "currency": null, "cycle": null, "published": false, "evidenceUrl": null },
+      "field": {
+        "zh-CN": "医学",
+        "en": "Medicine",
+        "cs": "Medicína"
+      },
+      "tuition": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "published": false,
+        "evidenceUrl": null
+      },
       "applicationUrl": "https://www.studyin.cz/faq/",
       "verifiedAt": null,
       "dataClass": "ui_fixture",
@@ -351,7 +448,9 @@
       "programmeId": "prog-nursing",
       "institutionId": "inst-applied",
       "academicYear": "2026/2027",
-      "teachingLanguages": ["cs"],
+      "teachingLanguages": [
+        "cs"
+      ],
       "languageMode": "single",
       "languageEvidenceUrl": "https://www.vspj.cz/en/skola/obecne-informace",
       "additionalLanguageRequirements": [],
@@ -362,8 +461,18 @@
       },
       "degree": "bachelor",
       "durationSemesters": 6,
-      "field": { "zh-CN": "护理", "en": "Nursing", "cs": "Ošetřovatelství" },
-      "tuition": { "amount": null, "currency": null, "cycle": null, "published": false, "evidenceUrl": null },
+      "field": {
+        "zh-CN": "护理",
+        "en": "Nursing",
+        "cs": "Ošetřovatelství"
+      },
+      "tuition": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "published": false,
+        "evidenceUrl": null
+      },
       "applicationUrl": "https://www.vspj.cz/en/skola/obecne-informace",
       "verifiedAt": null,
       "dataClass": "ui_fixture",
@@ -374,7 +483,9 @@
       "programmeId": "prog-biz",
       "institutionId": "inst-private",
       "academicYear": "2026/2027",
-      "teachingLanguages": ["en"],
+      "teachingLanguages": [
+        "en"
+      ],
       "languageMode": "single",
       "languageEvidenceUrl": "https://www.studyin.cz/faq/",
       "additionalLanguageRequirements": [
@@ -397,8 +508,18 @@
       },
       "degree": "master",
       "durationSemesters": 4,
-      "field": { "zh-CN": "管理", "en": "Management", "cs": "Management" },
-      "tuition": { "amount": 3900, "currency": "EUR", "cycle": "year", "published": true, "evidenceUrl": "https://www.studyin.cz/faq/" },
+      "field": {
+        "zh-CN": "管理",
+        "en": "Management",
+        "cs": "Management"
+      },
+      "tuition": {
+        "amount": 3900,
+        "currency": "EUR",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://www.studyin.cz/faq/"
+      },
       "applicationUrl": "https://www.studyin.cz/faq/",
       "verifiedAt": null,
       "dataClass": "ui_fixture",
@@ -409,7 +530,9 @@
       "programmeId": "prog-cs-en",
       "institutionId": "inst-public-prague",
       "academicYear": "2025/2026",
-      "teachingLanguages": ["en"],
+      "teachingLanguages": [
+        "en"
+      ],
       "languageMode": "single",
       "languageEvidenceUrl": "https://www.studyin.cz/faq/",
       "additionalLanguageRequirements": [],
@@ -420,8 +543,18 @@
       },
       "degree": "master",
       "durationSemesters": 4,
-      "field": { "zh-CN": "计算机科学", "en": "Computer science", "cs": "Informatika" },
-      "tuition": { "amount": null, "currency": null, "cycle": null, "published": false, "evidenceUrl": null },
+      "field": {
+        "zh-CN": "计算机科学",
+        "en": "Computer science",
+        "cs": "Informatika"
+      },
+      "tuition": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "published": false,
+        "evidenceUrl": null
+      },
       "applicationUrl": "https://www.studyin.cz/faq/",
       "verifiedAt": null,
       "dataClass": "ui_fixture",
@@ -432,7 +565,9 @@
       "programmeId": "prog-law-cs",
       "institutionId": "inst-public-prague",
       "academicYear": "2027/2028",
-      "teachingLanguages": ["cs"],
+      "teachingLanguages": [
+        "cs"
+      ],
       "languageMode": "single",
       "languageEvidenceUrl": "https://www.studyin.cz/faq/",
       "additionalLanguageRequirements": [],
@@ -443,8 +578,18 @@
       },
       "degree": "master",
       "durationSemesters": 4,
-      "field": { "zh-CN": "法学", "en": "Law", "cs": "Právo" },
-      "tuition": { "amount": 0, "currency": "CZK", "cycle": "year", "published": true, "evidenceUrl": "https://www.studyin.cz/faq/" },
+      "field": {
+        "zh-CN": "法学",
+        "en": "Law",
+        "cs": "Právo"
+      },
+      "tuition": {
+        "amount": 0,
+        "currency": "CZK",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://www.studyin.cz/faq/"
+      },
       "applicationUrl": "https://www.studyin.cz/faq/",
       "verifiedAt": null,
       "dataClass": "ui_fixture",
@@ -460,7 +605,11 @@
       "roundNumber": 1,
       "roundLabelOriginal": "1. kolo",
       "roundType": "regular",
-      "applicantScope": { "zh-CN": "所有申请人", "en": "All applicants", "cs": "Všichni uchazeči" },
+      "applicantScope": {
+        "zh-CN": "所有申请人",
+        "en": "All applicants",
+        "cs": "Všichni uchazeči"
+      },
       "opensAt": "2026-01-01",
       "closesAt": "2026-03-31",
       "timezone": "Europe/Prague",
@@ -478,7 +627,11 @@
       "roundNumber": 2,
       "roundLabelOriginal": "2. kolo",
       "roundType": "regular",
-      "applicantScope": { "zh-CN": "所有申请人", "en": "All applicants", "cs": "Všichni uchazeči" },
+      "applicantScope": {
+        "zh-CN": "所有申请人",
+        "en": "All applicants",
+        "cs": "Všichni uchazeči"
+      },
       "opensAt": "2026-09-01",
       "closesAt": "2026-11-30",
       "timezone": "Europe/Prague",
@@ -496,7 +649,11 @@
       "roundNumber": 1,
       "roundLabelOriginal": "1. kolo",
       "roundType": "regular",
-      "applicantScope": { "zh-CN": "所有申请人", "en": "All applicants", "cs": "Všichni uchazeči" },
+      "applicantScope": {
+        "zh-CN": "所有申请人",
+        "en": "All applicants",
+        "cs": "Všichni uchazeči"
+      },
       "opensAt": "2026-08-01",
       "closesAt": "2027-02-28",
       "timezone": "Europe/Prague",
@@ -532,7 +689,11 @@
       "roundNumber": 1,
       "roundLabelOriginal": "1. kolo",
       "roundType": "regular",
-      "applicantScope": { "zh-CN": "自费申请人", "en": "Self-funded applicants", "cs": "Samoplátci" },
+      "applicantScope": {
+        "zh-CN": "自费申请人",
+        "en": "Self-funded applicants",
+        "cs": "Samoplátci"
+      },
       "opensAt": "2026-05-01",
       "closesAt": "2026-10-31",
       "timezone": "Europe/Prague",
@@ -568,7 +729,11 @@
       "roundNumber": 2,
       "roundLabelOriginal": "dodatečné kolo",
       "roundType": "supplementary",
-      "applicantScope": { "zh-CN": "补录申请人", "en": "Supplementary-round applicants", "cs": "Uchazeči dodatečného kola" },
+      "applicantScope": {
+        "zh-CN": "补录申请人",
+        "en": "Supplementary-round applicants",
+        "cs": "Uchazeči dodatečného kola"
+      },
       "opensAt": null,
       "closesAt": "2026-11-15",
       "timezone": "Europe/Prague",
@@ -622,7 +787,11 @@
       "roundNumber": 1,
       "roundLabelOriginal": "call 2026",
       "roundType": "regular",
-      "applicantScope": { "zh-CN": "硕士毕业生", "en": "Master’s graduates", "cs": "Absolventi magistra" },
+      "applicantScope": {
+        "zh-CN": "硕士毕业生",
+        "en": "Master’s graduates",
+        "cs": "Absolventi magistra"
+      },
       "opensAt": "2026-08-01",
       "closesAt": "2026-10-31",
       "timezone": "Europe/Prague",
@@ -640,7 +809,11 @@
       "roundNumber": 1,
       "roundLabelOriginal": "1st call",
       "roundType": "regular",
-      "applicantScope": { "zh-CN": "须注册博士", "en": "Doctoral enrollment required", "cs": "Nutný zápis do doktorského studia" },
+      "applicantScope": {
+        "zh-CN": "须注册博士",
+        "en": "Doctoral enrollment required",
+        "cs": "Nutný zápis do doktorského studia"
+      },
       "opensAt": "2026-01-01",
       "closesAt": "2026-04-30",
       "timezone": "Europe/Prague",
@@ -658,7 +831,11 @@
       "roundNumber": 2,
       "roundLabelOriginal": "2nd call",
       "roundType": "regular",
-      "applicantScope": { "zh-CN": "须注册博士", "en": "Doctoral enrollment required", "cs": "Nutný zápis do doktorského studia" },
+      "applicantScope": {
+        "zh-CN": "须注册博士",
+        "en": "Doctoral enrollment required",
+        "cs": "Nutný zápis do doktorského studia"
+      },
       "opensAt": "2026-09-01",
       "closesAt": "2026-11-15",
       "timezone": "Europe/Prague",
@@ -750,13 +927,25 @@
         "en": "[Fixture] Research assistant (master’s, doctoral enrollment not required)",
         "cs": "[Ukázka] Výzkumný asistent (magistr, zápis do Ph.D. není vyžadován)"
       },
-      "laboratory": { "zh-CN": "样例实验室", "en": "Fixture laboratory", "cs": "Ukázková laboratoř" },
+      "laboratory": {
+        "zh-CN": "样例实验室",
+        "en": "Fixture laboratory",
+        "cs": "Ukázková laboratoř"
+      },
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "not_required",
       "paidStatus": "confirmed",
-      "salary": { "amount": null, "currency": null, "cycle": "month", "tax": "gross", "basisFte": null },
-      "workingLanguages": ["en"],
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": null
+      },
+      "workingLanguages": [
+        "en"
+      ],
       "sourceUrl": "https://www.eu.avcr.cz/en/news/Cosmological-Visionaries-Shamans-Scientists-and-Climate-Change-at-the-Ethnic-Borderlands-of-China-and-Russia/",
       "applicationUrl": "https://www.euraxess.cz/jobs/search",
       "applicationMethod": "web_form",
@@ -764,7 +953,11 @@
       "lifecycleStatus": "open",
       "visibility": "public",
       "isPostdoc": false,
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "verifiedAt": null,
       "dataClass": "ui_fixture",
       "wholeOpportunityClosed": false
@@ -782,8 +975,17 @@
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
       "paidStatus": "confirmed",
-      "salary": { "amount": 35000, "currency": "CZK", "cycle": "month", "tax": "gross", "basisFte": 1 },
-      "workingLanguages": ["en", "cs"],
+      "salary": {
+        "amount": 35000,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": 1
+      },
+      "workingLanguages": [
+        "en",
+        "cs"
+      ],
       "sourceUrl": "https://www.euraxess.cz/jobs/search",
       "applicationUrl": "https://www.euraxess.cz/jobs/search#r2",
       "applicationMethod": "web_form",
@@ -791,7 +993,11 @@
       "lifecycleStatus": "open",
       "visibility": "public",
       "isPostdoc": false,
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "verifiedAt": null,
       "dataClass": "ui_fixture",
       "wholeOpportunityClosed": false
@@ -809,8 +1015,16 @@
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
       "paidStatus": "confirmed",
-      "salary": { "amount": 28000, "currency": "CZK", "cycle": "month", "tax": "gross", "basisFte": 0.5 },
-      "workingLanguages": ["cs"],
+      "salary": {
+        "amount": 28000,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": 0.5
+      },
+      "workingLanguages": [
+        "cs"
+      ],
       "sourceUrl": "https://www.euraxess.cz/jobs/search",
       "applicationUrl": "https://www.euraxess.cz/jobs/search",
       "applicationMethod": "web_form",
@@ -818,7 +1032,11 @@
       "lifecycleStatus": "open",
       "visibility": "public",
       "isPostdoc": false,
-      "city": { "zh-CN": "布尔诺", "en": "Brno", "cs": "Brno" },
+      "city": {
+        "zh-CN": "布尔诺",
+        "en": "Brno",
+        "cs": "Brno"
+      },
       "verifiedAt": null,
       "dataClass": "ui_fixture",
       "wholeOpportunityClosed": false
@@ -836,8 +1054,16 @@
       "doctorateRequired": true,
       "doctoralEnrollment": "not_required",
       "paidStatus": "confirmed",
-      "salary": { "amount": 45000, "currency": "CZK", "cycle": "month", "tax": "gross", "basisFte": 1 },
-      "workingLanguages": ["en"],
+      "salary": {
+        "amount": 45000,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": 1
+      },
+      "workingLanguages": [
+        "en"
+      ],
       "sourceUrl": "https://www.euraxess.cz/jobs/search",
       "applicationUrl": "https://www.euraxess.cz/jobs/search",
       "applicationMethod": "web_form",
@@ -845,7 +1071,11 @@
       "lifecycleStatus": "open",
       "visibility": "public",
       "isPostdoc": true,
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "verifiedAt": null,
       "dataClass": "ui_fixture",
       "wholeOpportunityClosed": false
@@ -858,13 +1088,25 @@
         "en": "[Fixture] Laboratory technician (email application instructions)",
         "cs": "[Ukázka] Laboratorní technik (pokyny pro e-mailovou přihlášku)"
       },
-      "laboratory": { "zh-CN": "旋转激光实验室", "en": "Rotational laser laboratory", "cs": "Laboratoř rotačního laseru" },
+      "laboratory": {
+        "zh-CN": "旋转激光实验室",
+        "en": "Rotational laser laboratory",
+        "cs": "Laboratoř rotačního laseru"
+      },
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "not_required",
       "paidStatus": "confirmed",
-      "salary": { "amount": null, "currency": null, "cycle": null, "tax": "unknown", "basisFte": null },
-      "workingLanguages": ["en"],
+      "salary": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "tax": "unknown",
+        "basisFte": null
+      },
+      "workingLanguages": [
+        "en"
+      ],
       "sourceUrl": "https://www.it.cas.cz/en/research-scientist-in-the-laboratory-of-rotational-laser-vibrometry/",
       "applicationUrl": "https://www.it.cas.cz/en/research-scientist-in-the-laboratory-of-rotational-laser-vibrometry/",
       "applicationMethod": "official_instructions",
@@ -872,7 +1114,11 @@
       "lifecycleStatus": "open",
       "visibility": "public",
       "isPostdoc": false,
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "verifiedAt": null,
       "dataClass": "ui_fixture",
       "wholeOpportunityClosed": false
@@ -890,8 +1136,16 @@
       "doctorateRequired": false,
       "doctoralEnrollment": "not_required",
       "paidStatus": "confirmed",
-      "salary": { "amount": 32000, "currency": "CZK", "cycle": "month", "tax": "gross", "basisFte": 1 },
-      "workingLanguages": ["en"],
+      "salary": {
+        "amount": 32000,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": 1
+      },
+      "workingLanguages": [
+        "en"
+      ],
       "sourceUrl": "https://www.it.cas.cz/en/research-scientist-in-the-laboratory-of-rotational-laser-vibrometry/",
       "applicationUrl": "https://www.it.cas.cz/en/research-scientist-in-the-laboratory-of-rotational-laser-vibrometry/",
       "applicationMethod": "web_form",
@@ -899,7 +1153,11 @@
       "lifecycleStatus": "expired",
       "visibility": "archived",
       "isPostdoc": false,
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "verifiedAt": null,
       "dataClass": "ui_fixture",
       "wholeOpportunityClosed": true
@@ -917,8 +1175,16 @@
       "doctorateRequired": false,
       "doctoralEnrollment": "not_required",
       "paidStatus": "confirmed",
-      "salary": { "amount": 30000, "currency": "CZK", "cycle": "month", "tax": "gross", "basisFte": 1 },
-      "workingLanguages": ["en"],
+      "salary": {
+        "amount": 30000,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": 1
+      },
+      "workingLanguages": [
+        "en"
+      ],
       "sourceUrl": "https://www.euraxess.cz/jobs/search",
       "applicationUrl": "https://www.euraxess.cz/jobs/search",
       "applicationMethod": "web_form",
@@ -926,10 +1192,53 @@
       "lifecycleStatus": "closed",
       "visibility": "archived",
       "isPostdoc": false,
-      "city": { "zh-CN": "布拉格", "en": "Prague", "cs": "Praha" },
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
       "verifiedAt": null,
       "dataClass": "ui_fixture",
       "wholeOpportunityClosed": true
+    },
+    {
+      "id": "job-entry-unstated",
+      "employerId": "inst-research",
+      "title": {
+        "zh-CN": "[样例] 技术员（公告未说明学历门槛）",
+        "en": "[Fixture] Technician (entry requirement not stated)",
+        "cs": "[Ukázka] Technik (vstupní požadavek neuveden)"
+      },
+      "laboratory": null,
+      "minimumDegree": "unknown",
+      "doctorateRequired": null,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 28000,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": 0.5
+      },
+      "workingLanguages": [
+        "cs"
+      ],
+      "sourceUrl": "https://www.euraxess.cz/jobs/search",
+      "applicationUrl": "https://www.euraxess.cz/jobs/search",
+      "applicationMethod": "web_form",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "open",
+      "visibility": "public",
+      "isPostdoc": false,
+      "city": {
+        "zh-CN": "布尔诺",
+        "en": "Brno",
+        "cs": "Brno"
+      },
+      "verifiedAt": null,
+      "dataClass": "ui_fixture",
+      "wholeOpportunityClosed": false
     }
   ],
   "evidence": [

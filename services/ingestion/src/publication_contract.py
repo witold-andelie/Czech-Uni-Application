@@ -503,6 +503,28 @@ def _validate_reviewed_offerings(data: dict[str, Any], institution_ids: set[str]
     return len(offering_ids)
 
 
+def withheld_reasons(job: dict[str, Any], label: str) -> list[str]:
+    """Why an otherwise reviewed record cannot enter the public library.
+
+    Two of the per-record rules describe what the announcement states rather than
+    whether the record is well formed.  A record that fails one of them is not
+    broken: it is a real position whose evidence does not support the claim the
+    public library makes, and docs/PRODUCT.md puts such a lead in the review
+    background rather than on the site.  Publication selection therefore
+    withholds these records by name and reason instead of failing the whole
+    snapshot for them; validation still refuses to publish one that slips in.
+
+    The rule itself is unchanged: a published research job must carry confirmed
+    compensation evidence (docs/DATA_MODEL.md, docs/PRODUCT.md, ACCEPTANCE A11).
+    Withholding is how an unconfirmed record is kept out of the library, not a
+    permission to publish it.
+    """
+    reasons: list[str] = []
+    if job.get("paidStatus") != "confirmed":
+        reasons.append(f"{label} lacks confirmed compensation evidence")
+    return reasons
+
+
 def _validate_jobs(
     data: dict[str, Any],
     institution_ids: set[str],
@@ -574,12 +596,22 @@ def _validate_jobs(
         )
         if job.get("minimumDegree") not in {"bachelor", "master", "doctorate", "other", "unknown"}:
             errors.append(f"{label} has invalid minimumDegree")
-        if type(job.get("doctorateRequired")) is not bool:
-            errors.append(f"{label}.doctorateRequired must be a strict boolean")
+        # docs/DATA_MODEL.md (科研资格规则): doctorateRequired is true / false /
+        # null.  null is a real reading, not a missing value: the announcement
+        # states no doctoral requirement of the applicant, and the record must
+        # then be rendered as "公告未说明" and never read as "not required".  The
+        # collector writes null for exactly that case (see
+        # harvest_nine_hei_jobs.extract_qualifications), so requiring a strict
+        # boolean here withheld every such candidate without any cause in the
+        # source text.  The key itself must still be present on a published row.
+        doctorate_required = job.get("doctorateRequired")
+        if "doctorateRequired" not in job or (
+            doctorate_required is not None and type(doctorate_required) is not bool
+        ):
+            errors.append(f"{label}.doctorateRequired must be true, false or null (announcement silent)")
         if job.get("doctoralEnrollment") not in {"required", "optional", "not_required", "unspecified"}:
             errors.append(f"{label} has invalid doctoralEnrollment")
-        if job.get("paidStatus") != "confirmed":
-            errors.append(f"{label} lacks confirmed compensation evidence")
+        errors.extend(withheld_reasons(job, label))
         # A67/A68: fundingType is optional for snapshots predating the field but
         # must use the controlled vocabulary once present.
         if job.get("fundingType") is not None and job.get("fundingType") not in {"employment", "stipend", "mixed", "unknown"}:

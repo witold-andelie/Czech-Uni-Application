@@ -1028,6 +1028,25 @@ def test_configured_generic_links_allow_only_explicit_official_faculty_hosts() -
     ]
 
 
+def test_configured_generic_links_reject_anchors_pointing_at_the_listing_itself() -> None:
+    """A listing page's own anchors are chrome, not vacancies.
+
+    VSTECB's careers page matched every anchor on itself, which produced three
+    candidate rows for "Pejít na hlavní obsah" (#content), "Skola Základní
+    informace" (the page itself) and "TOP" (#top). Anchors that resolve to the
+    page being parsed - fragment-only or not - must never become a vacancy.
+    """
+    listing_url = "https://www.vstecb.cz/volna-pracovni-mista/"
+    html = f"""
+    <a href="{listing_url}#content">Pejít na hlavní obsah</a>
+    <a href="{listing_url}">Skola Základní informace</a>
+    <a href="{listing_url}#top">TOP</a>
+    <a href="/volna-pracovni-mista/?id=1">Academic staff member</a>
+    """
+    rows = parse_generic_listing_links(html, listing_url, [r"/volna-pracovni-mista/"])
+    assert [row["sourceUrl"] for row in rows] == ["https://www.vstecb.cz/volna-pracovni-mista/?id=1"]
+
+
 def test_generic_pdf_listing_uses_attachment_text_and_hashed_identity() -> None:
     listing_url = "https://jcu.test/cz/univerzita/volna-mista"
     first_pdf = "https://jcu.test/images/UNIVERZITA/volna-mista/2026/09/07092026-postdoc.pdf"
@@ -2548,3 +2567,41 @@ def test_senior_phd_required_role_is_not_postdoc() -> None:
     assert parsed is not None
     assert parsed["track"] != "postdoc"
     assert parsed["doctorateRequired"] is True
+
+
+def test_draft_translation_record_stays_draft_after_apply(tmp_path) -> None:
+    from publication_rules import job_fact_hash, translation_content_hash
+
+    job = _a75_review_job()
+    entry = {
+        "sourceHash": job["sourceHash"],
+        "evidenceHash": job["sourceHash"],
+        "normalizationVersion": "fact-v1",
+        "reviewer": {"role": "operator_translation_draft"},
+        "title": {
+            "zh-CN": "技术转移助理（T1）（草稿）",
+            "en": "Transfer Assistant (T1)",
+            "cs": "Transferový asistent (T1)",
+        },
+        "locales": {
+            locale: {
+                "status": "draft",
+                "contentHash": translation_content_hash(job["title"][locale]),
+                "translatedFromHash": job["sourceHash"],
+            }
+            for locale in ("zh-CN", "en", "cs")
+        },
+        "factHash": job_fact_hash(job, []),
+    }
+    applied = jobs_harvester.apply_translation_review(
+        dict(job), job["sourceHash"], {job["id"]: entry}, []
+    )
+    assert applied["translationStatus"] == "draft"
+    assert applied["publicationStatus"] == "review_pending"
+    assert applied["visibility"] == "review_pending"
+    locale_statuses = {
+        locale: v["status"] for locale, v in applied["translationReview"]["locales"].items()
+    }
+    assert locale_statuses == {"zh-CN": "draft", "en": "draft", "cs": "draft"}
+    for locale in ("zh-CN", "en", "cs"):
+        assert applied["translationReview"]["locales"][locale]["contentHash"] == entry["locales"][locale]["contentHash"]

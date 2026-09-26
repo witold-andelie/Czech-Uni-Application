@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T17:32:59Z",
+  "generatedAt": "2026-09-26T19:23:55Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-09-22.1",
-    "publishedAt": "2026-09-22T17:32:58Z",
-    "candidateGenerationId": "cg-b6bdecd36db2450aaca08f0849697e93",
-    "sourceRunSetDigest": "sha256:e6c65aaea8a850244174d77c7720fa7ea8ce0fd1a9b300cc99628b67c335a875",
+    "activeVersion": "v2026-09-26.1",
+    "publishedAt": "2026-09-26T19:23:55Z",
+    "candidateGenerationId": "cg-c7c0bdf9617f499e8b228db7dc1a8f01",
+    "sourceRunSetDigest": "sha256:760f28deeb40ad3fac3461d3ea21935a016e0e1e43f3c4c708354e192c54b93d",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -145,13 +145,13 @@
     "mappedBaselineInstitutions": 31,
     "baselineInstitutionCoveragePercent": 57.4,
     "baselineInstitutionsWithoutRegisteredSource": 23,
-    "assessedBaselineInstitutions": 54,
-    "notAssessedBaselineInstitutions": 0,
+    "assessedBaselineInstitutions": 53,
+    "notAssessedBaselineInstitutions": 1,
     "assessmentStatusCounts": {
       "registered_executed": 29,
       "registered_never_executed": 2,
-      "assessed_no_central_source": 23,
-      "not_assessed": 0
+      "assessed_no_central_source": 22,
+      "not_assessed": 1
     },
     "institutionAggregatorConnections": 30,
     "facultyOnlyConnections": 1,
@@ -165,16 +165,16 @@
     "inventoryRows": 5019,
     "discoveredCandidates": 174,
     "currentCandidates": 125,
-    "supportedCandidates": 115,
+    "supportedCandidates": 112,
     "unspecifiedScopeCandidates": 10,
-    "reviewPending": 101,
-    "approved": 14,
-    "public": 15,
-    "currentOpenOrUnknown": 115,
-    "currentPaidMasterScopeCandidates": 18,
+    "reviewPending": 25,
+    "approved": 87,
+    "public": 87,
+    "currentOpenOrUnknown": 112,
+    "currentPaidMasterScopeCandidates": 19,
     "supportedPaidMasterScopeCandidates": 17,
-    "publishedRecords": 15,
-    "publishedPaidMasterScopeJobs": 8,
+    "publishedRecords": 112,
+    "publishedPaidMasterScopeJobs": 13,
     "sourceConnectedSchools": 31,
     "fullyAssessedSchoolScope": 0,
     "missingInstitutions": [
@@ -360,9 +360,9 @@
             "lastSuccessAt": "2026-09-16T22:23:28Z"
           }
         ],
-        "currentCandidateJobs": 10,
+        "currentCandidateJobs": 11,
         "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_13000",
@@ -380,7 +380,7 @@
         ],
         "currentCandidateJobs": 6,
         "currentPaidMasterScopeCandidates": 2,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 2
       },
       {
         "institutionId": "msmt-vs_14000",
@@ -512,8 +512,8 @@
           }
         ],
         "currentCandidateJobs": 17,
-        "currentPaidMasterScopeCandidates": 0,
-        "publishedPaidMasterScopeJobs": 0
+        "currentPaidMasterScopeCandidates": 1,
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_22000",
@@ -531,7 +531,7 @@
         ],
         "currentCandidateJobs": 5,
         "currentPaidMasterScopeCandidates": 2,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_23000",
@@ -601,9 +601,9 @@
             "lastSuccessAt": "2026-09-11T20:25:25Z"
           }
         ],
-        "currentCandidateJobs": 10,
+        "currentCandidateJobs": 12,
         "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_27000",
@@ -675,7 +675,7 @@
         ],
         "currentCandidateJobs": 5,
         "currentPaidMasterScopeCandidates": 4,
-        "publishedPaidMasterScopeJobs": 3
+        "publishedPaidMasterScopeJobs": 0
       },
       {
         "institutionId": "msmt-vs_43000",
@@ -711,7 +711,7 @@
         ],
         "currentCandidateJobs": 2,
         "currentPaidMasterScopeCandidates": 2,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 2
       },
       {
         "institutionId": "msmt-vs_52000",
@@ -791,7 +791,7 @@
             "lastSuccessAt": "2026-09-16T18:07:05Z"
           }
         ],
-        "currentCandidateJobs": 3,
+        "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
