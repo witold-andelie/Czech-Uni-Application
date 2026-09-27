@@ -286,6 +286,33 @@
           "file": "browse/nine-hei-inventory.json",
           "path": "counts",
           "delete": ["linkedProgrammes"]
+        },
+        {
+          "file": "manifest.json",
+          "path": "counts",
+          "set": {"linkedInventoryOfferings": 0}
+        }
+      ]
+    },
+    {
+      "id": "programme_link_count_key_absent_is_publishable",
+      "expect": "accept",
+      "rules": [],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "",
+          "delete": ["programmeLinks"]
+        },
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "counts",
+          "delete": ["linkedProgrammes"]
+        },
+        {
+          "file": "manifest.json",
+          "path": "counts",
+          "delete": ["linkedInventoryOfferings"]
         }
       ]
     },

@@ -108,10 +108,16 @@ describe("immutable browser publication selection", () => {
         for (const key of mutation.delete || []) delete cursor[key];
         Object.assign(cursor, resolveTokens(mutation.set || {}, snapshotRoot));
         fs.writeFileSync(target, JSON.stringify(payload));
-        const manifestPath = path.resolve(snapshotRoot, "manifest.json");
-        const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-        manifest.checksums[mutation.file] = "sha256:" + digest(target);
-        fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+        // manifest.json is not one of the checksummed required files, and it is
+        // not its own checksum entry: a corpus case may mutate the manifest's
+        // declared counts (the Python runner in services/ingestion has the same
+        // guard), but it must not leave a checksum key behind for it.
+        if (mutation.file !== "manifest.json") {
+          const manifestPath = path.resolve(snapshotRoot, "manifest.json");
+          const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+          manifest.checksums[mutation.file] = "sha256:" + digest(target);
+          fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+        }
       }
       const result = validateSnapshot({ ...selected, snapshotRoot });
       const codes = new Set(result.errors.map((error) => error.split(":")[0]));

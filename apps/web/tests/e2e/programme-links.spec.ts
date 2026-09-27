@@ -44,11 +44,22 @@ async function linksOfCard(card: Locator): Promise<OfficialLink[]> {
 }
 
 /**
+ * `waitForProgrammeResults` only waits for the loading text to clear, and the
+ * cards are a hydrated island, so a count taken immediately can still be zero
+ * under parallel load.  `browse.spec.ts` and `drawer.spec.ts` follow the same
+ * helper with this auto-retrying wait before they read any card.
+ */
+async function firstCardShown(page: Page): Promise<void> {
+  await expect(page.locator("article.result-card").first()).toBeVisible({ timeout: 30_000 });
+}
+
+/**
  * Every card states which of the two cases it is in, and the link it states it
  * for is the school's own page. A card that names no programme page at all -
  * or that names another organisation - fails here.
  */
 async function assertCardsStateTheirLink(page: Page, pageLabel: string, fallbackLabel: string): Promise<{ withPage: number; withoutPage: number }> {
+  await firstCardShown(page);
   const cards = page.locator("article.result-card");
   const total = await cards.count();
   expect(total, "no result cards on the page").toBeGreaterThan(0);
@@ -72,6 +83,7 @@ async function assertCardsStateTheirLink(page: Page, pageLabel: string, fallback
 
 /** The card of the first row that states `label`, so its detail can be opened. */
 async function cardStatingLabel(page: Page, label: string): Promise<Locator> {
+  await firstCardShown(page);
   const cards = page.locator("article.result-card");
   const total = await cards.count();
   for (let index = 0; index < total; index += 1) {
@@ -128,7 +140,9 @@ for (const locale of LOCALES) {
 
     let card = await cardStatingLabel(page, pageLabel);
     await card.locator("h3 a").first().click();
-    await expect(page).toHaveURL(new RegExp(`^/${locale}/programmes/[^/]+$`));
+    // The pattern is not anchored: `toHaveURL` matches the whole URL, origin
+    // included, so `^` can never match it (the other specs are unanchored too).
+    await expect(page).toHaveURL(new RegExp(`/${locale}/programmes/[^/]+`));
     const detailHref = await officialHrefStating(page, pageLabel);
     expect(detailHref, "the detail page does not name the programme page").toMatch(/^https:\/\//i);
     expect(CZU_HOST.test(new URL(String(detailHref)).hostname), `${detailHref} is not a CZU page`).toBeTruthy();
@@ -137,7 +151,7 @@ for (const locale of LOCALES) {
     await waitForProgrammeResults(page, locale);
     card = await cardStatingLabel(page, fallbackLabel);
     await card.locator("h3 a").first().click();
-    await expect(page).toHaveURL(new RegExp(`^/${locale}/programmes/[^/]+$`));
+    await expect(page).toHaveURL(new RegExp(`/${locale}/programmes/[^/]+`));
     const fallbackHref = await officialHrefStating(page, fallbackLabel);
     expect(fallbackHref, "the detail page does not say it shows the university site").toMatch(/^https:\/\//i);
     expect(FOREIGN_ORGANISATION.test(String(fallbackHref)), `${fallbackHref} is another organisation's page`).toBeFalsy();
@@ -158,6 +172,7 @@ test("CZU programme links fit a phone without horizontal overflow", async ({ pag
   for (let pageNumber = 1; pageNumber <= EN_PAGES && seen.size < labels.length; pageNumber += 1) {
     await page.goto(`/${locale}/programmes?teachingLanguage=en&institution=${CZU}&page=${pageNumber}`);
     await waitForProgrammeResults(page, locale);
+    await firstCardShown(page);
     const cards = page.locator("article.result-card");
     for (let index = 0; index < (await cards.count()); index += 1) {
       for (const link of await linksOfCard(cards.nth(index))) {
