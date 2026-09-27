@@ -129,6 +129,26 @@ def test_missing_or_malformed_retry_after_keeps_local_backoff(monkeypatch) -> No
     assert MAX_IN_PROCESS_RETRY_SECONDS == 30.0
 
 
+def test_http_error_body_timeout_still_returns_status(monkeypatch) -> None:
+    clear_host_cooldowns()
+
+    def fake_urlopen(*_args, **_kwargs):
+        error = _http_error(404, {})
+
+        def boom(*_a, **_k):
+            raise TimeoutError("chunked 404 body stalled")
+
+        error.read = boom
+        raise error
+
+    monkeypatch.setattr(jobs.urllib.request, "urlopen", fake_urlopen)
+    req = jobs.urllib.request.Request("https://jobs.example.test/missing")
+    result = jobs._request_bytes_with_retry(req, timeout=1, now=NOW, sleep_fn=lambda _s: None)
+    assert result.status == 404
+    assert result.body == b""
+    assert result.deferred is False
+
+
 def test_host_cooldown_survives_process_restart_without_new_request(monkeypatch) -> None:
     clear_host_cooldowns()
     set_host_cooldown("https://jobs.example.test/list", NOW + timedelta(hours=1))

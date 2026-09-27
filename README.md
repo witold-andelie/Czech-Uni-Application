@@ -30,8 +30,8 @@ GitHub hosts the source code and CI, not the public website.
 
 ## Current release
 
-- Publication **`v2026-09-27.6`**: 54 institutions, 5,019 register offerings,
-  **2,889** with a school-owned programme page (matched rows, not a claim that
+- Publication **`v2026-09-27.7`**: 54 institutions, 5,019 register offerings,
+  **3,095** with a school-owned programme page (matched rows, not a claim that
   every page was title-verified this run). 134 approved job records in the
   snapshot extract (unchanged; 6 withheld by live-evidence, not reported as
   closed), 4 reviewed admissions excerpts. The default jobs list count

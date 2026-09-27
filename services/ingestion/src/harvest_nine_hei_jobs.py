@@ -1563,7 +1563,10 @@ def _request_bytes_with_retry(
                 status = response.status
                 headers = _header_map(getattr(response, "headers", None))
         except urllib.error.HTTPError as error:
-            body = error.read() if error.fp else b""
+            try:
+                body = error.read() if error.fp else b""
+            except Exception:
+                body = b""
             status = error.code
             headers = _header_map(getattr(error, "headers", None) or getattr(error, "hdrs", None))
         except Exception:
