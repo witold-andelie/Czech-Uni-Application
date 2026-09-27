@@ -80,6 +80,12 @@ jobs:
       - name: Commit publication changes
         if: ${{ github.event.inputs.operation == 'publish' || github.event.inputs.operation == 'rollback' }}
         shell: bash
+        env:
+          # Without this the gh CLI cannot dispatch ci.yml at all: it exits 4 with
+          # "set the GH_TOKEN environment variable" after the snapshot is already
+          # committed and pushed, so the publication lands on main unbuilt and
+          # undeployed.  Observed in hosted run 36324226082.
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git add data/published/snapshots data/published/current.json data/sources/coverage
