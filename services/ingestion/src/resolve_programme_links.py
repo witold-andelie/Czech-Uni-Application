@@ -64,10 +64,25 @@ CATALOGUE_TOKEN_RE = re.compile(
 PROGRAMME_PAGE_TOKEN_RE = re.compile(
     r"(program|obor|studijn[íi]|sm[eě]r|combination|kombinac)", re.I
 )
+# A catalogue's own navigation names the next listing in its query ("page=2").
+PAGE_PARAM_RE = re.compile(r"^(?:[a-z0-9_-]*page[a-z0-9_-]*|p|strana)$", re.I)
+# Languages a Czech higher-education site writes as its own first path segment.
+PAGE_LANGUAGES = {"cs", "en", "de", "sk", "ru", "fr", "it", "pl", "es", "pt", "nl"}
+# A trailing path segment that names one record rather than a listing of them.
+ITEM_SEGMENTS = {"accreditation", "akreditace", "detail", "details"}
+ITEM_SEGMENT_RE = re.compile(r"^\d+$")
 LOC_RE = re.compile(r"<loc>\s*([^<\s]+)\s*</loc>", re.I)
 ANCHOR_RE = re.compile(r"<a\b[^>]*?href\s*=\s*([\"'])(.*?)\1[^>]*>(.*?)</a>", re.I | re.S)
+# The row a link sits on. A table row, list item or card holds what the school
+# writes beside the programme name - the level, the faculty - so the row, and
+# not a fixed number of characters, is what bounds that text. A cell is not a
+# boundary: the level sits in the cell before the name's cell.
+ROW_START_RE = re.compile(r"<\s*(?:tr|li|article|section|table|tbody|thead)\b[^>]*>", re.I)
 TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 H1_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.I | re.S)
+# A heading over a list states the level for every row of that list
+# ("<h2>Bakalářské programy</h2>" above a year's worth of <li> rows).
+HEADING_RE = re.compile(r"<\s*h([2-6])\b[^>]*>(.*?)</h\1\s*>", re.I | re.S)
 TAG_RE = re.compile(r"<[^>]+>")
 # A catalogue page often states the level next to the programme name ("Kynologie
 # (Bc.)", "Kynologie - master", /programy/bakalar/...). Only a level the school's
@@ -272,15 +287,136 @@ def page_title_text(body: str) -> str:
     return headings[0] if headings else ""
 
 
+# A programme page also states the level in a field, not only in its title line:
+# Mendel University titles every programme "Krajinné inženýrství - MENDELU" and
+# writes "Titul: Magisterský (Ing.)" beside the name. Only what follows one of
+# these labels is read, and a value stops at the next colon so the neighbouring
+# field's words never join it, which keeps admissions prose - "applicants join
+# the master programme after a bachelor programme" - from deciding a level.
+AWARDED_TITLE_LABEL_RE = re.compile(
+    r"(?i)\b(?:titul|stupe[nň]|akademick[yý]\s+titul|ud[eě]lan[yý]\s+titul"
+    r"|awarded\s+degree|degree\s+awarded|degree|qualification|title)\s*:\s*([^:]{0,40})"
+)
+
+
+def page_level_evidence(body: str) -> str:
+    """Everything the page states about the level this programme is studied at.
+
+    The page's title line, plus every value that follows an awarded-title label.
+    Two different levels anywhere in it give UNKNOWN_DEGREE, so a page that
+    names one level in its title and another in a sidebar stays undecided rather
+    than binding a row to the wrong level.
+    """
+    text = visible_text(body or "")
+    values = [match.group(1) for match in AWARDED_TITLE_LABEL_RE.finditer(text)]
+    return " ".join([page_title_text(body), *values])
+
+
 def anchors(body: str, base_url: str) -> list[tuple[str, str]]:
     """(absolute url, normalised anchor text) for every link on the page."""
-    found: list[tuple[str, str]] = []
-    for match in ANCHOR_RE.finditer(body or ""):
+    return [(url, text) for url, text, _before, _after in anchor_rows(body, base_url)]
+
+
+def anchor_rows(body: str, base_url: str) -> list[tuple[str, str, str, str]]:
+    """(absolute url, normalised anchor text, text before the link, after it).
+
+    The last two items are what the school writes on either side of the link, on
+    the link's own row. A catalogue is usually a table or a list whose row carries
+    the level a programme is studied at - Charles University's catalogue writes
+    "Typ studia: doktorské" in the cell before the programme name, and Ostrava
+    writes "navazující magisterské" in a cell under it - while the link text
+    itself only names the programme. Reading the row therefore learns the level
+    for free, with no extra request.
+
+    A row opener bounds both windows: the text before a link starts at the last
+    row opener before it and ends at the link, and the text after the link ends
+    at the next row opener or at the next link, whichever comes first. The next
+    link is a boundary because a row that names two programmes would otherwise
+    lend the second name's level to the first, and the row opener is one because
+    a level belongs to the row that states it and to no other. Where two links
+    have no row opener between them the earlier link owns the space between
+    them, so the second one's window in front of it is empty rather than another
+    row's words.
+
+    The heading is kept separately and carried down, because a heading states the
+    level for the whole list under it rather than for one row of it: VŠB-TUO
+    writes `<h2>Bakalářské programy</h2>` once and then every `<li>` of the list
+    that follows holds only the programme name and the faculty. Only the first
+    row of that list starts after the heading, so reading each row's own text
+    would learn the level for one row and lose it for the other fifty.
+    """
+    found: list[tuple[str, str, str, str]] = []
+    text = body or ""
+    matches = list(ANCHOR_RE.finditer(text))
+    if not matches:
+        return found
+    # Positions are collected once and walked in step with the links, so reading
+    # what follows a link never scans the rest of the page per link.
+    openers = [boundary.end() for boundary in ROW_START_RE.finditer(text)]
+    headings = [
+        (head.start(), head.end(), visible_text(head.group(2))) for head in HEADING_RE.finditer(text)
+    ]
+    row_start = 0
+    row_opener = 0
+    heading = ""
+    heading_seen = 0
+    for index, match in enumerate(matches):
+        while row_opener < len(openers) and openers[row_opener] <= match.start():
+            row_start = openers[row_opener]
+            row_opener += 1
+        # Every heading up to this link; the last one is the list it sits in.
+        while heading_seen < len(headings) and headings[heading_seen][1] <= match.start():
+            heading = headings[heading_seen][2]
+            heading_seen += 1
         url = absolute_url(base_url, unescape(match.group(2)))
         if not url:
             continue
-        found.append((url, normalise(visible_text(match.group(3)))))
+        stop = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        for boundary in ROW_START_RE.finditer(text, match.end(), stop):
+            stop = min(stop, boundary.start())
+            break
+        # Where no row opener separates this link from the one before it, the
+        # text between them belongs to that earlier link's row, not to this one:
+        # Ostrava's rows are plain <div>s, so the space between two programme
+        # links holds the previous row's faculty and level. Read as this row's
+        # own words, the previous row's "navazující magisterské" cancelled this
+        # row's "bakalářské studium", and 51 of its 169 rows stayed ambiguous
+        # while the page already said which was which.
+        previous_end = matches[index - 1].end() if index else 0
+        if previous_end and (not row_opener or openers[row_opener - 1] < previous_end):
+            before_text = ""
+        else:
+            before_text = visible_text(text[max(row_start, previous_end) : match.start()])
+        found.append(
+            (
+                url,
+                normalise(visible_text(match.group(3))),
+                normalise(f"{heading} {before_text}"),
+                normalise(visible_text(text[match.end() : stop])),
+            )
+        )
     return found
+
+
+def row_level(before: str, after: str) -> str:
+    """The level a catalogue row states, read on either side of its link.
+
+    Where a school writes the level is the school's own choice, so both windows
+    are read and the one that states something wins. Two different levels in the
+    two windows state nothing at all, exactly as two levels in one window do:
+    the level is the school's statement, and a page that says two things has said
+    neither.
+    """
+    stated = degree_stated(before)
+    tail = degree_stated(after)
+    if stated == tail:
+        return stated
+    # Only one side states a level: that side's own words decide the row.
+    if stated == UNKNOWN_DEGREE:
+        return tail
+    if tail == UNKNOWN_DEGREE:
+        return stated
+    return UNKNOWN_DEGREE
 
 
 def sitemap_urls(body: str) -> list[str]:
@@ -328,6 +464,11 @@ class Candidate:
     source_url: str = ""
     matched_by: str = ""
     observed_at: str = ""
+    # The level written beside the programme name on the same row, when the
+    # name's own link states none. Kept apart from ``degree`` because it is what
+    # separates a title the register carries at two levels, not a claim about
+    # this page on its own.
+    row_degree: str = UNKNOWN_DEGREE
 
 
 @dataclass
@@ -396,22 +537,27 @@ class Match:
             self.by_title_degree.setdefault((normalise(row.title), row.degree), []).append(row)
             self.by_title.setdefault(normalise(row.title), []).append(row)
 
-    def bind(self, candidate: Candidate) -> Binding:
+    def bind(self, candidate: Candidate, degree: str | None = None) -> Binding:
         """Bind a candidate page to register rows, or explain why it cannot.
 
         The source's own teaching language decides first. A cross-language
         candidate is accepted only when exactly one row of that degree carries
         the normalised title; two rows means the register itself is ambiguous
         and every one of them keeps the university-site fallback.
+
+        ``degree`` overrides the level the page states, and is used only to
+        re-judge an ambiguous binding against the level the page's own row
+        writes beside the name.
         """
+        stated = candidate.degree if degree is None else degree
         title_key = normalise(candidate.title)
-        if candidate.degree and candidate.degree != UNKNOWN_DEGREE:
-            exact = self.by_language.get((title_key, candidate.degree, candidate.language)) or []
+        if stated and stated != UNKNOWN_DEGREE:
+            exact = self.by_language.get((title_key, stated, candidate.language)) or []
             if len(exact) == 1:
                 return Binding(rows=exact, language=candidate.language)
             if len(exact) > 1:
                 return Binding(rows=exact, reason="ambiguous_register_rows")
-            cross = self.by_title_degree.get((title_key, candidate.degree)) or []
+            cross = self.by_title_degree.get((title_key, stated)) or []
             if len(cross) == 1:
                 return Binding(rows=cross, language=cross[0].language)
             if len(cross) > 1:
@@ -455,10 +601,40 @@ SOURCE_RANK = {
 }
 
 
-def candidate_rank(candidate: Candidate, row: Row) -> tuple[int, int, str]:
-    """Deterministic order among the school's own pages for one programme."""
+def page_language(url: str) -> str:
+    """The language the page is written in, when its own address says so.
+
+    Schools that publish a catalogue in both languages serve the same record
+    twice, differing only in that first segment: is.cuni.cz's accreditation 4376
+    is "Teologické nauky" under /cs/ and "Theological studies" under /en/. "cz"
+    is the country code Czech schools write where the language is meant, so it
+    counts as "cs". Only the first segment is read, and only against this closed
+    set, because plenty of first segments are not languages at all; an address
+    that says nothing returns "" and changes no ranking.
+    """
+    try:
+        segments = [segment for segment in urllib.parse.urlsplit(url).path.split("/") if segment]
+    except ValueError:
+        return ""
+    if not segments:
+        return ""
+    first = urllib.parse.unquote(segments[0]).casefold()
+    return "cs" if first == "cz" else (first if first in PAGE_LANGUAGES else "")
+
+
+def candidate_rank(candidate: Candidate, row: Row) -> tuple[int, int, int, str]:
+    """Deterministic order among the school's own pages for one programme.
+
+    After the slug, the page's own language: the register states which language
+    the row is taught in, so an English-taught programme links the English page
+    the school published for it rather than silently linking the Czech one. This
+    is a ranking and never a filter - a school that published only one language
+    keeps that page, because "" (the address states no language) ranks level with
+    the row's own language.
+    """
     return (
         0 if slug_agrees(candidate.url, row.title) else 1,
+        0 if page_language(candidate.url) in ("", row.language) else 1,
         SOURCE_RANK.get(candidate.matched_by, 9),
         candidate.url,
     )
@@ -534,8 +710,13 @@ class Limits:
     # past the first catalogue. It stays bounded per school and per run.
     # Depth measured 2026-09-27 (work/programme-link-probe/): at 14 entries
     # Charles University resolves 1 of 912 rows, at 60 entries it resolves 56,
-    # and CVUT goes from 0 to 48 of 283, so the walk is 60 catalogue pages.
-    max_catalogue_entries: int = 60
+    # and CVUT goes from 0 to 48 of 283. Charles University's catalogue is a
+    # windowed paginator - page 1 links pages 1-3 and 32-34, page 32 links the
+    # pages around it - so the walk climbs from both ends and needs 75 entries
+    # to name all 34 Czech and 34 English listing pages. At 60 it stopped at
+    # Czech page 14 and English page 14, leaving 12 listing pages (several
+    # hundred programmes) unread, so the walk is 80.
+    max_catalogue_entries: int = 80
     max_sitemap_children: int = 30
     max_locs: int = 20_000
     # Pages one school may cost. The same measurement put Charles University at
@@ -545,10 +726,20 @@ class Limits:
     # school after the first few (the run-wide 240 budget left Charles
     # University, CVUT and Palacky at 0 with "budget_exhausted").
     max_page_fetches: int = 260
-    max_candidates_per_page: int = 1_500
+    # Programme pages one school may hold. This counts the whole walk, not one
+    # page: Charles University's 68 listing pages name 1,500 register titles
+    # between them, and at 1,500 the limit stopped the walk mid-catalogue and
+    # let whichever programmes came first in the document take the remaining
+    # places. A school with more programme pages than this stays unresolved
+    # rather than losing rows to document order.
+    max_candidates_per_school: int = 6_000
     # Pages read to learn which level a same-titled programme page belongs to.
     # Bounded per school and counted against the same page budget as discovery.
-    max_level_probes: int = 60
+    # Masarykova univerzita holds 66 titles at two levels and needs about two
+    # reads per title (the bachelor page and the master page each state their own
+    # level), so 60 stopped halfway and left 114 of its 534 rows unresolved while
+    # the school's own pages already said which was which.
+    max_level_probes: int = 140
     # Verification shares a school's page budget with discovery, so one school
     # cannot spend the whole run re-checking links it already checked.
     max_verifications: int = 400
@@ -617,11 +808,40 @@ def host_in_domains(url: str, allowed_domains: set[str]) -> bool:
     return any(host == domain or host.endswith(f".{domain}") for domain in allowed_domains)
 
 
+def item_shaped(url: str) -> bool:
+    """Whether the address names one record rather than a listing of them.
+
+    A school system keeps its programme pages under its catalogue - Charles
+    University serves `/study-programs/program/accreditation/1372` next to
+    `/study-programs/program` - so an item page carries the same tokens as the
+    catalogue and looks like further catalogue to walk. Reading one costs a
+    request and names at most the row it is, and the anchor the walk found it
+    through already named that row. Measured 2026-09-27 on that catalogue: 31 of
+    60 walk entries were item pages with 26 register-title hits between them, so
+    the walk ran out of entries after 9 of the 34 listing pages.
+
+    A bare number is the last segment of a numbered listing just as often - a
+    school numbers its catalogue pages `/catalogue/5/` - so only an id below its
+    own named segments counts, which is where a record id sits.
+    """
+    try:
+        path = urllib.parse.urlsplit(url).path
+    except ValueError:
+        return False
+    segments = [segment for segment in path.split("/") if segment]
+    if len(segments) < 3:
+        return False
+    last = urllib.parse.unquote(segments[-1]).casefold()
+    return bool(ITEM_SEGMENT_RE.match(last)) or last in ITEM_SEGMENTS
+
+
 def catalogue_entries(body: str, base_url: str, allowed_domains: set[str]) -> list[str]:
     """Catalogue pages the school's own homepage links to, best first."""
     scored: dict[str, int] = {}
     for url, text in anchors(body, base_url):
         if not host_in_domains(url, allowed_domains):
+            continue
+        if item_shaped(url):
             continue
         try:
             path = urllib.parse.urlsplit(url).path
@@ -642,11 +862,106 @@ def catalogue_entries(body: str, base_url: str, allowed_domains: set[str]) -> li
     return [url for url, _score in sorted(scored.items(), key=lambda item: (-item[1], item[0]))]
 
 
+def path_only(url: str) -> str:
+    """The address without its query: /study-programs/program?page=2 -> .../program."""
+    try:
+        parsed = urllib.parse.urlsplit(url)
+    except ValueError:
+        return url
+    return f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+
+
+def pagination_page(url: str) -> str | None:
+    """The listing this address asks for by page number, or None.
+
+    A catalogue's own navigation links the next listing under the same path with
+    a different query - `?page=2` - and, just as often, links the listing that
+    was just read again in another presentation: `?setDeviceType=mobile&page=2`
+    is page 2 and `?page=2&` is page 2, while `?setDeviceType=mobile` names no
+    page at all and is page 1 in a mobile layout. A link that states no page
+    number is a presentation toggle rather than a listing the walk has not read,
+    so None separates it from page 1 itself.
+    """
+    try:
+        query = urllib.parse.urlsplit(url).query
+    except ValueError:
+        return None
+    page: str | None = None
+    for part in query.split("&"):
+        if not part:
+            # A trailing "&" is a spelling artefact of the same parameter.
+            continue
+        name, _, value = part.partition("=")
+        if PAGE_PARAM_RE.match(name):
+            page = value
+    return page
+
+
+def catalogue_walk_order(
+    body: str,
+    entry: str,
+    allowed_domains: set[str],
+    candidates: set[str],
+    read: set[str],
+    queued: set[str],
+) -> list[str]:
+    """Catalogue pages to read next, best first for this particular page.
+
+    A catalogue page names fifty programmes and links to the next fifty with the
+    same path and a different query, and it also links to each of the fifty
+    programme pages it just named. Those fifty are already candidates, so
+    reading them would spend the page budget to learn nothing; the pages that
+    still carry unread names are the listing's own siblings. So a page that is
+    already a candidate is not queued, and same-path links - pagination,
+    filters, language switches - are queued ahead of the pages they lead to.
+
+    Among those same-path siblings only the page number identifies a listing the
+    walk has not read yet: the plainest spelling of each number is queued once,
+    so a listing linked as both `?page=2` and `?setDeviceType=mobile&page=2` is
+    read once, and a link that states no page at all is skipped. Measured
+    2026-09-27 on Charles University's SIS catalogue: 11 of 60 entries were
+    device-type twins of listings already read and 31 were programme pages, so
+    the walk reached 9 of 34 listing pages and resolved 158 of 912 rows.
+    """
+    siblings: dict[tuple[str, str], str] = {}
+    deeper: list[str] = []
+    entry_path = path_only(entry)
+    entry_page = pagination_page(entry) or "1"
+    for url in catalogue_entries(body, entry, allowed_domains):
+        if url in read or url in queued or url in candidates:
+            continue
+        base = path_only(url)
+        if base != entry_path:
+            deeper.append(url)
+            continue
+        page = pagination_page(url)
+        if page is None:
+            continue
+        page = page or "1"
+        if page == entry_page:
+            continue
+        key = (base, page)
+        already = siblings.get(key)
+        # The plainest spelling wins: fewer query parameters, then the shorter
+        # address, so the same listing is never read under two spellings.
+        if already is None or (url.count("&"), len(url)) < (
+            already.count("&"),
+            len(already),
+        ):
+            siblings[key] = url
+    ordered = sorted(
+        siblings.items(),
+        key=lambda item: (item[0][0], int(item[0][1]) if item[0][1].isdigit() else -1, item[0][1]),
+    )
+    return [url for _key, url in ordered] + deeper
+
+
 def discover_candidates(
     target: dict,
     fetch: ThrottledFetch,
     limits: Limits,
     budget: Budget,
+    interesting: Callable[[str], bool] | None = None,
 ) -> tuple[list[Candidate], list[str]]:
     """Collect programme-page candidates from the school's own site.
 
@@ -659,6 +974,14 @@ def discover_candidates(
     page that turns out to be a programme page costs one bounded request. A school
     whose programmes are only reachable through a deeper tree stays unresolved
     rather than being guessed at.
+
+    ``interesting`` names the titles the MŠMT register holds for this school. A
+    link whose own text names no register row cannot be this school's page for
+    any row, so it is not carried as a candidate at all: Charles University's
+    catalogue states 1,660 records where the register holds 912 rows, and Ostrava
+    lists 4,776 links for 169 rows, so the walk would otherwise fill its
+    candidate list with whichever of them comes first in the document and lose
+    the rest to that order.
     """
     notes: list[str] = []
     note_counts: dict[str, int] = {}
@@ -684,10 +1007,18 @@ def discover_candidates(
     read: set[str] = set()
     queued: set[str] = set(queue)
 
-    def keep(url: str, title: str, source_url: str, matched_by: str) -> None:
-        if len(candidates) >= limits.max_candidates_per_page or url in seen:
+    def keep(
+        url: str,
+        title: str,
+        source_url: str,
+        matched_by: str,
+        row_degree: str = UNKNOWN_DEGREE,
+    ) -> None:
+        if len(candidates) >= limits.max_candidates_per_school or url in seen:
             return
         if not host_in_domains(url, allowed_domains):
+            return
+        if interesting is not None and not interesting(normalise(title)):
             return
         seen.add(url)
         candidates.append(
@@ -701,6 +1032,7 @@ def discover_candidates(
                 source_url=source_url,
                 matched_by=matched_by,
                 observed_at=observed_at,
+                row_degree=row_degree,
             )
         )
 
@@ -716,10 +1048,10 @@ def discover_candidates(
         if status != 200 or not body:
             note(f"catalogue_unreachable_http_{status}")
             continue
-        for url, text in anchors(body, entry):
+        for url, text, before, after in anchor_rows(body, entry):
             if not text:
                 continue
-            keep(url, text, entry, "school_catalogue_anchor")
+            keep(url, text, entry, "school_catalogue_anchor", row_level(before, after))
         for url in sitemap_urls(body):
             slug = slug_text(url)
             if slug:
@@ -727,13 +1059,13 @@ def discover_candidates(
         # One extra hop: a catalogue page often only lists faculties or
         # departments, whose own pages hold the programme names.
         if len(read) < limits.max_catalogue_entries:
-            for url in catalogue_entries(body, entry, allowed_domains):
-                if url in read or url in queued:
-                    continue
+            for url in catalogue_walk_order(body, entry, allowed_domains, seen, read, queued):
                 queued.add(url)
                 queue.append(url)
 
-    sitemap_candidates, sitemap_notes = discover_from_sitemaps(target, fetch, limits, budget, allowed_domains)
+    sitemap_candidates, sitemap_notes = discover_from_sitemaps(
+        target, fetch, limits, budget, allowed_domains, interesting
+    )
     for note_text in sitemap_notes:
         note(note_text)
     for candidate in sitemap_candidates:
@@ -750,6 +1082,7 @@ def discover_from_sitemaps(
     limits: Limits,
     budget: Budget,
     allowed_domains: set[str],
+    interesting: Callable[[str], bool] | None = None,
 ) -> tuple[list[Candidate], list[str]]:
     notes: list[str] = []
     bases = [str(target.get("officialUrl") or "")] + [str(url) for url in target.get("entryUrls") or []]
@@ -809,6 +1142,8 @@ def discover_from_sitemaps(
             continue
         slug = slug_text(url)
         if not slug or url in seen:
+            continue
+        if interesting is not None and not interesting(slug):
             continue
         seen.add(url)
         candidates.append(
@@ -1062,7 +1397,7 @@ def probe_levels(
             status, body = fetch(candidate.url)
             if status != 200 or not body:
                 continue
-            level = degree_stated(page_title_text(body))
+            level = degree_stated(page_level_evidence(body))
             row = rows_by_degree.get(level)
             if row is None:
                 continue
@@ -1099,6 +1434,11 @@ def resolve_school(
 
     def collect(candidate: Candidate) -> None:
         binding = match.bind(candidate)
+        if binding.reason and candidate.row_degree != UNKNOWN_DEGREE:
+            # The link named a title the register carries at two levels, and the
+            # page's own row says which one this is. Only an ambiguous title is
+            # re-judged, so a row that already binds is never second-guessed.
+            binding = match.bind(candidate, candidate.row_degree)
         if not binding.rows:
             return
         if binding.reason:
@@ -1112,7 +1452,9 @@ def resolve_school(
         collect(candidate)
 
     if live:
-        candidates, discovery_notes = discover_candidates(target, fetch, limits, budget)
+        candidates, discovery_notes = discover_candidates(
+            target, fetch, limits, budget, interesting=lambda key: key in match.by_title
+        )
         notes.extend(discovery_notes)
         for candidate in candidates:
             if budget.expired:

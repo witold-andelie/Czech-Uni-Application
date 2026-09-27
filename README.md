@@ -18,27 +18,29 @@ GitHub hosts the source code and CI, not the public website.
   evidence-bound fact review and real zh-CN/en/cs translation review.
   Postdocs are excluded from master's-entry and funded-doctoral filters by
   design.
-- **Map**: all 54 institutions on MapLibre/OpenStreetMap with an offline
-  bundled fallback.
+- **Map**: all 54 institutions on a first-party Czech SVG basemap (14 kraje);
+  MapLibre OSM tiles are an optional retry, not required for first paint.
 - **Honest boundaries**: unknown facts (degree thresholds, salaries, dates)
   stay visibly unknown. The catalogue is a reviewed snapshot, not a claim of
-  complete national vacancy coverage.
+  complete national vacancy coverage. Owner rule 2026-09-27 (A101): keep
+  expanding coverage; do not drop still-open official vacancies when changing
+  harvest, filters, publish or CI. Verified closures and dated expiry may
+  leave the public list. New jobs still need trilingual review before a
+  snapshot.
 
 ## Current release
 
-- Publication `v2026-09-17.1`: **15 reviewed public jobs from 5 universities**
-  (Charles University 5, Masaryk University 4, CZU 4, University of South
-  Bohemia 1, University of West Bohemia 1), 4 reviewed admissions excerpts,
-  54 baseline institutions, and map coverage for all 54. The lower public
-  count reflects verified expiry/closure removal, not data loss.
-- Candidate pipeline: 174 discovered records; 125 are current, of which 15 are
-  public and 110 remain blocked with explicit reasons. Official job sources are
-  registered for 31 of 54 universities. All 54 institutions now have an
-  auditable vacancy-channel assessment: 29 have executed sources, 2 have
-  registered sources awaiting a successful run, and 23 official-site checks
-  found no central listing at that time. The last category does not mean the
-  institution has no vacancies. No source currently supports an exhaustive
-  institution-wide coverage claim.
+- Publication **`v2026-09-27.2`**: 54 institutions, 5,019 register offerings,
+  **1,819** with a school-owned programme page (matched rows, not a claim that
+  every page was title-verified this run). 134 approved job records in the
+  snapshot extract (same as v2026-09-27.1; 6 withheld by live-evidence, not
+  reported as closed), 4 reviewed admissions excerpts. The default jobs list
+  count follows the visitor's clock.
+- Harvest runs daily on GitHub Actions (`refresh.yml` full tick). That writes
+  Supabase and a 3-day artifact; it does not switch the public snapshot.
+  Official job sources are registered for part of the 54-university baseline;
+  “no central listing found” is not “this university has no jobs.” No source
+  currently supports an exhaustive institution-wide coverage claim.
 
 ## Architecture
 

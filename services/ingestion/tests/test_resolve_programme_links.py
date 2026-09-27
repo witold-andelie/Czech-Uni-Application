@@ -308,7 +308,96 @@ def test_the_level_probe_reads_nothing_when_no_page_states_a_level() -> None:
     assert unresolved == {row.ident: "ambiguous_register_rows" for row in match.rows}
 
 
-def test_no_source_produces_no_links() -> None:
+def test_the_awarded_title_field_states_the_level_the_title_line_omits() -> None:
+    """Mendel University titles a programme by name and states its level in a field."""
+    match = rpl.Match(
+        [row("msmt-vs_1", "Krajinné inženýrství", "b", "cs"), row("msmt-vs_1", "Krajinné inženýrství", "m", "cs")]
+    )
+    unresolved = {row.ident: "ambiguous_register_rows" for row in match.rows}
+    page = candidate("https://www.school.cz/studijni-programy/krajinne-inzenyrstvi/", "Krajinné inženýrství", "u", "")
+    body = (
+        "<html><head><title>Krajinné inženýrství - MENDELU</title></head><body>"
+        "<h1>Krajinné inženýrství</h1>"
+        "<div class='info-row'><span class='label'>Titul:</span> Magisterský (Ing.)</div>"
+        "<div class='info-row'><span class='label'>Fakulta:</span> Zahradnická fakulta</div>"
+        "</body></html>"
+    )
+    throttled = rpl.ThrottledFetch(
+        FakeFetch({page.url: (200, body)}), sleep=lambda _seconds: None
+    )
+    probed, notes = rpl.probe_levels(
+        match,
+        unresolved,
+        {rpl.normalise("Krajinné inženýrství"): [page]},
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+    )
+    assert notes == []
+    assert [item[0].url for item in probed[match.rows[1].ident]] == [page.url]
+    assert match.rows[0].ident not in probed
+    assert match.rows[0].ident in unresolved
+
+
+def test_prose_about_the_other_level_decides_nothing() -> None:
+    """Admissions prose names both levels; only a field or the title line decides."""
+    match = rpl.Match(
+        [row("msmt-vs_1", "Krajinné inženýrství", "b", "cs"), row("msmt-vs_1", "Krajinné inženýrství", "m", "cs")]
+    )
+    unresolved = {row.ident: "ambiguous_register_rows" for row in match.rows}
+    page = candidate("https://www.school.cz/studijni-programy/krajinne-inzenyrstvi/", "Krajinné inženýrství", "u", "")
+    body = (
+        "<html><head><title>Krajinné inženýrství - MENDELU</title></head><body><h1>Krajinné inženýrství</h1>"
+        "<p>Uchazeči budou do navazujícího magisterského studia přijati na základě vykonání "
+        "příjímací zkoušky z předmětů státní závěrečné zkoušky bakalářského studijního programu.</p>"
+        "</body></html>"
+    )
+    throttled = rpl.ThrottledFetch(
+        FakeFetch({page.url: (200, body)}), sleep=lambda _seconds: None
+    )
+    probed, _notes = rpl.probe_levels(
+        match,
+        unresolved,
+        {rpl.normalise("Krajinné inženýrství"): [page]},
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+    )
+    assert probed == {}
+    assert unresolved == {row.ident: "ambiguous_register_rows" for row in match.rows}
+
+
+def test_two_stated_levels_on_one_page_decide_nothing() -> None:
+    """A page listing other programmes' degrees must not bind a row to one of them."""
+    match = rpl.Match(
+        [row("msmt-vs_1", "Lesní inženýrství", "b", "cs"), row("msmt-vs_1", "Lesní inženýrství", "m", "cs")]
+    )
+    unresolved = {row.ident: "ambiguous_register_rows" for row in match.rows}
+    page = candidate("https://www.school.cz/studijni-programy/lesni-inzenyrstvi/", "Lesní inženýrství", "u", "")
+    body = (
+        "<html><head><title>Lesní inženýrství - MENDELU</title></head><body><h1>Lesní inženýrství</h1>"
+        "<div class='info-row'><span class='label'>Titul:</span> Magisterský (Ing.)</div>"
+        "<aside><h3>Související programy</h3>"
+        "<p>Lesní inženýrství - specializace Lovectví a myslivost</p>"
+        "<p><span class='label'>Titul:</span> Bakalářský (Bc.)</p></aside>"
+        "</body></html>"
+    )
+    throttled = rpl.ThrottledFetch(
+        FakeFetch({page.url: (200, body)}), sleep=lambda _seconds: None
+    )
+    probed, _notes = rpl.probe_levels(
+        match,
+        unresolved,
+        {rpl.normalise("Lesní inženýrství"): [page]},
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+    )
+    assert probed == {}
+    assert unresolved == {row.ident: "ambiguous_register_rows" for row in match.rows}
+
+
+
     payload = rpl.build_links(
         fetch=None,
         now=datetime(2026, 9, 27, tzinfo=timezone.utc),
@@ -487,6 +576,390 @@ def test_catalogue_walk_stays_bounded_per_school() -> None:
     catalogue_calls = [url for url in fetch.calls if url.startswith("https://www.school.cz/catalogue/")]
     assert len(catalogue_calls) <= 5
     assert candidates  # every page still contributes its anchors
+
+
+def test_a_paginated_catalogue_is_read_to_its_end() -> None:
+    """A listing's own pages are read before the programme pages it named.
+
+    Charles University's SIS catalogue states fifty programmes per page and
+    links to the next thirty-three pages with the same path and a different
+    query. Read in document order the walk spent its sixty entries on the fifty
+    programme pages the listing had just named - each already a candidate - and
+    never reached page 2, so 56 of 912 rows resolved. The listing's siblings are
+    therefore queued ahead of the pages they lead to.
+    """
+    target = school_target("is.school.cz")
+    target["entryUrls"] = ["https://is.school.cz/study-programs/program"]
+    rows = [row("msmt-vs_00000", f"Programme {index}", "b", "cs") for index in range(4)]
+
+    def listing(page: int) -> str:
+        items = "\n".join(
+            f'<a href="/study-programs/program/accreditation/{index}">'
+            f"Programme {index if page == 1 else page * 10 + index}</a>"
+            for index in range(4)
+        )
+        # The next page is linked with the same path and a different query.
+        return (
+            f"<html><body>{items}"
+            f'<a href="/study-programs/program?page={page + 1}">{page + 1}</a>'
+            "</body></html>"
+        )
+
+    fetch = FakeFetch(
+        {
+            "https://is.school.cz/study-programs/program": (200, listing(1)),
+            "https://is.school.cz/study-programs/program?page=2": (200, listing(2)),
+            "https://is.school.cz/study-programs/program?page=3": (200, listing(3)),
+        },
+        default=(200, "<html><body></body></html>"),
+    )
+    limits = rpl.Limits(max_catalogue_entries=2)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    match = rpl.Match(rows)
+    candidates, _notes = rpl.discover_candidates(
+        target,
+        throttled,
+        limits,
+        rpl.Budget(60),
+        interesting=lambda key: key in match.by_title,
+    )
+    # Both listing pages were read inside the two-entry budget...
+    assert fetch.calls.count("https://is.school.cz/study-programs/program?page=2") == 1
+    # ...and neither spent a read on a programme page the listing had named.
+    assert not [url for url in fetch.calls if "/accreditation/" in url]
+    # The names on both listings are candidates.
+    assert len(candidates) == 4
+    assert {item.title for item in candidates} == {
+        "programme 0", "programme 1", "programme 2", "programme 3"
+    }
+
+
+def test_the_level_written_beside_the_name_separates_a_title_held_at_two_levels() -> None:
+    """A catalogue is a table whose row states the level; the link names none.
+
+    Charles University's SIS catalogue writes a faculty, "Typ studia" and the
+    programme name into one row, so the text beside the link says "doktorské"
+    while the link itself only says "Optika a optometrie". The register holds
+    that title once as a bachelor and once as a master programme; without the
+    row both stay ambiguous and both rows keep the university site.
+    """
+    target = school_target("is.school.cz")
+    target["entryUrls"] = ["https://is.school.cz/study-programs/program"]
+    rows = [
+        row("msmt-vs_00000", "Optika a optometrie", "b", "cs"),
+        row("msmt-vs_00000", "Optika a optometrie", "m", "cs"),
+    ]
+    listing = (
+        "<html><body><table><tbody>"
+        '<tr class="row"><td>Přírodovědecká fakulta</td><td>bakalářské</td>'
+        '<td><a href="/study-programs/program/accreditation/1">Optika a optometrie</a></td></tr>'
+        '<tr class="row"><td>Přírodovědecká fakulta</td><td>magisterské</td>'
+        '<td><a href="/study-programs/program/accreditation/2">Optika a optometrie</a></td></tr>'
+        "</tbody></table></body></html>"
+    )
+    fetch = FakeFetch({"https://is.school.cz/study-programs/program": (200, listing)})
+    match = rpl.Match(rows)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    links, unresolved, _multiple, notes = rpl.resolve_school(
+        target, match, [], throttled, rpl.Limits(), rpl.Budget(60), live=True
+    )
+    assert notes == []
+    assert links[rows[0].ident].url == "https://is.school.cz/study-programs/program/accreditation/1"
+    assert links[rows[1].ident].url == "https://is.school.cz/study-programs/program/accreditation/2"
+    assert unresolved == {}
+
+
+def test_the_heading_over_a_list_states_the_level_of_every_row() -> None:
+    """A level written once above a list belongs to the whole list.
+
+    VŠB-TUO's catalogue writes `<h2>Bakalářské programy</h2>` and then one `<li>`
+    per programme, each holding only the name and the faculty - so the level is
+    beside the first row's link and nowhere near the second one's. Reading only
+    the text on a link's own row leaves the second row ambiguous, which is how
+    104 of VŠB-TUO's 293 rows stayed unresolved while the page already said which
+    list each programme was in.
+    """
+    target = school_target("www.school.cz")
+    target["entryUrls"] = ["https://www.school.cz/uchazec/studijni-programy"]
+    rows = [
+        row("msmt-vs_00000", "Aplikovaná elektronika", "b", "cs"),
+        row("msmt-vs_00000", "Kybernetika", "m", "cs"),
+        row("msmt-vs_00000", "Tělesná výchova a sport", "d", "cs"),
+    ]
+    listing = (
+        "<html><body><div class='study-programmes'>"
+        "<h2 id='bachelor'>Bakalářské programy</h2><div><ul>"
+        "<li><a href='.?programmeId=764'>Aplikovaná elektronika</a><span>(FEI)</span></li>"
+        "<li><a href='.?programmeId=765'>Kybernetika</a><span>(FEI)</span></li>"
+        "</ul></div>"
+        "<h2 id='master'>Magisterské programy</h2><div><ul>"
+        "<li><a href='.?programmeId=800'>Tělesná výchova a sport</a><span>(FSI)</span></li>"
+        "</ul></div>"
+        "</div></body></html>"
+    )
+    fetch = FakeFetch(
+        {"https://www.school.cz/uchazec/studijni-programy": (200, listing)},
+        default=(200, "<html><body></body></html>"),
+    )
+    match = rpl.Match(rows)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    links, unresolved, _multiple, notes = rpl.resolve_school(
+        target, match, [], throttled, rpl.Limits(), rpl.Budget(60), live=True
+    )
+    assert notes == []
+    # Every row of a list takes the level that list's heading states, so the
+    # master's row is not bound to the bachelor page that shares its name.
+    assert links[rows[0].ident].url == "https://www.school.cz/uchazec/?programmeId=764"
+    assert links[rows[1].ident].url == "https://www.school.cz/uchazec/?programmeId=765"
+    assert links[rows[2].ident].url == "https://www.school.cz/uchazec/?programmeId=800"
+    assert unresolved == {}
+
+
+def test_a_heading_stating_two_levels_states_none() -> None:
+    """A page that states two levels on one list states none.
+
+    Only a level the school's own page states is used. A heading and a row that
+    disagree, or a list under both a bachelor and a doctoral heading, is read as
+    the page having said nothing, so the row keeps the university site instead of
+    having a level chosen for it.
+    """
+    target = school_target("www.school.cz")
+    target["entryUrls"] = ["https://www.school.cz/uchazec/studijni-programy"]
+    rows = [
+        row("msmt-vs_00000", "Kybernetika", "b", "cs"),
+        row("msmt-vs_00000", "Kybernetika", "m", "cs"),
+    ]
+    listing = (
+        "<html><body>"
+        "<h2>Bakalářské a magisterské programy</h2>"
+        "<ul><li><a href='.?programmeId=764'>Kybernetika</a></li></ul>"
+        "</body></html>"
+    )
+    fetch = FakeFetch(
+        {"https://www.school.cz/uchazec/studijni-programy": (200, listing)},
+        default=(200, "<html><body></body></html>"),
+    )
+    match = rpl.Match(rows)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    links, unresolved, _multiple, _notes = rpl.resolve_school(
+        target, match, [], throttled, rpl.Limits(), rpl.Budget(60), live=True
+    )
+    assert links == {}
+    assert set(unresolved.values()) == {"ambiguous_register_rows"}
+
+
+def test_the_level_written_after_the_name_states_the_rows_level() -> None:
+    """A school that writes the level under the name is read just the same.
+
+    Ostrava's catalogue has no row opener inside a programme's own cells: the
+    name sits in a `<div>`, the faculty in the next, and the level
+    ("navazující magisterské") in the last one below it. The filter sidebar above
+    it names both a bachelor and a master level, so the text before the link
+    states two and therefore none - which is why 51 of Ostrava's 169 rows stayed
+    ambiguous while the page said which was which under every name.
+    """
+    target = school_target("www.school.cz")
+    target["entryUrls"] = ["https://www.school.cz/studijniobory"]
+    rows = [
+        row("msmt-vs_00000", "Anglická filologie", "b", "cs"),
+        row("msmt-vs_00000", "Anglická filologie", "m", "cs"),
+        row("msmt-vs_00000", "Český jazyk a literatura", "b", "cs"),
+        row("msmt-vs_00000", "Český jazyk a literatura", "m", "cs"),
+    ]
+    listing = (
+        "<html><body><div class='filter'><ul>"
+        "<li>bakalářské</li><li>magisterské</li><li>navazující</li>"
+        "</ul></div>"
+        "<div class='w100 bb'><div class='w70 lfloat'><div class='w100 pb1'>"
+        "<a href='./?specializaceid=1001' title='detail'>Anglická filologie</a></div>"
+        "<div class='w100'>(Anglická filologie)</div></div>"
+        "<div class='w20 lfloat'>Filozofická fakulta</div>"
+        "<div class='w15 rfloat'>navazující magisterské</div></div>"
+        "<div class='w100 bb'><div class='w70 lfloat'><div class='w100 pb1'>"
+        "<a href='./?specializaceid=1002' title='detail'>Anglická filologie</a></div>"
+        "<div class='w100'>(Anglická filologie)</div></div>"
+        "<div class='w20 lfloat'>Filozofická fakulta</div>"
+        "<div class='w15 rfloat'>bakalářské studium</div></div>"
+        "<div class='w100 bb'><div class='w70 lfloat'><div class='w100 pb1'>"
+        "<a href='./?specializaceid=1003' title='detail'>Český jazyk a literatura</a></div>"
+        "<div class='w100'>(Český jazyk a literatura)</div></div>"
+        "<div class='w20 lfloat'>Filozofická fakulta</div>"
+        "<div class='w15 rfloat'>bakalářské a navazující magisterské</div></div>"
+        "</div></body></html>"
+    )
+    fetch = FakeFetch(
+        {"https://www.school.cz/studijniobory": (200, listing)},
+        default=(200, "<html><body></body></html>"),
+    )
+    match = rpl.Match(rows)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    links, unresolved, _multiple, notes = rpl.resolve_school(
+        target, match, [], throttled, rpl.Limits(), rpl.Budget(60), live=True
+    )
+    assert notes == []
+    # Each row takes the level written under its own name, and the row whose
+    # own cells state both levels keeps the university site.
+    assert links[rows[0].ident].url == "https://www.school.cz/?specializaceid=1002"
+    assert links[rows[1].ident].url == "https://www.school.cz/?specializaceid=1001"
+    assert set(unresolved) == {rows[2].ident, rows[3].ident}
+    assert set(unresolved.values()) == {"ambiguous_register_rows"}
+
+
+def test_the_level_after_a_name_never_comes_from_the_next_programme() -> None:
+    """The text after a link stops at the next link on the page.
+
+    A row that names two programmes must not lend the second one's level to the
+    first: the window ends at the next anchor, so a level that belongs to the
+    programme named after it is never read as this one's.
+    """
+    target = school_target("www.school.cz")
+    target["entryUrls"] = ["https://www.school.cz/studijniobory"]
+    rows = [
+        row("msmt-vs_00000", "Anglická filologie", "b", "cs"),
+        row("msmt-vs_00000", "Anglická filologie", "m", "cs"),
+    ]
+    listing = (
+        "<html><body><table><tbody>"
+        "<tr><td>Filozofická fakulta</td>"
+        "<td><a href='?id=1'>Anglická filologie</a> "
+        "<a href='?id=2'>Anglická filologie</a></td>"
+        "<td>navazující magisterské</td></tr>"
+        "</tbody></table></body></html>"
+    )
+    fetch = FakeFetch(
+        {"https://www.school.cz/studijniobory": (200, listing)},
+        default=(200, "<html><body></body></html>"),
+    )
+    match = rpl.Match(rows)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    links, unresolved, _multiple, _notes = rpl.resolve_school(
+        target, match, [], throttled, rpl.Limits(), rpl.Budget(60), live=True
+    )
+    # Only the second name reaches the level cell, so only the master's row is
+    # bound; the bachelor's page on the same row states no level of its own.
+    assert links[rows[1].ident].url == "https://www.school.cz/studijniobory?id=2"
+    assert set(unresolved) == {rows[0].ident}
+    assert unresolved[rows[0].ident] == "ambiguous_register_rows"
+
+
+def test_one_listing_is_read_once_whatever_its_query() -> None:
+    """A presentation toggle is not a listing the walk has not read.
+
+    Charles University's catalogue offers the same listing again as
+    "?setDeviceType=mobile&page=2" and as "?page=2", and both spellings sit in
+    the listing's own pagination. Read in document order the walk spent 11 of
+    its 60 entries on device twins of pages it had already read.
+    """
+    target = school_target("is.school.cz")
+    target["entryUrls"] = ["https://is.school.cz/program"]
+    listing = (
+        "<html><body>"
+        '<a href="/program?page=2">2</a>'
+        '<a href="/program?setDeviceType=mobile&amp;page=2">2</a>'
+        '<a href="/program?page=1">1</a>'
+        "</body></html>"
+    )
+    fetch = FakeFetch(
+        {
+            "https://is.school.cz/program": (200, listing),
+            "https://is.school.cz/program?page=2": (200, listing),
+            "https://is.school.cz/program?setDeviceType=mobile&page=2": (200, listing),
+        },
+        default=(200, "<html><body></body></html>"),
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    _candidates, _notes = rpl.discover_candidates(
+        target,
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+        # The pagination's own numbers name no register row, so they are not
+        # candidates: only the listings they name are read.
+        interesting=lambda key: False,
+    )
+    assert fetch.calls.count("https://is.school.cz/program?page=2") == 1
+    assert not [url for url in fetch.calls if "setDeviceType" in url]
+
+
+def test_a_programme_page_is_not_walked_as_further_catalogue() -> None:
+    """A catalogue's rows link programme pages, not more listings.
+
+    Charles University's SIS catalogue carries "/program/accreditation/1372" in
+    the row after the listing that named it, with the same tokens as the
+    catalogue itself. Walked as catalogue it names only the one programme it
+    is - and the anchor on the listing already named it - so the walk spent 31
+    of its 60 entries on programme pages and stopped at 9 of the 34 listings.
+    The page is still a candidate: it just costs no read of its own.
+    """
+    target = school_target("is.school.cz")
+    target["entryUrls"] = ["https://is.school.cz/study-programs/program"]
+    listing = (
+        "<html><body>"
+        '<a href="/study-programs/program?page=2">2</a>'
+        '<a href="/study-programs/program/accreditation/1372">Optika a optometrie</a>'
+        '<a href="/study-programs/program/accreditation/1373">Kybernetika</a>'
+        "</body></html>"
+    )
+    fetch = FakeFetch(
+        {
+            "https://is.school.cz/study-programs/program": (200, listing),
+            "https://is.school.cz/study-programs/program?page=2": (200, "<html><body></body></html>"),
+        },
+        default=(200, "<html><body></body></html>"),
+    )
+    rows = [row("msmt-vs_00000", "Optika a optometrie", "b", "cs"), row("msmt-vs_00000", "Kybernetika", "b", "cs")]
+    match = rpl.Match(rows)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    candidates, _notes = rpl.discover_candidates(
+        target,
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+        interesting=lambda key: key in match.by_title,
+    )
+    assert [item.url for item in candidates] == [
+        "https://is.school.cz/study-programs/program/accreditation/1372",
+        "https://is.school.cz/study-programs/program/accreditation/1373",
+    ]
+    assert not [url for url in fetch.calls if "/accreditation/" in url]
+
+
+def test_a_link_that_names_no_register_row_is_not_a_candidate() -> None:
+    """Ostrava lists 4,776 links for 169 register rows.
+
+    Keeping every one of them filled the candidate list in document order and
+    lost the rest, so a link is only carried when its own text names a title the
+    register holds. Nothing is guessed at: a title the school writes differently
+    is simply not bound, and the row keeps the university site.
+    """
+    target = school_target()
+    homepage = """
+    <html><body>
+      <a href="/programmes/">Studijní programy</a>
+    </body></html>
+    """
+    catalogue = """
+    <html><body>
+      <a href="/programmes/kynologie/">Kynologie</a>
+      <a href="/programmes/sportovni-lekarstvi/">Sportovní lékařství</a>
+    </body></html>
+    """
+    fetch = FakeFetch(
+        {
+            "https://www.school.cz": (200, homepage),
+            "https://www.school.cz/programmes": (200, catalogue),
+        }
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    match = rpl.Match([row("msmt-vs_00000", "Kynologie", "b", "cs")])
+    candidates, _notes = rpl.discover_candidates(
+        target,
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+        interesting=lambda key: key in match.by_title,
+    )
+    assert [item.url for item in candidates] == ["https://www.school.cz/programmes/kynologie/"]
 
 
 def test_the_page_budget_is_counted_per_school() -> None:

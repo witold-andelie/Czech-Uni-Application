@@ -1,8 +1,8 @@
 {
   "note": "Committed regression floor for data/sources/admissions/programme-links.json. CI fails when any school or the total resolves fewer school-owned programme pages than this. Raise it when coverage genuinely improves; revise it with the reason recorded in revisionNotes when the register itself shrinks.",
-  "recordedFromGeneratedAt": "2026-09-27T13:14:47Z",
+  "recordedFromGeneratedAt": "2026-09-27T17:12:30Z",
   "denominatorBasis": "MŠMT register rows published for the school in the active inventory",
-  "resolvedTotal": 760,
+  "resolvedTotal": 1819,
   "offeringsTotal": 5019,
   "schoolNames": {
     "msmt-vs_14000": "Masarykova univerzita",
@@ -24,18 +24,18 @@
     "msmt-vs_24000": "Technická univerzita v Liberci"
   },
   "resolvedBySchool": {
-    "msmt-vs_14000": 152,
+    "msmt-vs_14000": 261,
     "msmt-vs_41000": 107,
-    "msmt-vs_43000": 66,
-    "msmt-vs_27000": 60,
-    "msmt-vs_11000": 56,
+    "msmt-vs_43000": 85,
+    "msmt-vs_27000": 147,
+    "msmt-vs_11000": 785,
     "msmt-vs_21000": 48,
     "msmt-vs_28000": 48,
     "msmt-vs_31000": 44,
     "msmt-vs_22000": 37,
-    "msmt-vs_17000": 33,
-    "msmt-vs_26000": 26,
-    "msmt-vs_12000": 22,
+    "msmt-vs_17000": 133,
+    "msmt-vs_26000": 27,
+    "msmt-vs_12000": 36,
     "msmt-vs_13000": 20,
     "msmt-vs_18000": 17,
     "msmt-vs_25000": 16,
@@ -45,6 +45,7 @@
   "revisionNotes": [
     "2026-09-27: first floor recorded from the verified CZU run (107 of 186 register rows carry a school-owned programme page).",
     "2026-09-27: raised after the first full rotation of the never-read-first sweep. 760 of 5019 register rows now carry a school-owned programme page across 17 schools; the 33 smallest schools were still unread (budget_exhausted_before_school) and stay at 0, so they are not floored. Ten links, one per floored school, were re-fetched live and all answered on the school's own domain before the floor was committed.",
-    "2026-09-27: the 18 links UJEP, CVUT and MUNI served only over plain http were promoted to https (one bounded read of the https twin each, all 200 on the school's own domain), so the published inventory keeps all 760 proven links instead of the 742 the https-only gate had kept. The resolver now does that promotion itself and the inventory build reports what it drops, so a school's own page is not lost to the scheme again."
+    "2026-09-27: the 18 links UJEP, CVUT and MUNI served only over plain http were promoted to https (one bounded read of the https twin each, all 200 on the school's own domain), so the published inventory keeps all 760 proven links instead of the 742 the https-only gate had kept. The resolver now does that promotion itself and the inventory build reports what it drops, so a school's own page is not lost to the scheme again.",
+    "2026-09-27: raised from the bounded seven-school merge written at 2026-09-27T17:12:30Z (1819 of 5019 register rows). Charles 785, Masaryk 261, Ostrava 133, VŠB 147, South Bohemia 36, Mendel 85, VUT 27 (official catalogue entry https://www.vutbr.cz/studenti/programy kept; a 24-count generic discovery would have dropped already-proven ids below the previous floor of 26). 760 previously committed ids are all retained. 1819 is matched school-owned pages, not a claim that every page was title-verified this run (370 verified; the rest keep their reachability). The 33 smallest schools stay unfloored at 0."
   ]
 }
