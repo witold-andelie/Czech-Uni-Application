@@ -1973,7 +1973,9 @@ def main() -> None:
             # Offline ingestion transport: ordinary HTTP, then Scrapling GET if
             # the ordinary read is too weak. No visitor request ever reaches a
             # school through this path.
-            result = fetch_official_page(url, allow_browser=False)
+            # Hard catalogue pages (faculty sites, JS shells) must try Scrapling
+            # GET then DynamicFetcher. Access-control 403/Turnstile still stops.
+            result = fetch_official_page(url, allow_browser=True)
             return result.status, result.body
 
     payload = build_links(

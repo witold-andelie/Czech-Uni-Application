@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T20:21:45Z",
+  "generatedAt": "2026-09-27T20:39:59Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-09-27.3",
-    "publishedAt": "2026-09-27T20:21:45Z",
-    "candidateGenerationId": "cg-a3b825d9bda04f5b8247d89bc6b1d5ff",
-    "sourceRunSetDigest": "sha256:2b753346fb553a4055e6430811eada3dd483647fe873ed9f8bb0a21819a2f6b5",
+    "activeVersion": "v2026-09-27.4",
+    "publishedAt": "2026-09-27T20:39:58Z",
+    "candidateGenerationId": "cg-9525558de1154b67b194f497466935ed",
+    "sourceRunSetDigest": "sha256:ea8ebd41a05a3ba580d7d5c13526b649bf3da50c9edba2b970757b738f6844dc",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -136,15 +136,15 @@
     "claimBoundary": "The DZS source snapshot is complete for its reported directory result, but it is not the legal register or the authority for each university application window. Candidate records remain outside formal publication until source and zh-CN/en/cs review passes.",
     "programmePageLinks": {
       "source": "resolve_programme_links.py",
-      "linkIndexGeneratedAt": "2026-09-27T19:40:57Z",
-      "publishedSnapshotCount": 1920,
+      "linkIndexGeneratedAt": "2026-09-27T20:27:27Z",
+      "publishedSnapshotCount": 1970,
       "denominator": "register rows in the pinned published inventory snapshot",
       "totals": {
         "schools": 53,
         "registerRows": 5019,
-        "rowsWithSchoolProgrammePage": 1920,
-        "rowsShowingUniversitySite": 3099,
-        "registerRowCoveragePercent": 38.3
+        "rowsWithSchoolProgrammePage": 1970,
+        "rowsShowingUniversitySite": 3049,
+        "registerRowCoveragePercent": 39.3
       },
       "schools": [
         {
@@ -290,9 +290,9 @@
         {
           "institutionId": "msmt-vs_51000",
           "registerRows": 101,
-          "rowsWithSchoolProgrammePage": 0,
-          "rowsShowingUniversitySite": 101,
-          "registerRowCoveragePercent": 0.0
+          "rowsWithSchoolProgrammePage": 11,
+          "rowsShowingUniversitySite": 90,
+          "registerRowCoveragePercent": 10.9
         },
         {
           "institutionId": "msmt-vs_52000",
@@ -304,9 +304,9 @@
         {
           "institutionId": "msmt-vs_53000",
           "registerRows": 17,
-          "rowsWithSchoolProgrammePage": 0,
-          "rowsShowingUniversitySite": 17,
-          "registerRowCoveragePercent": 0.0
+          "rowsWithSchoolProgrammePage": 9,
+          "rowsShowingUniversitySite": 8,
+          "registerRowCoveragePercent": 52.9
         },
         {
           "institutionId": "msmt-vs_54000",
@@ -514,9 +514,9 @@
         {
           "institutionId": "msmt-vs_95000",
           "registerRows": 32,
-          "rowsWithSchoolProgrammePage": 0,
-          "rowsShowingUniversitySite": 32,
-          "registerRowCoveragePercent": 0.0
+          "rowsWithSchoolProgrammePage": 30,
+          "rowsShowingUniversitySite": 2,
+          "registerRowCoveragePercent": 93.8
         }
       ],
       "claimBoundary": "Coverage counts register rows with a link to the school's own page for that programme. A missing link is recorded as unresolved and the card shows the university site with that label; it is never filled with a directory or portal page."
