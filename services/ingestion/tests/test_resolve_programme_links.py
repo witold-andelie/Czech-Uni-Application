@@ -74,6 +74,16 @@ def test_registrable_host_allows_school_subdomains() -> None:
     assert rpl.registrable_host("https://study.czu.cz/programmes/x/") == "czu.cz"
     assert rpl.registrable_host("https://studuj.czu.cz") == "czu.cz"
     assert rpl.registrable_host("https://www.cuni.cz") == "cuni.cz"
+    assert rpl.registrable_host("damu.cz") == "damu.cz"
+    assert rpl.registrable_host("www.umprum.cz") == "umprum.cz"
+
+
+def test_school_domains_include_configured_extra_hosts() -> None:
+    domains = rpl.school_domains(
+        {"id": "msmt-vs_51000", "officialUrl": "https://www.amu.cz", "webHost": "www.amu.cz"},
+        {"extraDomains": ["damu.cz", "famu.cz", "hamu.cz"]},
+    )
+    assert domains == {"amu.cz", "damu.cz", "famu.cz", "hamu.cz"}
 
 
 def test_exact_match_binds_only_an_equal_title_and_degree() -> None:

@@ -67,6 +67,45 @@ describe("immutable browser publication selection", () => {
     assert.equal(pinned.version, selected.version);
   });
 
+  it("treats configured extraDomains as the school's own site", () => {
+    const selected = selectActiveSnapshot({ root: ROOT });
+    const snapshotRoot = path.resolve(scratch, "extra-domain", selected.version);
+    fs.cpSync(selected.snapshotRoot, snapshotRoot, { recursive: true });
+    const inventoryPath = path.resolve(snapshotRoot, "browse/nine-hei-inventory.json");
+    const inventory = JSON.parse(fs.readFileSync(inventoryPath, "utf8"));
+    const amu = inventory.schools.find((school) => school.id === "msmt-vs_51000");
+    assert.ok(amu?.rows?.[0], "AMU register rows must exist in the snapshot");
+    const ident = amu.rows[0][0];
+    inventory.programmeLinks = {
+      ...inventory.programmeLinks,
+      [ident]: {
+        url: "https://www.damu.cz/cs/studium/programme/",
+        kind: "school_programme_page",
+        reachability: "unverified",
+      },
+    };
+    inventory.counts.linkedProgrammes = Object.keys(inventory.programmeLinks).length;
+    fs.writeFileSync(inventoryPath, JSON.stringify(inventory));
+    const manifestPath = path.resolve(snapshotRoot, "manifest.json");
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+    manifest.checksums["browse/nine-hei-inventory.json"] = "sha256:" + digest(inventoryPath);
+    manifest.counts.linkedInventoryOfferings = inventory.counts.linkedProgrammes;
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+    const accepted = validateSnapshot({ ...selected, snapshotRoot });
+    assert.equal(accepted.passed, true, accepted.errors.join("\n"));
+
+    inventory.programmeLinks[ident].url = "https://portal.example.org/programme/";
+    fs.writeFileSync(inventoryPath, JSON.stringify(inventory));
+    manifest.checksums["browse/nine-hei-inventory.json"] = "sha256:" + digest(inventoryPath);
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+    const rejected = validateSnapshot({ ...selected, snapshotRoot });
+    assert.equal(rejected.passed, false);
+    assert.ok(
+      rejected.errors.some((error) => error.includes("PROGRAMME_LINK_FOREIGN_DOMAIN")),
+      rejected.errors.join("\n"),
+    );
+  });
+
   it("generates the versioned browser asset only from the pinned snapshot", () => {
     const selected = selectActiveSnapshot({ root: ROOT });
     const webRoot = path.resolve(scratch, "web");

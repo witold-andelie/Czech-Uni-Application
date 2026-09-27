@@ -437,17 +437,60 @@ function validateCscseReference(item, ident, errors) {
 }
 
 function registrableHost(value) {
+  // Same rule as services/ingestion/src/resolve_programme_links.py:
+  // last two labels of a URL host or a bare hostname. extraDomains in
+  // config/programme-page-sources.json are bare hosts ("damu.cz"), so a
+  // parser that only accepts https URLs would drop every faculty domain.
   if (typeof value !== "string" || !value.trim()) return "";
-  let parsed;
-  try {
-    parsed = new URL(value.trim());
-  } catch {
-    return "";
+  const text = value.trim();
+  let host = "";
+  if (/^[a-z][a-z0-9+.-]*:\/\//i.test(text)) {
+    try {
+      const parsed = new URL(text);
+      if (parsed.username || parsed.password) return "";
+      host = (parsed.hostname || "").toLowerCase();
+    } catch {
+      return "";
+    }
+  } else {
+    host = text.split("/")[0].split(":")[0].toLowerCase();
   }
-  if (parsed.protocol !== "https:" || parsed.username || parsed.password) return "";
-  const labels = parsed.hostname.toLowerCase().split(".").filter(Boolean);
-  if (labels.length <= 2) return labels.join(".");
-  return labels.slice(-2).join(".");
+  if (host.startsWith("www.")) host = host.slice(4);
+  const labels = host.split(".").filter(Boolean);
+  if (!labels.length) return "";
+  return labels.length > 2 ? labels.slice(-2).join(".") : labels.join(".");
+}
+
+function extraDomainsByInstitution() {
+  const configPath = path.resolve(ROOT, "config/programme-page-sources.json");
+  if (!fs.existsSync(configPath)) return new Map();
+  const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+  const extras = new Map();
+  for (const school of Array.isArray(config.schools) ? config.schools : []) {
+    const id = school?.institutionId;
+    if (typeof id !== "string" || !id) continue;
+    const hosts = [];
+    for (const extra of school.extraDomains || []) {
+      const host = registrableHost(String(extra));
+      if (host) hosts.push(host);
+    }
+    if (hosts.length) extras.set(id, hosts);
+  }
+  return extras;
+}
+
+function institutionDomains(baseline) {
+  const extras = extraDomainsByInstitution();
+  const domains = new Map();
+  for (const item of Array.isArray(baseline.institutions) ? baseline.institutions : []) {
+    domains.set(
+      item.id,
+      new Set(
+        [registrableHost(item.officialUrl), registrableHost(item.webHost), ...(extras.get(item.id) || [])].filter(Boolean),
+      ),
+    );
+  }
+  return domains;
 }
 
 function validateProgrammeLinks(inventory, baseline, errors) {
@@ -466,13 +509,10 @@ function validateProgrammeLinks(inventory, baseline, errors) {
       if (Array.isArray(row) && row.length === 7 && typeof row[0] === "string") rowOwner.set(row[0], school.id);
     }
   }
-  // config/programme-page-sources.json extraDomains, read in Python so both
-  // contracts share one definition; here the official host names are enough for
-  // the domains recorded in the baseline.
-  const domains = new Map();
-  for (const item of Array.isArray(baseline.institutions) ? baseline.institutions : []) {
-    domains.set(item.id, new Set([registrableHost(item.officialUrl), registrableHost(item.webHost)].filter(Boolean)));
-  }
+  // Same allowed-domain set as Python domains_for_institutions: official host
+  // plus config/programme-page-sources.json extraDomains (AMU faculty sites,
+  // umprum.cz while the MŠMT baseline still lists vsup.cz).
+  const domains = institutionDomains(baseline);
   let linked = 0;
   for (const [ident, entry] of Object.entries(links)) {
     if (!SAFE_ID_RE.test(ident)) {
