@@ -130,6 +130,16 @@ MESSAGES: dict[str, dict[str, str]] = {
     "orientation.research": {"zh-CN": "研究导向", "en": "Research-oriented", "cs": "Výzkumné zaměření"},
     "action.official": {"zh-CN": "去官网申请", "en": "Apply on the official website", "cs": "Podat přihlášku na oficiálním webu"},
     "action.officialLink": {"zh-CN": "官方链接", "en": "Official link", "cs": "Oficiální odkaz"},
+    "programme.link.page": {
+        "zh-CN": "该项目页面",
+        "en": "Programme page",
+        "cs": "Stránka programu",
+    },
+    "programme.link.fallback": {
+        "zh-CN": "未找到该项目页面：学校官网",
+        "en": "No programme page found: university site",
+        "cs": "Stránka programu nenalezena: web univerzity",
+    },
     "action.applyNow": {"zh-CN": "立即申请", "en": "Apply now", "cs": "Přihlásit se nyní"},
     "action.officialInstructions": {
         "zh-CN": "查看官方申请说明",

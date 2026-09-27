@@ -135,6 +135,57 @@ def percent(numerator: int, denominator: int) -> float:
     return round((numerator / denominator * 100) if denominator else 0.0, 1)
 
 
+def programme_page_link_coverage(published_inventory: dict) -> dict:
+    """Per-school school-owned programme page coverage from the pinned snapshot.
+
+    Denominators are the register rows published for each school. A row without
+    an entry in ``programmeLinks`` shows the university site instead, so it is
+    counted as unresolved rather than hidden. Nothing here is a claim about
+    programme quality, open windows, or how many programmes a school really has;
+    it records only how many register rows currently carry a link to that
+    school's own page for that programme. No number from this section is shown
+    in the UI.
+    """
+    links = published_inventory.get("programmeLinks") or {}
+    counts = published_inventory.get("counts") or {}
+    rows: list[dict] = []
+    for school in published_inventory.get("schools") or []:
+        school_rows = school.get("rows") or []
+        linked = sum(1 for row in school_rows if row and row[0] in links)
+        rows.append(
+            {
+                "institutionId": school.get("id"),
+                "registerRows": len(school_rows),
+                "rowsWithSchoolProgrammePage": linked,
+                "rowsShowingUniversitySite": len(school_rows) - linked,
+                "registerRowCoveragePercent": percent(linked, len(school_rows)),
+            }
+        )
+    rows.sort(key=lambda item: str(item.get("institutionId") or ""))
+    total_rows = sum(item["registerRows"] for item in rows)
+    total_linked = sum(item["rowsWithSchoolProgrammePage"] for item in rows)
+    return {
+        "source": "resolve_programme_links.py",
+        "linkIndexGeneratedAt": published_inventory.get("programmeLinkGeneratedAt"),
+        "publishedSnapshotCount": counts.get("linkedProgrammes"),
+        "denominator": "register rows in the pinned published inventory snapshot",
+        "totals": {
+            "schools": len(rows),
+            "registerRows": total_rows,
+            "rowsWithSchoolProgrammePage": total_linked,
+            "rowsShowingUniversitySite": total_rows - total_linked,
+            "registerRowCoveragePercent": percent(total_linked, total_rows),
+        },
+        "schools": rows,
+        "claimBoundary": (
+            "Coverage counts register rows with a link to the school's own page for that "
+            "programme. A missing link is recorded as unresolved and the card shows the "
+            "university site with that label; it is never filled with a directory or "
+            "portal page."
+        ),
+    }
+
+
 def build_coverage(
     baseline: dict,
     registry: list[dict],
@@ -567,6 +618,7 @@ def build_coverage(
                 "the legal register or the authority for each university application window. Candidate "
                 "records remain outside formal publication until source and zh-CN/en/cs review passes."
             ),
+            "programmePageLinks": programme_page_link_coverage(published_inventory),
         },
         "jobs": {
             "registeredOfficialListingSources": len(job_sources),
@@ -676,6 +728,9 @@ def main() -> None:
                 "generatedAt": payload["generatedAt"],
                 "publicationVersion": payload["publication"]["activeVersion"],
                 "programmeDirectoryRecords": payload["programmes"]["directoryRecords"],
+                "registerRowsWithSchoolProgrammePage": payload["programmes"][
+                    "programmePageLinks"
+                ]["totals"]["rowsWithSchoolProgrammePage"],
                 "registeredJobSources": payload["jobs"]["registeredOfficialListingSources"],
                 "jobSourceInstitutions": payload["jobs"]["mappedBaselineInstitutions"],
                 "jobInstitutionCoveragePercent": payload["jobs"]["baselineInstitutionCoveragePercent"],

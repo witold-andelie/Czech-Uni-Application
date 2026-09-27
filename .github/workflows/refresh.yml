@@ -184,6 +184,42 @@ jobs:
           python services/ingestion/src/cli/check_live_evidence.py \
             --jobs data/sources/browse/nine-hei-jobs.json \
             --evidence data/sources/coverage/live-title-verification.json || true
+      - name: Report the school-owned programme page link index
+        id: programme_links
+        if: ${{ github.event.inputs.mode != 'adapters' }}
+        env:
+          PYTHONUNBUFFERED: "1"
+        # No fetching here: the bounded resolver runs inside the scheduler tick
+        # above (120-hour cycle, docs/REFRESH_POLICY.md). This step only reports
+        # what that run produced and fails the job if coverage regressed below
+        # the committed floor (docs/ACCEPTANCE.md A100).
+        run: |
+          python services/ingestion/src/check_programme_link_coverage.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("data/sources/admissions/programme-links.json")
+          if not path.exists():
+              print("programme page link index was not produced; every register row shows the university site")
+              raise SystemExit(0)
+          payload = json.loads(path.read_text(encoding="utf-8"))
+          totals = payload["coverage"]["totals"]
+          print(
+              "programme page links: "
+              f"{totals['resolved']} of {totals['offerings']} register row(s) resolved, "
+              f"{totals['unresolved']} left unresolved with the university site shown"
+          )
+          reasons = {}
+          for row in payload["unresolved"]:
+              reasons[row["reason"]] = reasons.get(row["reason"], 0) + 1
+          print(f"unresolved reasons: {json.dumps(reasons, ensure_ascii=False)}")
+          for school in payload["coverage"]["schools"]:
+              print(
+                  f"  {school['institutionId']}: {school['resolved']}/{school['offerings']} resolved"
+                  f" (domains {', '.join(school['allowedDomains']) or 'none'})"
+              )
+          PY
+          echo 'A resolved link index only reaches the pages through the next immutable publication; this run does not publish anything.'
       - name: Save scheduler checkpoint even after partial source failure
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
@@ -222,6 +258,20 @@ jobs:
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -m 'Refresh live per-candidate title-verification evidence'
+            git push origin HEAD
+            # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
+            gh workflow run ci.yml --ref main
+          fi
+      - name: Commit the refreshed programme page link index on main
+        if: ${{ always() && steps.programme_links.outcome == 'success' && github.ref == 'refs/heads/main' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add data/sources/admissions/programme-links.json
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Refresh school-owned programme page link index'
             git push origin HEAD
             # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
             gh workflow run ci.yml --ref main

@@ -74,4 +74,38 @@ describe("locale parity", () => {
     assert.match(page, /jobs\.prompt/);
     assert.doesNotMatch(page, /counts\.jobs/, "the notice must not read the snapshot job count");
   });
+
+  it("names the programme page and honestly labels the university-site fallback", () => {
+    const zh = load("zh-CN.json");
+    const en = load("en.json");
+    const cs = load("cs.json");
+    assert.match(zh["programme.link.page"], /该项目页面/);
+    assert.match(en["programme.link.page"], /Programme page/);
+    assert.match(cs["programme.link.page"], /Stránka programu/);
+    // The fallback must say the programme page was not found; it must never read
+    // like a link to the programme itself.
+    assert.match(zh["programme.link.fallback"], /未找到该项目页面/);
+    assert.match(zh["programme.link.fallback"], /学校官网/);
+    assert.match(en["programme.link.fallback"], /No programme page found/);
+    assert.match(en["programme.link.fallback"], /university site/);
+    assert.match(cs["programme.link.fallback"], /Stránka programu nenalezena/);
+    assert.match(cs["programme.link.fallback"], /web univerzity/);
+  });
+
+  it("switches the programme link label on programmeLinkKind", () => {
+    const card = readFileSync(
+      resolve(root, "apps/web/src/components/ProgrammeResults.svelte"),
+      "utf8",
+    );
+    assert.match(card, /programmeLinkKind/);
+    assert.match(card, /programme\.link\.page/);
+    assert.match(card, /programme\.link\.fallback/);
+    const detail = readFileSync(
+      resolve(root, "apps/web/src/pages/[locale]/programmes/[id].astro"),
+      "utf8",
+    );
+    assert.match(detail, /programmeLinkKind\s*\?/);
+    assert.match(detail, /programme\.link\.page/);
+    assert.match(detail, /programme\.link\.fallback/);
+  });
 });

@@ -49,6 +49,12 @@ export interface CompactSchool {
 
 export type CompactRow = [string, string, string, string, number | null, string, string];
 
+export interface ProgrammePageLink {
+  url: string;
+  kind: "school_programme_page";
+  reachability: string;
+}
+
 export interface CompactInventory {
   generatedAt: string;
   dataClass: "official_register_extract";
@@ -56,7 +62,9 @@ export interface CompactInventory {
   sourceUrl: string;
   academicYear: string;
   note: string;
-  counts?: { schools: number; programmes: number };
+  counts?: { schools: number; programmes: number; linkedProgrammes?: number };
+  /** School-owned programme pages keyed by row id; rows absent here show the university site. */
+  programmeLinks?: Record<string, ProgrammePageLink>;
   schools: CompactSchool[];
 }
 
@@ -94,6 +102,7 @@ export function expandInventory(
   portals: ApplyPortal[],
 ): { programmes: Programme[]; offerings: Offering[] } {
   const portalById = new Map(portals.map((item) => [item.institutionId, item]));
+  const programmeLinks = compact.programmeLinks ?? {};
   const programmes: Programme[] = [];
   const offerings: Offering[] = [];
   const verifiedAt = null;
@@ -103,6 +112,7 @@ export function expandInventory(
     for (const row of school.rows) {
       const [id, title, degreeCode, faculty, years, language, isced] = row;
       const degree = DEGREE[degreeCode] ?? "unknown";
+      const programmeLink = programmeLinks[id];
       const names = localizedOriginal(title);
       const field = localizedOriginal(faculty || title);
       programmes.push({
@@ -137,6 +147,8 @@ export function expandInventory(
           variants: [],
         },
         applicationUrl: portalApplicationUrl(portal, language),
+        officialProgrammeUrl: programmeLink?.url ?? null,
+        programmeLinkKind: programmeLink ? "school_programme_page" : null,
         verifiedAt,
         dataClass: "official_register_extract",
         lifecycleOverride: null,

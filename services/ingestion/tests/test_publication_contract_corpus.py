@@ -32,11 +32,12 @@ def _apply_mutations(snapshot: Path, mutations: list[dict]) -> None:
     for mutation in mutations:
         target = snapshot / mutation["file"]
         payload = json.loads(target.read_text(encoding="utf-8"))
-        item = _select(payload, mutation["path"])
+        path = mutation.get("path")
+        item = payload if path in (None, "") else _select(payload, path)
         for key in mutation.get("delete") or []:
             item.pop(key, None)
         if mutation.get("set"):
-            item.update(mutation["set"])
+            item.update(_resolve_values(mutation["set"], snapshot))
         target.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         if mutation["file"] != "manifest.json":
             manifest_path = snapshot / "manifest.json"
@@ -44,6 +45,35 @@ def _apply_mutations(snapshot: Path, mutations: list[dict]) -> None:
             digest = "sha256:" + hashlib.sha256(target.read_bytes()).hexdigest()
             manifest.setdefault("checksums", {})[mutation["file"]] = digest
             manifest_path.write_text(json.dumps(manifest, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+# Tokens resolved against the snapshot itself, so a case never hard-codes an
+# inventory row id that the next register update would invalidate.
+ROW_ID_TOKEN = "$FIRST_ROW_ID"
+SCHOOL_URL_TOKEN = "$FIRST_ROW_SCHOOL_URL"
+
+
+def _resolve_values(values: dict, snapshot: Path):
+    inventory = json.loads((snapshot / "browse" / "nine-hei-inventory.json").read_text(encoding="utf-8"))
+    row = inventory["schools"][0]["rows"][0]
+    school_id = inventory["schools"][0]["id"]
+    baseline = json.loads((snapshot / "msmt-hei-baseline.json").read_text(encoding="utf-8"))
+    official_url = next(
+        (item.get("officialUrl") for item in baseline["institutions"] if item.get("id") == school_id),
+        None,
+    )
+
+    def resolve(value):
+        if isinstance(value, dict):
+            return {resolve(key): resolve(item) for key, item in value.items()}
+        if value == ROW_ID_TOKEN:
+            return row[0]
+        if value == SCHOOL_URL_TOKEN:
+            assert official_url, "the baseline institution owning the first row has no officialUrl"
+            return official_url
+        return value
+
+    return resolve(values)
 
 
 def _codes(errors: list[str]) -> set[str]:

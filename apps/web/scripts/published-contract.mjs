@@ -436,6 +436,82 @@ function validateCscseReference(item, ident, errors) {
   }
 }
 
+function registrableHost(value) {
+  if (typeof value !== "string" || !value.trim()) return "";
+  let parsed;
+  try {
+    parsed = new URL(value.trim());
+  } catch {
+    return "";
+  }
+  if (parsed.protocol !== "https:" || parsed.username || parsed.password) return "";
+  const labels = parsed.hostname.toLowerCase().split(".").filter(Boolean);
+  if (labels.length <= 2) return labels.join(".");
+  return labels.slice(-2).join(".");
+}
+
+function validateProgrammeLinks(inventory, baseline, errors) {
+  // School-owned programme pages: the row must exist, the target must be https
+  // on a domain that school itself owns, and the declared count must match. A
+  // build made without the page index carries no links and no count at all.
+  if (!("programmeLinks" in inventory)) return 0;
+  const links = inventory.programmeLinks ?? {};
+  if (!links || typeof links !== "object" || Array.isArray(links)) {
+    errors.push("PROGRAMME_LINK_INVALID: Inventory programmeLinks must be an object keyed by row id");
+    return 0;
+  }
+  const rowOwner = new Map();
+  for (const school of Array.isArray(inventory.schools) ? inventory.schools : []) {
+    for (const row of Array.isArray(school.rows) ? school.rows : []) {
+      if (Array.isArray(row) && row.length === 7 && typeof row[0] === "string") rowOwner.set(row[0], school.id);
+    }
+  }
+  // config/programme-page-sources.json extraDomains, read in Python so both
+  // contracts share one definition; here the official host names are enough for
+  // the domains recorded in the baseline.
+  const domains = new Map();
+  for (const item of Array.isArray(baseline.institutions) ? baseline.institutions : []) {
+    domains.set(item.id, new Set([registrableHost(item.officialUrl), registrableHost(item.webHost)].filter(Boolean)));
+  }
+  let linked = 0;
+  for (const [ident, entry] of Object.entries(links)) {
+    if (!SAFE_ID_RE.test(ident)) {
+      errors.push(`PROGRAMME_LINK_INVALID: Inventory programme link id ${JSON.stringify(ident)} is not a safe id`);
+      continue;
+    }
+    const owner = rowOwner.get(ident);
+    if (!owner) {
+      errors.push(`PROGRAMME_LINK_INVALID: Inventory programme link ${ident} has no matching row`);
+      continue;
+    }
+    if (!entry || typeof entry !== "object") {
+      errors.push(`PROGRAMME_LINK_INVALID: Inventory programme link ${ident} must be an object`);
+      continue;
+    }
+    if (!webUrl(entry.url, true)) {
+      errors.push(`PROGRAMME_LINK_INVALID: Inventory programme link ${ident} has an invalid https url`);
+      continue;
+    }
+    if (entry.kind !== "school_programme_page") {
+      errors.push(`PROGRAMME_LINK_INVALID: Inventory programme link ${ident} has an unexpected kind`);
+      continue;
+    }
+    if (!domains.get(owner)?.has(registrableHost(entry.url))) {
+      errors.push(`PROGRAMME_LINK_FOREIGN_DOMAIN: Inventory programme link ${ident} points outside ${owner} domains: ${entry.url}`);
+      continue;
+    }
+    if (!["verified", "unverified", "access_control", "http_200_title_not_confirmed"].includes(entry.reachability)) {
+      errors.push(`PROGRAMME_LINK_INVALID: Inventory programme link ${ident} has an unknown reachability`);
+      continue;
+    }
+    linked += 1;
+  }
+  if (!inventory.counts || inventory.counts.linkedProgrammes !== linked) {
+    errors.push(`PROGRAMME_LINK_COUNT_MISMATCH: Inventory counts.linkedProgrammes ${inventory.counts?.linkedProgrammes} does not match ${linked} links`);
+  }
+  return linked;
+}
+
 export { FACT_NORMALIZATION_VERSION, jobFactHash, translationContentHash, validCalendarDate };
 
 function validateDataset(snapshotRoot) {
@@ -494,6 +570,11 @@ function validateDataset(snapshotRoot) {
   }
   if (!inventory.counts || inventory.counts.schools !== schoolIds.size || inventory.counts.programmes !== inventoryOfferings) errors.push("Inventory embedded counts do not match actual records");
   if (schoolIds.size === 0 || inventoryOfferings === 0) errors.push("Inventory must contain at least one school and one record");
+
+  // School-owned programme pages: the row must exist, the target must be https
+  // on the school's own registrable domain, and the count must match. A build
+  // made without the page index carries no links and no count.
+  const linkedInventoryOfferings = validateProgrammeLinks(inventory, baseline, errors);
 
   for (const [relative, name] of [["admissions/cuni-mff-cs-tracer.json", "CUNI tracer"], ["admissions/muni-fi-tracer.json", "MUNI tracer"]]) {
     const tracer = data[relative];
@@ -647,7 +728,7 @@ function validateDataset(snapshotRoot) {
   if (!data["browse/czechia-outline.json"].geojson || typeof data["browse/czechia-outline.json"].geojson !== "object") errors.push("Czechia outline has no GeoJSON object");
   for (const field of ["regions", "cities"]) if (!Array.isArray(data["browse/czechia-basemap.json"][field]) || data["browse/czechia-basemap.json"][field].length === 0) errors.push(`Czechia basemap ${field} must be a non-empty array`);
 
-  return { errors, counts: { institutions: institutionIds.size, portals: portalIds.size, inventoryOfferings, inventorySchools: schoolIds.size, jobs: jobIds.size, coordinates: coordinateIds.size, reviewedOfferings: reviewedIds.size } };
+  return { errors, counts: { institutions: institutionIds.size, portals: portalIds.size, inventoryOfferings, inventorySchools: schoolIds.size, linkedInventoryOfferings, jobs: jobIds.size, coordinates: coordinateIds.size, reviewedOfferings: reviewedIds.size } };
 }
 
 export function selectActiveSnapshot({ root = ROOT, version = process.env.CZECH_UNI_PUBLISHED_VERSION } = {}) {
@@ -678,7 +759,20 @@ export function validateSnapshot(selection) {
   if (manifest.status !== "published") errors.push("Manifest status must be published");
   if (!isoDateTime(manifest.publishedAt)) errors.push("Manifest publishedAt is invalid");
   if (!manifest.validation || manifest.validation.passed !== true || !Array.isArray(manifest.validation.errors) || manifest.validation.errors.length !== 0) errors.push("Manifest validation must be the strict successful result");
-  if (JSON.stringify(manifest.counts) !== JSON.stringify(counts)) errors.push(`Manifest counts do not match actual records: ${JSON.stringify(manifest.counts)} != ${JSON.stringify(counts)}`);
+  if (!manifest.counts || typeof manifest.counts !== "object" || Array.isArray(manifest.counts)) errors.push("Manifest counts must be an object");
+  else {
+    // A snapshot published before a count existed cannot carry it; everything
+    // it does declare must match the validator's own recomputation.
+    const OPTIONAL_COUNT_KEYS = new Set(["linkedInventoryOfferings"]);
+    for (const key of Object.keys(manifest.counts)) if (!(key in counts)) errors.push(`Manifest counts declare keys the validator does not recompute: ${key}`);
+    for (const [key, value] of Object.entries(counts)) {
+      if (!(key in manifest.counts) && OPTIONAL_COUNT_KEYS.has(key)) continue;
+      if (manifest.counts[key] !== value) {
+        errors.push(`Manifest counts do not match actual records: ${JSON.stringify(manifest.counts)} != ${JSON.stringify(counts)}`);
+        break;
+      }
+    }
+  }
   const checksumKeys = manifest.checksums && typeof manifest.checksums === "object" ? Object.keys(manifest.checksums).sort() : [];
   if (JSON.stringify(checksumKeys) !== JSON.stringify([...REQUIRED_FILES].sort())) errors.push("Manifest checksums must contain exactly the required file set");
   else {

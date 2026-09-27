@@ -273,6 +273,104 @@
       ]
     },
     {
+      "id": "programme_link_absent_is_publishable",
+      "expect": "accept",
+      "rules": [],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "",
+          "delete": ["programmeLinks"]
+        },
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "counts",
+          "delete": ["linkedProgrammes"]
+        }
+      ]
+    },
+    {
+      "id": "programme_link_foreign_domain",
+      "expect": "reject",
+      "rules": ["PROGRAMME_LINK_FOREIGN_DOMAIN"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "",
+          "set": {
+            "programmeLinks": {
+              "$FIRST_ROW_ID": {
+                "url": "https://portal.example.org/programme/123/",
+                "kind": "school_programme_page",
+                "reachability": "verified"
+              }
+            }
+          }
+        },
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "counts",
+          "set": {
+            "linkedProgrammes": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "programme_link_count_mismatch",
+      "expect": "reject",
+      "rules": ["PROGRAMME_LINK_COUNT_MISMATCH"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "",
+          "set": {
+            "programmeLinks": {
+              "$FIRST_ROW_ID": {
+                "url": "$FIRST_ROW_SCHOOL_URL",
+                "kind": "school_programme_page",
+                "reachability": "verified"
+              }
+            }
+          }
+        },
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "counts",
+          "set": {
+            "linkedProgrammes": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "programme_link_unknown_row",
+      "expect": "reject",
+      "rules": ["PROGRAMME_LINK_INVALID"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "",
+          "set": {
+            "programmeLinks": {
+              "inv-doesnotexist": {
+                "url": "$FIRST_ROW_SCHOOL_URL",
+                "kind": "school_programme_page",
+                "reachability": "verified"
+              }
+            }
+          }
+        },
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "counts",
+          "set": {
+            "linkedProgrammes": 1
+          }
+        }
+      ]
+    },
+    {
       "id": "fetch_timestamp_only",
       "expect": "accept",
       "rules": [],

@@ -295,6 +295,9 @@
           {#each result.page as view}
             {@const applyUrl = safeHttpUrl(primaryApplicationUrl(view.summary, view.offering.applicationUrl))}
             {@const officialUrl = officialOfferingHref(view.offering, view.institution, findApplyPortal(view.institution.id))}
+            {@const linkLabel = view.offering.programmeLinkKind
+              ? t(locale, "programme.link.page")
+              : t(locale, "programme.link.fallback")}
             {@const current = view.summary.current[0]}
             <article class="card result-card">
               <div class="card-head">
@@ -348,12 +351,16 @@
               {/each}
               <div class="actions">
                 {#if applyUrl && canApply(view.summary)}
-                  <OfficialLink {locale} href={applyUrl} label={t(locale, "action.official")} primary />
                   {#if officialUrl && officialUrl !== applyUrl}
-                    <OfficialLink {locale} href={officialUrl} />
+                    <OfficialLink {locale} href={applyUrl} label={t(locale, "action.official")} primary />
+                    <OfficialLink {locale} href={officialUrl} label={linkLabel} />
+                  {:else if officialUrl}
+                    <!-- One target only: a generic "apply" label would hide which
+                         case the row is in, so it carries the programme label. -->
+                    <OfficialLink {locale} href={officialUrl} label={linkLabel} primary />
                   {/if}
                 {:else if officialUrl}
-                  <OfficialLink {locale} href={officialUrl} />
+                  <OfficialLink {locale} href={officialUrl} label={linkLabel} />
                 {/if}
                 <a class="btn" href={withBase(`/${locale}/programmes/${view.offering.id}`)}>{t(locale, "action.siteInterpretation")}</a>
               </div>

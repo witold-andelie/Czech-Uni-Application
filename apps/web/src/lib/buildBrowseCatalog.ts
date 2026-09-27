@@ -110,7 +110,10 @@ export function buildBrowseCatalog(input: {
         applicationUrl: reviewed.applicationUrl,
         applicationTargetKind: reviewed.applicationTargetKind,
         generalApplyPortalUrl: reviewed.generalApplyPortalUrl,
-        officialProgrammeUrl: reviewed.officialProgrammeUrl,
+        // The reviewed record and the offline resolver both carry a school-owned
+        // programme page; neither may drop the other's link.
+        officialProgrammeUrl: reviewed.officialProgrammeUrl ?? offering.officialProgrammeUrl,
+        programmeLinkKind: reviewed.officialProgrammeUrl ? "school_programme_page" : offering.programmeLinkKind,
         sourceLanguage: reviewed.sourceLanguage,
         titleOriginal: reviewed.titleOriginal,
         fetchedAt: reviewed.fetchedAt,

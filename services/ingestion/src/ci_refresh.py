@@ -22,6 +22,7 @@ FLAGS = {
     "czu_programme_availability": "--refresh-czu-programmes",
     "czu_czech_programme_availability": "--refresh-czu-czech-programmes",
     "czu_doctoral_programme_availability": "--refresh-czu-doctoral-programmes",
+    "programme_link_resolution": "--resolve-programme-links",
 }
 
 

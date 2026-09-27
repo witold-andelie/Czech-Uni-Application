@@ -74,6 +74,9 @@ digraph OPS {
   programmeavailability [label="刷新项目目录与可用信号\nProgramme Availability Refreshing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   programmeclock [label="项目可用性 2 小时刷新周期\nTwo Hour Programme Availability Refresh", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   programmedirectory [label="DZS 项目候选目录\nDZS Programme Candidate Directory", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  programmelink [label="学校自有项目页链接索引\nSchool-Owned Programme Page Link Index", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  programmelinkclock [label="项目页解析 120 小时全周期\nFull Cycle Programme Page Resolution", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  programmelinkresolution [label="解析学校自有项目页\nSchool-Owned Programme Page Resolving", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   quality [label="数据与翻译发布规则\nContent Rules", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   registry [label="捷克官方高校来源名录\nOfficial Institution Source Registry", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   run [label="采集批次与覆盖报告\nCrawl Run", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
@@ -161,6 +164,13 @@ digraph OPS {
   registry -> czudoctoralprogrammeavailability [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   osmutex -> czudoctoralprogrammeavailability [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   czudoctoralprogrammeavailability -> czudoctoralprogrammedirectory [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  programmelinkclock -> programmelinkresolution [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  source -> programmelinkresolution [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  registry -> programmelinkresolution [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  programmedirectory -> programmelinkresolution [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  osmutex -> programmelinkresolution [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  programmelinkresolution -> programmelink [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
+  programmelink -> coveragecalculate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   registry -> coveragecalculate [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   source -> sourceassess [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
   registry -> sourceassess [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];

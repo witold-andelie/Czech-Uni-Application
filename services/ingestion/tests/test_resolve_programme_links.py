@@ -1,0 +1,982 @@
+from __future__ import annotations
+
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
+
+import resolve_programme_links as rpl  # noqa: E402
+
+
+def row(institution_id: str, title: str, degree: str, language: str, faculty: str = "Fakulta") -> rpl.Row:
+    return rpl.Row(
+        ident=rpl.row_id(institution_id, title, "bachelor" if degree == "b" else "master", language, faculty),
+        institution_id=institution_id,
+        title=title,
+        degree=degree,
+        language=language,
+        faculty=faculty,
+    )
+
+
+def candidate(url: str, title: str, degree: str, language: str, matched_by: str = "school_catalogue_anchor") -> rpl.Candidate:
+    return rpl.Candidate(
+        url=url,
+        title=title,
+        degree=degree,
+        language=language,
+        source_url="https://school.cz/programmes",
+        matched_by=matched_by,
+        observed_at="2026-09-27T00:00:00Z",
+    )
+
+
+def school_target(domain: str = "school.cz") -> dict:
+    return {
+        "id": "msmt-vs_00000",
+        "name": "Test School",
+        "officialUrl": f"https://www.{domain}",
+        "entryUrls": [],
+        # Any subdomain of a domain the school owns may be read.
+        "allowedDomains": [domain],
+    }
+
+
+class FakeFetch:
+    """A site that answers only what the test states.
+
+    ``default`` models the rest of the school's own site: discovery tests use an
+    empty page so a follow-up catalogue hop succeeds without inventing content.
+    """
+
+    def __init__(self, responses: dict[str, tuple[int, str]], default: tuple[int, str] = (404, "")):
+        self.responses = responses
+        self.calls: list[str] = []
+        self.default = default
+
+    def __call__(self, url: str) -> tuple[int, str]:
+        self.calls.append(url)
+        return self.responses.get(url, self.default)
+
+
+def test_normalise_is_conservative() -> None:
+    assert rpl.normalise("Česká zemědělská") == rpl.normalise("ceska zemedelska")
+    assert rpl.normalise("Agriculture-and-Food") == rpl.normalise("Agriculture and food")
+    # Curly apostrophes collapse to word boundaries, the same way the browser's
+    # foldKey() collapses them, so a title and its slug variant share one key.
+    assert rpl.normalise("ČZU’s  Programme") == "czu s programme"
+
+
+def test_registrable_host_allows_school_subdomains() -> None:
+    assert rpl.registrable_host("https://study.czu.cz/programmes/x/") == "czu.cz"
+    assert rpl.registrable_host("https://studuj.czu.cz") == "czu.cz"
+    assert rpl.registrable_host("https://www.cuni.cz") == "cuni.cz"
+
+
+def test_exact_match_binds_only_an_equal_title_and_degree() -> None:
+    match = rpl.Match([row("msmt-vs_1", "Kynologie", "b", "cs"), row("msmt-vs_1", "Kynologie", "m", "cs")])
+    bound = match.bind(candidate("https://school.cz/p/kynologie/", "Kynologie", "b", "cs"))
+    assert not bound.reason
+    assert [item.degree for item in bound.rows] == ["b"]
+
+    other_degree = match.bind(candidate("https://school.cz/p/kynologie-m/", "Kynologie", "m", "cs"))
+    assert [item.degree for item in other_degree.rows] == ["m"]
+
+
+def test_the_level_a_page_states_is_the_only_one_used() -> None:
+    assert rpl.degree_stated("Kynologie (Bc.)") == "b"
+    assert rpl.degree_stated("Kynologie - master") == "m"
+    assert rpl.degree_stated("Doctoral study", "https://school.cz/phd/kynologie") == "d"
+    assert rpl.degree_stated("Kynologie") == rpl.UNKNOWN_DEGREE
+    assert rpl.degree_stated("Kynologie", "https://school.cz/obory/kynologie") == rpl.UNKNOWN_DEGREE
+    # Two levels in one link name nothing decided: the level stays unstated.
+    assert rpl.degree_stated("Bachelor and master programmes") == rpl.UNKNOWN_DEGREE
+
+
+def test_an_unstated_level_binds_only_a_title_that_names_one_row() -> None:
+    """A catalogue anchor rarely states the level next to the programme name."""
+    unique = rpl.Match([row("msmt-vs_1", "Zahradnictví", "b", "cs")])
+    bound = unique.bind(candidate("https://school.cz/p/zahradnictvi/", "Zahradnictví", rpl.UNKNOWN_DEGREE, ""))
+    assert not bound.reason
+    assert [item.degree for item in bound.rows] == ["b"]
+
+    # The same title at two levels cannot be attributed to one of them, so both
+    # keep the university-site fallback.
+    shared = rpl.Match([row("msmt-vs_1", "Zahradnictví", "b", "cs"), row("msmt-vs_1", "Zahradnictví", "m", "cs")])
+    binding = shared.bind(candidate("https://school.cz/p/zahradnictvi/", "Zahradnictví", rpl.UNKNOWN_DEGREE, ""))
+    assert binding.reason == "ambiguous_register_rows"
+    assert len(binding.rows) == 2
+
+
+def test_partial_title_never_matches() -> None:
+    """A shorter name must not take over a longer programme's page."""
+    match = rpl.Match([row("msmt-vs_1", "Chemie se zaměřením na vzdělávání", "b", "cs")])
+    assert not match.bind(candidate("https://school.cz/p/chemie/", "Chemie", "b", "cs")).rows
+    exact = match.bind(candidate("https://school.cz/p/chemie-vzdelavani/", "Chemie se zaměřením na vzdělávání", "b", "cs"))
+    assert not exact.reason
+    assert len(exact.rows) == 1
+
+
+def test_cross_language_candidate_needs_a_unique_row() -> None:
+    """A Czech-named page may serve an English-taught programme."""
+    unique = rpl.Match([row("msmt-vs_1", "Zahradnictví", "b", "cs")])
+    bound = unique.bind(candidate("https://school.cz/p/zahradnictvi/", "Zahradnictví", "b", "en"))
+    assert not bound.reason
+    assert bound.rows[0].language == "cs"
+
+    # Two faculties both carry this title and degree: the page cannot be
+    # attributed to one of them, so both keep the university-site fallback.
+    shared = [
+        row("msmt-vs_1", "Zahradnictví", "b", "cs", "Fakulta 1"),
+        row("msmt-vs_1", "Zahradnictví", "b", "cs", "Fakulta 2"),
+    ]
+    ambiguous = rpl.Match(shared)
+    binding = ambiguous.bind(candidate("https://school.cz/p/zahradnictvi/", "Zahradnictví", "b", "cs"))
+    assert binding.reason == "ambiguous_register_rows"
+    assert len(binding.rows) == 2
+
+
+def test_verify_links_drops_404_and_keeps_access_control() -> None:
+    links = {
+        "inv-a": rpl.Link(
+            url="https://school.cz/p/a/",
+            row_id="inv-a",
+            institution_id="msmt-vs_1",
+            degree="b",
+            language="cs",
+            matched_title="A",
+            row_title="A",
+            source_url="https://school.cz/programmes",
+            matched_by="school_catalogue_anchor",
+            reachability="unverified",
+            matched_at="2026-09-27T00:00:00Z",
+        ),
+        "inv-b": rpl.Link(
+            url="https://school.cz/p/b/",
+            row_id="inv-b",
+            institution_id="msmt-vs_1",
+            degree="b",
+            language="cs",
+            matched_title="B",
+            row_title="B",
+            source_url="https://school.cz/programmes",
+            matched_by="school_catalogue_anchor",
+            reachability="unverified",
+            matched_at="2026-09-27T00:00:00Z",
+        ),
+    }
+    fetch = FakeFetch(
+        {
+            "https://school.cz/p/a/": (404, ""),
+            "https://school.cz/p/b/": (403, "<html>denied</html>"),
+        }
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    outcomes = rpl.verify_links(links, throttled, rpl.Limits(), rpl.Budget(60))
+    assert outcomes["https://school.cz/p/a/"] == "dropped_404"
+    # 403 is not evidence the page is gone.
+    assert outcomes["https://school.cz/p/b/"] == "unverified_access_control"
+    assert links["inv-b"].reachability == "access_control"
+
+
+def test_verify_links_drops_a_page_that_states_another_level() -> None:
+    """The name matches exactly; the page's own words say it is the other one."""
+    link = rpl.Link(
+        url="https://school.cz/p/kynologie/",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="b",
+        language="cs",
+        matched_title="Kynologie",
+        row_title="Kynologie",
+        source_url="https://school.cz/programmes",
+        matched_by="school_catalogue_anchor",
+        reachability="unverified",
+        matched_at="2026-09-27T00:00:00Z",
+    )
+    fetch = FakeFetch(
+        {
+            "https://school.cz/p/kynologie/": (
+                200,
+                "<html><head><title>Kynologie – magisterské studium | school</title></head>"
+                "<body><h1>Kynologie – magisterské studium</h1></body></html>",
+            )
+        }
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    outcomes = rpl.verify_links({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60))
+    assert outcomes["https://school.cz/p/kynologie/"] == "dropped_level_mismatch"
+    assert rpl.DROP_REASONS["dropped_level_mismatch"] == "page_states_another_level"
+
+
+def test_a_page_that_states_no_level_is_kept() -> None:
+    link = rpl.Link(
+        url="https://school.cz/p/kynologie/",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="b",
+        language="cs",
+        matched_title="Kynologie",
+        row_title="Kynologie",
+        source_url="https://school.cz/programmes",
+        matched_by="school_catalogue_anchor",
+        reachability="unverified",
+        matched_at="2026-09-27T00:00:00Z",
+    )
+    body = (
+        "<html><head><title>Kynologie | Fakulta</title></head>"
+        "<body><h1>Kynologie</h1></body></html>"
+    )
+    throttled = rpl.ThrottledFetch(
+        FakeFetch({"https://school.cz/p/kynologie/": (200, body)}), sleep=lambda _seconds: None
+    )
+    outcomes = rpl.verify_links({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60))
+    assert outcomes["https://school.cz/p/kynologie/"] == "verified"
+
+
+def test_the_level_probe_separates_a_title_the_register_holds_twice() -> None:
+    """A catalogue link names no level; the page it points at does."""
+    match = rpl.Match(
+        [row("msmt-vs_1", "Zahradnictví", "b", "cs"), row("msmt-vs_1", "Zahradnictví", "m", "cs")]
+    )
+    unresolved = {
+        row.ident: "ambiguous_register_rows" for row in match.rows
+    }
+    candidate = rpl.Candidate(
+        url="https://school.cz/p/zahradnictvi/",
+        title="Zahradnictví",
+        degree=rpl.UNKNOWN_DEGREE,
+        language="",
+        source_url="https://school.cz/programmes",
+        matched_by="school_catalogue_anchor",
+        observed_at="2026-09-27T00:00:00Z",
+    )
+    body = (
+        "<html><head><title>Zahradnictví – bakalářské studium | school</title></head>"
+        "<body><h1>Zahradnictví – bakalářské studium</h1></body></html>"
+    )
+    throttled = rpl.ThrottledFetch(
+        FakeFetch({"https://school.cz/p/zahradnictvi/": (200, body)}), sleep=lambda _seconds: None
+    )
+    probed, notes = rpl.probe_levels(
+        match,
+        unresolved,
+        {rpl.normalise("Zahradnictví"): [candidate]},
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+    )
+    assert notes == []
+    assert [item[0].url for item in probed[match.rows[0].ident]] == [candidate.url]
+    assert match.rows[1].ident not in probed
+    assert match.rows[1].ident in unresolved
+
+
+def test_the_level_probe_reads_nothing_when_no_page_states_a_level() -> None:
+    match = rpl.Match(
+        [row("msmt-vs_1", "Zahradnictví", "b", "cs"), row("msmt-vs_1", "Zahradnictví", "m", "cs")]
+    )
+    unresolved = {row.ident: "ambiguous_register_rows" for row in match.rows}
+    candidate = rpl.Candidate(
+        url="https://school.cz/p/zahradnictvi/",
+        title="Zahradnictví",
+        degree=rpl.UNKNOWN_DEGREE,
+        language="",
+        source_url="https://school.cz/programmes",
+        matched_by="school_catalogue_anchor",
+        observed_at="2026-09-27T00:00:00Z",
+    )
+    body = (
+        "<html><head><title>Bakalářské a magisterské studium | school</title></head>"
+        "<body><h1>Zahradnictví</h1></body></html>"
+    )
+    throttled = rpl.ThrottledFetch(
+        FakeFetch({"https://school.cz/p/zahradnictvi/": (200, body)}), sleep=lambda _seconds: None
+    )
+    probed, _notes = rpl.probe_levels(
+        match,
+        unresolved,
+        {rpl.normalise("Zahradnictví"): [candidate]},
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+    )
+    assert probed == {}
+    assert unresolved == {row.ident: "ambiguous_register_rows" for row in match.rows}
+
+
+def test_no_source_produces_no_links() -> None:
+    payload = rpl.build_links(
+        fetch=None,
+        now=datetime(2026, 9, 27, tzinfo=timezone.utc),
+        config={"harvestedSources": [], "schools": []},
+        institutions=[{"id": "msmt-vs_1", "officialName": "Test School", "officialUrl": "https://www.school.cz"}],
+        rows_by_institution={"msmt-vs_1": [row("msmt-vs_1", "Kynologie", "b", "cs")]},
+    )
+    assert payload["links"] == {}
+    assert payload["counts"]["linked"] == 0
+    assert [item["reason"] for item in payload["unresolved"]] == ["no_candidate_page"]
+    assert payload["coverage"]["schools"][0]["unresolved"] == 1
+
+
+def test_link_outside_the_school_domain_is_rejected(tmp_path: Path) -> None:
+    """A one-school run must not point rows at another organisation's page."""
+    harvest = tmp_path / "foreign.json"
+    harvest.write_text(
+        json.dumps(
+            {
+                "programmes": [
+                    {
+                        "degree": "b",
+                        "studyLanguage": "cs",
+                        "titles": {"cs": "Kynologie"},
+                        "url": "https://other.example.org/programmes/kynologie/",
+                    }
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    payload = rpl.build_links(
+        fetch=None,
+        now=datetime(2026, 9, 27, tzinfo=timezone.utc),
+        config={
+            "harvestedSources": [{"path": str(harvest), "urlField": "url"}],
+            "schools": [],
+        },
+        institutions=[{"id": "msmt-vs_1", "officialName": "Test School", "officialUrl": "https://www.school.cz"}],
+        rows_by_institution={"msmt-vs_1": [row("msmt-vs_1", "Kynologie", "b", "cs")]},
+    )
+    assert payload["counts"]["linked"] == 0
+    assert [item["reason"] for item in payload["unresolved"]] == ["no_candidate_page"]
+
+
+def test_discovery_only_reads_links_from_the_school_domain() -> None:
+    target = school_target()
+    homepage = """
+    <html><body>
+      <a href="/en/programmes/">Programmes</a>
+      <a href="https://ads.example.com/x/">Partner</a>
+    </body></html>
+    """
+    catalogue = """
+    <html><body>
+      <a href="/en/programmes/kynologie/">Kynologie</a>
+      <a href="https://other.cz/programmes/kynologie/">Kynologie elsewhere</a>
+      <a href="mailto:info@school.cz">Mail</a>
+    </body></html>
+    """
+    fetch = FakeFetch(
+        {
+            # catalogue_entries() normalises entries without a trailing slash.
+            "https://www.school.cz": (200, homepage),
+            "https://www.school.cz/en/programmes": (200, catalogue),
+        },
+        default=(200, "<html><body></body></html>"),
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    candidates, notes = rpl.discover_candidates(target, throttled, rpl.Limits(), rpl.Budget(60))
+    assert [item.url for item in candidates] == ["https://www.school.cz/en/programmes/kynologie/"]
+    assert notes == []
+
+
+def test_discovery_reads_the_schools_own_subdomains() -> None:
+    """A faculty names its programmes on its own subdomain (is.muni.cz, ...).
+
+    Only a domain the school owns is read, so widening to subdomains never
+    reaches another organisation; the exact title match still decides whether a
+    page belongs to a register row.
+    """
+    target = school_target()
+    homepage = """
+    <html><body>
+      <a href="/en/programmes/">Programmes</a>
+    </body></html>
+    """
+    catalogue = """
+    <html><body>
+      <a href="https://fi.school.cz/en/programmes/kynologie/">Kynologie</a>
+      <a href="https://unrelated.cz/en/programmes/kynologie/">Kynologie elsewhere</a>
+    </body></html>
+    """
+    fetch = FakeFetch(
+        {
+            "https://www.school.cz": (200, homepage),
+            "https://www.school.cz/en/programmes": (200, catalogue),
+        },
+        default=(200, "<html><body></body></html>"),
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    candidates, notes = rpl.discover_candidates(target, throttled, rpl.Limits(), rpl.Budget(60))
+    assert [item.url for item in candidates] == ["https://fi.school.cz/en/programmes/kynologie/"]
+    assert notes == []
+
+
+def test_catalogue_walk_takes_one_hop_past_the_first_catalogue() -> None:
+    """A homepage links to a catalogue, the catalogue to a faculty.
+
+    Real faculties rarely name their programmes on the first catalogue page, so
+    the walk reads one further level of catalogue pages. A catalogue page is a
+    candidate source like any other - the exact-match rule in ``resolve_school``
+    discards it when no register title equals it - and each page is read at most
+    once per school.
+    """
+    target = school_target()
+    homepage = """
+    <html><body>
+      <a href="/en/programmes/">Study programmes</a>
+    </body></html>
+    """
+    catalogue = """
+    <html><body>
+      <a href="/en/faculty-of-ecology/programmes/">Faculty programme catalogue</a>
+    </body></html>
+    """
+    faculty = """
+    <html><body>
+      <a href="/en/programmes/kynologie/">Kynologie</a>
+    </body></html>
+    """
+    fetch = FakeFetch(
+        {
+            "https://www.school.cz": (200, homepage),
+            "https://www.school.cz/en/programmes": (200, catalogue),
+            "https://www.school.cz/en/faculty-of-ecology/programmes": (200, faculty),
+        },
+        default=(200, "<html><body></body></html>"),
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    candidates, notes = rpl.discover_candidates(target, throttled, rpl.Limits(), rpl.Budget(60))
+    assert "https://www.school.cz/en/programmes/kynologie/" in [item.url for item in candidates]
+    assert notes == []
+    # Every page is read once: the faculty page is not fetched twice, and neither
+    # is the programme page it names.
+    assert fetch.calls.count("https://www.school.cz/en/faculty-of-ecology/programmes") == 1
+    assert fetch.calls.count("https://www.school.cz/en/programmes/kynologie") <= 1
+
+    match = rpl.Match([row("msmt-vs_00000", "Kynologie", "b", "cs")])
+    links, unresolved, multiple, _notes = rpl.resolve_school(
+        target, match, candidates, throttled, rpl.Limits(), rpl.Budget(60), live=False
+    )
+    assert links[match.rows[0].ident].url == "https://www.school.cz/en/programmes/kynologie/"
+    assert unresolved == {}
+
+
+def test_catalogue_walk_stays_bounded_per_school() -> None:
+    target = school_target()
+    anchors = "\n".join(
+        f'<a href="/catalogue/{index}/">Programme catalogue {index}</a>' for index in range(40)
+    )
+    links = anchors.join(("\n", "\n"))
+    page = f"<html><body>{links}</body></html>"
+    fetch = FakeFetch(
+        {
+            # catalogue_entries() normalises entries without a trailing slash.
+            f"https://www.school.cz/catalogue/{index}": (200, page)
+            for index in range(40)
+        }
+    )
+    fetch.responses["https://www.school.cz"] = (200, page)
+    limits = rpl.Limits(max_catalogue_entries=5)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    candidates, _notes = rpl.discover_candidates(target, throttled, limits, rpl.Budget(600))
+    catalogue_calls = [url for url in fetch.calls if url.startswith("https://www.school.cz/catalogue/")]
+    assert len(catalogue_calls) <= 5
+    assert candidates  # every page still contributes its anchors
+
+
+def test_the_page_budget_is_counted_per_school() -> None:
+    """A second school in one run starts with its own page budget.
+
+    Counted run-wide, the first school's pages starved every school after it:
+    at a run-wide 240 the walk left Charles University, CVUT and Palacky at 0
+    resolved rows with "budget_exhausted", because one school had already spent
+    the whole run. The counter therefore resets per school, while the run-wide
+    total is still reported so a tick's cost stays visible.
+    """
+    anchors = "\n".join(
+        f'<a href="/catalogue/{index}/">Programme catalogue {index}</a>' for index in range(40)
+    )
+    page = f"<html><body>{anchors}</body></html>"
+    responses: dict[str, tuple[int, str]] = {}
+    for domain in ("school.cz", "other.cz"):
+        responses[f"https://www.{domain}"] = (200, page)
+        for index in range(40):
+            # catalogue_entries() normalises entries without a trailing slash.
+            responses[f"https://www.{domain}/catalogue/{index}"] = (200, page)
+    fetch = FakeFetch(responses)
+    limits = rpl.Limits(max_page_fetches=2)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+
+    _first, first_notes = rpl.discover_candidates(
+        school_target("school.cz"), throttled, limits, rpl.Budget(600)
+    )
+    assert len([url for url in fetch.calls if "www.school.cz" in url]) == 2
+    assert any("budget_exhausted" in note for note in first_notes)
+
+    throttled.begin_school()
+    second, _second_notes = rpl.discover_candidates(
+        school_target("other.cz"), throttled, limits, rpl.Budget(600)
+    )
+    # The second school reads its own two pages although the run has now spent
+    # four, which a run-wide counter would have forbidden.
+    assert len([url for url in fetch.calls if "www.other.cz" in url]) == 2
+    assert second
+    assert throttled.requests == 4
+
+
+def test_ranking_prefers_the_page_whose_slug_restates_the_programme() -> None:
+    match = rpl.Match([row("msmt-vs_1", "Natural resources and environment", "m", "en")])
+    good = candidate("https://school.cz/programmes/natural-resources-and-environment/", "Natural resources and environment", "m", "en")
+    test_page = candidate("https://school.cz/programmes/testovaci-program-3/", "Natural resources and environment", "m", "en")
+    assert rpl.candidate_rank(good, match.rows[0]) < rpl.candidate_rank(test_page, match.rows[0])
+
+    target = school_target()
+    throttled = rpl.ThrottledFetch(FakeFetch({}), sleep=lambda _seconds: None)
+    links, unresolved, multiple, _notes = rpl.resolve_school(
+        target,
+        match,
+        [test_page, good],
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+        live=False,
+    )
+    assert list(links.values())[0].url == good.url
+    assert multiple == 1
+    assert unresolved == {}
+
+
+def test_several_school_keeps_one_page_per_programme() -> None:
+    match = rpl.Match([row("msmt-vs_1", "Agriculture and Food", "b", "en")])
+    on_study = candidate("https://study.school.cz/programmes/agriculture-and-food/", "Agriculture and Food", "b", "en")
+    on_studuj = candidate("https://studuj.school.cz/programmes/agriculture-and-food/", "Agriculture and Food", "b", "en")
+    target = school_target()
+    throttled = rpl.ThrottledFetch(FakeFetch({}), sleep=lambda _seconds: None)
+    links, unresolved, multiple, _notes = rpl.resolve_school(
+        target, match, [on_study, on_studuj], throttled, rpl.Limits(), rpl.Budget(60), live=False
+    )
+    # Both catalogues are the school's own pages, so the row keeps one of them,
+    # chosen deterministically, instead of losing the link.
+    assert len(links) == 1
+    assert links[match.rows[0].ident].url == min(on_study.url, on_studuj.url)
+    assert multiple == 1
+    assert unresolved == {}
+
+
+def test_homepage_failure_is_reported_not_guessed() -> None:
+    target = school_target()
+    throttled = rpl.ThrottledFetch(FakeFetch({"https://www.school.cz": (503, "")}), sleep=lambda _seconds: None)
+    candidates, notes = rpl.discover_candidates(target, throttled, rpl.Limits(), rpl.Budget(60))
+    assert candidates == []
+    assert notes == ["homepage_unreachable_http_503"]
+
+
+def test_payload_rows_with_several_pages_are_counted(tmp_path: Path) -> None:
+    previous = rpl.load_previous(tmp_path / "missing.json")
+    assert previous == {}
+    payload = {
+        "links": {
+            "inv-x": {
+                "url": "https://school.cz/p/x/",
+                "reachability": "verified",
+                "checkedAt": "2026-09-27T00:00:00Z",
+            }
+        },
+        "unresolved": [{"rowId": "inv-y", "reason": "no_candidate_page"}],
+        "coverage": {"schools": [{"institutionId": "msmt-vs_9", "offerings": 2, "resolved": 1, "notes": []}]},
+    }
+    links = {}
+    unresolved = {"inv-y": "no_candidate_page"}
+    merged_links, merged_reasons, merged_schools = rpl.merge_previous(payload, links, unresolved, [])
+    assert "inv-x" in merged_links
+    assert merged_reasons["inv-y"] == "no_candidate_page"
+    assert merged_schools[0]["institutionId"] == "msmt-vs_9"
+    assert "carried_from_previous_run" in merged_schools[0]["notes"]
+
+
+class DrivenClock:
+    """A run budget the test drives, so the run stops where it stops.
+
+    The production budget is wall clock, which a test cannot steer. What needs
+    testing is a run that is cut short, so this clock runs out once ``limit``
+    pages have been spent. ``budget()`` stands in for
+    ``resolve_programme_links.Budget``: ``build_links`` builds its own budget
+    object, so the run's budget has to read this one clock.
+    """
+
+    def __init__(self, limit: int):
+        self.limit = limit
+        self.spent = 0
+
+    @property
+    def expired(self) -> bool:
+        return self.spent > self.limit
+
+    def budget(self) -> "RunBudget":
+        clock = self
+
+        class RunBudget:
+            @property
+            def expired(self) -> bool:
+                return clock.expired
+
+        return RunBudget()
+
+
+class ClockedFetch:
+    """Answers a site and charges every page it serves to the run's budget."""
+
+    def __init__(self, responses: dict[str, tuple[int, str]], clock: DrivenClock):
+        self.responses = responses
+        self.clock = clock
+        self.calls: list[str] = []
+
+    def __call__(self, url: str) -> tuple[int, str]:
+        self.calls.append(url)
+        self.clock.spent += 1
+        return self.responses.get(url, (404, ""))
+
+
+def test_a_run_the_budget_cuts_short_keeps_the_whole_index(monkeypatch) -> None:
+    """Two schools, a budget that reaches one, and an index that still holds both.
+
+    The rotation exists because one run cannot read every school (measured
+    2026-09-27: about 330 seconds per school, so a 600-second run walks two of
+    53). The school the run read keeps the link it found; the school it never
+    reached keeps the link and the numbers an earlier run proved, with that
+    run's resolvedAt, and is marked as not read this time. Nothing the run did
+    not read is reported as unresolved, and the run never presents its two
+    schools as the whole index.
+    """
+    walked = row("msmt-vs_1", "Kynologie", "b", "cs")
+    not_reached = row("msmt-vs_2", "Zoologie", "b", "cs")
+    previous = {
+        "links": {
+            not_reached.ident: {
+                "url": "https://www.other.cz/programmes/zoologie/",
+                "institutionId": "msmt-vs_2",
+                "degree": "b",
+                "language": "cs",
+                "matchedTitle": "Zoologie",
+                "rowTitle": "Zoologie",
+                "matchedBy": "school_catalogue_anchor",
+                "reachability": "verified",
+                "matchedAt": "2026-08-01T00:00:00Z",
+                "checkedAt": "2026-08-01T00:00:00Z",
+            }
+        },
+        "unresolved": [],
+        "coverage": {
+            "schools": [
+                {
+                    "institutionId": "msmt-vs_2",
+                    "name": "Read Long Ago",
+                    "offerings": 1,
+                    "resolved": 1,
+                    "unresolved": 0,
+                    "unresolvedReasons": {},
+                    "resolvedAt": "2026-08-01T00:00:00Z",
+                    "notes": [],
+                }
+            ]
+        },
+    }
+    institutions = [
+        {"id": "msmt-vs_1", "officialName": "Never Read", "officialUrl": "https://www.school.cz"},
+        {"id": "msmt-vs_2", "officialName": "Read Long Ago", "officialUrl": "https://www.other.cz"},
+    ]
+    clock = DrivenClock(3)
+    fetch = ClockedFetch(
+        {
+            "https://www.school.cz": (
+                200,
+                '<html><body><a href="/programmes/kynologie/">Kynologie</a></body></html>',
+            ),
+            # The catalogue walk reads the page without its trailing slash, the
+            # check reads the link as the school's own anchor spelled it.
+            "https://www.school.cz/programmes/kynologie": (200, "<html><body></body></html>"),
+            "https://www.school.cz/programmes/kynologie/": (
+                200,
+                "<html><body><h1>Kynologie</h1></body></html>",
+            ),
+            "https://www.school.cz/sitemap.xml": (
+                200,
+                "<urlset><url><loc>https://www.school.cz/programmes/kynologie/</loc></url></urlset>",
+            ),
+        },
+        clock,
+    )
+    monkeypatch.setattr(rpl, "Budget", lambda _seconds: clock.budget())
+    monkeypatch.setattr(rpl, "PER_HOST_SLEEP_SECONDS", 0.0)
+    payload = rpl.build_links(
+        fetch=fetch,
+        now=datetime(2026, 9, 27, tzinfo=timezone.utc),
+        budget_seconds=3.0,
+        config={"harvestedSources": [], "schools": []},
+        previous=previous,
+        # The never-read school is walked first; the budget then runs out.
+        institutions=rpl.rotation_order(institutions, previous),
+        rows_by_institution={"msmt-vs_1": [walked], "msmt-vs_2": [not_reached]},
+    )
+
+    # The school the run read: its row is linked to the page its own site names,
+    # and the check confirmed the page still carries the programme name.
+    assert payload["links"][walked.ident]["url"] == "https://www.school.cz/programmes/kynologie/"
+    assert payload["links"][walked.ident]["reachability"] == "verified"
+    # The school the budget never reached keeps what the earlier run proved.
+    assert payload["links"][not_reached.ident]["url"] == "https://www.other.cz/programmes/zoologie/"
+    assert payload["links"][not_reached.ident]["reachability"] == "verified"
+    assert payload["counts"]["linked"] == 2
+    # No row is reported unresolved by a run that never read its school, and the
+    # school that was not read says so instead of reporting empty numbers.
+    assert payload["unresolved"] == []
+    assert rpl.NOT_ATTEMPTED not in {item["reason"] for item in payload["unresolved"]}
+    by_school = {item["institutionId"]: item for item in payload["coverage"]["schools"]}
+    assert by_school["msmt-vs_1"]["resolvedAt"] == "2026-09-27T00:00:00Z"
+    assert by_school["msmt-vs_1"]["resolved"] == 1
+    assert by_school["msmt-vs_2"]["resolvedAt"] == "2026-08-01T00:00:00Z"
+    assert by_school["msmt-vs_2"]["resolved"] == 1
+    assert "not_attempted_this_run" in by_school["msmt-vs_2"]["notes"]
+
+
+def test_rotation_reads_the_least_recently_read_school_first() -> None:
+    """A run that can only read two schools must not re-read the same two.
+
+    At the configured depth a school costs about 330 wall-clock seconds, so a
+    600-second run walks two of the 53 schools. Without a rotation the walk
+    always starts at the head of the list, which is how Charles University, CVUT
+    and Palacky stayed at zero resolved programme pages: nothing ever reached
+    them. A school that has never been read goes first of all, then the one
+    read longest ago.
+    """
+    never_read = {"id": "msmt-vs_10000", "officialName": "Never read"}
+    read_today = {"id": "msmt-vs_20000", "officialName": "Read today"}
+    read_long_ago = {"id": "msmt-vs_30000", "officialName": "Read long ago"}
+    schools = [read_today, read_long_ago, never_read]
+    previous = {
+        "coverage": {
+            "schools": [
+                {"institutionId": "msmt-vs_20000", "resolvedAt": "2026-09-27T00:00:00Z"},
+                {"institutionId": "msmt-vs_30000", "resolvedAt": "2026-08-01T00:00:00Z"},
+            ]
+        }
+    }
+    assert [item["id"] for item in rpl.rotation_order(schools, previous)] == [
+        "msmt-vs_10000",
+        "msmt-vs_30000",
+        "msmt-vs_20000",
+    ]
+    # No previous run yet: every school has never been read, so the order is
+    # stable and the first schools in the index are walked first.
+    assert [item["id"] for item in rpl.rotation_order(schools, {})] == [
+        "msmt-vs_10000",
+        "msmt-vs_20000",
+        "msmt-vs_30000",
+    ]
+
+
+def test_a_school_the_run_never_reached_keeps_its_proven_link() -> None:
+    """The rotation leaves most schools unread; they must not lose their links.
+
+    A school the budget never reached gives this run nothing to say about its
+    own pages, so the last run that did read it answers instead: the row keeps
+    its proven link and its reason, and the school keeps that run's numbers and
+    resolvedAt, marked as not read this time. A two-school run must not report
+    the other fifty-one schools as having no programme page at all.
+    """
+    previous = {
+        "links": {
+            "inv-a": {
+                "url": "https://www.school.cz/programmes/kynologie/",
+                "institutionId": "msmt-vs_9",
+                "degree": "b",
+                "language": "cs",
+                "matchedTitle": "Kynologie",
+                "rowTitle": "Kynologie",
+                "matchedBy": "school_catalogue_anchor",
+                "reachability": "verified",
+                "matchedAt": "2026-09-20T00:00:00Z",
+                "checkedAt": "2026-09-20T00:00:00Z",
+            }
+        },
+        "unresolved": [{"rowId": "inv-b", "reason": "no_candidate_page"}],
+        "coverage": {
+            "schools": [
+                {
+                    "institutionId": "msmt-vs_9",
+                    "offerings": 2,
+                    "resolved": 1,
+                    "unresolved": 1,
+                    "unresolvedReasons": {"no_candidate_page": 1},
+                    "resolvedAt": "2026-09-20T00:00:00Z",
+                    "notes": [],
+                }
+            ]
+        },
+    }
+    links, unresolved, schools = rpl.merge_previous(
+        previous,
+        {},
+        {"inv-a": rpl.NOT_ATTEMPTED, "inv-b": rpl.NOT_ATTEMPTED},
+        [
+            {
+                "institutionId": "msmt-vs_9",
+                "offerings": 2,
+                "resolved": 0,
+                "unresolved": 2,
+                "unresolvedReasons": {rpl.NOT_ATTEMPTED: 2},
+                "notes": ["budget_exhausted_before_school"],
+            }
+        ],
+    )
+    # The link survives, and no row is called unresolved by a run that never
+    # read it: the previous run that did read it keeps the reason it proved.
+    assert links["inv-a"].url == "https://www.school.cz/programmes/kynologie/"
+    assert links["inv-a"].reachability == "verified"
+    assert unresolved == {"inv-b": "no_candidate_page"}
+    # The school keeps the numbers of the run that read it, and that run's
+    # resolvedAt, so the next rotation knows when it was last walked.
+    assert schools[0]["resolved"] == 1
+    assert schools[0]["resolvedAt"] == "2026-09-20T00:00:00Z"
+    assert schools[0]["notes"] == ["not_attempted_this_run"]
+
+
+def test_a_plain_http_page_the_school_also_serves_over_https_is_promoted() -> None:
+    """The school's own page, reached over http, is not dropped for its scheme.
+
+    UJEP's faculty site links its programme brochures over http and serves them
+    over https too. The published inventory accepts only https addresses, so the
+    twin is read once and replaces the address when it still names this row.
+    """
+    link = rpl.Link(
+        url="http://ff.school.cz/studijni-brozura?view=article&id=12211",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="b",
+        language="cs",
+        matched_title="Archivní věda",
+        row_title="Archivní věda",
+        source_url="http://ff.school.cz/studium",
+        matched_by="school_catalogue_anchor",
+        reachability="unverified",
+        matched_at="2026-09-27T00:00:00Z",
+    )
+    body = (
+        "<html><head><title>Archivní věda | Filozofická fakulta</title></head>"
+        "<body><h1>Archivní věda</h1></body></html>"
+    )
+    fetch = FakeFetch(
+        {"https://ff.school.cz/studijni-brozura?view=article&id=12211": (200, body)}
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    links = {"inv-a": link}
+    notes = rpl.promote_https(links, throttled, rpl.Limits(), rpl.Budget(60))
+    assert notes == ["promoted_to_https: 1"]
+    promoted = links["inv-a"]
+    assert promoted.url == "https://ff.school.cz/studijni-brozura?view=article&id=12211"
+    assert promoted.reachability == "verified"
+    assert promoted.page_title == "Archivní věda"
+    assert promoted.checked_at
+    # The binding itself is untouched: only the published address changes.
+    assert promoted.matched_by == "school_catalogue_anchor"
+    assert promoted.matched_at == "2026-09-27T00:00:00Z"
+    # Only the twin is read: the plain-http address is never fetched again.
+    assert fetch.calls == ["https://ff.school.cz/studijni-brozura?view=article&id=12211"]
+
+
+def test_promotion_leaves_the_link_alone_when_the_school_serves_no_https() -> None:
+    link = rpl.Link(
+        url="http://ff.school.cz/studijni-brozura?view=article&id=9824",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="b",
+        language="cs",
+        matched_title="Archivnictví",
+        row_title="Archivnictví",
+        source_url="http://ff.school.cz/studium",
+        matched_by="school_catalogue_anchor",
+        reachability="verified",
+        matched_at="2026-09-27T00:00:00Z",
+        checked_at="2026-09-27T00:00:00Z",
+    )
+    fetch = FakeFetch({}, default=(404, ""))
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    assert rpl.promote_https({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60)) == []
+    assert link.url.startswith("http://")
+
+
+def test_promotion_refuses_a_twin_that_states_another_level() -> None:
+    """The https twin of an http page is still checked for whose page it is."""
+    link = rpl.Link(
+        url="http://ff.school.cz/studijni-brozura?view=article&id=9855",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="b",
+        language="cs",
+        matched_title="Filosofie",
+        row_title="Filosofie",
+        source_url="http://ff.school.cz/studium",
+        matched_by="school_catalogue_anchor",
+        reachability="verified",
+        matched_at="2026-09-27T00:00:00Z",
+        checked_at="2026-09-27T00:00:00Z",
+    )
+    body = (
+        "<html><head><title>Filosofie – doktorské studium | Fakulta</title></head>"
+        "<body><h1>Filosofie – doktorské studium</h1></body></html>"
+    )
+    fetch = FakeFetch(
+        {"https://ff.school.cz/studijni-brozura?view=article&id=9855": (200, body)}
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    assert rpl.promote_https({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60)) == []
+    assert link.url.startswith("http://")
+
+
+def test_a_folded_http_link_is_promoted_before_the_previous_index_is_merged() -> None:
+    """A later run that never reads a school must not lose its http page."""
+    previous = {
+        "links": {
+            "inv-a": {
+                "url": "http://www.fbmi.cvut.cz/cs/student/asistivni-technologie",
+                "institutionId": "msmt-vs_1",
+                "degree": "b",
+                "language": "cs",
+                "matchedTitle": "Asistivní technologie",
+                "rowTitle": "Asistivní technologie",
+                "matchedBy": "school_catalogue_anchor",
+                "reachability": "verified",
+                "matchedAt": "2026-09-27T00:00:00Z",
+                "checkedAt": "2026-09-27T00:00:00Z",
+            }
+        }
+    }
+    body = (
+        "<html><head><title>Asistivní technologie | FBMI</title></head>"
+        "<body><h1>Asistivní technologie</h1></body></html>"
+    )
+    fetch = FakeFetch(
+        {"https://www.fbmi.cvut.cz/cs/student/asistivni-technologie": (200, body)}
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    promoted = rpl.promote_previous_https(previous, throttled, rpl.Limits(), rpl.Budget(60))
+    assert promoted["links"]["inv-a"]["url"] == "https://www.fbmi.cvut.cz/cs/student/asistivni-technologie"
+    assert promoted["links"]["inv-a"]["reachability"] == "verified"
+    assert promoted["links"]["inv-a"]["checkedAt"]
+    # The payload the run was given is left as it was.
+    assert previous["links"]["inv-a"]["url"].startswith("http://")
+    links, _unresolved, _schools = rpl.merge_previous(
+        promoted, {}, {"inv-a": rpl.NOT_ATTEMPTED}, []
+    )
+    assert links["inv-a"].url == "https://www.fbmi.cvut.cz/cs/student/asistivni-technologie"
+
+
+def test_write_payload_round_trips(tmp_path: Path) -> None:
+    payload = {"generatedAt": "2026-09-27T00:00:00Z", "links": {}}
+    path = rpl.write_payload(payload, tmp_path / "links.json")
+    assert json.loads(path.read_text(encoding="utf-8")) == payload

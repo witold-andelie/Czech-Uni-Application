@@ -14,6 +14,36 @@ function digest(filePath) {
   return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
 }
 
+function applyPath(payload, path) {
+  let cursor = payload;
+  for (const part of path.split(".")) {
+    cursor = part === "-1" ? cursor[cursor.length - 1] : /^\d+$/.test(part) ? cursor[Number(part)] : cursor[part];
+  }
+  return cursor;
+}
+
+// Corpus cases resolve these against the snapshot itself, so a case never
+// hard-codes an inventory row id that the next register update would break.
+function resolveTokens(values, snapshotRoot) {
+  const inventory = JSON.parse(fs.readFileSync(path.resolve(snapshotRoot, "browse/nine-hei-inventory.json"), "utf8"));
+  const baseline = JSON.parse(fs.readFileSync(path.resolve(snapshotRoot, "msmt-hei-baseline.json"), "utf8"));
+  const school = inventory.schools[0];
+  const row = school.rows[0];
+  const officialUrl = baseline.institutions.find((item) => item.id === school.id)?.officialUrl;
+  const resolve = (value) => {
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      return Object.fromEntries(Object.entries(value).map(([key, item]) => [resolve(key), resolve(item)]));
+    }
+    if (value === "$FIRST_ROW_ID") return row[0];
+    if (value === "$FIRST_ROW_SCHOOL_URL") {
+      assert.ok(officialUrl, "the baseline institution owning the first row has no officialUrl");
+      return officialUrl;
+    }
+    return value;
+  };
+  return resolve(values);
+}
+
 describe("immutable browser publication selection", () => {
   it("keeps a build pinned after current.json changes", () => {
     const selected = selectActiveSnapshot({ root: ROOT });
@@ -74,13 +104,9 @@ describe("immutable browser publication selection", () => {
       for (const mutation of item.mutations || []) {
         const target = path.resolve(snapshotRoot, ...mutation.file.split("/"));
         const payload = JSON.parse(fs.readFileSync(target, "utf8"));
-        let cursor = payload;
-        const parts = mutation.path.split(".");
-        for (const part of parts) {
-          cursor = part === "-1" ? cursor[cursor.length - 1] : /^\d+$/.test(part) ? cursor[Number(part)] : cursor[part];
-        }
+        const cursor = mutation.path ? applyPath(payload, mutation.path) : payload;
         for (const key of mutation.delete || []) delete cursor[key];
-        Object.assign(cursor, mutation.set || {});
+        Object.assign(cursor, resolveTokens(mutation.set || {}, snapshotRoot));
         fs.writeFileSync(target, JSON.stringify(payload));
         const manifestPath = path.resolve(snapshotRoot, "manifest.json");
         const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));

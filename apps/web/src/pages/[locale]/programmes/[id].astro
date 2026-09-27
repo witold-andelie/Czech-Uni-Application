@@ -102,7 +102,7 @@ const officialHref = officialOfferingHref(view.offering, view.institution, findA
       <p class="disclaimer">
         {view.offering.dataClass === "official_register_extract" ? `${t(locale, "inventory.portalHelp")} ` : ""}
         <a class="external" href={officialHref} rel="noopener noreferrer" target="_blank">
-          {t(locale, "action.officialLink")}
+          {view.offering.programmeLinkKind ? t(locale, "programme.link.page") : t(locale, "programme.link.fallback")}
         </a>
       </p>
     )}

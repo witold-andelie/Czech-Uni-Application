@@ -14,6 +14,7 @@ from datetime import datetime
 from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
 from urllib.parse import urlsplit
+import urllib.parse
 
 from engine.urls import official_detail_allowed
 from publication_rules import (
@@ -40,6 +41,10 @@ VERSION_RE = re.compile(r"^v\d{4}-\d{2}-\d{2}\.\d+$")
 SHA256_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
 SAFE_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]*$")
+# Counts introduced after a snapshot was published stay optional for that
+# snapshot: every declared count must still match the validator's own
+# recomputation, and no manifest may declare a count nobody recomputes.
+OPTIONAL_MANIFEST_COUNT_KEYS = {"linkedInventoryOfferings"}
 LEGACY_GENERIC_LISTING_JOBS = {("v2026-09-17.1", "job-cuni-d3s-postdoc")}
 
 
@@ -244,13 +249,19 @@ def _validate_portals(data: dict[str, Any], institution_ids: set[str], errors: l
     return len(ids)
 
 
-def _validate_inventory(data: dict[str, Any], institution_ids: set[str], errors: list[str]) -> tuple[int, int]:
+def _validate_inventory(
+    data: dict[str, Any],
+    institution_ids: set[str],
+    baseline: dict[str, Any] | None,
+    errors: list[str],
+) -> tuple[int, int, int]:
     schools = data.get("schools")
     school_ids = _unique_ids(schools, "inventory schools", errors)
     unknown = school_ids - institution_ids
     if unknown:
         errors.append(f"Inventory references unknown institutions: {sorted(unknown)}")
     row_ids: set[str] = set()
+    rows_by_school: dict[str, set[str]] = {}
     total = 0
     for school in schools if isinstance(schools, list) else []:
         if not isinstance(school, dict):
@@ -259,6 +270,7 @@ def _validate_inventory(data: dict[str, Any], institution_ids: set[str], errors:
         if not isinstance(rows, list):
             errors.append(f"inventory school {school.get('id')} rows must be an array")
             continue
+        rows_by_school[str(school.get("id"))] = set()
         for index, row in enumerate(rows):
             total += 1
             label = f"inventory {school.get('id')} row {index}"
@@ -272,6 +284,7 @@ def _validate_inventory(data: dict[str, Any], institution_ids: set[str], errors:
                 errors.append(f"Duplicate inventory row id: {ident}")
             else:
                 row_ids.add(ident)
+                rows_by_school[str(school.get("id"))].add(ident)
             if not isinstance(title, str) or not title.strip():
                 errors.append(f"{label} has an empty title")
             if degree not in {"b", "m", "d", "o", "u"}:
@@ -281,9 +294,93 @@ def _validate_inventory(data: dict[str, Any], institution_ids: set[str], errors:
     declared = data.get("counts")
     if not isinstance(declared, dict) or declared.get("schools") != len(school_ids) or declared.get("programmes") != total:
         errors.append("Inventory embedded counts do not match actual records")
+    linked = _validate_programme_links(data, school_ids, rows_by_school, declared, baseline, errors)
     if not school_ids or total == 0:
         errors.append("Inventory must contain at least one school and one record")
-    return len(school_ids), total
+    return len(school_ids), total, linked
+
+
+def _registrable_host(value: Any) -> str:
+    """Registrable domain of an https URL, mirroring the resolver's own rule."""
+    if not isinstance(value, str) or not value.strip():
+        return ""
+    parsed = urllib.parse.urlsplit(value.strip())
+    if parsed.scheme != "https" or parsed.username or parsed.password:
+        return ""
+    host = (parsed.hostname or "").casefold()
+    labels = [label for label in host.split(".") if label]
+    return ".".join(labels[-2:]) if len(labels) > 2 else ".".join(labels)
+
+
+def _validate_programme_links(
+    data: dict[str, Any],
+    school_ids: set[str],
+    rows_by_school: dict[str, set[str]],
+    declared: Any,
+    baseline: dict[str, Any] | None,
+    errors: list[str],
+) -> int:
+    """School-owned programme pages must exist as rows, be https, and stay on the school's own domain.
+
+    This is the anti-fabrication gate for the "specific programme page" feature:
+    a published link that points at another organisation, or at a row this
+    inventory does not have, is a fabricated target and must block publication.
+    """
+    # Imported here so the resolver stays the single definition of which domains
+    # a school's own programme pages may live on.
+    from resolve_programme_links import domains_for_institutions
+
+    raw = data.get("programmeLinks", {})
+    if raw is None:
+        raw = {}
+    if not isinstance(raw, dict):
+        errors.append(rule("PROGRAMME_LINK_INVALID", "Inventory programmeLinks must be an object keyed by row id"))
+        return 0
+    if "programmeLinks" not in data:
+        # A build made without the school programme page index carries no links
+        # and no count; that is a complete, publishable state, not an error.
+        return 0
+    institution_hosts = domains_for_institutions((baseline or {}).get("institutions") or [])
+    linked = 0
+    for ident, entry in raw.items():
+        if not isinstance(ident, str) or not SAFE_ID_RE.fullmatch(ident):
+            errors.append(rule("PROGRAMME_LINK_INVALID", f"Inventory programme link id {ident!r} is not a safe id"))
+            continue
+        owner = next((school_id for school_id, row_ids in rows_by_school.items() if ident in row_ids), None)
+        if owner is None:
+            errors.append(rule("PROGRAMME_LINK_INVALID", f"Inventory programme link {ident} has no matching row"))
+            continue
+        if not isinstance(entry, dict):
+            errors.append(rule("PROGRAMME_LINK_INVALID", f"Inventory programme link {ident} must be an object"))
+            continue
+        url = entry.get("url")
+        if not valid_web_url(url, https_only=True):
+            errors.append(rule("PROGRAMME_LINK_INVALID", f"Inventory programme link {ident} has an invalid https url"))
+            continue
+        if entry.get("kind") != "school_programme_page":
+            errors.append(rule("PROGRAMME_LINK_INVALID", f"Inventory programme link {ident} has an unexpected kind"))
+            continue
+        host = _registrable_host(url)
+        if host not in institution_hosts.get(owner, set()):
+            errors.append(
+                rule(
+                    "PROGRAMME_LINK_FOREIGN_DOMAIN",
+                    f"Inventory programme link {ident} points outside {owner} domains: {url}",
+                )
+            )
+            continue
+        if entry.get("reachability") not in {"verified", "unverified", "access_control", "http_200_title_not_confirmed"}:
+            errors.append(rule("PROGRAMME_LINK_INVALID", f"Inventory programme link {ident} has an unknown reachability"))
+            continue
+        linked += 1
+    if isinstance(declared, dict) and declared.get("linkedProgrammes") != linked:
+        errors.append(
+            rule(
+                "PROGRAMME_LINK_COUNT_MISMATCH",
+                f"Inventory counts.linkedProgrammes {declared.get('linkedProgrammes')!r} does not match {linked} links",
+            )
+        )
+    return linked
 
 
 def _validate_tracer(data: dict[str, Any], name: str, institution_ids: set[str], errors: list[str]) -> tuple[set[str], set[str]]:
@@ -726,8 +823,8 @@ def validate_dataset(snapshot_root: Path) -> ValidationResult:
     baseline = loaded["msmt-hei-baseline.json"] or {}
     institution_ids = _validate_baseline(baseline, errors)
     portal_count = _validate_portals(loaded["admissions/apply-portals.json"] or {}, institution_ids, errors)
-    inventory_schools, inventory_offerings = _validate_inventory(
-        loaded["browse/nine-hei-inventory.json"] or {}, institution_ids, errors
+    inventory_schools, inventory_offerings, linked_programmes = _validate_inventory(
+        loaded["browse/nine-hei-inventory.json"] or {}, institution_ids, baseline, errors
     )
     _validate_tracer(loaded["admissions/cuni-mff-cs-tracer.json"] or {}, "CUNI tracer", institution_ids, errors)
     _validate_tracer(loaded["admissions/muni-fi-tracer.json"] or {}, "MUNI tracer", institution_ids, errors)
@@ -754,6 +851,7 @@ def validate_dataset(snapshot_root: Path) -> ValidationResult:
         "portals": portal_count,
         "inventoryOfferings": inventory_offerings,
         "inventorySchools": inventory_schools,
+        "linkedInventoryOfferings": linked_programmes,
         "jobs": job_count,
         "coordinates": coordinate_count,
         "reviewedOfferings": reviewed_count,
@@ -786,8 +884,22 @@ def validate_snapshot(snapshot_root: Path, *, expected_version: str | None = Non
     validation = manifest.get("validation")
     if not isinstance(validation, dict) or validation.get("passed") is not True or validation.get("errors") != []:
         errors.append("Manifest validation must be the strict successful result")
-    if manifest.get("counts") != result.counts:
-        errors.append(f"Manifest counts do not match actual records: {manifest.get('counts')} != {result.counts}")
+    counts_declared = manifest.get("counts")
+    if not isinstance(counts_declared, dict):
+        errors.append("Manifest counts must be an object")
+    else:
+        unknown = set(counts_declared) - set(result.counts)
+        if unknown:
+            errors.append(f"Manifest counts declare keys the validator does not recompute: {sorted(unknown)}")
+        for key, value in result.counts.items():
+            declared = counts_declared.get(key)
+            if declared is None and key in OPTIONAL_MANIFEST_COUNT_KEYS:
+                # A snapshot published before this count existed cannot carry it;
+                # it must still match on everything it does declare.
+                continue
+            if declared != value:
+                errors.append(f"Manifest counts do not match actual records: {counts_declared} != {result.counts}")
+                break
 
     checksums = manifest.get("checksums")
     if not isinstance(checksums, dict) or set(checksums) != set(REQUIRED_FILES):

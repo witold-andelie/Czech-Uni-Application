@@ -32,6 +32,8 @@ STUDYIN_OUT = ROOT / "data" / "sources" / "admissions" / "studyin-programmes.jso
 CZU_PROGRAMMES_OUT = ROOT / "data" / "sources" / "admissions" / "czu-english-programmes.json"
 CZU_CZECH_PROGRAMMES_OUT = ROOT / "data" / "sources" / "admissions" / "czu-czech-programmes.json"
 CZU_DOCTORAL_PROGRAMMES_OUT = ROOT / "data" / "sources" / "admissions" / "czu-doctoral-programmes.json"
+PROGRAMME_LINKS_OUT = ROOT / "data" / "sources" / "admissions" / "programme-links.json"
+PROGRAMME_LINK_BUDGET_SECONDS = 600
 SCHEDULE_STATE = RUNS / "schedule-state.json"
 
 from schedule import ScheduleManager  # noqa: E402
@@ -700,6 +702,112 @@ def refresh_czu_czech_programme_availability(
         )
         manager.record_volatile_failure(
             "czu_czech_programme_availability", str(exc), metrics=metrics, now=current
+        )
+        raise
+
+
+def resolve_programme_page_links(
+    now: datetime | None = None,
+    *,
+    output_path: Path | None = None,
+    schedule_manager: ScheduleManager | None = None,
+    use_lock: bool = True,
+    budget_seconds: float = PROGRAMME_LINK_BUDGET_SECONDS,
+) -> dict:
+    """Resolve school-owned programme pages and refresh the link index.
+
+    This is crawler configuration plus deterministic matching, never a typed
+    list of programme links. Exact normalised title, degree and teaching
+    language equality decides which school page a register row points at
+    (docs/PRODUCT.md); the resolver refuses to guess, and a run that cannot
+    reach a school's site writes no link for its rows.
+
+    One run cannot read every school (measured 2026-09-27: about 330 wall-clock
+    seconds per school at the configured depth, so roughly two schools inside a
+    600-second budget), so the schools are walked least-recently-read first and
+    the budget stops the run where it stops. Every school the run did not reach
+    keeps the links a previous run proved, so the index grows over successive
+    runs instead of re-reading the first schools forever.
+    """
+    current = _aware_utc(now or datetime.now(timezone.utc))
+    manager = schedule_manager or ScheduleManager()
+    target = output_path or PROGRAMME_LINKS_OUT
+    context = RunLock() if use_lock else nullcontext()
+    metrics = {
+        "linkedProgrammes": 0,
+        "registerOfferings": 0,
+        "schoolsResolved": 0,
+    }
+    try:
+        from resolve_programme_links import (
+            baseline_schools,
+            build_links,
+            rotation_order,
+            write_payload,
+        )
+
+        def fetch(url: str) -> tuple[int, str]:
+            # Offline ingestion transport: ordinary HTTP, then a Scrapling GET
+            # when the ordinary read is too weak. No visitor request ever
+            # reaches a school through this path (docs/CRAWLING_RULES.md).
+            from engine.transport import fetch_official_page
+
+            result = fetch_official_page(url, allow_browser=False)
+            return result.status, result.body
+
+        with context:
+            previous: dict = {}
+            if target.exists():
+                try:
+                    previous = json.loads(target.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    previous = {}
+            payload = build_links(
+                fetch=fetch,
+                now=current,
+                budget_seconds=budget_seconds,
+                previous=previous,
+                # Least-recently-read school first, so a run that can only read
+                # a couple of schools still walks the whole index over successive
+                # runs instead of re-reading the first one forever. Schools the
+                # budget stops short of keep their previous links.
+                institutions=rotation_order(baseline_schools(), previous),
+            )
+            write_payload(payload, target)
+            RUNS.mkdir(parents=True, exist_ok=True)
+            atomic_write(
+                RUNS / "programme-links-latest.json",
+                {
+                    "generatedAt": payload["generatedAt"],
+                    "counts": payload["counts"],
+                    "coverage": payload["coverage"],
+                    "requests": payload["requests"],
+                    "output": str(target.relative_to(ROOT)).replace("\\", "/")
+                    if target.is_relative_to(ROOT)
+                    else str(target),
+                },
+            )
+        totals = (payload.get("coverage") or {}).get("totals") or {}
+        counts = payload.get("counts") or {}
+        metrics = {
+            "linkedProgrammes": int(counts.get("linked") or 0),
+            "registerOfferings": int(totals.get("offerings") or 0),
+            "schoolsResolved": int(totals.get("schools") or 0),
+        }
+        manager.record_volatile_success(
+            "programme_link_resolution", metrics=metrics, now=current
+        )
+        return {
+            "status": "succeeded",
+            "generatedAt": payload["generatedAt"],
+            "counts": counts,
+            "coverage": payload["coverage"],
+            "published": False,
+            "output": str(target),
+        }
+    except Exception as exc:
+        manager.record_volatile_failure(
+            "programme_link_resolution", str(exc), metrics=metrics, now=current
         )
         raise
 
@@ -1473,6 +1581,10 @@ def main() -> None:
     dry = "--dry-run" in args
     force = "--skip-existing" not in args
     skip_portals = "--skip-portals" in args
+    try:
+        budget_seconds = float(os.environ.get("PROGRAMME_LINK_BUDGET_SECONDS") or PROGRAMME_LINK_BUDGET_SECONDS)
+    except ValueError:
+        budget_seconds = float(PROGRAMME_LINK_BUDGET_SECONDS)
     shard_arg = None
     if "--shard" in args:
         shard_arg = int(args[args.index("--shard") + 1])
@@ -1514,6 +1626,11 @@ def main() -> None:
         print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
         return
 
+    if "--resolve-programme-links" in args:
+        res = resolve_programme_page_links(budget_seconds=budget_seconds)
+        print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
+        return
+
     if "--catch-up" in args:
         res = run_catch_up(force=force, skip_portals=skip_portals)
         print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
@@ -1544,6 +1661,7 @@ def main() -> None:
         "official DZS candidate catalogue; --refresh-czu-programmes for CZU's English catalogue; "
         "--refresh-czu-czech-programmes for CZU's Czech-facing bachelor/master catalogue; "
         "--refresh-czu-doctoral-programmes for CZU's six-faculty doctoral cross-check; "
+        "--resolve-programme-links to refresh the school-owned programme page link index; "
         "--catch-up for due tasks; --loop for the scheduler"
     )
     print("network_failure_means_closed", network_failure_means_closed(429, False))

@@ -25,6 +25,10 @@ PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 2
 CZU_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 2
 CZU_CZECH_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 2
 CZU_DOCTORAL_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 2
+# The whole official-source sweep is 120 hours (docs/REFRESH_POLICY.md); the
+# programme page index is part of that same bounded cycle, and the resolver
+# itself skips any link checked inside 120 hours.
+PROGRAMME_LINK_RESOLUTION_INTERVAL_HOURS = 120
 RETRY_BACKOFFS = [300, 1800, 7200]
 STATE_LOCK_TIMEOUT_SECONDS = 5.0
 
@@ -66,6 +70,15 @@ VOLATILE_TASKS = {
         "reason": (
             "Cross-check CZU's MŠMT doctoral baseline against all six faculties' "
             "official programme and admissions evidence"
+        ),
+    },
+    "programme_link_resolution": {
+        "stateKey": "programmeLinkResolution",
+        "intervalHours": PROGRAMME_LINK_RESOLUTION_INTERVAL_HOURS,
+        "priority": "full_cycle_programme_link_resolution",
+        "reason": (
+            "Discover school-owned programme pages for register rows and resolve "
+            "them by exact normalised title, degree and teaching language equality"
         ),
     },
 }
@@ -185,6 +198,12 @@ class ScheduleManager:
                 upcomingApplicationsCount=0,
                 closedApplicationsCount=0,
                 awaitingNextAcademicYearWindowCount=0,
+            ),
+            "programmeLinkResolution": task_state(
+                PROGRAMME_LINK_RESOLUTION_INTERVAL_HOURS,
+                linkedProgrammes=0,
+                registerOfferings=0,
+                schoolsResolved=0,
             ),
             "sources": {},
             "slaBreaches": [],

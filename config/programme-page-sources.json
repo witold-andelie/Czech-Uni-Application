@@ -1,0 +1,96 @@
+{
+  "$comment": [
+    "Per-school configuration for resolve_programme_links.py: which already harvested school-owned",
+    "programme records count, which domains a school's programme pages may live on, and which",
+    "catalogue/sitemap pages to read when discovering more. Adding a school means adding entries here;",
+    "it never means typing a link per programme. Entry URLs are read by the crawler; the specific",
+    "programme page a row points at is still decided by exact title/degree/language matching.",
+    "Ordered by the number of MŠMT register rows each school has (docs/ACCEPTANCE.md A100): the first",
+    "twelve schools hold roughly three quarters of the register, so they are configured first. An",
+    "empty entryUrls means 'discover generically': the school home page is read, its catalogue-like",
+    "links are followed one hop, and the school's sitemaps are read within the documented bounds."
+  ],
+  "harvestedSources": [
+    {
+      "path": "data/sources/admissions/czu-english-programmes.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage"
+    },
+    {
+      "path": "data/sources/admissions/czu-czech-programmes.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage"
+    }
+  ],
+  "schools": [
+    {
+      "institutionId": "msmt-vs_41000",
+      "extraDomains": ["czu.cz", "studuj.czu.cz"],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_11000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_14000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_15000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_27000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_21000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_12000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_26000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_17000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_23000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_25000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_43000",
+      "extraDomains": [],
+      "entryUrls": []
+    },
+    {
+      "institutionId": "msmt-vs_13000",
+      "extraDomains": [],
+      "entryUrls": []
+    }
+  ]
+}

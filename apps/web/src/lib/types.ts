@@ -141,6 +141,10 @@ export interface Offering {
   applicationTargetKind?: "programme_page" | "general_portal" | "unknown";
   generalApplyPortalUrl?: string | null;
   officialProgrammeUrl?: string | null;
+  // "school_programme_page" means officialProgrammeUrl is the university's own
+  // page for this specific programme; null means the link is the university
+  // site and the label has to say so.
+  programmeLinkKind?: "school_programme_page" | null;
   sourceLanguage?: string | null;
   titleOriginal?: string | null;
   fetchedAt?: string | null;

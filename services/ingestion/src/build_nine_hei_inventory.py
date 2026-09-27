@@ -18,6 +18,22 @@ ROOT = Path(__file__).resolve().parents[3]
 SRC = ROOT / "data" / "sources" / "programmes"
 OUT_DIR = ROOT / "data" / "sources" / "browse"
 REGISTER_URL = "https://regvssp.msmt.cz/registrvssp/csplist.aspx"
+# Written by resolve_programme_links.py. Absent is fine: the inventory then
+# simply carries no programme page link and says so.
+PROGRAMME_LINKS = ROOT / "data" / "sources" / "admissions" / "programme-links.json"
+PROGRAMME_LINK_NOTE = (
+    "School-owned programme pages resolved by exact normalised title, degree and "
+    "teaching-language equality; see programmeLinks and resolve_programme_links.py. "
+    "Rows without an entry show the university site instead."
+)
+PROGRAMME_LINK_NOTE_MISSING = (
+    "No school-owned programme page index (data/sources/admissions/programme-links.json) "
+    "was present for this build, so every row shows the university site."
+)
+PROGRAMME_LINK_NOTE_UNREADABLE = (
+    "The school-owned programme page index could not be read, so no programme page link "
+    "was attached and every row shows the university site."
+)
 
 NINE_HEIS: tuple[tuple[str, str], ...] = tuple(
     (item["msmtCode"].lower(), f"msmt-{item['msmtCode'].lower()}") for item in LISTED
@@ -101,10 +117,10 @@ def compact_school(path: Path, institution_id: str) -> dict:
     return {"id": institution_id, "rows": rows}
 
 
-def build_compact(schools: list[dict], generated_at: str | None = None) -> dict:
+def build_compact(schools: list[dict], generated_at: str | None = None, link_report: dict | None = None) -> dict:
     generated = generated_at or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     total = sum(len(school["rows"]) for school in schools)
-    return {
+    payload = {
         "generatedAt": generated,
         "dataClass": "official_register_extract",
         "catalogKind": "browse_with_inventory",
@@ -117,6 +133,79 @@ def build_compact(schools: list[dict], generated_at: str | None = None) -> dict:
         },
         "schools": schools,
     }
+    _, report = stamp_programme_links(payload)
+    if link_report is not None:
+        # What the link gate kept and what it dropped, so the build can say so.
+        link_report.update(report)
+    return payload
+
+
+def stamp_programme_links(payload: dict) -> tuple[dict, dict[str, int]]:
+    """Attach school-owned programme page links, keeping the 7-field row format.
+
+    Links sit beside the rows, keyed by the row's own id, so the positional row
+    contract is untouched. A row without a proven page gets no entry and keeps
+    showing the university site; the count states how many rows do have one.
+
+    A link the index proves but this build does not publish is counted, not
+    dropped quietly: the resolver is what would have to change, and CI reports
+    the difference (check_programme_link_coverage.py).
+    """
+    report = {
+        "indexLinks": 0,
+        "published": 0,
+        "droppedNotHttps": 0,
+        "droppedForeignDomain": 0,
+        "droppedUnknownRow": 0,
+    }
+    # Imported lazily: the resolver imports this module for row ids.
+    from resolve_programme_links import allowed_domains_by_institution, registrable_host
+
+    if not PROGRAMME_LINKS.is_file():
+        payload["programmeLinkNote"] = PROGRAMME_LINK_NOTE_MISSING
+        return payload, report
+    try:
+        index = json.loads(PROGRAMME_LINKS.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        payload["programmeLinkNote"] = PROGRAMME_LINK_NOTE_UNREADABLE
+        return payload, report
+    index_links = {
+        str(ident): entry
+        for ident, entry in (index.get("links") or {}).items()
+        if isinstance(entry, dict)
+    }
+    report["indexLinks"] = len(index_links)
+    allowed = allowed_domains_by_institution()
+    kept: dict[str, dict] = {}
+    known_rows: set[str] = set()
+    for school in payload.get("schools") or []:
+        institution_id = str(school.get("id") or "")
+        domains = allowed.get(institution_id) or set()
+        for row in school.get("rows") or []:
+            known_rows.add(str(row[0]))
+    for ident, entry in sorted(index_links.items()):
+        url = str(entry.get("url") or "")
+        if not url.startswith("https://"):
+            # Not a school-owned https page: drop rather than publish it.
+            report["droppedNotHttps"] += 1
+            continue
+        if registrable_host(url) not in (allowed.get(str(entry.get("institutionId") or "")) or set()):
+            report["droppedForeignDomain"] += 1
+            continue
+        if ident not in known_rows:
+            report["droppedUnknownRow"] += 1
+            continue
+        kept[ident] = {
+            "url": url,
+            "kind": "school_programme_page",
+            "reachability": str(entry.get("reachability") or "unverified"),
+        }
+    payload["programmeLinks"] = kept
+    payload["counts"]["linkedProgrammes"] = len(kept)
+    payload["programmeLinkNote"] = PROGRAMME_LINK_NOTE
+    payload["programmeLinkGeneratedAt"] = str(index.get("generatedAt") or "")
+    report["published"] = len(kept)
+    return payload, report
 
 
 def register_extracts() -> list[tuple[str, str]]:
@@ -131,12 +220,12 @@ def register_extracts() -> list[tuple[str, str]]:
     return [(path.stem, f"msmt-{path.stem}") for path in paths]
 
 
-def build_from_register() -> dict:
+def build_from_register(link_report: dict | None = None) -> dict:
     schools = []
     for filename, institution_id in register_extracts():
         path = SRC / f"{filename}.json"
         schools.append(compact_school(path, institution_id))
-    return build_compact(schools)
+    return build_compact(schools, link_report=link_report)
 
 
 def write_compact(payload: dict) -> Path:
@@ -148,13 +237,27 @@ def write_compact(payload: dict) -> Path:
 
 
 def main() -> None:
-    payload = build_from_register()
+    link_report: dict[str, int] = {}
+    payload = build_from_register(link_report)
     source_path = write_compact(payload)
     size = source_path.stat().st_size
     print(
         f"Wrote {payload['counts']['programmes']} programmes "
         f"for {payload['counts']['schools']} schools "
         f"({size} bytes) to candidate data {source_path}"
+    )
+    dropped = link_report.get("indexLinks", 0) - link_report.get("published", 0)
+    print(
+        "School-owned programme pages: "
+        f"{link_report.get('published', 0)} of {link_report.get('indexLinks', 0)} proven link(s) published"
+        + (
+            f"; {dropped} not published "
+            f"(not https {link_report.get('droppedNotHttps', 0)}, "
+            f"outside the school's domains {link_report.get('droppedForeignDomain', 0)}, "
+            f"row not in the register {link_report.get('droppedUnknownRow', 0)})"
+            if dropped
+            else ""
+        )
     )
 
 
