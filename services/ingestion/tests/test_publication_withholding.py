@@ -97,16 +97,23 @@ def test_unconfirmed_pay_is_published_not_withheld(tmp_path: Path) -> None:
     """
     jobs, selection = staged_selection(tmp_path)
     published = {job["id"] for job in jobs}
+    withheld = {item["id"]: item for item in selection["withheld"]}
     unconfirmed = {
         ident for ident, record in candidate_records().items()
         if record.get("publicationStatus") == "approved" and record.get("paidStatus") != "confirmed"
     }
     assert unconfirmed, "the candidate set should still carry unconfirmed-pay vacancies"
-    assert unconfirmed <= published, "an announcement that states no pay is still published"
-    withheld = {item["id"]: item for item in selection["withheld"]}
     for ident in unconfirmed:
-        reasons = withheld.get(ident, {}).get("reasons", [])
-        assert not any("compensation evidence" in reason for reason in reasons)
+        for reason in withheld.get(ident, {}).get("reasons", []):
+            assert "compensation evidence" not in reason
+        if ident in withheld:
+            # Withheld for its announcement, never for what that announcement
+            # does or does not say about pay.
+            assert withheld[ident].get("liveEvidence"), (
+                f"{ident} states no pay, so only its live announcement may withhold it"
+            )
+        else:
+            assert ident in published, f"{ident} states no pay and is published as it stands"
 
 
 def test_records_whose_source_no_longer_verifies_them_are_withheld_not_closed(tmp_path: Path) -> None:

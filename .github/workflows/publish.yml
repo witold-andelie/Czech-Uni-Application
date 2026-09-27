@@ -47,8 +47,14 @@ jobs:
           set -euo pipefail
           # Offline gate over data/sources/coverage/live-title-verification.json:
           # every job that would enter the snapshot needs a recent per-item live
-          # verification (matched or operator_verified). It is also enforced
-          # inside publish.py, so this step is the operator-visible report.
+          # verification (matched or operator_verified). One record whose official
+          # page no longer verifies it is withheld by id and reason inside the
+          # snapshot and the rest publish (owner decision 2026-09-26,
+          # docs/REFRESH_POLICY.md, docs/ACCEPTANCE.md A96), so this step reports
+          # those records and fails only when nothing at all is verified - a
+          # verifier failure that would otherwise leave an empty research library.
+          # The same rules are enforced inside publish.py, so this step is the
+          # operator-visible report.
           python services/ingestion/src/cli/check_live_evidence.py \
             --jobs data/sources/browse/nine-hei-jobs.json \
             --evidence data/sources/coverage/live-title-verification.json

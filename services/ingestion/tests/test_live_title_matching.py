@@ -204,7 +204,14 @@ def test_gate_requires_evidence_when_the_file_is_missing() -> None:
     assert missing[0][0] == "<evidence>"
 
 
-def test_gate_cli_holds_publication_and_names_the_reason(tmp_path: Path) -> None:
+def test_gate_cli_withholds_one_record_and_publishes_the_rest(tmp_path: Path) -> None:
+    """One source change no longer holds the whole publication.
+
+    Owner decision 2026-09-26 (docs/REFRESH_POLICY.md, docs/ACCEPTANCE.md A96):
+    the record is withheld by id and reason inside the snapshot and everything
+    else publishes, so the gate reports it and exits 0. `--strict` keeps the
+    older hard stop for an operator who wants one.
+    """
     import subprocess
 
     jobs = tmp_path / "jobs.json"
@@ -222,9 +229,18 @@ def test_gate_cli_holds_publication_and_names_the_reason(tmp_path: Path) -> None
         capture_output=True,
         text=True,
     )
-    assert held.returncode == 1
-    assert "publication held: 1 job(s)" in held.stdout
-    assert "gone: source_change_noted" in held.stdout
+    assert held.returncode == 0
+    assert "will be withheld by id and reason" in held.stdout
+    assert "held gone: source_change_noted" in held.stdout
+
+    strict = subprocess.run(
+        [sys.executable, str(script), "--jobs", str(jobs), "--evidence", str(evidence), "--strict"],
+        capture_output=True,
+        text=True,
+    )
+    assert strict.returncode == 1
+    assert "publication held" in strict.stdout
+    assert "gone has no live verification within 7 days (source_change_noted)" in strict.stdout
 
     evidence.write_text(
         json.dumps(_evidence([_row("confirmed", "matched"), _row("gone", "matched")])),
