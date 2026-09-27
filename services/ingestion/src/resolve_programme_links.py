@@ -1761,7 +1761,12 @@ def build_links(
         for institution_id, rows in rows_by_institution.items()
         for row in rows
     }
-    all_institutions = institutions if institutions is not None else baseline_schools()
+    previous_payload = previous or {}
+    all_institutions = (
+        institutions
+        if institutions is not None
+        else rotation_order(baseline_schools(), previous_payload)
+    )
     throttled = ThrottledFetch(fetch)
     budget = Budget(budget_seconds) if fetch else Budget(0.0)
     live = fetch is not None
@@ -1771,7 +1776,6 @@ def build_links(
         if isinstance(entry, dict) and entry.get("institutionId")
     }
     harvested = harvested_candidates(config, now_text)
-    previous_payload = previous or {}
     selected = set(school_ids) if school_ids is not None else None
     previous_reads = {
         str(entry.get("institutionId")): str(entry.get("resolvedAt") or "")

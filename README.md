@@ -30,12 +30,12 @@ GitHub hosts the source code and CI, not the public website.
 
 ## Current release
 
-- Publication **`v2026-09-27.2`**: 54 institutions, 5,019 register offerings,
-  **1,819** with a school-owned programme page (matched rows, not a claim that
+- Publication **`v2026-09-27.3`**: 54 institutions, 5,019 register offerings,
+  **1,920** with a school-owned programme page (matched rows, not a claim that
   every page was title-verified this run). 134 approved job records in the
-  snapshot extract (same as v2026-09-27.1; 6 withheld by live-evidence, not
-  reported as closed), 4 reviewed admissions excerpts. The default jobs list
-  count follows the visitor's clock.
+  snapshot extract (unchanged; 6 withheld by live-evidence, not reported as
+  closed), 4 reviewed admissions excerpts. The default jobs list count
+  follows the visitor's clock.
 - Harvest runs daily on GitHub Actions (`refresh.yml` full tick). That writes
   Supabase and a 3-day artifact; it does not switch the public snapshot.
   Official job sources are registered for part of the 54-university baseline;

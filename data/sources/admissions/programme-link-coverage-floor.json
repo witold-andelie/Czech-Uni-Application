@@ -1,8 +1,8 @@
 {
   "note": "Committed regression floor for data/sources/admissions/programme-links.json. CI fails when any school or the total resolves fewer school-owned programme pages than this. Raise it when coverage genuinely improves; revise it with the reason recorded in revisionNotes when the register itself shrinks.",
-  "recordedFromGeneratedAt": "2026-09-27T17:12:30Z",
+  "recordedFromGeneratedAt": "2026-09-27T19:40:57Z",
   "denominatorBasis": "MŠMT register rows published for the school in the active inventory",
-  "resolvedTotal": 1819,
+  "resolvedTotal": 1920,
   "offeringsTotal": 5019,
   "schoolNames": {
     "msmt-vs_14000": "Masarykova univerzita",
@@ -21,7 +21,23 @@
     "msmt-vs_18000": "Univerzita Hradec Králové",
     "msmt-vs_25000": "Univerzita Pardubice",
     "msmt-vs_19000": "Slezská univerzita v Opavě",
-    "msmt-vs_24000": "Technická univerzita v Liberci"
+    "msmt-vs_24000": "Technická univerzita v Liberci",
+    "msmt-vs_75000": "Metropolitní univerzita Praha, o. p. s.",
+    "msmt-vs_54000": "Janáčkova akademie múzických umění",
+    "msmt-vs_7d000": "CEVRO Univerzita z.ú.",
+    "msmt-vs_55000": "Vysoká škola polytechnická Jihlava",
+    "msmt-vs_56000": "Vysoká škola technická a ekonomická v Českých Budějovicích",
+    "msmt-vs_6s000": "Vysoká škola zdravotnická, o.p.s.",
+    "msmt-vs_61000": "AMBIS vysoká škola, a.s.",
+    "msmt-vs_7u000": "Vysoká škola finanční a správní, a.s.",
+    "msmt-vs_6d000": "University of New York in Prague, s.r.o.",
+    "msmt-vs_6p000": "Vysoká škola tělesné výchovy a sportu PALESTRA, spol. s r.o.",
+    "msmt-vs_7j000": "Evropská výzkumná univerzita, z.ú.",
+    "msmt-vs_6k000": "Vysoká škola evropských a regionálních studií, z. ú.",
+    "msmt-vs_7t000": "Vysoká škola kreativní komunikace, s.r.o.",
+    "msmt-vs_6r000": "Vysoká škola logistiky o.p.s.",
+    "msmt-vs_7c000": "Moravská vysoká škola Olomouc, o.p.s.",
+    "msmt-vs_7p000": "Škoda Auto Vysoká škola o.p.s."
   },
   "resolvedBySchool": {
     "msmt-vs_14000": 261,
@@ -40,12 +56,29 @@
     "msmt-vs_18000": 17,
     "msmt-vs_25000": 16,
     "msmt-vs_19000": 5,
-    "msmt-vs_24000": 3
+    "msmt-vs_24000": 3,
+    "msmt-vs_75000": 26,
+    "msmt-vs_54000": 16,
+    "msmt-vs_7d000": 13,
+    "msmt-vs_55000": 9,
+    "msmt-vs_56000": 8,
+    "msmt-vs_6s000": 5,
+    "msmt-vs_61000": 4,
+    "msmt-vs_7u000": 4,
+    "msmt-vs_6d000": 3,
+    "msmt-vs_6p000": 3,
+    "msmt-vs_7j000": 3,
+    "msmt-vs_6k000": 2,
+    "msmt-vs_7t000": 2,
+    "msmt-vs_6r000": 1,
+    "msmt-vs_7c000": 1,
+    "msmt-vs_7p000": 1
   },
   "revisionNotes": [
     "2026-09-27: first floor recorded from the verified CZU run (107 of 186 register rows carry a school-owned programme page).",
     "2026-09-27: raised after the first full rotation of the never-read-first sweep. 760 of 5019 register rows now carry a school-owned programme page across 17 schools; the 33 smallest schools were still unread (budget_exhausted_before_school) and stay at 0, so they are not floored. Ten links, one per floored school, were re-fetched live and all answered on the school's own domain before the floor was committed.",
     "2026-09-27: the 18 links UJEP, CVUT and MUNI served only over plain http were promoted to https (one bounded read of the https twin each, all 200 on the school's own domain), so the published inventory keeps all 760 proven links instead of the 742 the https-only gate had kept. The resolver now does that promotion itself and the inventory build reports what it drops, so a school's own page is not lost to the scheme again.",
-    "2026-09-27: raised from the bounded seven-school merge written at 2026-09-27T17:12:30Z (1819 of 5019 register rows). Charles 785, Masaryk 261, Ostrava 133, VŠB 147, South Bohemia 36, Mendel 85, VUT 27 (official catalogue entry https://www.vutbr.cz/studenti/programy kept; a 24-count generic discovery would have dropped already-proven ids below the previous floor of 26). 760 previously committed ids are all retained. 1819 is matched school-owned pages, not a claim that every page was title-verified this run (370 verified; the rest keep their reachability). The 33 smallest schools stay unfloored at 0."
+    "2026-09-27: raised from the bounded seven-school merge written at 2026-09-27T17:12:30Z (1819 of 5019 register rows). Charles 785, Masaryk 261, Ostrava 133, VŠB 147, South Bohemia 36, Mendel 85, VUT 27 (official catalogue entry https://www.vutbr.cz/studenti/programy kept; a 24-count generic discovery would have dropped already-proven ids below the previous floor of 26). 760 previously committed ids are all retained. 1819 is matched school-owned pages, not a claim that every page was title-verified this run (370 verified; the rest keep their reachability). The 33 smallest schools stay unfloored at 0.",
+    "2026-09-27: raised after the first walk of the 33 previously unread schools (never-read only; the 17 already-resolved schools were not re-fetched). 1920 of 5019 register rows. New floors: msmt-vs_75000 0->26, msmt-vs_54000 0->16, msmt-vs_7d000 0->13, msmt-vs_55000 0->9, msmt-vs_56000 0->8, msmt-vs_6s000 0->5, msmt-vs_61000 0->4, msmt-vs_7u000 0->4, msmt-vs_6d000 0->3, msmt-vs_6p000 0->3, msmt-vs_7j000 0->3, msmt-vs_6k000 0->2, msmt-vs_7t000 0->2, msmt-vs_6r000 0->1, msmt-vs_7c000 0->1, msmt-vs_7p000 0->1. Schools that were walked and still have 0 stay unfloored. The previous 1819 ids are all retained."
   ]
 }
