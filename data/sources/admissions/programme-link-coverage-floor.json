@@ -1,8 +1,8 @@
 {
   "note": "Committed regression floor for data/sources/admissions/programme-links.json. CI fails when any school or the total resolves fewer school-owned programme pages than this. Raise it when coverage genuinely improves; revise it with the reason recorded in revisionNotes when the register itself shrinks.",
-  "recordedFromGeneratedAt": "2026-09-27T20:48:27Z",
+  "recordedFromGeneratedAt": "2026-09-27T21:44:50Z",
   "denominatorBasis": "MŠMT register rows published for the school in the active inventory",
-  "resolvedTotal": 2485,
+  "resolvedTotal": 2889,
   "offeringsTotal": 5019,
   "schoolNames": {
     "msmt-vs_14000": "Masarykova univerzita",
@@ -43,7 +43,8 @@
     "msmt-vs_95000": "Univerzita obrany",
     "msmt-vs_15000": "Univerzita Palackého v Olomouci",
     "msmt-vs_23000": "Západočeská univerzita v Plzni",
-    "msmt-vs_16000": "Veterinární univerzita Brno"
+    "msmt-vs_16000": "Veterinární univerzita Brno",
+    "msmt-vs_79000": "Pražská vysoká škola psychosociálních studií, s.r.o."
   },
   "resolvedBySchool": {
     "msmt-vs_14000": 261,
@@ -51,18 +52,18 @@
     "msmt-vs_43000": 85,
     "msmt-vs_27000": 147,
     "msmt-vs_11000": 785,
-    "msmt-vs_21000": 48,
+    "msmt-vs_21000": 99,
     "msmt-vs_28000": 48,
     "msmt-vs_31000": 44,
     "msmt-vs_22000": 37,
     "msmt-vs_17000": 133,
     "msmt-vs_26000": 27,
     "msmt-vs_12000": 36,
-    "msmt-vs_13000": 20,
+    "msmt-vs_13000": 133,
     "msmt-vs_18000": 17,
-    "msmt-vs_25000": 16,
+    "msmt-vs_25000": 141,
     "msmt-vs_19000": 5,
-    "msmt-vs_24000": 3,
+    "msmt-vs_24000": 114,
     "msmt-vs_75000": 26,
     "msmt-vs_54000": 16,
     "msmt-vs_7d000": 13,
@@ -84,7 +85,8 @@
     "msmt-vs_95000": 30,
     "msmt-vs_15000": 399,
     "msmt-vs_23000": 113,
-    "msmt-vs_16000": 3
+    "msmt-vs_16000": 3,
+    "msmt-vs_79000": 4
   },
   "revisionNotes": [
     "2026-09-27: first floor recorded from the verified CZU run (107 of 186 register rows carry a school-owned programme page).",
@@ -93,6 +95,7 @@
     "2026-09-27: raised from the bounded seven-school merge written at 2026-09-27T17:12:30Z (1819 of 5019 register rows). Charles 785, Masaryk 261, Ostrava 133, VŠB 147, South Bohemia 36, Mendel 85, VUT 27 (official catalogue entry https://www.vutbr.cz/studenti/programy kept; a 24-count generic discovery would have dropped already-proven ids below the previous floor of 26). 760 previously committed ids are all retained. 1819 is matched school-owned pages, not a claim that every page was title-verified this run (370 verified; the rest keep their reachability). The 33 smallest schools stay unfloored at 0.",
     "2026-09-27: raised after the first walk of the 33 previously unread schools (never-read only; the 17 already-resolved schools were not re-fetched). 1920 of 5019 register rows. New floors: msmt-vs_75000 0->26, msmt-vs_54000 0->16, msmt-vs_7d000 0->13, msmt-vs_55000 0->9, msmt-vs_56000 0->8, msmt-vs_6s000 0->5, msmt-vs_61000 0->4, msmt-vs_7u000 0->4, msmt-vs_6d000 0->3, msmt-vs_6p000 0->3, msmt-vs_7j000 0->3, msmt-vs_6k000 0->2, msmt-vs_7t000 0->2, msmt-vs_6r000 0->1, msmt-vs_7c000 0->1, msmt-vs_7p000 0->1. Schools that were walked and still have 0 stay unfloored. The previous 1819 ids are all retained.",
     "2026-09-27: AMU/UMPRUM/UNOB catalogues re-read with Scrapling (browser allowed) and faculty entry URLs. AVU admissions page names programmes as text without per-programme pages. PEUNI remains HTTP 403 (not bypassed). msmt-vs_51000 0->11, msmt-vs_53000 0->9, msmt-vs_95000 0->30. Previous 1920 ids retained. Total 1970/5019.",
-    "2026-09-27: Palacký, West Bohemia and Veterinary University Brno official ECTS faculty catalogues read with Scrapling (browser allowed). Already-resolved schools were not re-fetched. msmt-vs_15000 0->399, msmt-vs_23000 0->113, msmt-vs_16000 0->3. Previous 1970 ids retained. Total 2485/5019."
+    "2026-09-27: Palacký, West Bohemia and Veterinary University Brno official ECTS faculty catalogues read with Scrapling (browser allowed). Already-resolved schools were not re-fetched. msmt-vs_15000 0->399, msmt-vs_23000 0->113, msmt-vs_16000 0->3. Previous 1970 ids retained. Total 2485/5019.",
+    "2026-09-27: twelve remaining zero-count schools walked with official catalogue entry URLs; only PVŠPS resolved (0->4). Then ECTS faculty catalogues re-read for TUL, Pardubice, UJEP, ČVUT and VUT. msmt-vs_24000 3->114, msmt-vs_25000 16->141, msmt-vs_13000 20->133, msmt-vs_21000 48->99, msmt-vs_26000 stayed 27. Previous 2485 ids retained. Total 2889/5019."
   ]
 }
