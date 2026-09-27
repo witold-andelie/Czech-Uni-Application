@@ -13,8 +13,8 @@ import harvest_nine_hei_jobs as jobs_harvester  # noqa: E402
 jobs_harvest_nine_hei_jobs_visible_text = jobs_harvester.visible_text
 
 
-def test_verified_candidates_live_in_data_file() -> None:
-    path = ROOT / "services" / "ingestion" / "src" / "data" / "verified_candidates.json"
+def test_verified_candidates_live_in_test_fixtures() -> None:
+    path = ROOT / "services" / "ingestion" / "tests" / "fixtures" / "verified_candidates.json"
     assert path.is_file()
     payload = json.loads(path.read_text(encoding="utf-8"))
     assert isinstance(payload, list) and payload
@@ -22,6 +22,7 @@ def test_verified_candidates_live_in_data_file() -> None:
     assert [item["id"] for item in payload] == [
         item["id"] for item in jobs_harvester.load_verified_candidates()
     ]
+    assert not (ROOT / "services" / "ingestion" / "src" / "data" / "verified_candidates.json").is_file()
 
 from harvest_nine_hei_jobs import (  # noqa: E402
     TODAY,

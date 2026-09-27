@@ -23,7 +23,7 @@ digraph SD6 {
     notfound [label="中留服暂未收录（捷克官方认可）\nnot found", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="recognition"];
     unverifiedrecognition [label="待核验\nunverified", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="recognition"];
   }
-  admin [label="审核后台\nTypeScript / Svelte\nEditorial Console", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  admin [label="审核后台（2026-09-27 所有者决定不实现）\nEditorial Console (not built)", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   api [label="在线 API 服务\nGo\nOnline API Service", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   cache [label="发布数据缓存\nStatic HTML / JSON\nPublished Data Cache", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   catalog [label="已发布目录\nPublished Catalogue", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];

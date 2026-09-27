@@ -3987,20 +3987,23 @@ def harvest_with_registered_discovery(
     return payload
 
 
-VERIFIED_CANDIDATES_PATH = Path(__file__).resolve().with_name("data") / "verified_candidates.json"
+VERIFIED_CANDIDATES_PATH = (
+    ROOT / "services" / "ingestion" / "tests" / "fixtures" / "verified_candidates.json"
+)
 
 _VERIFIED_CACHE: list[dict] | None = None
 
 
 def load_verified_candidates() -> list[dict]:
-    """Candidates verified by the 2026-09 official-source audits.
-
-    Kept in a data file, not the module body, so production discovery stays a
-    registry-driven pipeline and no candidate list lives inline in source.
+    """Audit-era seed list. Tests use it. Production harvest seeds from the
+    candidate file already on disk, not from this fixture.
     """
     global _VERIFIED_CACHE
     if _VERIFIED_CACHE is None:
-        _VERIFIED_CACHE = json.loads(VERIFIED_CANDIDATES_PATH.read_text(encoding="utf-8"))
+        if VERIFIED_CANDIDATES_PATH.is_file():
+            _VERIFIED_CACHE = json.loads(VERIFIED_CANDIDATES_PATH.read_text(encoding="utf-8"))
+        else:
+            _VERIFIED_CACHE = []
     return _VERIFIED_CACHE
 
 
@@ -4602,7 +4605,8 @@ def main() -> None:
         print(summary)
         return
     previous = json.loads(OUT.read_text(encoding="utf-8")) if OUT.is_file() else {}
-    payload = harvest_with_registered_discovery(VERIFIED_CANDIDATES, request, previous)
+    seeds = [item for item in previous.get("jobs") or [] if isinstance(item, dict)]
+    payload = harvest_with_registered_discovery(seeds, request, previous)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     tmp = OUT.with_suffix(".json.tmp")
     text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"

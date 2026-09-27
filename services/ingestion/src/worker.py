@@ -187,9 +187,12 @@ def plan_for_day(
         save_shard_assignments(mapping, path)
     selected_ids = set(units_for_shard(ids, shard_idx, previous=mapping))
     selected = [item for item in schools if item["id"] in selected_ids]
-    from harvest_nine_hei_jobs import VERIFIED_CANDIDATES
-
-    jobs = [item for item in VERIFIED_CANDIDATES if item["employerId"] in selected_ids]
+    stored = load_json(JOBS_OUT)
+    jobs = [
+        item
+        for item in stored.get("jobs") or []
+        if isinstance(item, dict) and item.get("employerId") in selected_ids
+    ]
     return {
         "date": day.isoformat(),
         "shard": shard_idx,

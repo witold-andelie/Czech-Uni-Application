@@ -1,0 +1,9 @@
+{
+  "note": "Committed regression floor for data/sources/browse/nine-hei-jobs.json. CI and the refresh commit step fail when job identities or approved records fall below this. Raise it when coverage genuinely improves. Revise it with a reason in revisionNotes when a verified close/expiry or operator disposition removes a record. Never lower it to 'clean up' the list (docs/ACCEPTANCE.md A101).",
+  "recordedFromGeneratedAt": "2026-09-16T22:35:16Z",
+  "identityTotal": 174,
+  "approvedTotal": 140,
+  "revisionNotes": [
+    "2026-09-27: first floor recorded from the candidate file that snapshot v2026-09-27.2 published from (174 identities, 140 approved). Closed and expired rows still count as identities. Withheld live-evidence records stay approved in this file until an operator archives them."
+  ]
+}

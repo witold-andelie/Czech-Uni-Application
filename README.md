@@ -49,7 +49,8 @@ GitHub hosts the source code and CI, not the public website.
 | Public site | TypeScript + Astro static output, Svelte islands | Cloudflare Pages + custom domain |
 | Publication validation | Python + Node dual contract checks | offline / CI |
 | Ingestion | Python (Scrapling) registry-driven discovery | offline, scheduled |
-| Scheduler / API design | Go + PostgreSQL | separate deployment (planned) |
+| Scheduler | GitHub Actions daily tick; Go scheduler optional later | GitHub-hosted |
+| Admin console | Not built (owner 2026-09-27) | Review stays in git files |
 
 The public static site needs no database and stores no user data (anonymous
 browsing only — no accounts, no tracking). Durable state for the future

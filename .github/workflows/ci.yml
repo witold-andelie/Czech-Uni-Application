@@ -50,6 +50,11 @@ jobs:
       - name: Validate next publication selection
         run: python services/ingestion/src/publish.py --check-sources
 
+      - name: Guard programme-page and job coverage floors
+        run: |
+          python services/ingestion/src/check_programme_link_coverage.py
+          python services/ingestion/src/check_job_coverage.py
+
       - name: Validate docs and OPM framework
         run: python scripts/check_framework.py
 
