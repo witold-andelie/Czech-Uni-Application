@@ -170,7 +170,7 @@ def test_czu_czech_refresh_has_an_independent_two_hour_clock(
     assert result["counts"]["programmes"] == 2
     assert state["czuCzechProgrammeAvailability"]["lastSuccessAt"] == to_iso(now)
     assert state["czuCzechProgrammeAvailability"]["nextDueAt"] == to_iso(
-        now + timedelta(hours=2)
+        now + timedelta(hours=24)
     )
     assert state["czuProgrammeAvailability"]["lastSuccessAt"] is None
 

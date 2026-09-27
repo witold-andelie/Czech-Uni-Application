@@ -77,7 +77,7 @@ def test_programme_availability_refresh_writes_candidate_and_advances_only_its_c
     assert result["counts"]["programmes"] == 1
     assert json.loads(output.read_text(encoding="utf-8"))["catalogKind"] == "candidate_not_published"
     assert state["programmeAvailability"]["lastSuccessAt"] == to_iso(now)
-    assert state["programmeAvailability"]["nextDueAt"] == to_iso(now + timedelta(hours=2))
+    assert state["programmeAvailability"]["nextDueAt"] == to_iso(now + timedelta(hours=24))
     assert state["jobDiscovery"]["lastSuccessAt"] is None
 
 
@@ -123,7 +123,7 @@ def test_all_source_job_discovery_is_independent_of_daily_school_shard(
     assert result["status"] == "succeeded"
     assert result["discovery"]["discoveredCount"] == 1
     assert state["jobDiscovery"]["lastSuccessAt"] == to_iso(now)
-    assert state["jobDiscovery"]["nextDueAt"] == to_iso(now + timedelta(hours=4))
+    assert state["jobDiscovery"]["nextDueAt"] == to_iso(now + timedelta(hours=24))
     assert state["shards"]["0"]["lastSuccessAt"] is None
 
 

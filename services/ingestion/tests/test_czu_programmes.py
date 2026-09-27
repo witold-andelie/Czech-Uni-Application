@@ -139,6 +139,6 @@ def test_czu_refresh_has_an_independent_two_hour_clock(
     state = manager.load_state(now)
     assert result["counts"]["programmes"] == 2
     assert state["czuProgrammeAvailability"]["lastSuccessAt"] == to_iso(now)
-    assert state["czuProgrammeAvailability"]["nextDueAt"] == to_iso(now + timedelta(hours=2))
+    assert state["czuProgrammeAvailability"]["nextDueAt"] == to_iso(now + timedelta(hours=24))
     assert state["programmeAvailability"]["lastSuccessAt"] is None
 

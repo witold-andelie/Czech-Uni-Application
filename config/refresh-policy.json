@@ -16,23 +16,23 @@
     ]
   },
   "jobStatusRefresh": {
-    "intervalHours": 1,
+    "intervalHours": 24,
     "purpose": "lightweight_closure_deadline_and_application_link_check_for_known_jobs"
   },
   "jobDiscovery": {
-    "intervalHours": 4,
+    "intervalHours": 24,
     "scope": "every_registered_official_job_listing_independent_of_university_shards",
     "purpose": "discover_new_paid_school_research_candidates_and_archive_disappeared_entries_only_after_complete_pagination"
   },
   "programmeAvailability": {
-    "intervalHours": 2,
+    "intervalHours": 24,
     "scope": "complete_en_and_cs_dzs_directory_plus_open_application_signal",
     "purpose": "volatile_programme_discovery_crosscheck",
     "authorityBoundary": "msmt_is_legal_baseline_and_university_sources_are_authoritative_for_application_windows",
     "absenceFromOpenFilterMeansClosed": false
   },
   "czuProgrammeAvailability": {
-    "intervalHours": 2,
+    "intervalHours": 24,
     "scope": "official_czu_english_bachelor_master_rest_catalogue_plus_every_detail_and_open_signal",
     "purpose": "priority_refresh_for_czu_programme_windows_tuition_duration_and_apply_target",
     "sourceCoverageClaim": "complete_for_declared_english_bachelor_master_scope_only",
@@ -40,7 +40,7 @@
     "publication": "candidate_only_until_source_bound_zh-CN_en_cs_review"
   },
   "czuCzechProgrammeAvailability": {
-    "intervalHours": 2,
+    "intervalHours": 24,
     "scope": "official_czu_czech_facing_bachelor_master_homepage_count_plus_programme_sitemap_and_every_detail",
     "purpose": "priority_refresh_for_czu_czech_and_english_teaching_language_windows_and_apply_targets",
     "sourceCoverageClaim": "complete_for_declared_bachelor_master_portal_scope_only",
@@ -49,7 +49,7 @@
     "publication": "candidate_only_until_source_bound_zh-CN_en_cs_review"
   },
   "czuDoctoralProgrammeAvailability": {
-    "intervalHours": 2,
+    "intervalHours": 24,
     "scope": "current_msmt_czu_doctoral_baseline_crosschecked_with_all_six_doctoral_faculty_admission_sources",
     "purpose": "priority_refresh_for_czu_doctoral_programme_presence_language_and_academic_year_windows",
     "sourceCoverageClaim": "complete_for_current_msmt_baseline_and_configured_2026_2027_faculty_evidence_only",

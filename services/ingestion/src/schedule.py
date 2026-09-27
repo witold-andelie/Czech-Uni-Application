@@ -19,12 +19,12 @@ logger = logging.getLogger("schedule")
 ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_SCHEDULE_STATE_PATH = ROOT / "work" / "runs" / "schedule-state.json"
 SLA_HOURS = 120
-JOB_RECHECK_INTERVAL_HOURS = 1
-JOB_DISCOVERY_INTERVAL_HOURS = 4
-PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 2
-CZU_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 2
-CZU_CZECH_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 2
-CZU_DOCTORAL_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 2
+JOB_RECHECK_INTERVAL_HOURS = 24
+JOB_DISCOVERY_INTERVAL_HOURS = 24
+PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 24
+CZU_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 24
+CZU_CZECH_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 24
+CZU_DOCTORAL_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 24
 # The whole official-source sweep is 120 hours (docs/REFRESH_POLICY.md); the
 # programme page index is part of that same bounded cycle, and the resolver
 # itself skips any link checked inside 120 hours.
@@ -36,37 +36,37 @@ VOLATILE_TASKS = {
     "job_recheck": {
         "stateKey": "jobRecheck",
         "intervalHours": JOB_RECHECK_INTERVAL_HOURS,
-        "priority": "hourly_job_status",
+        "priority": "daily_job_status",
         "reason": "Recheck every known public and candidate job against its official page",
     },
     "job_discovery": {
         "stateKey": "jobDiscovery",
         "intervalHours": JOB_DISCOVERY_INTERVAL_HOURS,
-        "priority": "four_hour_job_discovery",
+        "priority": "daily_job_discovery",
         "reason": "Discover new vacancies from every registered official job listing",
     },
     "programme_availability": {
         "stateKey": "programmeAvailability",
         "intervalHours": PROGRAMME_AVAILABILITY_INTERVAL_HOURS,
-        "priority": "two_hour_programme_availability",
+        "priority": "daily_programme_availability",
         "reason": "Refresh the complete official DZS programme directory and availability signal",
     },
     "czu_programme_availability": {
         "stateKey": "czuProgrammeAvailability",
         "intervalHours": CZU_PROGRAMME_AVAILABILITY_INTERVAL_HOURS,
-        "priority": "two_hour_czu_programme_availability",
+        "priority": "daily_czu_programme_availability",
         "reason": "Refresh CZU's official English programme catalogue, detail windows, and open signal",
     },
     "czu_czech_programme_availability": {
         "stateKey": "czuCzechProgrammeAvailability",
         "intervalHours": CZU_CZECH_PROGRAMME_AVAILABILITY_INTERVAL_HOURS,
-        "priority": "two_hour_czu_czech_programme_availability",
+        "priority": "daily_czu_czech_programme_availability",
         "reason": "Refresh CZU's official Czech-facing bachelor/master sitemap and every detail window",
     },
     "czu_doctoral_programme_availability": {
         "stateKey": "czuDoctoralProgrammeAvailability",
         "intervalHours": CZU_DOCTORAL_PROGRAMME_AVAILABILITY_INTERVAL_HOURS,
-        "priority": "two_hour_czu_doctoral_programme_availability",
+        "priority": "daily_czu_doctoral_programme_availability",
         "reason": (
             "Cross-check CZU's MŠMT doctoral baseline against all six faculties' "
             "official programme and admissions evidence"
@@ -233,9 +233,8 @@ class ScheduleManager:
             target = state.setdefault(state_key, {})
             for key, value in template[state_key].items():
                 target.setdefault(key, value)
-            # A v2 state may still carry the old 24-hour job interval.  The
-            # current policy is authoritative and migration must make an
-            # already-due volatile task visible immediately.
+            # Persisted intervalHours from an older 1h/4h/2h policy is not
+            # authoritative. Owner decision 2026-09-27: once a day.
             target["intervalHours"] = spec["intervalHours"]
             last_success = parse_iso(target.get("lastSuccessAt"))
             if last_success is not None:

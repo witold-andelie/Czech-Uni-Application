@@ -128,5 +128,5 @@ def test_czu_doctoral_refresh_has_independent_two_hour_clock(
     assert task["programmesCount"] == 60
     assert task["matchedProgrammesCount"] == 60
     assert task["lastSuccessAt"] == to_iso(now)
-    assert task["nextDueAt"] == to_iso(now + timedelta(hours=2))
+    assert task["nextDueAt"] == to_iso(now + timedelta(hours=24))
     assert state["czuCzechProgrammeAvailability"]["lastSuccessAt"] is None

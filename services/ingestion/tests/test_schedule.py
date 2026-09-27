@@ -31,12 +31,12 @@ def test_init_state(tmp_path: Path) -> None:
         assert str(s) in state["shards"]
         assert state["shards"][str(s)]["status"] == "idle"
         assert state["shards"][str(s)]["lastSuccessAt"] is None
-    assert state["jobRecheck"]["intervalHours"] == 1
-    assert state["jobDiscovery"]["intervalHours"] == 4
-    assert state["programmeAvailability"]["intervalHours"] == 2
-    assert state["czuProgrammeAvailability"]["intervalHours"] == 2
-    assert state["czuCzechProgrammeAvailability"]["intervalHours"] == 2
-    assert state["czuDoctoralProgrammeAvailability"]["intervalHours"] == 2
+    assert state["jobRecheck"]["intervalHours"] == JOB_RECHECK_INTERVAL_HOURS == 24
+    assert state["jobDiscovery"]["intervalHours"] == JOB_DISCOVERY_INTERVAL_HOURS == 24
+    assert state["programmeAvailability"]["intervalHours"] == PROGRAMME_AVAILABILITY_INTERVAL_HOURS == 24
+    assert state["czuProgrammeAvailability"]["intervalHours"] == 24
+    assert state["czuCzechProgrammeAvailability"]["intervalHours"] == 24
+    assert state["czuDoctoralProgrammeAvailability"]["intervalHours"] == 24
     assert state_file.exists()
 
 
@@ -162,7 +162,7 @@ def test_partial_job_recheck_advances_hourly_cadence_and_keeps_error(tmp_path: P
     assert state["jobRecheck"]["lastSuccessAt"] == to_iso(now)
     assert state["jobRecheck"]["lastError"] == "1/125 job status checks failed"
     assert state["jobRecheck"]["retryAt"] is None
-    assert state["jobRecheck"]["nextDueAt"] == to_iso(now + timedelta(hours=1))
+    assert state["jobRecheck"]["nextDueAt"] == to_iso(now + timedelta(hours=JOB_RECHECK_INTERVAL_HOURS))
     assert not any(task["type"] == "job_recheck" for task in mgr.get_pending_tasks(now + timedelta(minutes=10)))
 
 
@@ -201,7 +201,7 @@ def test_next_wake_honours_five_minute_retry(tmp_path: Path) -> None:
     assert mgr.next_wake_seconds(now) == 300
 
 
-def test_volatile_sources_have_independent_short_cadences(tmp_path: Path) -> None:
+def test_volatile_sources_are_due_once_a_day(tmp_path: Path) -> None:
     state_file = tmp_path / "schedule-state.json"
     mgr = ScheduleManager(state_file)
     now = datetime(2026, 9, 10, 6, 0, tzinfo=timezone.utc)
@@ -213,38 +213,39 @@ def test_volatile_sources_have_independent_short_cadences(tmp_path: Path) -> Non
     mgr.record_volatile_success("czu_czech_programme_availability", now=now)
     mgr.record_volatile_success("czu_doctoral_programme_availability", now=now)
 
-    after_one_hour = mgr.get_pending_tasks(now + timedelta(hours=JOB_RECHECK_INTERVAL_HOURS))
-    assert any(item["type"] == "job_recheck" for item in after_one_hour)
-    assert not any(item["type"] == "job_discovery" for item in after_one_hour)
-    assert not any(item["type"] == "programme_availability" for item in after_one_hour)
-    assert not any(item["type"] == "czu_programme_availability" for item in after_one_hour)
-    assert not any(item["type"] == "czu_czech_programme_availability" for item in after_one_hour)
-    assert not any(item["type"] == "czu_doctoral_programme_availability" for item in after_one_hour)
-
-    after_two_hours = mgr.get_pending_tasks(
-        now + timedelta(hours=PROGRAMME_AVAILABILITY_INTERVAL_HOURS)
+    halfway = mgr.get_pending_tasks(now + timedelta(hours=12))
+    assert not any(
+        item["type"]
+        in {
+            "job_recheck",
+            "job_discovery",
+            "programme_availability",
+            "czu_programme_availability",
+            "czu_czech_programme_availability",
+            "czu_doctoral_programme_availability",
+        }
+        for item in halfway
     )
-    assert any(item["type"] == "programme_availability" for item in after_two_hours)
-    assert any(item["type"] == "czu_programme_availability" for item in after_two_hours)
-    assert any(item["type"] == "czu_czech_programme_availability" for item in after_two_hours)
-    assert any(item["type"] == "czu_doctoral_programme_availability" for item in after_two_hours)
-    assert not any(item["type"] == "job_discovery" for item in after_two_hours)
 
-    after_four_hours = mgr.get_pending_tasks(
-        now + timedelta(hours=JOB_DISCOVERY_INTERVAL_HOURS)
-    )
-    assert any(item["type"] == "job_discovery" for item in after_four_hours)
+    after_a_day = mgr.get_pending_tasks(now + timedelta(hours=JOB_RECHECK_INTERVAL_HOURS))
+    types = {item["type"] for item in after_a_day}
+    assert "job_recheck" in types
+    assert "job_discovery" in types
+    assert "programme_availability" in types
+    assert "czu_programme_availability" in types
+    assert "czu_czech_programme_availability" in types
+    assert "czu_doctoral_programme_availability" in types
 
 
-def test_v2_state_migrates_old_daily_job_recheck_to_hourly(tmp_path: Path) -> None:
+def test_v2_state_migrates_short_cadences_to_daily(tmp_path: Path) -> None:
     state_file = tmp_path / "schedule-state.json"
     mgr = ScheduleManager(state_file)
     base = datetime(2026, 9, 10, 0, 0, tzinfo=timezone.utc)
     legacy = mgr._new_state(base)
     legacy["version"] = "2.0"
-    legacy["jobRecheck"]["intervalHours"] = 24
+    legacy["jobRecheck"]["intervalHours"] = 1
     legacy["jobRecheck"]["lastSuccessAt"] = to_iso(base)
-    legacy["jobRecheck"]["nextDueAt"] = to_iso(base + timedelta(hours=24))
+    legacy["jobRecheck"]["nextDueAt"] = to_iso(base + timedelta(hours=1))
     legacy.pop("jobDiscovery")
     legacy.pop("programmeAvailability")
     legacy.pop("czuProgrammeAvailability")
@@ -254,17 +255,19 @@ def test_v2_state_migrates_old_daily_job_recheck_to_hourly(tmp_path: Path) -> No
 
     migrated = mgr.load_state(base + timedelta(hours=2))
     assert migrated["version"] == "3.3"
-    assert migrated["jobRecheck"]["intervalHours"] == JOB_RECHECK_INTERVAL_HOURS
+    assert migrated["jobRecheck"]["intervalHours"] == JOB_RECHECK_INTERVAL_HOURS == 24
     assert migrated["jobRecheck"]["nextDueAt"] == to_iso(
         base + timedelta(hours=JOB_RECHECK_INTERVAL_HOURS)
     )
-    task_types = {item["type"] for item in mgr.get_pending_tasks(base + timedelta(hours=2))}
-    assert "job_recheck" in task_types
-    assert "programme_availability" in task_types
-    assert "czu_programme_availability" in task_types
-    assert "czu_czech_programme_availability" in task_types
-    assert "czu_doctoral_programme_availability" in task_types
-    assert "job_discovery" in task_types
+    too_soon = {item["type"] for item in mgr.get_pending_tasks(base + timedelta(hours=2))}
+    assert "job_recheck" not in too_soon
+    assert "programme_availability" in too_soon
+    assert "czu_programme_availability" in too_soon
+    assert "czu_czech_programme_availability" in too_soon
+    assert "czu_doctoral_programme_availability" in too_soon
+    assert "job_discovery" in too_soon
+    due = {item["type"] for item in mgr.get_pending_tasks(base + timedelta(hours=24))}
+    assert "job_recheck" in due
 
 
 def test_volatile_task_lease_and_retry_are_isolated(tmp_path: Path) -> None:
