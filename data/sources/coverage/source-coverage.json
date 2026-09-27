@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T20:39:59Z",
+  "generatedAt": "2026-09-27T21:02:51Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-09-27.4",
-    "publishedAt": "2026-09-27T20:39:58Z",
-    "candidateGenerationId": "cg-9525558de1154b67b194f497466935ed",
-    "sourceRunSetDigest": "sha256:ea8ebd41a05a3ba580d7d5c13526b649bf3da50c9edba2b970757b738f6844dc",
+    "activeVersion": "v2026-09-27.5",
+    "publishedAt": "2026-09-27T21:02:51Z",
+    "candidateGenerationId": "cg-8ccd36ce4b0943c2aa07f537312743ef",
+    "sourceRunSetDigest": "sha256:ebcdff7a6dedd2f69870d7659b04a0829dfea0a249e1beb695f7b8db7a5d6faf",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -136,15 +136,15 @@
     "claimBoundary": "The DZS source snapshot is complete for its reported directory result, but it is not the legal register or the authority for each university application window. Candidate records remain outside formal publication until source and zh-CN/en/cs review passes.",
     "programmePageLinks": {
       "source": "resolve_programme_links.py",
-      "linkIndexGeneratedAt": "2026-09-27T20:27:27Z",
-      "publishedSnapshotCount": 1970,
+      "linkIndexGeneratedAt": "2026-09-27T20:48:27Z",
+      "publishedSnapshotCount": 2485,
       "denominator": "register rows in the pinned published inventory snapshot",
       "totals": {
         "schools": 53,
         "registerRows": 5019,
-        "rowsWithSchoolProgrammePage": 1970,
-        "rowsShowingUniversitySite": 3049,
-        "registerRowCoveragePercent": 39.3
+        "rowsWithSchoolProgrammePage": 2485,
+        "rowsShowingUniversitySite": 2534,
+        "registerRowCoveragePercent": 49.5
       },
       "schools": [
         {
@@ -178,16 +178,16 @@
         {
           "institutionId": "msmt-vs_15000",
           "registerRows": 483,
-          "rowsWithSchoolProgrammePage": 0,
-          "rowsShowingUniversitySite": 483,
-          "registerRowCoveragePercent": 0.0
+          "rowsWithSchoolProgrammePage": 399,
+          "rowsShowingUniversitySite": 84,
+          "registerRowCoveragePercent": 82.6
         },
         {
           "institutionId": "msmt-vs_16000",
           "registerRows": 48,
-          "rowsWithSchoolProgrammePage": 0,
-          "rowsShowingUniversitySite": 48,
-          "registerRowCoveragePercent": 0.0
+          "rowsWithSchoolProgrammePage": 3,
+          "rowsShowingUniversitySite": 45,
+          "registerRowCoveragePercent": 6.2
         },
         {
           "institutionId": "msmt-vs_17000",
@@ -227,9 +227,9 @@
         {
           "institutionId": "msmt-vs_23000",
           "registerRows": 162,
-          "rowsWithSchoolProgrammePage": 0,
-          "rowsShowingUniversitySite": 162,
-          "registerRowCoveragePercent": 0.0
+          "rowsWithSchoolProgrammePage": 113,
+          "rowsShowingUniversitySite": 49,
+          "registerRowCoveragePercent": 69.8
         },
         {
           "institutionId": "msmt-vs_24000",
