@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from hashlib import sha256
 from typing import Any
 from uuid import uuid4
 
@@ -53,20 +52,39 @@ class MemoryStore:
         content_type: str | None = None,
         raw: bytes | None = None,
         aux: str | None = None,
+        *,
+        keep: bool = False,
+        tier: str = "transient",
     ) -> dict[str, Any]:
-        digest = sha256(body.encode("utf-8")).hexdigest()
+        from storage.documents import prepare_document
+
+        prepared = prepare_document(
+            url=url,
+            body=body,
+            status=status,
+            content_type=content_type,
+            raw=raw,
+            aux=aux,
+            keep=keep,
+            tier=tier,
+        )
         row = {
             "id": str(uuid4()),
             "run_id": run_id,
             "url": url,
             "status": status,
-            "sha256": digest,
-            "bytes": len(body.encode("utf-8")),
-            "content_type": content_type or "text/html",
-            "storage_path": None,
+            "sha256": prepared["sha256"],
+            "raw_sha256": prepared["raw_sha256"],
+            "text_sha256": prepared["text_sha256"],
+            "bytes": prepared["byte_size"],
+            "content_type": prepared["content_type"],
+            "storage_path": f"memory/{prepared['raw_sha256']}" if prepared["keep"] else None,
             "aux_object_path": None,
+            "kept": prepared["keep"],
+            "evidence_tier": prepared["evidence_tier"],
         }
-        self.documents.append(row)
+        if prepared["keep"]:
+            self.documents.append(row)
         return row
 
     def save_observation(self, run_id: str, remote_id: str, detail_url: str, title: str, present: bool = True) -> None:
@@ -106,7 +124,8 @@ class MemoryStore:
             job["last_seen_at"] = _now()
             job["official_detail_url"] = official_detail_url
         prior = next((item for item in reversed(self.versions) if item["job_id"] == job["id"]), None)
-        if prior is None or prior["fact_hash"] != digest:
+        created = prior is None or prior["fact_hash"] != digest
+        if created:
             version = {
                 "id": str(uuid4()),
                 "job_id": job["id"],
@@ -118,7 +137,16 @@ class MemoryStore:
             job["preferred_version_id"] = version["id"]
             if prior is not None:
                 prior["review_stale"] = True
+        job["new_version"] = created
+        job["version_id"] = job.get("preferred_version_id")
+        job["fact_hash"] = digest
         return job
+
+    def bind_version_evidence(self, version_id: str, raw_digest: str, *, kind: str = "job") -> None:
+        for version in self.versions:
+            if version.get("id") == version_id:
+                version["evidence_raw_sha256"] = raw_digest
+                return
 
     def finish_run(self, run_id: str, *, status: str, listing_complete: bool, listed_count: int, parsed_count: int, error_class: str | None = None) -> None:
         run = self.runs[run_id]
@@ -160,7 +188,8 @@ class MemoryStore:
             row["last_seen_at"] = _now()
             row["official_detail_url"] = official_detail_url
         prior = next((item for item in reversed(self.versions) if item.get("prog_id") == row["id"]), None)
-        if prior is None or prior["fact_hash"] != digest:
+        created = prior is None or prior["fact_hash"] != digest
+        if created:
             version = {
                 "id": str(uuid4()),
                 "prog_id": row["id"],
@@ -172,6 +201,9 @@ class MemoryStore:
             row["preferred_version_id"] = version["id"]
             if prior is not None:
                 prior["review_stale"] = True
+        row["new_version"] = created
+        row["version_id"] = row.get("preferred_version_id")
+        row["fact_hash"] = digest
         return row
 
     def mark_absent(self, job_id: str) -> None:

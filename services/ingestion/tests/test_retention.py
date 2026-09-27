@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
 from storage.memory import MemoryStore  # noqa: E402
-from storage.retention import prune_ingest_history  # noqa: E402
+from storage.retention import apply_evidence_gc, preview_evidence_gc, prune_ingest_history  # noqa: E402
 
 
 def _finished_run(store: MemoryStore, source_id: str, stamp: str) -> str:
@@ -56,3 +56,59 @@ def test_prune_does_not_drop_a_running_run() -> None:
     assert recent in store.runs
     assert live["id"] in store.runs
     assert report["deletedRuns"] == 1
+
+
+def test_preview_gc_skips_referenced_and_recent_objects() -> None:
+    store = MemoryStore()
+    store.documents.append(
+        {
+            "storage_path": "source-evidence/aaaa.gz",
+            "raw_sha256": "aaaa",
+            "sha256": "bbbb",
+        }
+    )
+
+    class Bucket:
+        def __init__(self) -> None:
+            self.deleted: list[str] = []
+
+        def list_objects(self):
+            return [
+                {"name": "aaaa.gz", "metadata": {"size": 10}, "updated_at": "2020-01-01T00:00:00Z"},
+                {"name": "orphan.gz", "metadata": {"size": 99}, "updated_at": "2020-01-01T00:00:00Z"},
+                {"name": "fresh.gz", "metadata": {"size": 5}, "updated_at": "2026-09-20T00:00:00Z"},
+            ]
+
+        def delete(self, key: str) -> None:
+            self.deleted.append(key)
+
+    bucket = Bucket()
+    preview = preview_evidence_gc(store, bucket, grace_days=30, now=__import__("datetime").datetime(2026, 9, 27, tzinfo=__import__("datetime").timezone.utc))
+    keys = {item["key"] for item in preview["unreferenced"]}
+    assert "orphan.gz" in keys
+    assert "aaaa.gz" not in keys
+    assert "fresh.gz" not in keys
+    applied = apply_evidence_gc(bucket, preview)
+    assert bucket.deleted == ["orphan.gz"]
+    assert applied["deleted"] == 1
+
+
+def test_rest_list_source_runs_pages_past_one_thousand() -> None:
+    from storage.rest import RestStore
+
+    store = RestStore(url="https://example.supabase.co", key="service-token")
+
+    def fake(method: str, path: str, payload=None, extra=None):
+        assert method == "GET"
+        offset = 0
+        if "offset=" in path:
+            offset = int(path.split("offset=")[1].split("&")[0])
+        if offset == 0:
+            return [{"id": str(i), "source_id": "s", "status": "succeeded"} for i in range(1000)]
+        if offset == 1000:
+            return [{"id": "1000", "source_id": "s", "status": "succeeded"}]
+        return []
+
+    store._request = fake  # type: ignore[assignment]
+    rows = store.list_source_runs()
+    assert len(rows) == 1001

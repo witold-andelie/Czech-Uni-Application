@@ -24,3 +24,40 @@ def job_fact_hash(facts: dict[str, Any], official_detail_url: str) -> str:
     payload = canonical_job_facts(facts, official_detail_url)
     canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, default=str)
     return sha256(canonical.encode("utf-8")).hexdigest()
+
+
+# Whole-page HTML and request noise must not live in catalog.*_version.facts.
+# Oversized strings are reported and omitted, never silently truncated.
+FACT_BODY_KEYS = frozenset(
+    {
+        "body",
+        "html",
+        "raw",
+        "raw_html",
+        "page_html",
+        "document_body",
+        "attachment_bytes",
+        "attachment_aux_text",
+    }
+)
+FACT_NOISE_KEYS = frozenset({"request_id", "fetched_at", "harvested_at", "run_id", "http_date"})
+FACT_STORE_MAX_CHARS = 8_000
+
+
+def stored_facts(facts: dict[str, Any] | None) -> tuple[dict[str, Any], list[str]]:
+    """Structured facts for Postgres. Returns (payload, rejected_field_names)."""
+    payload: dict[str, Any] = {}
+    rejected: list[str] = []
+    for key, value in (facts or {}).items():
+        name = str(key)
+        if name in FACT_BODY_KEYS or name in FACT_NOISE_KEYS:
+            rejected.append(name)
+            continue
+        if isinstance(value, str) and len(value) > FACT_STORE_MAX_CHARS:
+            rejected.append(name)
+            continue
+        if isinstance(value, (bytes, bytearray)):
+            rejected.append(name)
+            continue
+        payload[name] = value
+    return payload, rejected

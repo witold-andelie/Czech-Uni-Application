@@ -34,17 +34,10 @@ def run_source(
             documents = []
             for reference in references:
                 documents.extend(adapter.fetch_detail(reference, context))
+        documents_by_url = {}
         for document in documents:
-            extra = document.extra if isinstance(document.extra, dict) else {}
-            store.save_document(
-                run["id"],
-                document.url,
-                document.body,
-                document.status,
-                content_type=document.content_type,
-                raw=extra.get("attachment_bytes"),
-                aux=extra.get("attachment_aux_text"),
-            )
+            documents_by_url[document.url] = document
+            documents_by_url[document.final_url] = document
         for reference in references:
             store.save_observation(run["id"], reference.remote_id, reference.detail_url, reference.title)
         candidates = adapter.normalize(documents, context)
@@ -67,7 +60,7 @@ def run_source(
                     **candidate.facts,
                 }
                 if candidate.entity_kind == "programme":
-                    store.upsert_programme(
+                    result = store.upsert_programme(
                         source_id=source["id"],
                         institution_id=candidate.employer_id,
                         remote_id=candidate.remote_id,
@@ -75,8 +68,9 @@ def run_source(
                         facts=facts,
                         run_id=run["id"],
                     )
+                    kind = "programme"
                 else:
-                    store.upsert_job(
+                    result = store.upsert_job(
                         source_id=source["id"],
                         employer_id=candidate.employer_id,
                         remote_id=candidate.remote_id,
@@ -84,6 +78,25 @@ def run_source(
                         facts=facts,
                         run_id=run["id"],
                     )
+                    kind = "job"
+                if result.get("new_version"):
+                    document = documents_by_url.get(candidate.official_detail_url)
+                    if document is not None:
+                        extra = document.extra if isinstance(document.extra, dict) else {}
+                        saved = store.save_document(
+                            run["id"],
+                            document.url,
+                            document.body,
+                            document.status,
+                            content_type=document.content_type,
+                            raw=extra.get("attachment_bytes"),
+                            aux=extra.get("attachment_aux_text"),
+                            keep=True,
+                            tier="durable",
+                        )
+                        bind = getattr(store, "bind_version_evidence", None)
+                        if callable(bind) and saved.get("raw_sha256") and result.get("version_id"):
+                            bind(str(result["version_id"]), saved["raw_sha256"], kind=kind)
                 seen.add(_external_id(source, candidate.employer_id, candidate.remote_id))
             if "research_job" in kinds:
                 list_ids = getattr(store, "list_external_ids", None)

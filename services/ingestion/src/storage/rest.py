@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from hashlib import sha256
 from typing import Any
 from uuid import uuid4
 from urllib.parse import quote
@@ -13,8 +12,9 @@ import ssl
 import urllib.error
 import urllib.request
 
+from storage.documents import TIER_TRANSIENT, prepare_document
 from storage.evidence import EvidenceStore
-from storage.facts import job_fact_hash
+from storage.facts import job_fact_hash, stored_facts
 
 
 def _now() -> datetime:
@@ -76,6 +76,39 @@ class RestStore:
         except urllib.error.HTTPError as exc:
             snippet = exc.read().decode("utf-8", errors="replace")[:300].replace(self.key, "[redacted]")
             raise RuntimeError(f"supabase REST {method} {path} -> {exc.code}: {snippet}") from None
+
+    PAGE = 1000
+
+    def _get_pages(self, path: str) -> list[dict[str, Any]]:
+        rows: list[dict[str, Any]] = []
+        offset = 0
+        while True:
+            sep = "&" if "?" in path else "?"
+            chunk = self._request("GET", f"{path}{sep}limit={self.PAGE}&offset={offset}") or []
+            if not isinstance(chunk, list):
+                break
+            rows.extend(item for item in chunk if isinstance(item, dict))
+            if len(chunk) < self.PAGE:
+                break
+            offset += self.PAGE
+        return rows
+
+    def rest_count(self, table: str) -> int:
+        extra = {"Prefer": "count=exact", "Range": "0-0"}
+        req = urllib.request.Request(
+            f"{self.url}/rest/v1/{table}?select=id",
+            headers=self._headers(extra),
+            method="HEAD",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30, context=self._ctx) as resp:
+                content_range = resp.headers.get("content-range") or "*/0"
+                return int(content_range.rsplit("/", 1)[-1])
+        except urllib.error.HTTPError as exc:
+            content_range = exc.headers.get("content-range") if exc.headers else None
+            if content_range and "/" in content_range:
+                return int(content_range.rsplit("/", 1)[-1])
+            raise
 
     def ping(self) -> dict[str, Any]:
         rows = self._request("GET", "ingest_source?select=id&limit=1")
@@ -216,44 +249,103 @@ class RestStore:
         content_type: str | None = None,
         raw: bytes | None = None,
         aux: str | None = None,
+        *,
+        keep: bool = False,
+        tier: str = TIER_TRANSIENT,
     ) -> dict[str, Any]:
-        digest = sha256((body or "").encode("utf-8")).hexdigest()
+        prepared = prepare_document(
+            url=url,
+            body=body,
+            status=status,
+            content_type=content_type,
+            raw=raw,
+            aux=aux,
+            keep=keep,
+            tier=tier,
+        )
         source_id = (self.runs.get(run_id) or {}).get("source_id")
         storage_path: str | None = None
         aux_path: str | None = None
+        if not prepared["keep"]:
+            return {
+                "sha256": prepared["sha256"],
+                "raw_sha256": prepared["raw_sha256"],
+                "text_sha256": prepared["text_sha256"],
+                "url": url,
+                "status": status,
+                "storage_path": None,
+                "aux_object_path": None,
+                "kept": False,
+                "evidence_tier": prepared["evidence_tier"],
+            }
+        digest = prepared["raw_sha256"]
         if digest not in self._saved_digests:
-            if raw is not None:
-                storage_path = self.evidence.put(raw, content_type or "application/pdf")
-                aux_path = self.evidence.put_text(aux if aux is not None else body)
+            if prepared["is_pdf"]:
+                storage_path = self.evidence.put(prepared["raw_bytes"], prepared["content_type"])
+                aux_path = self.evidence.put_text(prepared["text"])
             else:
                 storage_path = self.evidence.put(
-                    (body or "").encode("utf-8"),
-                    content_type or "text/html; charset=utf-8",
+                    prepared["raw_bytes"],
+                    prepared["content_type"] or "text/html; charset=utf-8",
                 )
                 aux_path = None
-            self._request(
-                "POST",
-                "ingest_raw_document?on_conflict=sha256",
-                {
-                    "source_id": source_id,
-                    "run_id": run_id,
-                    "requested_url": url,
-                    "final_url": url,
-                    "http_status": status,
-                    "content_type": content_type or "text/html",
-                    "sha256": digest,
-                    "storage_path": storage_path,
-                    "aux_object_path": aux_path,
-                },
-                extra={"Prefer": "resolution=merge-duplicates,return=minimal"},
-            )
+            row = {
+                "source_id": source_id,
+                "run_id": run_id,
+                "requested_url": url,
+                "final_url": url,
+                "http_status": status,
+                "content_type": prepared["content_type"],
+                "sha256": prepared["sha256"],
+                "raw_sha256": prepared["raw_sha256"],
+                "text_sha256": prepared["text_sha256"],
+                "storage_path": storage_path,
+                "aux_object_path": aux_path,
+                "evidence_tier": prepared["evidence_tier"],
+                "byte_size": prepared["byte_size"],
+            }
+            try:
+                self._request(
+                    "POST",
+                    "ingest_raw_document?on_conflict=sha256",
+                    row,
+                    extra={"Prefer": "resolution=merge-duplicates,return=minimal"},
+                )
+            except RuntimeError as exc:
+                # Pre-migration projects only have sha256. Keep the object; drop new columns.
+                if "raw_sha256" not in str(exc) and "PGRST" not in str(exc) and "42703" not in str(exc):
+                    raise
+                slim = {
+                    key: row[key]
+                    for key in (
+                        "source_id",
+                        "run_id",
+                        "requested_url",
+                        "final_url",
+                        "http_status",
+                        "content_type",
+                        "sha256",
+                        "storage_path",
+                        "aux_object_path",
+                    )
+                }
+                self._request(
+                    "POST",
+                    "ingest_raw_document?on_conflict=sha256",
+                    slim,
+                    extra={"Prefer": "resolution=merge-duplicates,return=minimal"},
+                )
             self._saved_digests.add(digest)
         return {
-            "sha256": digest,
+            "sha256": prepared["sha256"],
+            "raw_sha256": prepared["raw_sha256"],
+            "text_sha256": prepared["text_sha256"],
             "url": url,
             "status": status,
             "storage_path": storage_path,
             "aux_object_path": aux_path,
+            "kept": True,
+            "evidence_tier": prepared["evidence_tier"],
         }
 
     def save_observation(self, run_id: str, remote_id: str, detail_url: str, title: str, present: bool = True) -> None:
@@ -282,6 +374,9 @@ class RestStore:
     ) -> dict[str, Any]:
         external_id = f"{employer_id or source_id}:{remote_id}"
         digest = job_fact_hash(facts, official_detail_url)
+        stored, rejected = stored_facts(facts)
+        if rejected:
+            stored = {**stored, "_rejectedFactFields": rejected}
         self._request(
             "POST",
             "catalog_research_job?on_conflict=external_id",
@@ -319,7 +414,7 @@ class RestStore:
                 "scope_classification": facts.get("scope_classification"),
                 "paid_status": facts.get("paid_status"),
                 "url_directness": facts.get("url_directness"),
-                "facts": facts,
+                "facts": stored,
                 "review_state": "required",
             },
             extra={"Prefer": "resolution=merge-duplicates,return=representation"},
@@ -342,7 +437,26 @@ class RestStore:
             {"preferred_version_id": version_id, "last_seen_at": _now().isoformat(), "consecutive_complete_run_absence": 0},
             extra={"Prefer": "return=minimal"},
         )
-        return {"id": external_id, "job_id": str(job_id), "version_id": str(version_id)}
+        return {
+            "id": external_id,
+            "job_id": str(job_id),
+            "version_id": str(version_id),
+            "new_version": digest not in known_hashes,
+            "fact_hash": digest,
+        }
+
+    def bind_version_evidence(self, version_id: str, raw_digest: str, *, kind: str = "job") -> None:
+        table = "catalog_research_job_version" if kind == "job" else "catalog_programme_version"
+        try:
+            self._request(
+                "PATCH",
+                f"{table}?id=eq.{quote(version_id, safe='')}",
+                {"evidence_raw_sha256": raw_digest},
+                extra={"Prefer": "return=minimal"},
+            )
+        except RuntimeError as exc:
+            if "evidence_raw_sha256" not in str(exc) and "42703" not in str(exc):
+                raise
 
     def upsert_programme(
         self,
@@ -356,6 +470,9 @@ class RestStore:
     ) -> dict[str, Any]:
         external_id = f"{institution_id or source_id}:{remote_id}"
         digest = job_fact_hash(facts, official_detail_url)
+        stored, rejected = stored_facts(facts)
+        if rejected:
+            stored = {**stored, "_rejectedFactFields": rejected}
         self._request(
             "POST",
             "catalog_programme?on_conflict=external_id",
@@ -389,7 +506,7 @@ class RestStore:
                 "source_title": facts.get("title"),
                 "official_detail_url": official_detail_url,
                 "degree": facts.get("degree"),
-                "facts": facts,
+                "facts": stored,
                 "review_state": "required",
             },
             extra={"Prefer": "resolution=merge-duplicates,return=representation"},
@@ -412,7 +529,13 @@ class RestStore:
             {"preferred_version_id": version_id, "last_seen_at": _now().isoformat()},
             extra={"Prefer": "return=minimal"},
         )
-        return {"id": external_id, "programme_id": str(programme_id), "version_id": str(version_id)}
+        return {
+            "id": external_id,
+            "programme_id": str(programme_id),
+            "version_id": str(version_id),
+            "new_version": digest not in known_hashes,
+            "fact_hash": digest,
+        }
 
     def find_programme_id(self, programme_external_id: str) -> str | None:
         rows = self._request(
@@ -635,14 +758,14 @@ class RestStore:
         )
 
     def list_source_runs(self, source_id: str | None = None) -> list[dict[str, Any]]:
-        path = "ingest_source_run?select=id,source_id,started_at,scheduled_for,status&order=started_at.desc&limit=1000"
+        path = "ingest_source_run?select=id,source_id,started_at,scheduled_for,status,listing_complete&order=started_at.desc"
         if source_id:
             path = (
                 "ingest_source_run?source_id=eq."
                 + quote(source_id, safe="")
-                + "&select=id,source_id,started_at,scheduled_for,status&order=started_at.desc&limit=1000"
+                + "&select=id,source_id,started_at,scheduled_for,status,listing_complete&order=started_at.desc"
             )
-        return self._request("GET", path) or []
+        return self._get_pages(path)
 
     def delete_run(self, run_id: str) -> None:
         ident = quote(run_id, safe="")

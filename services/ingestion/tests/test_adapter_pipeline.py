@@ -122,6 +122,9 @@ def test_unchanged_rerun_does_not_duplicate_identities_or_versions() -> None:
     assert len(store.jobs) == 2
     assert len(store.versions) == 2
     assert len(store.runs) == 2
+    first_docs = len(store.documents)
+    run_source(CzuWpJobManagerAdapter(_source()), _source(), {"fetch_page": _fetch}, store)
+    assert len(store.documents) == first_docs
 
 
 def test_changed_detail_creates_one_new_version_and_stales_review() -> None:

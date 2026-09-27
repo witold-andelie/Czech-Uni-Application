@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from hashlib import sha256
 from pathlib import Path
 from typing import Any
 from urllib.parse import quote
@@ -11,7 +10,8 @@ from uuid import uuid4
 import json
 import os
 
-from storage.facts import job_fact_hash
+from storage.documents import TIER_TRANSIENT, prepare_document
+from storage.facts import job_fact_hash, stored_facts
 
 ROOT = Path(__file__).resolve().parents[4]
 
@@ -144,6 +144,11 @@ class PostgresStore:
         self._psycopg = psycopg
         self._conn = psycopg.connect(dsn or dsn_from_env(), autocommit=True)
         self.runs: dict[str, dict[str, Any]] = {}
+        self.evidence = None
+        if rest_configured():
+            from storage.evidence import EvidenceStore
+
+            self.evidence = EvidenceStore()
 
     def close(self) -> None:
         self._conn.close()
@@ -248,25 +253,93 @@ class PostgresStore:
         self.runs[run_id] = run
         return run
 
-    def save_document(self, run_id: str, url: str, body: str, status: int = 200) -> dict[str, Any]:
-        digest = sha256((body or "").encode("utf-8")).hexdigest()
+    def save_document(
+        self,
+        run_id: str,
+        url: str,
+        body: str,
+        status: int = 200,
+        content_type: str | None = None,
+        raw: bytes | None = None,
+        aux: str | None = None,
+        *,
+        keep: bool = False,
+        tier: str = TIER_TRANSIENT,
+    ) -> dict[str, Any]:
+        prepared = prepare_document(
+            url=url,
+            body=body,
+            status=status,
+            content_type=content_type,
+            raw=raw,
+            aux=aux,
+            keep=keep,
+            tier=tier,
+        )
+        if not prepared["keep"]:
+            return {
+                "sha256": prepared["sha256"],
+                "raw_sha256": prepared["raw_sha256"],
+                "text_sha256": prepared["text_sha256"],
+                "url": url,
+                "status": status,
+                "storage_path": None,
+                "aux_object_path": None,
+                "kept": False,
+                "evidence_tier": prepared["evidence_tier"],
+            }
         source_id = (self.runs.get(run_id) or {}).get("source_id")
         if source_id is None:
             source_id = self._conn.execute(
                 "select source_id from ingest.source_run where id = %s", (run_id,)
             ).fetchone()[0]
+        storage_path = None
+        aux_path = None
+        if self.evidence is not None:
+            if prepared["is_pdf"]:
+                storage_path = self.evidence.put(prepared["raw_bytes"], prepared["content_type"])
+                aux_path = self.evidence.put_text(prepared["text"])
+            else:
+                storage_path = self.evidence.put(prepared["raw_bytes"], prepared["content_type"])
         self._conn.execute(
             """
             INSERT INTO ingest.raw_document (
-              source_id, run_id, requested_url, final_url, http_status, sha256
-            ) VALUES (%s, %s, %s, %s, %s, %s)
+              source_id, run_id, requested_url, final_url, http_status, sha256,
+              raw_sha256, text_sha256, storage_path, aux_object_path, evidence_tier, byte_size
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             ON CONFLICT (sha256) DO UPDATE SET
               run_id = EXCLUDED.run_id,
-              http_status = EXCLUDED.http_status
+              http_status = EXCLUDED.http_status,
+              storage_path = COALESCE(EXCLUDED.storage_path, ingest.raw_document.storage_path),
+              raw_sha256 = COALESCE(EXCLUDED.raw_sha256, ingest.raw_document.raw_sha256),
+              text_sha256 = COALESCE(EXCLUDED.text_sha256, ingest.raw_document.text_sha256)
             """,
-            (source_id, run_id, url, url, status, digest),
+            (
+                source_id,
+                run_id,
+                url,
+                url,
+                status,
+                prepared["sha256"],
+                prepared["raw_sha256"],
+                prepared["text_sha256"],
+                storage_path,
+                aux_path,
+                prepared["evidence_tier"],
+                prepared["byte_size"],
+            ),
         )
-        return {"sha256": digest, "url": url, "status": status}
+        return {
+            "sha256": prepared["sha256"],
+            "raw_sha256": prepared["raw_sha256"],
+            "text_sha256": prepared["text_sha256"],
+            "url": url,
+            "status": status,
+            "storage_path": storage_path,
+            "aux_object_path": aux_path,
+            "kept": True,
+            "evidence_tier": prepared["evidence_tier"],
+        }
 
     def save_observation(self, run_id: str, remote_id: str, detail_url: str, title: str, present: bool = True) -> None:
         self._conn.execute(
@@ -290,6 +363,9 @@ class PostgresStore:
     ) -> dict[str, Any]:
         external_id = f"{employer_id or source_id}:{remote_id}"
         digest = job_fact_hash(facts, official_detail_url)
+        stored, rejected = stored_facts(facts)
+        if rejected:
+            stored = {**stored, "_rejectedFactFields": rejected}
         row = self._conn.execute(
             """
             INSERT INTO catalog.research_job (
@@ -333,7 +409,7 @@ class PostgresStore:
                 facts.get("application_url"),
                 facts.get("scope_classification"),
                 facts.get("paid_status"),
-                json.dumps(facts, ensure_ascii=False, default=str),
+                json.dumps(stored, ensure_ascii=False, default=str),
             ),
         ).fetchone()
         self._conn.execute(
@@ -345,7 +421,20 @@ class PostgresStore:
                 "update catalog.research_job_version set review_state = 'stale' where job_id = %s and fact_hash <> %s",
                 (job_id, digest),
             )
-        return {"id": external_id, "job_id": str(job_id), "version_id": str(version[0])}
+        return {
+            "id": external_id,
+            "job_id": str(job_id),
+            "version_id": str(version[0]),
+            "new_version": digest not in known,
+            "fact_hash": digest,
+        }
+
+    def bind_version_evidence(self, version_id: str, raw_digest: str, *, kind: str = "job") -> None:
+        table = "catalog.research_job_version" if kind == "job" else "catalog.programme_version"
+        self._conn.execute(
+            f"update {table} set evidence_raw_sha256 = %s where id = %s",
+            (raw_digest, version_id),
+        )
 
     def list_external_ids(self, *, employer_id: str | None = None) -> list[str]:
         if employer_id:
@@ -537,7 +626,7 @@ class PostgresStore:
         if source_id:
             rows = self._conn.execute(
                 """
-                select id, source_id, started_at, scheduled_for, status
+                select id, source_id, started_at, scheduled_for, status, listing_complete
                 from ingest.source_run
                 where source_id = %s
                 order by started_at desc nulls last
@@ -547,7 +636,7 @@ class PostgresStore:
         else:
             rows = self._conn.execute(
                 """
-                select id, source_id, started_at, scheduled_for, status
+                select id, source_id, started_at, scheduled_for, status, listing_complete
                 from ingest.source_run
                 order by started_at desc nulls last
                 """
@@ -559,6 +648,7 @@ class PostgresStore:
                 "started_at": row[2].isoformat() if row[2] else None,
                 "scheduled_for": row[3].isoformat() if row[3] else None,
                 "status": row[4],
+                "listing_complete": row[5],
             }
             for row in rows
         ]
