@@ -1751,3 +1751,103 @@ def test_write_payload_round_trips(tmp_path: Path) -> None:
     payload = {"generatedAt": "2026-09-27T00:00:00Z", "links": {}}
     path = rpl.write_payload(payload, tmp_path / "links.json")
     assert json.loads(path.read_text(encoding="utf-8")) == payload
+
+
+def test_a_sitemap_slug_ends_with_the_schools_own_programme_code() -> None:
+    """The code names the school's record, not the programme.
+
+    FAMU publishes /pro-uchazece/animovana-tvorba-232/ where the register row is
+    "Animovaná tvorba", and DAMU publishes /studijni-programy/scenografie-259/ for
+    "Scenografie". Read as written, the slug names nothing the register holds and
+    the school's real page is never read.
+    """
+    titles = {"animovana tvorba", "scenografie", "photography"}
+    names_row = lambda key: key in titles  # noqa: E731
+
+    assert (
+        rpl.slug_names_row("https://www.famu.cz/cs/katedry/katedra-kamery/pro-uchazece/animovana-tvorba-232/", names_row)
+        == "animovana tvorba"
+    )
+    assert (
+        rpl.slug_names_row(
+            "https://www.damu.cz/cs/katedry-programy/katedra-scenografie/studijni-programy/scenografie-259/",
+            names_row,
+        )
+        == "scenografie"
+    )
+    # A slug that already names a row is read exactly as the school wrote it.
+    assert rpl.slug_names_row("https://www.famu.cz/en/photography-249/", names_row) == "photography"
+
+
+def test_a_slug_the_register_does_end_with_a_number_is_not_shortened() -> None:
+    """The code-free reading is only used when the school's own one names nothing.
+
+    The register holds no title ending in a two-to-four digit number today, but a
+    school that writes one must keep the page for it: shortening the slug first
+    would read a real row's page as naming a row that does not exist.
+    """
+    names_row = lambda key: key == "divadlo 21"  # noqa: E731
+    assert (
+        rpl.slug_names_row("https://www.school.cz/programy/divadlo-21/", names_row) == "divadlo 21"
+    )
+    # Neither reading names a register row, so the page is not a candidate.
+    nothing = lambda _key: False  # noqa: E731
+    assert rpl.slug_names_row("https://www.school.cz/programy/neco-jineho-232/", nothing) == ""
+    # A purely numeric segment still names nothing at all.
+    assert rpl.slug_names_row("https://www.school.cz/programy/232/", names_row) == ""
+
+
+def test_a_faculty_sitemap_binds_the_rows_the_catalogue_never_named() -> None:
+    """AMU's faculty sitemaps list every programme page, code and all.
+
+    The DAMU admission catalogue the school was configured with names a handful of
+    programmes; famu.cz/sitemap-programs.xml, hamu.cz/sitemap-programs.xml and
+    damu.cz/sitemap-programs.xml together list 277 programme pages, each with the
+    school's own code at the end of its slug and a Czech and an English twin. None
+    of them was a candidate before, because the slug was read with the code still
+    attached and so named no register row at all.
+    """
+    target = school_target("amu.cz")
+    target["extraDomains"] = ["amu.cz", "damu.cz", "famu.cz", "hamu.cz"]
+    target["allowedDomains"] = ["amu.cz", "damu.cz", "famu.cz", "hamu.cz"]
+    target["entryUrls"] = ["https://www.damu.cz/sitemap-programs.xml"]
+    rows = [
+        row("msmt-vs_00000", "Animovaná tvorba", "b", "cs"),
+        row("msmt-vs_00000", "Animovaná tvorba", "m", "cs"),
+    ]
+
+    def sitemap(host: str, path: str, code: str) -> str:
+        return (
+            "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
+            f"<url><loc>https://{host}{path}-{code}/</loc></url>"
+            "</urlset>"
+        )
+
+    body = (
+        sitemap("www.damu.cz", "/cs/katedry-programy/katedra-kamery/studijni-programy/animovana-tvorba", "232")
+        + sitemap("www.damu.cz", "/en/department/x/study-programs/animated-film", "232")
+        + sitemap("www.damu.cz", "/cs/katedry-programy/katedra-zvuku/studijni-programy/neznamy-program", "999")
+    )
+    fetch = FakeFetch(
+        {"https://www.damu.cz/sitemap-programs.xml": (200, body)},
+        default=(200, "<html><body></body></html>"),
+    )
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    match = rpl.Match(rows)
+    candidates, _notes = rpl.discover_candidates(
+        target,
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+        interesting=lambda key: key in match.by_title,
+    )
+    by_title = {candidate.title: candidate for candidate in candidates}
+    # The Czech slug names the register row once its code is removed; the English
+    # twin names a row the register does not carry and stays out.
+    assert "animovana tvorba" in by_title
+    assert (
+        by_title["animovana tvorba"].url
+        == "https://www.damu.cz/cs/katedry-programy/katedra-kamery/studijni-programy/animovana-tvorba-232/"
+    )
+    assert "animated film" not in by_title
+    assert all(candidate.matched_by == "school_catalogue_sitemap" for candidate in candidates)

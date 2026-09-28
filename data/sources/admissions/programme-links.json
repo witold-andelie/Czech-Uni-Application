@@ -1,29 +1,50 @@
 {
-  "generatedAt": "2026-09-28T19:29:13Z",
+  "generatedAt": "2026-09-28T21:11:54Z",
   "dataClass": "school_owned_programme_page_index",
   "note": "School-owned programme page links for the MŠMT register inventory. Each link was resolved from the university's own site by exact normalised title/degree/language equality; a row without a proven page keeps the university-site fallback and is listed under unresolved. No fuzzy or partial matching, and no invented URLs.",
   "counts": {
     "schools": 53,
     "offerings": 5019,
-    "linked": 3419,
-    "unresolved": 1600,
-    "rowsWithMultipleSchoolPages": 1717
+    "linked": 3426,
+    "unresolved": 1593,
+    "rowsWithMultipleSchoolPages": 1735
   },
   "coverage": {
     "totals": {
       "schools": 53,
       "offerings": 5019,
-      "resolved": 3419,
-      "unresolved": 1600,
-      "rowsWithMultipleSchoolPages": 1717,
+      "resolved": 3426,
+      "unresolved": 1593,
+      "rowsWithMultipleSchoolPages": 1735,
       "byReachability": {
         "access_control": 1,
         "http_200_title_not_confirmed": 2758,
         "unverified": 2,
-        "verified": 658
+        "verified": 665
       }
     },
     "schools": [
+      {
+        "institutionId": "msmt-vs_51000",
+        "name": "Akademie múzických umění v Praze",
+        "allowedDomains": [
+          "amu.cz",
+          "damu.cz",
+          "famu.cz",
+          "hamu.cz"
+        ],
+        "offerings": 101,
+        "resolved": 27,
+        "unresolved": 74,
+        "rowsWithMultipleSchoolPages": 22,
+        "unresolvedReasons": {
+          "ambiguous_register_rows": 54,
+          "no_candidate_page": 12,
+          "page_returned_404": 8
+        },
+        "resolvedAt": "2026-09-28T21:11:54Z",
+        "notes": []
+      },
       {
         "institutionId": "msmt-vs_18000",
         "name": "Univerzita Hradec Králové",
@@ -41,7 +62,8 @@
         "resolvedAt": "2026-09-28T19:29:13Z",
         "notes": [
           "catalogue_unreachable_http_401",
-          "catalogue_unreachable_http_404 (x4)"
+          "catalogue_unreachable_http_404 (x4)",
+          "carried_from_previous_run"
         ]
       },
       {
@@ -63,29 +85,9 @@
         "notes": [
           "catalogue_unreachable_http_403",
           "catalogue_unreachable_http_404 (x10)",
-          "catalogue_unreachable_http_500"
+          "catalogue_unreachable_http_500",
+          "carried_from_previous_run"
         ]
-      },
-      {
-        "institutionId": "msmt-vs_51000",
-        "name": "Akademie múzických umění v Praze",
-        "allowedDomains": [
-          "amu.cz",
-          "damu.cz",
-          "famu.cz",
-          "hamu.cz"
-        ],
-        "offerings": 101,
-        "resolved": 20,
-        "unresolved": 81,
-        "rowsWithMultipleSchoolPages": 4,
-        "unresolvedReasons": {
-          "ambiguous_register_rows": 8,
-          "no_candidate_page": 65,
-          "page_returned_404": 8
-        },
-        "resolvedAt": "2026-09-28T19:29:13Z",
-        "notes": []
       },
       {
         "institutionId": "msmt-vs_11000",
@@ -2147,6 +2149,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-09-27T23:11:58Z"
+    },
+    "inv-0602df65a842": {
+      "url": "https://www.damu.cz/en/department/department-of-alternative-and-puppet-theatre/study-programs/directing-of-devised-and-object-theatre-236/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "directing of devised and object theatre",
+      "rowTitle": "Directing of Devised and Object Theatre",
+      "sourceUrl": "https://www.damu.cz/sitemap-programs.xml",
+      "matchedBy": "school_catalogue_sitemap",
+      "pageTitle": "Directing of Devised and Object Theatre",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T21:11:54Z",
+      "checkedAt": "2026-09-28T21:19:38Z"
     },
     "inv-06151193acbd": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/845",
@@ -9408,6 +9425,21 @@
       "matchedAt": "2026-09-28T17:48:12Z",
       "checkedAt": "2026-09-28T18:22:50Z"
     },
+    "inv-29462db703cd": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-tance/studijni-programy/tanecni-umeni-a-nonverbalni-divadlo-247/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "tanecni umeni a nonverbalni divadlo",
+      "rowTitle": "Taneční umění a nonverbální divadlo",
+      "sourceUrl": "https://www.hamu.cz/sitemap-programs.xml",
+      "matchedBy": "school_catalogue_sitemap",
+      "pageTitle": "Taneční umění a nonverbální divadlo",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T21:11:54Z",
+      "checkedAt": "2026-09-28T21:19:49Z"
+    },
     "inv-296575e3783d": {
       "url": "https://www.med.muni.cz/chci-studovat/bakalarske-studium/26029-vseobecne-osetrovatelstvi",
       "kind": "school_programme_page",
@@ -10923,6 +10955,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-09-27T21:48:43Z"
     },
+    "inv-30de3244c041": {
+      "url": "https://www.damu.cz/cs/katedry-programy/katedra-produkce/studijni-programy/produkce-a-management-276/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "produkce a management",
+      "rowTitle": "Produkce a management",
+      "sourceUrl": "https://www.damu.cz/sitemap-programs.xml",
+      "matchedBy": "school_catalogue_sitemap",
+      "pageTitle": "Produkce a management",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T21:11:54Z",
+      "checkedAt": "2026-09-28T21:19:12Z"
+    },
     "inv-311c46295586": {
       "url": "https://portal.upce.cz/ects/browser/FCH/777?lang=cs",
       "kind": "school_programme_page",
@@ -11777,6 +11824,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T12:13:49Z",
       "checkedAt": "2026-09-27T12:15:43Z"
+    },
+    "inv-35781351f5a0": {
+      "url": "https://www.damu.cz/en/department/department-of-alternative-and-puppet-theatre/study-programs/pupparts-emjm-273/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "pupparts emjm",
+      "rowTitle": "PuppArts EMJM",
+      "sourceUrl": "https://www.damu.cz/sitemap-programs.xml",
+      "matchedBy": "school_catalogue_sitemap",
+      "pageTitle": "PuppArts EMJM",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T21:11:54Z",
+      "checkedAt": "2026-09-28T21:19:39Z"
     },
     "inv-35885d0ee37a": {
       "url": "https://www.pvsps.cz/chci-studovat/socialni-prace-se-zamerenim-na-komunikaci-a-aplikovanou-psychoterapii-nmgr/?__mode=active",
@@ -20598,6 +20660,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:52:09Z"
     },
+    "inv-60d725f96267": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-skladby/studijni-programy/skladba-a-teorie-skladby-237/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "skladba a teorie skladby",
+      "rowTitle": "Skladba a teorie skladby",
+      "sourceUrl": "https://www.hamu.cz/sitemap-programs.xml",
+      "matchedBy": "school_catalogue_sitemap",
+      "pageTitle": "Skladba a teorie skladby",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T21:11:54Z",
+      "checkedAt": "2026-09-28T21:19:47Z"
+    },
     "inv-60eb28459238": {
       "url": "https://portal.upce.cz/ects/browser/FF/538?lang=cs",
       "kind": "school_programme_page",
@@ -25022,6 +25099,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T21:57:04Z",
       "checkedAt": "2026-09-27T21:59:07Z"
+    },
+    "inv-75debeb3862c": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-strunnych-nastroju/studijni-programy/interpretace-a-teorie-interpretace-246/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "interpretace a teorie interpretace",
+      "rowTitle": "Interpretace a teorie interpretace",
+      "sourceUrl": "https://www.hamu.cz/sitemap-programs.xml",
+      "matchedBy": "school_catalogue_sitemap",
+      "pageTitle": "Interpretace a teorie interpretace",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T21:11:54Z",
+      "checkedAt": "2026-09-28T21:19:48Z"
     },
     "inv-76074951ae9d": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/380",
@@ -49833,6 +49925,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-09-27T21:48:38Z"
     },
+    "inv-f37bbd5db5d4": {
+      "url": "https://www.hamu.cz/en/departments-sections/dance-department/study-programmes/choreology-245/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "choreology",
+      "rowTitle": "Choreology",
+      "sourceUrl": "https://www.hamu.cz/sitemap-programs.xml",
+      "matchedBy": "school_catalogue_sitemap",
+      "pageTitle": "Choreology",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T21:11:54Z",
+      "checkedAt": "2026-09-28T21:19:50Z"
+    },
     "inv-f395062137e7": {
       "url": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/23278-sociology",
       "kind": "school_programme_page",
@@ -52486,11 +52593,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-0602df65a842",
-      "reason": "page_returned_404"
-    },
-    {
       "institutionId": "msmt-vs_28000",
       "rowId": "inv-063a6e8d70a8",
       "reason": "no_candidate_page"
@@ -52498,7 +52600,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-0674c72bc86c",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_26000",
@@ -52638,7 +52740,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-0b08be255ff1",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -52793,12 +52895,12 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-0f7f057472dc",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-0fd815694dc9",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_26000",
@@ -53423,7 +53525,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-235d407a7287",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -53628,11 +53730,6 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-28e5ca00e262",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-29462db703cd",
       "reason": "no_candidate_page"
     },
     {
@@ -53862,11 +53959,6 @@
     },
     {
       "institutionId": "msmt-vs_51000",
-      "rowId": "inv-30de3244c041",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
       "rowId": "inv-30e45d995ebb",
       "reason": "page_returned_404"
     },
@@ -54048,11 +54140,6 @@
     {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-35563074990c",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-35781351f5a0",
       "reason": "no_candidate_page"
     },
     {
@@ -54268,7 +54355,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-3e1ab581ec37",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -54283,7 +54370,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-3e77102b89b0",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_27000",
@@ -54488,7 +54575,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-4577ce5e4763",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_22000",
@@ -54548,7 +54635,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-48476f207d1b",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -54593,7 +54680,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-49c918f7e631",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_16000",
@@ -54873,7 +54960,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-5217e085cbb8",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -55073,7 +55160,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-568e127fc253",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -55118,7 +55205,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-5773e605d121",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_51000",
@@ -55168,7 +55255,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-59d5fa7810e9",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -55198,7 +55285,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-5af24ccd4165",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -55356,11 +55443,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-60d725f96267",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-60d87c1c1e63",
       "reason": "no_candidate_page"
@@ -55428,7 +55510,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-62da6354d7df",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -55468,7 +55550,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-644f74917131",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_11000",
@@ -55643,7 +55725,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-6b98be4e6d46",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_19000",
@@ -55738,7 +55820,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-6f5c6b8eaf3c",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_54000",
@@ -55908,7 +55990,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-7486691fb0ba",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_17000",
@@ -55979,11 +56061,6 @@
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-75b54b19379f",
       "reason": "page_returned_404"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-75debeb3862c",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -56123,7 +56200,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-7b45c76ba7cb",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -56378,7 +56455,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-84396e54468f",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_11000",
@@ -56503,7 +56580,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-8868577ac69f",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -56583,7 +56660,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-8acea6cb7692",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_12000",
@@ -56633,7 +56710,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-8d64fa9c4aa1",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_27000",
@@ -56853,7 +56930,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-9412f15baf95",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -56898,7 +56975,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-951a021aab95",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_13000",
@@ -56918,7 +56995,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-961bb316c656",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -57108,7 +57185,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-9ca9b232532a",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -57483,7 +57560,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-a7545ed82a1f",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -57538,7 +57615,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-a8be1714561f",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_28000",
@@ -57873,7 +57950,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-b33605764f57",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -57968,7 +58045,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-b608b48d903d",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_16000",
@@ -58063,7 +58140,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-b8c3a7a2af56",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -58313,7 +58390,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-c1e18d286988",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_24000",
@@ -58453,7 +58530,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-c5350ddca991",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -58468,7 +58545,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-c61e96544574",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_11000",
@@ -58733,7 +58810,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-ce7476f71f52",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_43000",
@@ -58753,7 +58830,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-cef7eae55ca3",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_11000",
@@ -58963,7 +59040,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-d5ded95d2fc1",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -59043,7 +59120,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-d8f87b2543b1",
-      "reason": "no_candidate_page"
+      "reason": "page_returned_404"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -59248,7 +59325,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-df2763daa2c7",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -59368,7 +59445,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-e2f10319bed3",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_54000",
@@ -59393,7 +59470,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-e3670b797781",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -59623,7 +59700,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-eada82744629",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_61000",
@@ -59713,7 +59790,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-ecf798234351",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_19000",
@@ -59911,11 +59988,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-f37bbd5db5d4",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-f38b73115ce2",
       "reason": "no_candidate_page"
@@ -60093,7 +60165,7 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-f7c910800491",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -60326,5 +60398,5 @@
       "reason": "no_candidate_page"
     }
   ],
-  "requests": 733
+  "requests": 326
 }

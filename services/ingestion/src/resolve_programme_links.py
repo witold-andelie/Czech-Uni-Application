@@ -98,6 +98,17 @@ DOCTORAL_TOKEN_RE = re.compile(
     r"(doktorsk\w*|doktorsk\w*|phd|ph\.?\s?d\.?|doctor\w*)", re.I
 )
 ID_SEGMENT_RE = re.compile(r"^(?:r|node|program|obor|id)?-?\d+$", re.I)
+# A school's own programme code, written at the end of the last path segment.
+# FAMU publishes /pro-uchazece/animovana-tvorba-232/ where the register row is
+# "Animovaná tvorba"; DAMU publishes /studijni-programy/scenografie-259/ for
+# "Scenografie" and /studijni-programy/dechove-nastroje-fagot-122/ for "Dechové
+# nástroje (fagot)". Same shape as a code-shaped parenthetical on a catalogue
+# anchor, which PROGRAMME_CODE_PAREN_RE already removes: the code names the
+# school's own record, not the programme. Of 5,019 MŠMT rows none ends in a
+# two-to-four digit number, so removing one from a slug can never turn a page
+# into the page for a different row - it can only stop a real page from being
+# read as naming nothing.
+TRAILING_CODE_RE = re.compile(r"[-\s]*\d{2,4}$")
 NEUTRAL_SEGMENTS = {
     "en",
     "cs",
@@ -301,6 +312,29 @@ def slug_text(url: str) -> str:
     if not segments:
         return ""
     return normalise(urllib.parse.unquote(segments[-1]).replace("-", " ").replace("_", " "))
+
+
+def slug_names_row(url: str, names_row: Callable[[str], bool]) -> str:
+    """The register row this programme-page URL names, or "" if it names none.
+
+    A school often writes its own programme code at the end of the slug: FAMU
+    publishes /pro-uchazece/animovana-tvorba-232/ where the register row is
+    "Animovaná tvorba", and DAMU publishes /studijni-programy/scenografie-259/
+    for "Scenografie". That code names the
+    school's own record rather than the programme, the same way a code-shaped
+    parenthetical on a catalogue anchor does (PROGRAMME_CODE_PAREN_RE), so the
+    slug is read without it. The reading the school actually wrote wins whenever
+    it already names a row: none of the 5,019 MšMT rows ends in a two-to-four
+    digit number, so removing one can only stop a real page from being read as
+    naming nothing - it never turns one row's page into another row's page.
+    """
+    slug = slug_text(url)
+    if not slug:
+        return ""
+    without_code = TRAILING_CODE_RE.sub("", slug).strip()
+    if not without_code or without_code == slug or names_row(slug):
+        return slug
+    return without_code if names_row(without_code) else ""
 
 
 def visible_text(fragment: str) -> str:
@@ -1059,6 +1093,11 @@ def discover_candidates(
         # note per reason, counted, keeps a school's coverage readable.
         note_counts[text] = note_counts.get(text, 0) + 1
 
+    # The register rows this school actually names, asked of a slug so a school
+    # that writes its own programme code at the end of the URL is read without
+    # it. Without a filter the walk keeps whatever the page names, as before.
+    names_row: Callable[[str], bool] = interesting or (lambda _key: True)
+
     allowed_domains = set(target.get("allowedDomains") or set())
     homepage = str(target.get("officialUrl") or "")
     queue: list[str] = [str(url) for url in target.get("entryUrls") or []]
@@ -1121,9 +1160,9 @@ def discover_candidates(
                 continue
             keep(url, text, entry, "school_catalogue_anchor", row_level(before, after))
         for url in sitemap_urls(body):
-            slug = slug_text(url)
-            if slug:
-                keep(url, slug, entry, "school_catalogue_sitemap")
+            named = slug_names_row(url, names_row)
+            if named:
+                keep(url, named, entry, "school_catalogue_sitemap")
         # One extra hop: a catalogue page often only lists faculties or
         # departments, whose own pages hold the programme names.
         if len(read) < limits.max_catalogue_entries:
@@ -1153,6 +1192,7 @@ def discover_from_sitemaps(
     interesting: Callable[[str], bool] | None = None,
 ) -> tuple[list[Candidate], list[str]]:
     notes: list[str] = []
+    names_row: Callable[[str], bool] = interesting or (lambda _key: True)
     bases = [str(target.get("officialUrl") or "")] + [str(url) for url in target.get("entryUrls") or []]
     roots: list[str] = []
     for base in bases:
@@ -1208,7 +1248,7 @@ def discover_from_sitemaps(
             continue
         if not PROGRAMME_PAGE_TOKEN_RE.search(path):
             continue
-        slug = slug_text(url)
+        slug = slug_names_row(url, names_row or (lambda _key: True))
         if not slug or url in seen:
             continue
         if interesting is not None and not interesting(slug):
