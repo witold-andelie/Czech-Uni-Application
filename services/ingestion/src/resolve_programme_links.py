@@ -141,7 +141,20 @@ FetchPage = Callable[[str], tuple[int, str]]
 DROP_REASONS = {
     "dropped_404": "page_returned_404",
     "dropped_level_mismatch": "page_states_another_level",
+    "dropped_stub_page": "page_states_nothing",
 }
+
+# A school's information system sometimes answers with a redirect stub instead
+# of the page: is.slu.cz/program/1484/... and is.muni.cz/predmet/1431/XS050 both
+# return 117 bytes - an empty <title> and an empty <body> - and the page they
+# mean takes a second read the resolver never makes. A stub names nothing, so it
+# cannot be the page the register row asks for, and the row goes back to the
+# university site rather than sending a visitor to an empty document. Only a
+# stub is dropped, and size is what separates one: a real page here is kilobytes
+# (Palacký's ECTS browser states its title in 7 KiB, a study-plan attachment
+# runs to 447 KiB), while an empty answer is a transport failure that says
+# nothing and is left unverified rather than dropped.
+STUB_BODY_BYTES = 2_048
 
 # A school the run never read, because the budget ran out first. It is not a
 # report about the school's pages: the next run that reaches it decides again,
@@ -487,6 +500,9 @@ class Candidate:
     source_url: str = ""
     matched_by: str = ""
     observed_at: str = ""
+    # When a live read last confirmed this address, for a candidate that comes
+    # from the last run's index. Empty for every freshly discovered page.
+    checked_at: str = ""
     # The level written beside the programme name on the same row, when the
     # name's own link states none. Kept apart from ``degree`` because it is what
     # separates a title the register carries at two levels, not a claim about
@@ -645,7 +661,7 @@ def page_language(url: str) -> str:
     return "cs" if first == "cz" else (first if first in PAGE_LANGUAGES else "")
 
 
-def candidate_rank(candidate: Candidate, row: Row) -> tuple[int, int, int, str]:
+def candidate_rank(candidate: Candidate, row: Row, kept: bool = False) -> tuple[int, int, int, int, str]:
     """Deterministic order among the school's own pages for one programme.
 
     After the slug, the page's own language: the register states which language
@@ -654,8 +670,17 @@ def candidate_rank(candidate: Candidate, row: Row) -> tuple[int, int, int, str]:
     is a ranking and never a filter - a school that published only one language
     keeps that page, because "" (the address states no language) ranks level with
     the row's own language.
+
+    ``kept`` marks the address a live read already confirmed inside the refresh
+    window, and outranks every other candidate. A walk that finds a page whose
+    slug agrees better must not take a row off a page read yesterday: the new
+    page has been read by nobody, and when it turns out to be gone the row loses
+    the link it had. Measured 2026-09-28 on AMU: the run bound two rows to other
+    DAMU addresses that answered 404, and the two proven pages left the index
+    with them.
     """
     return (
+        0 if kept else 1,
         0 if slug_agrees(candidate.url, row.title) else 1,
         0 if page_language(candidate.url) in ("", row.language) else 1,
         SOURCE_RANK.get(candidate.matched_by, 9),
@@ -739,7 +764,19 @@ class Limits:
     # to name all 34 Czech and 34 English listing pages. At 60 it stopped at
     # Czech page 14 and English page 14, leaving 12 listing pages (several
     # hundred programmes) unread, so the walk is 80.
-    max_catalogue_entries: int = 80
+    # Depth re-measured 2026-09-28 on the three schools the shallow walk still
+    # left open (work/programme-link-probe/27000-default.json,
+    # 27000-raised.json, muni-limits.json, muni-limits-2.json,
+    # muni-limits-3.json, 21000-default.json, 21000-raised.json). At 80 entries
+    # VŠB-Technical University Ostrava resolves 147 of its 293 rows in 92
+    # requests and stops, while Masaryk University reaches 278 of 534 in 159.
+    # Raising this one bound to 200 with the page budget and level probes raised
+    # alongside it takes VŠB to 230 of 293 in 262 requests, Masaryk to 300 of
+    # 534 in 318, and ČVUT from 64 to 67 of 283 in 261. The second gain is what
+    # bound the number: Masaryk at 500 entries and 624 requests resolves 302 -
+    # two more rows for twice the requests - so 200 is where the walk stops
+    # paying. A school is still bounded, and still fails closed.
+    max_catalogue_entries: int = 200
     max_sitemap_children: int = 30
     max_locs: int = 20_000
     # Pages one school may cost. The same measurement put Charles University at
@@ -748,7 +785,11 @@ class Limits:
     # site. This is per school, not per run: counted run-wide it starves every
     # school after the first few (the run-wide 240 budget left Charles
     # University, CVUT and Palacky at 0 with "budget_exhausted").
-    max_page_fetches: int = 260
+    # Raised to 600 on 2026-09-28 with the entry bound above: VŠB needs 262
+    # requests to reach 230 of 293 and Masaryk 318 to reach 300 of 534, so 260
+    # cut both schools off mid-catalogue with rows still readable. It stays per
+    # school and the run budget is what bounds the whole index.
+    max_page_fetches: int = 600
     # Programme pages one school may hold. This counts the whole walk, not one
     # page: Charles University's 68 listing pages name 1,500 register titles
     # between them, and at 1,500 the limit stopped the walk mid-catalogue and
@@ -762,7 +803,11 @@ class Limits:
     # reads per title (the bachelor page and the master page each state their own
     # level), so 60 stopped halfway and left 114 of its 534 rows unresolved while
     # the school's own pages already said which was which.
-    max_level_probes: int = 140
+    # 140 was already past that measurement's need; it is raised to 400 on the
+    # same 2026-09-28 run because level probing shares the page budget, so a
+    # deeper catalogue walk with a smaller probe ceiling would just move the
+    # cutoff from one line of the walk to the next.
+    max_level_probes: int = 400
     # Verification shares a school's page budget with discovery, so one school
     # cannot spend the whole run re-checking links it already checked.
     max_verifications: int = 400
@@ -1206,6 +1251,8 @@ def assess_page(link: Link, body: str) -> str:
     exactly the name matched, so the link is dropped and the row keeps the
     university site. A page that states no level, or two, is checked no further.
     """
+    if body.strip() and len(body) < STUB_BODY_BYTES and not page_headings(body):
+        return "dropped_stub_page"
     expected = normalise(link.row_title)
     headings = page_headings(body)
     matched_heading = next((item for item in headings if normalise(item) == expected), None)
@@ -1229,7 +1276,12 @@ def verify_links(
     A 404 drops the link (and the row returns to unresolved), and so does a page
     that states a different study level than its row. Access control, rate
     limiting, transport failure and budget exhaustion keep the link and mark it
-    unverified: none of them is evidence that the page is gone.
+    unverified: none of them is evidence that the page is gone. Neither is one
+    404, on its own: a school answered 404 for an address that then answered 200
+    on every later read (measured 2026-09-28 on DAMU's English department page,
+    one 404 inside the run and six reads of 200 after it), so a 404 is read once
+    more before it takes a proven link - and the row's only proof - with it. Only
+    a 404 that stays a 404 drops it.
     """
     outcomes: dict[str, str] = {}
     checked = 0
@@ -1245,6 +1297,12 @@ def verify_links(
         status, body = fetch(link.url)
         now_text = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         link.checked_at = now_text
+        if status == 404 and checked < limits.max_verifications and not budget.expired:
+            # Confirmation read, counted against the same verification budget.
+            checked += 1
+            confirmed_status, confirmed_body = fetch(link.url)
+            if confirmed_status != 404:
+                status, body = confirmed_status, confirmed_body
         if status == 404:
             outcomes[link.url] = "dropped_404"
             continue
@@ -1437,6 +1495,7 @@ def resolve_school(
     limits: Limits,
     budget: Budget,
     live: bool,
+    kept_pages: dict[str, str] | None = None,
 ) -> tuple[dict[str, Link], dict[str, str], int, list[str]]:
     """Resolve as many of one school's rows as can be proven.
 
@@ -1447,10 +1506,16 @@ def resolve_school(
     row — two programmes sharing a normalised title and degree — stays
     unresolved, until the level probe below reads the school's own page and the
     level stated there separates them.
+
+    ``kept_pages`` maps a row to the address a live read already confirmed inside
+    the refresh window. That address outranks every freshly discovered one, so a
+    walk that finds a better-looking page cannot cost the row the link it has
+    (candidate_rank).
     """
     grouped: dict[str, list[tuple[Candidate, str]]] = {}
     unresolved = {row.ident: "no_candidate_page" for row in match.rows}
     notes: list[str] = []
+    kept_pages = kept_pages or {}
     # Candidates whose title the register carries, kept so a title the register
     # holds at two levels can be separated by the level the page states.
     candidates_by_title: dict[str, list[Candidate]] = {}
@@ -1503,7 +1568,11 @@ def resolve_school(
         row = rows_by_ident[ident]
         candidate, language = min(
             bindings,
-            key=lambda item: candidate_rank(item[0], row),
+            key=lambda item: candidate_rank(
+                item[0],
+                row,
+                kept=item[0].matched_by == "previous_run" and item[0].url == kept_pages.get(ident),
+            ),
         )
         if len({item[0].url for item in bindings}) > 1:
             multiple_pages += 1
@@ -1613,9 +1682,41 @@ def previous_candidates(previous: dict, target: dict, match: Match) -> list[Cand
                 source_url=str(entry.get("sourceUrl") or url),
                 matched_by="previous_run",
                 observed_at=str(entry.get("matchedAt") or ""),
+                checked_at=str(entry.get("checkedAt") or ""),
             )
         )
     return candidates
+
+
+def recently_checked_pages(
+    previous: dict,
+    rows: list[Row],
+    now: datetime,
+    recheck_after_seconds: float,
+) -> dict[str, str]:
+    """The address each of this school's rows was last proven at, while fresh.
+
+    Only an address the index already holds for the row counts, and only while
+    that live read is inside the refresh window: outside it the school is walked
+    again and a better page may win. This is what keeps a bounded walk from
+    costing a row a link it already had.
+    """
+    known = {row.ident for row in rows}
+    fresh: dict[str, str] = {}
+    for ident, entry in previous_links(previous).items():
+        if ident not in known:
+            continue
+        url = str(entry.get("url") or "")
+        checked_at = str(entry.get("checkedAt") or "")
+        if not url or not checked_at:
+            continue
+        try:
+            moment = datetime.strptime(checked_at, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+        except ValueError:
+            continue
+        if recheck_after_seconds > 0 and 0 <= (now - moment).total_seconds() < recheck_after_seconds:
+            fresh[ident] = url
+    return fresh
 
 
 def merge_previous(
@@ -1772,6 +1873,7 @@ def build_links(
     school_ids: Iterable[str] | None = None,
     rows_by_institution: dict[str, list[Row]] | None = None,
     institutions: list[dict] | None = None,
+    recheck_after_seconds: float = RECHECK_AFTER_SECONDS,
 ) -> dict:
     """Resolve links for every school, then report coverage honestly."""
     limits = limits or Limits()
@@ -1849,8 +1951,16 @@ def build_links(
         ]
         if previous_payload:
             harvested_for_school.extend(previous_candidates(previous_payload, target, match))
+        kept_pages = recently_checked_pages(previous_payload, rows, current, recheck_after_seconds)
         school_links, school_unresolved, multiple_pages, notes = resolve_school(
-            target, match, harvested_for_school, throttled, limits, budget, live
+            target,
+            match,
+            harvested_for_school,
+            throttled,
+            limits,
+            budget,
+            live,
+            kept_pages=kept_pages,
         )
         if live:
             # Before the last live check is carried forward: a promoted address
@@ -1859,7 +1969,12 @@ def build_links(
         carry_verification(previous_payload, school_links)
         if live and school_links:
             for url, outcome in verify_links(
-                school_links, throttled, limits, budget, now=current
+                school_links,
+                throttled,
+                limits,
+                budget,
+                now=current,
+                recheck_after_seconds=recheck_after_seconds,
             ).items():
                 if outcome not in DROP_REASONS:
                     continue
@@ -1986,6 +2101,15 @@ def main() -> None:
     parser.add_argument("--live", action="store_true", help="fetch school sites (default: harvested sources only)")
     parser.add_argument("--school", action="append", default=None, help="institution id; repeatable")
     parser.add_argument("--no-merge", action="store_true", help="ignore the previous index when writing a fresh one")
+    parser.add_argument(
+        "--recheck-seconds",
+        type=float,
+        default=None,
+        help=(
+            "read a link again this many seconds after its last check "
+            f"(default {int(RECHECK_AFTER_SECONDS)}); 0 reads every link now"
+        ),
+    )
     args = parser.parse_args()
 
     fetch = None
@@ -2006,6 +2130,9 @@ def main() -> None:
         budget_seconds=args.budget_seconds,
         previous={} if args.no_merge else load_previous(args.output),
         school_ids=args.school,
+        recheck_after_seconds=args.recheck_seconds
+        if args.recheck_seconds is not None
+        else RECHECK_AFTER_SECONDS,
     )
     write_payload(payload, args.output)
     output = str(args.output)

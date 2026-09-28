@@ -288,6 +288,65 @@ def test_verify_links_drops_a_page_that_states_another_level() -> None:
     assert rpl.DROP_REASONS["dropped_level_mismatch"] == "page_states_another_level"
 
 
+def test_a_schools_redirect_stub_is_not_the_programme_page() -> None:
+    """The school answers with an empty document that names nothing.
+
+    The catalogue link named the register row exactly, and the page it points at
+    opens 200 - so the binding was sound when it was made. The page itself is a
+    meta-refresh stub, and the programme it means takes a second read this
+    resolver never makes, so a visitor would land on an empty document. The link
+    is dropped and the row goes back to the university site.
+    """
+    link = rpl.Link(
+        url="https://is.school.cz/program/1484/pediatrie/",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="b",
+        language="cs",
+        matched_title="Pediatrie",
+        row_title="Pediatrie",
+        source_url="https://school.cz/programmes",
+        matched_by="school_catalogue_anchor",
+        reachability="unverified",
+        matched_at="2026-09-27T00:00:00Z",
+    )
+    stub = "<!DOCTYPE HTML>\n<html>\n<head>\n<title></title>\n" '<meta http-equiv="refresh" content="1">\n</head>\n<body>\n</body>\n</html>\n'
+    throttled = rpl.ThrottledFetch(
+        FakeFetch({"https://is.school.cz/program/1484/pediatrie/": (200, stub)}),
+        sleep=lambda _seconds: None,
+    )
+    outcomes = rpl.verify_links({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60))
+    assert outcomes["https://is.school.cz/program/1484/pediatrie/"] == "dropped_stub_page"
+    assert rpl.DROP_REASONS["dropped_stub_page"] == "page_states_nothing"
+
+
+def test_an_empty_answer_is_not_evidence_against_a_page() -> None:
+    """A body that never arrived says nothing, so the link is kept unverified.
+
+    Dropping on an empty answer would let one failed read remove a link the
+    school still publishes, which is the same mistake as reading a timeout as a
+    closure.
+    """
+    link = rpl.Link(
+        url="https://school.cz/p/kynologie/",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="b",
+        language="cs",
+        matched_title="Kynologie",
+        row_title="Kynologie",
+        source_url="https://school.cz/programmes",
+        matched_by="school_catalogue_anchor",
+        reachability="unverified",
+        matched_at="2026-09-27T00:00:00Z",
+    )
+    throttled = rpl.ThrottledFetch(
+        FakeFetch({"https://school.cz/p/kynologie/": (200, "")}), sleep=lambda _seconds: None
+    )
+    outcomes = rpl.verify_links({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60))
+    assert outcomes["https://school.cz/p/kynologie/"] == "http_200_title_not_confirmed"
+
+
 def test_a_page_that_states_no_level_is_kept() -> None:
     link = rpl.Link(
         url="https://school.cz/p/kynologie/",
@@ -311,6 +370,34 @@ def test_a_page_that_states_no_level_is_kept() -> None:
     )
     outcomes = rpl.verify_links({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60))
     assert outcomes["https://school.cz/p/kynologie/"] == "verified"
+
+
+def test_a_large_document_without_headings_is_not_a_stub() -> None:
+    """A study-plan attachment is kilobytes of document and states nothing read.
+
+    Size is what separates a stub from a document the heading rules cannot read:
+    an attachment is not dropped, because it is still the school's own file for
+    the programme.
+    """
+    link = rpl.Link(
+        url="https://school.cz/plany/PZ.docx",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="m",
+        language="cs",
+        matched_title="Kynologie",
+        row_title="Kynologie",
+        source_url="https://school.cz/programmes",
+        matched_by="school_catalogue_anchor",
+        reachability="unverified",
+        matched_at="2026-09-27T00:00:00Z",
+    )
+    throttled = rpl.ThrottledFetch(
+        FakeFetch({"https://school.cz/plany/PZ.docx": (200, "PK".join(["x" * 50_000]))}),
+        sleep=lambda _seconds: None,
+    )
+    outcomes = rpl.verify_links({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60))
+    assert outcomes["https://school.cz/plany/PZ.docx"] == "http_200_title_not_confirmed"
 
 
 def test_the_level_probe_separates_a_title_the_register_holds_twice() -> None:
@@ -1098,6 +1185,141 @@ def test_ranking_prefers_the_page_whose_slug_restates_the_programme() -> None:
     assert list(links.values())[0].url == good.url
     assert multiple == 1
     assert unresolved == {}
+
+
+def test_a_page_read_inside_the_window_is_not_displaced_by_an_unread_one() -> None:
+    """The proven page outranks a page nobody has read yet.
+
+    Measured 2026-09-28 on AMU: the walk bound two rows to other DAMU addresses
+    that answered 404, and the two pages proven the day before left the index
+    with them. Coverage may only rise, so the address a live read already
+    confirmed keeps the row.
+    """
+    match = rpl.Match([row("msmt-vs_1", "Alternativní a loutkové divadlo", "b", "cs")])
+    proven = candidate(
+        "https://school.cz/en/department/department-of-alternative-and-puppet-theatre/",
+        "Alternativní a loutkové divadlo",
+        "b",
+        "cs",
+        matched_by="previous_run",
+    )
+    proven.checked_at = "2026-09-28T20:30:00Z"
+    discovered = candidate(
+        "https://school.cz/cs/katedry-programy/katedra/alternativni-a-loutkove-divadlo-184/",
+        "Alternativní a loutkové divadlo",
+        "b",
+        "cs",
+        matched_by="school_sitemap_slug",
+    )
+    target = school_target()
+    throttled = rpl.ThrottledFetch(FakeFetch({}), sleep=lambda _seconds: None)
+    links, unresolved, _multiple, _notes = rpl.resolve_school(
+        target,
+        match,
+        [discovered, proven],
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+        live=False,
+        kept_pages={match.rows[0].ident: proven.url},
+    )
+    assert links[match.rows[0].ident].url == proven.url
+    assert unresolved == {}
+
+
+def test_a_stale_previous_page_loses_to_the_better_discovered_one() -> None:
+    """Outside the refresh window the school is walked again, and may improve."""
+    match = rpl.Match([row("msmt-vs_1", "Natural resources and environment", "m", "en")])
+    proven = candidate(
+        "https://school.cz/programmes/12345/",
+        "Natural resources and environment",
+        "m",
+        "en",
+        matched_by="previous_run",
+    )
+    good = candidate("https://school.cz/programmes/natural-resources-and-environment/", "Natural resources and environment", "m", "en")
+    target = school_target()
+    throttled = rpl.ThrottledFetch(FakeFetch({}), sleep=lambda _seconds: None)
+    links, _unresolved, _multiple, _notes = rpl.resolve_school(
+        target,
+        match,
+        [proven, good],
+        throttled,
+        rpl.Limits(),
+        rpl.Budget(60),
+        live=False,
+        kept_pages={},
+    )
+    assert links[match.rows[0].ident].url == good.url
+
+
+def test_a_404_is_read_again_before_it_drops_the_link() -> None:
+    """One 404 is not proof the page is gone.
+
+    DAMU answered 404 for its English department page inside a run and 200 on
+    every read after it. Dropping on the first answer cost that row its link, so
+    the address is read once more and only a 404 that stays a 404 drops it.
+    """
+    link = rpl.Link(
+        url="https://school.cz/p/a/",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="b",
+        language="cs",
+        matched_title="A",
+        row_title="A",
+        source_url="https://school.cz/programmes",
+        matched_by="school_catalogue_anchor",
+        reachability="unverified",
+        matched_at="2026-09-27T00:00:00Z",
+    )
+
+    class Flaky(FakeFetch):
+        """One 404, then the page as the school serves it."""
+
+        def __init__(self) -> None:
+            super().__init__(
+                {
+                    "https://school.cz/p/a/": (
+                        200,
+                        "<html><head><title>A | school</title></head><body><h1>A</h1></body></html>",
+                    )
+                }
+            )
+
+        def __call__(self, url: str) -> tuple[int, str]:
+            self.calls.append(url)
+            if len(self.calls) == 1:
+                return 404, ""
+            return self.responses.get(url, self.default)
+
+    fetch = Flaky()
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    outcomes = rpl.verify_links({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60))
+    assert outcomes["https://school.cz/p/a/"] == "verified"
+    assert fetch.calls == ["https://school.cz/p/a/", "https://school.cz/p/a/"]
+
+
+def test_a_404_that_stays_a_404_still_drops_the_link() -> None:
+    """The confirmation read only buys one more answer, not a reprieve."""
+    link = rpl.Link(
+        url="https://school.cz/p/gone/",
+        row_id="inv-a",
+        institution_id="msmt-vs_1",
+        degree="b",
+        language="cs",
+        matched_title="A",
+        row_title="A",
+        source_url="https://school.cz/programmes",
+        matched_by="school_catalogue_anchor",
+        reachability="unverified",
+        matched_at="2026-09-27T00:00:00Z",
+    )
+    fetch = FakeFetch({"https://school.cz/p/gone/": (404, "")})
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    outcomes = rpl.verify_links({"inv-a": link}, throttled, rpl.Limits(), rpl.Budget(60))
+    assert outcomes["https://school.cz/p/gone/"] == "dropped_404"
+    assert fetch.calls == ["https://school.cz/p/gone/", "https://school.cz/p/gone/"]
 
 
 def test_several_school_keeps_one_page_per_programme() -> None:
