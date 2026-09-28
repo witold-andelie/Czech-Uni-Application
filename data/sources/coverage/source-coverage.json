@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T19:57:39Z",
+  "generatedAt": "2026-09-28T22:02:26Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-09-28.1",
-    "publishedAt": "2026-09-28T19:57:38Z",
-    "candidateGenerationId": "cg-905f1433aabc4d11aae4d977671e970d",
-    "sourceRunSetDigest": "sha256:edb386de06280f833ed836baac412c0e5cf3616a22e6be16f25f7869b4f0c6f7",
+    "activeVersion": "v2026-09-28.2",
+    "publishedAt": "2026-09-28T22:02:25Z",
+    "candidateGenerationId": "cg-5c1b39a6fc844c6084204a98b5ec2a98",
+    "sourceRunSetDigest": "sha256:aef506870d94f309075c1d13c9dcee9526dc079760ed63927d6db64273c486f5",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -136,15 +136,15 @@
     "claimBoundary": "The DZS source snapshot is complete for its reported directory result, but it is not the legal register or the authority for each university application window. Candidate records remain outside formal publication until source and zh-CN/en/cs review passes.",
     "programmePageLinks": {
       "source": "resolve_programme_links.py",
-      "linkIndexGeneratedAt": "2026-09-28T19:29:13Z",
-      "publishedSnapshotCount": 3419,
+      "linkIndexGeneratedAt": "2026-09-28T21:11:54Z",
+      "publishedSnapshotCount": 3426,
       "denominator": "register rows in the pinned published inventory snapshot",
       "totals": {
         "schools": 53,
         "registerRows": 5019,
-        "rowsWithSchoolProgrammePage": 3419,
-        "rowsShowingUniversitySite": 1600,
-        "registerRowCoveragePercent": 68.1
+        "rowsWithSchoolProgrammePage": 3426,
+        "rowsShowingUniversitySite": 1593,
+        "registerRowCoveragePercent": 68.3
       },
       "schools": [
         {
@@ -290,9 +290,9 @@
         {
           "institutionId": "msmt-vs_51000",
           "registerRows": 101,
-          "rowsWithSchoolProgrammePage": 20,
-          "rowsShowingUniversitySite": 81,
-          "registerRowCoveragePercent": 19.8
+          "rowsWithSchoolProgrammePage": 27,
+          "rowsShowingUniversitySite": 74,
+          "registerRowCoveragePercent": 26.7
         },
         {
           "institutionId": "msmt-vs_52000",
