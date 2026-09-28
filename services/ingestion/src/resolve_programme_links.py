@@ -193,6 +193,26 @@ def normalise(value: object) -> str:
     return " ".join(re.findall(r"[^\W_]+", stripped, re.UNICODE))
 
 
+# A school often writes its own programme code beside the name in parentheses:
+# BUT's catalogue reads "Architektura a urbanismus (N_A+U)" where the register
+# row is simply "Architektura a urbanismus". The code names the school's own
+# record, not the programme, so the name without it is what the register title
+# is compared against. Only a code-shaped parenthetical is ever removed, because
+# a parenthetical the register itself carries is part of the name: of 5,019 MŠMT
+# rows 12 carry parentheses and none of those is code-shaped.
+PROGRAMME_CODE_RE = re.compile(r"^[A-Z0-9]{1,6}[-_+][A-Z0-9_+-]{1,14}$|^[A-Z]\d[A-Z0-9]{4,15}$")
+PROGRAMME_CODE_PAREN_RE = re.compile(r"\s*\(([^()]*)\)\s*$")
+
+
+def stated_title(text: str) -> str:
+    """The programme name a page states, without the school's own code."""
+    raw = (text or "").strip()
+    match = PROGRAMME_CODE_PAREN_RE.search(raw)
+    if match and PROGRAMME_CODE_RE.match(match.group(1).strip()):
+        raw = raw[: match.start()].strip()
+    return normalise(raw)
+
+
 def host_of(url: str) -> str:
     try:
         return (urllib.parse.urlsplit(url).hostname or "").casefold()
@@ -390,7 +410,10 @@ def anchor_rows(body: str, base_url: str) -> list[tuple[str, str, str, str]]:
         found.append(
             (
                 url,
-                normalise(visible_text(match.group(3))),
+                # The name the link states, with the school's own programme code
+                # dropped from it: normalise() alone would keep the code's words
+                # and the exact-title match below would never find the row.
+                stated_title(visible_text(match.group(3))),
                 normalise(f"{heading} {before_text}"),
                 normalise(visible_text(text[match.end() : stop])),
             )

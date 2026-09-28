@@ -70,6 +70,72 @@ def test_normalise_is_conservative() -> None:
     assert rpl.normalise("ČZU’s  Programme") == "czu s programme"
 
 
+def test_the_schools_own_programme_code_is_not_part_of_the_name() -> None:
+    """A code beside the name names the school's record, not the programme.
+
+    BUT's catalogue writes "Architektura a urbanismus (N_A+U)" where the MšMT
+    register row is "Architektura a urbanismus", so 147 of its 199 rows had no
+    candidate page while the school already published one for each. Only a
+    parenthetical shaped like a code is removed: a number in parentheses is the
+    page's own id, and a parenthetical the register itself carries stays.
+    """
+    assert rpl.stated_title("Architektura a urbanismus (N_A+U)") == "architektura a urbanismus"
+    assert rpl.stated_title("Studijní program - Sportovní technologie (9937) – VUT") == rpl.normalise(
+        "Studijní program - Sportovní technologie (9937) – VUT"
+    )
+    # A parenthetical that is not code-shaped is part of the name.
+    assert rpl.stated_title("Chemie (obor Učitelství)") == "chemie obor ucitelstvi"
+    assert rpl.stated_title("Kynologie") == "kynologie"
+    assert rpl.stated_title("Architektura a urbanismus (N_A+U)") != rpl.normalise("Architektura a urbanismus (N_A+U)")
+
+
+def test_a_code_beside_the_name_binds_the_register_row() -> None:
+    """The anchor's name binds normally - on its own, not on the code."""
+    target = school_target("www.school.cz")
+    target["entryUrls"] = ["https://www.school.cz/studenti/programy"]
+    rows = [
+        row("msmt-vs_00000", "Architektura a urbanismus", "m", "cs"),
+        row("msmt-vs_00000", "Architektura a rozvoj sídel", "m", "cs"),
+    ]
+    listing = (
+        "<html><body><ul>"
+        '<li><a href="/studenti/programy/program/9714">Architektura a urbanismus (N_A+U)</a></li>'
+        '<li><a href="/studenti/programy/program/9751">Architektura a rozvoj sídel (NPC-ARS)</a></li>'
+        "</ul></body></html>"
+    )
+    fetch = FakeFetch({"https://www.school.cz/studenti/programy": (200, listing)})
+    match = rpl.Match(rows)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    links, unresolved, _multiple, notes = rpl.resolve_school(
+        target, match, [], throttled, rpl.Limits(), rpl.Budget(60), live=True
+    )
+    assert notes == []
+    assert links[rows[0].ident].url == "https://www.school.cz/studenti/programy/program/9714"
+    assert links[rows[0].ident].matched_title == "architektura a urbanismus"
+    assert links[rows[1].ident].url == "https://www.school.cz/studenti/programy/program/9751"
+    assert unresolved == {}
+
+
+def test_a_code_never_takes_the_place_of_a_name_the_register_holds() -> None:
+    """Stripping a code must not open a row the anchor did not name."""
+    target = school_target("www.school.cz")
+    target["entryUrls"] = ["https://www.school.cz/studenti/programy"]
+    rows = [row("msmt-vs_00000", "Architektura", "b", "cs")]
+    listing = (
+        "<html><body><ul>"
+        '<li><a href="/studenti/programy/program/9714">Architektura a urbanismus (N_A+U)</a></li>'
+        "</ul></body></html>"
+    )
+    fetch = FakeFetch({"https://www.school.cz/studenti/programy": (200, listing)})
+    match = rpl.Match(rows)
+    throttled = rpl.ThrottledFetch(fetch, sleep=lambda _seconds: None)
+    links, unresolved, _multiple, _notes = rpl.resolve_school(
+        target, match, [], throttled, rpl.Limits(), rpl.Budget(60), live=True
+    )
+    assert links == {}
+    assert unresolved == {rows[0].ident: "no_candidate_page"}
+
+
 def test_registrable_host_allows_school_subdomains() -> None:
     assert rpl.registrable_host("https://study.czu.cz/programmes/x/") == "czu.cz"
     assert rpl.registrable_host("https://studuj.czu.cz") == "czu.cz"

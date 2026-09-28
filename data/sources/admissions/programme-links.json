@@ -1,28 +1,46 @@
 {
-  "generatedAt": "2026-09-27T22:51:44Z",
+  "generatedAt": "2026-09-28T16:18:36Z",
   "dataClass": "school_owned_programme_page_index",
   "note": "School-owned programme page links for the MŠMT register inventory. Each link was resolved from the university's own site by exact normalised title/degree/language equality; a row without a proven page keeps the university-site fallback and is listed under unresolved. No fuzzy or partial matching, and no invented URLs.",
   "counts": {
     "schools": 53,
     "offerings": 5019,
-    "linked": 3095,
-    "unresolved": 1924,
-    "rowsWithMultipleSchoolPages": 1436
+    "linked": 3229,
+    "unresolved": 1790,
+    "rowsWithMultipleSchoolPages": 1572
   },
   "coverage": {
     "totals": {
       "schools": 53,
       "offerings": 5019,
-      "resolved": 3095,
-      "unresolved": 1924,
-      "rowsWithMultipleSchoolPages": 1436,
+      "resolved": 3229,
+      "unresolved": 1790,
+      "rowsWithMultipleSchoolPages": 1572,
       "byReachability": {
         "http_200_title_not_confirmed": 2313,
         "unverified": 335,
-        "verified": 447
+        "verified": 581
       }
     },
     "schools": [
+      {
+        "institutionId": "msmt-vs_26000",
+        "name": "Vysoké učení technické v Brně",
+        "allowedDomains": [
+          "vut.cz",
+          "vutbr.cz"
+        ],
+        "offerings": 199,
+        "resolved": 161,
+        "unresolved": 38,
+        "rowsWithMultipleSchoolPages": 160,
+        "unresolvedReasons": {
+          "ambiguous_register_rows": 19,
+          "no_candidate_page": 19
+        },
+        "resolvedAt": "2026-09-28T16:18:36Z",
+        "notes": []
+      },
       {
         "institutionId": "msmt-vs_41000",
         "name": "Česká zemědělská univerzita v Praze",
@@ -38,7 +56,9 @@
           "no_candidate_page": 70
         },
         "resolvedAt": "2026-09-27T22:51:44Z",
-        "notes": []
+        "notes": [
+          "carried_from_previous_run"
+        ]
       },
       {
         "institutionId": "msmt-vs_18000",
@@ -56,7 +76,8 @@
         },
         "resolvedAt": "2026-09-27T22:51:44Z",
         "notes": [
-          "catalogue_unreachable_http_404 (x2)"
+          "catalogue_unreachable_http_404 (x2)",
+          "carried_from_previous_run"
         ]
       },
       {
@@ -74,7 +95,8 @@
         },
         "resolvedAt": "2026-09-27T22:51:44Z",
         "notes": [
-          "catalogue_unreachable_http_404"
+          "catalogue_unreachable_http_404",
+          "carried_from_previous_run"
         ]
       },
       {
@@ -94,7 +116,8 @@
         },
         "resolvedAt": "2026-09-27T22:51:44Z",
         "notes": [
-          "catalogue_unreachable_http_404 (x4)"
+          "catalogue_unreachable_http_404 (x4)",
+          "carried_from_previous_run"
         ]
       },
       {
@@ -112,7 +135,9 @@
           "no_candidate_page": 35
         },
         "resolvedAt": "2026-09-27T22:51:44Z",
-        "notes": []
+        "notes": [
+          "carried_from_previous_run"
+        ]
       },
       {
         "institutionId": "msmt-vs_31000",
@@ -130,7 +155,8 @@
         },
         "resolvedAt": "2026-09-27T22:51:44Z",
         "notes": [
-          "promoted_to_https: 1"
+          "promoted_to_https: 1",
+          "carried_from_previous_run"
         ]
       },
       {
@@ -150,7 +176,8 @@
         },
         "resolvedAt": "2026-09-27T22:51:44Z",
         "notes": [
-          "catalogue_unreachable_http_404 (x4)"
+          "catalogue_unreachable_http_404 (x4)",
+          "carried_from_previous_run"
         ]
       },
       {
@@ -224,26 +251,6 @@
         "resolvedAt": "2026-09-27T21:44:50Z",
         "notes": [
           "catalogue_unreachable_http_404 (x3)",
-          "carried_from_previous_run"
-        ]
-      },
-      {
-        "institutionId": "msmt-vs_26000",
-        "name": "Vysoké učení technické v Brně",
-        "allowedDomains": [
-          "vut.cz",
-          "vutbr.cz"
-        ],
-        "offerings": 199,
-        "resolved": 27,
-        "unresolved": 172,
-        "rowsWithMultipleSchoolPages": 24,
-        "unresolvedReasons": {
-          "ambiguous_register_rows": 2,
-          "no_candidate_page": 170
-        },
-        "resolvedAt": "2026-09-27T21:44:50Z",
-        "notes": [
           "carried_from_previous_run"
         ]
       },
@@ -1127,6 +1134,21 @@
       "matchedAt": "2026-09-27T21:29:35Z",
       "checkedAt": "2026-09-27T21:30:06Z"
     },
+    "inv-0086e97a8290": {
+      "url": "https://www.vut.cz/studenti/programy/program/9779",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "elektrotechnicka vyroba a management",
+      "rowTitle": "Elektrotechnická výroba a management",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Elektrotechnická výroba a management",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:39Z"
+    },
     "inv-008cb7daac98": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1143",
       "kind": "school_programme_page",
@@ -1877,6 +1899,21 @@
       "matchedAt": "2026-09-27T17:14:26Z",
       "checkedAt": "2026-09-27T17:18:41Z"
     },
+    "inv-04f8190db667": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9874",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "information technology",
+      "rowTitle": "Information Technology",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Information Technology",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:43Z"
+    },
     "inv-0504df37d0be": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23424-optika-a-optometrie",
       "kind": "school_programme_page",
@@ -2402,6 +2439,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:32:22Z"
     },
+    "inv-07f07d84880d": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9789",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "space applications",
+      "rowTitle": "Space Applications",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Space Applications",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:32Z"
+    },
     "inv-083dc8456734": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2474?lang=cs",
       "kind": "school_programme_page",
@@ -2747,6 +2799,21 @@
       "matchedAt": "2026-09-27T21:44:50Z",
       "checkedAt": "2026-09-27T21:47:24Z"
     },
+    "inv-09bed3360f70": {
+      "url": "https://www.vut.cz/studenti/programy/program/9838",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "telekomunikacni a informacni systemy",
+      "rowTitle": "Telekomunikační a informační systémy",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Telekomunikační a informační systémy",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:53Z"
+    },
     "inv-09c989894ac6": {
       "url": "https://www.utb.cz/vyhledavac-oboru/chemie-a-technologie-ochrany-zivotniho-prostredi-phd/",
       "kind": "school_programme_page",
@@ -3062,6 +3129,21 @@
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-09-27T17:26:02Z"
     },
+    "inv-0b8b49791784": {
+      "url": "https://www.vut.cz/studenti/programy/program/9675",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "vyrobni systemy",
+      "rowTitle": "Výrobní systémy",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Výrobní systémy",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:26Z"
+    },
     "inv-0b9d1c7774d3": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1309",
       "kind": "school_programme_page",
@@ -3091,6 +3173,21 @@
       "reachability": "unverified",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
+    },
+    "inv-0bae60594ae1": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9815",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "electronics and information technologies",
+      "rowTitle": "Electronics and Information Technologies",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Electronics and Information Technologies",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:40Z"
     },
     "inv-0bb7b6bdc785": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/73",
@@ -3287,6 +3384,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:33:37Z"
     },
+    "inv-0cc75991cc65": {
+      "url": "https://www.vut.cz/studenti/programy/program/9714",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "architektura a urbanismus",
+      "rowTitle": "Architektura a urbanismus",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Architektura a urbanismus",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:32Z"
+    },
     "inv-0cceeeeed51e": {
       "url": "https://bilakniha.cvut.cz/cs/program1240207629105.html",
       "kind": "school_programme_page",
@@ -3346,6 +3458,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-09-27T23:12:24Z"
+    },
+    "inv-0d30533ff806": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9656",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "mechanical engineering",
+      "rowTitle": "Mechanical Engineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Mechanical Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:17Z"
     },
     "inv-0d513ed0c30a": {
       "url": "https://wstag.jcu.cz/ects/browser/FFI/1158?lang=cs",
@@ -3512,6 +3639,21 @@
       "matchedAt": "2026-09-27T21:44:50Z",
       "checkedAt": "2026-09-27T21:46:44Z"
     },
+    "inv-0e1ee8a33eac": {
+      "url": "https://www.vut.cz/studenti/programy/program/9802",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "mikroelektronika a technologie",
+      "rowTitle": "Mikroelektronika a technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Mikroelektronika a technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:49Z"
+    },
     "inv-0e2a3a24aa9e": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/452",
       "kind": "school_programme_page",
@@ -3571,6 +3713,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T12:32:37Z",
       "checkedAt": "2026-09-27T17:21:29Z"
+    },
+    "inv-0e555b9de6df": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9794",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "automotive electronics and electromobility",
+      "rowTitle": "Automotive Electronics and Electromobility",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Automotive Electronics and Electromobility",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:34Z"
     },
     "inv-0e5ab8a777b6": {
       "url": "https://www.vszdrav.cz/vseobecne-osetrovatelstvi",
@@ -4247,6 +4404,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
     },
+    "inv-11511a368564": {
+      "url": "https://www.vut.cz/studenti/programy/program/9784",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "bioinzenyrstvi",
+      "rowTitle": "Bioinženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Bioinženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:43Z"
+    },
     "inv-1158c5b6a65b": {
       "url": "https://portal.zcu.cz/ects/browser/FDU/1853?lang=cs",
       "kind": "school_programme_page",
@@ -4501,6 +4673,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:54:32Z"
+    },
+    "inv-1293a0e649c0": {
+      "url": "https://www.vut.cz/studenti/programy/program/9844",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "elektronika a komunikacni technologie",
+      "rowTitle": "Elektronika a komunikační technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Elektronika a komunikační technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:59Z"
     },
     "inv-12a111c7fbef": {
       "url": "https://www.uhk.cz/cs/prirodovedecka-fakulta/prijimaci-zkousky/studijni-programy/biologie-a-ekologie",
@@ -4817,6 +5004,21 @@
       "matchedAt": "2026-09-27T19:47:15Z",
       "checkedAt": "2026-09-27T19:49:55Z"
     },
+    "inv-147e358e0084": {
+      "url": "https://www.vut.cz/studenti/programy/program/9799",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "teleinformatika",
+      "rowTitle": "Teleinformatika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Teleinformatika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:45Z"
+    },
     "inv-1482cfc6c3fd": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/915",
       "kind": "school_programme_page",
@@ -4831,6 +5033,21 @@
       "reachability": "unverified",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
+    },
+    "inv-148ad0276ea8": {
+      "url": "https://www.vut.cz/studenti/programy/program/9678",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "aplikovana matematika",
+      "rowTitle": "Aplikovaná matematika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Aplikovaná matematika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:27Z"
     },
     "inv-148e4619cf66": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=1033&academicYearId=66&studyLanguageIds=1",
@@ -5191,6 +5408,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:34:24Z"
+    },
+    "inv-1653eaea694e": {
+      "url": "https://www.vut.cz/studenti/programy/program/9845",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "biomedicinska technika a bioinformatika",
+      "rowTitle": "Biomedicínská technika a bioinformatika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Biomedicínská technika a bioinformatika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:00Z"
     },
     "inv-166a4e135a63": {
       "url": "https://stag.upol.cz/ects/browser/PDF/1854?lang=cs",
@@ -6032,6 +6264,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
     },
+    "inv-1afac7e2a17b": {
+      "url": "https://www.vut.cz/studenti/programy/program/9915",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "procesni management",
+      "rowTitle": "Procesní management",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Procesní management",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:14Z"
+    },
     "inv-1b01f4eb1776": {
       "url": "https://portal.zcu.cz/ects/browser/FAV/1914?lang=cs",
       "kind": "school_programme_page",
@@ -6287,6 +6534,21 @@
       "matchedAt": "2026-09-27T08:12:48Z",
       "checkedAt": "2026-09-27T08:15:14Z"
     },
+    "inv-1c70334a720f": {
+      "url": "https://www.vut.cz/studenti/programy/program/9935",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "rizeni rizik technickych a ekonomickych systemu",
+      "rowTitle": "Řízení rizik technických a ekonomických systémů",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Řízení rizik technických a ekonomických systémů",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:22Z"
+    },
     "inv-1c74702a3f39": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4396",
       "kind": "school_programme_page",
@@ -6331,6 +6593,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T11:58:06Z",
       "checkedAt": "2026-09-27T11:59:55Z"
+    },
+    "inv-1cb2f6be2786": {
+      "url": "https://www.vut.cz/studenti/programy/program/9898",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "potravinarska chemie a biotechnologie",
+      "rowTitle": "Potravinářská chemie a biotechnologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Potravinářská chemie a biotechnologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:11Z"
     },
     "inv-1cb8c811281c": {
       "url": "https://fel.cvut.cz/cs/studijni-programy/ucitelstvi",
@@ -6992,6 +7269,21 @@
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-09-27T20:59:17Z"
     },
+    "inv-1ff730483edc": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9781",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "electrical power engineering",
+      "rowTitle": "Electrical Power Engineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Electrical Power Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:29Z"
+    },
     "inv-201291ce6bb1": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/217",
       "kind": "school_programme_page",
@@ -7397,6 +7689,21 @@
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-27T12:05:58Z"
     },
+    "inv-229398943fb9": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9944",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "architecture and urban design",
+      "rowTitle": "Architecture and Urban Design",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Architecture and Urban Design",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:47Z"
+    },
     "inv-229c940289e5": {
       "url": "https://hf.jamu.cz/studijni-obory/pedagogika-klavirni-hry-2/",
       "kind": "school_programme_page",
@@ -7666,6 +7973,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T12:25:09Z",
       "checkedAt": "2026-09-27T12:28:03Z"
+    },
+    "inv-2448c2480aa5": {
+      "url": "https://www.vut.cz/studenti/programy/program/10079",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "stavebni inzenyrstvi vodni hospodarstvi a vodni stavby",
+      "rowTitle": "Stavební inženýrství – vodní hospodářství a vodní stavby",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Stavební inženýrství – vodní hospodářství a vodní stavby",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:58Z"
     },
     "inv-24586a89457c": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1552",
@@ -7937,6 +8259,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:31:56Z"
     },
+    "inv-2592d92c39e3": {
+      "url": "https://www.vut.cz/studenti/programy/program/9638",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "vyrobni stroje systemy a roboty",
+      "rowTitle": "Výrobní stroje, systémy a roboty",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Výrobní stroje, systémy a roboty",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:08Z"
+    },
     "inv-25983072dcfb": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2021?lang=cs",
       "kind": "school_programme_page",
@@ -8192,6 +8529,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-09-27T21:49:30Z"
     },
+    "inv-26c9d18773f5": {
+      "url": "https://www.vut.cz/studenti/programy/program/9694",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "konstrukcni a procesni inzenyrstvi",
+      "rowTitle": "Konstrukční a procesní inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Konstrukční a procesní inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:29Z"
+    },
     "inv-26e5aef64bbb": {
       "url": "https://stag.upol.cz/ects/browser/FIF/2254?lang=cs",
       "kind": "school_programme_page",
@@ -8356,6 +8708,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-09-27T17:27:17Z"
+    },
+    "inv-27e5dd936212": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9951",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "chemistry technology and properties of materials",
+      "rowTitle": "Chemistry, Technology and Properties of Materials",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Chemistry, Technology and Properties of Materials",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:49Z"
     },
     "inv-27ff878f3de4": {
       "url": "https://wstag.jcu.cz/ects/browser/FZE/1568?lang=cs",
@@ -8836,6 +9203,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-09-27T21:49:14Z"
+    },
+    "inv-2aefce577622": {
+      "url": "https://www.vut.cz/studenti/programy/program/9785",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "audio inzenyrstvi",
+      "rowTitle": "Audio inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Audio inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:44Z"
     },
     "inv-2af99a80edc1": {
       "url": "https://fud.ujep.cz/kuratorska-studia/",
@@ -9483,19 +9865,19 @@
       "checkedAt": "2026-09-27T17:40:42Z"
     },
     "inv-2e90127e4d7c": {
-      "url": "https://www.vutbr.cz/studenti/predmety/detail/299769",
+      "url": "https://www.vut.cz/studenti/programy/program/9777",
       "kind": "school_programme_page",
       "institutionId": "msmt-vs_26000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Jaderná energetika",
+      "matchedTitle": "jaderna energetika",
       "rowTitle": "Jaderná energetika",
-      "sourceUrl": "https://www.vutbr.cz/studenti/programy/obor/17969",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Jaderná energetika",
       "reachability": "verified",
-      "matchedAt": "2026-09-27T12:23:29Z",
-      "checkedAt": "2026-09-27T12:24:57Z"
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:38Z"
     },
     "inv-2e9a2b127712": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/889",
@@ -9587,6 +9969,21 @@
       "matchedAt": "2026-09-27T20:34:03Z",
       "checkedAt": "2026-09-27T20:38:23Z"
     },
+    "inv-2f07808e3303": {
+      "url": "https://www.vut.cz/studenti/programy/program/9888",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "chemicke technologie a nanotechnologie",
+      "rowTitle": "Chemické technologie a nanotechnologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Chemické technologie a nanotechnologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:09Z"
+    },
     "inv-2f1a818123ab": {
       "url": "https://stag.upol.cz/ects/browser/PRF/3337?lang=cs",
       "kind": "school_programme_page",
@@ -9601,6 +9998,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:56:15Z"
+    },
+    "inv-2f42110385b9": {
+      "url": "https://www.vut.cz/studenti/programy/program/9879",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "chemie a chemicke technologie",
+      "rowTitle": "Chemie a chemické technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Chemie a chemické technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:06Z"
     },
     "inv-2f7a10057798": {
       "url": "https://stag.upol.cz/ects/browser/LEF/2589?lang=cs",
@@ -9842,6 +10254,21 @@
       "matchedAt": "2026-09-27T12:13:49Z",
       "checkedAt": "2026-09-27T12:15:48Z"
     },
+    "inv-304daabf8bfc": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9717",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "physical and building materials engineering",
+      "rowTitle": "Physical and Building Materials Engineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Physical and Building Materials Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:24Z"
+    },
     "inv-3065b43485f0": {
       "url": "https://wstag.jcu.cz/ects/browser/FFI/1068?lang=cs",
       "kind": "school_programme_page",
@@ -10081,6 +10508,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T23:04:51Z",
       "checkedAt": "2026-09-27T23:06:26Z"
+    },
+    "inv-31b24154ef23": {
+      "url": "https://www.vut.cz/studenti/programy/program/9651",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "pokrocile automobilove inzenyrstvi",
+      "rowTitle": "Pokročilé automobilové inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Pokročilé automobilové inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:17Z"
     },
     "inv-31cd2e114bf8": {
       "url": "https://wstag.jcu.cz/ects/browser/FZE/1710?lang=cs",
@@ -10712,6 +11154,21 @@
       "matchedAt": "2026-09-27T21:29:35Z",
       "checkedAt": "2026-09-27T21:30:09Z"
     },
+    "inv-35a61e6b8e36": {
+      "url": "https://www.vut.cz/studenti/programy/program/9772",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "telekomunikacni a informacni technika",
+      "rowTitle": "Telekomunikační a informační technika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Telekomunikační a informační technika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:36Z"
+    },
     "inv-35aeaa17643d": {
       "url": "https://www.osu.cz/?specializaceid=2748",
       "kind": "school_programme_page",
@@ -10786,6 +11243,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:44:50Z",
       "checkedAt": "2026-09-27T21:47:07Z"
+    },
+    "inv-35fc01fd2d85": {
+      "url": "https://www.vut.cz/studenti/programy/program/10075",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "environmentalne vyspele budovy",
+      "rowTitle": "Environmentálně vyspělé budovy",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Environmentálně vyspělé budovy",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:57Z"
     },
     "inv-360a5738d975": {
       "url": "https://portal.upce.cz/ects/browser/FCH/468?lang=cs",
@@ -10906,6 +11378,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:52:59Z"
+    },
+    "inv-3685ada19842": {
+      "url": "https://www.vut.cz/studenti/programy/program/9945",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "biofyzikalni chemie",
+      "rowTitle": "Biofyzikální chemie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Biofyzikální chemie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:23Z"
     },
     "inv-369ca8299cd8": {
       "url": "https://stag.upol.cz/ects/browser/FIF/2209?lang=cs",
@@ -11507,6 +11994,21 @@
       "matchedAt": "2026-09-27T21:53:44Z",
       "checkedAt": "2026-09-27T21:56:45Z"
     },
+    "inv-3929873da9a1": {
+      "url": "https://www.vut.cz/studenti/programy/program/10070",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "architektura pozemnich staveb",
+      "rowTitle": "Architektura pozemních staveb",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Architektura pozemních staveb",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:54Z"
+    },
     "inv-392ed3573a3d": {
       "url": "https://fel.cvut.cz/en/study-programs/eis--electronics-and-integrated-systems",
       "kind": "school_programme_page",
@@ -11582,6 +12084,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:55:01Z"
     },
+    "inv-39da9f6a4235": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9782",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "power systems and communication technology",
+      "rowTitle": "Power Systems and Communication Technology",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Power Systems and Communication Technology",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:30Z"
+    },
     "inv-39e00b0adf1e": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1613",
       "kind": "school_programme_page",
@@ -11626,6 +12143,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:52:17Z"
+    },
+    "inv-39f5cdeb5b82": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9727",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "environmental sciences and engineering",
+      "rowTitle": "Environmental Sciences and Engineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Environmental Sciences and Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:26Z"
     },
     "inv-39ff67d3eb70": {
       "url": "https://stag.utb.cz/ects/browser/FHS/1771?lang=cs",
@@ -12332,6 +12864,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:52:13Z"
     },
+    "inv-3d858129d04b": {
+      "url": "https://www.vut.cz/studenti/programy/program/9840",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "navrh cipu a moderni polovodicove technologie",
+      "rowTitle": "Návrh čipů a moderní polovodičové technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Návrh čipů a moderní polovodičové technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:55Z"
+    },
     "inv-3d86f61b7865": {
       "url": "https://portal.upce.cz/ects/browser/FCH/733?lang=cs",
       "kind": "school_programme_page",
@@ -12482,6 +13029,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:37:50Z"
     },
+    "inv-3e07988e98d3": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9936",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "integrative urban studies",
+      "rowTitle": "Integrative Urban Studies",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Integrative Urban Studies",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:46Z"
+    },
     "inv-3e6e47876002": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1924?lang=cs",
       "kind": "school_programme_page",
@@ -12542,6 +13104,21 @@
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-09-27T17:27:49Z"
     },
+    "inv-3ec06ac3840e": {
+      "url": "https://www.vut.cz/studenti/programy/program/9670",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "procesni inzenyrstvi",
+      "rowTitle": "Procesní inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Procesní inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:23Z"
+    },
     "inv-3eca9a35f3af": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/161",
       "kind": "school_programme_page",
@@ -12571,6 +13148,21 @@
       "reachability": "unverified",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
+    },
+    "inv-3ee7ba62b787": {
+      "url": "https://www.vut.cz/studenti/programy/program/9659",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "inzenyrska mechanika a biomechanika",
+      "rowTitle": "Inženýrská mechanika a biomechanika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Inženýrská mechanika a biomechanika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:20Z"
     },
     "inv-3ef281bc5840": {
       "url": "https://stag.tul.cz/ects/browser/FZS/1346?lang=cs",
@@ -12706,6 +13298,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-09-27T23:12:04Z"
+    },
+    "inv-3fa457d5a3ab": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9791",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "communications and networking",
+      "rowTitle": "Communications and Networking",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Communications and Networking",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:33Z"
     },
     "inv-3fabdcfeb85b": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1236",
@@ -13187,6 +13794,21 @@
       "matchedAt": "2026-09-27T12:25:09Z",
       "checkedAt": "2026-09-27T12:27:39Z"
     },
+    "inv-42c1c740fb30": {
+      "url": "https://www.vut.cz/studenti/programy/program/9934",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "realitni inzenyrstvi",
+      "rowTitle": "Realitní inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Realitní inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:21Z"
+    },
     "inv-42d5b4d5d06b": {
       "url": "https://stag.upol.cz/ects/browser/FTK/2341?lang=cs",
       "kind": "school_programme_page",
@@ -13366,6 +13988,36 @@
       "reachability": "unverified",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
+    },
+    "inv-43c4b0429195": {
+      "url": "https://www.vut.cz/studenti/programy/program/10071",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "environmentalni inzenyrstvi",
+      "rowTitle": "Environmentální inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Environmentální inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:55Z"
+    },
+    "inv-43c6901684e0": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9945",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "biophysical chemistry",
+      "rowTitle": "Biophysical Chemistry",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Biophysical Chemistry",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:48Z"
     },
     "inv-43cccdcd42a1": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=820&academicYearId=66&studyLanguageIds=1",
@@ -13996,6 +14648,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:40:54Z"
+    },
+    "inv-4775051ec7c7": {
+      "url": "https://www.vut.cz/studenti/programy/program/9800",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "teoreticka elektrotechnika",
+      "rowTitle": "Teoretická elektrotechnika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Teoretická elektrotechnika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:46Z"
     },
     "inv-477de77ce1d7": {
       "url": "https://www.fbmi.cvut.cz/en/students/study-information?section=bmt",
@@ -15137,6 +15804,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:54:24Z"
     },
+    "inv-4dc8d57a19ab": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9655",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "aerospace technology",
+      "rowTitle": "Aerospace Technology",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Aerospace Technology",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:16Z"
+    },
     "inv-4dcadd4b81af": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/187",
       "kind": "school_programme_page",
@@ -15166,6 +15848,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:34:17Z"
+    },
+    "inv-4de127c3202b": {
+      "url": "https://www.vut.cz/studenti/programy/program/9839",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "silnoprouda elektrotechnika a elektroenergetika",
+      "rowTitle": "Silnoproudá elektrotechnika a elektroenergetika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Silnoproudá elektrotechnika a elektroenergetika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:54Z"
     },
     "inv-4de5f3b89bb4": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1029",
@@ -15571,6 +16268,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:32:41Z"
+    },
+    "inv-4f911c4ac74c": {
+      "url": "https://www.vut.cz/studenti/programy/program/9949",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "chemie a technologie ochrany zivotniho prostredi",
+      "rowTitle": "Chemie a technologie ochrany životního prostředí",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Chemie a technologie ochrany životního prostředí",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:26Z"
     },
     "inv-4fce3721e53e": {
       "url": "https://pdf.osu.cz/?specializaceid=2788&kombinaceid=5944",
@@ -16007,6 +16719,21 @@
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-09-27T17:26:57Z"
     },
+    "inv-522bd625e278": {
+      "url": "https://www.vut.cz/studenti/programy/program/9924",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "informacni management",
+      "rowTitle": "Informační management",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Informační management",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:15Z"
+    },
     "inv-52413c9cdc1d": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=870&academicYearId=66&studyLanguageIds=1",
       "kind": "school_programme_page",
@@ -16081,6 +16808,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T12:13:49Z",
       "checkedAt": "2026-09-27T12:15:47Z"
+    },
+    "inv-527cbe636378": {
+      "url": "https://www.vut.cz/studenti/programy/program/9652",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "automobilni a dopravni inzenyrstvi",
+      "rowTitle": "Automobilní a dopravní inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Automobilní a dopravní inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:18Z"
     },
     "inv-529618d76ef6": {
       "url": "https://stag.upol.cz/ects/browser/PDF/2172?lang=cs",
@@ -16727,6 +17469,21 @@
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-27T12:04:17Z"
     },
+    "inv-55939a67da62": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9692",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "design and process engineering",
+      "rowTitle": "Design and Process Engineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Design and Process Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:21Z"
+    },
     "inv-55aee1cf40d4": {
       "url": "https://studuj.czu.cz/programmes/forest-science-in-global-change/",
       "kind": "school_programme_page",
@@ -17297,6 +18054,21 @@
       "matchedAt": "2026-09-27T21:50:43Z",
       "checkedAt": "2026-09-27T21:53:42Z"
     },
+    "inv-587e1df27b8c": {
+      "url": "https://www.vut.cz/studenti/programy/program/10072",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "geodezie a kartografie",
+      "rowTitle": "Geodézie a kartografie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Geodézie a kartografie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:56Z"
+    },
     "inv-5880bc32c8a0": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24387-cinska-studia",
       "kind": "school_programme_page",
@@ -17656,6 +18428,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-09-27T20:58:59Z"
+    },
+    "inv-5b016a92ca52": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9676",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "applied mathematics",
+      "rowTitle": "Applied Mathematics",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Applied Mathematics",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:19Z"
     },
     "inv-5b3ee93d1776": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1927?lang=cs",
@@ -18752,6 +19539,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:52:58Z"
     },
+    "inv-610010fe07c1": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9642",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "mathematical engineering",
+      "rowTitle": "Mathematical Engineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Mathematical Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:14Z"
+    },
     "inv-611660acc353": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1358",
       "kind": "school_programme_page",
@@ -19052,6 +19854,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-09-27T21:48:53Z"
     },
+    "inv-625db05ccc09": {
+      "url": "https://www.vut.cz/studenti/programy/program/10082",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "stavebni inzenyrstvi stavebni materialy a technologie",
+      "rowTitle": "Stavební inženýrství – stavební materiály a technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Stavební inženýrství – stavební materiály a technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:01Z"
+    },
     "inv-625fb5c3c041": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1547",
       "kind": "school_programme_page",
@@ -19351,6 +20168,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:37:13Z"
+    },
+    "inv-63ecbad2243c": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9869",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "master of information technology",
+      "rowTitle": "Master of Information Technology",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Master of Information Technology",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:42Z"
     },
     "inv-642d1a5c4193": {
       "url": "https://apl.unob.cz/StudijniProgramy/Studium/2952/Infekcni-biologie",
@@ -19741,6 +20573,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-09-27T20:58:35Z"
+    },
+    "inv-65f25f059d3e": {
+      "url": "https://www.vut.cz/studenti/programy/program/9805",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "elektronika a komunikacni technologie",
+      "rowTitle": "Elektronika a komunikační technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Elektronika a komunikační technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:51Z"
     },
     "inv-66045ce02f11": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/5009",
@@ -20177,6 +21024,21 @@
       "matchedAt": "2026-09-27T21:53:44Z",
       "checkedAt": "2026-09-27T21:56:13Z"
     },
+    "inv-679a9cf4d11a": {
+      "url": "https://www.vut.cz/studenti/programy/program/9926",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "mezinarodni ekonomika a obchod",
+      "rowTitle": "Mezinárodní ekonomika a obchod",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Mezinárodní ekonomika a obchod",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:16Z"
+    },
     "inv-67c00c8167f1": {
       "url": "https://portal.ujep.cz/ects/browser/PRF/1349?lang=cs",
       "kind": "school_programme_page",
@@ -20236,6 +21098,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-09-27T20:58:19Z"
+    },
+    "inv-684c00236713": {
+      "url": "https://www.vut.cz/studenti/programy/program/9773",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "silnoprouda elektrotechnika a vykonova elektronika",
+      "rowTitle": "Silnoproudá elektrotechnika a výkonová elektronika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Silnoproudá elektrotechnika a výkonová elektronika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:37Z"
     },
     "inv-684f7c8c361d": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4391",
@@ -20747,6 +21624,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
     },
+    "inv-6b947bc6fb89": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9620",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "en",
+      "matchedTitle": "civil engineering",
+      "rowTitle": "Civil Engineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Civil Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:12Z"
+    },
     "inv-6ba3e81669a1": {
       "url": "https://portal.upce.cz/ects/browser/FZS/652?lang=cs",
       "kind": "school_programme_page",
@@ -20761,6 +21653,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-09-27T21:50:37Z"
+    },
+    "inv-6ba43c6b99db": {
+      "url": "https://www.vut.cz/studenti/programy/program/9927",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "strategicky rozvoj podniku",
+      "rowTitle": "Strategický rozvoj podniku",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Strategický rozvoj podniku",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:17Z"
     },
     "inv-6bb39e2bdae8": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1057",
@@ -21302,6 +22209,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:53:27Z"
     },
+    "inv-6e15dd403490": {
+      "url": "https://www.vut.cz/studenti/programy/program/9645",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "profesionalni pilot",
+      "rowTitle": "Profesionální pilot",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Profesionální pilot",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:15Z"
+    },
     "inv-6e1950c47c1a": {
       "url": "https://portal.zcu.cz/ects/browser/FPE/1689?lang=cs",
       "kind": "school_programme_page",
@@ -21691,6 +22613,21 @@
       "reachability": "unverified",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
+    },
+    "inv-6faada4ecadd": {
+      "url": "https://www.vut.cz/studenti/programy/program/10014",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "sportovni technologie",
+      "rowTitle": "Sportovní technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Sportovní technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:52Z"
     },
     "inv-6fac320dd5fb": {
       "url": "https://portal.ujep.cz/ects/browser/PRF/1348?lang=cs",
@@ -22171,6 +23108,21 @@
       "reachability": "unverified",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
+    },
+    "inv-7262da8710dc": {
+      "url": "https://www.vut.cz/studenti/programy/program/10080",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "stavebni inzenyrstvi pozemni stavby",
+      "rowTitle": "Stavební inženýrství – pozemní stavby",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Stavební inženýrství – pozemní stavby",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:59Z"
     },
     "inv-727780e70390": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4113",
@@ -22862,6 +23814,21 @@
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-27T12:06:02Z"
     },
+    "inv-76241b73f1ff": {
+      "url": "https://www.vut.cz/studenti/programy/program/9900",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "chemie prirodnich latek",
+      "rowTitle": "Chemie přírodních látek",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Chemie přírodních látek",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:12Z"
+    },
     "inv-7630ecbb0e0f": {
       "url": "https://pdf.osu.cz/?specializaceid=3448",
       "kind": "school_programme_page",
@@ -22981,6 +23948,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-09-27T17:27:23Z"
+    },
+    "inv-76d7838bcff5": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9801",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "power systems and power electronics",
+      "rowTitle": "Power Systems and Power Electronics",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Power Systems and Power Electronics",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:37Z"
     },
     "inv-76e8e99ad054": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/201",
@@ -23267,6 +24249,21 @@
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-09-27T23:12:48Z"
     },
+    "inv-7804db063c49": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9784",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "bioengineering",
+      "rowTitle": "Bioengineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Bioengineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:31Z"
+    },
     "inv-780670c6acb0": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=960&academicYearId=66&studyLanguageIds=1",
       "kind": "school_programme_page",
@@ -23536,6 +24533,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-27T12:03:51Z"
+    },
+    "inv-791df5d4d184": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9653",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "applied and interdisciplinary mathematics",
+      "rowTitle": "Applied and Interdisciplinary Mathematics",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Applied and Interdisciplinary Mathematics",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:15Z"
     },
     "inv-7931d3969ea7": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4549",
@@ -24001,6 +25013,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:53:44Z",
       "checkedAt": "2026-09-27T21:56:51Z"
+    },
+    "inv-7bc06e762dff": {
+      "url": "https://www.vut.cz/studenti/programy/program/9880",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "chemie a technologie materialu",
+      "rowTitle": "Chemie a technologie materiálů",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Chemie a technologie materiálů",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:07Z"
     },
     "inv-7bc730e5916a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1002",
@@ -24812,6 +25839,21 @@
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-09-27T20:58:06Z"
     },
+    "inv-806595b12af9": {
+      "url": "https://www.vut.cz/studenti/programy/program/9648",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "vizualni komunikace v kreativnich prumyslech",
+      "rowTitle": "Vizuální komunikace v kreativních průmyslech",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Vizuální komunikace v kreativních průmyslech",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:16Z"
+    },
     "inv-806f9ebcccc3": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1072",
       "kind": "school_programme_page",
@@ -25187,6 +26229,36 @@
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-27T12:05:00Z"
     },
+    "inv-823395cf45f5": {
+      "url": "https://www.vut.cz/studenti/programy/program/9843",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "e mobilita a udrzitelnost",
+      "rowTitle": "E-mobilita a udržitelnost",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "E-mobilita a udržitelnost",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:58Z"
+    },
+    "inv-823b88b7f47e": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9640",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "physical engineering and nanotechnology",
+      "rowTitle": "Physical Engineering and Nanotechnology",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Physical Engineering and Nanotechnology",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:13Z"
+    },
     "inv-8246292f4339": {
       "url": "https://mendelu.cz/nadrazeny-program/ochrana-lesa-a-myslivost/",
       "kind": "school_programme_page",
@@ -25442,6 +26514,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
     },
+    "inv-837b013df6eb": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9800",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "theoretical electrical engineering",
+      "rowTitle": "Theoretical Electrical Engineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Theoretical Electrical Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:36Z"
+    },
     "inv-83a76f6ecdcb": {
       "url": "https://portal.upce.cz/ects/browser/DFJ/612?lang=cs",
       "kind": "school_programme_page",
@@ -25666,6 +26753,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T21:57:04Z",
       "checkedAt": "2026-09-27T21:58:59Z"
+    },
+    "inv-84c978625de9": {
+      "url": "https://www.vut.cz/studenti/programy/program/10081",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "stavebni inzenyrstvi realizace staveb",
+      "rowTitle": "Stavební inženýrství – realizace staveb",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Stavební inženýrství – realizace staveb",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:00Z"
     },
     "inv-84e029168c2e": {
       "url": "https://hf.jamu.cz/studijni-obory/hudebni-produkce-5/",
@@ -26777,6 +27879,21 @@
       "matchedAt": "2026-09-27T19:45:40Z",
       "checkedAt": "2026-09-27T19:46:19Z"
     },
+    "inv-8af346a7d1df": {
+      "url": "https://www.vut.cz/studenti/programy/program/9639",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "energetika",
+      "rowTitle": "Energetika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Energetika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:09Z"
+    },
     "inv-8b1a4822b94d": {
       "url": "https://stag.upol.cz/ects/browser/FIF/2899?lang=cs",
       "kind": "school_programme_page",
@@ -26882,6 +27999,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:50:19Z"
     },
+    "inv-8bd89fe5f4f0": {
+      "url": "https://www.vut.cz/studenti/programy/program/9644",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "prumyslovy design ve strojirenstvi",
+      "rowTitle": "Průmyslový design ve strojírenství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Průmyslový design ve strojírenství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:14Z"
+    },
     "inv-8be46b39c543": {
       "url": "https://portal.ujep.cz/ects/browser/FZS/1139?lang=cs",
       "kind": "school_programme_page",
@@ -26896,6 +28028,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:50:43Z",
       "checkedAt": "2026-09-27T21:52:26Z"
+    },
+    "inv-8be951f97ae4": {
+      "url": "https://www.vut.cz/studenti/programy/program/9877",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "aplikovana analyticka environmentalni a forenzni chemie",
+      "rowTitle": "Aplikovaná analytická, environmentální a forenzní chemie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Aplikovaná analytická, environmentální a forenzní chemie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:04Z"
     },
     "inv-8be951ff59a7": {
       "url": "https://stag.tul.cz/ects/browser/FE/1495?lang=cs",
@@ -27197,6 +28344,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:40:32Z"
     },
+    "inv-8d7290990c30": {
+      "url": "https://www.vut.cz/studenti/programy/program/9642",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "matematicke inzenyrstvi",
+      "rowTitle": "Matematické inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Matematické inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:12Z"
+    },
     "inv-8d7ec990c0a6": {
       "url": "https://wstag.jcu.cz/ects/browser/FFI/1196?lang=cs",
       "kind": "school_programme_page",
@@ -27331,6 +28493,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:50:24Z"
+    },
+    "inv-8e25b4fdbe59": {
+      "url": "https://www.vut.cz/studenti/programy/program/9732",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "vyzkum v umeni a designu",
+      "rowTitle": "Výzkum v umění a designu",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Výzkum v umění a designu",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:35Z"
     },
     "inv-8e317840c660": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=986&academicYearId=66&studyLanguageIds=1",
@@ -27722,6 +28899,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:38:14Z"
     },
+    "inv-9034f9e19b3d": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9719",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "geodesy and cartography",
+      "rowTitle": "Geodesy and Cartography",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Geodesy and Cartography",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:25Z"
+    },
     "inv-906f0d81ed20": {
       "url": "https://studuj.czu.cz/programmes/vyziva-zvirat-2/",
       "kind": "school_programme_page",
@@ -28036,6 +29228,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:14:26Z",
       "checkedAt": "2026-09-27T17:19:31Z"
+    },
+    "inv-91eb8d8a2df6": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9714",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "en",
+      "matchedTitle": "architecture and urban design",
+      "rowTitle": "Architecture and Urban Design",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Architecture and Urban Design",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:23Z"
     },
     "inv-91f4da9ac601": {
       "url": "https://df.jamu.cz/studijni-obor/scenografie-4-prijimaci-rizeni/",
@@ -29027,6 +30234,21 @@
       "matchedAt": "2026-09-27T20:34:03Z",
       "checkedAt": "2026-09-27T20:38:40Z"
     },
+    "inv-9796b1ad5d0a": {
+      "url": "https://www.vut.cz/studenti/programy/program/9698",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "materialove vedy",
+      "rowTitle": "Materiálové vědy",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Materiálové vědy",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:30Z"
+    },
     "inv-979b38f0988a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1722",
       "kind": "school_programme_page",
@@ -29162,6 +30384,21 @@
       "matchedAt": "2026-09-27T17:14:26Z",
       "checkedAt": "2026-09-27T17:17:26Z"
     },
+    "inv-982af242042a": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9776",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "cybernetics control and measurements",
+      "rowTitle": "Cybernetics, Control and Measurements",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Cybernetics, Control and Measurements",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:28Z"
+    },
     "inv-984880e6dc45": {
       "url": "https://portal.upce.cz/ects/browser/FF/763?lang=cs",
       "kind": "school_programme_page",
@@ -29206,6 +30443,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-09-27T20:57:52Z"
+    },
+    "inv-9867041561ed": {
+      "url": "https://www.vut.cz/studenti/programy/program/9947",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "fyzikalni chemie",
+      "rowTitle": "Fyzikální chemie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Fyzikální chemie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:25Z"
     },
     "inv-986eb7d9e15a": {
       "url": "https://stag.upol.cz/ects/browser/PDF/2061?lang=cs",
@@ -29491,6 +30743,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T11:54:11Z",
       "checkedAt": "2026-09-27T11:57:13Z"
+    },
+    "inv-99d3aabdf5db": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/10032",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "en",
+      "matchedTitle": "entrepreneurship and small business development",
+      "rowTitle": "Entrepreneurship and Small Business Development",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Entrepreneurship and Small Business Development",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:11Z"
     },
     "inv-99d50412dfda": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1243",
@@ -29897,6 +31164,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-09-27T21:50:18Z"
     },
+    "inv-9ce9829e7879": {
+      "url": "https://www.vut.cz/studenti/programy/program/9886",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "chemie pro medicinske aplikace",
+      "rowTitle": "Chemie pro medicínské aplikace",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Chemie pro medicínské aplikace",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:08Z"
+    },
     "inv-9cf5a350d476": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4901",
       "kind": "school_programme_page",
@@ -30166,6 +31448,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T19:42:13Z",
       "checkedAt": "2026-09-27T19:44:36Z"
+    },
+    "inv-9f0dd5166c38": {
+      "url": "https://www.vut.cz/studenti/programy/program/9730",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "design",
+      "rowTitle": "Design",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Design",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:34Z"
     },
     "inv-9f31e7c488af": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2489?lang=cs",
@@ -30706,6 +32003,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:50:43Z",
       "checkedAt": "2026-09-27T21:51:49Z"
+    },
+    "inv-a31a44666ef2": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9799",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "teleinformatics",
+      "rowTitle": "Teleinformatics",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Teleinformatics",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:35Z"
     },
     "inv-a31a837cc486": {
       "url": "https://studuj.czu.cz/programmes/prostorove-planovani/",
@@ -32672,6 +33984,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
     },
+    "inv-ae5eeb88d503": {
+      "url": "https://www.vut.cz/studenti/programy/program/10099",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "geodezie a kartografie",
+      "rowTitle": "Geodézie a kartografie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Geodézie a kartografie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:06Z"
+    },
     "inv-aea222a7c870": {
       "url": "https://stag.tul.cz/ects/browser/FP/1299?lang=cs",
       "kind": "school_programme_page",
@@ -32761,6 +34088,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-09-27T23:14:20Z"
+    },
+    "inv-aef755f4a4b1": {
+      "url": "https://www.vut.cz/studenti/programy/program/9669",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "presna mechanika a optika",
+      "rowTitle": "Přesná mechanika a optika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Přesná mechanika a optika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:22Z"
     },
     "inv-aef97e89d73e": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3768",
@@ -33137,6 +34479,21 @@
       "matchedAt": "2026-09-27T19:42:13Z",
       "checkedAt": "2026-09-27T19:44:28Z"
     },
+    "inv-b1410932df45": {
+      "url": "https://www.vut.cz/studenti/programy/program/9846",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "audio inzenyrstvi",
+      "rowTitle": "Audio inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Audio inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:01Z"
+    },
     "inv-b17a373a99ff": {
       "url": "https://studuj.czu.cz/programmes/ochrana-a-vyuzivani-prirodnich-zdroju/",
       "kind": "school_programme_page",
@@ -33272,6 +34629,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:34:46Z"
     },
+    "inv-b223d34c9efa": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9688",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "applied mechanics",
+      "rowTitle": "Applied Mechanics",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Applied Mechanics",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:20Z"
+    },
     "inv-b22c6700fe01": {
       "url": "https://apl.unob.cz/StudijniProgramy/Studium/19/Vojenske-technologie-%E2%80%93-strojni",
       "kind": "school_programme_page",
@@ -33391,6 +34763,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T19:44:36Z",
       "checkedAt": "2026-09-27T19:45:36Z"
+    },
+    "inv-b3442f1b365b": {
+      "url": "https://www.vut.cz/studenti/programy/program/9686",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "fyzikalni inzenyrstvi a nanotechnologie",
+      "rowTitle": "Fyzikální inženýrství a nanotechnologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Fyzikální inženýrství a nanotechnologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:28Z"
     },
     "inv-b354bdcd5241": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/909",
@@ -33707,6 +35094,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:32:16Z"
     },
+    "inv-b4533f89bebd": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9918",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "company management and economics",
+      "rowTitle": "Company Management and Economics",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Company Management and Economics",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:44Z"
+    },
     "inv-b45355d06604": {
       "url": "https://www.mup.cz/studijni-programy/doktorske-studium/medialni-studia/",
       "kind": "school_programme_page",
@@ -33736,6 +35138,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:50:43Z",
       "checkedAt": "2026-09-27T21:52:20Z"
+    },
+    "inv-b475430861ca": {
+      "url": "https://www.vut.cz/studenti/programy/program/9841",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "mikroelektronika a technologie",
+      "rowTitle": "Mikroelektronika a technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Mikroelektronika a technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:56Z"
     },
     "inv-b477abb85dfd": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24655-dejiny-umeni",
@@ -33991,6 +35408,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-09-27T20:57:25Z"
+    },
+    "inv-b56216fe1cec": {
+      "url": "https://www.vut.cz/studenti/programy/program/9729",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "design",
+      "rowTitle": "Design",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Design",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:33Z"
     },
     "inv-b569ad8192ce": {
       "url": "https://www.vszdrav.cz/zdravotnicke-zachranarstvi",
@@ -34668,19 +36100,19 @@
       "checkedAt": ""
     },
     "inv-b798cf81b7f4": {
-      "url": "https://www.vutbr.cz/studenti/programy/program/9634/17937",
+      "url": "https://www.vut.cz/studenti/programy/program/9634",
       "kind": "school_programme_page",
       "institutionId": "msmt-vs_26000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Strojírenství",
+      "matchedTitle": "strojirenstvi",
       "rowTitle": "Strojírenství",
-      "sourceUrl": "https://www.vutbr.cz/studenti/programy/obor/17937",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Strojírenství",
       "reachability": "verified",
-      "matchedAt": "2026-09-27T12:23:29Z",
-      "checkedAt": "2026-09-27T12:25:07Z"
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:07Z"
     },
     "inv-b7a6a9e3c1d7": {
       "url": "https://fis.vse.cz/english/about/phd/econometrics-and-operations-research/",
@@ -35222,6 +36654,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:54:59Z"
     },
+    "inv-bb36941936d9": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9696",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "materials sciences",
+      "rowTitle": "Materials Sciences",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Materials Sciences",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:22Z"
+    },
     "inv-bb3cdd219405": {
       "url": "https://stag.upol.cz/ects/browser/LEF/2957?lang=cs",
       "kind": "school_programme_page",
@@ -35461,6 +36908,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-09-27T17:26:06Z"
+    },
+    "inv-bcadd1b1012e": {
+      "url": "https://www.vut.cz/studenti/programy/program/9801",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "silnoprouda elektrotechnika a elektroenergetika",
+      "rowTitle": "Silnoproudá elektrotechnika a elektroenergetika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Silnoproudá elektrotechnika a elektroenergetika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:47Z"
     },
     "inv-bcbc06a47262": {
       "url": "https://stag.utb.cz/ects/browser/FHS/1731?lang=cs",
@@ -35762,6 +37224,21 @@
       "matchedAt": "2026-09-27T12:25:09Z",
       "checkedAt": "2026-09-27T12:27:10Z"
     },
+    "inv-be1af05a32c2": {
+      "url": "https://www.vut.cz/studenti/programy/program/9781",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "elektroenergetika",
+      "rowTitle": "Elektroenergetika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Elektroenergetika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:40Z"
+    },
     "inv-be24ec8951a9": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1954?lang=cs",
       "kind": "school_programme_page",
@@ -35956,6 +37433,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T21:53:44Z",
       "checkedAt": "2026-09-27T21:56:26Z"
+    },
+    "inv-bf23c9a06d9c": {
+      "url": "https://www.vut.cz/studenti/programy/program/9842",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "informacni bezpecnost",
+      "rowTitle": "Informační bezpečnost",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Informační bezpečnost",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:57Z"
     },
     "inv-bf2b53730e84": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4903",
@@ -36947,6 +38439,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:37:29Z"
     },
+    "inv-c54633a33ef6": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9953",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "food chemistry",
+      "rowTitle": "Food Chemistry",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Food Chemistry",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:50Z"
+    },
     "inv-c54daa32b1bd": {
       "url": "https://studuj.vscht.cz/studijni-programy/program/N202",
       "kind": "school_programme_page",
@@ -37051,6 +38558,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-09-27T23:13:54Z"
+    },
+    "inv-c5c45d9ede6f": {
+      "url": "https://www.vut.cz/studenti/programy/program/9878",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "environmentalni chemie bezpecnost a management",
+      "rowTitle": "Environmentální chemie, bezpečnost a management",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Environmentální chemie, bezpečnost a management",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:05Z"
     },
     "inv-c5de94f891e3": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3957",
@@ -37412,6 +38934,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:55:56Z"
     },
+    "inv-c78896cc2311": {
+      "url": "https://www.vut.cz/studenti/programy/program/9933",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "expertni inzenyrstvi v doprave",
+      "rowTitle": "Expertní inženýrství v dopravě",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Expertní inženýrství v dopravě",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:19Z"
+    },
     "inv-c7aac184172d": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4995",
       "kind": "school_programme_page",
@@ -37577,6 +39114,21 @@
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-09-27T20:57:31Z"
     },
+    "inv-c8cda7593a75": {
+      "url": "https://www.vut.cz/studenti/programy/program/9641",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "konstrukcni inzenyrstvi",
+      "rowTitle": "Konstrukční inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Konstrukční inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:11Z"
+    },
     "inv-c8f9d203adb5": {
       "url": "https://www.hamu.cz/en/departments-sections/jazz-interpretation-department/study-programmes/jazz-studies-244/",
       "kind": "school_programme_page",
@@ -37696,6 +39248,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-09-27T17:27:31Z"
+    },
+    "inv-c97337ede2af": {
+      "url": "https://www.vut.cz/studenti/programy/program/9783",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "biomedicinske inzenyrstvi a bioinformatika",
+      "rowTitle": "Biomedicínské inženýrství a bioinformatika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Biomedicínské inženýrství a bioinformatika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:42Z"
     },
     "inv-c97c2dc4c42a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/903",
@@ -38027,6 +39594,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:50:10Z"
     },
+    "inv-cbdcb40027d9": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9806",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "biomedical technologies and bioinformatics",
+      "rowTitle": "Biomedical Technologies and Bioinformatics",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Biomedical Technologies and Bioinformatics",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:39Z"
+    },
     "inv-cbdd05b08954": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/925",
       "kind": "school_programme_page",
@@ -38041,6 +39623,21 @@
       "reachability": "unverified",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
+    },
+    "inv-cbe4d4ad450c": {
+      "url": "https://www.vut.cz/studenti/programy/program/9847",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "anglictina pro praxi v elektrotechnice a komunikacnich technologiich",
+      "rowTitle": "Angličtina pro praxi v elektrotechnice a komunikačních technologiích",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Angličtina pro praxi v elektrotechnice a komunikačních technologiích",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:02Z"
     },
     "inv-cbe832fb384c": {
       "url": "https://www.cevro.cz/en/study-programmes/economics-philosophy-politics",
@@ -38762,6 +40359,21 @@
       "matchedAt": "2026-09-27T12:15:53Z",
       "checkedAt": "2026-09-27T12:19:52Z"
     },
+    "inv-cffa74045d5c": {
+      "url": "https://www.vut.cz/studenti/programy/program/9673",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "vypoctove simulace pro udrzitelnou energetiku",
+      "rowTitle": "Výpočtové simulace pro udržitelnou energetiku",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Výpočtové simulace pro udržitelnou energetiku",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:25Z"
+    },
     "inv-d0307b5c7443": {
       "url": "https://wstag.jcu.cz/ects/browser/FPR/1885?lang=cs",
       "kind": "school_programme_page",
@@ -38836,6 +40448,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:41:06Z",
       "checkedAt": "2026-09-27T17:43:23Z"
+    },
+    "inv-d1225fe9633c": {
+      "url": "https://www.vut.cz/studenti/programy/program/9640",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "fyzikalni inzenyrstvi a nanotechnologie",
+      "rowTitle": "Fyzikální inženýrství a nanotechnologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Fyzikální inženýrství a nanotechnologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:10Z"
     },
     "inv-d12f8a2f887f": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23190-bezpecnostni-a-strategicka-studia",
@@ -39077,6 +40704,21 @@
       "matchedAt": "2026-09-27T17:14:26Z",
       "checkedAt": "2026-09-27T17:17:18Z"
     },
+    "inv-d2438f0e71fd": {
+      "url": "https://www.vut.cz/studenti/programy/program/10088",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "architektura a rozvoj sidel",
+      "rowTitle": "Architektura a rozvoj sídel",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Architektura a rozvoj sídel",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:04Z"
+    },
     "inv-d25a59dc6262": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3873",
       "kind": "school_programme_page",
@@ -39091,6 +40733,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:40:40Z"
+    },
+    "inv-d26cf9535aa6": {
+      "url": "https://www.vut.cz/studenti/programy/program/9643",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "mechatronika",
+      "rowTitle": "Mechatronika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Mechatronika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:13Z"
     },
     "inv-d28ab087808d": {
       "url": "https://mendelu.cz/studijni-programy/ekologie-lesa/",
@@ -39151,6 +40808,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T23:04:51Z",
       "checkedAt": "2026-09-27T23:06:35Z"
+    },
+    "inv-d2a785f42e16": {
+      "url": "https://www.vut.cz/studenti/programy/program/9893",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "environmentalni chemie a technologie",
+      "rowTitle": "Environmentální chemie a technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Environmentální chemie a technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:10Z"
     },
     "inv-d2ab6863e23c": {
       "url": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/23858-english-language-for-education",
@@ -39722,6 +41394,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
     },
+    "inv-d4b78910a566": {
+      "url": "https://www.vut.cz/en/study-options/degree-studies-en/study-programmes/programme/10054",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "civil engineering",
+      "rowTitle": "Civil Engineering",
+      "sourceUrl": "https://www.vut.cz/en/study-options/degree-studies-en/study-programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Civil Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:51Z"
+    },
     "inv-d4f86abed660": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=1132&academicYearId=66&studyLanguageIds=1",
       "kind": "school_programme_page",
@@ -39826,6 +41513,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:50:50Z"
+    },
+    "inv-d554a9a30e9a": {
+      "url": "https://www.vut.cz/studenti/programy/program/9953",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "potravinarska chemie",
+      "rowTitle": "Potravinářská chemie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Potravinářská chemie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:27Z"
     },
     "inv-d56a872b2eab": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/26945-recka-a-latinska-studia",
@@ -40157,6 +41859,36 @@
       "matchedAt": "2026-09-27T21:50:43Z",
       "checkedAt": "2026-09-27T21:51:43Z"
     },
+    "inv-d76b1834076a": {
+      "url": "https://www.vut.cz/studenti/programy/program/9803",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "kybernetika automatizace a mereni",
+      "rowTitle": "Kybernetika, automatizace a měření",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Kybernetika, automatizace a měření",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:49Z"
+    },
+    "inv-d76dbab23bd6": {
+      "url": "https://www.vut.cz/studenti/programy/program/9944",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "architektura a urbanismus",
+      "rowTitle": "Architektura a urbanismus",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Architektura a urbanismus",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:23Z"
+    },
     "inv-d78a5b6d829e": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1932?lang=cs",
       "kind": "school_programme_page",
@@ -40276,6 +42008,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T08:12:48Z",
       "checkedAt": "2026-09-27T08:13:43Z"
+    },
+    "inv-d80f3d5d12fe": {
+      "url": "https://www.vut.cz/studenti/programy/program/9702",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "strojirenska technologie",
+      "rowTitle": "Strojírenská technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Strojírenská technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:31Z"
     },
     "inv-d81a8cfce68a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/5039",
@@ -40802,6 +42549,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:36:14Z"
     },
+    "inv-db1a089bfb20": {
+      "url": "https://www.vut.cz/studenti/programy/program/10051",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "stavebni inzenyrstvi navrhovani pozemnich staveb",
+      "rowTitle": "Stavební inženýrství – navrhování pozemních staveb",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Stavební inženýrství – navrhování pozemních staveb",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:53Z"
+    },
     "inv-db497f1c5fc9": {
       "url": "https://bilakniha.cvut.cz/cs/program1240207380605.html",
       "kind": "school_programme_page",
@@ -40816,6 +42578,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T21:53:44Z",
       "checkedAt": "2026-09-27T21:56:19Z"
+    },
+    "inv-db53799d25e3": {
+      "url": "https://www.vut.cz/studenti/programy/program/9929",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "ucetnictvi a financni rizeni podniku",
+      "rowTitle": "Účetnictví a finanční řízení podniku",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Účetnictví a finanční řízení podniku",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:18Z"
     },
     "inv-db5cbbe3b950": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23442-laboratorni-diagnostika-ve-zdravotnictvi",
@@ -41612,6 +43389,21 @@
       "matchedAt": "2026-09-27T21:57:04Z",
       "checkedAt": "2026-09-27T21:58:53Z"
     },
+    "inv-dee46e6b91ec": {
+      "url": "https://www.vut.cz/studenti/programy/program/10092",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "fyzikalni a stavebne materialove inzenyrstvi",
+      "rowTitle": "Fyzikální a stavebně materiálové inženýrství",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Fyzikální a stavebně materiálové inženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:05Z"
+    },
     "inv-df0524b1224e": {
       "url": "https://mendelu.cz/studijni-programy/technologie-potravin/",
       "kind": "school_programme_page",
@@ -41656,6 +43448,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T21:53:44Z",
       "checkedAt": "2026-09-27T21:57:01Z"
+    },
+    "inv-df480b2a13da": {
+      "url": "https://www.vut.cz/studenti/programy/program/9911",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "ekonomika a management",
+      "rowTitle": "Ekonomika a management",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Ekonomika a management",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:13Z"
     },
     "inv-df4c6f35d5ad": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/575",
@@ -41718,19 +43525,19 @@
       "checkedAt": "2026-09-27T17:19:47Z"
     },
     "inv-df95f3c93306": {
-      "url": "https://www.vutbr.cz/studenti/programy/program/9657/17969",
+      "url": "https://www.vut.cz/studenti/programy/program/9657",
       "kind": "school_programme_page",
       "institutionId": "msmt-vs_26000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Energetické a termofluidní inženýrství",
+      "matchedTitle": "energeticke a termofluidni inzenyrstvi",
       "rowTitle": "Energetické a termofluidní inženýrství",
-      "sourceUrl": "https://www.vutbr.cz/studenti/programy/obor/17969",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Energetické a termofluidní inženýrství",
       "reachability": "verified",
-      "matchedAt": "2026-09-27T12:23:29Z",
-      "checkedAt": "2026-09-27T12:25:08Z"
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:19Z"
     },
     "inv-df9c0e47a320": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1517",
@@ -42917,6 +44724,21 @@
       "matchedAt": "2026-09-27T12:32:37Z",
       "checkedAt": "2026-09-27T12:33:39Z"
     },
+    "inv-e585d7266b6c": {
+      "url": "https://www.vut.cz/studenti/programy/program/9782",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "elektroenergetika a komunikacni technologie",
+      "rowTitle": "Elektroenergetika a komunikační technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Elektroenergetika a komunikační technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:41Z"
+    },
     "inv-e586fa88e192": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=1168&academicYearId=66&studyLanguageIds=1",
       "kind": "school_programme_page",
@@ -43352,6 +45174,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:35:38Z"
     },
+    "inv-e7dcd5b6b20e": {
+      "url": "https://www.vut.cz/studenti/programy/program/10083",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "stavebni inzenyrstvi konstrukce a dopravni stavby",
+      "rowTitle": "Stavební inženýrství – konstrukce a dopravní stavby",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Stavební inženýrství – konstrukce a dopravní stavby",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:02Z"
+    },
     "inv-e7f77f936fa7": {
       "url": "https://stag.tul.cz/ects/browser/FP/1551?lang=cs",
       "kind": "school_programme_page",
@@ -43622,6 +45459,21 @@
       "matchedAt": "2026-09-27T17:41:06Z",
       "checkedAt": "2026-09-27T17:42:49Z"
     },
+    "inv-e9a66b2b4f57": {
+      "url": "https://www.vut.cz/studenti/programy/program/9663",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "letecka a kosmicka technika",
+      "rowTitle": "Letecká a kosmická technika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Letecká a kosmická technika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:21Z"
+    },
     "inv-e9b934197865": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24121-obecna-jazykoveda",
       "kind": "school_programme_page",
@@ -43666,6 +45518,21 @@
       "reachability": "unverified",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": ""
+    },
+    "inv-ea36e5c584a0": {
+      "url": "https://www.vut.cz/studenti/programy/program/9671",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "slevarenska technologie",
+      "rowTitle": "Slévárenská technologie",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Slévárenská technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:24Z"
     },
     "inv-ea55b1c400ae": {
       "url": "https://studuj.czu.cz/programmes/sustainable-use-of-natural-resources/",
@@ -43982,6 +45849,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:39:49Z"
     },
+    "inv-ebbebad2e64c": {
+      "url": "https://www.vut.cz/studenti/programy/program/9848",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "automatizacni a merici technika",
+      "rowTitle": "Automatizační a měřicí technika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Automatizační a měřicí technika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:03Z"
+    },
     "inv-ebbfac65b317": {
       "url": "https://www.muni.cz/uchazeci/doktorske-studium/vyberte-si-program/26849-verejnopravni-studia",
       "kind": "school_programme_page",
@@ -44056,6 +45938,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:44:50Z",
       "checkedAt": "2026-09-27T21:46:36Z"
+    },
+    "inv-ec24b8905528": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9802",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "microelectronics and technology",
+      "rowTitle": "Microelectronics and technology",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Microelectronics and technology",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:38Z"
     },
     "inv-ec3698ecba73": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23626-fyzika",
@@ -44612,6 +46509,21 @@
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-09-27T20:58:12Z"
     },
+    "inv-ef97efc690c2": {
+      "url": "https://www.vut.cz/studenti/programy/program/9804",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "informacni bezpecnost",
+      "rowTitle": "Informační bezpečnost",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Informační bezpečnost",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:50Z"
+    },
     "inv-efa68578be99": {
       "url": "https://portal.fsv.cvut.cz/student/bakalmag/prehled/bc/si_v.php",
       "kind": "school_programme_page",
@@ -44657,6 +46569,21 @@
       "matchedAt": "2026-09-27T21:53:44Z",
       "checkedAt": "2026-09-27T21:56:56Z"
     },
+    "inv-efb40e34744f": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9923",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "international business and management",
+      "rowTitle": "International Business and Management",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "International Business and Management",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:45Z"
+    },
     "inv-efc433f30a0e": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/5032",
       "kind": "school_programme_page",
@@ -44701,6 +46628,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:41:06Z",
       "checkedAt": "2026-09-27T17:43:30Z"
+    },
+    "inv-f0122371c9c0": {
+      "url": "https://www.vut.cz/studenti/programy/program/10084",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "stavebni inzenyrstvi management stavebnictvi",
+      "rowTitle": "Stavební inženýrství – management stavebnictví",
+      "sourceUrl": "https://www.vut.cz/studenti/programy?data[rok]=2027",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Stavební inženýrství – management stavebnictví",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:03Z"
     },
     "inv-f0137122372e": {
       "url": "https://stag.tul.cz/ects/browser/FP/1361?lang=cs",
@@ -45032,6 +46974,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-09-27T20:50:18Z"
     },
+    "inv-f239f7e6b39c": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9849",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "b",
+      "language": "en",
+      "matchedTitle": "electrical engineering",
+      "rowTitle": "Electrical Engineering",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Electrical Engineering",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:41Z"
+    },
     "inv-f245a319e53d": {
       "url": "https://portal.upce.cz/ects/browser/FF/495?lang=cs",
       "kind": "school_programme_page",
@@ -45316,6 +47273,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-27T12:05:24Z"
+    },
+    "inv-f481a1ad1882": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9662",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "logistics analytics",
+      "rowTitle": "Logistics Analytics",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Logistics Analytics",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:18Z"
     },
     "inv-f489bb5a7c29": {
       "url": "https://stag.upol.cz/ects/browser/FIF/3137?lang=cs",
@@ -46142,6 +48114,21 @@
       "matchedAt": "2026-09-27T08:12:48Z",
       "checkedAt": "2026-09-27T08:14:57Z"
     },
+    "inv-f91ac3592521": {
+      "url": "https://www.vut.cz/studenti/programy/program/9951",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "chemie technologie a vlastnosti materialu",
+      "rowTitle": "Chemie, technologie a vlastnosti materiálů",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Chemie, technologie a vlastnosti materiálů",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:23:26Z"
+    },
     "inv-f93acf49dd59": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/151",
       "kind": "school_programme_page",
@@ -46171,6 +48158,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-27T17:37:30Z"
+    },
+    "inv-f95960f20e4d": {
+      "url": "https://www.vut.cz/studenti/programy/program/9806",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "biomedicinske technologie a bioinformatika",
+      "rowTitle": "Biomedicínské technologie a bioinformatika",
+      "sourceUrl": "https://www.vut.cz/studenti/programy",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Biomedicínské technologie a bioinformatika",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:22:52Z"
     },
     "inv-f959d4962c4f": {
       "url": "https://www.osu.cz/?specializaceid=3122",
@@ -46922,6 +48924,21 @@
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-09-27T17:27:11Z"
     },
+    "inv-fd90ccc18088": {
+      "url": "https://www.vut.cz/en/students/programmes/programme/9732",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_26000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "research in art and design",
+      "rowTitle": "Research in Art and Design",
+      "sourceUrl": "https://www.vut.cz/en/students/programmes",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Research in Art and Design",
+      "reachability": "verified",
+      "matchedAt": "2026-09-28T16:18:36Z",
+      "checkedAt": "2026-09-28T16:21:27Z"
+    },
     "inv-fd9bb6482bc8": {
       "url": "https://studuj.czu.cz/programmes/konzervace-prirodnin-a-taxidermie/",
       "kind": "school_programme_page",
@@ -47460,11 +49477,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-0086e97a8290",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-00c2d36ecad6",
       "reason": "ambiguous_register_rows"
@@ -47577,11 +49589,6 @@
     {
       "institutionId": "msmt-vs_28000",
       "rowId": "inv-04b88dce2abd",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-04f8190db667",
       "reason": "no_candidate_page"
     },
     {
@@ -47710,11 +49717,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-07f07d84880d",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-07f82bc4ac9a",
       "reason": "page_states_another_level"
@@ -47768,11 +49770,6 @@
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-09a97d4665eb",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-09bed3360f70",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_43000",
@@ -47845,18 +49842,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-0b8b49791784",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-0b99e3fcd8c5",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-0bae60594ae1",
       "reason": "no_candidate_page"
     },
     {
@@ -47880,11 +49867,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-0cc75991cc65",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_41000",
       "rowId": "inv-0cd3de7101c2",
       "reason": "no_candidate_page"
@@ -47897,11 +49879,6 @@
     {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-0cee8b81b1d1",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-0d30533ff806",
       "reason": "no_candidate_page"
     },
     {
@@ -47955,11 +49932,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-0e1ee8a33eac",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-0e2f7b87916b",
       "reason": "ambiguous_register_rows"
@@ -47972,11 +49944,6 @@
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-0e445a3b4abc",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-0e555b9de6df",
       "reason": "no_candidate_page"
     },
     {
@@ -48080,11 +50047,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-11511a368564",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-117f940c1997",
       "reason": "no_candidate_page"
@@ -48128,11 +50090,6 @@
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-1289b26c48fe",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-1293a0e649c0",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -48210,16 +50167,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-147e358e0084",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-148ad0276ea8",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-14dffe249960",
       "reason": "no_candidate_page"
@@ -48282,11 +50229,6 @@
     {
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-1645ad671944",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-1653eaea694e",
       "reason": "no_candidate_page"
     },
     {
@@ -48397,7 +50339,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-19e2fd4abebd",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_13000",
@@ -48450,11 +50392,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-1afac7e2a17b",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-1b420f16434f",
       "reason": "no_candidate_page"
@@ -48500,11 +50437,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-1c70334a720f",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-1c8ad45d5e80",
       "reason": "ambiguous_register_rows"
@@ -48522,11 +50454,6 @@
     {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-1ca762dc823c",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-1cb2f6be2786",
       "reason": "no_candidate_page"
     },
     {
@@ -48602,7 +50529,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-1ecf886e652a",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_27000",
@@ -48638,11 +50565,6 @@
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-1ff01e7b65d7",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-1ff730483edc",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_41000",
@@ -48725,11 +50647,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-229398943fb9",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-22cbe77620a1",
       "reason": "no_candidate_page"
@@ -48792,11 +50709,6 @@
     {
       "institutionId": "msmt-vs_7u000",
       "rowId": "inv-244321757a00",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-2448c2480aa5",
       "reason": "no_candidate_page"
     },
     {
@@ -48875,11 +50787,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-2592d92c39e3",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_28000",
       "rowId": "inv-25aa772ba4be",
       "reason": "no_candidate_page"
@@ -48930,11 +50837,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-26c9d18773f5",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-26d4fe0d2d1b",
       "reason": "no_candidate_page"
@@ -48972,11 +50874,6 @@
     {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-27db8f1d7cb4",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-27e5dd936212",
       "reason": "no_candidate_page"
     },
     {
@@ -49067,7 +50964,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-2a74280ac8b3",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_18000",
@@ -49097,11 +50994,6 @@
     {
       "institutionId": "msmt-vs_52000",
       "rowId": "inv-2aef190d94f0",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-2aefce577622",
       "reason": "no_candidate_page"
     },
     {
@@ -49240,11 +51132,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-2f07808e3303",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-2f2ff95dbf0f",
       "reason": "no_candidate_page"
@@ -49253,11 +51140,6 @@
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-2f41e08095b8",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-2f42110385b9",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -49287,11 +51169,6 @@
     {
       "institutionId": "msmt-vs_7e000",
       "rowId": "inv-304a0b59094f",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-304daabf8bfc",
       "reason": "no_candidate_page"
     },
     {
@@ -49342,11 +51219,6 @@
     {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-31836019f6f2",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-31b24154ef23",
       "reason": "no_candidate_page"
     },
     {
@@ -49540,11 +51412,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-35a61e6b8e36",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-35c8551a1204",
       "reason": "no_candidate_page"
@@ -49555,11 +51422,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-35fc01fd2d85",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-3605eadb12ed",
       "reason": "no_candidate_page"
@@ -49568,11 +51430,6 @@
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-367e94bab16b",
       "reason": "page_states_another_level"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-3685ada19842",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -49617,11 +51474,6 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-392715bbaae9",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-3929873da9a1",
       "reason": "no_candidate_page"
     },
     {
@@ -49670,18 +51522,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-39da9f6a4235",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-39db62a7ba9d",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-39f5cdeb5b82",
       "reason": "no_candidate_page"
     },
     {
@@ -49810,11 +51652,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-3d858129d04b",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-3d94be74bfdc",
       "reason": "no_candidate_page"
@@ -49827,11 +51664,6 @@
     {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-3dfb8fad8815",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-3e07988e98d3",
       "reason": "no_candidate_page"
     },
     {
@@ -49860,18 +51692,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-3ec06ac3840e",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-3ed14d0357c2",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-3ee7ba62b787",
       "reason": "no_candidate_page"
     },
     {
@@ -49892,11 +51714,6 @@
     {
       "institutionId": "msmt-vs_23000",
       "rowId": "inv-3f9f24df5001",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-3fa457d5a3ab",
       "reason": "no_candidate_page"
     },
     {
@@ -49987,12 +51804,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-42bdd5f233e8",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-42c1c740fb30",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_25000",
@@ -50028,16 +51840,6 @@
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-43bd9026f6e9",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-43c4b0429195",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-43c6901684e0",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -50145,11 +51947,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-4775051ec7c7",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_41000",
       "rowId": "inv-47abf2b754dc",
       "reason": "no_candidate_page"
@@ -50207,7 +52004,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-49587d7adc02",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -50302,7 +52099,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-4b317420fc53",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_22000",
@@ -50400,16 +52197,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-4dc8d57a19ab",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-4de127c3202b",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_31000",
       "rowId": "inv-4e0a54d69466",
       "reason": "no_candidate_page"
@@ -50437,7 +52224,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-4f528cfe162f",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -50452,11 +52239,6 @@
     {
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-4f801fae6c1c",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-4f911c4ac74c",
       "reason": "no_candidate_page"
     },
     {
@@ -50565,11 +52347,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-522bd625e278",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_54000",
       "rowId": "inv-5235e3b1d453",
       "reason": "ambiguous_register_rows"
@@ -50597,11 +52374,6 @@
     {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-52571bacefed",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-527cbe636378",
       "reason": "no_candidate_page"
     },
     {
@@ -50740,11 +52512,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-55939a67da62",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-55b166fcd60e",
       "reason": "ambiguous_register_rows"
@@ -50850,11 +52617,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-587e1df27b8c",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_16000",
       "rowId": "inv-58b78fa70b60",
       "reason": "no_candidate_page"
@@ -50922,11 +52684,6 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-5af24ccd4165",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-5b016a92ca52",
       "reason": "no_candidate_page"
     },
     {
@@ -51110,11 +52867,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-610010fe07c1",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_19000",
       "rowId": "inv-6159f152c58f",
       "reason": "no_candidate_page"
@@ -51153,11 +52905,6 @@
       "institutionId": "msmt-vs_31000",
       "rowId": "inv-62126429b377",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-625db05ccc09",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -51217,11 +52964,6 @@
     {
       "institutionId": "msmt-vs_52000",
       "rowId": "inv-63c9e80059d2",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-63ecbad2243c",
       "reason": "no_candidate_page"
     },
     {
@@ -51285,11 +53027,6 @@
       "reason": "page_states_another_level"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-65f25f059d3e",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-6673b1d205c8",
       "reason": "no_candidate_page"
@@ -51330,11 +53067,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-679a9cf4d11a",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-67a13f5df738",
       "reason": "no_candidate_page"
@@ -51372,11 +53104,6 @@
     {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-6802f3de2515",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-684c00236713",
       "reason": "no_candidate_page"
     },
     {
@@ -51440,18 +53167,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-6b947bc6fb89",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-6b98be4e6d46",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-6ba43c6b99db",
       "reason": "no_candidate_page"
     },
     {
@@ -51512,11 +53229,6 @@
     {
       "institutionId": "msmt-vs_94000",
       "rowId": "inv-6dfb77649d71",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-6e15dd403490",
       "reason": "no_candidate_page"
     },
     {
@@ -51582,11 +53294,6 @@
     {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-6fa906a540c4",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-6faada4ecadd",
       "reason": "no_candidate_page"
     },
     {
@@ -51678,11 +53385,6 @@
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-7258636643f3",
       "reason": "page_states_another_level"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-7262da8710dc",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_24000",
@@ -51840,11 +53542,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-76241b73f1ff",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-762717f37b20",
       "reason": "ambiguous_register_rows"
@@ -51875,11 +53572,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-76d7838bcff5",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-76db51361806",
       "reason": "ambiguous_register_rows"
@@ -51902,7 +53594,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-77207863bc69",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_11000",
@@ -51930,11 +53622,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-7804db063c49",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-7837f2c7acfe",
       "reason": "no_candidate_page"
@@ -51942,11 +53629,6 @@
     {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-791498865e35",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-791df5d4d184",
       "reason": "no_candidate_page"
     },
     {
@@ -52032,11 +53714,6 @@
     {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-7b7fdc1c288b",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-7bc06e762dff",
       "reason": "no_candidate_page"
     },
     {
@@ -52155,11 +53832,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-806595b12af9",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_41000",
       "rowId": "inv-809bdeead2d7",
       "reason": "no_candidate_page"
@@ -52220,16 +53892,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-823395cf45f5",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-823b88b7f47e",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_31000",
       "rowId": "inv-828229b66f68",
       "reason": "ambiguous_register_rows"
@@ -52272,11 +53934,6 @@
     {
       "institutionId": "msmt-vs_13000",
       "rowId": "inv-836e387cf339",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-837b013df6eb",
       "reason": "no_candidate_page"
     },
     {
@@ -52357,11 +54014,6 @@
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-84a9602c721d",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-84c978625de9",
       "reason": "no_candidate_page"
     },
     {
@@ -52512,7 +54164,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-89603dcf5b80",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -52542,7 +54194,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-8a5ab56c5274",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_27000",
@@ -52580,11 +54232,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-8af346a7d1df",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-8b08989f8d04",
       "reason": "no_candidate_page"
@@ -52597,16 +54244,6 @@
     {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-8bb82d4e2301",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-8bd89fe5f4f0",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-8be951f97ae4",
       "reason": "no_candidate_page"
     },
     {
@@ -52640,11 +54277,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-8d7290990c30",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-8d7298e5f2de",
       "reason": "no_candidate_page"
@@ -52657,11 +54289,6 @@
     {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-8e1ca548825f",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-8e25b4fdbe59",
       "reason": "no_candidate_page"
     },
     {
@@ -52707,7 +54334,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-8facbc3591ec",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -52722,11 +54349,6 @@
     {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-900370ce0122",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-9034f9e19b3d",
       "reason": "no_candidate_page"
     },
     {
@@ -52812,11 +54434,6 @@
     {
       "institutionId": "msmt-vs_43000",
       "rowId": "inv-91dc5270e09e",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-91eb8d8a2df6",
       "reason": "no_candidate_page"
     },
     {
@@ -53035,11 +54652,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-9796b1ad5d0a",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-97aae5d09cb5",
       "reason": "no_candidate_page"
@@ -53057,7 +54669,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-9806db029fce",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -53070,11 +54682,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-982af242042a",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-983683fb6e56",
       "reason": "ambiguous_register_rows"
@@ -53082,11 +54689,6 @@
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-984df2e4a084",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-9867041561ed",
       "reason": "no_candidate_page"
     },
     {
@@ -53132,11 +54734,6 @@
     {
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-9999012d9e3c",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-99d3aabdf5db",
       "reason": "no_candidate_page"
     },
     {
@@ -53215,11 +54812,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-9ce9829e7879",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_7s000",
       "rowId": "inv-9cef01bcd395",
       "reason": "no_candidate_page"
@@ -53277,11 +54869,6 @@
     {
       "institutionId": "msmt-vs_19000",
       "rowId": "inv-9ec3b0971bb5",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-9f0dd5166c38",
       "reason": "no_candidate_page"
     },
     {
@@ -53470,11 +55057,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-a31a44666ef2",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_41000",
       "rowId": "inv-a32d5ffbd91c",
       "reason": "no_candidate_page"
@@ -53642,7 +55224,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-a7521f423a83",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_51000",
@@ -53895,11 +55477,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-ae5eeb88d503",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-ae6ffe164502",
       "reason": "page_returned_404"
@@ -53907,11 +55484,6 @@
     {
       "institutionId": "msmt-vs_19000",
       "rowId": "inv-aeea3fb787b6",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-aef755f4a4b1",
       "reason": "no_candidate_page"
     },
     {
@@ -53927,7 +55499,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-af3dfc2d6ed3",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -53937,7 +55509,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-afe1f0ad9ae2",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_13000",
@@ -53985,11 +55557,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-b1410932df45",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-b14c0983d56b",
       "reason": "no_candidate_page"
@@ -54022,7 +55589,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-b19277bcb179",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_16000",
@@ -54055,11 +55622,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-b223d34c9efa",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-b278e18272b6",
       "reason": "no_candidate_page"
@@ -54087,11 +55649,6 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-b33605764f57",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-b3442f1b365b",
       "reason": "no_candidate_page"
     },
     {
@@ -54130,11 +55687,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-b4533f89bebd",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-b46c4755e85c",
       "reason": "ambiguous_register_rows"
@@ -54142,11 +55694,6 @@
     {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-b4703f82caad",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-b475430861ca",
       "reason": "no_candidate_page"
     },
     {
@@ -54183,11 +55730,6 @@
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-b55c680d394b",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-b56216fe1cec",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -54400,11 +55942,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-bb36941936d9",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_23000",
       "rowId": "inv-bb53a1fe501b",
       "reason": "no_candidate_page"
@@ -54455,11 +55992,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-bcadd1b1012e",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-bd669553867d",
       "reason": "no_candidate_page"
@@ -54482,11 +56014,6 @@
     {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-bdfc76fe97c2",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-be1af05a32c2",
       "reason": "no_candidate_page"
     },
     {
@@ -54547,11 +56074,6 @@
     {
       "institutionId": "msmt-vs_6r000",
       "rowId": "inv-bf0e2d99c216",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-bf23c9a06d9c",
       "reason": "no_candidate_page"
     },
     {
@@ -54785,19 +56307,9 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-c54633a33ef6",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-c5840b5de8f0",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-c5c45d9ede6f",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -54862,11 +56374,6 @@
     {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-c780442d4314",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-c78896cc2311",
       "reason": "no_candidate_page"
     },
     {
@@ -54940,11 +56447,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-c8cda7593a75",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_19000",
       "rowId": "inv-c8fc7338e53e",
       "reason": "no_candidate_page"
@@ -54968,11 +56470,6 @@
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-c96bdbd7a428",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-c97337ede2af",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -55045,18 +56542,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-cbdcb40027d9",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-cbe3963a0075",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-cbe4d4ad450c",
       "reason": "no_candidate_page"
     },
     {
@@ -55222,12 +56709,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-cfddfd8a0b74",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-cffa74045d5c",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_11000",
@@ -55258,11 +56740,6 @@
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-d10d531b711e",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-d1225fe9633c",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -55300,23 +56777,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-d2438f0e71fd",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-d24797ba426f",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-d26cf9535aa6",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-d2a785f42e16",
       "reason": "no_candidate_page"
     },
     {
@@ -55390,11 +56852,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-d4b78910a566",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-d51c49271fc5",
       "reason": "ambiguous_register_rows"
@@ -55407,11 +56864,6 @@
     {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-d5438bf1d3dc",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-d554a9a30e9a",
       "reason": "no_candidate_page"
     },
     {
@@ -55475,16 +56927,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-d76b1834076a",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-d76dbab23bd6",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-d79e63962602",
       "reason": "page_returned_404"
@@ -55503,11 +56945,6 @@
       "institutionId": "msmt-vs_41000",
       "rowId": "inv-d7e87f6a65df",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-d80f3d5d12fe",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_43000",
@@ -55630,18 +57067,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-db1a089bfb20",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-db471ffb4f4f",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-db53799d25e3",
       "reason": "no_candidate_page"
     },
     {
@@ -55760,11 +57187,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-dee46e6b91ec",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-dee79f069519",
       "reason": "no_candidate_page"
@@ -55792,11 +57214,6 @@
     {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-df2e7702efe0",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-df480b2a13da",
       "reason": "no_candidate_page"
     },
     {
@@ -56035,11 +57452,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-e585d7266b6c",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-e614490fff08",
       "reason": "no_candidate_page"
@@ -56088,11 +57500,6 @@
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-e7a48c3f1f27",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-e7dcd5b6b20e",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -56150,11 +57557,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-e9a66b2b4f57",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-e9b6ff341aea",
       "reason": "no_candidate_page"
@@ -56187,11 +57589,6 @@
     {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-ea2804c6cfe5",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-ea36e5c584a0",
       "reason": "no_candidate_page"
     },
     {
@@ -56245,11 +57642,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-ebbebad2e64c",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_16000",
       "rowId": "inv-ebeb42bfcc9e",
       "reason": "no_candidate_page"
@@ -56272,11 +57664,6 @@
     {
       "institutionId": "msmt-vs_7t000",
       "rowId": "inv-ec1423beb172",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-ec24b8905528",
       "reason": "no_candidate_page"
     },
     {
@@ -56352,7 +57739,7 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-ed99df3346ab",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_41000",
@@ -56410,11 +57797,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-ef97efc690c2",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_43000",
       "rowId": "inv-ef9983ca60f1",
       "reason": "no_candidate_page"
@@ -56427,11 +57809,6 @@
     {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-efa9ed1c2f02",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-efb40e34744f",
       "reason": "no_candidate_page"
     },
     {
@@ -56462,11 +57839,6 @@
     {
       "institutionId": "msmt-vs_12000",
       "rowId": "inv-eff98323c42b",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-f0122371c9c0",
       "reason": "no_candidate_page"
     },
     {
@@ -56543,11 +57915,6 @@
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-f1dce3d17297",
       "reason": "page_returned_404"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-f239f7e6b39c",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -56637,11 +58004,6 @@
     {
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-f4793323b4c4",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-f481a1ad1882",
       "reason": "no_candidate_page"
     },
     {
@@ -56805,18 +58167,8 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-f91ac3592521",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_7s000",
       "rowId": "inv-f95011a1ac8d",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-f95960f20e4d",
       "reason": "no_candidate_page"
     },
     {
@@ -56955,11 +58307,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_26000",
-      "rowId": "inv-fd90ccc18088",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_41000",
       "rowId": "inv-fdca6c205f14",
       "reason": "no_candidate_page"
@@ -57070,5 +58417,5 @@
       "reason": "no_candidate_page"
     }
   ],
-  "requests": 831
+  "requests": 306
 }
