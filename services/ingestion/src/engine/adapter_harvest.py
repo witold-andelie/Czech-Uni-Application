@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from datetime import datetime, timezone
 from typing import Any
 
@@ -17,8 +18,16 @@ def _now_text() -> str:
 
 
 def snapshot_job_id(employer_id: str | None, remote_id: str) -> str:
+    """Stable job id, normalized like the discovery path's _stable_discovered_id.
+
+    Charles University codes such as ``202610-L2-PřF-1300-104`` or
+    ``VP1-FaF HK-KSKF-127`` were used raw here but folded to
+    ``202610-l2-p-f-1300-104`` by discovery, so one vacancy got two ids and
+    the complete-listing merge marked the reviewed id as disappeared.
+    """
     prefix = str(employer_id or "").removeprefix("msmt-vs_")
-    return f"job-{prefix}-{remote_id}" if prefix else f"job-{remote_id}"
+    code = re.sub(r"[^a-z0-9]+", "-", str(remote_id).lower()).strip("-") or str(remote_id)
+    return f"job-{prefix}-{code}" if prefix else f"job-{code}"
 
 
 def candidate_to_snapshot_job(candidate: Candidate, source: dict, now_text: str) -> dict[str, Any]:

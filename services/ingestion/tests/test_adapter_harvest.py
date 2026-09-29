@@ -94,3 +94,16 @@ def test_complete_listing_absence_increments_counter_without_partial_run() -> No
     admin = store.jobs["msmt-vs_41000:1605"]
     assert admin["consecutive_absence"] == 1
     assert store.jobs["msmt-vs_41000:1604"]["consecutive_absence"] == 0
+
+
+def test_adapter_job_id_matches_the_discovery_id_for_the_same_code() -> None:
+    """One vacancy, one identity: raw CUNI codes must fold like discovery ids."""
+    from engine.adapter_harvest import snapshot_job_id
+    from harvest_nine_hei_jobs import _stable_discovered_id
+
+    for code in ("202610-L2-PřF-1300-104", "202610-VP1-FaF HK-KSKF-127", "202611-AP2-FF-ÚPOL-106", "1604"):
+        discovered = _stable_discovered_id(
+            {"employerId": "msmt-vs_11000", "code": code, "title": "x", "sourceUrl": "https://cuni.cz/x"}
+        )
+        assert snapshot_job_id("msmt-vs_11000", code) == discovered
+    assert snapshot_job_id("msmt-vs_11000", "202610-L2-PřF-1300-104") == "job-11000-202610-l2-p-f-1300-104"

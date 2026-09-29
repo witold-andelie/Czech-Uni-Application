@@ -2649,3 +2649,33 @@ def test_stored_records_seed_the_next_harvest_without_losing_the_window() -> Non
     assert [job["id"] for job in second["jobs"]] == ["job-11000-roundtrip"]
     assert second["jobs"][0]["title"] == first["jobs"][0]["title"]
     assert [(w["opensAt"], w["closesAt"]) for w in second["windows"]] == [("2026-09-01", "2026-10-31")]
+
+
+def test_listing_placeholders_do_not_erase_a_proven_seed_fact() -> None:
+    """A listing that says nothing about pay is not evidence the pay is unconfirmed."""
+    seed = {
+        "id": "job-12000-seed",
+        "employerId": "msmt-vs_12000",
+        "sourceUrl": "https://www.jcu.cz/volna-mista/oa.pdf",
+        "title": "Computer Science Specialist",
+        "paidStatus": "confirmed",
+        "workingLanguages": ["cs"],
+    }
+    listed = {
+        "id": "job-12000-listed",
+        "employerId": "msmt-vs_12000",
+        "sourceUrl": "https://www.jcu.cz/volna-mista/oa.pdf",
+        "title": "Computer Science Specialist",
+        "paidStatus": "unconfirmed",
+        "workingLanguages": [],
+        "closesAt": "2026-10-15",
+    }
+    merged = jobs_harvester._merge_seed_and_discovered([seed], [listed])
+    assert len(merged) == 1
+    assert merged[0]["id"] == "job-12000-seed"
+    assert merged[0]["paidStatus"] == "confirmed"
+    assert merged[0]["workingLanguages"] == ["cs"]
+    assert merged[0]["closesAt"] == "2026-10-15"
+
+    stated_unpaid = {**listed, "paidStatus": "unpaid"}
+    assert jobs_harvester._merge_seed_and_discovered([seed], [stated_unpaid])[0]["paidStatus"] == "unpaid"

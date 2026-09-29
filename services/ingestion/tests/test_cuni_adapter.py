@@ -102,8 +102,9 @@ def test_harvest_jobs_uses_cuni_adapter(tmp_path: Path) -> None:
     result = worker.harvest_jobs([], fetch_page=_fetch, jobs_path=target, registry=[_source()])
     payload = json.loads(target.read_text(encoding="utf-8"))
     ids = {job["id"] for job in payload["jobs"]}
-    assert "job-11000-CU-RESEARCH-1" in ids
-    assert "job-11000-CU-TEACHING-2" in ids
+    # Ids fold like discovery ids, so a code keeps one identity across paths.
+    assert "job-11000-cu-research-1" in ids
+    assert "job-11000-cu-teaching-2" in ids
     assert result["complete"] is True
     assert result["discovery"]["completeSourceIds"] == ["cuni-central-open-positions"]
     teaching = next(job for job in payload["jobs"] if job.get("sourceItemId") == TEACHING_CODE)

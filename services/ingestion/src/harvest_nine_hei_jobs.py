@@ -3385,6 +3385,14 @@ def _stable_discovered_id(item: dict) -> str:
     return slug_id(employer_id, str(item["title"]), str(item["sourceUrl"]))
 
 
+# Values a listing parser fills in when the page says nothing (for example
+# paidStatus "unconfirmed" by setdefault). They are not evidence, so they must
+# not erase a fact the seed record already proved: on 2026-09-29 a JČU PDF
+# whose bytes had not changed lost its confirmed pay this way, and with it the
+# review approval bound to that fact.
+_PLACEHOLDER_VALUES: tuple = (None, "", "unconfirmed", "unknown", "unspecified", [])
+
+
 def _merge_seed_and_discovered(seeds: list[dict], discovered: list[dict]) -> list[dict]:
     """Preserve reviewed stable IDs while allowing newly listed jobs through."""
     merged = [dict(item) for item in seeds]
@@ -3400,8 +3408,13 @@ def _merge_seed_and_discovered(seeds: list[dict], discovered: list[dict]) -> lis
         if match_index is None:
             merged.append(candidate)
         else:
-            stable_id = merged[match_index]["id"]
-            merged[match_index] = {**merged[match_index], **candidate, "id": stable_id}
+            seed = merged[match_index]
+            informative = {
+                key: value
+                for key, value in candidate.items()
+                if not (value in _PLACEHOLDER_VALUES and seed.get(key) not in _PLACEHOLDER_VALUES)
+            }
+            merged[match_index] = {**seed, **informative, "id": seed["id"]}
     return merged
 
 
