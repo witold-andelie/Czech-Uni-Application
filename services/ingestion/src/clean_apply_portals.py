@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from harvest_apply_portals import APPLY_STRONG, fetch, is_dead
+from harvest_apply_portals import APPLY_STRONG, fetch
 
 ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / "data" / "sources" / "admissions" / "apply-portals.json"

@@ -22,7 +22,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
-from adapters.jobs import adapter_for, adapter_sources  # noqa: E402
+from adapters.jobs import adapter_sources  # noqa: E402
 
 CURSOR_PATH = ROOT / "work" / "runs" / "ingest-adapters.json"
 WORKER = Path(__file__).resolve().parent / "adapter_source_worker.py"

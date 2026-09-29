@@ -177,23 +177,27 @@ def stamp_programme_links(payload: dict) -> tuple[dict, dict[str, int]]:
     report["indexLinks"] = len(index_links)
     allowed = allowed_domains_by_institution()
     kept: dict[str, dict] = {}
-    known_rows: set[str] = set()
+    # The school that owns the row decides which domains its page may live on,
+    # as in both publication gates; the index entry's own institutionId is not
+    # trusted for that, so a mis-attributed link is dropped here and reported
+    # instead of blocking the whole snapshot at the gate.
+    row_owner: dict[str, str] = {}
     for school in payload.get("schools") or []:
         institution_id = str(school.get("id") or "")
-        domains = allowed.get(institution_id) or set()
         for row in school.get("rows") or []:
-            known_rows.add(str(row[0]))
+            row_owner[str(row[0])] = institution_id
     for ident, entry in sorted(index_links.items()):
         url = str(entry.get("url") or "")
         if not url.startswith("https://"):
             # Not a school-owned https page: drop rather than publish it.
             report["droppedNotHttps"] += 1
             continue
-        if registrable_host(url) not in (allowed.get(str(entry.get("institutionId") or "")) or set()):
-            report["droppedForeignDomain"] += 1
-            continue
-        if ident not in known_rows:
+        owner = row_owner.get(ident)
+        if owner is None:
             report["droppedUnknownRow"] += 1
+            continue
+        if registrable_host(url) not in (allowed.get(owner) or set()):
+            report["droppedForeignDomain"] += 1
             continue
         kept[ident] = {
             "url": url,

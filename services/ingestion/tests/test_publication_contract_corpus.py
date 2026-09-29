@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
-from publication_contract import REQUIRED_FILES, validate_snapshot  # noqa: E402
+from publication_contract import validate_snapshot  # noqa: E402
 from publication_rules import valid_calendar_date, valid_iana_timezone  # noqa: E402
 import publish  # noqa: E402
 

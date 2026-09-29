@@ -66,3 +66,63 @@ def test_compact_payload_is_inventory_not_admissions() -> None:
     dumped = json.dumps(payload["schools"])
     assert "opensAt" not in dumped
     assert "tuition" not in dumped
+
+
+def test_programme_link_must_sit_on_the_row_owners_domain(tmp_path: Path, monkeypatch) -> None:
+    """An index entry's own institutionId does not choose the allowed domains.
+
+    Both publication gates bind a link to the school that owns the row; the
+    build must do the same, so a mis-attributed link is dropped and counted
+    here rather than blocking the whole snapshot later.
+    """
+    import build_nine_hei_inventory as inventory
+    import resolve_programme_links
+
+    index = tmp_path / "programme-links.json"
+    index.write_text(
+        json.dumps(
+            {
+                "generatedAt": "2026-09-29T00:00:00Z",
+                "links": {
+                    "inv-cuni-own": {
+                        "url": "https://www.mff.cuni.cz/en/admissions/informatics",
+                        "institutionId": "msmt-vs_11000",
+                        "reachability": "verified",
+                    },
+                    # Row belongs to Charles University, but the entry claims
+                    # Masaryk University and points at a muni.cz page.
+                    "inv-cuni-misattributed": {
+                        "url": "https://www.muni.cz/en/bachelors-degree-programmes/informatics",
+                        "institutionId": "msmt-vs_14000",
+                        "reachability": "verified",
+                    },
+                    "inv-not-a-row": {
+                        "url": "https://www.cuni.cz/programme",
+                        "institutionId": "msmt-vs_11000",
+                        "reachability": "verified",
+                    },
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(inventory, "PROGRAMME_LINKS", index)
+    monkeypatch.setattr(
+        resolve_programme_links,
+        "allowed_domains_by_institution",
+        lambda: {"msmt-vs_11000": {"cuni.cz"}, "msmt-vs_14000": {"muni.cz"}},
+    )
+    row = ["", "Informatics", "b", "MFF", 3, "en", "0613"]
+    payload = {
+        "schools": [
+            {"id": "msmt-vs_11000", "rows": [["inv-cuni-own", *row[1:]], ["inv-cuni-misattributed", *row[1:]]]},
+            {"id": "msmt-vs_14000", "rows": []},
+        ],
+        "counts": {},
+    }
+    stamped, report = inventory.stamp_programme_links(payload)
+
+    assert set(stamped["programmeLinks"]) == {"inv-cuni-own"}
+    assert stamped["counts"]["linkedProgrammes"] == 1
+    assert report["droppedForeignDomain"] == 1
+    assert report["droppedUnknownRow"] == 1

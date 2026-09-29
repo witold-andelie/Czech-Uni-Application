@@ -1,0 +1,5 @@
+# CI gates Pyflakes rules only: undefined names, unused imports and variables,
+# and similar defects that pytest does not see. Style rules (for example the
+# one-line `if` statements in the OPM scripts) are deliberately not gated.
+[lint]
+select = ["F"]

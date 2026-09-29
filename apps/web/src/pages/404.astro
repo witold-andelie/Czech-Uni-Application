@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NotFoundView from "../components/NotFoundView.svelte";
+import { t } from "../lib/i18n";
 ---
-<BaseLayout locale="zh-CN" title="Not found">
+<BaseLayout locale="zh-CN" title={t("zh-CN", "error.notFound")}>
   <NotFoundView client:load />
 </BaseLayout>
 

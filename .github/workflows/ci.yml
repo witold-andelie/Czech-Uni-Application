@@ -38,6 +38,9 @@ jobs:
       - name: Run ingestion tests
         run: python -m pytest services/ingestion/tests tests/test_opm_generation.py tests/test_checkout_inventory.py -q
 
+      - name: Lint Python for undefined names and dead code
+        run: python -m ruff check services scripts tests
+
       - name: Verify clean-checkout required files
         run: python scripts/checkout_inventory.py --check
 
