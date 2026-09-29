@@ -30,8 +30,8 @@ GitHub hosts the source code and CI, not the public website.
 
 ## Current release
 
-- Publication **`v2026-09-27.8`**: 54 institutions, 5,019 register offerings,
-  **3,229** with a school-owned programme page (matched rows, not a claim that
+- Publication **`v2026-09-28.2`**: 54 institutions, 5,019 register offerings,
+  **3,426** with a school-owned programme page (matched rows, not a claim that
   every page was title-verified this run). 134 approved job records in the
   snapshot extract (unchanged; 6 withheld by live-evidence, not reported as
   closed), 4 reviewed admissions excerpts. The default jobs list count
@@ -53,9 +53,9 @@ GitHub hosts the source code and CI, not the public website.
 | Admin console | Not built (owner 2026-09-27) | Review stays in git files |
 
 The public static site needs no database and stores no user data (anonymous
-browsing only — no accounts, no tracking). Durable state for the future
-refresh service is planned to run on **Supabase** (PostgreSQL) once that
-deployment happens.
+browsing only — no accounts, no tracking). The scheduled collector writes
+structured ingestion state to **Supabase** (PostgreSQL); publication remains
+an independently reviewed, immutable snapshot served by Cloudflare Pages.
 
 ## Local development
 
@@ -80,8 +80,9 @@ py -3 -m pytest services/ingestion/tests tests/test_opm_generation.py -q
 
 GitHub Actions (`.github/workflows/ci.yml`) validates data, Go, web, and
 browser acceptance on every push/PR. After all checks pass on `main`, it
-retains the exact tested root-path build as `production-site-<commit>` for
-14 days. Download and extract that artifact for third-party deployment;
+deploys the exact tested root-path build to Cloudflare Pages and retains it as
+`production-site-<commit>` for 14 days. The artifact can also be downloaded
+for recovery or independent inspection;
 `publication-provenance.json` identifies the commit, data snapshot, and GitHub
 Actions run whose final result records the deployment outcome.
 GitHub Pages deployment has been removed.

@@ -1388,7 +1388,7 @@ class DrivenClock:
     def expired(self) -> bool:
         return self.spent > self.limit
 
-    def budget(self) -> "RunBudget":
+    def budget(self):
         clock = self
 
         class RunBudget:
