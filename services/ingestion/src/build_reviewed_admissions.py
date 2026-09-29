@@ -34,6 +34,7 @@ CUNI_PATH = SOURCES / "admissions" / "cuni-mff-cs-tracer.json"
 MUNI_PATH = SOURCES / "admissions" / "muni-fi-tracer.json"
 
 REVIEWED_AT = "2026-09-12T16:30:00Z"
+SECOND_BATCH_REVIEWED_AT = "2026-09-29T17:53:00Z"
 REVIEWER = {"role": "operator_source_review"}
 
 
@@ -82,20 +83,26 @@ def window_row(*, ident: str, owner: str, academic_year: str | None, round_label
     }
 
 
-def bind_review(offering: dict, windows: list[dict], titles: dict[str, str], source_hash: str) -> dict:
+def bind_review(
+    offering: dict,
+    windows: list[dict],
+    titles: dict[str, str],
+    source_hash: str,
+    reviewed_at: str = REVIEWED_AT,
+) -> dict:
     locales = {}
     for locale in LOCALES:
         locales[locale] = {
             "status": "reviewed",
             "translatedFromHash": source_hash,
-            "reviewedAt": REVIEWED_AT,
+            "reviewedAt": reviewed_at,
             "contentHash": translation_content_hash(titles[locale]),
         }
     offering["title"] = dict(titles)
     offering["sourceHash"] = source_hash
     offering["publicationStatus"] = "approved"
     offering["translationStatus"] = "verified"
-    offering["factsReviewedAt"] = REVIEWED_AT
+    offering["factsReviewedAt"] = reviewed_at
     offering["translationReview"] = {
         "sourceHash": source_hash,
         "factHash": offering_fact_hash(offering, windows),
@@ -156,12 +163,27 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
     evidence_rows: list[dict] = []
     reviews: dict[str, dict] = {}
 
-    def add_english(inv_id: str, candidate: dict, degree: str, duration_years: float, titles: dict[str, str], programme_path: str) -> None:
+    def add_english(
+        inv_id: str,
+        candidate: dict,
+        cs_candidate_id: str,
+        degree: str,
+        duration_years: float,
+        isced_f: str,
+        titles: dict[str, str],
+        reviewed_at: str = REVIEWED_AT,
+        localized_tuition_scope: bool = False,
+    ) -> None:
         ev_en = f"ev-{inv_id}-en"
         ev_cs = f"ev-{inv_id}-cs"
         ev_pef = f"ev-{inv_id}-faculty"
         win_id = f"win-{inv_id}-2026-09"
-        cs_hit = by_id(czech["programmes"], "czu-studuj-1004" if degree == "bachelor" else "czu-studuj-1009")
+        cs_hit = by_id(czech["programmes"], cs_candidate_id)
+        assert candidate["degree"] == {"bachelor": "b", "master": "m"}[degree]
+        assert cs_hit["degree"] == candidate["degree"]
+        assert candidate["studyLanguage"] == cs_hit["studyLanguage"] == "en"
+        assert candidate["titles"]["en"] == cs_hit["titles"]["cs"] == titles["en"]
+        assert candidate["durationYears"] == duration_years
         programme_url = candidate["officialProgrammeUrl"]
         pef_url = candidate["admissionEvidenceUrls"][0]
         general = candidate["generalApplyPortalUrl"]
@@ -180,7 +202,7 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
             "degree": degree,
             "durationSemesters": int(duration_years * 2),
             "field": pef,
-            "iscedF": "0613",
+            "iscedF": isced_f,
             "officialProgrammeUrl": programme_url,
             "applicationUrl": None,
             "applicationTargetKind": "general_portal",
@@ -201,6 +223,7 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
                         "cycle": "year",
                         "applicantScopeOriginal": candidate["tuition"]["displayOriginal"],
                         "sourceEvidenceId": ev_en,
+                        **({"applicantScope": loc("一般学费", "Tuition fee", "Školné")} if localized_tuition_scope else {}),
                     },
                     {
                         "amount": candidate["tuitionEu"]["amount"],
@@ -208,6 +231,7 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
                         "cycle": "year",
                         "applicantScopeOriginal": candidate["tuitionEu"]["displayOriginal"],
                         "sourceEvidenceId": ev_en,
+                        **({"applicantScope": loc("欧盟学生学费", "Tuition fee (EU students)", "Školné (studenti z EU)")} if localized_tuition_scope else {}),
                     },
                 ],
                 "doNotCollapseDualRates": True,
@@ -253,24 +277,52 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
         )
         raw = candidate.get("sourceHtmlSha256")
         source_hash = raw if str(raw).startswith("sha256:") else f"sha256:{raw}"
-        reviews[inv_id] = bind_review(offering, [win_row], titles, source_hash)
+        reviews[inv_id] = bind_review(offering, [win_row], titles, source_hash, reviewed_at)
         offerings.append(offering)
 
     add_english(
         "inv-898e810ed190",
         en_b,
+        "czu-studuj-1004",
         "bachelor",
         3.0,
+        "0613",
         loc("信息学", "Informatics", "Informatika"),
-        "informatics",
     )
     add_english(
         "inv-ac1fecbdfc9c",
         en_m,
+        "czu-studuj-1009",
         "master",
         2.0,
+        "0613",
         loc("信息学", "Informatics", "Informatika"),
-        "informatics-2",
+    )
+
+    # Second, source-and-language-reviewed batch. The two university pages and
+    # their Czech-portal counterparts agree on degree, language, duration,
+    # tuition variants, and the 2026/27 application window.
+    add_english(
+        "inv-ca4cebefff1b",
+        by_id(english["programmes"], "czu-study-506"),
+        "czu-studuj-1002",
+        "bachelor",
+        3.0,
+        "0413",
+        loc("工商管理", "Business Administration", "Business Administration"),
+        SECOND_BATCH_REVIEWED_AT,
+        True,
+    )
+    add_english(
+        "inv-1810509648f0",
+        by_id(english["programmes"], "czu-study-508"),
+        "czu-studuj-1003",
+        "bachelor",
+        3.0,
+        "0413",
+        loc("经济与管理", "Economics and Management", "Economics and Management"),
+        SECOND_BATCH_REVIEWED_AT,
+        True,
     )
 
     gis_id = "inv-c50825f0199c"
@@ -430,7 +482,7 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
         "dataClass": "official_admissions_extract",
         "catalogKind": "reviewed_admissions",
         "institutionId": "msmt-vs_41000",
-        "note": "First reviewed CZU admissions slice: English bachelor Informatics, English master Informatics, Czech-taught GIS bachelor, and Czech doctoral Applied and Landscape Ecology. Not complete CZU coverage. UIS links are general portals. Inventory IDs are preserved.",
+        "note": "Incremental reviewed CZU admissions slice: the original four records plus English bachelor Business Administration and Economics and Management. Not complete CZU coverage. UIS links are general portals. Inventory IDs are preserved.",
         "sourceFetchedAt": {
             "czu-english-programmes": fetched_en,
             "czu-czech-programmes": fetched_cs,

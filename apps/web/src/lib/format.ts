@@ -37,7 +37,7 @@ export function formatTuition(tuition: Tuition, locale: UiLocale): string {
 
 export function formatTracerTuition(
   tuition: Tuition & {
-    variants?: { amount: number; currency: string; cycle: Tuition["cycle"]; applicantScopeOriginal: string | null }[];
+    variants?: { amount: number; currency: string; cycle: Tuition["cycle"]; applicantScopeOriginal: string | null; applicantScope?: LocalizedText }[];
   },
   locale: UiLocale,
 ): string[] {
@@ -47,7 +47,8 @@ export function formatTracerTuition(
     return variants.map((item) => {
       const money = formatMoney(item.amount, item.currency, locale);
       const cycle = item.cycle ? ` / ${t(locale, `tuition.cycle.${item.cycle}`)}` : "";
-      const scope = item.applicantScopeOriginal ? ` — ${item.applicantScopeOriginal}` : "";
+      const scopeText = item.applicantScope?.[locale] ?? item.applicantScopeOriginal;
+      const scope = scopeText ? ` — ${scopeText}` : "";
       return `${money}${cycle}${scope}`;
     });
   }

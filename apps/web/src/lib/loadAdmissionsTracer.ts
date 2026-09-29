@@ -7,6 +7,7 @@ export interface TuitionVariant {
   currency: string;
   cycle: "year" | "semester" | "programme" | null;
   applicantScopeOriginal: string | null;
+  applicantScope?: LocalizedText;
   sourceEvidenceId: string;
 }
 

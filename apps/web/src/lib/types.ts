@@ -110,6 +110,7 @@ export interface Tuition {
     currency: string;
     cycle: "year" | "semester" | "programme" | null;
     applicantScopeOriginal: string | null;
+    applicantScope?: LocalizedText;
   }[];
 }
 

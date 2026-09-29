@@ -119,6 +119,26 @@ describe("nine-HEI register inventory browse", () => {
     assert.equal(findOffering(browse, "czu-study-507", now)?.offering.id, "inv-898e810ed190");
   });
 
+  it("adds the next reviewed CZU batch without losing the original four", () => {
+    for (const [id, title, fee] of [
+      ["inv-ca4cebefff1b", "Business Administration", 2600],
+      ["inv-1810509648f0", "Economics and Management", 2000],
+    ] as const) {
+      const result = findOffering(browse, id, now);
+      assert.ok(result);
+      assert.equal(result.offering.dataClass, "official_admissions_extract");
+      assert.equal(result.offering.title.en, title);
+      assert.equal(result.offering.teachingLanguages[0], "en");
+      assert.equal(result.offering.degree, "bachelor");
+      assert.equal(result.offering.iscedF, "0413");
+      assert.deepEqual((result.offering.tuition.variants ?? []).map((rate) => rate.amount).sort((a, b) => a - b), [500, fee]);
+      assert.equal(result.windows[0].opensAt, "2026-09-15");
+      assert.equal(result.windows[0].closesAt, "2027-03-31");
+      assert.ok((result.offering.tuition.variants ?? []).some((rate) => rate.applicantScope?.["zh-CN"] === "欧盟学生学费"));
+      assert.ok((result.offering.tuition.variants ?? []).some((rate) => rate.applicantScope?.cs === "Školné (studenti z EU)"));
+    }
+  });
+
   it("covers all CSCSE-listed HEIs and maps Olomouc, Ostrava, Pilsen and Liberec", () => {
     const ids = new Set(browse.institutions.map((item) => item.id));
     for (const id of [

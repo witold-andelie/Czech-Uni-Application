@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T22:02:26Z",
+  "generatedAt": "2026-09-29T18:07:09Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-09-28.2",
-    "publishedAt": "2026-09-28T22:02:25Z",
-    "candidateGenerationId": "cg-5c1b39a6fc844c6084204a98b5ec2a98",
-    "sourceRunSetDigest": "sha256:aef506870d94f309075c1d13c9dcee9526dc079760ed63927d6db64273c486f5",
+    "activeVersion": "v2026-09-29.1",
+    "publishedAt": "2026-09-29T18:07:09Z",
+    "candidateGenerationId": "cg-17b1180988b747c2bcadda0fd0d8c739",
+    "sourceRunSetDigest": "sha256:edfe3c180106e5c90f03bc28c72ec465ecaad67f16d63bf04fec9dc0f22c62ad",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -56,12 +56,14 @@
         "openPageReported": 0,
         "declaredScopeHarvestComplete": true,
         "availabilityCrosscheck": "agrees",
-        "formallyPublishedFromThisCandidateSource": 2,
+        "formallyPublishedFromThisCandidateSource": 4,
         "formallyPublishedOfferingIds": [
+          "inv-1810509648f0",
           "inv-898e810ed190",
-          "inv-ac1fecbdfc9c"
+          "inv-ac1fecbdfc9c",
+          "inv-ca4cebefff1b"
         ],
-        "reviewedOfferingsPublishedGlobally": 4,
+        "reviewedOfferingsPublishedGlobally": 6,
         "publicationAttributionBasis": "formallyPublishedFromThisCandidateSource joins approved reviewed offerings' candidateIds to this source's candidate ids. The global reviewed count counts each offering once; per-source attribution can overlap when an offering cites candidates from several sources.",
         "claimBoundary": "This is a complete read only for CZU's declared English bachelor/master source scope. It excludes Czech-taught and doctoral programmes and remains outside formal publication until zh-CN/en/cs source-bound review passes."
       },
@@ -90,13 +92,15 @@
         "sitemapDetailTotal": 129,
         "declaredScopeHarvestComplete": true,
         "englishSourceCrosscheck": "disagrees",
-        "formallyPublishedFromThisCandidateSource": 3,
+        "formallyPublishedFromThisCandidateSource": 5,
         "formallyPublishedOfferingIds": [
+          "inv-1810509648f0",
           "inv-898e810ed190",
           "inv-ac1fecbdfc9c",
-          "inv-c50825f0199c"
+          "inv-c50825f0199c",
+          "inv-ca4cebefff1b"
         ],
-        "reviewedOfferingsPublishedGlobally": 4,
+        "reviewedOfferingsPublishedGlobally": 6,
         "publicationAttributionBasis": "formallyPublishedFromThisCandidateSource joins approved reviewed offerings' candidateIds to this source's candidate ids. The global reviewed count counts each offering once; per-source attribution can overlap when an offering cites candidates from several sources.",
         "claimBoundary": "This is a complete read only for the bachelor/master catalogue exposed by studuj.czu.cz. It excludes doctoral programmes and remains outside formal publication until zh-CN/en/cs source-bound review passes."
       },
@@ -128,7 +132,7 @@
         "formallyPublishedOfferingIds": [
           "inv-330bf56297af"
         ],
-        "reviewedOfferingsPublishedGlobally": 4,
+        "reviewedOfferingsPublishedGlobally": 6,
         "publicationAttributionBasis": "formallyPublishedFromThisCandidateSource joins approved reviewed offerings' candidateIds to this source's candidate ids. The global reviewed count counts each offering once; per-source attribution can overlap when an offering cites candidates from several sources.",
         "claimBoundary": "Completeness is limited to matching the MŠMT CZU doctoral baseline to the configured 2026/2027 faculty evidence. It does not assert that a 2027/2028 round has or has not been published elsewhere, does not infer an unannounced second round, and does not publish untranslated candidate records."
       }
