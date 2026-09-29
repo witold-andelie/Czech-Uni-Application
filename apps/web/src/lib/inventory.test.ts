@@ -139,6 +139,28 @@ describe("nine-HEI register inventory browse", () => {
     }
   });
 
+  it("keeps reviewed bachelor and master programmes distinct and links masters to their own official pages", () => {
+    for (const [id, title, fee, slug] of [
+      ["inv-cd7c131e0004", "Business Administration", 4400, "business-administration-2"],
+      ["inv-b8ee55eae5f7", "Economics and Management", 2000, "economics-and-management-2"],
+    ] as const) {
+      const result = findOffering(browse, id, now);
+      assert.ok(result);
+      assert.equal(result.offering.dataClass, "official_admissions_extract");
+      assert.equal(result.offering.title.en, title);
+      assert.equal(result.offering.degree, "master");
+      assert.deepEqual(result.offering.teachingLanguages, ["en"]);
+      assert.equal(result.offering.durationSemesters, 4);
+      assert.equal(result.offering.officialProgrammeUrl, `https://study.czu.cz/programmes/${slug}/`);
+      assert.equal(result.offering.additionalLanguageRequirements?.[0]?.evidenceUrl, result.offering.officialProgrammeUrl);
+      assert.deepEqual((result.offering.tuition.variants ?? []).map((rate) => rate.amount).sort((a, b) => a - b), [500, fee]);
+      assert.equal(result.windows[0].opensAt, "2026-09-15");
+      assert.equal(result.windows[0].closesAt, "2027-03-31");
+    }
+    assert.equal(findOffering(browse, "czu-study-510", now)?.offering.id, "inv-cd7c131e0004");
+    assert.equal(findOffering(browse, "czu-study-512", now)?.offering.id, "inv-b8ee55eae5f7");
+  });
+
   it("covers all CSCSE-listed HEIs and maps Olomouc, Ostrava, Pilsen and Liberec", () => {
     const ids = new Set(browse.institutions.map((item) => item.id));
     for (const id of [

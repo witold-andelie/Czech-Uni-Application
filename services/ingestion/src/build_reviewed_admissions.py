@@ -35,6 +35,7 @@ MUNI_PATH = SOURCES / "admissions" / "muni-fi-tracer.json"
 
 REVIEWED_AT = "2026-09-12T16:30:00Z"
 SECOND_BATCH_REVIEWED_AT = "2026-09-29T17:53:00Z"
+THIRD_BATCH_REVIEWED_AT = "2026-09-29T18:56:00Z"
 REVIEWER = {"role": "operator_source_review"}
 
 
@@ -173,6 +174,8 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
         titles: dict[str, str],
         reviewed_at: str = REVIEWED_AT,
         localized_tuition_scope: bool = False,
+        use_candidate_admission_evidence: bool = True,
+        admission_requirement_note: dict[str, str] | None = None,
     ) -> None:
         ev_en = f"ev-{inv_id}-en"
         ev_cs = f"ev-{inv_id}-cs"
@@ -185,7 +188,7 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
         assert candidate["titles"]["en"] == cs_hit["titles"]["cs"] == titles["en"]
         assert candidate["durationYears"] == duration_years
         programme_url = candidate["officialProgrammeUrl"]
-        pef_url = candidate["admissionEvidenceUrls"][0]
+        pef_url = candidate["admissionEvidenceUrls"][0] if use_candidate_admission_evidence else programme_url
         general = candidate["generalApplyPortalUrl"]
         win = candidate["applicationWindows"][0]
         offering = {
@@ -248,7 +251,7 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
                     "context": "admission",
                     "requirement": "required",
                     "evidenceUrl": pef_url,
-                    "note": en_note,
+                    "note": admission_requirement_note or en_note,
                 }
             ],
             "fetchedAt": fetched_en,
@@ -271,10 +274,11 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
         evidence_rows.extend(
             [
                 evidence(ev_en, programme_url, loc("CZU 英语项目页（申请起止与学费）。", "CZU English programme page (dates and tuition).", "Anglická stránka programu ČZU (termíny a školné)."), candidate["sourceHtmlSha256"]),
-                evidence(ev_cs, cs_hit["officialProgrammeUrl"], loc("CZU 捷克入口对应英语项目页，申请日期一致；该页未公布学费。", "Matching Czech-portal English record; dates agree, tuition is unpublished there.", "Shodný záznam na českém portálu; termíny souhlasí, školné tam není zveřejněno."), cs_hit["sourceHtmlSha256"]),
-                evidence(ev_pef, pef_url, loc("经济管理学院招生说明。", "Faculty admissions page.", "Přijímací informace PEF.")),
+                evidence(ev_cs, cs_hit["officialProgrammeUrl"], loc("CZU 捷克入口对应英语项目页；项目身份与申请日期一致。学费金额采用英语入口核对。", "Matching Czech-portal English record; programme identity and dates agree. Tuition amounts are checked against the English portal.", "Shodný záznam anglického programu na českém portálu; totožnost programu a termíny souhlasí. Částky školného jsou ověřeny na anglickém portálu."), cs_hit["sourceHtmlSha256"]),
             ]
         )
+        if use_candidate_admission_evidence:
+            evidence_rows.append(evidence(ev_pef, pef_url, loc("经济管理学院招生说明。", "Faculty admissions page.", "Přijímací informace PEF.")))
         raw = candidate.get("sourceHtmlSha256")
         source_hash = raw if str(raw).startswith("sha256:") else f"sha256:{raw}"
         reviews[inv_id] = bind_review(offering, [win_row], titles, source_hash, reviewed_at)
@@ -323,6 +327,42 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
         loc("经济与管理", "Economics and Management", "Economics and Management"),
         SECOND_BATCH_REVIEWED_AT,
         True,
+    )
+
+    # The harvested Business Administration master's faculty URL points to a
+    # bachelor's page. Use only the master-specific university programme page
+    # for this batch. The two official language portals disagree on the
+    # Economics and Management exam format, so that format is not published.
+    master_admission_note = loc(
+        "英语授课。申请要求以该硕士项目官网及学院最新招生说明为准；这里不推断英语证书或分数线。",
+        "Taught in English. Check the master's programme page and current faculty admissions instructions; no certificate or score is inferred here.",
+        "Výuka probíhá v angličtině. Požadavky ověřte na stránce magisterského programu a v aktuálních pokynech fakulty; doklad ani bodová hranice se zde nepředpokládají.",
+    )
+    add_english(
+        "inv-cd7c131e0004",
+        by_id(english["programmes"], "czu-study-510"),
+        "czu-studuj-1005",
+        "master",
+        2.0,
+        "0413",
+        loc("工商管理", "Business Administration", "Business Administration"),
+        THIRD_BATCH_REVIEWED_AT,
+        True,
+        False,
+        master_admission_note,
+    )
+    add_english(
+        "inv-b8ee55eae5f7",
+        by_id(english["programmes"], "czu-study-512"),
+        "czu-studuj-1006",
+        "master",
+        2.0,
+        "0413",
+        loc("经济与管理", "Economics and Management", "Economics and Management"),
+        THIRD_BATCH_REVIEWED_AT,
+        True,
+        False,
+        master_admission_note,
     )
 
     gis_id = "inv-c50825f0199c"
@@ -482,7 +522,7 @@ def build_czu_slice() -> tuple[dict, dict[str, dict]]:
         "dataClass": "official_admissions_extract",
         "catalogKind": "reviewed_admissions",
         "institutionId": "msmt-vs_41000",
-        "note": "Incremental reviewed CZU admissions slice: the original four records plus English bachelor Business Administration and Economics and Management. Not complete CZU coverage. UIS links are general portals. Inventory IDs are preserved.",
+        "note": "Incremental reviewed CZU admissions slice: the original four records plus English bachelor and master Business Administration and Economics and Management. Not complete CZU coverage. UIS links are general portals. Inventory IDs are preserved.",
         "sourceFetchedAt": {
             "czu-english-programmes": fetched_en,
             "czu-czech-programmes": fetched_cs,

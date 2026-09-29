@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T18:07:09Z",
+  "generatedAt": "2026-09-29T19:01:53Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-09-29.1",
-    "publishedAt": "2026-09-29T18:07:09Z",
-    "candidateGenerationId": "cg-17b1180988b747c2bcadda0fd0d8c739",
-    "sourceRunSetDigest": "sha256:edfe3c180106e5c90f03bc28c72ec465ecaad67f16d63bf04fec9dc0f22c62ad",
+    "activeVersion": "v2026-09-29.2",
+    "publishedAt": "2026-09-29T19:01:52Z",
+    "candidateGenerationId": "cg-f641e951ed8540f7a25a92fc4257f452",
+    "sourceRunSetDigest": "sha256:6f097dbdc5ae821015a6543674fa3caf743ffa4ec92d06ae422a888a70ece1d5",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -56,14 +56,16 @@
         "openPageReported": 0,
         "declaredScopeHarvestComplete": true,
         "availabilityCrosscheck": "agrees",
-        "formallyPublishedFromThisCandidateSource": 4,
+        "formallyPublishedFromThisCandidateSource": 6,
         "formallyPublishedOfferingIds": [
           "inv-1810509648f0",
           "inv-898e810ed190",
           "inv-ac1fecbdfc9c",
-          "inv-ca4cebefff1b"
+          "inv-b8ee55eae5f7",
+          "inv-ca4cebefff1b",
+          "inv-cd7c131e0004"
         ],
-        "reviewedOfferingsPublishedGlobally": 6,
+        "reviewedOfferingsPublishedGlobally": 8,
         "publicationAttributionBasis": "formallyPublishedFromThisCandidateSource joins approved reviewed offerings' candidateIds to this source's candidate ids. The global reviewed count counts each offering once; per-source attribution can overlap when an offering cites candidates from several sources.",
         "claimBoundary": "This is a complete read only for CZU's declared English bachelor/master source scope. It excludes Czech-taught and doctoral programmes and remains outside formal publication until zh-CN/en/cs source-bound review passes."
       },
@@ -92,15 +94,17 @@
         "sitemapDetailTotal": 129,
         "declaredScopeHarvestComplete": true,
         "englishSourceCrosscheck": "disagrees",
-        "formallyPublishedFromThisCandidateSource": 5,
+        "formallyPublishedFromThisCandidateSource": 7,
         "formallyPublishedOfferingIds": [
           "inv-1810509648f0",
           "inv-898e810ed190",
           "inv-ac1fecbdfc9c",
+          "inv-b8ee55eae5f7",
           "inv-c50825f0199c",
-          "inv-ca4cebefff1b"
+          "inv-ca4cebefff1b",
+          "inv-cd7c131e0004"
         ],
-        "reviewedOfferingsPublishedGlobally": 6,
+        "reviewedOfferingsPublishedGlobally": 8,
         "publicationAttributionBasis": "formallyPublishedFromThisCandidateSource joins approved reviewed offerings' candidateIds to this source's candidate ids. The global reviewed count counts each offering once; per-source attribution can overlap when an offering cites candidates from several sources.",
         "claimBoundary": "This is a complete read only for the bachelor/master catalogue exposed by studuj.czu.cz. It excludes doctoral programmes and remains outside formal publication until zh-CN/en/cs source-bound review passes."
       },
@@ -132,7 +136,7 @@
         "formallyPublishedOfferingIds": [
           "inv-330bf56297af"
         ],
-        "reviewedOfferingsPublishedGlobally": 6,
+        "reviewedOfferingsPublishedGlobally": 8,
         "publicationAttributionBasis": "formallyPublishedFromThisCandidateSource joins approved reviewed offerings' candidateIds to this source's candidate ids. The global reviewed count counts each offering once; per-source attribution can overlap when an offering cites candidates from several sources.",
         "claimBoundary": "Completeness is limited to matching the MŠMT CZU doctoral baseline to the configured 2026/2027 faculty evidence. It does not assert that a 2027/2028 round has or has not been published elsewhere, does not infer an unannounced second round, and does not publish untranslated candidate records."
       }
