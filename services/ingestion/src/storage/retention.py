@@ -14,6 +14,10 @@ from typing import Any
 from storage.budgets import EVIDENCE_GRACE_DAYS, KEEP_LAST_COMPLETE_RUN
 
 DEFAULT_KEEP_RUNS = 14
+# Unattended evidence GC deletes at most this share of the bucket per run
+# (never fewer than MIN_DELETE_ALLOWANCE objects); more means something broke.
+MAX_DELETE_FRACTION = 0.25
+MIN_DELETE_ALLOWANCE = 25
 
 
 def keep_runs_per_source() -> int:
@@ -115,10 +119,12 @@ def _add_path(keys: set[str], path: str | None) -> None:
         keys.add(f"{name}.gz")
 
 
-def collect_referenced_object_keys(store: Any) -> set[str]:
+def collect_referenced_object_keys(store: Any, *, strict: bool = False) -> set[str]:
     """Keys still bound to a document row or a catalog version.
 
-    `run_id` being null does not un-reference an object.
+    `run_id` being null does not un-reference an object. With ``strict`` a
+    reference table that cannot be read aborts the collection: before a real
+    deletion, an unread table must never make its evidence look unreferenced.
     """
     keys: set[str] = set()
     pages = getattr(store, "_get_pages", None)
@@ -133,6 +139,8 @@ def collect_referenced_object_keys(store: Any) -> set[str]:
                 for row in pages(f"{table}?select=evidence_raw_sha256"):
                     _add_digest(keys, row.get("evidence_raw_sha256"))
             except RuntimeError:
+                if strict:
+                    raise
                 continue
         return keys
     for row in getattr(store, "documents", []) or []:
@@ -150,11 +158,12 @@ def preview_evidence_gc(
     *,
     grace_days: int = EVIDENCE_GRACE_DAYS,
     now: datetime | None = None,
+    strict: bool = False,
 ) -> dict[str, Any]:
     """List unreferenced objects older than the grace period. Does not delete."""
     current = now or datetime.now(timezone.utc)
     cutoff = current - timedelta(days=max(1, grace_days))
-    referenced = collect_referenced_object_keys(store)
+    referenced = collect_referenced_object_keys(store, strict=strict)
     objects = evidence.list_objects() if evidence is not None else []
     unreferenced: list[dict[str, Any]] = []
     unreferenced_bytes = 0
@@ -183,6 +192,29 @@ def preview_evidence_gc(
         "keptJobs": True,
         "keptVersions": True,
     }
+
+
+def evidence_gc_blocked(
+    preview: dict[str, Any],
+    *,
+    max_delete_fraction: float = MAX_DELETE_FRACTION,
+    min_delete_allowance: int = MIN_DELETE_ALLOWANCE,
+) -> str | None:
+    """Why an unattended deletion must not run, or None when it may.
+
+    A healthy week orphans a handful of objects. An empty reference set over a
+    non-empty bucket, or most of the bucket suddenly unreferenced, points at a
+    broken reference read (a revoked grant, an API change), not at stale
+    evidence; deleting then would destroy evidence still in use.
+    """
+    objects = int(preview.get("objectCount") or 0)
+    unreferenced = int(preview.get("unreferencedCount") or 0)
+    if objects and not int(preview.get("referencedKeys") or 0):
+        return f"no referenced keys were read for {objects} stored object(s)"
+    allowance = max(min_delete_allowance, int(objects * max_delete_fraction))
+    if unreferenced > allowance:
+        return f"{unreferenced} of {objects} object(s) unreferenced exceeds the allowance of {allowance}"
+    return None
 
 
 def apply_evidence_gc(evidence: Any, preview: dict[str, Any]) -> dict[str, Any]:

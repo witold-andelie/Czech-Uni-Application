@@ -1,0 +1,60 @@
+name: Weekly evidence garbage collection
+
+# Deletes source-evidence Storage objects that no document row or catalog
+# version references and that are older than the 30-day grace period. Job and
+# programme identities, fact versions and referenced evidence are never
+# touched. A deletion reads every reference table or stops, and refuses to run
+# when the reference read looks broken (storage/retention.py
+# evidence_gc_blocked). The daily refresh already trims process runs.
+
+on:
+  schedule:
+    - cron: '43 12 * * 0'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: preview lists what would be deleted; apply deletes it
+        type: choice
+        default: preview
+        options:
+          - preview
+          - apply
+
+permissions:
+  contents: read
+
+concurrency:
+  group: evidence-gc
+  cancel-in-progress: false
+
+jobs:
+  gc:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.13'
+      # The REST storage path is standard library only; nothing to install.
+      - name: Garbage-collect unreferenced evidence
+        env:
+          SUPABASE_USE_REST: "1"
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          GC_MODE: ${{ github.event_name == 'schedule' && 'apply' || github.event.inputs.mode }}
+        run: |
+          if [ "$GC_MODE" = "apply" ]; then
+            python services/ingestion/src/cli/gc_evidence.py --apply
+          else
+            python services/ingestion/src/cli/gc_evidence.py
+          fi
+      - name: Report Supabase usage against free-plan watermarks
+        if: always()
+        env:
+          SUPABASE_USE_REST: "1"
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: python services/ingestion/src/cli/inventory_usage.py

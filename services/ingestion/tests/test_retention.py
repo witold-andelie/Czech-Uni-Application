@@ -112,3 +112,33 @@ def test_rest_list_source_runs_pages_past_one_thousand() -> None:
     store._request = fake  # type: ignore[assignment]
     rows = store.list_source_runs()
     assert len(rows) == 1001
+
+
+def test_unattended_gc_refuses_a_broken_reference_read() -> None:
+    from storage.retention import evidence_gc_blocked
+
+    healthy = {"objectCount": 468, "referencedKeys": 1628, "unreferencedCount": 3}
+    no_refs = {"objectCount": 468, "referencedKeys": 0, "unreferencedCount": 468}
+    most_orphaned = {"objectCount": 468, "referencedKeys": 40, "unreferencedCount": 400}
+    small_bucket = {"objectCount": 10, "referencedKeys": 4, "unreferencedCount": 6}
+
+    assert evidence_gc_blocked(healthy) is None
+    assert "no referenced keys" in evidence_gc_blocked(no_refs)
+    assert "exceeds the allowance" in evidence_gc_blocked(most_orphaned)
+    assert evidence_gc_blocked(small_bucket) is None
+
+
+def test_strict_reference_read_stops_on_an_unreadable_version_table() -> None:
+    import pytest
+
+    from storage.retention import collect_referenced_object_keys
+
+    class Store:
+        def _get_pages(self, path: str):
+            if path.startswith("ingest_raw_document"):
+                return [{"storage_path": "source-evidence/aaaa.gz", "raw_sha256": "aaaa"}]
+            raise RuntimeError("permission denied for view catalog_programme_version")
+
+    assert "aaaa.gz" in collect_referenced_object_keys(Store())
+    with pytest.raises(RuntimeError):
+        collect_referenced_object_keys(Store(), strict=True)

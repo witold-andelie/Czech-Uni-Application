@@ -134,6 +134,13 @@ require operator intervention.
 
 Ingest keeps catalog identities and fact versions. Each source keeps only the
 latest 14 process runs and their listing observations (`INGEST_KEEP_RUNS`).
+`evidence-gc.yml` runs every Sunday at 12:43 UTC: it deletes Storage evidence
+objects that no document row or catalog version references and that are older
+than 30 days, then reports usage against the free-plan watermarks. It reads
+every reference table or stops, and refuses to delete when more than a quarter
+of the bucket (at least 25 objects) looks unreferenced, since that signals a
+broken reference read rather than stale evidence. Manual runs default to
+preview.
 Official HTML is hashed, not stored in Postgres, so the free-plan database
 cannot grow with every daily harvest. HTML listing parsers share the adapter
 engine; `python services/ingestion/src/cli/probe_job_sources.py` reports HEIs
