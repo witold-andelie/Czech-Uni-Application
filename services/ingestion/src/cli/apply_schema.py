@@ -79,6 +79,23 @@ def _redact(message: str) -> str:
     return text
 
 
+def ensure_migration_table(conn: object) -> None:
+    """Create the migration ledger without a window of public API exposure."""
+    with conn.transaction():
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS public.schema_migrations (
+              id text PRIMARY KEY,
+              applied_at timestamptz NOT NULL DEFAULT now()
+            )
+            """
+        )
+        conn.execute("ALTER TABLE public.schema_migrations ENABLE ROW LEVEL SECURITY")
+        conn.execute(
+            "REVOKE ALL ON TABLE public.schema_migrations FROM PUBLIC, anon, authenticated"
+        )
+
+
 def main() -> int:
     _load_env(ROOT / ".env")
     import psycopg
@@ -94,14 +111,7 @@ def main() -> int:
         return 1
     applied: list[str] = []
     try:
-        conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS public.schema_migrations (
-              id text PRIMARY KEY,
-              applied_at timestamptz NOT NULL DEFAULT now()
-            )
-            """
-        )
+        ensure_migration_table(conn)
         done = {row[0] for row in conn.execute("SELECT id FROM public.schema_migrations")}
         for path in files:
             ident = path.name
