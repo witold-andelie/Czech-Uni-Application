@@ -23,7 +23,8 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-24.04
-    timeout-minutes: ${{ github.event.inputs.mode == 'adapters' && 20 || 50 }}
+    # A full tick measured ~46 min (2026-09-28/29); keep headroom for the commit steps.
+    timeout-minutes: ${{ github.event.inputs.mode == 'adapters' && 20 || 60 }}
     permissions:
       contents: write
       actions: write
@@ -262,8 +263,12 @@ jobs:
             # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
             gh workflow run ci.yml --ref main
           fi
+      # Commit whatever the bounded tick produced, even when one of fifty
+      # sources failed: files are written atomically per source, and the
+      # coverage floors below refuse any drop (A100/A101). Gating on a fully
+      # green tick meant nothing was ever committed.
       - name: Commit the refreshed programme page link index on main
-        if: ${{ always() && steps.crawl.outcome == 'success' && github.ref == 'refs/heads/main' }}
+        if: ${{ always() && steps.crawl.outcome != 'skipped' && github.ref == 'refs/heads/main' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -278,11 +283,12 @@ jobs:
             gh workflow run ci.yml --ref main
           fi
       - name: Commit harvested job candidates on main
-        if: ${{ always() && github.ref == 'refs/heads/main' && (steps.crawl.outcome == 'success' || steps.adapters.outcome == 'success') }}
+        if: ${{ always() && github.ref == 'refs/heads/main' && (steps.crawl.outcome != 'skipped' || steps.adapters.outcome != 'skipped') }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           python services/ingestion/src/check_job_coverage.py
+          python services/ingestion/src/publish.py --check-sources
           git add data/sources/browse/nine-hei-jobs.json
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'

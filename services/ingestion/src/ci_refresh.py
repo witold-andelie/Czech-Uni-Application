@@ -15,6 +15,8 @@ from schedule import ScheduleManager, VOLATILE_TASKS
 from storage.postgres import load_database_env, require_database, store_from_env
 
 ROOT = Path(__file__).resolve().parents[3]
+# Seconds between a task's graceful budget and its hard timeout.
+GRACE_SECONDS = 180
 FLAGS = {
     "job_recheck": "--recheck-jobs",
     "job_discovery": "--discover-jobs",
@@ -82,12 +84,15 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
         _emit(f"ci_refresh: start {kind} timeout_s={timeout}", log)
         started = clock()
         try:
+            # Leave room for the source already in flight to finish, so a task
+            # that can stop between sources returns before the hard kill.
+            task_env = {**worker_env, "WORKER_TASK_BUDGET_SECONDS": str(max(timeout - GRACE_SECONDS, 30))}
             result = run(
                 task_command(task),
                 cwd=ROOT,
                 timeout=timeout,
                 check=False,
-                env=worker_env,
+                env=task_env,
             )
             if result.returncode:
                 error = f"Worker exited with status {result.returncode}"

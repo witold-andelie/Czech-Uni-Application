@@ -12,7 +12,6 @@ from schedule import (  # noqa: E402
     JOB_DISCOVERY_INTERVAL_HOURS,
     JOB_RECHECK_INTERVAL_HOURS,
     PROGRAMME_AVAILABILITY_INTERVAL_HOURS,
-    SLA_HOURS,
     ScheduleManager,
     to_iso,
 )
@@ -287,3 +286,16 @@ def test_volatile_task_lease_and_retry_are_isolated(tmp_path: Path) -> None:
         item["type"] == "programme_availability" and item["priority"] == "retry"
         for item in at_retry
     )
+
+
+def test_daily_task_runs_at_a_slightly_earlier_wake_next_day(tmp_path: Path) -> None:
+    """GitHub's daily wake drifts; 'once a day' must not become every other day."""
+    mgr = ScheduleManager(tmp_path / "schedule-state.json")
+    finished = datetime(2026, 9, 28, 8, 41, tzinfo=timezone.utc)
+    mgr.record_volatile_success("job_discovery", now=finished)
+
+    same_day = [t["type"] for t in mgr.get_pending_tasks(finished + timedelta(hours=2))]
+    next_wake = [t["type"] for t in mgr.get_pending_tasks(datetime(2026, 9, 29, 8, 28, tzinfo=timezone.utc))]
+
+    assert "job_discovery" not in same_day
+    assert "job_discovery" in next_wake

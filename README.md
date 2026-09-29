@@ -30,14 +30,15 @@ GitHub hosts the source code and CI, not the public website.
 
 ## Current release
 
-- Publication **`v2026-09-29.1`**: 54 institutions, 5,019 register offerings,
+- Publication **`v2026-09-29.2`**: 54 institutions, 5,019 register offerings,
   **3,426** with a school-owned programme page (matched rows, not a claim that
   every page was title-verified this run). 134 approved job records in the
   snapshot extract (unchanged; 6 withheld by live-evidence, not reported as
-  closed), 6 reviewed admissions excerpts. The new admissions batch adds two
-  CZU English bachelor programmes; existing reviewed jobs and programmes keep
-  their approvals while their bound evidence and facts are unchanged. The
-  default jobs list count follows the visitor's clock.
+  closed), 8 reviewed admissions excerpts. The two 2026-09-29 admissions
+  batches add four ČZU PEF English programmes (two bachelor, two master);
+  existing reviewed jobs and programmes keep their approvals while their bound
+  evidence and facts are unchanged. The default jobs list count follows the
+  visitor's clock.
 - Harvest runs daily on GitHub Actions (`refresh.yml` full tick). That writes
   Supabase and a 3-day artifact; it does not switch the public snapshot.
   Official job sources are registered for part of the 54-university baseline;
@@ -118,7 +119,8 @@ Never commit API tokens or paste them into issues or logs.
 ### Scheduled collection
 
 `refresh.yml` wakes once per day at 02:17 UTC in full mode and executes only tasks due under the
-existing 1/4/2-hour and five-day policies. Manual **Run workflow** defaults to
+daily job/programme-availability policy and the 120-hour school shards
+(`docs/REFRESH_POLICY.md`). Manual **Run workflow** defaults to
 `adapters` (about 8–15 minutes): it harvests registered HTML job adapters into
 Supabase and skips programme catalogues and shards. Choose `full` only when you
 need the complete tick. Each tick installs Scrapling 0.4.9

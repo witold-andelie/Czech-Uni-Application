@@ -125,3 +125,18 @@ def test_run_tick_logs_before_waiting_for_worker(tmp_path):
     start = next(item for item in order if item.startswith("ci_refresh: start job_recheck"))
     assert order.index(start) < order.index("run")
     assert any(item.startswith("ci_refresh: finish job_recheck") for item in order)
+
+
+def test_task_gets_a_graceful_budget_below_its_hard_timeout(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [{"type": "job_discovery"}]
+    seen = {}
+
+    def run(command, **kwargs):
+        seen["timeout"] = kwargs["timeout"]
+        seen["budget"] = float(kwargs["env"]["WORKER_TASK_BUDGET_SECONDS"])
+        manager.record_volatile_success("job_discovery")
+        return SimpleNamespace(returncode=0)
+
+    run_tick(manager, run=run, output=tmp_path / "report.json")
+    assert 0 < seen["budget"] < seen["timeout"]

@@ -30,6 +30,11 @@ CZU_DOCTORAL_PROGRAMME_AVAILABILITY_INTERVAL_HOURS = 24
 # itself skips any link checked inside 120 hours.
 PROGRAMME_LINK_RESOLUTION_INTERVAL_HOURS = 120
 RETRY_BACKOFFS = [300, 1800, 7200]
+# GitHub starts the daily wake hours late, by a different amount each day
+# (2026-09-28 08:41 UTC, 2026-09-29 08:28 UTC). A task finished at yesterday's
+# wake counts as due at today's wake when it is this close to due; otherwise a
+# 24-hour task only runs every other day.
+WAKE_JITTER_HOURS = 6
 STATE_LOCK_TIMEOUT_SECONDS = 5.0
 
 VOLATILE_TASKS = {
@@ -470,7 +475,7 @@ class ScheduleManager:
                 )
                 continue
             next_due = parse_iso(info.get("nextDueAt"))
-            if next_due is None or next_due <= current:
+            if next_due is None or next_due <= current + timedelta(hours=WAKE_JITTER_HOURS):
                 tasks.append(
                     {
                         "type": task_type,

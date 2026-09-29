@@ -25,7 +25,6 @@ def test_verified_candidates_live_in_test_fixtures() -> None:
     assert not (ROOT / "services" / "ingestion" / "src" / "data" / "verified_candidates.json").is_file()
 
 from harvest_nine_hei_jobs import (  # noqa: E402
-    TODAY,
     classify_track,
     discover_registered_candidates,
     extract_html_element,
@@ -907,13 +906,13 @@ def test_complete_listing_archives_a_disappeared_dynamic_candidate() -> None:
             "followDetails": True,
         }
     ]
+    pages = {
+        listing_url: (200, '<a href="/en/about-us/careers/vacancies/98765-new">Research assistant in AI</a>'),
+        detail_url: (200, "<h1>Research assistant in AI</h1><p>Master degree. Deadline 2026-09-30.</p>"),
+    }
     first = harvest_with_registered_discovery(
         [],
-        lambda url: (
-            (200, '<a href="/en/about-us/careers/vacancies/98765-new">Research assistant in AI</a>')
-            if url == listing_url
-            else (200, "<h1>Research assistant in AI</h1><p>Master degree. Deadline 2026-09-30.</p>")
-        ),
+        lambda url: pages.get(url, (404, "")),
         as_of=parse_date("2026-09-01"),
         registry=registry,
     )
@@ -1168,7 +1167,7 @@ def test_utb_cards_pair_heading_with_same_card_detail_link() -> None:
 
 def test_ujep_parser_reads_only_the_open_position_article() -> None:
     listing_url = "https://zamo.ujep.test/open-positions/"
-    html = f"""
+    html = """
     <nav><a href="https://zamo.ujep.test/staff-salary/">Mzda</a></nav>
     <article class="page" id="post">
       <header><a href="https://zamo.ujep.test/">ZAMO</a><h1>Open Positions</h1></header>
@@ -2289,8 +2288,6 @@ _81369_RAW = (
 
 
 def test_replay_stored_candidates_backfills_facts_and_demotes_review(tmp_path) -> None:
-    import pytest
-    from publication_rules import job_fact_hash
 
     payload = _a69_replay_payload()
     raw_dir = tmp_path / "raw"
@@ -2606,3 +2603,49 @@ def test_draft_translation_record_stays_draft_after_apply(tmp_path) -> None:
     assert locale_statuses == {"zh-CN": "draft", "en": "draft", "cs": "draft"}
     for locale in ("zh-CN", "en", "cs"):
         assert applied["translationReview"]["locales"][locale]["contentHash"] == entry["locales"][locale]["contentHash"]
+
+
+def test_stored_records_seed_the_next_harvest_without_losing_the_window() -> None:
+    """Production shards seed from the stored candidate file (2026-09-27).
+
+    Stored records carry localized titles and separate windows; handing them
+    over unchanged crashed every shard. Round-trip one harvest into the next.
+    """
+    source_url = "https://www.example-university.cz/kariera/12345"
+    page = (
+        "<h1>Research assistant in soil chemistry</h1>"
+        "<p>Master degree required. Deadline 2026-10-31. Salary 40 000 CZK per month.</p>"
+    )
+    raw = {
+        "id": "job-11000-roundtrip",
+        "employerId": "msmt-vs_11000",
+        "title": "Research assistant in soil chemistry",
+        "titleZh": "土壤化学研究助理",
+        "laboratory": "Faculty of Science",
+        "sourceUrl": source_url,
+        "applicationUrl": source_url,
+        "applicationMethod": "official_instructions",
+        "track": "research_technical",
+        "opensAt": "2026-09-01",
+        "closesAt": "2026-10-31",
+        "roundType": "regular",
+    }
+    first = jobs_harvester.harvest_with_registered_discovery(
+        [raw], lambda url: (200, page), {}, as_of=date(2026, 9, 29), registry=[]
+    )
+    assert [job["id"] for job in first["jobs"]] == ["job-11000-roundtrip"]
+    assert isinstance(first["jobs"][0]["title"], dict)
+
+    seeds = jobs_harvester.seed_candidates_from_stored(first)
+    assert seeds[0]["title"] == "Research assistant in soil chemistry"
+    assert seeds[0]["titleZh"] == "土壤化学研究助理"
+    assert seeds[0]["closesAt"] == "2026-10-31"
+    assert "minimumDegree" not in seeds[0] and "doctorateRequired" not in seeds[0]
+    assert jobs_harvester.seed_candidates_from_stored(first, {"msmt-vs_14000"}) == []
+
+    second = jobs_harvester.harvest_with_registered_discovery(
+        seeds, lambda url: (200, page), first, as_of=date(2026, 9, 30), registry=[]
+    )
+    assert [job["id"] for job in second["jobs"]] == ["job-11000-roundtrip"]
+    assert second["jobs"][0]["title"] == first["jobs"][0]["title"]
+    assert [(w["opensAt"], w["closesAt"]) for w in second["windows"]] == [("2026-09-01", "2026-10-31")]

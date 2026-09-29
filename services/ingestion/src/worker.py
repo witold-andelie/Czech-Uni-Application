@@ -187,12 +187,9 @@ def plan_for_day(
         save_shard_assignments(mapping, path)
     selected_ids = set(units_for_shard(ids, shard_idx, previous=mapping))
     selected = [item for item in schools if item["id"] in selected_ids]
-    stored = load_json(JOBS_OUT)
-    jobs = [
-        item
-        for item in stored.get("jobs") or []
-        if isinstance(item, dict) and item.get("employerId") in selected_ids
-    ]
+    from harvest_nine_hei_jobs import seed_candidates_from_stored
+
+    jobs = seed_candidates_from_stored(load_json(JOBS_OUT), selected_ids)
     return {
         "date": day.isoformat(),
         "shard": shard_idx,
@@ -243,6 +240,8 @@ def harvest_jobs(
     fetch_page=None,
     jobs_path: Path | None = None,
     registry: list[dict] | None = None,
+    source_last_attempt: dict[str, str] | None = None,
+    budget_seconds: float | None = None,
 ) -> dict:
     from harvest_nine_hei_jobs import harvest_with_registered_discovery
     from engine.transport import live_fetcher
@@ -274,12 +273,25 @@ def harvest_jobs(
     if registry is None and not candidates and employer_ids is None:
         from harvest_nine_hei_jobs import load_registered_job_sources
         sources = load_registered_job_sources()
+        # Least recently attempted first (never attempted before all). In the
+        # fixed registry order a bounded pass reached the same first sources
+        # every day and never the rest (2026-09-29: 25 of 50).
+        last_attempt = source_last_attempt or {}
+        sources = sorted(sources, key=lambda item: str(last_attempt.get(str(item.get("id"))) or ""))
+        deadline = time.monotonic() + budget_seconds if budget_seconds else None
         aggregate = {"runKind": "partial_checkpoint", "expectedSourceIds": [s["id"] for s in sources],
                      "completeSourceIds": [], "deferredSourceIds": [], "attempts": [],
                      "discoveredCount": 0, "hostCooldowns": {}}
         processed = set()
         skipped = []
-        for source in sources:
+        for position, source in enumerate(sources):
+            if deadline is not None and time.monotonic() >= deadline:
+                # Stop between sources rather than be killed inside one: what
+                # is not reached is deferred, not failed, and goes first next.
+                rest = [str(item.get("id")) for item in sources[position:]]
+                aggregate["deferredSourceIds"].extend(rest)
+                print(f"job_discovery: budget spent, deferred={len(rest)}", flush=True)
+                break
             print(f"job_discovery: source={source.get('id')}", flush=True)
             page = injected_fetch if injected_fetch is not None else live_fetcher(source)
             part = harvest_jobs([], fetch_page=page, jobs_path=target, registry=[source])
@@ -332,6 +344,19 @@ def harvest_jobs(
     }
 
 
+def task_budget_seconds() -> float | None:
+    """Graceful budget the scheduler tick grants this task (ci_refresh.py).
+
+    The tick kills a task at its hard timeout; a task that can stop between
+    sources uses this smaller budget to return on its own and keep its results.
+    """
+    try:
+        value = float(os.environ.get("WORKER_TASK_BUDGET_SECONDS") or 0)
+    except ValueError:
+        return None
+    return value if value > 0 else None
+
+
 def discover_all_jobs(
     fetch_page=None,
     now: datetime | None = None,
@@ -357,12 +382,20 @@ def discover_all_jobs(
 
             state = manager.load_state(current)
             load_host_cooldowns((state.get("jobDiscovery") or {}).get("hostCooldowns") or {}, current)
+            prefix = "job-discovery:"
+            last_attempt = {
+                key[len(prefix):]: str(info.get("lastAttemptAt") or "")
+                for key, info in (state.get("sources") or {}).items()
+                if key.startswith(prefix) and isinstance(info, dict)
+            }
             result = harvest_jobs(
                 [],
                 employer_ids=None,
                 fetch_page=fetch_page,
                 jobs_path=jobs_path,
                 registry=registry,
+                source_last_attempt=last_attempt,
+                budget_seconds=task_budget_seconds(),
             )
         discovery = result.get("discovery") or {}
         attempts = discovery.get("attempts") or []

@@ -1740,18 +1740,10 @@ def slug_id(employer_id: str, title: str, source_url: str) -> str:
 def parse_mff_listing(html: str, page_url: str) -> list[dict]:
     text = visible_text(html)
     jobs = []
-    pattern = re.compile(
-        r"(Academic Researcher|Research Fellow|Postdoctoral position|Postdoctoral|Assistant Professor|Lecturer|Lector)[^\n]{0,180}?Job Offer Code:\s*(\S+)\s*Submission Deadline:\s*([A-Za-z]+\s+\d{1,2},\s+20\d{2})",
-        re.I,
-    )
-    # The stored HTML may flatten newlines; use a looser split on Job Offer Code.
-    chunks = re.split(r"Job Offer Code:\s*", text)
-    if len(chunks) < 2:
+    if "Job Offer Code:" not in text:
         return jobs
-    preamble = chunks[0]
-    titles = re.split(r"\s{2,}| · ", preamble)
-    current_title = titles[-1].strip() if titles else ""
-    # Re-parse by walking "Title ... Job Offer Code: X Submission Deadline: Month DD, YYYY"
+    # The stored HTML may flatten newlines, so walk
+    # "Title ... Job Offer Code: X Submission Deadline: Month DD, YYYY".
     matches = re.finditer(
         r"([A-Z][^:]{8,160}?)\s+Job Offer Code:\s*(\S+)\s+Submission Deadline:\s*([A-Za-z]+ \d{1,2}, 20\d{2})",
         text,
@@ -4013,6 +4005,87 @@ def load_verified_candidates() -> list[dict]:
 VERIFIED_CANDIDATES: list[dict] = load_verified_candidates()
 
 
+def _original_text(value, language: str) -> str:
+    """The announcement's own wording from a stored localized field."""
+    if isinstance(value, dict):
+        for key in (language, "en", "cs", "zh-CN"):
+            text = value.get(key)
+            if isinstance(text, str) and text.strip():
+                return text
+        return ""
+    return value if isinstance(value, str) else ""
+
+
+def seed_candidates_from_stored(payload: dict, employer_ids: set[str] | None = None) -> list[dict]:
+    """Turn stored job records back into harvest candidates.
+
+    A stored record keeps localized title/laboratory and its windows beside
+    it; the harvester reads a candidate's original-language title as a string
+    and its window dates, code and pay as flat fields (the shape of the old
+    audit seed list). Handing stored records over as they are crashed every
+    shard from 2026-09-27 (``'dict' object has no attribute 'split'``).
+
+    Qualification facts are deliberately not carried over: they are read
+    again from the full announcement text, never copied from a prior record.
+    """
+    windows: dict[str, list[dict]] = {}
+    for item in payload.get("windows") or []:
+        if isinstance(item, dict) and item.get("ownerId"):
+            windows.setdefault(str(item["ownerId"]), []).append(item)
+    seeds: list[dict] = []
+    for job in payload.get("jobs") or []:
+        if not isinstance(job, dict) or not job.get("id") or not job.get("sourceUrl"):
+            continue
+        if employer_ids is not None and job.get("employerId") not in employer_ids:
+            continue
+        language = str(job.get("sourceLanguage") or "en")
+        title = _original_text(job.get("title"), language)
+        if not title or not job.get("track"):
+            continue
+        owned = sorted(windows.get(str(job["id"])) or [], key=lambda item: str(item.get("closesAt") or ""))
+        window = owned[-1] if owned else {}
+        salary = job.get("salary") if isinstance(job.get("salary"), dict) else {}
+        candidate = {
+            "id": job["id"],
+            "employerId": job.get("employerId"),
+            "title": title,
+            "sourceUrl": job["sourceUrl"],
+            "track": job["track"],
+            "sourceLanguage": language,
+            "code": job.get("sourceItemId") or window.get("roundLabelOriginal"),
+            "opensAt": window.get("opensAt"),
+            "closesAt": window.get("closesAt"),
+            "roundType": window.get("roundType"),
+            "salaryAmount": salary.get("amount"),
+            "salaryCurrency": salary.get("currency"),
+            "salaryCycle": salary.get("cycle"),
+            "salaryTax": salary.get("tax"),
+            "basisFte": salary.get("basisFte"),
+        }
+        zh_title = job["title"].get("zh-CN") if isinstance(job.get("title"), dict) else None
+        if isinstance(zh_title, str) and zh_title.strip():
+            candidate["titleZh"] = zh_title
+        laboratory = _original_text(job.get("laboratory"), language)
+        if laboratory:
+            candidate["laboratory"] = laboratory
+        for key in (
+            "applicationUrl",
+            "applicationMethod",
+            "paidStatus",
+            "workingLanguages",
+            "employmentFte",
+            "employmentStartsAt",
+            "fundingType",
+            "salaryAmountMin",
+            "salaryAmountMax",
+            "discoverySourceId",
+        ):
+            if job.get(key) is not None:
+                candidate[key] = job[key]
+        seeds.append({key: value for key, value in candidate.items() if value is not None})
+    return seeds
+
+
 
 JOB_TITLES_ZH: dict[str, str] = {
     "job-cuni-cenmas-asia-postdoc": "亚洲比较区域研究博士后研究员",
@@ -4608,7 +4681,7 @@ def main() -> None:
         print(summary)
         return
     previous = json.loads(OUT.read_text(encoding="utf-8")) if OUT.is_file() else {}
-    seeds = [item for item in previous.get("jobs") or [] if isinstance(item, dict)]
+    seeds = seed_candidates_from_stored(previous)
     payload = harvest_with_registered_discovery(seeds, request, previous)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     tmp = OUT.with_suffix(".json.tmp")

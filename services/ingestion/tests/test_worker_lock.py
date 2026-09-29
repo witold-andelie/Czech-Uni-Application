@@ -105,3 +105,36 @@ def test_two_processes_cannot_enter_the_refresh_critical_section(tmp_path: Path)
     assert not first.is_alive()
     assert not second.is_alive()
     assert sorted([results.get(timeout=2), results.get(timeout=2)]) == ["acquired", "blocked"]
+
+
+def test_discovery_rotates_sources_and_defers_what_the_budget_does_not_reach(tmp_path, monkeypatch):
+    """A bounded daily pass must not reach only the first registry sources forever."""
+    import harvest_nine_hei_jobs
+
+    sources = [{"id": "alpha"}, {"id": "beta"}, {"id": "gamma"}, {"id": "delta"}]
+    monkeypatch.setattr(harvest_nine_hei_jobs, "load_registered_job_sources", lambda: sources)
+    clock = {"now": 0.0}
+    monkeypatch.setattr(worker.time, "monotonic", lambda: clock["now"])
+    visited = []
+    original = worker.harvest_jobs
+
+    def one_source(candidates, employer_ids=None, *, registry=None, **kwargs):
+        if registry is not None and len(registry) == 1:
+            visited.append(registry[0]["id"])
+            clock["now"] += 100
+            return {"discovery": {"completeSourceIds": [registry[0]["id"]]}}
+        return original(candidates, employer_ids, registry=registry, **kwargs)
+
+    monkeypatch.setattr(worker, "harvest_jobs", one_source)
+    target = tmp_path / "jobs.json"
+    target.write_text("{}", encoding="utf-8")
+    result = original(
+        [],
+        fetch_page=lambda url: (200, ""),
+        jobs_path=target,
+        source_last_attempt={"alpha": "2026-09-29T08:30:00Z", "beta": "2026-09-28T08:30:00Z"},
+        budget_seconds=150,
+    )
+    # Never-attempted sources first, then the oldest; stop between sources.
+    assert visited == ["gamma", "delta"]
+    assert result["discovery"]["deferredSourceIds"] == ["beta", "alpha"]
