@@ -12,7 +12,14 @@ from typing import Any
 from urllib.parse import urlsplit
 
 from adapters.base import Candidate, CompletenessResult, ListingReference, RawDocument
-from harvest_nine_hei_jobs import classify_track, discover_registered_candidates, parse_generic_job_page
+from html import escape
+
+from harvest_nine_hei_jobs import (
+    _stable_discovered_id,
+    classify_track,
+    discover_registered_candidates,
+    parse_generic_job_page,
+)
 
 SCOPE_FROM_TRACK = {
     "postdoc": "postdoctoral",
@@ -44,6 +51,13 @@ class HarvestListingAdapter:
             if not url:
                 continue
             remote_id = str(row.get("code") or url)
+            # The id the discovery path gives the same row: a code-less row is
+            # keyed by a digest of employer, title and URL. Keyed by its raw URL
+            # here instead, every reviewed vacancy of a code-less listing (UPOL,
+            # UHK, JČU ...) read as missing and was archived (2026-10-01).
+            job_id = _stable_discovered_id(
+                {**row, "employerId": row.get("employerId") or self.source.get("employerId")}
+            )
             refs.append(
                 ListingReference(
                     remote_id=remote_id,
@@ -51,7 +65,7 @@ class HarvestListingAdapter:
                     title=str(row.get("title") or ""),
                     listing_url=str(self.source.get("url") or url),
                     position=index,
-                    extra={"listing": row},
+                    extra={"listing": row, "jobId": job_id},
                 )
             )
         self._listing_refs = refs
@@ -73,11 +87,20 @@ class HarvestListingAdapter:
                     extra={"reference": reference},
                 )
             ]
-        fetch_page = context["fetch_page"]
-        status, body = fetch_page(reference.detail_url)
-        if status != 200 or not body:
-            self._reasons.append("invalid-detail-response")
-            return []
+        if urlsplit(reference.detail_url).path.lower().endswith(".pdf"):
+            # A notice published as a PDF is read as text, as discovery does;
+            # fetched as a page its bytes matched no title (JČU, 2026-10-01).
+            status, payload = context["fetch_attachment"](reference.detail_url)
+            text = context["pdf_text"](payload) if status == 200 else ""
+            if len(text.strip()) < 20:
+                self._reasons.append("pdf-text-extraction-failed")
+                return []
+            body = f"<h1>{escape(reference.title)}</h1><p>{escape(text)}</p>"
+        else:
+            status, body = context["fetch_page"](reference.detail_url)
+            if status != 200 or not body:
+                self._reasons.append("invalid-detail-response")
+                return []
         self._details_ok += 1
         return [
             RawDocument(
@@ -131,6 +154,7 @@ class HarvestListingAdapter:
                     track=track,
                     paid_status=facts.get("paidStatus") or listing.get("paidStatus") or "unconfirmed",
                     facts=facts,
+                    extra={"jobId": reference.extra.get("jobId")} if reference.extra.get("jobId") else {},
                 )
             )
         return out
@@ -151,6 +175,10 @@ class HarvestListingAdapter:
 def uses_binary_or_private_api(source: dict) -> bool:
     parser = str(source.get("parser") or "")
     if parser in {"lmc_graphql", "zcu_document_feed"}:
+        return True
+    # Vacancies read from PDFs attached to each detail page (UPCE): only the
+    # discovery path follows those attachments and keys the vacancy by them.
+    if source.get("detailAttachmentPatterns"):
         return True
     if source.get("detailFormat") == "pdf":
         return True

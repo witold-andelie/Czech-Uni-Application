@@ -31,12 +31,20 @@ def snapshot_job_id(employer_id: str | None, remote_id: str) -> str:
     return f"job-{prefix}-{code}" if prefix else f"job-{code}"
 
 
+def adapter_job_id(candidate: Candidate, source: dict) -> str:
+    """The adapter's job id: the discovery path's id when the adapter knows it."""
+    job_id = (candidate.extra or {}).get("jobId")
+    if job_id:
+        return str(job_id)
+    return snapshot_job_id(candidate.employer_id or source.get("employerId"), candidate.remote_id)
+
+
 def candidate_to_snapshot_job(candidate: Candidate, source: dict, now_text: str) -> dict[str, Any]:
     employer_id = candidate.employer_id or source.get("employerId")
     title = candidate.title
     facts = candidate.facts or {}
     return {
-        "id": snapshot_job_id(employer_id, candidate.remote_id),
+        "id": adapter_job_id(candidate, source),
         "employerId": employer_id,
         "title": {"zh-CN": title, "en": title, "cs": title},
         "originalText": title,
@@ -86,7 +94,7 @@ def candidate_to_harvest_candidate(candidate: Candidate, source: dict) -> dict[s
     employer_id = candidate.employer_id or source.get("employerId")
     facts = candidate.facts or {}
     item: dict[str, Any] = {
-        "id": snapshot_job_id(employer_id, candidate.remote_id),
+        "id": adapter_job_id(candidate, source),
         "employerId": employer_id,
         "title": candidate.title,
         "sourceUrl": candidate.official_detail_url,
@@ -368,10 +376,7 @@ def harvest_adapter_source(
         stored = [item for item in seed_candidates_from_stored(previous or {}) if item["id"] in listed_ids]
         merged_candidates = _merge_seed_and_discovered(stored, incoming)
         processed = harvest_candidates(merged_candidates, fetch_page, previous or {}, current, sleep_seconds=0)
-        scope = {
-            snapshot_job_id(item.employer_id or source.get("employerId"), item.remote_id): item
-            for item in outcome["candidates"]
-        }
+        scope = {adapter_job_id(item, source): item for item in outcome["candidates"]}
         for job in processed.get("jobs") or []:
             candidate = scope.get(job.get("id"))
             if candidate is None or job.get("lastAttemptReason") in {"past-deadline-archived"}:

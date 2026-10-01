@@ -217,3 +217,76 @@ def test_roboprox_source_keeps_listed_open_rows_past_their_euraxess_deadline() -
     assert job["employmentFte"] == 1.0
     windows = [w for w in result["snapshot"].get("windows") or [] if w.get("jobId") == job["id"]]
     assert all(w.get("closesAt") is None for w in windows)
+
+
+def test_code_less_listing_keeps_the_discovery_id_and_reads_pdf_notices() -> None:
+    # 2026-10-01: keyed by raw URL, every reviewed vacancy of a code-less
+    # listing (UPOL, UHK, JČU) read as missing and was archived; PDF notices
+    # were fetched as pages and matched no title.
+    from harvest_nine_hei_jobs import slug_id
+
+    page = "https://www.jcu.test/volna-mista"
+    pdf_url = "https://www.jcu.test/images/UNIVERZITA/volna-mista/2026/09/postdoc.pdf"
+    title = "Postdoktorská pozice ve fyzické geografii (PRF JU)"
+    listing = f'<main><a href="{pdf_url}">{title}</a></main>'
+    notice_text = (
+        f"{title} Požadujeme ukončené doktorské vzdělání v oboru. Nabízíme mzdu 37 500 Kč měsíčně. "
+        "Přihlášky do 31. 10. 2099."
+    )
+    stored_id = slug_id("msmt-vs_12000", title, pdf_url)
+    previous = {
+        "jobs": [
+            {
+                "id": stored_id,
+                "employerId": "msmt-vs_12000",
+                "title": {"zh-CN": title, "en": title, "cs": title},
+                "originalText": title,
+                "sourceUrl": pdf_url,
+                "applicationUrl": pdf_url,
+                "discoverySourceId": "jcu-central-vacancies",
+                "visibility": "public",
+                "track": "postdoc",
+            }
+        ],
+        "windows": [],
+    }
+
+    def fetch(url: str):
+        if url == page:
+            return 200, listing
+        return (200, "%PDF-1.7 binary") if url == pdf_url else (404, "")
+
+    source = {
+        "id": "jcu-central-vacancies",
+        "url": page,
+        "official": True,
+        "employerId": "msmt-vs_12000",
+        "parser": "generic_listing_links",
+        "pathPatterns": [r"/images/UNIVERZITA/volna-mista/20\d{2}/"],
+        "followDetails": True,
+    }
+    result = harvest_adapter_source(
+        source,
+        fetch_page=fetch,
+        previous=previous,
+        store=MemoryStore(),
+        fetch_attachment=lambda url: (200, b"%PDF") if url == pdf_url else (404, b""),
+        pdf_text=lambda payload: notice_text,
+    )
+    assert result["complete"]
+    assert result["processedCandidateIds"] == [stored_id]
+    job = {item["id"]: item for item in result["snapshot"]["jobs"]}[stored_id]
+    assert job.get("lastAttemptReason") != "missing-from-complete-official-listing"
+    assert job["doctorateRequired"] is True
+
+
+def test_detail_attachment_sources_stay_on_the_discovery_path() -> None:
+    from adapters.jobs import adapter_for
+
+    source = {
+        "id": "upce-central-vacancies",
+        "url": "https://www.upce.test/volna-mista",
+        "parser": "generic_listing_links",
+        "detailAttachmentPatterns": [r"\.pdf$"],
+    }
+    assert adapter_for(source) is None

@@ -69,8 +69,12 @@ def test_harvest_jobs_routes_muni_through_adapter(tmp_path: Path, monkeypatch) -
 
 
 def test_every_html_registry_parser_has_an_adapter() -> None:
+    from adapters.jobs.registered_listing import uses_binary_or_private_api
+
     missing = []
     for source in load_registered_job_sources():
-        if source.get("parser") and adapter_for(source) is None:
+        # Sources read from PDFs attached to each detail page stay on the
+        # discovery path by design; only it follows those attachments.
+        if source.get("parser") and adapter_for(source) is None and not uses_binary_or_private_api(source):
             missing.append((source["id"], source.get("parser")))
     assert missing == []
