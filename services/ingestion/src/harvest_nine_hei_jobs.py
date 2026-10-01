@@ -658,7 +658,13 @@ def apply_translation_review(
         }
         job["translationStatus"] = "verified"
         job["publicationStatus"] = "approved"
-        if job.get("lifecycleStatus") not in {"closed", "expired"}:
+        if job.get("lifecycleStatus") == "unavailable":
+            # Withdrawn from a complete official listing: the approval stays,
+            # the vacancy is not shown as current. Binding used to re-publish
+            # every such record (53 on 2026-10-01, e.g. ČVUT notices whose page
+            # now reads "Dokument není vyvěšen").
+            job["visibility"] = "archived"
+        elif job.get("lifecycleStatus") not in {"closed", "expired"}:
             job["visibility"] = "public"
         job["reviewedAt"] = max(item["reviewedAt"] for item in review_locales.values())
         job["translationReview"] = {
@@ -1102,6 +1108,16 @@ def extract_qualifications(title: str, body: str) -> dict:
         minimum = "other"
         if doctorate_required is None:
             doctorate_required = False
+    elif re.search(
+        # A list of accepted levels that includes secondary school: "SŠ/ VOŠ/
+        # VŠ vzdělání", "VŠ/SŠ vzdělání v oblasti IT" (UPOL), "SŠ nebo VŠ
+        # vzdělání" (UPCE, 2026-10-01).
+        r"\b(?:(?:v[sš]|vo[sš])\s*(?:/|nebo|či)\s*)*s[sš]\s*(?:(?:/|nebo|či)\s*(?:vo[sš]|v[sš])\s*)*vzd[eě]l[aá]n[ií]",
+        blob,
+    ):
+        minimum = "other"
+        if doctorate_required is None:
+            doctorate_required = False
     enrollment = assistant_enrollment(title, body)
     if completed_or_started_doctorate:
         enrollment = "required"
@@ -1332,6 +1348,8 @@ _LANGUAGE_STATED = (
     r"\b{adj}\s+(?:i|a|nebo|či)\s+\w+\s+jazy\w*",
     r"\b\w+\s+(?:i|a|nebo|či)\s+{adj}\s+jazy\w*",
 )
+# Czech abbreviations after "znalost": "znalost AJ a práce s PC" (UPOL LF, 2026-10-01).
+_LANGUAGE_ABBREVIATIONS = {"en": r"\bznalost\w*\s+aj\b", "de": r"\bznalost\w*\s+nj\b"}
 _LANGUAGE_NEGATED = (
     r"{lang}[^.;]{{0,40}}?\b(?:is\s+not\s+(?:required|necessary)|not\s+required|není\s+(?:vyžadován\w*|nutn\w*|podmínk\w*))"
 )
@@ -1374,6 +1392,8 @@ def stated_working_languages(text: str) -> list[str]:
         patterns = [_LANGUAGE_NOUNS[code]] + [
             pattern.format(lang=word, adj=_LANGUAGE_ADJECTIVES[code]) for pattern in _LANGUAGE_STATED
         ]
+        if code in _LANGUAGE_ABBREVIATIONS:
+            patterns.append(_LANGUAGE_ABBREVIATIONS[code])
         # A language listed only among advantages ("výhodou znalost
         # anglického jazyka") is not a requirement.
         if any(
@@ -1427,8 +1447,12 @@ def extract_employment_fte(text: str) -> float | None:
         if 0 < share <= 1:
             return round(share, 3)
     # "Pracovní úvazek: plný", "Pracovní doba: odpovídající plnému úvazku"
-    # (JČU, 2026-10-01).
-    if re.search(r"[úu]vazek\s*:\s*pln[ýy]\b|odpov[ií]daj[ií]c[ií]\s+pln[ée]mu\s+[úu]vazku", text, re.I):
+    # (JČU), "VÝŠE ÚVAZKU: plný", "práci ... na plný úvazek" (UPCE, 2026-10-01).
+    if re.search(
+        r"[úu]vaz(?:ek|ku)\s*:\s*pln[ýy]\b|odpov[ií]daj[ií]c[ií]\s+pln[ée]mu\s+[úu]vazku|\bna\s+pln[ýy]\s+[úu]vazek\b",
+        text,
+        re.I,
+    ):
         return 1.0
     patterns = (
         r"\bpracovn[ií]\s+[úu]vazek\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",

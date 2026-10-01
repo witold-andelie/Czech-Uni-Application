@@ -3030,5 +3030,51 @@ def test_jcu_bulleted_doctorate_studentship_admission_and_workload() -> None:
     fte = jobs_harvester.extract_employment_fte
     assert fte("Nabízíme • 100% pracovní úvazek na dobu určitou") == 1.0
     assert fte("Pracovní úvazek: plný") == 1.0
+    assert fte("VÝŠE ÚVAZKU: plný 1 DÉLKA TÝDENNÍ PRACOVNÍ DOBY:40h") == 1.0
+    assert fte("zajímavou práci v akademickém prostředí na plný úvazek") == 1.0
     assert fte("Pracovní doba: odpovídající plnému úvazku (40 hod. týdně)") == 1.0
     assert fte("výuka algologických předmětů (do 10 % úvazku) • účast na exkurzích") is None
+
+
+def test_czech_education_and_language_abbreviations() -> None:
+    for body in (
+        "Kvalifikační požadavky SŠ/ VOŠ/ VŠ vzdělání příslušného směru",
+        "Kvalifikační požadavky VŠ/SŠ vzdělání v oblasti IT",
+        "Co od vás očekáváme: VŠ nebo SŠ vzdělání, nejlépe technického směru",
+        "Co od vás očekáváme: • SŠ nebo VŠ vzdělání, nejlépe technického nebo IT směru",
+    ):
+        assert extract_qualifications("Laborant", body)["minimumDegree"] == "other", body
+    assert jobs_harvester.stated_working_languages("Kvalifikační požadavky: znalost AJ a práce s PC") == ["en"]
+    assert jobs_harvester.stated_working_languages("Výhodou: znalost NJ") == []
+
+
+def test_an_approved_vacancy_withdrawn_from_its_listing_stays_archived() -> None:
+    """2026-10-01: binding re-published 53 records absent from complete official listings."""
+    from publication_rules import job_fact_hash, translation_content_hash
+
+    title = {"zh-CN": "研究员", "en": "Researcher", "cs": "Výzkumník"}
+    job = {
+        "id": "job-x",
+        "visibility": "archived",
+        "lifecycleStatus": "unavailable",
+        "lastAttemptReason": "missing-from-complete-official-listing",
+        "paidStatus": "confirmed",
+    }
+    entry = {
+        "sourceHash": "sha256:" + "3" * 64,
+        "factHash": job_fact_hash(job, []),
+        "normalizationVersion": "fact-v2",
+        "reviewer": {"role": "operator_source_review"},
+        "title": title,
+        "locales": {
+            locale: {"status": "reviewed", "reviewedAt": "2026-10-01T00:00:00Z", "contentHash": translation_content_hash(text)}
+            for locale, text in title.items()
+        },
+    }
+    out = jobs_harvester.apply_translation_review(dict(job), entry["sourceHash"], {"job-x": entry}, [])
+    assert out["publicationStatus"] == "approved"
+    assert out["visibility"] == "archived"
+    listed_again = jobs_harvester.apply_translation_review(
+        {**job, "lifecycleStatus": "unknown", "visibility": "review_pending"}, entry["sourceHash"], {"job-x": entry}, []
+    )
+    assert listed_again["visibility"] == "public"
