@@ -58,6 +58,21 @@ class HarvestListingAdapter:
         return list(refs)
 
     def fetch_detail(self, reference: ListingReference, context: dict[str, Any]) -> list[RawDocument]:
+        # Discovery may already hold the notice itself: the ČVUT notice board
+        # reads every official PDF attachment into _factHtml, while the detail
+        # page carries only metadata (title, posting and removal dates).
+        # Fetching that page again lost every fact in the notice (2026-10-01).
+        embedded = (reference.extra.get("listing") or {}).get("_factHtml")
+        if isinstance(embedded, str) and embedded.strip():
+            self._details_ok += 1
+            return [
+                RawDocument(
+                    url=reference.detail_url,
+                    final_url=reference.detail_url,
+                    body=embedded,
+                    extra={"reference": reference},
+                )
+            ]
         fetch_page = context["fetch_page"]
         status, body = fetch_page(reference.detail_url)
         if status != 200 or not body:

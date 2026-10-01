@@ -2933,3 +2933,16 @@ def test_vut_notices_found_by_the_2026_10_01_review() -> None:
     assert extract_qualifications("", postdoc)["doctorateRequired"] is True
     assert str(parse_date("7 . října 2026")) == "2026-10-07"
     assert str(extract_deadline("Pošlete nám přihlášku. Těšíme se na Vaši odpověď do 7 . října 2026.")) == "2026-10-07"
+
+
+def test_ctu_notice_facts_found_by_the_2026_10_01_review() -> None:
+    from harvest_nine_hei_jobs import extract_deadline, extract_qualifications, parse_date
+
+    assert str(parse_date("do 23.října 2026")) == "2026-10-23"
+    fit = "Termín nástupu: • 1.11.2026 nebo dle dohody. zašlete, prosím, přihlášku nejpozději do 23.října 2026 na email"
+    assert str(extract_deadline(fit)) == "2026-10-23"
+    assert str(extract_deadline("Termín nástupu 1.11.2026. Lhůta pro podání přihlášek je 17.10.2026.")) == "2026-10-17"
+    assert extract_qualifications("", "kandidáta, který má vědeckou hodnost Ph.D. nebo ekvivalentní")["doctorateRequired"] is True
+    from harvest_nine_hei_jobs import extract_employment_fte
+
+    assert extract_employment_fte("- úvazek 1,0 – platové podmínky se řídí Mzdovým předpisem univerzity") == 1.0

@@ -242,8 +242,9 @@ MONTH_FIRST_DATE = re.compile(
 )
 CZ_DATE = re.compile(r"\b(\d{1,2})\.\s*(\d{1,2})\.\s*(20\d{2})\b")
 CZ_TEXT_DATE = re.compile(
-    # "do 7 . října 2026": a space may sit before the dot (VUT FCH, 2026-10-01).
-    r"\b(\d{1,2})\s*\.?\s+"
+    # "do 7 . října 2026" (VUT FCH) and "do 23.října 2026" (ČVUT FIT): spaces
+    # around the dot vary (2026-10-01).
+    r"\b(\d{1,2})(?:\s*\.\s*|\s+)"
     r"(ledna|února|unora|března|brezna|dubna|května|kvetna|června|cervna|"
     r"července|cervence|srpna|září|zari|října|rijna|listopadu|prosince)"
     r"\s+(20\d{2})\b",
@@ -919,6 +920,9 @@ DEADLINE_MARKERS = (
     "submission deadline",
     "closing date",
     "lhůta pro včasné podání žádosti",
+    # "Lhůta pro podání přihlášek je 17.10.2026" (ČVUT rektorát, 2026-10-01).
+    "lhůta pro podání",
+    "lhuta pro podani",
     "lhuta pro vcasne podani zadosti",
     "životopis zaslat",
     "zivotopis zaslat",
@@ -1010,6 +1014,8 @@ def extract_qualifications(title: str, body: str) -> dict:
         r"\b(?:ukon[cč]en[eé]\s+ph\.?d\.?\s+studium|"
         r"doktorsk[ýy]\s+titul\s*\(?ph\.?d\.?\)?|"
         r"(?:candidate|applicant|researcher|uchaze[cč])[^.\n]{0,100}\b(?:with|m[aá])\s+(?:a\s+)?ph\.?d\.?\b|"
+        # "má vědeckou hodnost Ph.D. nebo ekvivalentní" in any case form (ČVUT, 2026-10-01).
+        r"v[eě]deck\w+\s+hodnost\w*\s+ph\.?\s?d|"
         # "Academic degree PhD or scientific rank of CSc" (MUNI LF, 2026-10-01).
         r"academic\s+degree\s+(?:of\s+)?ph\.?d\.?\b|scientific\s+rank\s+of\s+csc\b|"
         # "require" also covers "We require Ph.D." (UHK FIM, 2026-10-01).
@@ -1237,6 +1243,10 @@ def extract_deadline(text: str) -> date | None:
     for marker in DEADLINE_MARKERS:
         idx = blob.find(marker)
         while idx != -1:
+            # "Termín nástupu 1.11.2026" is the start date, not a deadline (ČVUT FIT).
+            if marker in ("termín", "termin") and re.match(r"\s*n[aá]stupu", blob[idx + len(marker) :]):
+                idx = blob.find(marker, idx + 1)
+                continue
             snippet = text[idx : idx + len(marker) + 80]
             parsed = parse_date(snippet)
             if parsed:
@@ -1387,6 +1397,8 @@ def extract_employment_fte(text: str) -> float | None:
             return round(share, 3)
     patterns = (
         r"\bpracovn[ií]\s+[úu]vazek\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
+        # "- úvazek 1,0 – platové podmínky ..." (ČVUT rektorát, 2026-10-01).
+        r"\b[úu]vazek\s*[:=\-–]?\s*(0[.,]\d+|1[.,]0+)\b",
         r"\b(?:position\s+workload|employment\s+(?:fte|fraction)|workload(?:\s*\(fte\))?)"
         r"\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         # A67/A68: MUNI adverts state "Working Hours: 0,5 FTE (part-time
@@ -2858,7 +2870,8 @@ def parse_generic_job_page(html: str, page_url: str, title_hint: str = "") -> di
             # "The researcher will be employed at CEITEC MU", "Part-time contract", "PhD stipend" (MUNI CEITEC).
             r"\b(salary|wage|remuneration|stipend|be employed|(?:part|full)[- ]time contract|"
             r"employment relationship|employment contract|fixed[- ]term contract|contract of employment|"
-            r"full-time employment|full-time position|gross|"
+            # PDF text may space the hyphen: "full - time employment" (ČVUT FSv).
+            r"full\s*-\s*time employment|full\s*-\s*time position|gross|"
             r"pracovn[ií]\s+smlouva|pracovn[ií]\s+[úu]vazek|pracovn[ií]\s+pom[eě]r|pracovn[eě]pr[aá]vn[ií](?:ho| vztah)|mzda|mzdov\w*|"
             r"plat(?:ov[eéý]\s+(?:ohodnocen[ií]|podm[ií]nk[ay]))?|finan[cč]n[ií]\s+ohodnocen[ií])\b",
             scoped_text,
