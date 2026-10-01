@@ -1219,6 +1219,8 @@ def extract_employment_fte(text: str) -> float | None:
         hours = float(scope.group(1).replace(",", "."))
         if 0 < hours <= 40:
             return round(hours / 40, 3)
+    if re.search(r"employment\s+type\s+and\s+scope\s*:\s*full[- ]time\s+employment\b(?!,\s*\d)", text, re.I):
+        return 1.0
     patterns = (
         r"\bpracovn[ií]\s+[úu]vazek\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         r"\b(?:position\s+workload|employment\s+(?:fte|fraction)|workload(?:\s*\(fte\))?)"

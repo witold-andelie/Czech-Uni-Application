@@ -2876,3 +2876,4 @@ def test_cuni_notice_facts_found_by_the_2026_10_01_review() -> None:
     weekly = "Employment Type and Scope: Part time employment, 6 hours per week. Salary basis (1.0 FTE)."
     assert extract_employment_fte(weekly) == 0.15
     assert extract_employment_fte("FaF_VZ4_105: PhD Student, 0,15 FTE (project NETPHARM)") == 0.15
+    assert extract_employment_fte("Employment Type and Scope: Full time employment Expected Start Date: April") == 1.0
