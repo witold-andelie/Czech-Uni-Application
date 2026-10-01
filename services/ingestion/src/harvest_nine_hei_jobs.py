@@ -1173,6 +1173,8 @@ _LANGUAGE_WORDS = {
     "en": r"(?:english|angli[cč]tin\w*|anglick\w+\s+jazy\w*)",
     "cs": r"(?:czech(?!\s+republic)|[cč]e[sš]tin\w*|[cč]esk\w+\s+jazy\w*)",
 }
+# Czech adjective stems, used only right before "jazyk"/"jazyce".
+_LANGUAGE_ADJECTIVES = {"en": r"anglick\w+", "cs": r"[cč]esk\w+"}
 # Czech nouns that name the language itself (never a place), by language.
 _LANGUAGE_NOUNS = {
     "en": r"\b(?:angli[cč]tin\w*|anglick\w+\s+jazy\w*)",
@@ -1182,9 +1184,16 @@ _LANGUAGE_STATED = (
     r"(?:knowledge|command|proficiency|fluency|skills?)\s+(?:of|in)\s+(?:the\s+)?{lang}",
     r"{lang}(?:\s+language)?\s*(?:[-–:]\s*)?(?:proficiency|skills?|level|knowledge|\(?[abc][12]\b)",
     r"(?:fluent|good|excellent|active|advanced|written\s+and\s+spoken|spoken\s+and\s+written)\s+(?:in\s+)?{lang}",
-    r"(?:teach\w*|lectur\w*|taught|work\w*|communicat\w*|conducted)\s+(?:courses\s+)?in\s+{lang}",
+    # "teach in both Czech and English", "we work in both Czech and English" (MENDELU, ČVUT FEL).
+    r"(?:teach\w*|lectur\w*|taught|work\w*|communicat\w*|conducted)\s+(?:courses\s+)?in\s+"
+    r"(?:both\s+)?(?:(?:czech|english|german|slovak)\s+(?:and|or)\s+)?{lang}",
     r"required\s+language\s+skills?\s*:[^.]{{0,80}}{lang}",
     r"working\s+language[^.]{{0,40}}{lang}",
+    # "English (both written and spoken)" in a requirements list (ČVUT FEL).
+    r"{lang}\s*\(\s*(?:both\s+)?(?:written|spoken)",
+    # "v českém i anglickém jazyce": two adjectives sharing one noun (VŠB).
+    r"\b{adj}\s+(?:i|a|nebo|či)\s+\w+\s+jazy\w*",
+    r"\b\w+\s+(?:i|a|nebo|či)\s+{adj}\s+jazy\w*",
 )
 _LANGUAGE_NEGATED = (
     r"{lang}[^.;]{{0,40}}?\b(?:is\s+not\s+(?:required|necessary)|not\s+required|není\s+(?:vyžadován\w*|nutn\w*|podmínk\w*))"
@@ -1198,7 +1207,8 @@ def stated_working_languages(text: str) -> list[str]:
     for code, word in _LANGUAGE_WORDS.items():
         cleaned = re.sub(_LANGUAGE_NEGATED.format(lang=word), " ", low)
         if re.search(_LANGUAGE_NOUNS[code], cleaned) or any(
-            re.search(pattern.format(lang=word), cleaned) for pattern in _LANGUAGE_STATED
+            re.search(pattern.format(lang=word, adj=_LANGUAGE_ADJECTIVES[code]), cleaned)
+            for pattern in _LANGUAGE_STATED
         ):
             found.append(code)
     return found

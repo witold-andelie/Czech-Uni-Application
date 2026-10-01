@@ -2869,6 +2869,11 @@ def test_cuni_notice_facts_found_by_the_2026_10_01_review() -> None:
     assert stated_working_languages("good written and spoken English. Knowledge of Czech is not required.") == ["en"]
     assert stated_working_languages("Požadavky na jazykové vzdělání: anglický jazyk slovem i písmem.") == ["en"]
     assert stated_working_languages("výuka probíhá v českém jazyce") == ["cs"]
+    # Forms found by the 2026-10-01 language audit of approved records.
+    assert stated_working_languages("výuka matematiky v českém i anglickém jazyce") == ["en", "cs"]
+    assert stated_working_languages("ability to teach in both Czech and English") == ["en", "cs"]
+    assert stated_working_languages("Linux OS and shell scripting English (both written and spoken)") == ["en"]
+    assert stated_working_languages("Why study at FEE CTU Czech academic system") == []
 
     single = extract_salary_facts("Salary: Starting salary from 7,088 CZK to 7,088 CZK Expertise: Clinical Pharmacy")
     assert single["amount"] == 7088.0 and single["amountMin"] is None
