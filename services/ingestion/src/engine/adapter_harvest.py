@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from adapters.base import Candidate
 from adapters.jobs import adapter_for
@@ -64,6 +65,46 @@ def candidate_to_snapshot_job(candidate: Candidate, source: dict, now_text: str)
     }
 
 
+def _prague_today() -> date:
+    return datetime.now(ZoneInfo("Europe/Prague")).date()
+
+
+def candidate_window(candidate: Candidate, job_id: str, today: date) -> dict[str, Any] | None:
+    """The application window the notice states, shaped like job_record's.
+
+    The detail parser already reads the deadline, but listing adapters used to
+    drop it: TUL notices from 2023-2026 kept no window and looked open (all 33
+    queued on 2026-10-01 had stated deadlines that had passed).
+    """
+    facts = candidate.facts or {}
+    opens = str(facts.get("opensAt") or "")[:10] or None
+    closes = str(facts.get("closesAt") or "")[:10] or None
+    if not (opens or closes):
+        return None
+    try:
+        closed = bool(closes) and date.fromisoformat(closes) < today
+    except ValueError:
+        return None
+    return {
+        "id": f"win-{job_id}",
+        "ownerType": "research_job",
+        "ownerId": job_id,
+        "academicYear": None,
+        "roundNumber": None,
+        "roundLabelOriginal": candidate.remote_id,
+        "roundType": facts.get("roundType") or "unspecified",
+        "applicantScope": None,
+        "opensAt": opens,
+        "closesAt": closes,
+        "timezone": "Europe/Prague",
+        "datePrecision": "date",
+        "status": "closed" if closed else "unknown",
+        "conditionalOnVacancies": False,
+        "applicationUrl": candidate.application_url or candidate.official_detail_url,
+        "sourceEvidenceId": f"ev-{job_id}",
+    }
+
+
 def _keep_prior_review(prior: dict[str, Any], incoming: dict[str, Any]) -> dict[str, Any]:
     if prior.get("sourceUrl") != incoming.get("sourceUrl"):
         return incoming
@@ -96,6 +137,7 @@ def merge_adapter_snapshot(
     complete: bool,
     discovery: dict[str, Any],
     now_text: str,
+    windows: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     merged = dict(previous or {})
     merged["discovery"] = discovery
@@ -117,16 +159,41 @@ def merge_adapter_snapshot(
         archived["lastAttemptReason"] = "missing-from-complete-official-listing"
         kept.append(archived)
         archived_ids.append(str(prior["id"]))
+    incoming_windows = {
+        str(item["ownerId"]): item for item in windows or [] if isinstance(item, dict) and item.get("ownerId")
+    }
+    replaced_windows: set[str] = set()
+    past_deadline: list[str] = []
     for job in jobs:
         prior = prior_by_id.get(job["id"])
-        kept.append(_keep_prior_review(prior, job) if prior else job)
+        window = incoming_windows.get(str(job["id"]))
+        expired = bool(window and window.get("status") == "closed")
+        if prior is None and expired:
+            # As in the discovery path (job_record): a notice whose stated
+            # deadline has passed does not become a new identity.
+            past_deadline.append(str(job["id"]))
+            continue
+        record = _keep_prior_review(prior, job) if prior else job
+        if record is not prior:
+            if expired:
+                record = {**record, "lifecycleStatus": "expired", "visibility": "archived"}
+            if window:
+                replaced_windows.add(str(job["id"]))
+        kept.append(record)
     merged["jobs"] = kept
+    if replaced_windows:
+        merged["windows"] = [
+            item
+            for item in merged.get("windows") or []
+            if not (isinstance(item, dict) and str(item.get("ownerId")) in replaced_windows)
+        ] + [incoming_windows[ident] for ident in sorted(replaced_windows)]
     skipped = [
         item
         for item in merged.get("skipped") or []
         if not (isinstance(item, dict) and item.get("id") in incoming_ids)
     ]
     skipped.extend({"id": ident, "reason": "missing-from-complete-official-listing"} for ident in archived_ids)
+    skipped.extend({"id": ident, "reason": "past-deadline"} for ident in past_deadline)
     merged["skipped"] = skipped
     merged["counts"] = {"jobs": len(kept), "skipped": len(skipped)}
     return merged
@@ -142,6 +209,7 @@ def harvest_adapter_source(
     post_json=None,
     fetch_attachment=None,
     pdf_text=None,
+    today: date | None = None,
 ) -> dict[str, Any]:
     adapter = adapter_for(source)
     if adapter is None:
@@ -170,6 +238,13 @@ def harvest_adapter_source(
         if complete
         else []
     )
+    current = today or _prague_today()
+    snapshot_windows = [
+        window
+        for item, job in zip(outcome["candidates"], snapshot_jobs)
+        for window in [candidate_window(item, job["id"], current)]
+        if window is not None
+    ]
     discovery = {
         "attempts": [
             {
@@ -199,6 +274,7 @@ def harvest_adapter_source(
         complete=complete,
         discovery=discovery,
         now_text=stamp,
+        windows=snapshot_windows,
     )
     return {
         "jobs": snapshot.get("jobs") or [],

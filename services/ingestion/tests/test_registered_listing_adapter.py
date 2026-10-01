@@ -53,7 +53,12 @@ def test_muni_uses_registered_listing_adapter() -> None:
     assert store.jobs
 
 
-def test_harvest_jobs_routes_muni_through_adapter(tmp_path: Path) -> None:
+def test_harvest_jobs_routes_muni_through_adapter(tmp_path: Path, monkeypatch) -> None:
+    # Fixture notices were written in September 2026; judge them on that day,
+    # not on the real clock (past-deadline notices do not become identities).
+    import engine.adapter_harvest as adapter_harvest
+
+    monkeypatch.setattr(adapter_harvest, "_prague_today", lambda: __import__("datetime").date(2026, 9, 15))
     target = tmp_path / "jobs.json"
     target.write_text("{}", encoding="utf-8")
     result = worker.harvest_jobs([], fetch_page=_fetch, jobs_path=target, registry=[_muni_source()])

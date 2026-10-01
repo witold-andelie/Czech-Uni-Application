@@ -19,7 +19,12 @@ from test_adapter_pipeline import (  # noqa: E402
 )
 
 
-def test_harvest_jobs_keeps_every_official_czu_vacancy(tmp_path: Path) -> None:
+def test_harvest_jobs_keeps_every_official_czu_vacancy(tmp_path: Path, monkeypatch) -> None:
+    # Fixture notices were written in September 2026; judge them on that day,
+    # not on the real clock (past-deadline notices do not become identities).
+    import engine.adapter_harvest as adapter_harvest
+
+    monkeypatch.setattr(adapter_harvest, "_prague_today", lambda: __import__("datetime").date(2026, 9, 15))
     target = tmp_path / "jobs.json"
     target.write_text("{}", encoding="utf-8")
     result = worker.harvest_jobs([], fetch_page=_fetch, jobs_path=target, registry=[_source()])
@@ -125,3 +130,51 @@ def test_a_listing_row_does_not_replace_a_reviewed_record() -> None:
 
     unreviewed = {**prior, "publicationStatus": "review_pending", "translationStatus": "unreviewed"}
     assert _keep_prior_review(unreviewed, incoming)["publicationStatus"] == "review_pending"
+
+
+def test_a_listing_notice_keeps_its_stated_deadline() -> None:
+    """2026-10-01: all 33 queued TUL notices had stated deadlines that had passed."""
+    from datetime import date
+
+    from adapters.base import Candidate
+    from engine.adapter_harvest import candidate_window, merge_adapter_snapshot
+
+    def candidate(remote: str, closes: str) -> Candidate:
+        return Candidate(
+            remote_id=remote,
+            official_detail_url=f"https://doc.tul.cz/{remote}",
+            application_url=f"https://doc.tul.cz/{remote}",
+            title="Pracovník výzkumu",
+            body_html="",
+            facts={"closesAt": closes},
+        )
+
+    today = date(2026, 10, 1)
+    past = candidate_window(candidate("15800", "2026-09-20"), "job-24000-15800", today)
+    future = candidate_window(candidate("15900", "2026-10-31"), "job-24000-15900", today)
+    assert past["closesAt"] == "2026-09-20" and past["status"] == "closed"
+    assert future["status"] == "unknown"
+
+    unreviewed_prior = {"id": "job-24000-15700", "sourceUrl": "https://doc.tul.cz/15700",
+                        "discoverySourceId": "tul", "publicationStatus": "review_pending",
+                        "translationStatus": "unreviewed", "lifecycleStatus": "unknown"}
+    stale = candidate_window(candidate("15700", "2026-09-01"), "job-24000-15700", today)
+    incoming = [
+        {"id": "job-24000-15800", "sourceUrl": "https://doc.tul.cz/15800", "discoverySourceId": "tul"},
+        {"id": "job-24000-15900", "sourceUrl": "https://doc.tul.cz/15900", "discoverySourceId": "tul",
+         "lifecycleStatus": "unknown"},
+        {"id": "job-24000-15700", "sourceUrl": "https://doc.tul.cz/15700", "discoverySourceId": "tul",
+         "lifecycleStatus": "unknown"},
+    ]
+    merged = merge_adapter_snapshot(
+        {"jobs": [unreviewed_prior], "windows": []},
+        source_id="tul", jobs=incoming, complete=True, discovery={}, now_text="2026-10-01T00:00:00Z",
+        windows=[past, future, stale],
+    )
+    by_id = {job["id"]: job for job in merged["jobs"]}
+    assert "job-24000-15800" not in by_id  # new and already past: not an identity
+    assert by_id["job-24000-15900"]["lifecycleStatus"] == "unknown"
+    assert by_id["job-24000-15700"]["lifecycleStatus"] == "expired"  # identity kept, archived
+    assert by_id["job-24000-15700"]["visibility"] == "archived"
+    assert {w["ownerId"] for w in merged["windows"]} == {"job-24000-15900", "job-24000-15700"}
+    assert {"id": "job-24000-15800", "reason": "past-deadline"} in merged["skipped"]
