@@ -340,6 +340,8 @@ SKIP_MARKERS = (
     "knihovník",
     "knihovnice",
     "tajemník",
+    "recepční",
+    "receptionist",
     "tajemnice",
     "děkan",
     "dekan",
@@ -937,6 +939,41 @@ DEADLINE_MARKERS = (
 )
 
 
+# Czech statements of a completed doctorate as a requirement (OSU, 2026-10-01):
+# "min. ukončené doktorské vzdělání", "Absolvent doktorského studijního
+# programu – Ph.D.", "Vysokoškolské vzdělání III. stupně", "doktorské vzdělání
+# v uvedeném nebo v příbuzném oboru". Counted only where listed as required.
+_CZ_DOCTORATE_RE = re.compile(
+    r"ukon[cč]en[eé]\s+doktorsk[eé]\s+vzd[eě]l[aá]n[ií]|"
+    r"absolvent\w*\s+doktorsk\w+\s+studijn\w+\s+program\w*|"
+    r"vysoko[sš]kolsk[eé]\s+vzd[eě]l[aá]n[ií]\s+iii\.\s*stupn[eě]|"
+    r"\bdoktorsk[eé]\s+vzd[eě]l[aá]n[ií]\s+v\s+(?:uveden\w*|oboru|p[rř][ií]buzn\w*)"
+)
+# Headings that open an advantages list ("Kvalifikační předpoklady – výhodou",
+# "Advantages:"); an inline "hematologie vítána" only qualifies its own item.
+_ADVANTAGE_RE = re.compile(r"[–:\-]\s*v[yý]hodou\b|v[yý]hodou\s*(?:je|jsou)?\s*:|advantages?\s*:|nice\s+to\s+have\s*:")
+_OFFER_RE = re.compile(r"nab[ií]z[ií]me|we\s+offer|what\s+we\s+(?:offer|provide)|\bbenefit\w*")
+_REQUIRED_RE = re.compile(r"po[zž]adujeme|po[zž]adavky|p[rř]edpoklady|required|requirements|we\s+expect|o[cč]ek[aá]v[aá]me")
+
+
+def _in_required_context(blob: str, position: int) -> bool:
+    """Whether a statement sits in a notice's required list, not its advantages.
+
+    Notices list "Kvalifikační předpoklady – požadujeme ..." and then
+    "Kvalifikační předpoklady – výhodou ..."; the nearest heading before the
+    statement decides, and a trailing "... výhodou" makes it an advantage.
+    """
+    before = blob[max(0, position - 400) : position]
+    advantage = max((m.end() for m in _ADVANTAGE_RE.finditer(before)), default=-1)
+    offer = max((m.end() for m in _OFFER_RE.finditer(before)), default=-1)
+    required = max((m.end() for m in _REQUIRED_RE.finditer(before)), default=-1)
+    # What a notice offers ("Nabízíme ... kurzy anglického jazyka") is not a
+    # requirement either (OSU, 2026-10-01).
+    if max(advantage, offer) > required:
+        return False
+    return not re.match(r"[^.;\n]{0,40}\b(?:je\s+)?v[yý]hodou|[^.;\n]{0,40}is\s+an\s+advantage", blob[position:])
+
+
 def extract_qualifications(title: str, body: str) -> dict:
     blob = f"{title} {body}".lower()
     doctorate_required = None
@@ -968,11 +1005,24 @@ def extract_qualifications(title: str, body: str) -> dict:
         blob,
     ):
         doctorate_required = True
+    if doctorate_required is None and any(
+        _in_required_context(blob, match.start()) for match in _CZ_DOCTORATE_RE.finditer(blob)
+    ):
+        doctorate_required = True
     minimum = "unknown"
     if completed_or_started_doctorate:
         minimum = "master"
     elif doctorate_required:
         minimum = "doctorate"
+    elif re.search(
+        # "Bakalářské/Magisterské vzdělání": either level is accepted, so the
+        # minimum is a bachelor's (OSU, 2026-10-01).
+        r"\bbakal[aá][rř]sk\w*\s*(?:/|nebo|či)\s*magistersk\w*|\bbachelor'?s?\s*(?:/|or)\s*master",
+        blob,
+    ):
+        minimum = "bachelor"
+        if doctorate_required is None:
+            doctorate_required = False
     elif re.search(
         # A physician's degree (MUDr., "title MD") is a master's-level degree in
         # Czech law: "university education in the medical field (with the title
@@ -1011,6 +1061,14 @@ def extract_qualifications(title: str, body: str) -> dict:
         blob,
     ):
         minimum = "bachelor"
+        if doctorate_required is None:
+            doctorate_required = False
+    elif re.search(r"\bst[rř]edo[sš]kolsk\w+\s+vzd[eě]l[aá]n[ií]|\bst[rř]edn[ií]\s+vzd[eě]l[aá]n[ií]|\bs\s+maturitou", blob) and not re.search(
+        r"\bv[sš]\s+vzd[eě]l[aá]n[ií]|vysoko[sš]kolsk\w+\s+vzd[eě]l[aá]n[ií]|university\s+(?:degree|education)", blob
+    ):
+        # Secondary-school level ("minimálně středoškolské vzdělání s maturitou")
+        # is "other": below any university degree (OSU, 2026-10-01).
+        minimum = "other"
         if doctorate_required is None:
             doctorate_required = False
     enrollment = assistant_enrollment(title, body)
@@ -1183,16 +1241,44 @@ def extract_deadline(text: str) -> date | None:
 # mention did before, so "experts from the Czech Republic" on every Charles
 # University page and "Location: ..., Czech Republic" on UHK pages made
 # vacancies read as Czech-language work (2026-10-01). Negations win.
-_LANGUAGE_WORDS = {
-    "en": r"(?:english|angli[cč]tin\w*|anglick\w+\s+jazy\w*)",
-    "cs": r"(?:czech(?!\s+republic)|[cč]e[sš]tin\w*|[cč]esk\w+\s+jazy\w*)",
+# Czech adjective stems, used only right before "jazyk"/"jazyce". German,
+# Italian, French, Polish and Russian are read too: OSU's Faculty of Medicine
+# requires Italian C1-C2 for two posts (2026-10-01), and the site names them.
+_LANGUAGE_ADJECTIVES = {
+    "en": r"anglick\w+",
+    "cs": r"[cč]esk\w+",
+    "de": r"n[eě]meck\w+",
+    "it": r"italsk\w+",
+    "fr": r"francouzsk\w+",
+    "pl": r"polsk\w+",
+    "ru": r"rusk\w+",
 }
-# Czech adjective stems, used only right before "jazyk"/"jazyce".
-_LANGUAGE_ADJECTIVES = {"en": r"anglick\w+", "cs": r"[cč]esk\w+"}
+_LANGUAGE_NOUN_STEMS = {
+    "en": r"angli[cč]tin",
+    "cs": r"[cč]e[sš]tin",
+    "de": r"n[eě]m[cč]in",
+    "it": r"ital[sš]tin",
+    "fr": r"francouz[sš]tin",
+    "pl": r"pol[sš]tin",
+    "ru": r"ru[sš]tin",
+}
+_LANGUAGE_ENGLISH_NAMES = {
+    "en": "english",
+    "cs": r"czech(?!\s+republic)",
+    "de": "german",
+    "it": "italian",
+    "fr": "french",
+    "pl": r"polish",
+    "ru": "russian",
+}
+_LANGUAGE_WORDS = {
+    code: rf"(?:{_LANGUAGE_ENGLISH_NAMES[code]}|{_LANGUAGE_NOUN_STEMS[code]}\w*|{_LANGUAGE_ADJECTIVES[code]}\s+jazy\w*)"
+    for code in _LANGUAGE_ADJECTIVES
+}
 # Czech nouns that name the language itself (never a place), by language.
 _LANGUAGE_NOUNS = {
-    "en": r"\b(?:angli[cč]tin\w*|anglick\w+\s+jazy\w*)",
-    "cs": r"\b(?:[cč]e[sš]tin\w*|[cč]esk\w+\s+jazy\w*)",
+    code: rf"\b(?:{_LANGUAGE_NOUN_STEMS[code]}\w*|{_LANGUAGE_ADJECTIVES[code]}\s+jazy\w*)"
+    for code in _LANGUAGE_ADJECTIVES
 }
 _LANGUAGE_STATED = (
     r"(?:knowledge|command|proficiency|fluency|skills?)\s+(?:of|in)\s+(?:the\s+)?{lang}",
@@ -1248,9 +1334,15 @@ def stated_working_languages(text: str) -> list[str]:
     found: list[str] = []
     for code, word in _LANGUAGE_WORDS.items():
         cleaned = re.sub(_LANGUAGE_NEGATED.format(lang=word), " ", low)
-        if re.search(_LANGUAGE_NOUNS[code], cleaned) or any(
-            re.search(pattern.format(lang=word, adj=_LANGUAGE_ADJECTIVES[code]), cleaned)
-            for pattern in _LANGUAGE_STATED
+        patterns = [_LANGUAGE_NOUNS[code]] + [
+            pattern.format(lang=word, adj=_LANGUAGE_ADJECTIVES[code]) for pattern in _LANGUAGE_STATED
+        ]
+        # A language listed only among advantages ("výhodou znalost
+        # anglického jazyka") is not a requirement.
+        if any(
+            _in_required_context(cleaned, match.start())
+            for pattern in patterns
+            for match in re.finditer(pattern, cleaned)
         ):
             found.append(code)
     return found
@@ -1273,6 +1365,12 @@ def extract_employment_fte(text: str) -> float | None:
             return round(hours / 40, 3)
     if re.search(r"employment\s+type\s+and\s+scope\s*:\s*full[- ]time\s+employment\b(?!,\s*\d)", text, re.I):
         return 1.0
+    # "Předpokládaný pracovní úvazek 10%" (OSU, 2026-10-01).
+    percent = re.search(r"[úu]vaz(?:ek|ku)\s*(?:[:=\-–]\s*)?(\d{1,3}(?:[.,]\d+)?)\s*%", text, re.I)
+    if percent:
+        share = float(percent.group(1).replace(",", ".")) / 100
+        if 0 < share <= 1:
+            return round(share, 3)
     patterns = (
         r"\bpracovn[ií]\s+[úu]vazek\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         r"\b(?:position\s+workload|employment\s+(?:fte|fraction)|workload(?:\s*\(fte\))?)"

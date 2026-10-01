@@ -2900,3 +2900,24 @@ def test_the_date_written_first_is_the_one_read() -> None:
     assert str(parse_date("Deadline 10 Oct 2026 Start date 1. 12. 2026")) == "2026-10-10"
     assert str(parse_date("31. 12. 2026 or 2027-01-01")) == "2026-12-31"
     assert str(extract_deadline("Department X Deadline 26 Oct 2026 Start date 1.3.2027 Job type full-time")) == "2026-10-26"
+
+
+def test_osu_requirement_lists_found_by_the_2026_10_01_review() -> None:
+    """Required vs advantage vs offer sections, Czech doctorate wording, other levels."""
+    from harvest_nine_hei_jobs import extract_employment_fte, extract_qualifications, stated_working_languages
+
+    required = "Kvalifikační předpoklady – požadujeme VŠ vzdělání – min. ukončené doktorské vzdělání v oboru Andragogika"
+    assert extract_qualifications("", required)["doctorateRequired"] is True
+    assert extract_qualifications("", "Absolvent doktorského studijního programu – Ph.D.")["minimumDegree"] == "doctorate"
+    assert extract_qualifications("", "Kvalifikační předpoklady – požadujeme Vysokoškolské vzdělání III. stupně")["doctorateRequired"] is True
+    advantage = "Kvalifikační předpoklady – výhodou ukončené doktorské vzdělání v oboru"
+    assert extract_qualifications("", advantage)["doctorateRequired"] is None
+    assert extract_qualifications("", "požadujeme Bakalářské/Magisterské vzdělání v oboru biologie")["minimumDegree"] == "bachelor"
+    assert extract_qualifications("", "požadujeme minimálně středoškolské vzdělání s maturitou")["minimumDegree"] == "other"
+
+    assert extract_employment_fte("Předpokládaný pracovní úvazek 10% Předpokládaný termín nástupu") == 0.1
+
+    assert stated_working_languages("Kvalifikační předpoklady – výhodou znalost anglického jazyka") == []
+    assert stated_working_languages("požadujeme zkušenost, hematologie vítána angličtina na komunikativní úrovni") == ["en"]
+    assert stated_working_languages("Benefity 8 týdnů dovolené; kurzy anglického jazyka a jiné vzdělávací kurzy") == []
+    assert stated_working_languages("požadujeme znalost italského jazyka – C1-C2") == ["it"]

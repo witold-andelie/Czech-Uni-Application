@@ -94,11 +94,22 @@ def build_queue(jobs_payload: dict, ledger: dict, reviews_payload: dict, *, toda
     carried = 0
     diagnostics: list[dict] = []
     new_rows, scope_screen, closed_new = _new_candidate_rows(jobs_payload, ledger, today)
+    deadlines = _deadlines(jobs_payload)
+    not_listed = 0
     for row in list(ledger.get("rows") or []) + new_rows:
         ident = row["candidateId"]
         job = jobs.get(ident)
         if not job:
             diagnostics.append({"candidateId": ident, "reason": "ledger_job_missing"})
+            continue
+        # A record no longer listed (closed, expired, gone from a complete
+        # official listing, or past its stated deadline) is not shown, so it is
+        # not worth a review; it keeps its identity (A101).
+        deadline = deadlines.get(ident)
+        if job.get("lifecycleStatus") in {"closed", "expired", "unavailable"} or (
+            today and deadline and deadline < today
+        ):
+            not_listed += 1
             continue
         review = reviews.get(ident) or {}
         same_review = (
@@ -155,6 +166,7 @@ def build_queue(jobs_payload: dict, ledger: dict, reviews_payload: dict, *, toda
         "summary": {"currentCandidates": len(ledger.get("rows") or []),
                     "newCandidatesOutsideLedger": len(new_rows),
                     "newClosedOrExpiredSkipped": closed_new,
+                    "notListedSkipped": not_listed,
                     "scopeScreen": len(scope_screen),
                     "unchangedApprovedCarriedForward": carried,
                     "pendingPackets": len(packets),
