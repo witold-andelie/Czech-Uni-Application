@@ -171,7 +171,9 @@ def test_announcement_silent_doctoral_requirement_is_publishable(tmp_path: Path)
     def change(payload: dict) -> None:
         job = payload["jobs"][0]
         job["doctorateRequired"] = None
-        job["translationReview"]["factHash"] = job_fact_hash(job, payload["windows"])
+        job["translationReview"]["factHash"] = job_fact_hash(
+            job, payload["windows"], job["translationReview"]["normalizationVersion"]
+        )
 
     rewrite(snapshot / "browse" / "nine-hei-jobs.json", change)
     mutated = json.loads((snapshot / "browse" / "nine-hei-jobs.json").read_text(encoding="utf-8"))

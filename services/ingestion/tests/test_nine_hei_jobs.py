@@ -1854,7 +1854,7 @@ def _a75_review_entry(job: dict, *, fact_bound: bool) -> dict:
     }
     if fact_bound:
         entry["normalizationVersion"] = FACT_NORMALIZATION_VERSION
-        entry["factHash"] = job_fact_hash(job, [])
+        entry["factHash"] = job_fact_hash(job, [], FACT_NORMALIZATION_VERSION)
         for locale in ("zh-CN", "en", "cs"):
             entry["locales"][locale]["contentHash"] = translation_content_hash(job["title"][locale])
     return entry
@@ -1966,7 +1966,8 @@ def test_bind_review_payloads_legacy_migration_requires_explicit_inputs(tmp_path
     assert bound["conflicts"] == []
     stored = json.loads(reviews_path.read_text(encoding="utf-8"))["reviews"][job["id"]]
     assert stored["factHash"] == job_fact_hash(job, [])
-    assert stored["normalizationVersion"] == "fact-v1"
+    # New bindings use fact-v2 (owner decision 2026-10-01).
+    assert stored["normalizationVersion"] == "fact-v2"
 
     # A second run on the now fact-bound entry must be a no-op, and a stale
     # hash would be reported instead of rebound.
@@ -2592,7 +2593,7 @@ def test_draft_translation_record_stays_draft_after_apply(tmp_path) -> None:
             }
             for locale in ("zh-CN", "en", "cs")
         },
-        "factHash": job_fact_hash(job, []),
+        "factHash": job_fact_hash(job, [], "fact-v1"),
     }
     applied = jobs_harvester.apply_translation_review(
         dict(job), job["sourceHash"], {job["id"]: entry}, []
@@ -2697,15 +2698,23 @@ def test_approval_never_outlives_the_facts_it_was_bound_to() -> None:
         "sourceHash": "sha256:" + "1" * 64,
         "paidStatus": "confirmed",
     }
-    reviews = {"job-a": {"factHash": job_fact_hash(reviewed, [window])}}
+    reviews = {"job-a": {"factHash": job_fact_hash(reviewed, [window]), "normalizationVersion": "fact-v2"}}
     previous = {"jobs": [reviewed], "windows": [window]}
 
-    # The expiry path flips the window and keeps "approved"; source unchanged.
+    # The expiry path flips the window to closed. Window status is computed,
+    # not reviewed (fact-v2), so the approval simply stands.
     expired = {**reviewed, "lifecycleStatus": "expired"}
     closed_window = {**window, "status": "closed"}
     out, report = jobs_harvester.enforce_review_binding(
         previous, {"jobs": [expired], "windows": [closed_window]}, reviews
     )
+    assert report == {"restored": [], "returnedToReview": []}
+    assert out["jobs"] == [expired]
+
+    # The same page read differently (source hash unchanged): the reviewed
+    # record and its windows are kept.
+    reread = {**reviewed, "paidStatus": "unconfirmed"}
+    out, report = jobs_harvester.enforce_review_binding(previous, {"jobs": [reread], "windows": [window]}, reviews)
     assert report["restored"] == ["job-a"]
     assert out["jobs"] == [reviewed] and out["windows"] == [window]
 
@@ -2747,3 +2756,42 @@ def test_english_deadline_stated_only_as_send_by_a_date() -> None:
         "Send your CV. Results are published by 1. 6. 2026.",
     ):
         assert extract_deadline(text) is None, text
+
+
+def test_a_page_change_keeps_approval_while_reviewed_facts_and_titles_hold() -> None:
+    """Owner decision 2026-10-01 (A53 revised): approval binds to facts and titles."""
+    from publication_rules import job_fact_hash, translation_content_hash
+
+    window = {"id": "win-b", "ownerId": "job-b", "closesAt": "2026-11-30", "status": "unknown"}
+    job = {"id": "job-b", "originalText": "Research assistant", "paidStatus": "confirmed",
+           "minimumDegree": "master", "lifecycleStatus": "unknown", "sourceUrl": "https://uni.cz/job-b"}
+    title = {"zh-CN": "研究助理", "en": "Research assistant", "cs": "Výzkumný asistent"}
+    entry = {
+        "sourceHash": "sha256:" + "a" * 64,
+        "factHash": job_fact_hash(job, [window]),
+        "normalizationVersion": "fact-v2",
+        "reviewer": {"role": "operator_source_review"},
+        "title": title,
+        "locales": {
+            locale: {"status": "reviewed", "reviewedAt": "2026-10-01T10:00:00Z",
+                     "contentHash": translation_content_hash(text)}
+            for locale, text in title.items()
+        },
+    }
+    reviews = {"job-b": entry}
+    new_page = "sha256:" + "b" * 64
+
+    kept = jobs_harvester.apply_translation_review(dict(job), new_page, reviews, windows=[window])
+    assert kept["publicationStatus"] == "approved"
+    assert kept["translationReview"]["sourceHash"] == new_page
+    assert kept["translationReview"]["reviewedSourceHash"] == entry["sourceHash"]
+    assert kept["title"] == title
+
+    # The window flipping to closed is computed, not reviewed.
+    closed = jobs_harvester.apply_translation_review(dict(job), new_page, reviews, windows=[{**window, "status": "closed"}])
+    assert closed["publicationStatus"] == "approved"
+
+    # A changed reviewed fact still needs a new review.
+    changed = jobs_harvester.apply_translation_review({**job, "minimumDegree": "doctorate"}, new_page, reviews, windows=[window])
+    assert changed["publicationStatus"] == "review_pending"
+    assert changed["translationStatus"] == "stale"

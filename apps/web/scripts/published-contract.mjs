@@ -120,6 +120,11 @@ function requireUrl(item, field, label, errors, code, httpsOnly = false) {
 }
 
 const FACT_NORMALIZATION_VERSION = "fact-v1";
+// Mirrors publication_rules.JOB_FACT_NORMALIZATION_VERSION: job reviews bind to
+// fact-v2, which leaves out window status and the track/isPostdoc reading;
+// records reviewed under fact-v1 keep validating under fact-v1.
+const JOB_FACT_NORMALIZATION_VERSION = "fact-v2";
+const JOB_FACT_VERSIONS = new Set(["fact-v1", JOB_FACT_NORMALIZATION_VERSION]);
 // A published title never starts with a calendar date: such a prefix means the
 // harvester captured page chrome (a dated news/breadcrumb heading) with it.
 const LEADING_DATE_RE = /^\d{1,2}[./-]\d{1,2}[./-]\d{2,4}\b/;
@@ -239,7 +244,9 @@ function renderedOfferingWindows(item) {
   return [];
 }
 
-function canonicalJobFacts(job, windows = []) {
+function canonicalJobFacts(job, windows = [], version = JOB_FACT_NORMALIZATION_VERSION) {
+  if (!JOB_FACT_VERSIONS.has(version)) throw new Error(`unknown job fact normalization version ${version}`);
+  const v1 = version === "fact-v1";
   const salary = job.salary && typeof job.salary === "object" ? job.salary : {};
   const owned = (windows || [])
     .filter((item) => item && item.ownerId === job.id)
@@ -249,14 +256,14 @@ function canonicalJobFacts(job, windows = []) {
       closesAt: item.closesAt,
       timezone: item.timezone,
       datePrecision: item.datePrecision,
-      status: item.status,
+      ...(v1 ? { status: item.status } : {}),
       roundType: item.roundType,
       conditionalOnVacancies: item.conditionalOnVacancies,
     }))
     .sort((a, b) => String(a.id || "").localeCompare(String(b.id || "")));
   const languages = Array.isArray(job.workingLanguages) ? [...job.workingLanguages].sort() : job.workingLanguages;
-  return {
-    normalizationVersion: FACT_NORMALIZATION_VERSION,
+  const facts = {
+    normalizationVersion: version,
     id: job.id,
     minimumDegree: job.minimumDegree,
     doctorateRequired: job.doctorateRequired,
@@ -280,10 +287,21 @@ function canonicalJobFacts(job, windows = []) {
     track: job.track ?? null,
     windows: owned,
   };
+  if (!v1) {
+    delete facts.isPostdoc;
+    delete facts.track;
+  }
+  return facts;
 }
 
-function jobFactHash(job, windows = []) {
-  return sha256Canonical(canonicalJobFacts(job, windows));
+function jobFactHash(job, windows = [], version = JOB_FACT_NORMALIZATION_VERSION) {
+  return sha256Canonical(canonicalJobFacts(job, windows, version));
+}
+
+/** The job's fact hash under the version its review was bound with, or null if unknown. */
+function reviewJobFactHash(job, windows, review) {
+  const version = (review && review.normalizationVersion) || "fact-v1";
+  return JOB_FACT_VERSIONS.has(version) ? jobFactHash(job, windows, version) : null;
 }
 
 function canonicalOfferingFacts(offering, windows = []) {
@@ -552,7 +570,7 @@ function validateProgrammeLinks(inventory, baseline, errors) {
   return linked;
 }
 
-export { FACT_NORMALIZATION_VERSION, jobFactHash, translationContentHash, validCalendarDate };
+export { FACT_NORMALIZATION_VERSION, JOB_FACT_NORMALIZATION_VERSION, jobFactHash, translationContentHash, validCalendarDate };
 
 function validateDataset(snapshotRoot) {
   const errors = [];
@@ -712,9 +730,9 @@ function validateDataset(snapshotRoot) {
     const review = job.translationReview;
     if (!review || review.sourceHash !== job.sourceHash || !review.locales) errors.push(`${label}.translationReview must match sourceHash`);
     else {
-      if (review.normalizationVersion !== FACT_NORMALIZATION_VERSION) errors.push(`REVIEW_NORMALIZATION_INVALID: ${label} review normalizationVersion is missing or stale`);
+      if (!JOB_FACT_VERSIONS.has(review.normalizationVersion)) errors.push(`REVIEW_NORMALIZATION_INVALID: ${label} review normalizationVersion is missing or stale`);
       if (!reviewerRole(review.reviewer)) errors.push(`REVIEW_REVIEWER_MISSING: ${label} review is missing reviewer identity or role`);
-      if (review.factHash !== jobFactHash(job, windowRows)) errors.push(`REVIEW_FACT_HASH_MISMATCH: ${label} reviewed facts do not match the published record`);
+      if (review.factHash !== reviewJobFactHash(job, windowRows, review)) errors.push(`REVIEW_FACT_HASH_MISMATCH: ${label} reviewed facts do not match the published record`);
       if (typeof review.evidenceHash !== "string" || !SHA_RE.test(review.evidenceHash)) errors.push(`REVIEW_EVIDENCE_HASH_MISMATCH: ${label} review evidenceHash is missing`);
       else if (review.evidenceHash !== job.sourceHash) errors.push(`REVIEW_EVIDENCE_HASH_MISMATCH: ${label} review evidenceHash does not match sourceHash`);
       else if (evidenceHashById[evidenceId] && review.evidenceHash !== evidenceHashById[evidenceId]) errors.push(`REVIEW_EVIDENCE_HASH_MISMATCH: ${label} evidence sourceHash does not match the review`);

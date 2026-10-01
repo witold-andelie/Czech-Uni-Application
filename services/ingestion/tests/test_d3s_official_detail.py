@@ -36,7 +36,7 @@ def test_operational_d3s_job_points_at_vacancy_document_and_is_not_approved() ->
     assert locales["zh-CN"]["status"] == "reviewed"
     assert locales["en"]["status"] == "reviewed"
     assert locales["cs"]["status"] == "reviewed"
-    assert entry["factHash"] == job_fact_hash(job, [window])
+    assert entry["factHash"] == job_fact_hash(job, [window], entry["normalizationVersion"])
     applied = apply_translation_review(dict(job), job["sourceHash"], load_job_reviews(), [window])
     assert applied["publicationStatus"] == "approved"
     assert applied["translationStatus"] == "verified"

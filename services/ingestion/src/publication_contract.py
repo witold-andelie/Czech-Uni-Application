@@ -19,11 +19,12 @@ import urllib.parse
 from engine.urls import official_detail_allowed
 from publication_rules import (
     FACT_NORMALIZATION_VERSION,
+    JOB_FACT_VERSIONS,
     UNAPPROVED_PUBLICATION,
     UNAPPROVED_TRANSLATION,
-    job_fact_hash,
     offering_fact_hash,
     rendered_offering_windows,
+    review_job_fact_hash,
     reviewer_role,
     rule,
     translation_content_hash,
@@ -469,11 +470,11 @@ def _validate_translation_review(
     if not isinstance(review, dict) or (source_hash is not None and review.get("sourceHash") != source_hash):
         errors.append(f"{label}.translationReview must match sourceHash")
         return
-    if review.get("normalizationVersion") != FACT_NORMALIZATION_VERSION:
+    if review.get("normalizationVersion") not in JOB_FACT_VERSIONS:
         errors.append(rule("REVIEW_NORMALIZATION_INVALID", f"{label} review normalizationVersion is missing or stale"))
     if not reviewer_role(review.get("reviewer")):
         errors.append(rule("REVIEW_REVIEWER_MISSING", f"{label} review is missing reviewer identity or role"))
-    expected_fact = job_fact_hash(job, windows)
+    expected_fact = review_job_fact_hash(job, windows, review)
     if review.get("factHash") != expected_fact:
         errors.append(rule("REVIEW_FACT_HASH_MISMATCH", f"{label} reviewed facts do not match the published record"))
     if not isinstance(review.get("evidenceHash"), str) or not SHA256_RE.fullmatch(str(review.get("evidenceHash"))):

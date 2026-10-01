@@ -29,7 +29,9 @@ from urllib.parse import parse_qs, quote, urlencode, urljoin, urlsplit, urlunspl
 
 ROOT = Path(__file__).resolve().parents[3]
 from publication_rules import (  # noqa: E402
-    FACT_NORMALIZATION_VERSION,
+    JOB_FACT_NORMALIZATION_VERSION,
+    JOB_FACT_VERSIONS,
+    review_job_fact_hash,
     job_fact_hash,
     reviewer_role,
     translation_content_hash,
@@ -597,10 +599,18 @@ def apply_translation_review(
     entry = reviews.get(job.get("id")) if isinstance(reviews, dict) else None
     entry = entry if isinstance(entry, dict) else None
     locales = entry.get("locales") if entry else None
-    current_fact = job_fact_hash(job, windows)
+    # Owner decision 2026-10-01: approval binds to the reviewed facts (fact-v2:
+    # without window status and the track reading) and to the reviewed titles,
+    # not to the rest of the page. A page whose other text changed keeps its
+    # approval while its facts and titles still match; the live-evidence gate
+    # still demands fresh proof that the page announces the vacancy.
+    current_fact = (
+        review_job_fact_hash(job, windows, entry)
+        if entry is not None
+        else job_fact_hash(job, windows)
+    )
     source_matches = entry is not None and entry.get("sourceHash") == source_hash
-    evidence_matches = entry is not None and entry.get("evidenceHash") == source_hash
-    facts_match = entry is not None and entry.get("factHash") == current_fact
+    facts_match = entry is not None and current_fact is not None and entry.get("factHash") == current_fact
     reviewer = reviewer_role(entry.get("reviewer") if entry else None)
     reviewed_title = entry.get("title") if entry else None
     titles_ok = isinstance(reviewed_title, dict) and all(
@@ -620,12 +630,10 @@ def apply_translation_review(
         )
     )
     fully_reviewed = (
-        source_matches
-        and evidence_matches
-        and facts_match
+        facts_match
         and reviewer is not None
         and translations_ok
-        and entry.get("normalizationVersion") == FACT_NORMALIZATION_VERSION
+        and entry.get("normalizationVersion") in JOB_FACT_VERSIONS
     )
 
     job["sourceHash"] = source_hash
@@ -649,10 +657,14 @@ def apply_translation_review(
             "sourceHash": source_hash,
             "factHash": current_fact,
             "evidenceHash": source_hash,
-            "normalizationVersion": FACT_NORMALIZATION_VERSION,
+            "normalizationVersion": entry.get("normalizationVersion"),
             "reviewer": {"role": reviewer},
             "locales": review_locales,
         }
+        if not source_matches:
+            # The approval carried over a page change that left facts and
+            # titles as reviewed; keep which page text the reviewer read.
+            job["translationReview"]["reviewedSourceHash"] = entry.get("sourceHash")
     else:
         draft_locales = (
             isinstance(locales, dict)
@@ -688,7 +700,7 @@ def apply_translation_review(
             "sourceHash": source_hash,
             "factHash": current_fact,
             "evidenceHash": source_hash,
-            "normalizationVersion": FACT_NORMALIZATION_VERSION,
+            "normalizationVersion": (entry or {}).get("normalizationVersion") or JOB_FACT_NORMALIZATION_VERSION,
             "reviewer": {"role": reviewer} if reviewer else None,
             "locales": review_locales,
         }
@@ -4080,7 +4092,7 @@ def enforce_review_binding(
         entry = reviews.get(job_id) if isinstance(reviews, dict) else None
         reviewed_fact = entry.get("factHash") if isinstance(entry, dict) else None
         owned = [item for item in windows if item.get("ownerId") == job_id]
-        if reviewed_fact and job_fact_hash(job, owned) == reviewed_fact:
+        if reviewed_fact and review_job_fact_hash(job, owned, entry) == reviewed_fact:
             jobs.append(job)
             continue
         prior = prior_jobs.get(job_id)
@@ -4089,7 +4101,7 @@ def enforce_review_binding(
             prior is not None
             and prior.get("publicationStatus") == "approved"
             and bool(reviewed_fact)
-            and job_fact_hash(prior, prior_owned) == reviewed_fact
+            and review_job_fact_hash(prior, prior_owned, entry) == reviewed_fact
         )
         incoming_hash = job.get("sourceHash")
         same_source = not (isinstance(incoming_hash, str) and _SHA256_RE.match(incoming_hash)) or (
@@ -4656,19 +4668,21 @@ def bind_review_payloads(
         job = jobs_by_id.get(job_id)
         if not isinstance(job, dict):
             continue
-        current_fact = job_fact_hash(job, windows)
         current_evidence = job.get("sourceHash") or entry.get("sourceHash")
         already_bound = (
-            entry.get("normalizationVersion") == FACT_NORMALIZATION_VERSION
+            entry.get("normalizationVersion") in JOB_FACT_VERSIONS
             and isinstance(entry.get("factHash"), str)
             and entry["factHash"]
         )
+        current_fact = (
+            review_job_fact_hash(job, windows, entry) if already_bound else job_fact_hash(job, windows)
+        )
         if already_bound:
+            # Owner decision 2026-10-01: a review binds to facts and titles, not
+            # to the page's other text, so only changed facts are a conflict.
             changed = []
             if entry.get("factHash") != current_fact:
                 changed.append("facts")
-            if entry.get("evidenceHash") != current_evidence:
-                changed.append("evidence")
             if changed:
                 # A fact-bound record must fail loudly instead of silently
                 # inheriting its old approval; a new review record with the
@@ -4710,7 +4724,7 @@ def bind_review_payloads(
                 }
             )
             continue
-        entry["normalizationVersion"] = FACT_NORMALIZATION_VERSION
+        entry["normalizationVersion"] = JOB_FACT_NORMALIZATION_VERSION
         entry["factHash"] = current_fact
         entry["evidenceHash"] = current_evidence
         entry["reviewer"] = {"role": "operator_source_review"}

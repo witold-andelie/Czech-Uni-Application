@@ -15,6 +15,15 @@ from typing import Any
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 FACT_NORMALIZATION_VERSION = "fact-v1"
+# Job reviews bind to fact-v2 (owner decision 2026-10-01): the facts a reviewer
+# checks against the notice. fact-v2 leaves out what the reviewer never judged:
+# a window's open/closed status (computed from its dates and the clock) and the
+# track/isPostdoc classification (this project's reading of the title). A
+# change there no longer voids a review; any change to the reviewed facts
+# still does. Offerings stay on fact-v1. Records reviewed under fact-v1 keep
+# validating under fact-v1, so earlier immutable snapshots stay valid.
+JOB_FACT_NORMALIZATION_VERSION = "fact-v2"
+JOB_FACT_VERSIONS = frozenset({"fact-v1", JOB_FACT_NORMALIZATION_VERSION})
 LOCALES: tuple[str, ...] = ("zh-CN", "en", "cs")
 
 DATE_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
@@ -174,7 +183,14 @@ def rendered_offering_windows(item: dict[str, Any]) -> list[dict[str, Any]]:
     return []
 
 
-def canonical_job_facts(job: dict[str, Any], windows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+def canonical_job_facts(
+    job: dict[str, Any],
+    windows: list[dict[str, Any]] | None = None,
+    version: str = JOB_FACT_NORMALIZATION_VERSION,
+) -> dict[str, Any]:
+    if version not in JOB_FACT_VERSIONS:
+        raise ValueError(f"unknown job fact normalization version {version!r}")
+    v1 = version == "fact-v1"
     salary = job.get("salary") if isinstance(job.get("salary"), dict) else {}
     languages = job.get("workingLanguages")
     owned = []
@@ -187,14 +203,14 @@ def canonical_job_facts(job: dict[str, Any], windows: list[dict[str, Any]] | Non
                     "closesAt": item.get("closesAt"),
                     "timezone": item.get("timezone"),
                     "datePrecision": item.get("datePrecision"),
-                    "status": item.get("status"),
+                    **({"status": item.get("status")} if v1 else {}),
                     "roundType": item.get("roundType"),
                     "conditionalOnVacancies": item.get("conditionalOnVacancies"),
                 }
             )
     owned.sort(key=lambda row: str(row.get("id") or ""))
-    return {
-        "normalizationVersion": FACT_NORMALIZATION_VERSION,
+    facts = {
+        "normalizationVersion": version,
         "id": job.get("id"),
         "minimumDegree": job.get("minimumDegree"),
         "doctorateRequired": job.get("doctorateRequired"),
@@ -218,10 +234,25 @@ def canonical_job_facts(job: dict[str, Any], windows: list[dict[str, Any]] | Non
         "track": job.get("track"),
         "windows": owned,
     }
+    if not v1:
+        del facts["isPostdoc"], facts["track"]
+    return facts
 
 
-def job_fact_hash(job: dict[str, Any], windows: list[dict[str, Any]] | None = None) -> str:
-    return sha256_canonical(canonical_job_facts(job, windows))
+def job_fact_hash(
+    job: dict[str, Any],
+    windows: list[dict[str, Any]] | None = None,
+    version: str = JOB_FACT_NORMALIZATION_VERSION,
+) -> str:
+    return sha256_canonical(canonical_job_facts(job, windows, version))
+
+
+def review_job_fact_hash(job: dict[str, Any], windows: list[dict[str, Any]] | None, review: dict[str, Any] | None) -> str | None:
+    """The job's fact hash under the version its review was bound with, or None if unknown."""
+    version = (review or {}).get("normalizationVersion") or "fact-v1"
+    if version not in JOB_FACT_VERSIONS:
+        return None
+    return job_fact_hash(job, windows, version)
 
 
 def canonical_offering_facts(offering: dict[str, Any], windows: list[dict[str, Any]] | None = None) -> dict[str, Any]:

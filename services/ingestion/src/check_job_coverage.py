@@ -39,10 +39,10 @@ def _returned_for_source_change(job: dict, reviews: dict, windows: list | None =
     current, reviewed = job.get("sourceHash"), entry.get("sourceHash")
     if current and reviewed and current != reviewed:
         return True
-    from publication_rules import job_fact_hash
+    from publication_rules import review_job_fact_hash
 
     owned = [item for item in windows or [] if isinstance(item, dict) and item.get("ownerId") == job.get("id")]
-    return bool(entry.get("factHash")) and job_fact_hash(job, owned) != entry.get("factHash")
+    return bool(entry.get("factHash")) and review_job_fact_hash(job, owned, entry) != entry.get("factHash")
 
 
 def _load_reviews(path: Path | None) -> dict:
