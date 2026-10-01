@@ -1,9 +1,10 @@
 {
-  "note": "Committed regression floor for data/sources/browse/nine-hei-jobs.json. CI and the refresh commit step fail when job identities or approved records fall below this. Raise it when coverage genuinely improves. Revise it with a reason in revisionNotes when a verified close/expiry or operator disposition removes a record. Never lower it to 'clean up' the list (docs/ACCEPTANCE.md A101).",
+  "note": "Committed regression floor for data/sources/browse/nine-hei-jobs.json. CI and the refresh commit step fail when job identities, or approved records plus reviewed records sent back to review by a recorded source or fact change (A53), fall below this. Raise it when coverage genuinely improves. Revise it with a reason in revisionNotes when a verified close/expiry or operator disposition removes a record. Never lower it to 'clean up' the list (docs/ACCEPTANCE.md A101).",
   "recordedFromGeneratedAt": "2026-09-16T22:35:16Z",
   "identityTotal": 174,
-  "approvedTotal": 140,
+  "approvedTotal": 166,
   "revisionNotes": [
-    "2026-09-27: first floor recorded from the candidate file that snapshot v2026-09-27.2 published from (174 identities, 140 approved). Closed and expired rows still count as identities. Withheld live-evidence records stay approved in this file until an operator archives them."
+    "2026-09-27: first floor recorded from the candidate file that snapshot v2026-09-27.2 published from (174 identities, 140 approved). Closed and expired rows still count as identities. Withheld live-evidence records stay approved in this file until an operator archives them.",
+    "2026-10-01: owner decision. A reviewed record that the harvest returns to review because its official source or derived facts no longer match the review (A53) keeps its identity and waits in the re-review queue; it now counts toward approvedTotal together with approved records, so a daily source change no longer blocks every new candidate. It counts only with the reason proven (stale translation, completed operator_source_review, source or fact hash differing from the review); a demotion with both hashes matching still fails. Raised 140 -> 166 so the floor keeps the same strength: the committed file holds 140 approved + 26 already back in review. Refresh run 36875008561 (2026-10-01) yields 122 approved + 44 back in review = 166, so no record was lost."
   ]
 }
