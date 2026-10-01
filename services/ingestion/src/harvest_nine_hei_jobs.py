@@ -724,22 +724,28 @@ def parse_date(value: str | None) -> date | None:
     if not value:
         return None
     text = value.strip()
-    match = ISO_DATE.search(text)
-    if match:
-        return date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
-    match = CZ_DATE.search(text)
-    if match:
-        return date(int(match.group(3)), int(match.group(2)), int(match.group(1)))
-    match = CZ_TEXT_DATE.search(text)
-    if match:
-        return date(int(match.group(3)), CZ_MONTHS[match.group(2).lower()], int(match.group(1)))
-    match = TEXT_DATE.search(text)
-    if match:
-        return date(int(match.group(3)), MONTHS[match.group(2).lower()], int(match.group(1)))
-    match = MONTH_FIRST_DATE.search(text)
-    if match:
-        return date(int(match.group(3)), MONTHS[match.group(1).lower()], int(match.group(2)))
-    return None
+    # The date written first wins, whatever its format. Trying formats in a
+    # fixed order took "Deadline 10 Oct 2026 Start date 1. 12. 2026" (MUNI) as
+    # the numeric start date, showing a closed vacancy as open (2026-10-01).
+    found: list[tuple[int, date]] = []
+    readers = (
+        (ISO_DATE, lambda m: date(int(m.group(1)), int(m.group(2)), int(m.group(3)))),
+        (CZ_DATE, lambda m: date(int(m.group(3)), int(m.group(2)), int(m.group(1)))),
+        (CZ_TEXT_DATE, lambda m: date(int(m.group(3)), CZ_MONTHS[m.group(2).lower()], int(m.group(1)))),
+        (TEXT_DATE, lambda m: date(int(m.group(3)), MONTHS[m.group(2).lower()], int(m.group(1)))),
+        (MONTH_FIRST_DATE, lambda m: date(int(m.group(3)), MONTHS[m.group(1).lower()], int(m.group(2)))),
+    )
+    for pattern, build in readers:
+        match = pattern.search(text)
+        if not match:
+            continue
+        try:
+            found.append((match.start(), build(match)))
+        except (KeyError, ValueError):
+            continue
+    if not found:
+        return None
+    return min(found, key=lambda item: item[0])[1]
 
 
 def iso_date(value: date | None) -> str | None:
@@ -2737,7 +2743,9 @@ def parse_generic_job_page(html: str, page_url: str, title_hint: str = "") -> di
     if paid != "confirmed":
         if re.search(
             # "attractive financial remuneration", "employment relationship with ..." (MUNI LF).
-            r"\b(salary|wage|remuneration|employment relationship|employment contract|fixed[- ]term contract|contract of employment|"
+            # "The researcher will be employed at CEITEC MU", "Part-time contract", "PhD stipend" (MUNI CEITEC).
+            r"\b(salary|wage|remuneration|stipend|be employed|(?:part|full)[- ]time contract|"
+            r"employment relationship|employment contract|fixed[- ]term contract|contract of employment|"
             r"full-time employment|full-time position|gross|"
             r"pracovn[ií]\s+smlouva|pracovn[ií]\s+[úu]vazek|pracovn[ií]\s+pom[eě]r|pracovn[eě]pr[aá]vn[ií](?:ho| vztah)|mzda|mzdov\w*|"
             r"plat(?:ov[eéý]\s+(?:ohodnocen[ií]|podm[ií]nk[ay]))?|finan[cč]n[ií]\s+ohodnocen[ií])\b",

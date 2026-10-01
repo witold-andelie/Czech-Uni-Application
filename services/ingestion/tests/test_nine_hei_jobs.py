@@ -2891,3 +2891,12 @@ def test_cuni_notice_facts_found_by_the_2026_10_01_review() -> None:
     assert extract_employment_fte(weekly) == 0.15
     assert extract_employment_fte("FaF_VZ4_105: PhD Student, 0,15 FTE (project NETPHARM)") == 0.15
     assert extract_employment_fte("Employment Type and Scope: Full time employment Expected Start Date: April") == 1.0
+
+
+def test_the_date_written_first_is_the_one_read() -> None:
+    """MUNI: "Deadline 10 Oct 2026 Start date 1. 12. 2026" was read as 1 December."""
+    from harvest_nine_hei_jobs import extract_deadline, parse_date
+
+    assert str(parse_date("Deadline 10 Oct 2026 Start date 1. 12. 2026")) == "2026-10-10"
+    assert str(parse_date("31. 12. 2026 or 2027-01-01")) == "2026-12-31"
+    assert str(extract_deadline("Department X Deadline 26 Oct 2026 Start date 1.3.2027 Job type full-time")) == "2026-10-26"
