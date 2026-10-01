@@ -4606,38 +4606,38 @@
       ]
     },
     "job-21000-5480": {
-      "sourceHash": "sha256:03fb29b4ec01a5bd34396d6f4c95ad5f5a5ca66c9de85febd29915b0ee32bc55",
-      "evidenceHash": "sha256:03fb29b4ec01a5bd34396d6f4c95ad5f5a5ca66c9de85febd29915b0ee32bc55",
+      "sourceHash": "sha256:400a37af2684f3a1790c2d938c35f255afeb6b7c8550c464781463a8a368d58d",
+      "evidenceHash": "sha256:400a37af2684f3a1790c2d938c35f255afeb6b7c8550c464781463a8a368d58d",
       "normalizationVersion": "fact-v2",
       "reviewer": {
-        "role": "operator_translation_draft"
+        "role": "operator_source_review"
       },
-      "reviewEventId": "draft-2026-09-22-060",
-      "reviewedAt": "2026-09-22T20:59:42Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewEventId": "rev-2026-10-01-ctu-01",
+      "reviewedAt": "2026-10-01T20:34:20Z",
+      "reviewNote": "Checked 2026-10-01 against the official PDF attached to ČVUT electronic notice board item 5480: Notice in English only (akad.prac.0826_PK_AJ.pdf); one assistant professor post in full-time employment (1.0 FTE); a duly completed PhD in building materials and structures and 10 years in structural health monitoring, digital twins, AI computer vision and BIM required; excellent spoken and written English; habilitation expected within 3 years; applications by 6 Oct 2026. The Czech title is a reviewer translation of the English notice, not an official Czech text.",
       "title": {
-        "zh-CN": "学术工作人员职位选拔程序",
-        "en": "Selection process for academic staff positions",
-        "cs": "Selection process for academic staff positions"
+        "zh-CN": "土木工程学院建筑施工技术系助理教授",
+        "en": "Assistant Professor, Department of Construction Technology, Faculty of Civil Engineering (job code 122/2)",
+        "cs": "Odborný asistent / odborná asistentka, Katedra technologie staveb, Fakulta stavební ČVUT (kód pozice 122/2)"
       },
       "locales": {
         "zh-CN": {
-          "status": "draft",
-          "contentHash": "sha256:3d37edbd663ed101224619da5de1faeee1efb9ab3198c922e1f5baf139485c2d",
-          "translatedFromHash": "sha256:03fb29b4ec01a5bd34396d6f4c95ad5f5a5ca66c9de85febd29915b0ee32bc55"
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:34:20Z",
+          "contentHash": "sha256:aad2941e57a67a9827d9370eb77c60a8450e4c1548467cf7eb5f5fd174b364ac"
         },
         "en": {
-          "status": "draft",
-          "contentHash": "sha256:39a35bf227737de1947cf740080e22fdb2eb358aa2b5f3de9c4834d576de08d1",
-          "translatedFromHash": "sha256:03fb29b4ec01a5bd34396d6f4c95ad5f5a5ca66c9de85febd29915b0ee32bc55"
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:34:20Z",
+          "contentHash": "sha256:57f8b11b49998d39a0aaf78fd2fd24f6ecf17408abdced3bf82744cbe6d754f9"
         },
         "cs": {
-          "status": "draft",
-          "contentHash": "sha256:39a35bf227737de1947cf740080e22fdb2eb358aa2b5f3de9c4834d576de08d1",
-          "translatedFromHash": "sha256:03fb29b4ec01a5bd34396d6f4c95ad5f5a5ca66c9de85febd29915b0ee32bc55"
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:34:20Z",
+          "contentHash": "sha256:6d061e7b6dae2ba04216353d14e33c67fdc677abaf749787643794afe4f3cb25"
         }
       },
-      "factHash": "sha256:ee4737024a09d1488f8a76964e5f96c8f9c1643ea2da65401c3deb61ecd6c92e"
+      "factHash": "sha256:476968e54fe8a0a443137b63ae432ec19ec3900b954ba6df920e63ea93a5b23e"
     },
     "job-21000-5488": {
       "sourceHash": "sha256:aee6d8c0d9bfe8d3b0fec7f02742fb1ba7367e61ffed476b927c99c2cb3fb75d",
@@ -8633,6 +8633,74 @@
         }
       },
       "factHash": "sha256:3f56fc6e4ec41887064d8bb2de0d79a95b8f64f75389538614d3d0affcf974a9"
+    },
+    "job-21000-5504": {
+      "sourceHash": "sha256:e43daeb450541e8f6e96805f5ba0bd0a2f603f58c9f3c43a5887297dee918d74",
+      "evidenceHash": "sha256:e43daeb450541e8f6e96805f5ba0bd0a2f603f58c9f3c43a5887297dee918d74",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-ctu-02",
+      "reviewedAt": "2026-10-01T20:34:20Z",
+      "reviewNote": "Checked 2026-10-01 against the official PDF attached to ČVUT electronic notice board item 5504: Rector's selection procedure; the institute's academic head; 'vědeckou hodnost Ph.D. nebo ekvivalentní' and documented research results required; good knowledge of English; 'úvazek 1,0 – platové podmínky se řídí Mzdovým předpisem univerzity' (paid, 1.0 FTE); 'Lhůta pro podání přihlášek je 17.10.2026'.",
+      "title": {
+        "zh-CN": "捷克理工大学马萨里克高等研究院院长",
+        "en": "Director of the Masaryk Institute of Advanced Studies (CTU)",
+        "cs": "Ředitel/ředitelka Masarykova ústavu vyšších studií ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:34:20Z",
+          "contentHash": "sha256:cbd1a6b2c7fb1bb46d7409e9254821c3514ce8bb2a7d293d0e7f5700c03b8099"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:34:20Z",
+          "contentHash": "sha256:81dcd5a66a109388229a970f10c98116b7e4130e1792a4eb99ada99993edb315"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:34:20Z",
+          "contentHash": "sha256:5e5d9087fd9c5fa364f13952f3a023a37a490c2b721f5a09b0bbe4d10faab5d9"
+        }
+      },
+      "factHash": "sha256:659cea5aee1cbd947d03cd985f81a1adefbad0252bfb4944f489048bd539d60c"
+    },
+    "job-21000-5514": {
+      "sourceHash": "sha256:d489636c30a02ab33ba8d1f90b021b1019a3f0a1cb775ae4bb603a60d723b9c2",
+      "evidenceHash": "sha256:d489636c30a02ab33ba8d1f90b021b1019a3f0a1cb775ae4bb603a60d723b9c2",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-ctu-03",
+      "reviewedAt": "2026-10-01T20:34:20Z",
+      "reviewNote": "Checked 2026-10-01 against the official PDF attached to ČVUT electronic notice board item 5514: 1-2 posts; university education in informatics at the level the post requires (so no single minimum, unknown); peer-reviewed research; teaching in Czech and English; part-time fixed-term; pay by the CTU internal salary scale; applications 'nejpozději do 23. října 2026' (the 1.11.2026 in the notice is the start date).",
+      "title": {
+        "zh-CN": "信息技术学院计算机系统系：计算机网络与物联网方向助理教授／副教授／教授／讲师",
+        "en": "Assistant Professor, Associate Professor, Professor or Lecturer in Computer Networks and the Internet of Things (Department of Computer Systems, Faculty of Information Technology)",
+        "cs": "Odborný asistent/ka, docent/ka, profesor/ka nebo lektor/ka v oboru Informatika – počítačové sítě a internet věcí (Katedra počítačových systémů FIT ČVUT)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:34:20Z",
+          "contentHash": "sha256:20605e7afcfd1ce25e356e74c734b35d17cf3d0bedc8ff30d71f6d4d5ef1d83b"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:34:20Z",
+          "contentHash": "sha256:11084cd971487fd31a9d5653e3e0b5d29785445969dc347230bfacdc2ae14cca"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:34:20Z",
+          "contentHash": "sha256:1e9e97b39003b301ac479ba3ea95358cdd0fe11f11d1738866072d96c22824dd"
+        }
+      },
+      "factHash": "sha256:b9394f3d2b21245f989a0229d59124df838889ad920261a63637cac3742cf4a3"
     }
   }
 }
