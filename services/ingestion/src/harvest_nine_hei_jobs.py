@@ -883,6 +883,10 @@ PHD_NOT_REQUIRED = (
     "doctoral degree is not required",
     "phd not required",
     "without a phd",
+    "not require a phd",
+    "not require a ph.d",
+    "not require phd",
+    "not require ph.d",
     "doktorské vzdělání není podmínkou",
     "bez nutnosti ph.d.",
 )
@@ -951,7 +955,8 @@ def extract_qualifications(title: str, body: str) -> dict:
         r"\b(?:ukon[cč]en[eé]\s+ph\.?d\.?\s+studium|"
         r"doktorsk[ýy]\s+titul\s*\(?ph\.?d\.?\)?|"
         r"(?:candidate|applicant|researcher|uchaze[cč])[^.\n]{0,100}\b(?:with|m[aá])\s+(?:a\s+)?ph\.?d\.?\b|"
-        r"(?:must|should|required|requirement|qualification|po[zž]adujeme)[^.\n]{0,120}\bph\.?d\.?\b)",
+        # "require" also covers "We require Ph.D." (UHK FIM, 2026-10-01).
+        r"(?:must|should|require[sd]?|requirement|qualification|po[zž]adujeme)[^.\n]{0,120}\bph\.?d\.?\b)",
         blob,
     ):
         doctorate_required = True
@@ -961,7 +966,9 @@ def extract_qualifications(title: str, body: str) -> dict:
     elif doctorate_required:
         minimum = "doctorate"
     elif re.search(
+        # "min. stupeň vzdělání: magisterské vysokoškolské studium" (UHK PřF, 2026-10-01).
         r"\b(?:master'?s?(?:\s+degree)?|master\s+degree|magistersk[eéý]\s+vzd[eě]l[aá]n[ií]|"
+        r"magistersk[eéý]\s+(?:vysoko[sš]kolsk[eéý]\s+)?studium|"
         r"inženýrsk[eéý]\s+vzd[eě]l[aá]n[ií]|inzenyrsk[eéý]\s+vzdelani|"
         r"vysokoškolsk[eéý]\s+vzd[eě]l[aá]n[ií]\s+minim[aá]ln[eě]\s+druh[eé]ho\s+stupn[eě]|"
         r"vysokoskolske\s+vzdelani\s+minimalne\s+druheho\s+stupne)\b",
@@ -1124,7 +1131,17 @@ _APPLY_BY_RE = re.compile(
     # A dot inside an address or a date (volnamista@tul.cz, 20.02.2026) does
     # not end the sentence; PDF text also breaks lines mid-sentence.
     r"(?:[^.;]|\.(?=\S)){0,160}?(?<!\breviewed)(?<!\bevaluated)(?<!\binformed)(?<!\bnotified)"
-    r"(?<!\bdecided)(?<!\bstart)(?<!\bstarting)(?<!\bcontacted)\s+by\s+(?=\d|[A-Za-z]+\s+\d)",
+    # "no later than" as well (UHK FIM: "send the documents no later than 8. 10. 2026").
+    r"(?<!\bdecided)(?<!\bstart)(?<!\bstarting)(?<!\bcontacted)\s+(?:by|no\s+later\s+than)\s+(?=\d|[A-Za-z]+\s+\d)",
+    re.I,
+)
+# Czech: "zasílejte e-mailem na adresu: …@uhk.cz do 16.10.2026" (UHK PřF). "do"
+# is everywhere in Czech ("do týmu", "do 30 dnů"), so an application verb must
+# precede it in the same sentence and a full D. M. YYYY date must follow at once.
+_APPLY_DO_RE = re.compile(
+    r"\b(?:zas[ií]lejte|za[sš]lete|zaslat|pos[ií]lejte|po[sš]lete|podejte|podat|doru[cč]te|"
+    r"p[rř]edlo[zž]te|ode[sš]lete|p[rř]ihl[aá][sš]k\w*)\b"
+    r"(?:[^.;]|\.(?=\S)){0,160}?\s+(?:nejpozd[eě]ji\s+)?do\s+(?=\d{1,2}\s*\.\s*\d{1,2}\s*\.\s*\d{4})",
     re.I,
 )
 
@@ -1139,10 +1156,11 @@ def extract_deadline(text: str) -> date | None:
             if parsed:
                 return parsed
             idx = blob.find(marker, idx + 1)
-    for match in _APPLY_BY_RE.finditer(text):
-        parsed = parse_date(text[match.end() : match.end() + 30])
-        if parsed:
-            return parsed
+    for pattern in (_APPLY_BY_RE, _APPLY_DO_RE):
+        for match in pattern.finditer(text):
+            parsed = parse_date(text[match.end() : match.end() + 30])
+            if parsed:
+                return parsed
     return None
 
 
@@ -1158,6 +1176,8 @@ def extract_employment_fte(text: str) -> float | None:
         r"\b(0[.,][1-9]|1(?:[.,]0+)?)\s*FTE\b",
         r"\bfull[- ]time\s+equivalent\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         r"\bfull[- ]time\s*\((0(?:[.,]\d+)?|1(?:[.,]0+)?)\)(?:\s|$|,|\.)",
+        # "We offer full working time (1.0)" (UHK FIM, 2026-10-01).
+        r"\bfull\s+working\s+time\s*\((0(?:[.,]\d+)?|1(?:[.,]0+)?)\)",
     )
     for pattern in patterns:
         match = re.search(pattern, text, re.I)
@@ -3961,7 +3981,14 @@ def harvest_with_registered_discovery(
             if generated_id != candidate["id"]:
                 superseded_ids.append(generated_id)
 
-    candidates = _merge_seed_and_discovered(seed_candidates, discovery["candidates"])
+    # A rediscovered vacancy starts from its stored record, as in the shard
+    # path: otherwise facts no listing states (working language, confirmed pay)
+    # reset to unknown on every discovery pass and flip back on every shard
+    # pass, sending reviewed records to re-review (UHK, 2026-10-01).
+    seeded_ids = {str(item.get("id")) for item in seed_candidates}
+    rediscovered = {str(item.get("id")) for item in discovery["candidates"]} - seeded_ids
+    stored_seeds = [item for item in seed_candidates_from_stored(previous) if item["id"] in rediscovered]
+    candidates = _merge_seed_and_discovered(list(seed_candidates) + stored_seeds, discovery["candidates"])
     payload = harvest_candidates(candidates, cached_fetch, previous, as_of, sleep_seconds=0)
     candidate_ids = {item["id"] for item in candidates}
     disappeared_ids: list[str] = []

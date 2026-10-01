@@ -2795,3 +2795,61 @@ def test_a_page_change_keeps_approval_while_reviewed_facts_and_titles_hold() -> 
     changed = jobs_harvester.apply_translation_review({**job, "minimumDegree": "doctorate"}, new_page, reviews, windows=[window])
     assert changed["publicationStatus"] == "review_pending"
     assert changed["translationStatus"] == "stale"
+
+
+def test_uhk_notices_found_by_the_2026_10_01_review() -> None:
+    """Facts the UHK re-review found the parser missing, and their negations."""
+    from harvest_nine_hei_jobs import extract_deadline, extract_employment_fte, extract_qualifications
+
+    fim = (
+        "We require Ph.D. pedagogical experience and competence active knowledge of English "
+        "We offer full working time (1.0) pleasant working environment "
+        "Please send the documents no later than 8. 10. 2026 by e-mail to jana.rubackova@uhk.cz"
+    )
+    assert extract_qualifications("", fim)["doctorateRequired"] is True
+    assert extract_qualifications("", fim)["minimumDegree"] == "doctorate"
+    assert extract_employment_fte(fim) == 1.0
+    assert str(extract_deadline(fim)) == "2026-10-08"
+
+    nursing = (
+        "Požadavky na min. stupeň vzdělání: magisterské vysokoškolské studium. "
+        "Strukturovaný životopis zasílejte e-mailem na adresu: ilona.lankasova@uhk.cz do 16.10.2026."
+    )
+    assert extract_qualifications("", nursing)["minimumDegree"] == "master"
+    assert extract_qualifications("", nursing)["doctorateRequired"] is False
+    assert str(extract_deadline(nursing)) == "2026-10-16"
+    assert str(extract_deadline("Přihlášku zašlete nejpozději do 5. 11. 2026 na adresu hr@uni.cz.")) == "2026-11-05"
+
+    assert extract_qualifications("", "We do not require a Ph.D. for this position.")["doctorateRequired"] is False
+    for text in (
+        "Přihlášky budou vyhodnoceny a uchazeči informováni do 30 dnů od ukončení.",
+        "Nástup do 1. 3. 2027, přihlášky zasílejte průběžně.",
+        "Applicants will be informed no later than 30 April 2026.",
+    ):
+        assert extract_deadline(text) is None, text
+
+
+def test_a_rediscovered_vacancy_keeps_facts_the_listing_does_not_state() -> None:
+    """Discovery and shard passes must not flip working language and pay back and forth."""
+    detail = "https://www.muni.cz/en/about-us/careers/vacancies/98765-new"
+    listing = "https://www.muni.cz/en/about-us/careers"
+    registry = [{"id": "muni-keep-test", "url": listing, "baseUrl": "https://www.muni.cz",
+                 "sourceType": "official_job_listing", "employerId": "msmt-vs_14000",
+                 "parser": "muni_vacancies", "followDetails": True}]
+    pages = {
+        listing: (200, '<a href="/en/about-us/careers/vacancies/98765-new">Research assistant in AI</a>'),
+        detail: (200, "<h1>Research assistant in AI</h1><p>Master degree. Deadline 2026-11-30.</p>"),
+    }
+    first = harvest_with_registered_discovery([], lambda url: pages.get(url, (404, "")),
+                                              as_of=parse_date("2026-10-01"), registry=registry)
+    job_id = first["jobs"][0]["id"]
+    # A reviewer recorded facts the page states only in prose the parser does not read.
+    stored = json.loads(json.dumps(first))
+    stored["jobs"][0]["workingLanguages"] = ["en"]
+    stored["jobs"][0]["paidStatus"] = "confirmed"
+
+    second = harvest_with_registered_discovery([], lambda url: pages.get(url, (404, "")), stored,
+                                               as_of=parse_date("2026-10-02"), registry=registry)
+    job = next(item for item in second["jobs"] if item["id"] == job_id)
+    assert job["workingLanguages"] == ["en"]
+    assert job["paidStatus"] == "confirmed"
