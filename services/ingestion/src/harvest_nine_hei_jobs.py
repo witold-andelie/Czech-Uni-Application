@@ -955,6 +955,8 @@ def extract_qualifications(title: str, body: str) -> dict:
         r"\b(?:ukon[cč]en[eé]\s+ph\.?d\.?\s+studium|"
         r"doktorsk[ýy]\s+titul\s*\(?ph\.?d\.?\)?|"
         r"(?:candidate|applicant|researcher|uchaze[cč])[^.\n]{0,100}\b(?:with|m[aá])\s+(?:a\s+)?ph\.?d\.?\b|"
+        # "Academic degree PhD or scientific rank of CSc" (MUNI LF, 2026-10-01).
+        r"academic\s+degree\s+(?:of\s+)?ph\.?d\.?\b|scientific\s+rank\s+of\s+csc\b|"
         # "require" also covers "We require Ph.D." (UHK FIM, 2026-10-01).
         r"(?:must|should|require[sd]?|requirement|qualification|po[zž]adujeme)[^.\n]{0,120}\bph\.?d\.?\b)",
         blob,
@@ -966,6 +968,11 @@ def extract_qualifications(title: str, body: str) -> dict:
     elif doctorate_required:
         minimum = "doctorate"
     elif re.search(
+        # A physician's degree (MUDr., "title MD") is a master's-level degree in
+        # Czech law: "university education in the medical field (with the title
+        # MD)", "in General Medicine" (MUNI LF, 2026-10-01).
+        r"(?:university|higher)\s+education\s+in\s+(?:the\s+)?(?:general\s+)?medic(?:ine|al\s+field)|"
+        r"title\s+md\b|"
         # "min. stupeň vzdělání: magisterské vysokoškolské studium" (UHK PřF, 2026-10-01).
         r"\b(?:master'?s?(?:\s+degree)?|master\s+degree|magistersk[eéý]\s+vzd[eě]l[aá]n[ií]|"
         r"magistersk[eéý]\s+(?:vysoko[sš]kolsk[eéý]\s+)?studium|"
@@ -975,7 +982,8 @@ def extract_qualifications(title: str, body: str) -> dict:
         blob,
     ) or re.search(
         r"\b(?:degree|education|qualification|vzd[eě]l[aá]n[ií]|kvalifikace|titul)\b[^.\n]{0,60}"
-        r"\b(?:mgr\.?|ing\.?|m\.?sc\.?)\b",
+        # "A university degree (M.A./Ph.D.)" (MUNI CEITEC, 2026-10-01): dots required.
+        r"(?:\b(?:mgr\.?|ing\.?|m\.?sc\.?)\b|\bm\.\s?a\.)",
         blob,
     ) or re.search(
         # A67/A68: MUNI adverts write "MSc or equivalent degree (…)" — the degree
@@ -1200,9 +1208,37 @@ _LANGUAGE_NEGATED = (
 )
 
 
+# A site's language switcher ("English Čeština Українська") names languages
+# without stating anything about the job (MUNI pages, 2026-10-01).
+_LANGUAGE_SWITCHER_RE = re.compile(
+    r"(?:\b(?:english|čeština|cestina|deutsch|українська|slovenčina|polski|русский|français|español)\b[\s|/·•]*){2,}",
+    re.I,
+)
+
+
+def main_content_text(html: str) -> str | None:
+    """Visible text of a page's <main> element (or its only <article>), if any.
+
+    A single-vacancy detail page repeats its title in the page title, the
+    breadcrumb, the heading and the body; entity_scope cut the text at the
+    last one, after MUNI's "Deadline 15 Oct 2026" field, and kept site
+    navigation such as "Bachelor and Master studies" around it.
+    """
+    match = re.search(r"<main\b[^>]*>(.*?)</main>", html or "", re.I | re.S)
+    if not match:
+        articles = re.findall(r"<article\b[^>]*>(.*?)</article>", html or "", re.I | re.S)
+        if len(articles) != 1:
+            return None
+        body = articles[0]
+    else:
+        body = match.group(1)
+    text = visible_text(body)
+    return text if len(text.strip()) >= 200 else None
+
+
 def stated_working_languages(text: str) -> list[str]:
     """Languages the notice states as a requirement or as the language of work."""
-    low = text.lower()
+    low = _LANGUAGE_SWITCHER_RE.sub(" ", text).lower()
     found: list[str] = []
     for code, word in _LANGUAGE_WORDS.items():
         cleaned = re.sub(_LANGUAGE_NEGATED.format(lang=word), " ", low)
@@ -2700,7 +2736,8 @@ def parse_generic_job_page(html: str, page_url: str, title_hint: str = "") -> di
     paid = salary_facts["paidStatus"]
     if paid != "confirmed":
         if re.search(
-            r"\b(salary|wage|employment contract|fixed[- ]term contract|contract of employment|"
+            # "attractive financial remuneration", "employment relationship with ..." (MUNI LF).
+            r"\b(salary|wage|remuneration|employment relationship|employment contract|fixed[- ]term contract|contract of employment|"
             r"full-time employment|full-time position|gross|"
             r"pracovn[ií]\s+smlouva|pracovn[ií]\s+[úu]vazek|pracovn[ií]\s+pom[eě]r|pracovn[eě]pr[aá]vn[ií](?:ho| vztah)|mzda|mzdov\w*|"
             r"plat(?:ov[eéý]\s+(?:ohodnocen[ií]|podm[ií]nk[ay]))?|finan[cč]n[ií]\s+ohodnocen[ií])\b",
@@ -4288,8 +4325,6 @@ def seed_candidates_from_stored(payload: dict, employer_ids: set[str] | None = N
         for key in (
             "applicationUrl",
             "applicationMethod",
-            "paidStatus",
-            "workingLanguages",
             "employmentFte",
             "employmentStartsAt",
             "fundingType",
@@ -4299,6 +4334,15 @@ def seed_candidates_from_stored(payload: dict, employer_ids: set[str] | None = N
         ):
             if job.get(key) is not None:
                 candidate[key] = job[key]
+        # Pay status and languages are carried only where a review confirmed
+        # them. job_record keeps a seeded language list as it is, so carrying
+        # an unreviewed one kept a wrong earlier reading for good (a MUNI
+        # language switcher read as Czech, 2026-10-01); unreviewed records
+        # are read again from the notice.
+        if job.get("publicationStatus") == "approved":
+            for key in ("paidStatus", "workingLanguages"):
+                if job.get(key) is not None:
+                    candidate[key] = job[key]
         seeds.append({key: value for key, value in candidate.items() if value is not None})
     return seeds
 

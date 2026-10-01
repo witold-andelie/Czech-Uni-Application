@@ -348,8 +348,20 @@ def harvest_adapter_source(
             seed_candidates_from_stored,
         )
 
+        from harvest_nine_hei_jobs import main_content_text
+
         incoming = [candidate_to_harvest_candidate(item, source) for item in outcome["candidates"]]
         listed_ids = {item["id"] for item in incoming}
+        # A detail page that belongs to one vacancy is read from its main
+        # content; a page several vacancies share keeps entity_scope.
+        url_counts: dict[str, int] = {}
+        for item in incoming:
+            url_counts[item["sourceUrl"]] = url_counts.get(item["sourceUrl"], 0) + 1
+        for item in incoming:
+            if url_counts[item["sourceUrl"]] == 1:
+                main_text = main_content_text(item.get("_factHtml") or "")
+                if main_text:
+                    item["_factText"] = main_text
         # A vacancy already on file starts from its stored record, so facts no
         # detail page states (a reviewed working language, confirmed pay) stay.
         stored = [item for item in seed_candidates_from_stored(previous or {}) if item["id"] in listed_ids]

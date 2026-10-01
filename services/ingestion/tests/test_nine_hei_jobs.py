@@ -2847,12 +2847,21 @@ def test_a_rediscovered_vacancy_keeps_facts_the_listing_does_not_state() -> None
     stored = json.loads(json.dumps(first))
     stored["jobs"][0]["workingLanguages"] = ["en"]
     stored["jobs"][0]["paidStatus"] = "confirmed"
+    stored["jobs"][0]["publicationStatus"] = "approved"
 
     second = harvest_with_registered_discovery([], lambda url: pages.get(url, (404, "")), stored,
                                                as_of=parse_date("2026-10-02"), registry=registry)
     job = next(item for item in second["jobs"] if item["id"] == job_id)
     assert job["workingLanguages"] == ["en"]
     assert job["paidStatus"] == "confirmed"
+
+    # An unreviewed earlier reading is not carried: the notice is read again.
+    stored["jobs"][0]["publicationStatus"] = "review_pending"
+    stored["jobs"][0]["workingLanguages"] = ["cs"]
+    third = harvest_with_registered_discovery([], lambda url: pages.get(url, (404, "")), stored,
+                                              as_of=parse_date("2026-10-02"), registry=registry)
+    job = next(item for item in third["jobs"] if item["id"] == job_id)
+    assert job["workingLanguages"] == ["und"]
 
 
 def test_cuni_notice_facts_found_by_the_2026_10_01_review() -> None:
