@@ -1006,7 +1006,10 @@ def extract_qualifications(title: str, body: str) -> dict:
     doctoral_student = any(
         _in_required_context(blob, match.start())
         for match in re.finditer(
-            r"\bstudent\w*\s+(?:of\s+)?(?:an?\s+)?(?:ph\.?\s?d\.?|doktorsk\w*)\s+(?:study|studi\w*|program\w*)", blob
+            r"\bstudent\w*\s+(?:of\s+)?(?:an?\s+)?(?:ph\.?\s?d\.?|doktorsk\w*)\s+(?:study|studi\w*|program\w*)|"
+            # "student nebo absolvent doktorského studijního oboru" (ZČU FPE, 2026-10-01).
+            r"\bstudent\w*\s+nebo\s+absolvent\w*\s+doktorsk\w+\s+studi\w*",
+            blob,
         )
     )
     completed_or_started_doctorate = completed_or_started_doctorate or doctoral_student
@@ -1069,6 +1072,8 @@ def extract_qualifications(title: str, body: str) -> dict:
         # "min. stupeň vzdělání: magisterské vysokoškolské studium" (UHK PřF, 2026-10-01).
         r"\b(?:master'?s?(?:\s+degree)?|master\s+degree|magistersk[eéý]\s+vzd[eě]l[aá]n[ií]|"
         r"magistersk[eéý]\s+(?:vysoko[sš]kolsk[eéý]\s+)?studium|"
+        # "absolvent magisterského studia Učitelství ..." (ZČU FPE, 2026-10-01).
+        r"absolvent\w*\s+magistersk\w+\s+studi\w*|"
         r"inženýrsk[eéý]\s+vzd[eě]l[aá]n[ií]|inzenyrsk[eéý]\s+vzdelani|"
         r"vysokoškolsk[eéý]\s+vzd[eě]l[aá]n[ií]\s+minim[aá]ln[eě]\s+druh[eé]ho\s+stupn[eě]|"
         r"vysokoskolske\s+vzdelani\s+minimalne\s+druheho\s+stupne)\b",
@@ -1269,6 +1274,18 @@ _APPLY_DO_RE = re.compile(
 
 def extract_deadline(text: str) -> date | None:
     blob = text.lower()
+    # An application period: "Reception of applications: from 21 September to
+    # 31 October 2026" (ZČU), "Příjem přihlášek: od ... do ...". Its end date.
+    period = re.search(
+        r"(?:(?:reception|submission|acceptance|receipt)\s+of\s+applications|p[řr][ií]jem\s+p[řr]ihl[aá][šs]ek)"
+        r"\s*:?\s*(?:from|od)\s+[^.;]{0,40}?\s+(?:to|until|do)\s+",
+        text,
+        re.I,
+    )
+    if period:
+        parsed = parse_date(text[period.end() : period.end() + 30])
+        if parsed:
+            return parsed
     for marker in DEADLINE_MARKERS:
         idx = blob.find(marker)
         while idx != -1:
@@ -1454,6 +1471,7 @@ def extract_employment_fte(text: str) -> float | None:
         re.I,
     ):
         return 1.0
+    bare_fte = r"\b(0[.,]\d{1,2}|1(?:[.,]0+)?)\s*FTE\b"
     patterns = (
         r"\bpracovn[ií]\s+[úu]vazek\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         # "- úvazek 1,0 – platové podmínky ..." (ČVUT rektorát, 2026-10-01).
@@ -1463,19 +1481,27 @@ def extract_employment_fte(text: str) -> float | None:
         # A67/A68: MUNI adverts state "Working Hours: 0,5 FTE (part-time
         # employment of 20 hours per week)". Czech decimal commas included.
         r"\bworking\s+hours\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\s*(?:FTE)?\b",
-        r"\b(0[.,]\d{1,2}|1(?:[.,]0+)?)\s*FTE\b",
+        bare_fte,
         r"\bfull[- ]time\s+equivalent\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         r"\bfull[- ]time\s*\((0(?:[.,]\d+)?|1(?:[.,]0+)?)\)(?:\s|$|,|\.)",
         # "We offer full working time (1.0)" (UHK FIM, 2026-10-01).
         r"\bfull\s+working\s+time\s*\((0(?:[.,]\d+)?|1(?:[.,]0+)?)\)",
     )
     for pattern in patterns:
-        match = re.search(pattern, text, re.I)
-        if not match:
-            continue
-        value = float(match.group(1).replace(",", "."))
-        if 0 < value <= 1:
-            return value
+        for match in re.finditer(pattern, text, re.I):
+            # "Pracovní úvazek: 0,5 až 1,0" states a range: the workload is not
+            # one figure (ZČU FPE, 2026-10-01).
+            if re.match(r"\s*(?:až|to|[–-])\s*[01](?:[.,]\d+)?\b", text[match.end() :], re.I):
+                return None
+            # "CZK 50,000 (gross monthly pay – 1.0 FTE – 40 hours per week)" is
+            # the pay's basis, not the post's workload (ZČU, 2026-10-01).
+            if pattern == bare_fte and re.search(
+                r"\b(?:pay|salary|wage)\b[^.;]{0,15}$", text[max(0, match.start() - 30) : match.start()], re.I
+            ):
+                continue
+            value = float(match.group(1).replace(",", "."))
+            if 0 < value <= 1:
+                return value
     return None
 
 
@@ -4586,7 +4612,6 @@ def seed_candidates_from_stored(payload: dict, employer_ids: set[str] | None = N
         for key in (
             "applicationUrl",
             "applicationMethod",
-            "employmentFte",
             "employmentStartsAt",
             "fundingType",
             "salaryAmountMin",
@@ -4599,9 +4624,11 @@ def seed_candidates_from_stored(payload: dict, employer_ids: set[str] | None = N
         # them. job_record keeps a seeded language list as it is, so carrying
         # an unreviewed one kept a wrong earlier reading for good (a MUNI
         # language switcher read as Czech, 2026-10-01); unreviewed records
-        # are read again from the notice.
+        # are read again from the notice. The workload too: a range read as
+        # its lower bound ("0,5 až 1,0", ZČU) could never be corrected to
+        # unknown, since an empty reading does not replace a seeded value.
         if job.get("publicationStatus") == "approved":
-            for key in ("paidStatus", "workingLanguages"):
+            for key in ("paidStatus", "workingLanguages", "employmentFte"):
                 if job.get(key) is not None:
                     candidate[key] = job[key]
         seeds.append({key: value for key, value in candidate.items() if value is not None})

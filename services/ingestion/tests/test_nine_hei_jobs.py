@@ -3078,3 +3078,39 @@ def test_an_approved_vacancy_withdrawn_from_its_listing_stays_archived() -> None
         {**job, "lifecycleStatus": "unknown", "visibility": "review_pending"}, entry["sourceHash"], {"job-x": entry}, []
     )
     assert listed_again["visibility"] == "public"
+
+
+def test_zcu_workload_ranges_pay_basis_degrees_and_application_period() -> None:
+    fte = jobs_harvester.extract_employment_fte
+    assert fte("Pracovní úvazek: 0,5 až 1,0 Mzda: dle Vnitřního mzdového předpisu ZČU") is None
+    assert fte("Týdenní pracovní doba: 10 - 20 hod/týdně (úvazek 0,25 – 0,5)") is None
+    assert fte("Post-doc positions – CZK 50,000 (gross monthly pay – 1.0 FTE – 40 hours per week).") is None
+    assert fte("Mzda: dle Vnitřního mzdového předpisu ZČU Úvazek: 0,25 (10h týdně)") == 0.25
+    assert fte("Working Hours: 0,5 FTE (part-time employment of 20 hours per week)") == 0.5
+    facts = extract_qualifications(
+        "Akademický pracovník – asistent",
+        "Požadavky na pracovníka: absolvent magisterského studia Učitelství německého jazyka; student nebo "
+        "absolvent doktorského studijního oboru v oboru didaktika německého jazyka",
+    )
+    assert facts == {"minimumDegree": "master", "doctorateRequired": False, "doctoralEnrollment": "required"}
+    assert jobs_harvester.extract_deadline(
+        "Publication date: 21 September 2026 Reception of applications: from 21 September to 31 October 2026"
+    ) == date(2026, 10, 31)
+
+
+def test_only_a_reviewed_workload_is_carried_into_the_next_read() -> None:
+    stored = {
+        "id": "job-23000-x",
+        "employerId": "msmt-vs_23000",
+        "title": {"zh-CN": "助理", "en": "Assistant", "cs": "Asistent"},
+        "sourceLanguage": "cs",
+        "sourceUrl": "https://xdoc.zcu.test/x.pdf",
+        "track": "post_master",
+        "employmentFte": 0.5,
+    }
+    seeds = jobs_harvester.seed_candidates_from_stored({"jobs": [stored], "windows": []})
+    assert "employmentFte" not in seeds[0]
+    approved = jobs_harvester.seed_candidates_from_stored(
+        {"jobs": [{**stored, "publicationStatus": "approved"}], "windows": []}
+    )
+    assert approved[0]["employmentFte"] == 0.5
