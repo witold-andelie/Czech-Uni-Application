@@ -2724,3 +2724,26 @@ def test_approval_never_outlives_the_facts_it_was_bound_to() -> None:
     # Facts that still match their review are left alone.
     out, report = jobs_harvester.enforce_review_binding(previous, previous, reviews)
     assert report == {"restored": [], "returnedToReview": []}
+
+
+def test_english_deadline_stated_only_as_send_by_a_date() -> None:
+    """TUL postdoc 15196: "send ... to volnamista@tul.cz by 20.02.2026"."""
+    from harvest_nine_hei_jobs import extract_deadline
+
+    found = {
+        "please send the documents requested below to the following e -mail address: "
+        "volnamista@tul.cz by 20.02.2026 • curriculum vitae": "2026-02-20",
+        "Applications should be submitted by 15 March 2026.": "2026-03-15",
+        "Please apply by March 31, 2026 via the portal.": "2026-03-31",
+        "send the documents\nto the address hr@uni.cz by\n 5. 1. 2027": "2027-01-05",
+    }
+    for text, expected in found.items():
+        assert str(extract_deadline(text)) == expected, text
+    for text in (
+        "Applicants will be informed by 30 April 2026.",
+        "Successful candidates should start by 1 March 2027.",
+        "Applications will be reviewed by 10.05.2026.",
+        "The project is funded by 2027 EU grant.",
+        "Send your CV. Results are published by 1. 6. 2026.",
+    ):
+        assert extract_deadline(text) is None, text

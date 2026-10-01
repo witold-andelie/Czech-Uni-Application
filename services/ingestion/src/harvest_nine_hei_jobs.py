@@ -1102,6 +1102,21 @@ def page_is_closed(text: str, target_title: str = "") -> bool:
     return _contains_closed_signal(text)
 
 
+# English notices often state the deadline only as "send ... by 20.02.2026"
+# (TUL postdoc 15196). A bare "by" is far too broad, so it counts only when an
+# application verb precedes it in the same sentence, a date follows it at
+# once, and the word before it is not a review or start verb ("applicants will
+# be informed by", "start by").
+_APPLY_BY_RE = re.compile(
+    r"\b(?:send|sent|submit|submitted|submission|deliver|delivered|apply|applications?|e-?mail(?:ed)?)\b"
+    # A dot inside an address or a date (volnamista@tul.cz, 20.02.2026) does
+    # not end the sentence; PDF text also breaks lines mid-sentence.
+    r"(?:[^.;]|\.(?=\S)){0,160}?(?<!\breviewed)(?<!\bevaluated)(?<!\binformed)(?<!\bnotified)"
+    r"(?<!\bdecided)(?<!\bstart)(?<!\bstarting)(?<!\bcontacted)\s+by\s+(?=\d|[A-Za-z]+\s+\d)",
+    re.I,
+)
+
+
 def extract_deadline(text: str) -> date | None:
     blob = text.lower()
     for marker in DEADLINE_MARKERS:
@@ -1112,6 +1127,10 @@ def extract_deadline(text: str) -> date | None:
             if parsed:
                 return parsed
             idx = blob.find(marker, idx + 1)
+    for match in _APPLY_BY_RE.finditer(text):
+        parsed = parse_date(text[match.end() : match.end() + 30])
+        if parsed:
+            return parsed
     return None
 
 
