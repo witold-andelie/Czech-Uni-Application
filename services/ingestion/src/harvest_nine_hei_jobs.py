@@ -1017,7 +1017,10 @@ def extract_qualifications(title: str, body: str) -> dict:
     elif any(marker in blob for marker in PHD_REQUIRED) or re.search(
         r"\b(?:ukon[cč]en[eé]\s+ph\.?d\.?\s+studium|"
         r"doktorsk[ýy]\s+titul\s*\(?ph\.?d\.?\)?|"
-        r"(?:candidate|applicant|researcher|uchaze[cč])[^.\n]{0,100}\b(?:with|m[aá])\s+(?:a\s+)?ph\.?d\.?\b|"
+        # Also a bulleted list: "We seek for candidates with: • Ph.D. in
+        # Physics", "Měl/a byste mít: • Ph.D. ve fyzické geografii" (JČU, 2026-10-01).
+        r"(?:candidate|applicant|researcher|uchaze[cč])[^.\n]{0,100}\b(?:with|m[aá])\s*:?\s*[•·▪]?\s*(?:a\s+)?ph\.?d\.?\b|"
+        r"\b(?:m[ií]t|have)\s*:\s*[•·▪]\s*ph\.?\s?d\.?\s+(?:in|ve?|z)\b|"
         # "má vědeckou hodnost Ph.D. nebo ekvivalentní" in any case form (ČVUT, 2026-10-01).
         r"v[eě]deck\w+\s+hodnost\w*\s+ph\.?\s?d|"
         # "Academic degree PhD or scientific rank of CSc" (MUNI LF, 2026-10-01).
@@ -1042,7 +1045,10 @@ def extract_qualifications(title: str, body: str) -> dict:
     elif re.search(
         # "Bakalářské/Magisterské vzdělání": either level is accepted, so the
         # minimum is a bachelor's (OSU, 2026-10-01).
-        r"\bbakal[aá][rř]sk\w*\s*(?:/|nebo|či)\s*magistersk\w*|\bbachelor'?s?\s*(?:/|or)\s*master",
+        # Degree levels only: "vedení bakalářských nebo magisterských prací"
+        # (supervising theses) states no requirement (JČU FROV, 2026-10-01).
+        r"\bbakal[aá][rř]sk\w*\s*(?:/|nebo|či)\s*magistersk\w*\b(?!\s+(?:prac|pr[aá]c|t[eé]mat|diplom|kurz|p[rř]edm[eě]t))|"
+        r"\bbachelor'?s?\s*(?:/|or)\s*master'?s?\b(?!\s+(?:thes[ie]s|projects?|courses?|students?))",
         blob,
     ):
         minimum = "bachelor"
@@ -1406,11 +1412,24 @@ def extract_employment_fte(text: str) -> float | None:
         if 0 < hours <= 40:
             return round(hours / 40, 3)
     # "Předpokládaný pracovní úvazek 10%" (OSU, 2026-10-01).
-    percent = re.search(r"[úu]vaz(?:ek|ku)\s*(?:[:=\-–]\s*)?(\d{1,3}(?:[.,]\d+)?)\s*%", text, re.I)
+    # Also "100% pracovní úvazek" (JČU, 2026-10-01), but not a share of it:
+    # "výuka ... (do 10 % úvazku)" is teaching within the workload.
+    percent = re.search(r"[úu]vaz(?:ek|ku)\s*(?:[:=\-–]\s*)?(\d{1,3}(?:[.,]\d+)?)\s*%", text, re.I) or next(
+        (
+            match
+            for match in re.finditer(r"\b(\d{1,3}(?:[.,]\d+)?)\s*%\s*(?:pracovn[ií]\s+)?[úu]vazek\b", text, re.I)
+            if not re.search(r"\b(?:do|a[žz]|max\.?|maxim[aá]ln[eě])\s*$", text[max(0, match.start() - 14) : match.start()], re.I)
+        ),
+        None,
+    )
     if percent:
         share = float(percent.group(1).replace(",", ".")) / 100
         if 0 < share <= 1:
             return round(share, 3)
+    # "Pracovní úvazek: plný", "Pracovní doba: odpovídající plnému úvazku"
+    # (JČU, 2026-10-01).
+    if re.search(r"[úu]vazek\s*:\s*pln[ýy]\b|odpov[ií]daj[ií]c[ií]\s+pln[ée]mu\s+[úu]vazku", text, re.I):
+        return 1.0
     patterns = (
         r"\bpracovn[ií]\s+[úu]vazek\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         # "- úvazek 1,0 – platové podmínky ..." (ČVUT rektorát, 2026-10-01).
@@ -1825,6 +1844,9 @@ def assistant_enrollment(title: str, body: str) -> str:
         r"\b(?:enrol|enroll|registration)[^.\n]{0,60}(?:ph\.?d|doctoral)[^.\n]{0,40}(?:must|required|condition)",
         r"\b(?:enrolled|enrolment|enrollment|registration)\s+in\s+(?:a\s+)?(?:ph\.?d|doctoral)\b",
         r"\bz[aá]pis\s+do\s+doktorsk[eé]ho\s+studia\b",
+        # "Požadujeme ... Přijetí do Doktorského studijního programu Rybářství"
+        # (JČU FROV, 2026-10-01).
+        r"\bp[řr]ijet[ií]\s+do\s+doktorsk\w+\s+studijn\w+\s+program\w*",
         r"\bdoktorsk[eé]\s+studium[^.\n]{0,70}(?:podm[ií]nkou|po[zž]adov[aá]no|p[řr]ed\s+dokon[cč]en[ií]m)",
         # The notice recruits doctoral students: "is looking for outstanding PhD
         # students", "We seek a motivated PhD candidate", "[using PhD Position

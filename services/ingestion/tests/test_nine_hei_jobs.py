@@ -3008,3 +3008,27 @@ def test_euraxess_job_status_hours_and_slash_month_salary() -> None:
     assert jobs_harvester.extract_employment_fte("Job Status Part-time Hours Per Week 20") == 0.5
     facts = jobs_harvester.extract_salary_facts("Salary: will be around 1800 EUR / month (gross), depending on qualification.")
     assert (facts["amount"], facts["currency"], facts["cycle"], facts["tax"]) == (1800, "EUR", "month", "gross")
+
+
+def test_jcu_bulleted_doctorate_studentship_admission_and_workload() -> None:
+    assert extract_qualifications(
+        "Postdoctoral Researcher in (Bio)Physics",
+        "We seek for candidates with: • Ph.D. in Physics, Biophysics, Engineering or a related field",
+    )["doctorateRequired"] is True
+    assert extract_qualifications(
+        "Postdoktorská pozice",
+        "Koho hledáme? Měl/a byste mít: • Ph.D. ve fyzické geografii, geomorfologii nebo příbuzném oboru;",
+    )["minimumDegree"] == "doctorate"
+    studentship = extract_qualifications(
+        "Doktorské studium – Vědecký, výzkumný a vývojový asistent",
+        "Pracovní náplň • Výuka v oboru, vedení bakalářských nebo magisterských prací; Požadujeme • Ukončené "
+        "magisterské studium v oblasti ekologie; • Přijetí do Doktorského studijního programu Rybářství",
+    )
+    assert studentship == {"minimumDegree": "master", "doctorateRequired": False, "doctoralEnrollment": "required"}
+    # The OSU alternative still reads as a bachelor's minimum.
+    assert extract_qualifications("Laborant", "Požadujeme: Bakalářské/Magisterské vzdělání")["minimumDegree"] == "bachelor"
+    fte = jobs_harvester.extract_employment_fte
+    assert fte("Nabízíme • 100% pracovní úvazek na dobu určitou") == 1.0
+    assert fte("Pracovní úvazek: plný") == 1.0
+    assert fte("Pracovní doba: odpovídající plnému úvazku (40 hod. týdně)") == 1.0
+    assert fte("výuka algologických předmětů (do 10 % úvazku) • účast na exkurzích") is None
