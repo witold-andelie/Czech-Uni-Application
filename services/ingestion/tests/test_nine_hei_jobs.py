@@ -2921,3 +2921,15 @@ def test_osu_requirement_lists_found_by_the_2026_10_01_review() -> None:
     assert stated_working_languages("požadujeme zkušenost, hematologie vítána angličtina na komunikativní úrovni") == ["en"]
     assert stated_working_languages("Benefity 8 týdnů dovolené; kurzy anglického jazyka a jiné vzdělávací kurzy") == []
     assert stated_working_languages("požadujeme znalost italského jazyka – C1-C2") == ["it"]
+
+
+def test_vut_notices_found_by_the_2026_10_01_review() -> None:
+    from harvest_nine_hei_jobs import extract_deadline, extract_qualifications, parse_date
+
+    student = "Requirements student of PhD study program A completed Master study program at a university"
+    facts = extract_qualifications("", student)
+    assert (facts["minimumDegree"], facts["doctorateRequired"], facts["doctoralEnrollment"]) == ("master", False, "required")
+    postdoc = "As a postdoc you will be supervising PhD students. Requirements: PhD in physics."
+    assert extract_qualifications("", postdoc)["doctorateRequired"] is True
+    assert str(parse_date("7 . října 2026")) == "2026-10-07"
+    assert str(extract_deadline("Pošlete nám přihlášku. Těšíme se na Vaši odpověď do 7 . října 2026.")) == "2026-10-07"

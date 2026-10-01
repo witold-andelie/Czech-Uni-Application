@@ -242,7 +242,8 @@ MONTH_FIRST_DATE = re.compile(
 )
 CZ_DATE = re.compile(r"\b(\d{1,2})\.\s*(\d{1,2})\.\s*(20\d{2})\b")
 CZ_TEXT_DATE = re.compile(
-    r"\b(\d{1,2})\.?\s+"
+    # "do 7 . října 2026": a space may sit before the dot (VUT FCH, 2026-10-01).
+    r"\b(\d{1,2})\s*\.?\s+"
     r"(ledna|února|unora|března|brezna|dubna|května|kvetna|června|cervna|"
     r"července|cervence|srpna|září|zari|října|rijna|listopadu|prosince)"
     r"\s+(20\d{2})\b",
@@ -984,6 +985,17 @@ def extract_qualifications(title: str, body: str) -> dict:
             blob,
         )
     )
+    # Being a doctoral student is required, not holding a doctorate: "Requirements
+    # student of PhD study program", "Student doktorského studia" (VUT FAST,
+    # 2026-10-01). Only in a requirements list, so a postdoc "supervising PhD
+    # students" is not read this way.
+    doctoral_student = any(
+        _in_required_context(blob, match.start())
+        for match in re.finditer(
+            r"\bstudent\w*\s+(?:of\s+)?(?:an?\s+)?(?:ph\.?\s?d\.?|doktorsk\w*)\s+(?:study|studi\w*|program\w*)", blob
+        )
+    )
+    completed_or_started_doctorate = completed_or_started_doctorate or doctoral_student
     # Negation has precedence.  Several phrases that express an optional PhD
     # also contain a shorter positive marker (for example "PhD ... required").
     if any(marker in blob for marker in PHD_NOT_REQUIRED):
@@ -1212,8 +1224,10 @@ _APPLY_BY_RE = re.compile(
 # precede it in the same sentence and a full D. M. YYYY date must follow at once.
 _APPLY_DO_RE = re.compile(
     r"\b(?:zas[ií]lejte|za[sš]lete|zaslat|pos[ií]lejte|po[sš]lete|podejte|podat|doru[cč]te|"
-    r"p[rř]edlo[zž]te|ode[sš]lete|p[rř]ihl[aá][sš]k\w*)\b"
-    r"(?:[^.;]|\.(?=\S)){0,160}?\s+(?:nejpozd[eě]ji\s+)?do\s+(?=\d{1,2}\s*\.\s*\d{1,2}\s*\.\s*\d{4})",
+    # "Těšíme se na Vaši odpověď do 7. října 2026" closes a VUT application (2026-10-01).
+    r"p[rř]edlo[zž]te|ode[sš]lete|p[rř]ihl[aá][sš]k\w*|odpov[eě]\w*)\b"
+    r"(?:[^.;]|\.(?=\S)){0,160}?\s+(?:nejpozd[eě]ji\s+)?do\s+"
+    r"(?=\d{1,2}\s*\.\s*(?:\d{1,2}\s*\.\s*\d{4}|[a-zěščřžýáíéúůň]+\s+\d{4}))",
     re.I,
 )
 
