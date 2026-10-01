@@ -65,6 +65,111 @@ def candidate_to_snapshot_job(candidate: Candidate, source: dict, now_text: str)
     }
 
 
+# Facts an adapter may read from a detail page that job_record also reads.
+_HARVEST_FACT_KEYS = (
+    "closesAt", "opensAt", "roundType", "salaryAmount", "salaryAmountMin", "salaryAmountMax",
+    "salaryCurrency", "salaryCycle", "salaryTax", "basisFte", "employmentFte", "employmentStartsAt",
+    "workingLanguages", "fundingType", "sourceLanguage", "laboratory", "caseNumber", "noticeRemoveAt",
+)
+
+
+def candidate_to_harvest_candidate(candidate: Candidate, source: dict) -> dict[str, Any]:
+    """The candidate shape job_record builds full, publishable records from.
+
+    candidate_to_snapshot_job wrote bare listing records: no salary object,
+    FTE, working languages, evidence or detected source language, and every
+    new vacancy from the 33 adapter sources stayed unpublishable whatever its
+    review (CUNI FTVS, 2026-10-01). The detail page the adapter already
+    fetched is passed along, so nothing is fetched twice.
+    """
+    employer_id = candidate.employer_id or source.get("employerId")
+    facts = candidate.facts or {}
+    item: dict[str, Any] = {
+        "id": snapshot_job_id(employer_id, candidate.remote_id),
+        "employerId": employer_id,
+        "title": candidate.title,
+        "sourceUrl": candidate.official_detail_url,
+        "applicationUrl": candidate.application_url or candidate.official_detail_url,
+        "applicationMethod": candidate.application_method,
+        "track": candidate.track,
+        "code": candidate.remote_id,
+        "discoverySourceId": source.get("id"),
+        "paidStatus": candidate.paid_status,
+        "noticePostedAt": (candidate.extra or {}).get("noticePostedAt"),
+        "_factHtml": candidate.body_html,
+    }
+    for key in _HARVEST_FACT_KEYS:
+        if facts.get(key) is not None:
+            item[key] = facts[key]
+    # job_record reads "track" directly; an out-of-scope row keeps it as None.
+    return {key: value for key, value in item.items() if value is not None or key == "track"}
+
+
+def merge_full_adapter_records(
+    previous: dict[str, Any],
+    *,
+    source_id: str,
+    listed_ids: set[str],
+    processed: dict[str, Any],
+    complete: bool,
+    discovery: dict[str, Any],
+    now_text: str,
+) -> dict[str, Any]:
+    """Fold one complete adapter pass of full records into the candidate file.
+
+    Records job_record built replace their earlier versions with their windows
+    and evidence; a vacancy of this source missing from the complete listing
+    is archived as unavailable, never closed; other sources are untouched.
+    """
+    merged = dict(previous or {})
+    merged["discovery"] = discovery
+    if not complete:
+        return merged
+    built = {item["id"]: item for item in processed.get("jobs") or [] if isinstance(item, dict) and item.get("id")}
+    jobs: list[dict[str, Any]] = []
+    archived_ids: list[str] = []
+    for prior in merged.get("jobs") or []:
+        if not isinstance(prior, dict):
+            continue
+        ident = prior.get("id")
+        if ident in built:
+            continue
+        if prior.get("discoverySourceId") == source_id and ident not in listed_ids:
+            archived = dict(prior)
+            archived["lifecycleStatus"] = "unavailable"
+            archived["visibility"] = "archived"
+            archived["wholeOpportunityClosed"] = False
+            archived["lastAttemptAt"] = now_text
+            archived["lastAttemptReason"] = "missing-from-complete-official-listing"
+            jobs.append(archived)
+            archived_ids.append(str(ident))
+            continue
+        jobs.append(prior)
+    jobs.extend(built.values())
+    merged["jobs"] = jobs
+    for key in ("windows", "evidence"):
+        owner = "ownerId" if key == "windows" else None
+        kept = []
+        for item in merged.get(key) or []:
+            if not isinstance(item, dict):
+                continue
+            ident = item.get(owner) if owner else str(item.get("id") or "").removeprefix("ev-")
+            if ident in built:
+                continue
+            kept.append(item)
+        merged[key] = kept + list(processed.get(key) or [])
+    skipped = [
+        item
+        for item in merged.get("skipped") or []
+        if not (isinstance(item, dict) and item.get("id") in listed_ids)
+    ]
+    skipped.extend({"id": ident, "reason": "missing-from-complete-official-listing"} for ident in archived_ids)
+    skipped.extend(item for item in processed.get("skipped") or [] if item.get("id") not in built)
+    merged["skipped"] = skipped
+    merged["counts"] = {"jobs": len(jobs), "skipped": len(skipped)}
+    return merged
+
+
 def _prague_today() -> date:
     return datetime.now(ZoneInfo("Europe/Prague")).date()
 
@@ -233,18 +338,34 @@ def harvest_adapter_source(
     }
     outcome = run_source(adapter, source, context, store=store)
     complete = bool(outcome["completeness"].ok)
-    snapshot_jobs = (
-        [candidate_to_snapshot_job(item, source, stamp) for item in outcome["candidates"]]
-        if complete
-        else []
-    )
     current = today or _prague_today()
-    snapshot_windows = [
-        window
-        for item, job in zip(outcome["candidates"], snapshot_jobs)
-        for window in [candidate_window(item, job["id"], current)]
-        if window is not None
-    ]
+    listed_ids: set[str] = set()
+    processed: dict[str, Any] = {"jobs": [], "windows": [], "evidence": [], "skipped": []}
+    if complete:
+        from harvest_nine_hei_jobs import (
+            _merge_seed_and_discovered,
+            harvest_candidates,
+            seed_candidates_from_stored,
+        )
+
+        incoming = [candidate_to_harvest_candidate(item, source) for item in outcome["candidates"]]
+        listed_ids = {item["id"] for item in incoming}
+        # A vacancy already on file starts from its stored record, so facts no
+        # detail page states (a reviewed working language, confirmed pay) stay.
+        stored = [item for item in seed_candidates_from_stored(previous or {}) if item["id"] in listed_ids]
+        merged_candidates = _merge_seed_and_discovered(stored, incoming)
+        processed = harvest_candidates(merged_candidates, fetch_page, previous or {}, current, sleep_seconds=0)
+        scope = {
+            snapshot_job_id(item.employer_id or source.get("employerId"), item.remote_id): item
+            for item in outcome["candidates"]
+        }
+        for job in processed.get("jobs") or []:
+            candidate = scope.get(job.get("id"))
+            if candidate is None or job.get("lastAttemptReason") in {"past-deadline-archived"}:
+                continue
+            job["officialDetailUrl"] = candidate.official_detail_url
+            job["catalogueScopeStatus"] = candidate.catalogue_scope_status
+            job["discoverySourceId"] = source.get("id")
     discovery = {
         "attempts": [
             {
@@ -267,14 +388,14 @@ def harvest_adapter_source(
         "runStatus": outcome["run"]["status"],
         "keptAllOfficial": True,
     }
-    snapshot = merge_adapter_snapshot(
+    snapshot = merge_full_adapter_records(
         previous or {},
         source_id=source["id"],
-        jobs=snapshot_jobs,
+        listed_ids=listed_ids,
+        processed=processed,
         complete=complete,
         discovery=discovery,
         now_text=stamp,
-        windows=snapshot_windows,
     )
     return {
         "jobs": snapshot.get("jobs") or [],
@@ -282,7 +403,7 @@ def harvest_adapter_source(
         "skipped": snapshot.get("skipped") or [],
         "counts": snapshot.get("counts") or {"jobs": 0, "skipped": 0},
         "discovery": discovery,
-        "processedCandidateIds": [item["id"] for item in snapshot_jobs],
+        "processedCandidateIds": sorted(listed_ids),
         "complete": complete,
         "snapshot": snapshot,
         "run": outcome["run"],

@@ -2853,3 +2853,26 @@ def test_a_rediscovered_vacancy_keeps_facts_the_listing_does_not_state() -> None
     job = next(item for item in second["jobs"] if item["id"] == job_id)
     assert job["workingLanguages"] == ["en"]
     assert job["paidStatus"] == "confirmed"
+
+
+def test_cuni_notice_facts_found_by_the_2026_10_01_review() -> None:
+    """Working languages are stated ones only; equal bounds and weekly hours are read."""
+    from harvest_nine_hei_jobs import extract_employment_fte, extract_salary_facts, stated_working_languages
+
+    assert stated_working_languages("collaboration with experts from the Czech Republic and abroad.") == []
+    assert stated_working_languages("Location: Hradec Králové, Czech Republic") == []
+    assert stated_working_languages("Czech and European research funding") == []
+    assert stated_working_languages("Required language skills: English - B2 Independent User") == ["en"]
+    assert stated_working_languages(
+        "Required language skills: Czech - C2 Proficient User English - B2 Independent User"
+    ) == ["en", "cs"]
+    assert stated_working_languages("good written and spoken English. Knowledge of Czech is not required.") == ["en"]
+    assert stated_working_languages("Požadavky na jazykové vzdělání: anglický jazyk slovem i písmem.") == ["en"]
+    assert stated_working_languages("výuka probíhá v českém jazyce") == ["cs"]
+
+    single = extract_salary_facts("Salary: Starting salary from 7,088 CZK to 7,088 CZK Expertise: Clinical Pharmacy")
+    assert single["amount"] == 7088.0 and single["amountMin"] is None
+
+    weekly = "Employment Type and Scope: Part time employment, 6 hours per week. Salary basis (1.0 FTE)."
+    assert extract_employment_fte(weekly) == 0.15
+    assert extract_employment_fte("FaF_VZ4_105: PhD Student, 0,15 FTE (project NETPHARM)") == 0.15

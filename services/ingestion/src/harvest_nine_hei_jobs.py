@@ -1164,8 +1164,61 @@ def extract_deadline(text: str) -> date | None:
     return None
 
 
+# A language counts only where the notice states it: a language requirement
+# or skill level, or the language the work or teaching happens in. Any bare
+# mention did before, so "experts from the Czech Republic" on every Charles
+# University page and "Location: ..., Czech Republic" on UHK pages made
+# vacancies read as Czech-language work (2026-10-01). Negations win.
+_LANGUAGE_WORDS = {
+    "en": r"(?:english|angli[cč]tin\w*|anglick\w+\s+jazy\w*)",
+    "cs": r"(?:czech(?!\s+republic)|[cč]e[sš]tin\w*|[cč]esk\w+\s+jazy\w*)",
+}
+# Czech nouns that name the language itself (never a place), by language.
+_LANGUAGE_NOUNS = {
+    "en": r"\b(?:angli[cč]tin\w*|anglick\w+\s+jazy\w*)",
+    "cs": r"\b(?:[cč]e[sš]tin\w*|[cč]esk\w+\s+jazy\w*)",
+}
+_LANGUAGE_STATED = (
+    r"(?:knowledge|command|proficiency|fluency|skills?)\s+(?:of|in)\s+(?:the\s+)?{lang}",
+    r"{lang}(?:\s+language)?\s*(?:[-–:]\s*)?(?:proficiency|skills?|level|knowledge|\(?[abc][12]\b)",
+    r"(?:fluent|good|excellent|active|advanced|written\s+and\s+spoken|spoken\s+and\s+written)\s+(?:in\s+)?{lang}",
+    r"(?:teach\w*|lectur\w*|taught|work\w*|communicat\w*|conducted)\s+(?:courses\s+)?in\s+{lang}",
+    r"required\s+language\s+skills?\s*:[^.]{{0,80}}{lang}",
+    r"working\s+language[^.]{{0,40}}{lang}",
+)
+_LANGUAGE_NEGATED = (
+    r"{lang}[^.;]{{0,40}}?\b(?:is\s+not\s+(?:required|necessary)|not\s+required|není\s+(?:vyžadován\w*|nutn\w*|podmínk\w*))"
+)
+
+
+def stated_working_languages(text: str) -> list[str]:
+    """Languages the notice states as a requirement or as the language of work."""
+    low = text.lower()
+    found: list[str] = []
+    for code, word in _LANGUAGE_WORDS.items():
+        cleaned = re.sub(_LANGUAGE_NEGATED.format(lang=word), " ", low)
+        if re.search(_LANGUAGE_NOUNS[code], cleaned) or any(
+            re.search(pattern.format(lang=word), cleaned) for pattern in _LANGUAGE_STATED
+        ):
+            found.append(code)
+    return found
+
+
 def extract_employment_fte(text: str) -> float | None:
     """Extract the vacancy's stated workload without confusing it with salary basis."""
+    # Charles University's structured field states the position's own hours
+    # ("Employment Type and Scope: Part time employment, 6 hours per week");
+    # it outranks an FTE quoted elsewhere on the page as a salary basis.
+    scope = re.search(
+        r"employment\s+type\s+and\s+scope\s*:\s*(?:part|full)[- ]time\s+employment,\s*"
+        r"(\d{1,2}(?:[.,]\d+)?)\s+hours\s+per\s+week",
+        text,
+        re.I,
+    )
+    if scope:
+        hours = float(scope.group(1).replace(",", "."))
+        if 0 < hours <= 40:
+            return round(hours / 40, 3)
     patterns = (
         r"\bpracovn[ií]\s+[úu]vazek\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         r"\b(?:position\s+workload|employment\s+(?:fte|fraction)|workload(?:\s*\(fte\))?)"
@@ -1173,7 +1226,7 @@ def extract_employment_fte(text: str) -> float | None:
         # A67/A68: MUNI adverts state "Working Hours: 0,5 FTE (part-time
         # employment of 20 hours per week)". Czech decimal commas included.
         r"\bworking\s+hours\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\s*(?:FTE)?\b",
-        r"\b(0[.,][1-9]|1(?:[.,]0+)?)\s*FTE\b",
+        r"\b(0[.,]\d{1,2}|1(?:[.,]0+)?)\s*FTE\b",
         r"\bfull[- ]time\s+equivalent\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         r"\bfull[- ]time\s*\((0(?:[.,]\d+)?|1(?:[.,]0+)?)\)(?:\s|$|,|\.)",
         # "We offer full working time (1.0)" (UHK FIM, 2026-10-01).
@@ -1477,6 +1530,12 @@ def extract_salary_facts(text: str) -> dict:
                 facts["amountMin"] = low
                 facts["amountMax"] = high
                 facts["reason"] = "range"
+                return facts
+            if low is not None and low == high:
+                # "Starting salary from 7,088 CZK to 7,088 CZK" (CUNI FaF HK)
+                # states one amount; it is not two salary statements.
+                facts["amount"] = low
+                facts["reason"] = "single-amount-stated-as-range"
                 return facts
     amount = parse_money_number(chosen["raw"])
     if amount is None:
@@ -4285,13 +4344,7 @@ def job_record(candidate: dict, verified_at: str, host_verified: bool, page_text
         return {}, None
     langs = candidate.get("workingLanguages")
     if not langs and fact_text:
-        detected = []
-        low_text = fact_text.lower()
-        if re.search(r"\b(?:english|angličtin|anglictin)\b", low_text):
-            detected.append("en")
-        if re.search(r"\b(?:czech|češtin|cestin)\b", low_text):
-            detected.append("cs")
-        langs = detected if detected else None
+        langs = stated_working_languages(fact_text) or None
     # A67: cycle and tax are evidence-based. An amount without a stated payroll
     # period stays "unspecified"; a net figure is never relabelled gross.
     salary_amount = candidate.get("salaryAmount")
