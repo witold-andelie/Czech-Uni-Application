@@ -178,3 +178,42 @@ def test_a_listing_notice_keeps_its_stated_deadline() -> None:
     assert by_id["job-24000-15700"]["visibility"] == "archived"
     assert {w["ownerId"] for w in merged["windows"]} == {"job-24000-15900", "job-24000-15700"}
     assert {"id": "job-24000-15800", "reason": "past-deadline"} in merged["skipped"]
+
+
+def test_roboprox_source_keeps_listed_open_rows_past_their_euraxess_deadline() -> None:
+    page = "https://www.ciirc.cvut.cz/roboprox/job-positions/"
+    detail = "https://euraxess.ec.europa.eu/jobs/189893"
+    listing = (
+        "<table><tr><td>02-PhD-Babuska</td>"
+        f'<td><a href="{detail}">PhD position in Interactive task specification for HRI</a></td>'
+        "<td>Open</td></tr></table>"
+        '<a class="next" href="/en/roboprox/job-positions/?mo=11&amp;yr=2026">next month</a>'
+    )
+    notice = (
+        "<main><h1>PhD position in Interactive task specification for HRI</h1>"
+        "<p>Researcher Profile First Stage Researcher (R1) Application Deadline 31 Dec 2025 - 23:59 "
+        "Job Status Full-time Hours Per Week 40. We seek a motivated PhD candidate with a master's degree "
+        "in computer science. Net compensation of about 1,700 EUR monthly (includes salary and student "
+        "stipends).</p></main>"
+    )
+
+    def fetch(url: str):
+        return (200, listing) if url == page else (200, notice) if url == detail else (404, "")
+
+    source = {
+        "id": "ctu-ciirc-roboprox-positions",
+        "url": page,
+        "official": True,
+        "employerId": "msmt-vs_21000",
+        "parser": "roboprox_positions",
+        "followDetails": True,
+    }
+    result = harvest_adapter_source(source, fetch_page=fetch, previous={})
+    jobs = {job["id"]: job for job in result["snapshot"]["jobs"]}
+    job = jobs["job-21000-02-phd-babuska"]
+    assert job["applicationUrl"] == page
+    assert job["sourceUrl"] == detail
+    assert job["doctoralEnrollment"] == "required"
+    assert job["employmentFte"] == 1.0
+    windows = [w for w in result["snapshot"].get("windows") or [] if w.get("jobId") == job["id"]]
+    assert all(w.get("closesAt") is None for w in windows)

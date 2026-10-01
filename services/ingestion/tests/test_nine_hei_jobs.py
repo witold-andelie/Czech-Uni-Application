@@ -2946,3 +2946,65 @@ def test_ctu_notice_facts_found_by_the_2026_10_01_review() -> None:
     from harvest_nine_hei_jobs import extract_employment_fte
 
     assert extract_employment_fte("- úvazek 1,0 – platové podmínky se řídí Mzdovým předpisem univerzity") == 1.0
+
+
+ROBOPROX_TABLE = """
+<table><tr><td>Reference Number</td><td>Position Title</td><td>Status</td></tr>
+<tr><td>01-PhD-Babuska</td><td><a href="https://euraxess.ec.europa.eu/jobs/189891">PhD position in Human-robot aware planning &amp; acting</a></td><td>Open</td></tr>
+<tr><td>03-PhD-Svoboda</td><td><a href="https://www.euraxess.cz/jobs/190058">PhD in Self-supervised learning</a></td><td>Open</td></tr>
+<tr><td>05-PhD-Closed</td><td><a href="https://euraxess.ec.europa.eu/jobs/180000">PhD position in closed topic</a></td><td>Closed</td></tr>
+<tr><td>06-PhD-Form</td><td><a href="https://forms.gle/abc">Apply here</a></td><td>Open</td></tr>
+</table>
+"""
+
+
+def test_roboprox_reads_open_rows_and_ignores_their_detail_deadline() -> None:
+    page = "https://www.ciirc.cvut.cz/roboprox/job-positions/"
+    rows = jobs_harvester.parse_roboprox_positions(ROBOPROX_TABLE, page)
+    assert [row["code"] for row in rows] == ["01-PhD-Babuska", "03-PhD-Svoboda"]
+    assert rows[0]["title"] == "PhD position in Human-robot aware planning & acting"
+    assert rows[0]["sourceUrl"] == "https://euraxess.ec.europa.eu/jobs/189891"
+    assert all(row["applicationUrl"] == page and row["ignoreDetailDeadline"] for row in rows)
+
+
+def test_job_record_keeps_a_listed_open_job_when_its_detail_deadline_passed() -> None:
+    base = _a75_review_job()
+    base["title"] = "PhD position in Interactive task specification for HRI"
+    base.pop("sourceHash", None)
+    text = (
+        "PhD position in Interactive task specification for HRI Application Deadline 31 Dec 2025 - 23:59 "
+        "Job Status Full-time Hours Per Week 40"
+    )
+    expired, _ = jobs_harvester.job_record(dict(base), "2026-10-01T00:00:00Z", True, text, as_of=date(2026, 10, 1))
+    assert expired == {}
+    job, window = jobs_harvester.job_record(
+        {**base, "ignoreDetailDeadline": True}, "2026-10-01T00:00:00Z", True, text, as_of=date(2026, 10, 1)
+    )
+    assert job["id"] == base["id"]
+    assert window is None or window.get("closesAt") is None
+
+
+def test_phd_studentship_wording_is_enrolment_not_a_doctorate() -> None:
+    facts = extract_qualifications(
+        "PhD position in polynomial optimization",
+        "Skills/Qualifications for Ph.D. candidates Motivation to perform excellent research, "
+        "MSc degree or equivalent (awarded or to be completed soon)",
+    )
+    assert facts == {"minimumDegree": "master", "doctorateRequired": False, "doctoralEnrollment": "required"}
+    for title, body in (
+        ("PhD in Self-supervised learning", "The group is looking for outstanding PhD students. MSc in robotics."),
+        ("Energy efficient production scheduling", "[using PhD Position ID: 02-PhD-Hanzalek] MSc degree or equivalent"),
+    ):
+        assert extract_qualifications(title, body)["doctoralEnrollment"] == "required"
+    assert classify_track("PhD in Self-supervised learning", "research") == "assistant"
+    # A postdoc still requires the doctorate itself.
+    assert extract_qualifications(
+        "Postdoc position", "Requirements: Ph.D. degree or equivalent (awarded or to be completed soon)"
+    )["doctorateRequired"] is True
+
+
+def test_euraxess_job_status_hours_and_slash_month_salary() -> None:
+    assert jobs_harvester.extract_employment_fte("Job Status Full-time Hours Per Week 40") == 1.0
+    assert jobs_harvester.extract_employment_fte("Job Status Part-time Hours Per Week 20") == 0.5
+    facts = jobs_harvester.extract_salary_facts("Salary: will be around 1800 EUR / month (gross), depending on qualification.")
+    assert (facts["amount"], facts["currency"], facts["cycle"], facts["tax"]) == (1800, "EUR", "month", "gross")

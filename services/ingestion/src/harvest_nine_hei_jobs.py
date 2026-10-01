@@ -328,6 +328,10 @@ ASSISTANT_MARKERS = (
     "ph.d. candidate",
     "doctoral student",
     "doktorand",
+    # "PhD in Self-supervised learning in robotic and automotive perception"
+    # (CIIRC RoboProX, 2026-10-01).
+    "phd in ",
+    "ph.d. in ",
 )
 SKIP_MARKERS = (
     "dean",
@@ -1019,7 +1023,10 @@ def extract_qualifications(title: str, body: str) -> dict:
         # "Academic degree PhD or scientific rank of CSc" (MUNI LF, 2026-10-01).
         r"academic\s+degree\s+(?:of\s+)?ph\.?d\.?\b|scientific\s+rank\s+of\s+csc\b|"
         # "require" also covers "We require Ph.D." (UHK FIM, 2026-10-01).
-        r"(?:must|should|require[sd]?|requirement|qualification|po[zž]adujeme)[^.\n]{0,120}\bph\.?d\.?\b)",
+        # Not "Skills/Qualifications for Ph.D. candidates", a PhD studentship's
+        # heading (CIIRC RoboProX, 2026-10-01).
+        r"(?:must|should|require[sd]?|requirement|qualification|po[zž]adujeme)[^.\n]{0,120}\bph\.?d\.?\b"
+        r"(?!\.?\s*(?:candidates?|students?|positions?|stud(?:y|ies)|program\w*)\b))",
         blob,
     ):
         doctorate_required = True
@@ -1389,6 +1396,15 @@ def extract_employment_fte(text: str) -> float | None:
             return round(hours / 40, 3)
     if re.search(r"employment\s+type\s+and\s+scope\s*:\s*full[- ]time\s+employment\b(?!,\s*\d)", text, re.I):
         return 1.0
+    # EURAXESS's structured fields: "Job Status Full-time Hours Per Week 40"
+    # (CIIRC RoboProX notices, 2026-10-01).
+    euraxess = re.search(
+        r"\bjob\s+status\s+(?:full|part)[- ]time\s+hours\s+per\s+week\s+(\d{1,2}(?:[.,]\d+)?)\b", text, re.I
+    )
+    if euraxess:
+        hours = float(euraxess.group(1).replace(",", "."))
+        if 0 < hours <= 40:
+            return round(hours / 40, 3)
     # "Předpokládaný pracovní úvazek 10%" (OSU, 2026-10-01).
     percent = re.search(r"[úu]vaz(?:ek|ku)\s*(?:[:=\-–]\s*)?(\d{1,3}(?:[.,]\d+)?)\s*%", text, re.I)
     if percent:
@@ -1567,7 +1583,9 @@ SALARY_CYCLE_YEAR_RE = re.compile(
 )
 SALARY_CYCLE_MONTH_RE = re.compile(
     r"\b(?:per\s+month|monthly|měs[íi][čc]n[ěe]|měs[íi][čc]n[íi]\s+(?:mzd\w*|plat\w*|ohodnocen\w*)|"
-    r"mzda\s+měs[íi][čc]n[ěe]|za\s+měs[íi]c)\b",
+    r"mzda\s+měs[íi][čc]n[ěe]|za\s+měs[íi]c)\b|"
+    # "around 1800 EUR / month (gross)" (CIIRC RoboProX, 2026-10-01).
+    r"(?:EUR|CZK|Kč|€)\s*/\s*(?:month|měs[íi]c)\b",
     re.I,
 )
 SALARY_CYCLE_HOUR_RE = re.compile(r"\b(?:per\s+hour|hourly|hodinov[ěe])\b", re.I)
@@ -1798,6 +1816,8 @@ def assistant_enrollment(title: str, body: str) -> str:
             "doctoral student",
             "doctoral fellowship",
             "doktorand",
+            "phd in ",
+            "ph.d. in ",
         )
     )
     explicit_required_patterns = (
@@ -1806,6 +1826,12 @@ def assistant_enrollment(title: str, body: str) -> str:
         r"\b(?:enrolled|enrolment|enrollment|registration)\s+in\s+(?:a\s+)?(?:ph\.?d|doctoral)\b",
         r"\bz[aá]pis\s+do\s+doktorsk[eé]ho\s+studia\b",
         r"\bdoktorsk[eé]\s+studium[^.\n]{0,70}(?:podm[ií]nkou|po[zž]adov[aá]no|p[řr]ed\s+dokon[cč]en[ií]m)",
+        # The notice recruits doctoral students: "is looking for outstanding PhD
+        # students", "We seek a motivated PhD candidate", "[using PhD Position
+        # ID: 01-PhD-Hanzalek]" (CIIRC RoboProX, 2026-10-01).
+        r"\b(?:looking\s+for|seek(?:s|ing)?)\s+(?:an?\s+)?(?:(?:highly|outstanding|motivated|talented|excellent)\s+)*"
+        r"(?:ph\.?d\.?|doctoral)\s+(?:students?|candidates?)\b",
+        r"\bph\.?d\.?\s+position\s+id\b",
     )
     if title_requires_enrollment or any(re.search(pattern, blob) for pattern in explicit_required_patterns):
         return "required"
@@ -3126,6 +3152,55 @@ def parse_tul_careers(html: str, page_url: str) -> list[dict]:
     return results
 
 
+_EURAXESS_HOSTS = {"euraxess.ec.europa.eu", "www.euraxess.cz", "euraxess.cz"}
+
+
+def parse_roboprox_positions(html: str, page_url: str) -> list[dict]:
+    """Read the rows CIIRC RoboProx marks Open; each links its EURAXESS notice.
+
+    The CIIRC table (reference number, title, status) is the authority on
+    whether a position is open. The linked EURAXESS notices keep application
+    deadlines that passed long ago while CIIRC still lists the row Open, so
+    their deadline is ignored and the job carries no closing date.
+    """
+    results: list[dict] = []
+    seen: set[str] = set()
+    for row in re.finditer(r"(?is)<tr\b[^>]*>(.*?)</tr>", html):
+        cells = re.findall(r"(?is)<td\b[^>]*>(.*?)</td>", row.group(1))
+        if len(cells) < 3:
+            continue
+        status = visible_text(cells[-1]).strip().casefold()
+        if status != "open":
+            continue
+        link = re.search(r"(?is)<a\b[^>]*href=[\"']([^\"']+)[\"'][^>]*>(.*?)</a>", cells[1])
+        code = visible_text(cells[0]).strip()
+        if link is None or not code:
+            continue
+        detail_url = urljoin(page_url, unescape(link.group(1)).strip())
+        parsed = urlsplit(detail_url)
+        title = visible_text(link.group(2)).strip() or visible_text(cells[1]).strip()
+        if (
+            parsed.scheme not in {"http", "https"}
+            or parsed.netloc.casefold() not in _EURAXESS_HOSTS
+            or not re.fullmatch(r"/jobs/\d+/?", parsed.path)
+            or not title
+            or detail_url in seen
+        ):
+            continue
+        seen.add(detail_url)
+        results.append(
+            {
+                "title": title,
+                "code": code,
+                "sourceUrl": detail_url,
+                "applicationUrl": page_url,
+                "applicationMethod": "official_instructions",
+                "ignoreDetailDeadline": True,
+            }
+        )
+    return results
+
+
 def parse_utb_careers(html: str, page_url: str) -> list[dict]:
     """Pair each UTB vacancy-card heading with its same-card detail URL."""
     current_host = urlsplit(page_url).netloc.casefold()
@@ -3773,6 +3848,7 @@ def discover_registered_candidates(
             "recruitis_widget",
             "ujep_open_positions",
             "tul_careers",
+            "roboprox_positions",
             "zcu_document_feed",
         }:
             attempts.append(
@@ -3899,13 +3975,19 @@ def discover_registered_candidates(
                     found.extend(parse_ujep_open_positions(html, listing_url))
                 elif parser == "tul_careers":
                     found.extend(parse_tul_careers(html, listing_url))
+                elif parser == "roboprox_positions":
+                    found.extend(parse_roboprox_positions(html, listing_url))
                 elif parser == "vsb_listing":
                     found.extend(parse_vsb_listing(html, listing_url))
                 else:
                     found.extend(parse_inline_heading_jobs(html, listing_url))
+                # The RoboProx table is one page; its only "next" links page
+                # the site's event calendar month by month without end.
                 pagination_urls = (
                     _cuni_ajax_pagination_urls(html, listing_url)
                     if parser == "cuni_ajax"
+                    else []
+                    if parser == "roboprox_positions"
                     else _pagination_urls(html, listing_url)
                 )
                 for pagination_url in pagination_urls:
@@ -4528,6 +4610,10 @@ def job_record(candidate: dict, verified_at: str, host_verified: bool, page_text
     page_close = extract_deadline(fact_text) if page_text else None
     closes = page_close or parse_date(candidate.get("closesAt"))
     opens = parse_date(candidate.get("opensAt"))
+    if candidate.get("ignoreDetailDeadline") is True:
+        # The listing, not the detail notice, decides the window (RoboProx:
+        # EURAXESS keeps passed deadlines on rows CIIRC lists Open).
+        closes = opens = None
     closed = page_is_closed(fact_text, title) if page_text else False
     if closes and closes < cur_today and not closed:
         return {}, None

@@ -573,6 +573,22 @@
     "note": "A top-level notice carrying an official Rozhodnuti link is treated as completed and excluded from discovery. Remaining notices are still read in full because many old records lack a linked decision; past deadlines are archived rather than shown current. The production discovery entry now includes this source."
   },
   {
+    "id": "ctu-ciirc-roboprox-positions",
+    "url": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+    "purpose": "official CIIRC CTU RoboProX job-position table (reference number, title, Open status) with each row linking its EURAXESS notice",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "msmt-vs_21000",
+    "coverageScope": "department",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "roboprox_positions",
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "production_entrypoint_wired_2026-10-01",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Only rows CIIRC marks Open are discovered; the facts come from the linked EURAXESS notice. EURAXESS keeps application deadlines that passed while CIIRC still lists the row Open, so the CIIRC status is authoritative and the detail deadline is ignored (no closing date is shown). The application target is the CIIRC page, which carries the official apply instructions."
+  },
+  {
     "id": "osu-central-careers",
     "url": "https://www.osu.cz/kariera/kariera-akademicke-pozice/",
     "pages": [
