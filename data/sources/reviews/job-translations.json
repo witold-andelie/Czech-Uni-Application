@@ -4069,15 +4069,15 @@
       ]
     },
     "job-15000-431d928d399a": {
-      "sourceHash": "sha256:3e8992950d779b54efbf12cbe4fdb5c63ce098a6d6957808def2331d96fd8140",
-      "evidenceHash": "sha256:3e8992950d779b54efbf12cbe4fdb5c63ce098a6d6957808def2331d96fd8140",
+      "sourceHash": "sha256:65db6d20ec52696e3b3c98037f359b46c7ff30e6d4efd07009162031aa0b46a0",
+      "evidenceHash": "sha256:65db6d20ec52696e3b3c98037f359b46c7ff30e6d4efd07009162031aa0b46a0",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "operator_source_review"
       },
       "reviewEventId": "draft-2026-09-22-048",
       "reviewedAt": "2026-09-26T18:23:16Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UPOL pracuj.upol.cz captured.\n\nFact back-fill 2026-09-26T18:23:16Z (operator, from the live official page https://pracuj.upol.cz/nc/zprava/clanek/odbornya-asistentka-se-zamerenim-na-tematickou-kartografii-a-geograficke-informacni-systemy/): `workingLanguages` set from the sentences below, read on the page as fetched then (http 200, scrapling_get, sha256 sha256:1ab6c7d10f42f5525). Values the page does not state were left alone: nothing here is inferred from the record's older stored text.\n\nworkingLanguages: cs — “Praktická zkušenost s výukou odborných předmětů v českém jazyce, znalost českého jazyka – písemného i ústního projevu”\nworkingLanguages: en — “Aktivní znalost anglického jazyka”\nworkingLanguages: cs — “Strukturovaný profesní životopis v českém jazyce”\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UPOL pracuj.upol.cz captured.\n\nFact back-fill 2026-09-26T18:23:16Z (operator, from the live official page https://pracuj.upol.cz/nc/zprava/clanek/odbornya-asistentka-se-zamerenim-na-tematickou-kartografii-a-geograficke-informacni-systemy/): `workingLanguages` set from the sentences below, read on the page as fetched then (http 200, scrapling_get, sha256 sha256:1ab6c7d10f42f5525). Values the page does not state were left alone: nothing here is inferred from the record's older stored text.\n\nworkingLanguages: cs — “Praktická zkušenost s výukou odborných předmětů v českém jazyce, znalost českého jazyka – písemného i ústního projevu”\nworkingLanguages: en — “Aktivní znalost anglického jazyka”\nworkingLanguages: cs — “Strukturovaný profesní životopis v českém jazyce”\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): re-read the live UPOL page 2026-10-01: 'Úvazek: 1,0' is now read as 1.0 FTE; Ph.D. in geoinformatics or cartography, Czech for teaching and active English, deadline 9 Oct 2026 all as reviewed; the page's wording changed only outside these facts.",
       "title": {
         "zh-CN": "专题制图与地理信息系统方向助理教授",
         "en": "Assistant professor focused on thematic cartography and geographic information systems",
@@ -4103,7 +4103,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:cd21b07203fef65efef6a769802dfeefa2fb9d2da6345d6554f8bd9568d63924",
+      "factHash": "sha256:c6002897ecc0e8fd465b95110a8b7aad2b5a1b6dfc3d7bb79957b4f784f8a193",
       "factBackfills": [
         {
           "at": "2026-09-26T18:23:16Z",
@@ -4907,7 +4907,7 @@
       },
       "reviewEventId": "draft-2026-09-22-067",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院社会学与社会工作系主任",
         "en": "Academic staff member - Head of the Department of Sociology and Social Work at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -4933,7 +4933,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:70952cc3add5e7dfe2fedb7ff26158e96d212136b6fffbe6fb05d309e10bd0e9"
+      "factHash": "sha256:1db4658da78f69907771449c5e49a5364b78288410fcacf6f59442f259467ace"
     },
     "job-23000-12d5811e-022b-41df-81c8-78e3800139a2": {
       "sourceHash": "sha256:5680a7095ce2bcec3554491d4fe8cfbfaa4447981644ba5830f946e559c9276a",
@@ -4944,7 +4944,7 @@
       },
       "reviewEventId": "draft-2026-09-22-068",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院考古学系主任",
         "en": "Academic staff member - Head of the Department of Archaeology at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -4970,7 +4970,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:12d89fc9481b305fed99bd01c60570421fe4ec3d262f5c6eba2f680657126f00"
+      "factHash": "sha256:172794f3b977f452d769473a07731fb9fdc157f63e8dde20f59faf8941427f2f"
     },
     "job-23000-1fef677c-9c9c-4791-a77a-5d83d74f9a8e": {
       "sourceHash": "sha256:d2f15281eb7622ef9678d62da91f6cab0d9e6237c90e89c7abe96596d9f3ec3d",
@@ -5018,7 +5018,7 @@
       },
       "reviewEventId": "draft-2026-09-22-070",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院历史科学系主任",
         "en": "Academic staff member - Head of the Department of Historical Sciences at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -5044,7 +5044,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:d1ad063f5447da791f8d0d843060f03ec85d1e68da3075c07e3c1b188495ed9b"
+      "factHash": "sha256:a55d48a277914bf3cfa586f01313cc8dc4b4b0857d4c33ca3749a276f365c60b"
     },
     "job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169": {
       "sourceHash": "sha256:57c355c739d9fb4d1e29c9f2058390b5d3e50aee2b0d9328845ce5dc816c94fe",
@@ -5092,7 +5092,7 @@
       },
       "reviewEventId": "draft-2026-09-22-072",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院语文学研究系主任",
         "en": "Academic staff member - Head of the Department of Philological Studies at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -5118,7 +5118,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:321f5adcad8c797bb5f3bb2b35457ba36aa0cda8be7c6d8f001888e2ba749394"
+      "factHash": "sha256:c5a00316c8b27ec26bd816d6fe9210dc2a551f1c1e9e9731770268bf994904c6"
     },
     "job-23000-6cbee7a8-ea92-4508-9e13-7b591dfc84d2": {
       "sourceHash": "sha256:80a4944e7e11a007f218ec75f5da66b789040e4aa05095e12878d80b439fe83d",
@@ -5129,7 +5129,7 @@
       },
       "reviewEventId": "draft-2026-09-22-073",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院政治学与国际关系系主任",
         "en": "Academic staff member - Head of the Department of Political Science and International Relations at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -5155,7 +5155,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:cc9097cc590d639a5b2a3bf23fd9e561ed8a5b3dd583f1e70e087f2bd68aa451"
+      "factHash": "sha256:798a65a33bef0fdf0583d1d2832d891f73070450b01ef1c77f42947e8e0b3bbd"
     },
     "job-23000-74fc20c7-139d-4c69-95e0-dd773466fd7a": {
       "sourceHash": "sha256:008252d554fae018309761b55e76d044c54f5d1aa0f08fbb7070c813468b5bc1",
@@ -5166,7 +5166,7 @@
       },
       "reviewEventId": "draft-2026-09-22-074",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): 'Co od Vás očekáváme: • minimálně středoškolské vzdělání' is now read as a secondary-school minimum ('other', no doctorate); title and other facts unchanged, source text unchanged.",
       "title": {
         "zh-CN": "技术员 – 安全系统操作员（西波希米亚大学安保处）",
         "en": "Technician - operator of security systems for the Security Department of the University of West Bohemia in Pilsen",
@@ -5192,7 +5192,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:15d2f4af426ebc8342082bb1332c32827e8d39e5912a9ead6a953c4226ea553f"
+      "factHash": "sha256:d7a1a017c95590b43c3db90d36ab8e213a4a4e394af42d2dfcf9d135f7fb4752"
     },
     "job-23000-a56b8340-fe46-4873-8c55-28fe339fc370": {
       "sourceHash": "sha256:5a1d82cecb4057316fc58879cb0c8f9aee30a39da013757b7fc01eb7f654656d",
@@ -5203,7 +5203,7 @@
       },
       "reviewEventId": "draft-2026-09-22-075",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): 'Co požadujeme? • středoškolské vzdělání technického směru' is now read as a secondary-school minimum ('other', no doctorate) and 'pracovní poměr na plný úvazek' as 1.0 FTE; title and other facts unchanged, source text unchanged.",
       "title": {
         "zh-CN": "金相实验室技术员（西波希米亚大学区域技术研究所）",
         "en": "Technician of the Metallography Laboratory, Regional Technological Institute of the University of West Bohemia in Pilsen",
@@ -5229,7 +5229,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:510b572bdf76146721e428251b4de83aede79185b4d2149cf8ba23e4c86c90ab"
+      "factHash": "sha256:a91bfa08922d99f835f7b43f0c94240b9ccf42dfbb8664bfac9f76d79af3f416"
     },
     "job-23000-ac7b38a7-0717-4916-889a-739d0a39c81e": {
       "sourceHash": "sha256:9df6e5f5e4125aaffd581aa90e6a47e3aeaa4b5c5ea8b39f9c55de168622e316",
@@ -5240,7 +5240,7 @@
       },
       "reviewEventId": "draft-2026-09-22-076",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院哲学系主任",
         "en": "Academic staff member - Head of the Department of Philosophy at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -5266,7 +5266,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:1b7b5f2a1b701450936bd4864294848cebb615d55be1772d1c7047d35e3fa175"
+      "factHash": "sha256:cfa7349aa334571698d11a242a11911d7e955995353ba253ba26099b71f9f89e"
     },
     "job-23000-db5b1a33-b03b-42d9-83c6-a7d334afdb30": {
       "sourceHash": "sha256:d5b8802087c3ee4513dc1a51df5d13e960c9c5826a78b6cdfe1e09838c5a5117",
@@ -5449,62 +5449,38 @@
       ]
     },
     "job-25000-886db2f5facd": {
-      "sourceHash": "sha256:47ab74d64907c727a455520629e3faaea6b2bc91f4fa5300c8d1bdc64aea50f1",
-      "evidenceHash": "sha256:47ab74d64907c727a455520629e3faaea6b2bc91f4fa5300c8d1bdc64aea50f1",
+      "sourceHash": "sha256:ab510ff72349f9ae40eb144ff7b6337cbe773b46dc8db78e0961588f19bda428",
+      "evidenceHash": "sha256:ab510ff72349f9ae40eb144ff7b6337cbe773b46dc8db78e0961588f19bda428",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "operator_source_review"
       },
-      "reviewEventId": "draft-2026-09-22-081",
-      "reviewedAt": "2026-09-26T18:23:16Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UPCE official PDF captured.\n\nFact back-fill 2026-09-26T18:23:16Z (operator, from the live official page https://www.upce.cz/sites/default/files/global/2026-09/7240/VK_KDPD_140962.pdf): `workingLanguages` set from the sentences below, read on the page as fetched then (http 200, pdf, sha256 sha256:27a8a5c131afbcf63). Values the page does not state were left alone: nothing here is inferred from the record's older stored text.\n\nworkingLanguages: en — “Anglický jazyk na dobré komunikativní úrovni slovem i písmem.”\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewEventId": "rev-2026-10-01-upol-upce-06",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (job-25000-886db2f5facd): official PDF VK_KEEZ_140963 from upce.cz/volna-mista; department head on a fixed term, appointed as professor, docent or assistant professor; 'Vysokoškolské vzdělání' with appointment, habilitation or 'Ph.D. nebo ... CSc' by route, so no single minimum (unknown); English 'na dobré komunikativní úrovni'; 'VÝŠE ÚVAZKU: plný' (1.0); pay by the internal wage regulation (paid); deadline 9 Oct 2026.",
       "title": {
-        "zh-CN": "教授 / 副教授 / 助理教授 – 系主任",
-        "en": "Professor; Associate Professor; Assistant Professor - Head of Department",
-        "cs": "profesor/profesorka ; docent/docentka; odborný asistent/odborná asistentka - vedoucí katedry"
+        "zh-CN": "交通学院电气、电子与交通信号工程系系主任（教授／副教授／助理教授）",
+        "en": "Professor, Associate Professor or Assistant Professor – Head of the Department of Electrical and Electronic Engineering and Signalling in Transport (Jan Perner Transport Faculty)",
+        "cs": "Profesor/ka, docent/ka nebo odborný/á asistent/ka – vedoucí Katedry elektrotechniky, elektroniky a zabezpečovací techniky v dopravě (DFJP UPCE)"
       },
       "locales": {
         "zh-CN": {
           "status": "reviewed",
-          "contentHash": "sha256:dfeef23199c2428e1b201f8e365869520e1124dae1cf76a0859c8df4ccd22013",
-          "translatedFromHash": "sha256:47ab74d64907c727a455520629e3faaea6b2bc91f4fa5300c8d1bdc64aea50f1",
-          "reviewedAt": "2026-09-22T21:17:52Z"
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:99f05f1b01abc098fb15c3faba0acedafda5a522932a7d995df94e5037c4ce10"
         },
         "en": {
           "status": "reviewed",
-          "contentHash": "sha256:af8abc42a2a7a4a858bdc05a386728e19797f1e3a70b599291edbaa066da3604",
-          "translatedFromHash": "sha256:47ab74d64907c727a455520629e3faaea6b2bc91f4fa5300c8d1bdc64aea50f1",
-          "reviewedAt": "2026-09-22T21:17:52Z"
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:24aba266199ec2a779d798c903c1842f19cde09e1739df1ad2e9a02c355eb992"
         },
         "cs": {
           "status": "reviewed",
-          "contentHash": "sha256:1dadc0df867c4eb599078acb03a7ea62792a00e358d6f0082662795a65cd728e",
-          "translatedFromHash": "sha256:47ab74d64907c727a455520629e3faaea6b2bc91f4fa5300c8d1bdc64aea50f1",
-          "reviewedAt": "2026-09-22T21:17:52Z"
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:513f504a811667c537c1c477e7cf6573911d98f6c03e6bdfb8d5bf993e16082a"
         }
       },
-      "factHash": "sha256:e3f3a5494f817e98092e54046966507ae07c1c585b905d987b2dddf7a4be57a5",
-      "factBackfills": [
-        {
-          "at": "2026-09-26T18:23:16Z",
-          "url": "https://www.upce.cz/sites/default/files/global/2026-09/7240/VK_KDPD_140962.pdf",
-          "httpStatus": 200,
-          "tool": "pdf",
-          "textSha256": "sha256:27a8a5c131afbcf6340cb63f4b768d6017c9cb418dc465b2c6ba80dbc3a8a56e",
-          "resolvedFrom": null,
-          "fields": [
-            "workingLanguages"
-          ],
-          "basis": {
-            "workingLanguages": [
-              {
-                "matched": "en",
-                "sentence": "Anglický jazyk na dobré komunikativní úrovni slovem i písmem."
-              }
-            ]
-          }
-        }
-      ]
+      "factHash": "sha256:3204a4775f5fe0ab3fd6043dc08525dcf39c72e77500eca2062026fd9b9d8828"
     },
     "job-25000-8a5985348527": {
       "sourceHash": "sha256:eeccd13225a66a03cc39c6cae17479a31fd8669c5956f9058b208be1988c5fc5",
@@ -5946,15 +5922,15 @@
       "factHash": "sha256:a1957657fea33443b76e4551b0a45880c7965bca78252bf192b9ff0178bd9db8"
     },
     "job-26000-2001408563": {
-      "sourceHash": "sha256:a515b8ee0dd6c8b2e6533c62d98df92987666cf0d3403e9ae515a27852a4d460",
-      "evidenceHash": "sha256:a515b8ee0dd6c8b2e6533c62d98df92987666cf0d3403e9ae515a27852a4d460",
+      "sourceHash": "sha256:0d52ec0b5715f5cec17209664c3c0728fcc8116397937828408376935f371be1",
+      "evidenceHash": "sha256:0d52ec0b5715f5cec17209664c3c0728fcc8116397937828408376935f371be1",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "operator_source_review"
       },
       "reviewEventId": "draft-2026-09-22-093",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). VUT vutbr.jobs.cz live-checked 2026-09-22 (2001383219/2001389137).\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). VUT vutbr.jobs.cz live-checked 2026-09-22 (2001383219/2001389137).\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): re-read the live VUT notice 2026-10-01: 'Rozsah pracovního úvazku: 1,0 – plný pracovní úvazek, 40 hodin týdně' is now read as 1.0 FTE; title and every other reviewed fact unchanged.",
       "title": {
         "zh-CN": "纳米制造工艺与欧洲试产线专员",
         "en": "Specialist for nanofabrication processes and European pilot lines",
@@ -5980,7 +5956,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:4c0d86b3ffb85c14c0237de7cfb1449930ae8e9f5cc953ad1deac7f79e3bdda9"
+      "factHash": "sha256:412fe763190a5d1860a9bc6837ccccbe735599cf390054af0079868fca4e3c56"
     },
     "job-26000-2001409739": {
       "sourceHash": "sha256:2eb5707b99fe1120d8512f7a56c0eebba6b0bdfc8f9982a1618955463901673c",
@@ -9329,6 +9305,312 @@
         }
       },
       "factHash": "sha256:91c3f6014ac991d823ff538fc8b266249d660f7797ef267203057da89a13eb5a"
+    },
+    "job-15000-c4ce544e8219": {
+      "sourceHash": "sha256:f06a5f7e57b8f27083456f290e991b95c243621f768ec05ba9d0889334c493a6",
+      "evidenceHash": "sha256:f06a5f7e57b8f27083456f290e991b95c243621f768ec05ba9d0889334c493a6",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-upol-upce-01",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (https://pracuj.upol.cz/nc/zprava/clanek/odborny-asistent-odborna-asistentka-v-oboru-algebra-nebo-geometrie/): live pracuj.upol.cz page; 'Titul Ph.D. v oboru algebra nebo geometrie, popř. doložení do doby nástupu' (doctorate required by the start date); English 'na úrovni obsazované pozice' and teaching in Czech; 'Úvazek: 1,0'; no pay stated (unconfirmed); deadline 1 Nov 2026; start 1 Jan 2027.",
+      "title": {
+        "zh-CN": "理学院代数与几何系代数或几何方向助理教授",
+        "en": "Assistant Professor in Algebra or Geometry (Department of Algebra and Geometry, Faculty of Science)",
+        "cs": "Odborný asistent / odborná asistentka v oboru algebra nebo geometrie"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:2f094e523eb0c575a8f933cc202a131bfc5523b1d41e49fb12fe4b9865afdf30"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:1be00decfa82c3f19f379568c4c3afc060cc5d96e0ef7953c8ca890e082b44c4"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:77ddc9566644f9317c4cfa68fa3833c9f223d0acc14d1677f9e3a5222f435576"
+        }
+      },
+      "factHash": "sha256:f45796b33033f6409a840317c4fc116c7bf735ec2d8133b3da29f9b7f34757ab"
+    },
+    "job-15000-24ef6624f0bf": {
+      "sourceHash": "sha256:2e8378249e91a8693019c9da5385bc55f0b258c9301567c37eac4c105c5dfe82",
+      "evidenceHash": "sha256:2e8378249e91a8693019c9da5385bc55f0b258c9301567c37eac4c105c5dfe82",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-upol-upce-02",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (https://pracuj.upol.cz/nc/zprava/clanek/docentka-v-oboru-algebra-nebo-geometrie/): live pracuj.upol.cz page; 'Titul doc. v oboru algebra nebo geometrie' (the notice states the docent title, not a degree level, so the minimum stays unknown); English at the post's level and teaching in Czech; 'Úvazek: 1,0'; no pay stated; deadline 1 Nov 2026.",
+      "title": {
+        "zh-CN": "理学院代数与几何系代数或几何方向副教授",
+        "en": "Associate Professor (Docent) in Algebra or Geometry (Department of Algebra and Geometry, Faculty of Science)",
+        "cs": "Docent(ka) v oboru algebra nebo geometrie"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:5a512561c123ce584d1dc1ce1997143743c7560788e0cbc11e6f1e059d5f4eec"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:950a72c05daa24343aa03cc86c4f8c159d15c389fcc21176bb03e5ffd4ace0a7"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:b6681c7bbc9e966fb4dd9392f30e7d7574bef6f86f9353b5c66d627e5429e6ce"
+        }
+      },
+      "factHash": "sha256:2f4111dc117c3186426f01690a6d91ca41f21b4d18c84ae0ff44ed3dceb4b445"
+    },
+    "job-15000-947392b0f171": {
+      "sourceHash": "sha256:e23db5107e0c6ad460320b8683e928a9f55df3d86694aee326a78cd4a7b45cc1",
+      "evidenceHash": "sha256:e23db5107e0c6ad460320b8683e928a9f55df3d86694aee326a78cd4a7b45cc1",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-upol-upce-03",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (https://pracuj.upol.cz/nc/zprava/clanek/vedecky-pracovnik-vedecka-pracovnice-v-oboru-algebra-nebo-geometrie/): live pracuj.upol.cz page; 'Titul Ph.D. v oboru algebra nebo geometrie, popř. doložení do doby nástupu'; no language requirement stated; 'Úvazek: 1,0'; no pay stated; deadline 1 Nov 2026.",
+      "title": {
+        "zh-CN": "理学院代数与几何系代数或几何方向研究员",
+        "en": "Researcher in Algebra or Geometry (Department of Algebra and Geometry, Faculty of Science)",
+        "cs": "Vědecký pracovník / vědecká pracovnice v oboru algebra nebo geometrie"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:cde1e2b5ceb992a2a539321a7f34b4b13559461422d2887e4967fd50219da94f"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:45b5ba2ee2525c76d8244d2aac1b23024978d3375b69005a10b06fc081597604"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:929117f506b4a25b7e8d86f581ade4d62c5bc7a87977b04865597ea1a323176b"
+        }
+      },
+      "factHash": "sha256:fab4b697bb63a16a6ef35cac94b5a1d6a7bec3434b07594995d5dff41c6cd3b8"
+    },
+    "job-15000-133ded557edb": {
+      "sourceHash": "sha256:41eff364101e688b00a68fa0389ebf412a4c6cf02fa0057755273808a671ccdb",
+      "evidenceHash": "sha256:41eff364101e688b00a68fa0389ebf412a4c6cf02fa0057755273808a671ccdb",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-upol-upce-04",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (https://pracuj.upol.cz/nc/zprava/clanek/laborantka-laboratorni-asistentka-3/): live pracuj.upol.cz page; molecular-genetics laboratory work including 'práce na vědeckých projektech' (research-technical); 'SŠ/ VOŠ/ VŠ vzdělání příslušného směru' (secondary school minimum, 'other'); 'znalost AJ' (English); 'Úvazek: 1,0'; no pay stated; deadline 31 Oct 2026.",
+      "title": {
+        "zh-CN": "医学院分子与转化医学研究所实验室技术员／实验室助理",
+        "en": "Laboratory Technician / Laboratory Assistant (Institute of Molecular and Translational Medicine, Faculty of Medicine and Dentistry)",
+        "cs": "Laborant(ka)/ Laboratorní asistent(ka)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:81bd3bdc50ad4c91cf4518d927320ace934958b89203e56c0d2767eaded1f438"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:f02f5d1526c87e07b783d47bb88bca04059089615a2c89f504b2bb1f18f0ef74"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:ad185b72181b932fe400ffa8087d5e284039fb5f45f8a999f2fa7f2fe325acec"
+        }
+      },
+      "factHash": "sha256:e10d8554379cecd650bbc363503155576ca40ea23fc41fa09349861e39f060f6"
+    },
+    "job-15000-e89df5cf5737": {
+      "sourceHash": "sha256:e0526826134e07e17ae05bb99dfa27295c58cab36b4c3abefa4decd1dbc9bb96",
+      "evidenceHash": "sha256:e0526826134e07e17ae05bb99dfa27295c58cab36b4c3abefa4decd1dbc9bb96",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-upol-upce-05",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (https://pracuj.upol.cz/nc/zprava/clanek/programatorka-erp-systemu-sap/): live pracuj.upol.cz page; Centre of Information Technology, software development (ABAP) for the university ERP, a technical post; 'VŠ/SŠ vzdělání v oblasti IT' (secondary school minimum, 'other'); 'Technická/pasivní znalost anglického jazyka'; 'Úvazek: 1,0'; no pay stated; deadline 16 Oct 2026.",
+      "title": {
+        "zh-CN": "计算机中心 SAP ERP 系统程序员",
+        "en": "SAP ERP Programmer (Computer Centre)",
+        "cs": "Programátor/ka ERP systému SAP"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:7c6e4c6b901aa5668118cb07e3a174ec48313bb733a4959deb414940ebc016d7"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:b263a4a18d5e96ff8bf5dba5a040fef11aa36119b25976c7c9f0643ba1b767cd"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:3acbd3be4d083d3e5f7efaeb4fb5fabd70555eceb94bcd6513070d091d747ded"
+        }
+      },
+      "factHash": "sha256:d9720db3012dc8c5caa40f07ecb7cd812e5c8743a33ed2e268ba871f96018626"
+    },
+    "job-25000-833509b6bb4d": {
+      "sourceHash": "sha256:a656f3c7b23ba6d956f2df364f4bee31ab1f94659d3b83db1619c854ff22eb5a",
+      "evidenceHash": "sha256:a656f3c7b23ba6d956f2df364f4bee31ab1f94659d3b83db1619c854ff22eb5a",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-upol-upce-07",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (job-25000-833509b6bb4d): official PDF VK_KDMML_140961; same terms as the other DFJP head-of-department calls: route-dependent qualification (unknown minimum), good English, full-time (1.0), pay by the internal wage regulation, deadline 9 Oct 2026.",
+      "title": {
+        "zh-CN": "交通学院交通管理、营销与物流系系主任（教授／副教授／助理教授）",
+        "en": "Professor, Associate Professor or Assistant Professor – Head of the Department of Transport Management, Marketing and Logistics (Jan Perner Transport Faculty)",
+        "cs": "Profesor/ka, docent/ka nebo odborný/á asistent/ka – vedoucí Katedry dopravního managementu, marketingu a logistiky (DFJP UPCE)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:7c6296b4cbbcac6dac8b0641e2a47c15ff59b6ac03e7d78a259fa8abd042a335"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:9eacae13d17bf2bec616073ec1d7ba32723d2d6081afb6c25c92d2eadf481b4f"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:5b0e99e3e1cde29d7076b91833e79489f9ce4331b1fcac06c7c8a6feebf137e3"
+        }
+      },
+      "factHash": "sha256:29150df9e31bcbc747eddf4fcd1f7857de0fbc3872d6849630498d356c0c9c73"
+    },
+    "job-25000-2ac48b2586ed": {
+      "sourceHash": "sha256:842d58b4e1a84d65e561672cfe48ea8e569019efa0a976a821638f7da94d877a",
+      "evidenceHash": "sha256:842d58b4e1a84d65e561672cfe48ea8e569019efa0a976a821638f7da94d877a",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-upol-upce-08",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (job-25000-2ac48b2586ed): official PDF VK_KLD_140964; route-dependent qualification (unknown minimum), good English, full-time (1.0), pay by the internal wage regulation, deadline 9 Oct 2026.",
+      "title": {
+        "zh-CN": "交通学院航空运输系系主任（教授／副教授／助理教授）",
+        "en": "Professor, Associate Professor or Assistant Professor – Head of the Department of Air Transport (Jan Perner Transport Faculty)",
+        "cs": "Profesor/ka, docent/ka nebo odborný/á asistent/ka – vedoucí Katedry letecké dopravy (DFJP UPCE)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:09e8c2a202b04aa0a75496f1501cdd026b4ed745c6de974152a5fbc3c53ac47b"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:cb25439e686455ae0c5b0b12a6ece89565012d7f598e3f2c0189626bd869df84"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:2f4d7bf6e87aecf99be214abf57294e44677c29c4948772cdf4eb82b7d479342"
+        }
+      },
+      "factHash": "sha256:97e8f110523f97625f3d8758e060337cfb57f4d7e0123a5712c4ca2aeaf63030"
+    },
+    "job-25000-f4460da810b9": {
+      "sourceHash": "sha256:47ab74d64907c727a455520629e3faaea6b2bc91f4fa5300c8d1bdc64aea50f1",
+      "evidenceHash": "sha256:47ab74d64907c727a455520629e3faaea6b2bc91f4fa5300c8d1bdc64aea50f1",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-upol-upce-09",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (job-25000-f4460da810b9): official PDF VK_KDPD_140962; route-dependent qualification (unknown minimum), good English, full-time (1.0), pay by the internal wage regulation, deadline 9 Oct 2026.",
+      "title": {
+        "zh-CN": "交通学院交通运输工具与诊断系系主任（教授／副教授／助理教授）",
+        "en": "Professor, Associate Professor or Assistant Professor – Head of the Department of Transport Means and Diagnostics (Jan Perner Transport Faculty)",
+        "cs": "Profesor/ka, docent/ka nebo odborný/á asistent/ka – vedoucí Katedry dopravních prostředků a diagnostiky (DFJP UPCE)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:1b283f21919197aa222efaf4bc98566fe04e79f37df15253c2a527de560273f1"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:53aa615dd98fed4b607da0425c8c9f1d29ca28047f54354eea3b70a83aaa9ff3"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:6404b6bb2d927776fa37869b7fe1579e717c8189f1120bda0f79d21e956a8cd9"
+        }
+      },
+      "factHash": "sha256:82544d62c1abd5944e4b899f253c38059d4d39a8a7d9232039a6a27573308430"
+    },
+    "job-25000-a3448d8d7b5d": {
+      "sourceHash": "sha256:98c31ffef604f602eeaae586ead0594ff653f7261909938eb3997e4d8cde8e0f",
+      "evidenceHash": "sha256:98c31ffef604f602eeaae586ead0594ff653f7261909938eb3997e4d8cde8e0f",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-upol-upce-10",
+      "reviewedAt": "2026-10-01T21:13:57Z",
+      "reviewNote": "Checked 2026-10-01 against the official notice (job-25000-a3448d8d7b5d): official PDF 'Spravce vypocetni techniky_aktualizace dle NSP_0926', the September re-publication of the July notice reviewed earlier (that record is archived as no longer listed); 'SŠ nebo VŠ vzdělání' (secondary school minimum, 'other'); 'základní znalost anglického jazyka'; 'na plný úvazek' (1.0); 'motivující finanční ohodnocení' (paid, amount not stated); no deadline stated.",
+      "title": {
+        "zh-CN": "信息技术与服务中心计算机设备管理员",
+        "en": "IT Equipment Administrator (Centre for Information Technologies and Services)",
+        "cs": "Správce/správkyně výpočetní techniky (Centrum informačních technologií a služeb UPCE)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:c9962a9bc7db3b6fb78295bdaf17ed339028f2950df115e9d8f79e96a8d89b46"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:c336b27addb7e6f8d4ab9e5bdf8be40f64d1bbbb7cb1813ddec01f9d3b197c16"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T21:13:57Z",
+          "contentHash": "sha256:c83dddeba5eefc5954602ba61ef75c64ea764e5e7be903aec2ce6b50f21bbb2e"
+        }
+      },
+      "factHash": "sha256:598c9fae7d7f231ced2b934e54d831432931ac3becbd0002ea8051a8e9a29f98"
     }
   }
 }
