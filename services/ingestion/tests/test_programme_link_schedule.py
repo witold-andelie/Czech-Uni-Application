@@ -144,9 +144,14 @@ def test_a_proven_link_the_built_inventory_does_not_publish_is_reported(tmp_path
         encoding="utf-8",
     )
     floor.write_text(json.dumps(_floor(1)), encoding="utf-8")
+    row = ["inv-czu-1", "Obchod a podnikání s technikou", "b", "PEF", 3, "cs", "0413"]
     inventory.write_text(
         json.dumps(
-            {"programmeLinkGeneratedAt": "2026-09-27T11:54:10Z", "programmeLinks": {}}
+            {
+                "programmeLinkGeneratedAt": "2026-09-27T11:54:10Z",
+                "programmeLinks": {},
+                "schools": [{"id": "msmt-vs_41000", "rows": [row]}],
+            }
         ),
         encoding="utf-8",
     )
@@ -158,6 +163,26 @@ def test_a_proven_link_the_built_inventory_does_not_publish_is_reported(tmp_path
     )
     assert not ok
     assert any("PROGRAMME_LINK_DROPPED_IN_PUBLICATION" in message for message in messages)
+
+    # The same link for a row the register no longer lists is a register
+    # change, not a page the gate dropped.
+    inventory.write_text(
+        json.dumps(
+            {
+                "programmeLinkGeneratedAt": "2026-09-27T11:54:10Z",
+                "programmeLinks": {},
+                "schools": [{"id": "msmt-vs_41000", "rows": []}],
+            }
+        ),
+        encoding="utf-8",
+    )
+    ok, messages = check(
+        links,
+        floor,
+        inventory_path=inventory,
+        domains={"msmt-vs_41000": {"czu.cz"}},
+    )
+    assert ok, messages
 
 
 def test_an_inventory_older_than_the_index_is_not_faulted_for_missing_links(tmp_path):

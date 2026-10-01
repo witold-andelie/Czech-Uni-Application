@@ -1851,3 +1851,43 @@ def test_a_faculty_sitemap_binds_the_rows_the_catalogue_never_named() -> None:
     )
     assert "animated film" not in by_title
     assert all(candidate.matched_by == "school_catalogue_sitemap" for candidate in candidates)
+
+
+def test_a_link_whose_row_left_the_register_is_retired_with_a_reason() -> None:
+    """2026-09-29/30 MŠMT exports dropped three rows that had proven pages."""
+    from resolve_programme_links import Link, Row, retire_rows_left_register
+
+    def link(ident: str, school: str) -> Link:
+        return Link(
+            url=f"https://www.example.cz/{ident}",
+            row_id=ident,
+            institution_id=school,
+            degree="m",
+            language="cs",
+            matched_title="t",
+            row_title="Zubní lékařství",
+            source_url="https://www.example.cz/",
+            matched_by="previous_run",
+            reachability="verified",
+            matched_at="",
+            checked_at="",
+            page_title=None,
+        )
+
+    rows = {
+        "msmt-vs_17000": [Row("inv-kept", "msmt-vs_17000", "Kept", "m", "cs", "LF")],
+        "msmt-vs_99000": [],  # a school whose register read came back empty
+    }
+    links = {
+        "inv-kept": link("inv-kept", "msmt-vs_17000"),
+        "inv-gone": link("inv-gone", "msmt-vs_17000"),
+        "inv-unread": link("inv-unread", "msmt-vs_99000"),
+    }
+    schools = [{"institutionId": "msmt-vs_17000", "resolved": 2, "offerings": 2}]
+    kept, reasons, schools, retired = retire_rows_left_register(links, {"inv-gone": "x"}, schools, rows)
+
+    assert set(kept) == {"inv-kept", "inv-unread"}
+    assert [item["rowId"] for item in retired] == ["inv-gone"]
+    assert retired[0]["reason"] == "row_left_register"
+    assert schools == [{"institutionId": "msmt-vs_17000", "resolved": 1, "offerings": 1}]
+    assert reasons == {"inv-gone": "x"}  # one school read empty: reasons untouched

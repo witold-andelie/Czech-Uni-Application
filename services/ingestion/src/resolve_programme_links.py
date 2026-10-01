@@ -2053,6 +2053,9 @@ def build_links(
         )
     else:
         unresolved = unresolved_by_row
+    links, unresolved, coverage_schools, retired = retire_rows_left_register(
+        links, unresolved, coverage_schools, rows_by_institution
+    )
     # Entries folded in from an earlier run carry that run's numbers; an entry
     # missing a field counts as zero rather than failing the whole run.
     totals = {
@@ -2106,8 +2109,71 @@ def build_links(
             }
             for ident, reason in sorted(unresolved.items())
         ],
+        "retiredFromRegister": retired,
         "requests": throttled.requests,
     }
+
+
+def retire_rows_left_register(
+    links: dict[str, Link],
+    unresolved: dict[str, str],
+    coverage_schools: list[dict],
+    rows_by_institution: dict[str, list[Row]],
+) -> tuple[dict[str, Link], dict[str, str], list[dict], list[dict]]:
+    """Drop links whose register row is gone, and say so.
+
+    Carrying earlier links forward keeps a school's proven pages when a run
+    does not read it, but a row the MŠMT register no longer lists has no row
+    to publish the page on: every rebuilt inventory then reported the page as
+    dropped (2026-09-29/30 exports: MUNI Study of Religions PhD and the Czech
+    Embryolog track, OSU Zubní lékařství). Those links leave the index with
+    reason ``row_left_register``. A school with no rows at all in this
+    register read is treated as a failed read and keeps its links.
+    """
+    current_rows = {
+        row.ident: institution_id
+        for institution_id, rows in rows_by_institution.items()
+        for row in rows
+    }
+    read_schools = {institution_id for institution_id, rows in rows_by_institution.items() if rows}
+    retired: list[dict] = []
+    kept: dict[str, Link] = {}
+    for ident, link in links.items():
+        if ident in current_rows or link.institution_id not in read_schools:
+            kept[ident] = link
+            continue
+        retired.append(
+            {
+                "rowId": ident,
+                "institutionId": link.institution_id,
+                "url": link.url,
+                "rowTitle": link.row_title,
+                "reason": "row_left_register",
+            }
+        )
+    # An unresolved reason has no school attached here, so stale reasons are
+    # only dropped when every school's register read came back non-empty.
+    if all(rows for rows in rows_by_institution.values()):
+        reasons = {ident: reason for ident, reason in unresolved.items() if ident in current_rows}
+    else:
+        reasons = dict(unresolved)
+    if retired:
+        linked_by_school: dict[str, int] = {}
+        for link in kept.values():
+            linked_by_school[link.institution_id] = linked_by_school.get(link.institution_id, 0) + 1
+        touched = {item["institutionId"] for item in retired}
+        schools = []
+        for entry in coverage_schools:
+            institution_id = str(entry.get("institutionId") or "")
+            if institution_id in touched:
+                entry = {
+                    **entry,
+                    "resolved": linked_by_school.get(institution_id, 0),
+                    "offerings": len(rows_by_institution.get(institution_id) or []),
+                }
+            schools.append(entry)
+        coverage_schools = schools
+    return kept, reasons, coverage_schools, sorted(retired, key=lambda item: item["rowId"])
 
 
 def summarize(values: Iterable[str]) -> dict[str, int]:

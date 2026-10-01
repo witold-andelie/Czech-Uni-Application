@@ -88,7 +88,16 @@ def _inventory_drops(payload: dict, inventory_path: Path, domains: dict[str, set
         return []
     proven = _proven_ids(payload, domains)
     published = {str(ident) for ident in (inventory.get("programmeLinks") or {})}
-    missing = sorted(proven - published)
+    # A row the register no longer lists has nowhere to publish its page; that
+    # is the register changing, not the gate dropping a page, and the resolver
+    # retires such links on its next pass (retire_rows_left_register).
+    rows = {
+        str(row[0])
+        for school in inventory.get("schools") or []
+        for row in school.get("rows") or []
+        if isinstance(row, list) and row
+    }
+    missing = sorted((proven & rows) - published)
     if not missing:
         return []
     label = str(inventory_path.relative_to(ROOT)) if inventory_path.is_relative_to(ROOT) else str(inventory_path)
