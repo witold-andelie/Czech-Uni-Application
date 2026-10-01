@@ -40,3 +40,24 @@ def test_missing_job_and_invalid_target_are_diagnostics_not_approvals() -> None:
     )
     assert queue["summary"]["pendingPackets"] == 0
     assert {d["reason"] for d in queue["diagnostics"]} == {"ledger_job_missing", "invalid_official_target"}
+
+
+def test_harvested_jobs_outside_the_ledger_are_queued_screened_or_skipped() -> None:
+    jobs = {
+        "jobs": [
+            {"id": "new-research", "employerId": "tul", "track": "post_master", "translationStatus": "unreviewed",
+             "applicationUrl": "https://doc.tul.cz/15800", "catalogueScopeStatus": "included"},
+            {"id": "new-cook", "employerId": "tul", "track": None, "translationStatus": "unreviewed",
+             "applicationUrl": "https://doc.tul.cz/15778", "originalText": "Kuchař/ka univerzitní menzy"},
+            {"id": "new-expired", "employerId": "tul", "track": "postdoc", "translationStatus": "unreviewed",
+             "applicationUrl": "https://doc.tul.cz/15001"},
+        ],
+        "windows": [{"ownerId": "new-expired", "closesAt": "2026-09-20"}],
+    }
+    queue = build_queue(jobs, {"rows": []}, {"reviews": {}}, today="2026-10-01")
+    assert [p["candidateId"] for p in queue["packets"]] == ["new-research"]
+    assert queue["packets"][0]["action"] == "trilingual_review"
+    assert [item["candidateId"] for item in queue["scopeScreen"]] == ["new-cook"]
+    assert queue["summary"]["newClosedOrExpiredSkipped"] == 1
+    text = markdown_packets(queue, school="tul")
+    assert "# School `tul`" in text and "Scope screen" in text and "Kuchař" in text

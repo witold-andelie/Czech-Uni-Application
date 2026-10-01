@@ -34,6 +34,17 @@ approved. A blocked record enters one of these operator actions:
    notice. An unknown salary, degree, or working language stays unknown unless
    the notice supplies evidence.
 
+The ledger is rebuilt with a publication, not with each daily harvest, so the
+queue also reads harvested jobs the ledger has not seen. Those enter as
+`not_in_disposition_ledger` packets, grouped by school in the Markdown
+(`--school msmt-vs_24000` prints one school). A new job already closed,
+expired or past its announced deadline is skipped. A new job with no
+research/technical track, or that the source adapter marked excluded, goes to
+a separate scope screen instead of a review packet; it is listed, not
+dropped, because the full notice may still prove technical duties (A38).
+`--jobs <file>` builds the queue from a refresh artifact's candidate file
+before it is committed.
+
 The queue carries the ledger's `candidateGenerationId` and
 `sourceRunSetDigest`. Before acting on packets, compare these to the current
 ledger; regenerate if either changes. Missing candidate IDs and non-HTTPS
