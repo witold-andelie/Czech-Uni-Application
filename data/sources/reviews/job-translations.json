@@ -7133,7 +7133,15 @@
             "officialDetailUrl": []
           }
         }
-      ]
+      ],
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "duplicate_record_of_job-21000-01-phd-babuska",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-01T20:51:58Z",
+        "note": "Duplicate record 2026-10-01T20:51:58Z (operator): job-ctu-roboprox-phd-hri was a hand-seeded record of the CIIRC RoboProX row 01-PhD-Babuska (“PhD position in Human-robot aware planning and acting”, EURAXESS https://euraxess.ec.europa.eu/jobs/189891). The registered source ctu-ciirc-roboprox-positions now harvests that row as job-21000-01-phd-babuska, which carries the notice's facts and is reviewed. One position must be published once, so this seed is rejected as a duplicate; nothing here asserts anything the official pages do not state."
+      }
     },
     "job-ctu-roboprox-postdoc-babuska": {
       "sourceHash": "sha256:9e027d3aff9580c169285fa36b9d41e95d34a76526dbf5815fd8075cb6f1c8e7",
@@ -7208,7 +7216,15 @@
             "officialDetailUrl": []
           }
         }
-      ]
+      ],
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "duplicate_record_of_job-21000-04-postdoc-babuska",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-01T20:51:58Z",
+        "note": "Duplicate record 2026-10-01T20:51:58Z (operator): job-ctu-roboprox-postdoc-babuska was a hand-seeded record of the CIIRC RoboProX row 04-Postdoc-Babuska (“Postdoc position in Physics-aware symbolic regression for dynamic systems modeling”, EURAXESS https://euraxess.ec.europa.eu/jobs/189895). The registered source ctu-ciirc-roboprox-positions now harvests that row as job-21000-04-postdoc-babuska, which carries the notice's facts and is reviewed. One position must be published once, so this seed is rejected as a duplicate; nothing here asserts anything the official pages do not state."
+      }
     },
     "job-uct-lab-analyst": {
       "sourceHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
@@ -8701,6 +8717,550 @@
         }
       },
       "factHash": "sha256:b9394f3d2b21245f989a0229d59124df838889ad920261a63637cac3742cf4a3"
+    },
+    "job-21000-02-phd-zeman": {
+      "sourceHash": "sha256:c3285f300e85edcd99ffec91f3e3f8cd8700111036331a221d0463ceaaee240c",
+      "evidenceHash": "sha256:c3285f300e85edcd99ffec91f3e3f8cd8700111036331a221d0463ceaaee240c",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-01",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 02-PhD-Zeman), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). PhD studentship (First Stage Researcher R1) in the doctoral programmes Physical and Materials Engineering or Mathematics in Civil Engineering; MSc or equivalent (awarded or soon) required; English excellent; full-time 40 h/week (1.0); net compensation of about 1,600 EUR monthly including salary and student stipends; tuition waived.",
+      "title": {
+        "zh-CN": "柔顺结构、机构与材料的模块化拓扑优化方向博士职位（CIIRC RoboProX）",
+        "en": "Ph.D. position in modular-topology optimization of compliant structures, mechanisms, and materials",
+        "cs": "Doktorská pozice: modulárně-topologická optimalizace poddajných konstrukcí, mechanismů a materiálů (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:3a2596085be10c5e4c2103523c34d19e6d3385f6d62ed3a0cbfda5b6f1151de2"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:8250963217234615ed84ddafbf5550ef49b18f3a115c3f4b10a6110d13c360b2"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:aed14ad0be31ede620ef9a83583e5a1efed2af16bcb6ffdeb0c40cc9cb7019fb"
+        }
+      },
+      "factHash": "sha256:4df7651fbcc8ce0843248ddcf8aa11e90f84418468b3d2157409382512bcc995"
+    },
+    "job-21000-01-phd-babuska": {
+      "sourceHash": "sha256:cb827437283677248f3c05570474461546df6f642ea8e00cce692c02d83de093",
+      "evidenceHash": "sha256:cb827437283677248f3c05570474461546df6f642ea8e00cce692c02d83de093",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-02",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 01-PhD-Babuska), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). PhD studentship (R1, cybernetics); 'We seek a motivated PhD candidate with a master's degree'; English excellent; full-time 40 h/week; net compensation of about 1,700 EUR monthly including salary and student stipends; tuition waived.",
+      "title": {
+        "zh-CN": "人机交互感知的规划与行动方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Human-robot aware planning and acting",
+        "cs": "Doktorská pozice: plánování a jednání s ohledem na interakci člověka a robota (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:e79dc406602fefb85ab1f5808cb42d5f6104be2a49bfcc5b0b282e13439e0b60"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:ef9ceec27de6470843f24fda456194d2e0d5d1803691f040f5a7d8f4b7d1644a"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:24d7a32ddd06f8a54fce579c72b880ddeda72f50aebf25e8eba0fbf79bd221ae"
+        }
+      },
+      "factHash": "sha256:ffab1a06d93ca91537c6617368270d14cab2b0d42ce5a154fd82f2ef025868a1"
+    },
+    "job-21000-02-phd-babuska": {
+      "sourceHash": "sha256:6688e6677a0f44151fe02ef0612a24f2d6c023038a1563834cba44a67ede2960",
+      "evidenceHash": "sha256:6688e6677a0f44151fe02ef0612a24f2d6c023038a1563834cba44a67ede2960",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-03",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 02-PhD-Babuska), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). PhD studentship (R1, cybernetics); master's degree required ('PhD candidate with a master's degree'); English excellent; full-time 40 h/week; net compensation of about 1,700 EUR monthly including salary and student stipends; tuition waived.",
+      "title": {
+        "zh-CN": "面向人机交互的交互式任务规范方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Interactive task specification for HRI",
+        "cs": "Doktorská pozice: interaktivní specifikace úloh pro interakci člověka a robota (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:52aabe19b7343b4d9a2f3708ec11a3beabc77ca9d1a44259627611d7f0e941c6"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:5dc7809415e517bef938cce783980dc9ffecab648064d3fda9d0985137f5b129"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:821f14b6d35aca8ed333534bcbed2b32d15513f43878ad37e982767e748572ab"
+        }
+      },
+      "factHash": "sha256:65f7368cafc66687daefd229efa3e201ece245d60f8fad31eada4d9b7c0dc106"
+    },
+    "job-21000-03-phd-babuska": {
+      "sourceHash": "sha256:62ec0e643b136ebb4c55f9a0a6d65a223b385714ee1a1e19be9345b40e8d9e7f",
+      "evidenceHash": "sha256:62ec0e643b136ebb4c55f9a0a6d65a223b385714ee1a1e19be9345b40e8d9e7f",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-04",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 03-PhD-Babuska), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). PhD studentship (R1, computer systems); master's degree required; English excellent; full-time 40 h/week; net compensation of about 1,600 EUR monthly including salary and student stipends; tuition waived.",
+      "title": {
+        "zh-CN": "机器人人工智能的安全性与韧性方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Security & resilience of AI in robotics",
+        "cs": "Doktorská pozice: bezpečnost a odolnost umělé inteligence v robotice (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:91fe0dc80ccd56be5f8af24d044e30bc7d5c3ff3b7925cdf7acb18467c3bad5e"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:b5a0f1c83e83e2eb0a281097f2480783c33e9780f111ad2c873fdaf68d590e2c"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:d6e8f30723b745a829f64da0b53cc7d862291a67d923c5f3c03216979aa3f3d0"
+        }
+      },
+      "factHash": "sha256:f39dd2fbefd597b88945a47ae1ff9fc5510e99274057710e493bfb8d11b137a1"
+    },
+    "job-21000-03-phd-svoboda": {
+      "sourceHash": "sha256:cc2930b79edb6e81b6168eef5e148fda74030939199ba4eb3f3284f88e506965",
+      "evidenceHash": "sha256:cc2930b79edb6e81b6168eef5e148fda74030939199ba4eb3f3284f88e506965",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-05",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 03-PhD-Svoboda), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Department of Cybernetics (VRAS group) 'is looking for outstanding PhD students'; MSc in robotics, AI or related fields; English good; full-time 40 h/week; salary 'around 1800 EUR / month (gross)' plus bonuses.",
+      "title": {
+        "zh-CN": "机器人与汽车感知中的自监督学习方向博士职位（控制论系，CIIRC RoboProX）",
+        "en": "PhD in Self-supervised learning in robotic and automotive perception",
+        "cs": "Doktorská pozice: samoučení (self-supervised learning) ve vnímání robotů a automobilů (katedra kybernetiky, CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:6f98ee3b99c85d50b419a8a47c6197fba0769afbd6d781660ec43132270187cb"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:9e5eab00ca736bed9b2f3aca87323e5dc565bfe7ffa1bd4e7cf56ddd15f7be37"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:d2927d0e79a607b6023a6b2c77949286785483286dfea0f0f1afb1cb903602cb"
+        }
+      },
+      "factHash": "sha256:3c2fb6eab9d8c9a941405bf3053719f4d8233d560b9c0ae5d1eeb60b7a19d72a"
+    },
+    "job-21000-04-phd-zimmermann": {
+      "sourceHash": "sha256:fdd71b4facda8a992d0b9fc84f2c64eb11b354f2db5d8526760d2285dbd078e8",
+      "evidenceHash": "sha256:fdd71b4facda8a992d0b9fc84f2c64eb11b354f2db5d8526760d2285dbd078e8",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-06",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 04-PhD-Zimmermann), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Department of Cybernetics (VRAS group) recruiting PhD students; MSc in robotics, AI or related fields; English good; full-time 40 h/week; salary 'around 1800 EUR / month (gross)' plus bonuses.",
+      "title": {
+        "zh-CN": "面向机器人自监督学习的可解释端到端可微感知方向博士职位（控制论系，CIIRC RoboProX）",
+        "en": "PhD in Explainable end-to-end differentiable perception for self-supervised learning in robotics",
+        "cs": "Doktorská pozice: vysvětlitelné end-to-end diferencovatelné vnímání pro samoučení v robotice (katedra kybernetiky, CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:d51a881953cd2af1a39f35b45260a2d8692f188fabb3a058f9dee9524436b9a7"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:58fd6bc16a93cbaf3b9f7d4dd2b81914a8952863f27bcedf4954814c1ea21a75"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:cb53562b957ec0e8a9dd514017c6bf5e0ebdc04503a419217fc36e6d4dfcfb10"
+        }
+      },
+      "factHash": "sha256:1ad57f75be083e0d424fe1e2ae6a368abbec34834a54abdc8f5ae5ece244e3e7"
+    },
+    "job-21000-01-phd-hanzalek": {
+      "sourceHash": "sha256:46dfede1bafba93627a932fafe4c9123b80adaea25afe4c969814967eafd36f1",
+      "evidenceHash": "sha256:46dfede1bafba93627a932fafe4c9123b80adaea25afe4c969814967eafd36f1",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-07",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 01-PhD-Hanzalek), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Listed in the CIIRC PhD table and applied for 'using PhD Position ID: 01-PhD-Hanzalek' (doctoral studentship, R1); MSc or equivalent (awarded or soon) in informatics, operations research or related; English excellent; full-time 40 h/week; net compensation of about 1,600 EUR monthly including salary and student stipends plus publication bonuses; tuition waived. The English title adds '(PhD position)' from the CIIRC table.",
+      "title": {
+        "zh-CN": "约束规划与复杂准则调度问题的混合方法方向博士职位（CIIRC RoboProX）",
+        "en": "Hybridization of Constraint Programming for Scheduling Problems with Complex Criteria (PhD position)",
+        "cs": "Doktorská pozice: hybridizace programování s omezujícími podmínkami pro rozvrhovací úlohy se složitými kritérii (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:eb45c10c1ceb8ea571aa7422d0442ab445938e04e0e4baca2b3c954901d7ca16"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:858c296e3e929bc8224f1b0ee8591cc24ddc6e511895b4b2455665b4933d8e3a"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:4ec49cc195422d8867c6689d5ad051acb9b99ed01e4952b4af9091a3286e79d7"
+        }
+      },
+      "factHash": "sha256:24eb0cdd3fd10d8883432ab81edde60070065a3721d263dcc9524cc4c9257d18"
+    },
+    "job-21000-02-phd-hanzalek": {
+      "sourceHash": "sha256:76dbb5a7698181c179e32db3883f312681a269d74164f0e4cd9c5df625897d8a",
+      "evidenceHash": "sha256:76dbb5a7698181c179e32db3883f312681a269d74164f0e4cd9c5df625897d8a",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-08",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 02-PhD-Hanzalek), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Listed in the CIIRC PhD table, applied for with a PhD Position ID (doctoral studentship, R1); MSc or equivalent (awarded or soon); English excellent; full-time 40 h/week; net compensation of about 1,600 EUR monthly including salary and student stipends plus publication bonuses; tuition waived. The English title adds '(PhD position)' from the CIIRC table.",
+      "title": {
+        "zh-CN": "节能生产调度算法方向博士职位（CIIRC RoboProX）",
+        "en": "Energy efficient production scheduling algorithms (PhD position)",
+        "cs": "Doktorská pozice: algoritmy energeticky úsporného rozvrhování výroby (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:1548b1064a32a85946af475a005caa09eaad251b545830d0955a9e0c17170d8a"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:a8847f2e419d6ff9ff6961c9ab7ecd6f8d4db383f2af185b5a39c7e543bc607b"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:b573ef6012b9bbe0ff5bed77a7f8258a64bac9f8146af3a9dd5ad458b7fd7f97"
+        }
+      },
+      "factHash": "sha256:59710dfa10a477f229e180019cb0b9666317d423903ac5ab1315e51da2c87ab3"
+    },
+    "job-21000-01-phd-janota": {
+      "sourceHash": "sha256:90bfd1fd86fa7e9fa7b3bfa38d12459bb98f45ee719465079f93ac15e864f95b",
+      "evidenceHash": "sha256:90bfd1fd86fa7e9fa7b3bfa38d12459bb98f45ee719465079f93ac15e864f95b",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-09",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 01-PhD-Janota), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). PhD studentship (R1); 'PhD candidate with a Master's degree in Computer Science, engineering, or a related field'; English excellent; full-time 40 h/week; net compensation of about 1,600 EUR monthly including salary and student stipends; tuition waived.",
+      "title": {
+        "zh-CN": "应用逻辑推理方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Applied Logic-based Reasoning",
+        "cs": "Doktorská pozice: aplikované logické usuzování (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:337da524066a9c1022b1b2debd35c03b0cba3ad29fdc672af42ebe44ba2e267f"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:a68809313860872a87e4303c354a9639241ea74db2f7237e6b538e8a019714c0"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:96b31a7abc853f0e3c7508071d98329c0e439336792d2ee6bde237a4a87d05d8"
+        }
+      },
+      "factHash": "sha256:31cb0c4528b62dd8059515ecb8a57c4725e8ed82fc116c0ea8027047e5f8bc84"
+    },
+    "job-21000-02-phd-janota": {
+      "sourceHash": "sha256:1d7be55de4a6d3f3248375f7c0ea35f79ff232cc368fa605ff13440ee1dd96a0",
+      "evidenceHash": "sha256:1d7be55de4a6d3f3248375f7c0ea35f79ff232cc368fa605ff13440ee1dd96a0",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-10",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 02-PhD-Janota), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). PhD studentship (R1); master's degree required; English excellent; full-time 40 h/week; net compensation of about 1,600 EUR monthly including salary and student stipends; tuition waived.",
+      "title": {
+        "zh-CN": "复杂系统推理方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Reasoning about Complex Systems",
+        "cs": "Doktorská pozice: usuzování o složitých systémech (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:a7080fa1de5664f459f33d1e29690b974521ff0e7bd9a7ba5f8a1e7fc35d0fec"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:638f646a87e4e982e669b2188832c67d957e34d0792e67e1ba85dc33c5865b42"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:68267e837991ca9e5065a7a14cde7f8f75c47e9030c421e834f77b3f0c56bb1e"
+        }
+      },
+      "factHash": "sha256:bd8d48776d1f1abd7a19d6a0fb0dec22c4bf31782bfdc59b0305b5d872a72f67"
+    },
+    "job-21000-02-phd-henrion": {
+      "sourceHash": "sha256:ef6839a4cf07abc267825a675e201a56b0bf7aaf2ce1aef69190208127052210",
+      "evidenceHash": "sha256:ef6839a4cf07abc267825a675e201a56b0bf7aaf2ce1aef69190208127052210",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-11",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 02-PhD-Henrion), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Department of Control Engineering; 'Skills/Qualifications for Ph.D. candidates ... MSc degree or equivalent' (no doctorate required); English professional, Czech not required; full-time 40 h/week; appointment for 3 years; 'Salary above 50000 CZK gross monthly' (shown as 50,000, the stated floor); tuition waived. The CIIRC table also lists 01-PhD-Henrion under the same title, but its EURAXESS notice has been removed, so that row is held back without facts.",
+      "title": {
+        "zh-CN": "变分法的多项式优化方向博士职位（控制工程系，CIIRC RoboProX）",
+        "en": "PhD position in polynomial optimization for calculus of variations",
+        "cs": "Doktorská pozice: polynomiální optimalizace pro variační počet (katedra řídicí techniky, CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:2af299ebb4c2f5b6410104a095cbda6f3ec1ea2000a5cc032002b489b4b1926e"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:c1423994b14fda3c69638ef86850bbb8f335ea9d1c89e84484aa1e33ba5043a1"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:2ffd13174960d27d6c004c77d895b01df4ff440f7c6cae8dc4dd11b251985990"
+        }
+      },
+      "factHash": "sha256:08eb6578cfb6c02e0f65237b6818f11e16699906d64d431c38c04baf0f3d7e97"
+    },
+    "job-21000-04-postdoc-babuska": {
+      "sourceHash": "sha256:d652a37d4b21a0785c99785dcda4fcb7ed038519832359b419f897537787f0b7",
+      "evidenceHash": "sha256:d652a37d4b21a0785c99785dcda4fcb7ed038519832359b419f897537787f0b7",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-12",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 04-Postdoc-Babuska), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Recognised Researcher (R2); 'Ph.D. degree or equivalent (awarded or to be completed soon)'; English excellent; full-time 40 h/week; gross salary of about 2,800 EUR monthly; initial 1-year appointment extendable to 2.",
+      "title": {
+        "zh-CN": "动态系统建模的物理感知符号回归方向博士后职位（CIIRC RoboProX）",
+        "en": "Postdoc position in Physics-aware symbolic regression for dynamic systems modeling",
+        "cs": "Postdoktorská pozice: fyzikálně informovaná symbolická regrese pro modelování dynamických systémů (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:61fe5db95e0fb86a3fd3ff8fe529d165de23ca641e6572376c11dfd04c737b93"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:c07f218f0d90d1a1c63203f65c214b398b5efa376d1c96a9066837a6daaf5d01"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:6a4ab7351007f858c0d6ddbbda83572fa73c88767e271a7ce565837ce3b70ebb"
+        }
+      },
+      "factHash": "sha256:153ff0e33c7c5cb49f64d4bceef8b2e88709dd5c36aa063caa68c114b0a8f021"
+    },
+    "job-21000-01-postdoc-svoboda": {
+      "sourceHash": "sha256:b070587fed7d145bbf5837f493c70664c9f3708730e982f122b35b2ca4716ad0",
+      "evidenceHash": "sha256:b070587fed7d145bbf5837f493c70664c9f3708730e982f122b35b2ca4716ad0",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-13",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 01-Postdoc-Svoboda), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Department of Cybernetics; Recognised Researcher (R2); PhD in robotics, AI or related fields required; English good; full-time 40 h/week; gross salary of about 3,150 EUR monthly.",
+      "title": {
+        "zh-CN": "可解释端到端学习与自监督学习方向博士后职位（控制论系，CIIRC RoboProX）",
+        "en": "Postdoc Position – End-to-end learning with explainability. Self-supervised learning",
+        "cs": "Postdoktorská pozice: end-to-end učení s vysvětlitelností a samoučení (katedra kybernetiky, CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:5c3bee43ba38fca0d2339af6e955de964037a1ae2a0d37493665812674d2088b"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:b0f7d65abd03eb654dd2520080d6e1bdc2538cc99556a025fee09891496defa8"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:b9eed72348fb512b07843df4e4adc0542b09a8fe50df1b09808e2c373fb65ec5"
+        }
+      },
+      "factHash": "sha256:ea63b2356308abfa93adb3ba3d4d0480ada2f27e18243092bf3b9ff42fc22665"
+    },
+    "job-21000-02-postdoc-hoffmann": {
+      "sourceHash": "sha256:9facb5041033b9c78f025836e954d53fe37065ee6d7a69491c4daa03b528fa1a",
+      "evidenceHash": "sha256:9facb5041033b9c78f025836e954d53fe37065ee6d7a69491c4daa03b528fa1a",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-14",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 02-Postdoc-Hoffmann), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Department of Cybernetics; Recognised Researcher (R2); PhD in robotics, AI or related fields required; English good; full-time 40 h/week; gross salary of about 3,150 EUR monthly.",
+      "title": {
+        "zh-CN": "全身触觉感知机器人方向博士后职位（控制论系，CIIRC RoboProX）",
+        "en": "Postdoc Position – Robots with whole-body tactile sensing",
+        "cs": "Postdoktorská pozice: roboti s celotělovým hmatovým vnímáním (katedra kybernetiky, CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:c8a816e57d90084c2f7710e5b6505a0049e11c9e92a5d87c8fe791ffeebd2f42"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:ce8a0ffbaac3280d3aa0afbb7d0884ac2a407500d8b56011cb3eb22f91f4b4fe"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:6dcaf1c3abee0426df5c93041b1533026b7f453ac3b6ddc54fe03aab2131090a"
+        }
+      },
+      "factHash": "sha256:b9bd2ff9133a093bcf2340492cd18d0d697a0357bf8aef9c7fb0f96bcacca166"
+    },
+    "job-21000-01-postdoc-janota": {
+      "sourceHash": "sha256:ec39452c7884d6b1811b3c7437aa7daab038510cf98536273f019d87de56abe6",
+      "evidenceHash": "sha256:ec39452c7884d6b1811b3c7437aa7daab038510cf98536273f019d87de56abe6",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-15",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 01-Postdoc-Janota), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Recognised Researcher (R2); 'Postdoctoral Researcher with a PhD degree'; English excellent; full-time 40 h/week. The notice's benefits state 'Net compensation of about 1,600 EUR monthly (includes salary and student stipends)' and a tuition waiver, wording shared with the PhD notices; recorded exactly as stated, not corrected.",
+      "title": {
+        "zh-CN": "应用逻辑推理方向博士后职位（CIIRC RoboProX）",
+        "en": "Postdoc position in Applied Logic-based Reasoning",
+        "cs": "Postdoktorská pozice: aplikované logické usuzování (CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:d76ae43bef74054ff785d2a47b594d823ac82f0a6474d381b5d13caf97404eb2"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:d452fd6c1d4b6d40ebb866f4c887bf2713853587940a6d0c0b5ae3f2f81346df"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:d4b30aa11ea74ea20ca164fd75db143ac70974a2f40e15082c3edab46319d1df"
+        }
+      },
+      "factHash": "sha256:d418d58389c1a056242d3aea9b5a81f53f047ab72aa8e3460741057191b4096f"
+    },
+    "job-21000-02-postdoc-henrion": {
+      "sourceHash": "sha256:2ae114f0c2f669698a05882d39117d4362ac7a61691da6b49f751d4bff0d60a7",
+      "evidenceHash": "sha256:2ae114f0c2f669698a05882d39117d4362ac7a61691da6b49f751d4bff0d60a7",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-roboprox-16",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "reviewNote": "Checked 2026-10-01 against the EURAXESS notice linked from the official CIIRC CTU RoboProX job-position table (reference 02-Postdoc-Henrion), which lists the position as Open; the deadline printed on EURAXESS has passed, so no closing date is shown and the CIIRC status governs. Titles: the English is the notice's own; Chinese and Czech are reviewer translations (no official Czech text). Department of Control Engineering; Recognised Researcher (R2); 'Ph.D. degree or equivalent (awarded or to be completed soon)' and 3 impact-factor papers; English professional; full-time 40 h/week; 'Salary around 70000 CZK gross monthly'; initial 1-year appointment extendable to 2. The CIIRC table also lists 01-Postdoc-Henrion under the same title, but its EURAXESS notice has been removed, so that row is held back without facts.",
+      "title": {
+        "zh-CN": "变分法的多项式优化方向博士后职位（控制工程系，CIIRC RoboProX）",
+        "en": "Postdoctoral position in polynomial optimization for calculus of variations",
+        "cs": "Postdoktorská pozice: polynomiální optimalizace pro variační počet (katedra řídicí techniky, CIIRC RoboProX)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:406c2569013d504901e95a47c6dba7e4af28de24f981fb1c2f804ea0cb346ab4"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:26432d0ed2e40dbab72ac42a2f452bf48209b99ad25f64866a9dd4293816706d"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:51:58Z",
+          "contentHash": "sha256:eeda553d39a6b2f8035cce1bb9305c61b339f1a17ebafd572256078a8d03096d"
+        }
+      },
+      "factHash": "sha256:2ac4ec85d55e126439530ad18571edaceaf1267fda6b868256a333f9cf5158dd"
     }
   }
 }

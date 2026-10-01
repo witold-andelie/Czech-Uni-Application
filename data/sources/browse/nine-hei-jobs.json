@@ -4,8 +4,8 @@
   "catalogKind": "jobs_not_published",
   "note": "Research vacancies harvested from official university career pages registered in the source inventory. EURAXESS is not stored as the apply URL. A reachable page is not an open window. Past deadlines are omitted. Not written to data/published/.",
   "counts": {
-    "jobs": 239,
-    "skipped": 331
+    "jobs": 255,
+    "skipped": 341
   },
   "skipped": [
     {
@@ -1299,6 +1299,46 @@
     {
       "id": "job-26000-2001429283",
       "reason": "past-deadline"
+    },
+    {
+      "id": "job-21000-5471",
+      "reason": "missing-from-complete-official-listing"
+    },
+    {
+      "id": "job-21000-5472",
+      "reason": "missing-from-complete-official-listing"
+    },
+    {
+      "id": "job-21000-5467",
+      "reason": "missing-from-complete-official-listing"
+    },
+    {
+      "id": "job-21000-5465",
+      "reason": "missing-from-complete-official-listing"
+    },
+    {
+      "id": "job-21000-5464",
+      "reason": "missing-from-complete-official-listing"
+    },
+    {
+      "id": "job-21000-5461",
+      "reason": "missing-from-complete-official-listing"
+    },
+    {
+      "id": "job-21000-5441",
+      "reason": "missing-from-complete-official-listing"
+    },
+    {
+      "id": "job-21000-5434",
+      "reason": "missing-from-complete-official-listing"
+    },
+    {
+      "id": "job-21000-01-phd-henrion",
+      "reason": "title-not-found"
+    },
+    {
+      "id": "job-21000-01-postdoc-henrion",
+      "reason": "title-not-found"
     },
     {
       "id": "job-21000-5471",
@@ -7461,7 +7501,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "archived",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -7483,7 +7523,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:b334e9faf0099b2729188b987af5da7e72c7be5d1bd00ecbee14c2799ce50a4a",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "rejected",
       "translationReview": {
         "sourceHash": "sha256:b334e9faf0099b2729188b987af5da7e72c7be5d1bd00ecbee14c2799ce50a4a",
         "factHash": "sha256:2500f2ccf314ce4a8612dd1838160e0e3bfebfe830697ed5c58cbe278c51989f",
@@ -7512,7 +7552,17 @@
             "contentHash": "sha256:6663e89ff859345d7d1b0c27e71f70bd01cee8ac768d1026ad6a181ffa7a5d77"
           }
         }
-      }
+      },
+      "reviewDisposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "duplicate_record_of_job-21000-04-postdoc-babuska",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-01T20:51:58Z",
+        "note": "Duplicate record 2026-10-01T20:51:58Z (operator): job-ctu-roboprox-postdoc-babuska was a hand-seeded record of the CIIRC RoboProX row 04-Postdoc-Babuska (“Postdoc position in Physics-aware symbolic regression for dynamic systems modeling”, EURAXESS https://euraxess.ec.europa.eu/jobs/189895). The registered source ctu-ciirc-roboprox-positions now harvests that row as job-21000-04-postdoc-babuska, which carries the notice's facts and is reviewed. One position must be published once, so this seed is rejected as a duplicate; nothing here asserts anything the official pages do not state."
+      },
+      "lastAttemptAt": "2026-10-01T20:51:58Z",
+      "lastAttemptReason": "duplicate_record_of_job-21000-04-postdoc-babuska"
     },
     {
       "id": "job-ctu-aic-postdoc-cybersecurity",
@@ -7743,7 +7793,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "archived",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -7765,7 +7815,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:ce0110b5af5b0c492fc5c89d636ed3e7ed8dffa678b0d2565c21da52581c7e12",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "rejected",
       "translationReview": {
         "sourceHash": "sha256:ce0110b5af5b0c492fc5c89d636ed3e7ed8dffa678b0d2565c21da52581c7e12",
         "factHash": "sha256:008a8956c3f6800544c1cd11a692df6ac2381ee793a61f7d48107419e94ce178",
@@ -7794,7 +7844,17 @@
             "contentHash": "sha256:2f5781b8e1d3b025b615e4d31a3786d7551661cc0861f50eb1bbb22ee6728dea"
           }
         }
-      }
+      },
+      "reviewDisposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "duplicate_record_of_job-21000-01-phd-babuska",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-01T20:51:58Z",
+        "note": "Duplicate record 2026-10-01T20:51:58Z (operator): job-ctu-roboprox-phd-hri was a hand-seeded record of the CIIRC RoboProX row 01-PhD-Babuska (“PhD position in Human-robot aware planning and acting”, EURAXESS https://euraxess.ec.europa.eu/jobs/189891). The registered source ctu-ciirc-roboprox-positions now harvests that row as job-21000-01-phd-babuska, which carries the notice's facts and is reviewed. One position must be published once, so this seed is rejected as a duplicate; nothing here asserts anything the official pages do not state."
+      },
+      "lastAttemptAt": "2026-10-01T20:51:58Z",
+      "lastAttemptReason": "duplicate_record_of_job-21000-01-phd-babuska"
     },
     {
       "id": "job-upol-msca-pf-law-2026",
@@ -8234,7 +8294,7 @@
       "parserVersion": "jobs-parser-2026-09-12.2",
       "factsExtractedAt": "2026-09-26T18:23:16Z",
       "sourceFetchedAt": "2026-09-11",
-      "lastAttemptAt": "2026-10-01T20:33:56Z",
+      "lastAttemptAt": "2026-10-01T20:50:35Z",
       "lastStatusCheckedAt": "2026-09-16T18:16:01Z",
       "lastAttemptReason": "missing-from-complete-official-listing"
     },
@@ -8331,7 +8391,7 @@
       "parserVersion": "jobs-parser-2026-09-12.2",
       "factsExtractedAt": "2026-09-26T20:40:00Z",
       "sourceFetchedAt": "2026-09-26",
-      "lastAttemptAt": "2026-10-01T20:33:56Z",
+      "lastAttemptAt": "2026-10-01T20:50:35Z",
       "lastStatusCheckedAt": "2026-09-16T18:16:01Z",
       "lastAttemptReason": "missing-from-complete-official-listing"
     },
@@ -8429,7 +8489,7 @@
       "parserVersion": "jobs-parser-2026-09-12.2",
       "factsExtractedAt": "2026-09-12T19:28:06Z",
       "sourceFetchedAt": "2026-09-11",
-      "lastAttemptAt": "2026-10-01T20:33:56Z",
+      "lastAttemptAt": "2026-10-01T20:50:35Z",
       "lastStatusCheckedAt": "2026-09-16T18:16:01Z",
       "lastAttemptReason": "missing-from-complete-official-listing"
     },
@@ -8526,7 +8586,7 @@
       "parserVersion": "jobs-parser-2026-09-12.2",
       "factsExtractedAt": "2026-09-26T20:40:00Z",
       "sourceFetchedAt": "2026-09-26",
-      "lastAttemptAt": "2026-10-01T20:33:56Z",
+      "lastAttemptAt": "2026-10-01T20:50:35Z",
       "lastStatusCheckedAt": "2026-09-16T18:16:01Z",
       "lastAttemptReason": "missing-from-complete-official-listing"
     },
@@ -8623,7 +8683,7 @@
       "parserVersion": "jobs-parser-2026-09-12.2",
       "factsExtractedAt": "2026-09-26T18:23:16Z",
       "sourceFetchedAt": "2026-09-11",
-      "lastAttemptAt": "2026-10-01T20:33:56Z",
+      "lastAttemptAt": "2026-10-01T20:50:35Z",
       "lastStatusCheckedAt": "2026-09-16T18:16:01Z",
       "lastAttemptReason": "missing-from-complete-official-listing"
     },
@@ -8720,7 +8780,7 @@
       "parserVersion": "jobs-parser-2026-09-12.2",
       "factsExtractedAt": "2026-09-26T20:40:00Z",
       "sourceFetchedAt": "2026-09-26",
-      "lastAttemptAt": "2026-10-01T20:33:56Z",
+      "lastAttemptAt": "2026-10-01T20:50:35Z",
       "lastStatusCheckedAt": "2026-09-16T18:16:01Z",
       "lastAttemptReason": "missing-from-complete-official-listing"
     },
@@ -8815,7 +8875,7 @@
       "parserVersion": "jobs-parser-2026-09-12.2",
       "factsExtractedAt": "2026-09-16T08:57:29Z",
       "sourceFetchedAt": "2026-09-16T08:57:29Z",
-      "lastAttemptAt": "2026-10-01T20:33:56Z",
+      "lastAttemptAt": "2026-10-01T20:50:35Z",
       "lastStatusCheckedAt": "2026-09-16T18:16:01Z",
       "lastAttemptReason": "missing-from-complete-official-listing"
     },
@@ -8912,7 +8972,7 @@
       "parserVersion": "jobs-parser-2026-09-12.2",
       "factsExtractedAt": "2026-09-26T18:23:16Z",
       "sourceFetchedAt": "2026-09-11",
-      "lastAttemptAt": "2026-10-01T20:33:56Z",
+      "lastAttemptAt": "2026-10-01T20:50:35Z",
       "lastStatusCheckedAt": "2026-09-16T18:16:01Z",
       "lastAttemptReason": "missing-from-complete-official-listing"
     },
@@ -22164,6 +22224,1462 @@
       "officialDetailUrl": "https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001444885"
     },
     {
+      "id": "job-21000-02-phd-zeman",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "柔顺结构、机构与材料的模块化拓扑优化方向博士职位（CIIRC RoboProX）",
+        "en": "Ph.D. position in modular-topology optimization of compliant structures, mechanisms, and materials",
+        "cs": "Doktorská pozice: modulárně-topologická optimalizace poddajných konstrukcí, mechanismů a materiálů (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "Ph.D. position in modular-topology optimization of compliant structures, mechanisms, and materials",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1600.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "net",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/187454",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "02-PhD-Zeman",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:c3285f300e85edcd99ffec91f3e3f8cd8700111036331a221d0463ceaaee240c",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:c3285f300e85edcd99ffec91f3e3f8cd8700111036331a221d0463ceaaee240c",
+        "factHash": "sha256:4df7651fbcc8ce0843248ddcf8aa11e90f84418468b3d2157409382512bcc995",
+        "evidenceHash": "sha256:c3285f300e85edcd99ffec91f3e3f8cd8700111036331a221d0463ceaaee240c",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:c3285f300e85edcd99ffec91f3e3f8cd8700111036331a221d0463ceaaee240c",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:3a2596085be10c5e4c2103523c34d19e6d3385f6d62ed3a0cbfda5b6f1151de2"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:c3285f300e85edcd99ffec91f3e3f8cd8700111036331a221d0463ceaaee240c",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:8250963217234615ed84ddafbf5550ef49b18f3a115c3f4b10a6110d13c360b2"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:c3285f300e85edcd99ffec91f3e3f8cd8700111036331a221d0463ceaaee240c",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:aed14ad0be31ede620ef9a83583e5a1efed2af16bcb6ffdeb0c40cc9cb7019fb"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/187454"
+    },
+    {
+      "id": "job-21000-01-phd-babuska",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "人机交互感知的规划与行动方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Human-robot aware planning and acting",
+        "cs": "Doktorská pozice: plánování a jednání s ohledem na interakci člověka a robota (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "PhD position in Human-robot aware planning and acting",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1700.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "net",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/189891",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "01-PhD-Babuska",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:cb827437283677248f3c05570474461546df6f642ea8e00cce692c02d83de093",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:cb827437283677248f3c05570474461546df6f642ea8e00cce692c02d83de093",
+        "factHash": "sha256:ffab1a06d93ca91537c6617368270d14cab2b0d42ce5a154fd82f2ef025868a1",
+        "evidenceHash": "sha256:cb827437283677248f3c05570474461546df6f642ea8e00cce692c02d83de093",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:cb827437283677248f3c05570474461546df6f642ea8e00cce692c02d83de093",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:e79dc406602fefb85ab1f5808cb42d5f6104be2a49bfcc5b0b282e13439e0b60"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:cb827437283677248f3c05570474461546df6f642ea8e00cce692c02d83de093",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:ef9ceec27de6470843f24fda456194d2e0d5d1803691f040f5a7d8f4b7d1644a"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:cb827437283677248f3c05570474461546df6f642ea8e00cce692c02d83de093",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:24d7a32ddd06f8a54fce579c72b880ddeda72f50aebf25e8eba0fbf79bd221ae"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/189891"
+    },
+    {
+      "id": "job-21000-02-phd-babuska",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "面向人机交互的交互式任务规范方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Interactive task specification for HRI",
+        "cs": "Doktorská pozice: interaktivní specifikace úloh pro interakci člověka a robota (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "PhD position in Interactive task specification for HRI",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1700.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "net",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/189893",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "02-PhD-Babuska",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:6688e6677a0f44151fe02ef0612a24f2d6c023038a1563834cba44a67ede2960",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:6688e6677a0f44151fe02ef0612a24f2d6c023038a1563834cba44a67ede2960",
+        "factHash": "sha256:65f7368cafc66687daefd229efa3e201ece245d60f8fad31eada4d9b7c0dc106",
+        "evidenceHash": "sha256:6688e6677a0f44151fe02ef0612a24f2d6c023038a1563834cba44a67ede2960",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:6688e6677a0f44151fe02ef0612a24f2d6c023038a1563834cba44a67ede2960",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:52aabe19b7343b4d9a2f3708ec11a3beabc77ca9d1a44259627611d7f0e941c6"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:6688e6677a0f44151fe02ef0612a24f2d6c023038a1563834cba44a67ede2960",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:5dc7809415e517bef938cce783980dc9ffecab648064d3fda9d0985137f5b129"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:6688e6677a0f44151fe02ef0612a24f2d6c023038a1563834cba44a67ede2960",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:821f14b6d35aca8ed333534bcbed2b32d15513f43878ad37e982767e748572ab"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/189893"
+    },
+    {
+      "id": "job-21000-03-phd-babuska",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "机器人人工智能的安全性与韧性方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Security & resilience of AI in robotics",
+        "cs": "Doktorská pozice: bezpečnost a odolnost umělé inteligence v robotice (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "PhD position in Security & resilience of AI in robotics",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1600.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "net",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/189894",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "03-PhD-Babuska",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:62ec0e643b136ebb4c55f9a0a6d65a223b385714ee1a1e19be9345b40e8d9e7f",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:62ec0e643b136ebb4c55f9a0a6d65a223b385714ee1a1e19be9345b40e8d9e7f",
+        "factHash": "sha256:f39dd2fbefd597b88945a47ae1ff9fc5510e99274057710e493bfb8d11b137a1",
+        "evidenceHash": "sha256:62ec0e643b136ebb4c55f9a0a6d65a223b385714ee1a1e19be9345b40e8d9e7f",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:62ec0e643b136ebb4c55f9a0a6d65a223b385714ee1a1e19be9345b40e8d9e7f",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:91fe0dc80ccd56be5f8af24d044e30bc7d5c3ff3b7925cdf7acb18467c3bad5e"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:62ec0e643b136ebb4c55f9a0a6d65a223b385714ee1a1e19be9345b40e8d9e7f",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:b5a0f1c83e83e2eb0a281097f2480783c33e9780f111ad2c873fdaf68d590e2c"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:62ec0e643b136ebb4c55f9a0a6d65a223b385714ee1a1e19be9345b40e8d9e7f",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:d6e8f30723b745a829f64da0b53cc7d862291a67d923c5f3c03216979aa3f3d0"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/189894"
+    },
+    {
+      "id": "job-21000-03-phd-svoboda",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "机器人与汽车感知中的自监督学习方向博士职位（控制论系，CIIRC RoboProX）",
+        "en": "PhD in Self-supervised learning in robotic and automotive perception",
+        "cs": "Doktorská pozice: samoučení (self-supervised learning) ve vnímání robotů a automobilů (katedra kybernetiky, CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "PhD in Self-supervised learning in robotic and automotive perception",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1800.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://www.euraxess.cz/jobs/190058",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "03-PhD-Svoboda",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:cc2930b79edb6e81b6168eef5e148fda74030939199ba4eb3f3284f88e506965",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:cc2930b79edb6e81b6168eef5e148fda74030939199ba4eb3f3284f88e506965",
+        "factHash": "sha256:3c2fb6eab9d8c9a941405bf3053719f4d8233d560b9c0ae5d1eeb60b7a19d72a",
+        "evidenceHash": "sha256:cc2930b79edb6e81b6168eef5e148fda74030939199ba4eb3f3284f88e506965",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:cc2930b79edb6e81b6168eef5e148fda74030939199ba4eb3f3284f88e506965",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:6f98ee3b99c85d50b419a8a47c6197fba0769afbd6d781660ec43132270187cb"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:cc2930b79edb6e81b6168eef5e148fda74030939199ba4eb3f3284f88e506965",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:9e5eab00ca736bed9b2f3aca87323e5dc565bfe7ffa1bd4e7cf56ddd15f7be37"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:cc2930b79edb6e81b6168eef5e148fda74030939199ba4eb3f3284f88e506965",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:d2927d0e79a607b6023a6b2c77949286785483286dfea0f0f1afb1cb903602cb"
+          }
+        }
+      },
+      "officialDetailUrl": "https://www.euraxess.cz/jobs/190058"
+    },
+    {
+      "id": "job-21000-04-phd-zimmermann",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "面向机器人自监督学习的可解释端到端可微感知方向博士职位（控制论系，CIIRC RoboProX）",
+        "en": "PhD in Explainable end-to-end differentiable perception for self-supervised learning in robotics",
+        "cs": "Doktorská pozice: vysvětlitelné end-to-end diferencovatelné vnímání pro samoučení v robotice (katedra kybernetiky, CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "PhD in Explainable end-to-end differentiable perception for self-supervised learning in robotics",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1800.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://www.euraxess.cz/jobs/190059",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "04-PhD-Zimmermann",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:fdd71b4facda8a992d0b9fc84f2c64eb11b354f2db5d8526760d2285dbd078e8",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:fdd71b4facda8a992d0b9fc84f2c64eb11b354f2db5d8526760d2285dbd078e8",
+        "factHash": "sha256:1ad57f75be083e0d424fe1e2ae6a368abbec34834a54abdc8f5ae5ece244e3e7",
+        "evidenceHash": "sha256:fdd71b4facda8a992d0b9fc84f2c64eb11b354f2db5d8526760d2285dbd078e8",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:fdd71b4facda8a992d0b9fc84f2c64eb11b354f2db5d8526760d2285dbd078e8",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:d51a881953cd2af1a39f35b45260a2d8692f188fabb3a058f9dee9524436b9a7"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:fdd71b4facda8a992d0b9fc84f2c64eb11b354f2db5d8526760d2285dbd078e8",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:58fd6bc16a93cbaf3b9f7d4dd2b81914a8952863f27bcedf4954814c1ea21a75"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:fdd71b4facda8a992d0b9fc84f2c64eb11b354f2db5d8526760d2285dbd078e8",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:cb53562b957ec0e8a9dd514017c6bf5e0ebdc04503a419217fc36e6d4dfcfb10"
+          }
+        }
+      },
+      "officialDetailUrl": "https://www.euraxess.cz/jobs/190059"
+    },
+    {
+      "id": "job-21000-01-phd-hanzalek",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "约束规划与复杂准则调度问题的混合方法方向博士职位（CIIRC RoboProX）",
+        "en": "Hybridization of Constraint Programming for Scheduling Problems with Complex Criteria (PhD position)",
+        "cs": "Doktorská pozice: hybridizace programování s omezujícími podmínkami pro rozvrhovací úlohy se složitými kritérii (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "Hybridization of Constraint Programming for Scheduling Problems with Complex Criteria",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1600.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "net",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/193846",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "01-PhD-Hanzalek",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:46dfede1bafba93627a932fafe4c9123b80adaea25afe4c969814967eafd36f1",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:46dfede1bafba93627a932fafe4c9123b80adaea25afe4c969814967eafd36f1",
+        "factHash": "sha256:24eb0cdd3fd10d8883432ab81edde60070065a3721d263dcc9524cc4c9257d18",
+        "evidenceHash": "sha256:46dfede1bafba93627a932fafe4c9123b80adaea25afe4c969814967eafd36f1",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:46dfede1bafba93627a932fafe4c9123b80adaea25afe4c969814967eafd36f1",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:eb45c10c1ceb8ea571aa7422d0442ab445938e04e0e4baca2b3c954901d7ca16"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:46dfede1bafba93627a932fafe4c9123b80adaea25afe4c969814967eafd36f1",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:858c296e3e929bc8224f1b0ee8591cc24ddc6e511895b4b2455665b4933d8e3a"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:46dfede1bafba93627a932fafe4c9123b80adaea25afe4c969814967eafd36f1",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:4ec49cc195422d8867c6689d5ad051acb9b99ed01e4952b4af9091a3286e79d7"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/193846"
+    },
+    {
+      "id": "job-21000-02-phd-hanzalek",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "节能生产调度算法方向博士职位（CIIRC RoboProX）",
+        "en": "Energy efficient production scheduling algorithms (PhD position)",
+        "cs": "Doktorská pozice: algoritmy energeticky úsporného rozvrhování výroby (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "Energy efficient production scheduling algorithms",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1600.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "net",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/193834",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "post_master",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "02-PhD-Hanzalek",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:76dbb5a7698181c179e32db3883f312681a269d74164f0e4cd9c5df625897d8a",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:76dbb5a7698181c179e32db3883f312681a269d74164f0e4cd9c5df625897d8a",
+        "factHash": "sha256:59710dfa10a477f229e180019cb0b9666317d423903ac5ab1315e51da2c87ab3",
+        "evidenceHash": "sha256:76dbb5a7698181c179e32db3883f312681a269d74164f0e4cd9c5df625897d8a",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:76dbb5a7698181c179e32db3883f312681a269d74164f0e4cd9c5df625897d8a",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:1548b1064a32a85946af475a005caa09eaad251b545830d0955a9e0c17170d8a"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:76dbb5a7698181c179e32db3883f312681a269d74164f0e4cd9c5df625897d8a",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:a8847f2e419d6ff9ff6961c9ab7ecd6f8d4db383f2af185b5a39c7e543bc607b"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:76dbb5a7698181c179e32db3883f312681a269d74164f0e4cd9c5df625897d8a",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:b573ef6012b9bbe0ff5bed77a7f8258a64bac9f8146af3a9dd5ad458b7fd7f97"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/193834"
+    },
+    {
+      "id": "job-21000-01-phd-janota",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "应用逻辑推理方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Applied Logic-based Reasoning",
+        "cs": "Doktorská pozice: aplikované logické usuzování (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "PhD position in Applied Logic-based Reasoning",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1600.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "net",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/194792",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "01-PhD-Janota",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:90bfd1fd86fa7e9fa7b3bfa38d12459bb98f45ee719465079f93ac15e864f95b",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:90bfd1fd86fa7e9fa7b3bfa38d12459bb98f45ee719465079f93ac15e864f95b",
+        "factHash": "sha256:31cb0c4528b62dd8059515ecb8a57c4725e8ed82fc116c0ea8027047e5f8bc84",
+        "evidenceHash": "sha256:90bfd1fd86fa7e9fa7b3bfa38d12459bb98f45ee719465079f93ac15e864f95b",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:90bfd1fd86fa7e9fa7b3bfa38d12459bb98f45ee719465079f93ac15e864f95b",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:337da524066a9c1022b1b2debd35c03b0cba3ad29fdc672af42ebe44ba2e267f"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:90bfd1fd86fa7e9fa7b3bfa38d12459bb98f45ee719465079f93ac15e864f95b",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:a68809313860872a87e4303c354a9639241ea74db2f7237e6b538e8a019714c0"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:90bfd1fd86fa7e9fa7b3bfa38d12459bb98f45ee719465079f93ac15e864f95b",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:96b31a7abc853f0e3c7508071d98329c0e439336792d2ee6bde237a4a87d05d8"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/194792"
+    },
+    {
+      "id": "job-21000-02-phd-janota",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "复杂系统推理方向博士职位（CIIRC RoboProX）",
+        "en": "PhD position in Reasoning about Complex Systems",
+        "cs": "Doktorská pozice: usuzování o složitých systémech (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "PhD position in Reasoning about Complex Systems",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1600.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "net",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/194793",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "02-PhD-Janota",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:1d7be55de4a6d3f3248375f7c0ea35f79ff232cc368fa605ff13440ee1dd96a0",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:1d7be55de4a6d3f3248375f7c0ea35f79ff232cc368fa605ff13440ee1dd96a0",
+        "factHash": "sha256:bd8d48776d1f1abd7a19d6a0fb0dec22c4bf31782bfdc59b0305b5d872a72f67",
+        "evidenceHash": "sha256:1d7be55de4a6d3f3248375f7c0ea35f79ff232cc368fa605ff13440ee1dd96a0",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:1d7be55de4a6d3f3248375f7c0ea35f79ff232cc368fa605ff13440ee1dd96a0",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:a7080fa1de5664f459f33d1e29690b974521ff0e7bd9a7ba5f8a1e7fc35d0fec"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:1d7be55de4a6d3f3248375f7c0ea35f79ff232cc368fa605ff13440ee1dd96a0",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:638f646a87e4e982e669b2188832c67d957e34d0792e67e1ba85dc33c5865b42"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:1d7be55de4a6d3f3248375f7c0ea35f79ff232cc368fa605ff13440ee1dd96a0",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:68267e837991ca9e5065a7a14cde7f8f75c47e9030c421e834f77b3f0c56bb1e"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/194793"
+    },
+    {
+      "id": "job-21000-02-phd-henrion",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "变分法的多项式优化方向博士职位（控制工程系，CIIRC RoboProX）",
+        "en": "PhD position in polynomial optimization for calculus of variations",
+        "cs": "Doktorská pozice: polynomiální optimalizace pro variační počet (katedra řídicí techniky, CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "PhD position in polynomial optimization for calculus of variations",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "master",
+      "doctorateRequired": false,
+      "doctoralEnrollment": "required",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 50000.0,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/193413",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": false,
+      "track": "assistant",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "02-PhD-Henrion",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:ef6839a4cf07abc267825a675e201a56b0bf7aaf2ce1aef69190208127052210",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:ef6839a4cf07abc267825a675e201a56b0bf7aaf2ce1aef69190208127052210",
+        "factHash": "sha256:08eb6578cfb6c02e0f65237b6818f11e16699906d64d431c38c04baf0f3d7e97",
+        "evidenceHash": "sha256:ef6839a4cf07abc267825a675e201a56b0bf7aaf2ce1aef69190208127052210",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:ef6839a4cf07abc267825a675e201a56b0bf7aaf2ce1aef69190208127052210",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:2af299ebb4c2f5b6410104a095cbda6f3ec1ea2000a5cc032002b489b4b1926e"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:ef6839a4cf07abc267825a675e201a56b0bf7aaf2ce1aef69190208127052210",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:c1423994b14fda3c69638ef86850bbb8f335ea9d1c89e84484aa1e33ba5043a1"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:ef6839a4cf07abc267825a675e201a56b0bf7aaf2ce1aef69190208127052210",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:2ffd13174960d27d6c004c77d895b01df4ff440f7c6cae8dc4dd11b251985990"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/193413"
+    },
+    {
+      "id": "job-21000-04-postdoc-babuska",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "动态系统建模的物理感知符号回归方向博士后职位（CIIRC RoboProX）",
+        "en": "Postdoc position in Physics-aware symbolic regression for dynamic systems modeling",
+        "cs": "Postdoktorská pozice: fyzikálně informovaná symbolická regrese pro modelování dynamických systémů (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "Postdoc position in Physics-aware symbolic regression for dynamic systems modeling",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "doctorate",
+      "doctorateRequired": true,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 2800.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/189895",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": true,
+      "track": "postdoc",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "04-Postdoc-Babuska",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:d652a37d4b21a0785c99785dcda4fcb7ed038519832359b419f897537787f0b7",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:d652a37d4b21a0785c99785dcda4fcb7ed038519832359b419f897537787f0b7",
+        "factHash": "sha256:153ff0e33c7c5cb49f64d4bceef8b2e88709dd5c36aa063caa68c114b0a8f021",
+        "evidenceHash": "sha256:d652a37d4b21a0785c99785dcda4fcb7ed038519832359b419f897537787f0b7",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d652a37d4b21a0785c99785dcda4fcb7ed038519832359b419f897537787f0b7",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:61fe5db95e0fb86a3fd3ff8fe529d165de23ca641e6572376c11dfd04c737b93"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d652a37d4b21a0785c99785dcda4fcb7ed038519832359b419f897537787f0b7",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:c07f218f0d90d1a1c63203f65c214b398b5efa376d1c96a9066837a6daaf5d01"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d652a37d4b21a0785c99785dcda4fcb7ed038519832359b419f897537787f0b7",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:6a4ab7351007f858c0d6ddbbda83572fa73c88767e271a7ce565837ce3b70ebb"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/189895"
+    },
+    {
+      "id": "job-21000-01-postdoc-svoboda",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "可解释端到端学习与自监督学习方向博士后职位（控制论系，CIIRC RoboProX）",
+        "en": "Postdoc Position – End-to-end learning with explainability. Self-supervised learning",
+        "cs": "Postdoktorská pozice: end-to-end učení s vysvětlitelností a samoučení (katedra kybernetiky, CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "Postdoc Position – End-to-end learning with explainability. Self-supervised learning",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "doctorate",
+      "doctorateRequired": true,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 3150.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "unknown",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/190056",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": true,
+      "track": "postdoc",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "01-Postdoc-Svoboda",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:b070587fed7d145bbf5837f493c70664c9f3708730e982f122b35b2ca4716ad0",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:b070587fed7d145bbf5837f493c70664c9f3708730e982f122b35b2ca4716ad0",
+        "factHash": "sha256:ea63b2356308abfa93adb3ba3d4d0480ada2f27e18243092bf3b9ff42fc22665",
+        "evidenceHash": "sha256:b070587fed7d145bbf5837f493c70664c9f3708730e982f122b35b2ca4716ad0",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b070587fed7d145bbf5837f493c70664c9f3708730e982f122b35b2ca4716ad0",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:5c3bee43ba38fca0d2339af6e955de964037a1ae2a0d37493665812674d2088b"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b070587fed7d145bbf5837f493c70664c9f3708730e982f122b35b2ca4716ad0",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:b0f7d65abd03eb654dd2520080d6e1bdc2538cc99556a025fee09891496defa8"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b070587fed7d145bbf5837f493c70664c9f3708730e982f122b35b2ca4716ad0",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:b9eed72348fb512b07843df4e4adc0542b09a8fe50df1b09808e2c373fb65ec5"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/190056"
+    },
+    {
+      "id": "job-21000-02-postdoc-hoffmann",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "全身触觉感知机器人方向博士后职位（控制论系，CIIRC RoboProX）",
+        "en": "Postdoc Position – Robots with whole-body tactile sensing",
+        "cs": "Postdoktorská pozice: roboti s celotělovým hmatovým vnímáním (katedra kybernetiky, CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "Postdoc Position – Robots with whole-body tactile sensing",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "doctorate",
+      "doctorateRequired": true,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 3150.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://www.euraxess.cz/jobs/190055",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": true,
+      "track": "postdoc",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "02-Postdoc-Hoffmann",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:9facb5041033b9c78f025836e954d53fe37065ee6d7a69491c4daa03b528fa1a",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:9facb5041033b9c78f025836e954d53fe37065ee6d7a69491c4daa03b528fa1a",
+        "factHash": "sha256:b9bd2ff9133a093bcf2340492cd18d0d697a0357bf8aef9c7fb0f96bcacca166",
+        "evidenceHash": "sha256:9facb5041033b9c78f025836e954d53fe37065ee6d7a69491c4daa03b528fa1a",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:9facb5041033b9c78f025836e954d53fe37065ee6d7a69491c4daa03b528fa1a",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:c8a816e57d90084c2f7710e5b6505a0049e11c9e92a5d87c8fe791ffeebd2f42"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:9facb5041033b9c78f025836e954d53fe37065ee6d7a69491c4daa03b528fa1a",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:ce8a0ffbaac3280d3aa0afbb7d0884ac2a407500d8b56011cb3eb22f91f4b4fe"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:9facb5041033b9c78f025836e954d53fe37065ee6d7a69491c4daa03b528fa1a",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:6dcaf1c3abee0426df5c93041b1533026b7f453ac3b6ddc54fe03aab2131090a"
+          }
+        }
+      },
+      "officialDetailUrl": "https://www.euraxess.cz/jobs/190055"
+    },
+    {
+      "id": "job-21000-01-postdoc-janota",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "应用逻辑推理方向博士后职位（CIIRC RoboProX）",
+        "en": "Postdoc position in Applied Logic-based Reasoning",
+        "cs": "Postdoktorská pozice: aplikované logické usuzování (CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "Postdoc position in Applied Logic-based Reasoning",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "doctorate",
+      "doctorateRequired": true,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 1600.0,
+        "currency": "EUR",
+        "cycle": "month",
+        "tax": "net",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/194796",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": true,
+      "track": "postdoc",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "01-Postdoc-Janota",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:ec39452c7884d6b1811b3c7437aa7daab038510cf98536273f019d87de56abe6",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:ec39452c7884d6b1811b3c7437aa7daab038510cf98536273f019d87de56abe6",
+        "factHash": "sha256:d418d58389c1a056242d3aea9b5a81f53f047ab72aa8e3460741057191b4096f",
+        "evidenceHash": "sha256:ec39452c7884d6b1811b3c7437aa7daab038510cf98536273f019d87de56abe6",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:ec39452c7884d6b1811b3c7437aa7daab038510cf98536273f019d87de56abe6",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:d76ae43bef74054ff785d2a47b594d823ac82f0a6474d381b5d13caf97404eb2"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:ec39452c7884d6b1811b3c7437aa7daab038510cf98536273f019d87de56abe6",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:d452fd6c1d4b6d40ebb866f4c887bf2713853587940a6d0c0b5ae3f2f81346df"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:ec39452c7884d6b1811b3c7437aa7daab038510cf98536273f019d87de56abe6",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:d4b30aa11ea74ea20ca164fd75db143ac70974a2f40e15082c3edab46319d1df"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/194796"
+    },
+    {
+      "id": "job-21000-02-postdoc-henrion",
+      "employerId": "msmt-vs_21000",
+      "title": {
+        "zh-CN": "变分法的多项式优化方向博士后职位（控制工程系，CIIRC RoboProX）",
+        "en": "Postdoctoral position in polynomial optimization for calculus of variations",
+        "cs": "Postdoktorská pozice: polynomiální optimalizace pro variační počet (katedra řídicí techniky, CIIRC RoboProX)"
+      },
+      "laboratory": null,
+      "originalText": "Postdoctoral position in polynomial optimization for calculus of variations",
+      "sourceLanguage": "en",
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-01T20:51:58Z",
+      "minimumDegree": "doctorate",
+      "doctorateRequired": true,
+      "doctoralEnrollment": "unspecified",
+      "paidStatus": "confirmed",
+      "salary": {
+        "amount": 70000.0,
+        "currency": "CZK",
+        "cycle": "month",
+        "tax": "gross",
+        "basisFte": null
+      },
+      "salaryAmountMin": null,
+      "salaryAmountMax": null,
+      "fundingType": "employment",
+      "employmentFte": 1.0,
+      "employmentStartsAt": null,
+      "workingLanguages": [
+        "en"
+      ],
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/193431",
+      "applicationUrl": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+      "applicationMethod": "official_instructions",
+      "applicationHostVerified": true,
+      "lifecycleStatus": "unknown",
+      "visibility": "public",
+      "catalogueScopeStatus": "included",
+      "isPostdoc": true,
+      "track": "postdoc",
+      "city": {
+        "zh-CN": "布拉格",
+        "en": "Prague",
+        "cs": "Praha"
+      },
+      "verifiedAt": "2026-10-01",
+      "parserVersion": "jobs-parser-2026-09-12.2",
+      "sourceFetchedAt": "2026-10-01T20:48:27Z",
+      "factsExtractedAt": "2026-10-01T20:48:27Z",
+      "dataClass": "official_career_extract",
+      "wholeOpportunityClosed": false,
+      "discoverySourceId": "ctu-ciirc-roboprox-positions",
+      "sourceItemId": "02-Postdoc-Henrion",
+      "caseNumber": null,
+      "noticePostedAt": null,
+      "noticeRemoveAt": null,
+      "eligibilityGranularity": "vacancy",
+      "sourceHash": "sha256:2ae114f0c2f669698a05882d39117d4362ac7a61691da6b49f751d4bff0d60a7",
+      "publicationStatus": "approved",
+      "translationReview": {
+        "sourceHash": "sha256:2ae114f0c2f669698a05882d39117d4362ac7a61691da6b49f751d4bff0d60a7",
+        "factHash": "sha256:2ac4ec85d55e126439530ad18571edaceaf1267fda6b868256a333f9cf5158dd",
+        "evidenceHash": "sha256:2ae114f0c2f669698a05882d39117d4362ac7a61691da6b49f751d4bff0d60a7",
+        "normalizationVersion": "fact-v2",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:2ae114f0c2f669698a05882d39117d4362ac7a61691da6b49f751d4bff0d60a7",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:406c2569013d504901e95a47c6dba7e4af28de24f981fb1c2f804ea0cb346ab4"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:2ae114f0c2f669698a05882d39117d4362ac7a61691da6b49f751d4bff0d60a7",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:26432d0ed2e40dbab72ac42a2f452bf48209b99ad25f64866a9dd4293816706d"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:2ae114f0c2f669698a05882d39117d4362ac7a61691da6b49f751d4bff0d60a7",
+            "reviewedAt": "2026-10-01T20:51:58Z",
+            "contentHash": "sha256:eeda553d39a6b2f8035cce1bb9305c61b339f1a17ebafd572256078a8d03096d"
+          }
+        }
+      },
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/193431"
+    },
+    {
       "id": "job-21000-5488",
       "employerId": "msmt-vs_21000",
       "title": {
@@ -22216,8 +23732,8 @@
       },
       "verifiedAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "sourceFetchedAt": "2026-10-01T20:34:04Z",
-      "factsExtractedAt": "2026-10-01T20:34:04Z",
+      "sourceFetchedAt": "2026-10-01T20:50:43Z",
+      "factsExtractedAt": "2026-10-01T20:50:43Z",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "ctu-central-notice-board",
@@ -22311,8 +23827,8 @@
       },
       "verifiedAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "sourceFetchedAt": "2026-10-01T20:34:04Z",
-      "factsExtractedAt": "2026-10-01T20:34:04Z",
+      "sourceFetchedAt": "2026-10-01T20:50:43Z",
+      "factsExtractedAt": "2026-10-01T20:50:43Z",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "ctu-central-notice-board",
@@ -22406,8 +23922,8 @@
       },
       "verifiedAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "sourceFetchedAt": "2026-10-01T20:34:04Z",
-      "factsExtractedAt": "2026-10-01T20:34:04Z",
+      "sourceFetchedAt": "2026-10-01T20:50:43Z",
+      "factsExtractedAt": "2026-10-01T20:50:43Z",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "ctu-central-notice-board",
@@ -22501,8 +24017,8 @@
       },
       "verifiedAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "sourceFetchedAt": "2026-10-01T20:34:04Z",
-      "factsExtractedAt": "2026-10-01T20:34:04Z",
+      "sourceFetchedAt": "2026-10-01T20:50:43Z",
+      "factsExtractedAt": "2026-10-01T20:50:43Z",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "ctu-central-notice-board",
@@ -22594,8 +24110,8 @@
       },
       "verifiedAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "sourceFetchedAt": "2026-10-01T20:34:04Z",
-      "factsExtractedAt": "2026-10-01T20:34:04Z",
+      "sourceFetchedAt": "2026-10-01T20:50:43Z",
+      "factsExtractedAt": "2026-10-01T20:50:43Z",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "ctu-central-notice-board",
@@ -22688,8 +24204,8 @@
       },
       "verifiedAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "sourceFetchedAt": "2026-10-01T20:34:04Z",
-      "factsExtractedAt": "2026-10-01T20:34:04Z",
+      "sourceFetchedAt": "2026-10-01T20:50:43Z",
+      "factsExtractedAt": "2026-10-01T20:50:43Z",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "ctu-central-notice-board",
@@ -22783,8 +24299,8 @@
       },
       "verifiedAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "sourceFetchedAt": "2026-10-01T20:34:04Z",
-      "factsExtractedAt": "2026-10-01T20:34:04Z",
+      "sourceFetchedAt": "2026-10-01T20:50:43Z",
+      "factsExtractedAt": "2026-10-01T20:50:43Z",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "ctu-central-notice-board",
@@ -22878,8 +24394,8 @@
       },
       "verifiedAt": "2026-10-01",
       "parserVersion": "jobs-parser-2026-09-12.2",
-      "sourceFetchedAt": "2026-10-01T20:34:04Z",
-      "factsExtractedAt": "2026-10-01T20:34:04Z",
+      "sourceFetchedAt": "2026-10-01T20:50:43Z",
+      "factsExtractedAt": "2026-10-01T20:50:43Z",
       "dataClass": "official_career_extract",
       "wholeOpportunityClosed": false,
       "discoverySourceId": "ctu-central-notice-board",
@@ -28167,6 +29683,166 @@
       "id": "ev-job-26000-2001444885",
       "url": "https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001444885",
       "sourceHash": "sha256:3a573ea2b3e10b210f468037eadbb4dd85fa9d97bbd5fb485408972d78add876",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-02-phd-zeman",
+      "url": "https://euraxess.ec.europa.eu/jobs/187454",
+      "sourceHash": "sha256:c3285f300e85edcd99ffec91f3e3f8cd8700111036331a221d0463ceaaee240c",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-01-phd-babuska",
+      "url": "https://euraxess.ec.europa.eu/jobs/189891",
+      "sourceHash": "sha256:cb827437283677248f3c05570474461546df6f642ea8e00cce692c02d83de093",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-02-phd-babuska",
+      "url": "https://euraxess.ec.europa.eu/jobs/189893",
+      "sourceHash": "sha256:6688e6677a0f44151fe02ef0612a24f2d6c023038a1563834cba44a67ede2960",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-03-phd-babuska",
+      "url": "https://euraxess.ec.europa.eu/jobs/189894",
+      "sourceHash": "sha256:62ec0e643b136ebb4c55f9a0a6d65a223b385714ee1a1e19be9345b40e8d9e7f",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-03-phd-svoboda",
+      "url": "https://www.euraxess.cz/jobs/190058",
+      "sourceHash": "sha256:cc2930b79edb6e81b6168eef5e148fda74030939199ba4eb3f3284f88e506965",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-04-phd-zimmermann",
+      "url": "https://www.euraxess.cz/jobs/190059",
+      "sourceHash": "sha256:fdd71b4facda8a992d0b9fc84f2c64eb11b354f2db5d8526760d2285dbd078e8",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-01-phd-hanzalek",
+      "url": "https://euraxess.ec.europa.eu/jobs/193846",
+      "sourceHash": "sha256:46dfede1bafba93627a932fafe4c9123b80adaea25afe4c969814967eafd36f1",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-02-phd-hanzalek",
+      "url": "https://euraxess.ec.europa.eu/jobs/193834",
+      "sourceHash": "sha256:76dbb5a7698181c179e32db3883f312681a269d74164f0e4cd9c5df625897d8a",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-01-phd-janota",
+      "url": "https://euraxess.ec.europa.eu/jobs/194792",
+      "sourceHash": "sha256:90bfd1fd86fa7e9fa7b3bfa38d12459bb98f45ee719465079f93ac15e864f95b",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-02-phd-janota",
+      "url": "https://euraxess.ec.europa.eu/jobs/194793",
+      "sourceHash": "sha256:1d7be55de4a6d3f3248375f7c0ea35f79ff232cc368fa605ff13440ee1dd96a0",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-02-phd-henrion",
+      "url": "https://euraxess.ec.europa.eu/jobs/193413",
+      "sourceHash": "sha256:ef6839a4cf07abc267825a675e201a56b0bf7aaf2ce1aef69190208127052210",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-04-postdoc-babuska",
+      "url": "https://euraxess.ec.europa.eu/jobs/189895",
+      "sourceHash": "sha256:d652a37d4b21a0785c99785dcda4fcb7ed038519832359b419f897537787f0b7",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-01-postdoc-svoboda",
+      "url": "https://euraxess.ec.europa.eu/jobs/190056",
+      "sourceHash": "sha256:b070587fed7d145bbf5837f493c70664c9f3708730e982f122b35b2ca4716ad0",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-02-postdoc-hoffmann",
+      "url": "https://www.euraxess.cz/jobs/190055",
+      "sourceHash": "sha256:9facb5041033b9c78f025836e954d53fe37065ee6d7a69491c4daa03b528fa1a",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-01-postdoc-janota",
+      "url": "https://euraxess.ec.europa.eu/jobs/194796",
+      "sourceHash": "sha256:ec39452c7884d6b1811b3c7437aa7daab038510cf98536273f019d87de56abe6",
+      "note": {
+        "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
+        "en": "Harvested from an official career page. A missing start date is not treated as open.",
+        "cs": "Sebráno z oficiální kariérní stránky. Chybějící datum zahájení se nepovažuje za otevřené."
+      }
+    },
+    {
+      "id": "ev-job-21000-02-postdoc-henrion",
+      "url": "https://euraxess.ec.europa.eu/jobs/193431",
+      "sourceHash": "sha256:2ae114f0c2f669698a05882d39117d4362ac7a61691da6b49f751d4bff0d60a7",
       "note": {
         "zh-CN": "学校官方招聘页采集，缺开始日期不视为开放。",
         "en": "Harvested from an official career page. A missing start date is not treated as open.",
