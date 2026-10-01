@@ -107,3 +107,21 @@ def test_adapter_job_id_matches_the_discovery_id_for_the_same_code() -> None:
         )
         assert snapshot_job_id("msmt-vs_11000", code) == discovered
     assert snapshot_job_id("msmt-vs_11000", "202610-L2-PřF-1300-104") == "job-11000-202610-l2-p-f-1300-104"
+
+
+def test_a_listing_row_does_not_replace_a_reviewed_record() -> None:
+    from engine.adapter_harvest import _keep_prior_review
+
+    prior = {
+        "id": "job-43000-492828",
+        "sourceUrl": "https://mendelu.recruitis.io/492828",
+        "publicationStatus": "approved",
+        "translationStatus": "verified",
+        "salary": {"amount": 40000, "currency": "CZK"},
+        "sourceHash": "sha256:" + "a" * 64,
+    }
+    incoming = {"id": "job-43000-492828", "sourceUrl": prior["sourceUrl"], "publicationStatus": "review_pending"}
+    assert _keep_prior_review(prior, incoming) == prior
+
+    unreviewed = {**prior, "publicationStatus": "review_pending", "translationStatus": "unreviewed"}
+    assert _keep_prior_review(unreviewed, incoming)["publicationStatus"] == "review_pending"

@@ -256,7 +256,7 @@ def main(argv: list[str] | None = None) -> int:
     from engine.transport import live_fetcher
     from storage.postgres import persist_enabled, store_from_env
     from storage.retention import prune_ingest_history
-    from worker import JOBS_OUT, atomic_write, load_json
+    from worker import JOBS_OUT, load_json, write_job_candidates
 
     os.environ.setdefault("SCRAPLING_REQUIRED", "1")
     os.environ.setdefault("SUPABASE_WRITE", "1")
@@ -280,7 +280,7 @@ def main(argv: list[str] | None = None) -> int:
             env=worker_env,
             cwd=ROOT,
         )
-        atomic_write(JOBS_OUT, report["snapshot"])
+        report["snapshot"] = write_job_candidates(JOBS_OUT, report["snapshot"])
         if store is not None:
             report["retention"] = prune_ingest_history(store)
     finally:

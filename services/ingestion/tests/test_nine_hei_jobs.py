@@ -669,9 +669,12 @@ def test_lmc_widget_discovery_reads_every_api_page_and_full_detail() -> None:
     assert any(item["title"] == "Účetní" for item in discovery["quarantined"])
 
     api_calls.clear()
+    # Pinned: the fixture vacancy closes 2026-09-30 and would expire on the
+    # real clock from 2026-10-01 (CI run 36843932190).
     harvested = harvest_with_registered_discovery(
         [],
         lambda url: (200, landing) if url == portal else (404, ""),
+        as_of=date(2026, 9, 20),
         registry=registry,
         post_json=post_json,
     )
@@ -2679,3 +2682,45 @@ def test_listing_placeholders_do_not_erase_a_proven_seed_fact() -> None:
 
     stated_unpaid = {**listed, "paidStatus": "unpaid"}
     assert jobs_harvester._merge_seed_and_discovered([seed], [stated_unpaid])[0]["paidStatus"] == "unpaid"
+
+
+def test_approval_never_outlives_the_facts_it_was_bound_to() -> None:
+    """Refresh run 36839142911: approved records whose facts drifted under a review."""
+    from publication_rules import job_fact_hash
+
+    window = {"id": "win-a", "ownerId": "job-a", "closesAt": "2026-09-30", "status": "open"}
+    reviewed = {
+        "id": "job-a",
+        "publicationStatus": "approved",
+        "translationStatus": "verified",
+        "visibility": "public",
+        "sourceHash": "sha256:" + "1" * 64,
+        "paidStatus": "confirmed",
+    }
+    reviews = {"job-a": {"factHash": job_fact_hash(reviewed, [window])}}
+    previous = {"jobs": [reviewed], "windows": [window]}
+
+    # The expiry path flips the window and keeps "approved"; source unchanged.
+    expired = {**reviewed, "lifecycleStatus": "expired"}
+    closed_window = {**window, "status": "closed"}
+    out, report = jobs_harvester.enforce_review_binding(
+        previous, {"jobs": [expired], "windows": [closed_window]}, reviews
+    )
+    assert report["restored"] == ["job-a"]
+    assert out["jobs"] == [reviewed] and out["windows"] == [window]
+
+    # A listing row with no source hash proves nothing new either.
+    skinny = {"id": "job-a", "publicationStatus": "approved", "sourceHash": None}
+    out, report = jobs_harvester.enforce_review_binding(previous, {"jobs": [skinny], "windows": []}, reviews)
+    assert out["jobs"] == [reviewed]
+
+    # A new source hash with new facts goes back to review.
+    changed = {**reviewed, "sourceHash": "sha256:" + "2" * 64, "paidStatus": "unconfirmed"}
+    out, report = jobs_harvester.enforce_review_binding(previous, {"jobs": [changed], "windows": [window]}, reviews)
+    assert report["returnedToReview"] == ["job-a"]
+    assert out["jobs"][0]["publicationStatus"] == "review_pending"
+    assert out["jobs"][0]["translationStatus"] == "stale"
+
+    # Facts that still match their review are left alone.
+    out, report = jobs_harvester.enforce_review_binding(previous, previous, reviews)
+    assert report == {"restored": [], "returnedToReview": []}

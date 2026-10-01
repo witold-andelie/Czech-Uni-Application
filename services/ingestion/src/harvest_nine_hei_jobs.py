@@ -4018,6 +4018,81 @@ def load_verified_candidates() -> list[dict]:
 VERIFIED_CANDIDATES: list[dict] = load_verified_candidates()
 
 
+_SHA256_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
+
+
+def enforce_review_binding(
+    previous: dict,
+    payload: dict,
+    reviews: dict[str, dict] | None = None,
+) -> tuple[dict, dict[str, list[str]]]:
+    """Keep every approved record consistent with its review before writing.
+
+    Approval is bound to a fact hash (A53). A harvest can change an approved
+    record's facts without the source changing: a listing row with no detail
+    facts, a re-derivation that reads the same page differently, or the
+    expiry path flipping a window to closed (window status is a fact). Then
+    the record stays "approved" on facts nobody reviewed, and the next
+    publication rejects it (refresh run 36839142911, REVIEW_FACT_HASH_MISMATCH).
+
+    Same source (or no proof of a new one): the reviewed record and its
+    windows are kept; expiry still reaches visitors through the window dates
+    and the verified closure overlay. A new source hash: the record returns to
+    review, as any source change does.
+    """
+    reviews = reviews if reviews is not None else load_job_reviews()
+    prior_jobs = {
+        str(item["id"]): item
+        for item in (previous or {}).get("jobs") or []
+        if isinstance(item, dict) and item.get("id")
+    }
+    prior_windows: dict[str, list[dict]] = {}
+    for item in (previous or {}).get("windows") or []:
+        if isinstance(item, dict) and item.get("ownerId"):
+            prior_windows.setdefault(str(item["ownerId"]), []).append(item)
+    windows = [item for item in payload.get("windows") or [] if isinstance(item, dict)]
+    report: dict[str, list[str]] = {"restored": [], "returnedToReview": []}
+    jobs: list = []
+    for job in payload.get("jobs") or []:
+        if not isinstance(job, dict) or job.get("publicationStatus") != "approved":
+            jobs.append(job)
+            continue
+        job_id = str(job.get("id"))
+        entry = reviews.get(job_id) if isinstance(reviews, dict) else None
+        reviewed_fact = entry.get("factHash") if isinstance(entry, dict) else None
+        owned = [item for item in windows if item.get("ownerId") == job_id]
+        if reviewed_fact and job_fact_hash(job, owned) == reviewed_fact:
+            jobs.append(job)
+            continue
+        prior = prior_jobs.get(job_id)
+        prior_owned = prior_windows.get(job_id, [])
+        prior_consistent = (
+            prior is not None
+            and prior.get("publicationStatus") == "approved"
+            and bool(reviewed_fact)
+            and job_fact_hash(prior, prior_owned) == reviewed_fact
+        )
+        incoming_hash = job.get("sourceHash")
+        same_source = not (isinstance(incoming_hash, str) and _SHA256_RE.match(incoming_hash)) or (
+            prior is not None and incoming_hash == prior.get("sourceHash")
+        )
+        if prior_consistent and same_source:
+            jobs.append(prior)
+            windows = [item for item in windows if item.get("ownerId") != job_id]
+            windows.extend(dict(item) for item in prior_owned)
+            report["restored"].append(job_id)
+            continue
+        returned = dict(job)
+        returned["publicationStatus"] = "review_pending"
+        returned["translationStatus"] = "stale"
+        returned["reviewedAt"] = None
+        if returned.get("visibility") != "archived":
+            returned["visibility"] = "review_pending"
+        jobs.append(returned)
+        report["returnedToReview"].append(job_id)
+    return {**payload, "jobs": jobs, "windows": windows}, report
+
+
 def _original_text(value, language: str) -> str:
     """The announcement's own wording from a stored localized field."""
     if isinstance(value, dict):
@@ -4696,6 +4771,7 @@ def main() -> None:
     previous = json.loads(OUT.read_text(encoding="utf-8")) if OUT.is_file() else {}
     seeds = seed_candidates_from_stored(previous)
     payload = harvest_with_registered_discovery(seeds, request, previous)
+    payload, _binding = enforce_review_binding(previous, payload)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     tmp = OUT.with_suffix(".json.tmp")
     text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"

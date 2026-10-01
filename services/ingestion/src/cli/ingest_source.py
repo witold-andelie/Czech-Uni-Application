@@ -38,7 +38,7 @@ def main(argv: list[str] | None = None) -> int:
     from engine.adapter_harvest import harvest_adapter_source
     from engine.runtime import require_http_fetcher, write_runtime_report
     from engine.transport import live_fetcher
-    from worker import JOBS_OUT, atomic_write, load_json
+    from worker import JOBS_OUT, load_json, write_job_candidates
 
     os.environ.setdefault("SCRAPLING_REQUIRED", "1")
     os.environ.setdefault("SUPABASE_WRITE", "1")
@@ -50,7 +50,7 @@ def main(argv: list[str] | None = None) -> int:
     store = result.get("store")
     retention = None
     try:
-        atomic_write(JOBS_OUT, result["snapshot"])
+        result["snapshot"] = write_job_candidates(JOBS_OUT, result["snapshot"])
         if store is not None:
             from storage.retention import prune_ingest_history
 

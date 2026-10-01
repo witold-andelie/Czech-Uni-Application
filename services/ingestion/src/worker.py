@@ -89,6 +89,24 @@ def atomic_write(path: Path, payload: dict) -> None:
             time.sleep(0.1 * (attempt + 1))
 
 
+
+def write_job_candidates(path: Path, payload: dict) -> dict:
+    """Write the job candidate file with every approval still bound to its review.
+
+    Returns the payload as written so callers persist the same records.
+    """
+    from harvest_nine_hei_jobs import enforce_review_binding
+
+    payload, report = enforce_review_binding(load_json(path), payload)
+    if report["restored"] or report["returnedToReview"]:
+        print(
+            "job_candidates: kept reviewed records "
+            f"restored={len(report['restored'])} returnedToReview={len(report['returnedToReview'])}",
+            flush=True,
+        )
+    atomic_write(path, payload)
+    return payload
+
 def pid_alive(pid: int) -> bool:
     if pid <= 0:
         return False
@@ -259,7 +277,7 @@ def harvest_jobs(
             previous = load_json(target)
             result = harvest_adapter_source(source, fetch_page=fetch_page, previous=previous)
             snapshot = result["snapshot"]
-            atomic_write(target, snapshot)
+            snapshot = write_job_candidates(target, snapshot)
             return {
                 "counts": snapshot.get("counts") or result.get("counts"),
                 "skipped": snapshot.get("skipped") or [],
@@ -304,11 +322,11 @@ def harvest_jobs(
             skipped.extend(part.get("skipped") or [])
             checkpoint = load_json(target)
             checkpoint["discovery"] = aggregate
-            atomic_write(target, checkpoint)
+            checkpoint = write_job_candidates(target, checkpoint)
         aggregate["runKind"] = "all_registered_sources"
         checkpoint = load_json(target)
         checkpoint["discovery"] = aggregate
-        atomic_write(target, checkpoint)
+        checkpoint = write_job_candidates(target, checkpoint)
         return {"counts": checkpoint.get("counts"), "skipped": skipped,
                 "discovery": aggregate, "processedCandidateIds": sorted(processed)}
     previous = load_json(target)
@@ -321,7 +339,7 @@ def harvest_jobs(
     )
     processed_ids = set(shard_result.get("processedCandidateIds") or []) | {item["id"] for item in candidates}
     merged = merge_sharded_jobs(previous, shard_result, processed_ids)
-    atomic_write(target, merged)
+    merged = write_job_candidates(target, merged)
     discovery = shard_result.get("discovery") or {}
     from storage.persist import persist_job_harvest
 
@@ -334,7 +352,7 @@ def harvest_jobs(
     )
     discovery = {**discovery, "supabase": supabase}
     merged["discovery"] = discovery
-    atomic_write(target, merged)
+    merged = write_job_candidates(target, merged)
     return {
         "counts": merged.get("counts"),
         "skipped": shard_result.get("skipped") or [],

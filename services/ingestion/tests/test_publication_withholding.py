@@ -32,7 +32,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
 import publish  # noqa: E402
-from live_evidence import CONFIRMED_STATUSES, load_evidence, parse_ts  # noqa: E402
+from live_evidence import CONFIRMED_STATUSES, entering_publication, load_evidence, parse_ts  # noqa: E402
 
 SOURCES = ROOT / "data" / "sources"
 CANDIDATES = SOURCES / "browse" / "nine-hei-jobs.json"
@@ -181,7 +181,10 @@ def test_live_evidence_gate_passes_for_the_staged_selection(tmp_path: Path) -> N
         if moment is not None and moment < datetime.now(timezone.utc):
             closed_windows.add(str(window.get("ownerId")))
 
-    for job in payload["jobs"]:
+    # Same scope as the gate: records already closed, expired or unavailable
+    # stay in the file as archive and are not exposed, so they need no fresh
+    # proof (live_evidence.entering_publication).
+    for job in entering_publication(payload):
         assert job["id"] in fresh or job["id"] in closed_windows, (
             f"{job['id']} is published without fresh live verification and without a "
             "closed announced window"

@@ -67,6 +67,13 @@ def candidate_to_snapshot_job(candidate: Candidate, source: dict, now_text: str)
 def _keep_prior_review(prior: dict[str, Any], incoming: dict[str, Any]) -> dict[str, Any]:
     if prior.get("sourceUrl") != incoming.get("sourceUrl"):
         return incoming
+    if prior.get("publicationStatus") == "approved" or prior.get("translationStatus") in ("verified", "reviewed"):
+        # A listing row only proves the vacancy is still listed; it carries no
+        # detail facts, salary object or source hash. Replacing a reviewed
+        # record with it kept "approved" on a record the review no longer
+        # matched (MENDELU, refresh run 36839142911). Detail changes reach
+        # review through the detail harvest and live verification instead.
+        return prior
     merged = dict(incoming)
     for key in (
         "translationStatus",
