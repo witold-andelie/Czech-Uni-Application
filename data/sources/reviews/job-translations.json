@@ -6028,7 +6028,7 @@
       },
       "reviewEventId": "draft-2026-09-22-095",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). VUT vutbr.jobs.cz live-checked 2026-09-22 (2001383219/2001389137).\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). VUT vutbr.jobs.cz live-checked 2026-09-22 (2001383219/2001389137).\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nFact-only re-review 2026-10-01: the notice states 'Přihlášku s požadovanými přílohami zasílejte do 5. října 2026 (včetně)'; the deadline 2026-10-05 is now read (before it was missing). Titles unchanged.",
       "title": {
         "zh-CN": "传统媒体学部学术工作人员",
         "en": "Academic staff member of the Traditional Media Section",
@@ -6054,7 +6054,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:92c9f9ab9a856782ffe1cf5b4bfcf10843d10c8524496e69420593a68d9b7b93"
+      "factHash": "sha256:92260ebce8c7d825e65d283688b3fe4b42264d5b0c1e6b542efbeed9f8a703a6"
     },
     "job-26000-2001410129": {
       "sourceHash": "sha256:f1cf10107f65d524e6965befa8f75ea468d98c449bcd60df9a038fe6a415372e",
@@ -8463,6 +8463,176 @@
         }
       },
       "factHash": "sha256:c26a323d2f24c02c3fa02f0bf6ae07562b867e3bc6a54c4cb452218e3d0877fd"
+    },
+    "job-26000-2001444885": {
+      "sourceHash": "sha256:3a573ea2b3e10b210f468037eadbb4dd85fa9d97bbd5fb485408972d78add876",
+      "evidenceHash": "sha256:3a573ea2b3e10b210f468037eadbb4dd85fa9d97bbd5fb485408972d78add876",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-vut-01",
+      "reviewedAt": "2026-10-01T20:27:34Z",
+      "reviewNote": "Checked 2026-10-01 against the official VUT notice text from the vutbr.jobs.cz API (position 2001444885): Faculty of Architecture; university education in the field (level not specified, so unknown) and 2 years of practice; active English; 0.2 FTE; 'Odpovídající finanční ohodnocení' (paid); deadline 25 Oct 2026.",
+      "title": {
+        "zh-CN": "建筑学院城市规划系助理教授（0.2 工作量）",
+        "en": "Assistant Professor, Department of Urbanism, Faculty of Architecture (0.2 FTE)",
+        "cs": "FA - odborná asistentka / odborný asistent Ústavu urbanismu"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:b6860691b042541cd035b2d1a70ee0438b574e04df61d7fcc2ea1c2f6a5688cf"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:738dc1fb43ab9dc21148b8a0bda686d17c5cc3044cd283845e98a08fba1a9a36"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:45df8c584628c5953ebb927ebe5910d06c6d5481d9c3ce2e80a88fc84d4b3407"
+        }
+      },
+      "factHash": "sha256:e601260244712b9fdce73e1fdd49545537cb7cfc8346fd193b43e3b491543a07"
+    },
+    "job-26000-2001444895": {
+      "sourceHash": "sha256:fd467e5bec5c6ce6fdd9ae0a23a36d94c708f8ceea45ff4bcd4edd1e5817a713",
+      "evidenceHash": "sha256:fd467e5bec5c6ce6fdd9ae0a23a36d94c708f8ceea45ff4bcd4edd1e5817a713",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-vut-02",
+      "reviewedAt": "2026-10-01T20:27:34Z",
+      "reviewNote": "Checked 2026-10-01 against the official VUT notice text from the vutbr.jobs.cz API (position 2001444895): Faculty of Architecture; university education in the field (level not stated beyond the docent title, so unknown) and 2 years of practice; active English; full-time; paid; deadline 25 Oct 2026.",
+      "title": {
+        "zh-CN": "建筑学院城市规划系副教授",
+        "en": "Associate Professor (docent), Department of Urbanism, Faculty of Architecture",
+        "cs": "FA - docent / docentka Ústavu urbanismu"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:15b35a71361ed6d0d8de3ced9c429417a100fdfb23c15ae906b4cfdacfafc1c2"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:bec882f17c5acdb4fd01895aeeccb19bd5fe69a98f80f341e3caa3656e3c0360"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:47a871743189802524664de72de9677950c01c07dd1d75319d7676ee2506d4c8"
+        }
+      },
+      "factHash": "sha256:c8c435b678893e6a74a52de2f489274c7be8a846943b32ad5ad3960dd802407a"
+    },
+    "job-26000-2001455359": {
+      "sourceHash": "sha256:12ed4780e3a95c5c3a8d96106a823463fcb6c9deb530e6f9b85659a5636f96c7",
+      "evidenceHash": "sha256:12ed4780e3a95c5c3a8d96106a823463fcb6c9deb530e6f9b85659a5636f96c7",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-vut-03",
+      "reviewedAt": "2026-10-01T20:27:34Z",
+      "reviewNote": "Checked 2026-10-01 against the official VUT notice text from the vutbr.jobs.cz API (position 2001455359): Faculty of Civil Engineering; requires a doctoral student with a completed master's (from 31 May 2020) in civil engineering, physics, applied mathematics, informatics or data science, so the minimum is a master's with PhD enrolment; good English (CAE or equivalent); 1.0 FTE; paid; deadline 11 Oct 2026.",
+      "title": {
+        "zh-CN": "土木工程学院结构力学研究所初级研究员（R1，在读博士）",
+        "en": "Junior Researcher (R1), Institute of Structural Mechanics, Faculty of Civil Engineering",
+        "cs": "Vědecko-výzkumný pracovník/pracovnice - junior (R1) Ústavu stavební mechaniky"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:4b4e5c3cae66ff03017f636030d6cc831232245cce32ee6fd054846df98c73d4"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:17106df8c750889f387e795ba619f9daf7f1b5da9f2334328ccbf859f39c0e90"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:200980684a7f06181af40b939e38a03a6a9106a79b07954cd6ec86c95fab0fe1"
+        }
+      },
+      "factHash": "sha256:8864c310d8b0c08490de11bea9d430de4e9c0e5c2c4cb1016c173f89cb93c197"
+    },
+    "job-26000-2001456551": {
+      "sourceHash": "sha256:936e77080cfb206d5d75ffa832ead25da9b8d87fd46f5aa9cc4f3d00df165f53",
+      "evidenceHash": "sha256:936e77080cfb206d5d75ffa832ead25da9b8d87fd46f5aa9cc4f3d00df165f53",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-vut-04",
+      "reviewedAt": "2026-10-01T20:27:34Z",
+      "reviewNote": "Checked 2026-10-01 against the official VUT notice text from the vutbr.jobs.cz API (position 2001456551): Faculty of Chemistry, organic electronics project; the listing's education field is secondary school or vocational training with maturita ('other'); English intermediate per the listing; part-time; employment contract (paid); reply requested by 7 Oct 2026.",
+      "title": {
+        "zh-CN": "化学学院科研专业人员（有机电子学方向）",
+        "en": "Research Specialist, Faculty of Chemistry (organic electronics)",
+        "cs": "Odborný pracovník/pracovnice ve výzkumu (FCH VUT, organická elektronika)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:4440fd462315223a0de45a8682fce9aa91cac466689ab1d2dec3f77a4a285a66"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:92f43b37b3346bd95dbf4afdadab6f691ca4ef8290bbcee3b241905fec713778"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:7ee033e334b6c4e8b1906032f2a01e87fb48d5d46d3bdb29c10633a6e9ba850a"
+        }
+      },
+      "factHash": "sha256:4d1aa886832499026e5faa0fe34654a25688ea81df0d577e93f123c5dd1fbff7"
+    },
+    "job-26000-2001456556": {
+      "sourceHash": "sha256:e91a927dde4cab58a59ef90bce01953d5789b8d62032046b66ed0c338e8ed11c",
+      "evidenceHash": "sha256:e91a927dde4cab58a59ef90bce01953d5789b8d62032046b66ed0c338e8ed11c",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-01-vut-05",
+      "reviewedAt": "2026-10-01T20:27:34Z",
+      "reviewNote": "Checked 2026-10-01 against the official VUT notice text from the vutbr.jobs.cz API (position 2001456556): Faculty of Chemistry, organic bioelectronics project; the listing's education field is secondary school with maturita ('other'); English per the listing; employment contract (paid); deadline 7 Oct 2026.",
+      "title": {
+        "zh-CN": "化学学院科研专业人员（有机生物电子学方向）",
+        "en": "Research Specialist, Faculty of Chemistry (organic bioelectronics)",
+        "cs": "Odborný pracovník/pracovnice ve výzkumu (FCH VUT, organická bioelektronika)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:964d5e58e740bf8d374509beafaf7f28ecad0fd0744527df27f5148119f751ce"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:7cd884a2e63903b162d548ffbeb7c96e525f7371f12a88821af28aafefb8816e"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-01T20:27:34Z",
+          "contentHash": "sha256:e334e01e9636eb338ff6b6e1955e1d4cdd0cd1a5a7282da89cba0d8d4b5f8489"
+        }
+      },
+      "factHash": "sha256:3f56fc6e4ec41887064d8bb2de0d79a95b8f64f75389538614d3d0affcf974a9"
     }
   }
 }
