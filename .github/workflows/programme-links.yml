@@ -8,8 +8,9 @@ name: Programme page link resolution
 # dealt round-robin over parallel shards, least recently read first, and the
 # shards' reads are merged into one index. A school whose new read resolves
 # fewer pages than its committed floor keeps its previous links (A100), and
-# the floor ratchets up to what the index now proves. Links reach the public
-# pages only through the next immutable publication.
+# the floor ratchets up to what the index now proves. The inventory is rebuilt
+# from the merged index and publish.yml is dispatched: links reach the public
+# pages only through an immutable publication.
 
 on:
   schedule:
@@ -145,13 +146,17 @@ jobs:
           shards=(work/links/shard-*.json)
           if [ ${#shards[@]} -eq 0 ]; then echo '::error::no shard produced an index'; exit 1; fi
           python services/ingestion/src/resolve_programme_links.py --merge-shards "${shards[@]}" --raise-floor
-          python services/ingestion/src/check_programme_link_coverage.py --skip-inventory
+          # The published inventory carries the links (and studyin details):
+          # rebuild it from the merged index, then check nothing proven is lost.
+          python services/ingestion/src/build_nine_hei_inventory.py
+          python services/ingestion/src/check_programme_link_coverage.py
+          python services/ingestion/src/publish.py --check-sources
       - name: Commit the link index on main
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          git add data/sources/admissions/programme-links.json data/sources/admissions/programme-link-coverage-floor.json
+          git add data/sources/admissions/programme-links.json data/sources/admissions/programme-link-coverage-floor.json data/sources/browse/nine-hei-inventory.json
           for file in data/sources/admissions/catalogue-*.json; do if [ -f "$file" ]; then git add "$file"; fi; done
           if git diff --cached --quiet; then echo 'No link changes'; exit 0; fi
           git config user.name 'github-actions[bot]'
@@ -159,8 +164,8 @@ jobs:
           git commit -m 'Refresh school-owned programme page link index'
           for attempt in 1 2 3; do
             if git pull --rebase origin main && git push origin HEAD:main; then
-              # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
-              gh workflow run ci.yml --ref main
+              # Links reach visitors only through an immutable publication.
+              gh workflow run publish.yml --ref main -f operation=publish
               exit 0
             fi
             sleep 10

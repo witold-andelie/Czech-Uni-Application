@@ -511,6 +511,43 @@ function institutionDomains(baseline) {
   return domains;
 }
 
+function validateProgrammeDetails(inventory, rowIds, errors) {
+  // studyin.gov.cz facts beside existing rows, in the fixed six-field shape
+  // build_nine_hei_inventory.py writes; same rules as publication_contract.py.
+  if (!("programmeDetails" in inventory)) return;
+  const details = inventory.programmeDetails;
+  if (!details || typeof details !== "object" || Array.isArray(details)) {
+    errors.push("PROGRAMME_DETAIL_INVALID: Inventory programmeDetails must be an object keyed by row id");
+    return;
+  }
+  const count = Object.keys(details).length;
+  for (const [ident, entry] of Object.entries(details)) {
+    if (!rowIds.has(ident)) {
+      errors.push(`PROGRAMME_DETAIL_INVALID: Inventory programme detail ${JSON.stringify(ident)} has no matching row`);
+      continue;
+    }
+    if (!Array.isArray(entry) || entry.length !== 6) {
+      errors.push(`PROGRAMME_DETAIL_INVALID: Inventory programme detail ${ident} must have six fields`);
+      continue;
+    }
+    const [city, forms, credits, amount, currency, path] = entry;
+    const positive = (value) => typeof value === "number" && Number.isFinite(value) && value > 0;
+    const problems = [
+      city !== null && !(typeof city === "string" && city.trim()),
+      forms !== null && !(typeof forms === "string" && /^[fcd]+$/.test(forms)),
+      credits !== null && !(Number.isInteger(credits) && credits > 0),
+      amount !== null && !positive(amount),
+      (amount === null) !== (currency === null),
+      currency !== null && !(typeof currency === "string" && /^[A-Z]{3}$/.test(currency)),
+      !(typeof path === "string" && /^[a-z0-9-]+\/[a-z0-9-]+$/.test(path)),
+    ];
+    if (problems.some(Boolean)) errors.push(`PROGRAMME_DETAIL_INVALID: Inventory programme detail ${ident} has an invalid field`);
+  }
+  if (!inventory.counts || inventory.counts.programmesWithDetails !== count) {
+    errors.push(`PROGRAMME_DETAIL_COUNT_MISMATCH: Inventory counts.programmesWithDetails ${inventory.counts?.programmesWithDetails} does not match ${count} details`);
+  }
+}
+
 function validateProgrammeLinks(inventory, baseline, errors) {
   // School-owned programme pages: the row must exist, the target must be https
   // on a domain that school itself owns, and the declared count must match. A
@@ -633,6 +670,7 @@ function validateDataset(snapshotRoot) {
   // on the school's own registrable domain, and the count must match. A build
   // made without the page index carries no links and no count.
   const linkedInventoryOfferings = validateProgrammeLinks(inventory, baseline, errors);
+  validateProgrammeDetails(inventory, inventoryRowIds, errors);
 
   for (const [relative, name] of [["admissions/cuni-mff-cs-tracer.json", "CUNI tracer"], ["admissions/muni-fi-tracer.json", "MUNI tracer"]]) {
     const tracer = data[relative];

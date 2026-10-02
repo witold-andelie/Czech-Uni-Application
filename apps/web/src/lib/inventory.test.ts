@@ -83,8 +83,24 @@ describe("nine-HEI register inventory browse", () => {
   it("does not invent tuition or open windows on inventory rows", () => {
     const inventory = browse.offerings.filter((item) => item.dataClass === "official_register_extract");
     assert.ok(inventory.length > 1000);
-    assert.ok(inventory.every((item) => item.tuition.published === false));
-    assert.ok(inventory.every((item) => item.tuition.amount == null));
+    // A fee appears only where studyin.gov.cz states one for that programme,
+    // with that portal page as its evidence; every other row stays unpublished.
+    const compact = JSON.parse(readFileSync(resolve(root, "data/sources/browse/nine-hei-inventory.json"), "utf8")) as CompactInventory;
+    const details = compact.programmeDetails ?? {};
+    for (const item of inventory) {
+      const detail = details[item.id];
+      if (item.tuition.published) {
+        assert.ok(detail && detail[3] != null, item.id);
+        assert.equal(item.tuition.amount, detail[3]);
+        assert.equal(item.tuition.currency, detail[4]);
+        assert.equal(item.tuition.cycle, null);
+        assert.equal(item.tuition.evidenceUrl, `https://studyin.gov.cz/plan-your-studies/universities/${detail[5]}`);
+      } else {
+        assert.equal(item.tuition.amount, null);
+        assert.ok(!detail || detail[3] == null, item.id);
+      }
+    }
+    assert.ok(inventory.some((item) => item.tuition.published));
     assert.ok(inventory.every((item) => item.academicYear === "register"));
     const inventoryIds = new Set(inventory.map((item) => item.id));
     const inventoryWindows = browse.windows.filter((item) => item.ownerType === "offering" && inventoryIds.has(item.ownerId));

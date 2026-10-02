@@ -317,6 +317,57 @@
       ]
     },
     {
+      "id": "programme_detail_valid",
+      "expect": "accept",
+      "rules": [],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "",
+          "set": {"programmeDetails": {"$FIRST_ROW_ID": ["Praha", "fc", 180, 45000, "CZK", "charles-university/example-programme"]}}
+        },
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "counts",
+          "set": {"programmesWithDetails": 1}
+        }
+      ]
+    },
+    {
+      "id": "programme_detail_fee_without_currency",
+      "expect": "reject",
+      "rules": ["PROGRAMME_DETAIL_INVALID"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "",
+          "set": {"programmeDetails": {"$FIRST_ROW_ID": ["Praha", "f", null, 45000, null, "charles-university/example-programme"]}}
+        },
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "counts",
+          "set": {"programmesWithDetails": 1}
+        }
+      ]
+    },
+    {
+      "id": "programme_detail_count_mismatch",
+      "expect": "reject",
+      "rules": ["PROGRAMME_DETAIL_COUNT_MISMATCH"],
+      "mutations": [
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "",
+          "set": {"programmeDetails": {"$FIRST_ROW_ID": ["Praha", "f", null, null, null, "charles-university/example-programme"]}}
+        },
+        {
+          "file": "browse/nine-hei-inventory.json",
+          "path": "counts",
+          "set": {"programmesWithDetails": 2}
+        }
+      ]
+    },
+    {
       "id": "programme_link_foreign_domain",
       "expect": "reject",
       "rules": ["PROGRAMME_LINK_FOREIGN_DOMAIN"],

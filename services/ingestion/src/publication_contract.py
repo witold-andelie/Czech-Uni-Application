@@ -296,6 +296,7 @@ def _validate_inventory(
     if not isinstance(declared, dict) or declared.get("schools") != len(school_ids) or declared.get("programmes") != total:
         errors.append("Inventory embedded counts do not match actual records")
     linked = _validate_programme_links(data, school_ids, rows_by_school, declared, baseline, errors)
+    _validate_programme_details(data, rows_by_school, errors)
     if not school_ids or total == 0:
         errors.append("Inventory must contain at least one school and one record")
     return len(school_ids), total, linked
@@ -311,6 +312,47 @@ def _registrable_host(value: Any) -> str:
     host = (parsed.hostname or "").casefold()
     labels = [label for label in host.split(".") if label]
     return ".".join(labels[-2:]) if len(labels) > 2 else ".".join(labels)
+
+
+STUDYIN_PATH_RE = re.compile(r"^[a-z0-9-]+/[a-z0-9-]+$")
+
+
+def _validate_programme_details(data: dict[str, Any], rows_by_school: dict[str, set[str]], errors: list[str]) -> None:
+    """studyin.gov.cz facts sit beside existing rows in a fixed six-field shape."""
+    if "programmeDetails" not in data:
+        return
+    raw = data.get("programmeDetails")
+    if not isinstance(raw, dict):
+        errors.append(rule("PROGRAMME_DETAIL_INVALID", "Inventory programmeDetails must be an object keyed by row id"))
+        return
+    rows = set().union(*rows_by_school.values()) if rows_by_school else set()
+    for ident, entry in raw.items():
+        if ident not in rows:
+            errors.append(rule("PROGRAMME_DETAIL_INVALID", f"Inventory programme detail {ident!r} has no matching row"))
+            continue
+        if not isinstance(entry, list) or len(entry) != 6:
+            errors.append(rule("PROGRAMME_DETAIL_INVALID", f"Inventory programme detail {ident} must have six fields"))
+            continue
+        city, forms, credits, amount, currency, path = entry
+        problems = [
+            city is not None and not (isinstance(city, str) and city.strip()),
+            forms is not None and not (isinstance(forms, str) and re.fullmatch(r"[fcd]+", forms)),
+            credits is not None and not (isinstance(credits, int) and not isinstance(credits, bool) and credits > 0),
+            amount is not None and not (isinstance(amount, (int, float)) and not isinstance(amount, bool) and amount > 0),
+            (amount is None) != (currency is None),
+            currency is not None and not (isinstance(currency, str) and re.fullmatch(r"[A-Z]{3}", currency)),
+            not (isinstance(path, str) and STUDYIN_PATH_RE.fullmatch(path)),
+        ]
+        if any(problems):
+            errors.append(rule("PROGRAMME_DETAIL_INVALID", f"Inventory programme detail {ident} has an invalid field"))
+    counts = data.get("counts") if isinstance(data.get("counts"), dict) else {}
+    if counts.get("programmesWithDetails") != len(raw):
+        errors.append(
+            rule(
+                "PROGRAMME_DETAIL_COUNT_MISMATCH",
+                f"Inventory counts.programmesWithDetails {counts.get('programmesWithDetails')} does not match {len(raw)} details",
+            )
+        )
 
 
 def _validate_programme_links(

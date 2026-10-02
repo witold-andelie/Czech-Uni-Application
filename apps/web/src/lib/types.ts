@@ -146,6 +146,12 @@ export interface Offering {
   // page for this specific programme; null means the link is the university
   // site and the label has to say so.
   programmeLinkKind?: "school_programme_page" | null;
+  // Facts the national portal studyin.gov.cz states for this programme
+  // (inventory programmeDetails); absent when no single record matched.
+  studyForms?: ("f" | "c" | "d")[];
+  programmeCity?: string | null;
+  credits?: number | null;
+  detailsSourceUrl?: string | null;
   sourceLanguage?: string | null;
   titleOriginal?: string | null;
   fetchedAt?: string | null;

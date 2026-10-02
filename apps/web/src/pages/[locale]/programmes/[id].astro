@@ -30,6 +30,8 @@ if (view.offering.tuition.evidenceUrl) {
 }
 const sources = catalog.evidence.filter((row) => sourceIds.has(row.id));
 const uniqueSources = [...new Map(sources.map((row) => [row.url, row])).values()];
+const studyinHref = safeHttpUrl(view.offering.detailsSourceUrl ?? "");
+const tuitionFromStudyin = Boolean(studyinHref) && view.offering.tuition.evidenceUrl === view.offering.detailsSourceUrl;
 const officialHref = officialOfferingHref(view.offering, view.institution, findApplyPortal(view.institution.id));
 ---
 <BaseLayout locale={locale} title={text(view.offering.title, locale)}>
@@ -62,7 +64,26 @@ const officialHref = officialOfferingHref(view.offering, view.institution, findA
           <p>{line}</p>
         ))}
         {view.offering.tuition.noteOriginal && <p class="disclaimer">{view.offering.tuition.noteOriginal}</p>}
+        {tuitionFromStudyin && !view.offering.tuition.cycle && <p class="disclaimer">{t(locale, "tuition.studyinCycleUnstated")}</p>}
       </div>
+      {view.offering.studyForms && view.offering.studyForms.length > 0 && (
+        <div class="panel">
+          <p class="muted">{t(locale, "detail.studyForm")}</p>
+          <p>{view.offering.studyForms.map((code) => t(locale, `studyForm.${code}`)).join(" · ")}</p>
+        </div>
+      )}
+      {view.offering.programmeCity && (
+        <div class="panel">
+          <p class="muted">{t(locale, "detail.programmeCity")}</p>
+          <p>{view.offering.programmeCity}</p>
+        </div>
+      )}
+      {view.offering.credits != null && (
+        <div class="panel">
+          <p class="muted">{t(locale, "detail.credits")}</p>
+          <p>{view.offering.credits}</p>
+        </div>
+      )}
       <div class="panel">
         <p class="muted">{t(locale, "detail.year")}</p>
         <p>{view.offering.academicYear === "register" || view.offering.academicYear === "unknown" ? t(locale, view.offering.academicYear === "unknown" ? "detail.unknownYear" : "inventory.year") : view.offering.academicYear}</p>
@@ -104,6 +125,12 @@ const officialHref = officialOfferingHref(view.offering, view.institution, findA
         <a class="external" href={officialHref} rel="noopener noreferrer" target="_blank">
           {view.offering.programmeLinkKind ? t(locale, "programme.link.page") : t(locale, "programme.link.fallback")}
         </a>
+      </p>
+    )}
+    {studyinHref && (
+      <p class="disclaimer">
+        {t(locale, "detail.studyinSource")}{fieldSep(locale)}
+        <a class="external" href={studyinHref} rel="noopener noreferrer" target="_blank">studyin.gov.cz</a>
       </p>
     )}
     <p class="disclaimer">{t(locale, "detail.notSubmitted")}</p>

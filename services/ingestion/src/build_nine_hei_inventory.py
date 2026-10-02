@@ -35,6 +35,19 @@ PROGRAMME_LINK_NOTE_UNREADABLE = (
     "was attached and every row shows the university site."
 )
 
+# The national study portal's programme records (harvest_studyin_programmes.py):
+# city, study forms, credits and, where the school states one, a fee.
+STUDYIN = ROOT / "data" / "sources" / "admissions" / "studyin-programmes.json"
+STUDYIN_PREFIX = "https://studyin.gov.cz/plan-your-studies/universities/"
+STUDY_FORM_CODE = {"full-time": "f", "combined": "c", "distance": "d"}
+PROGRAMME_DETAIL_NOTE = (
+    "Facts the national study portal studyin.gov.cz states for the programme, matched to the "
+    "register row by school, level, teaching language, title and faculty: "
+    "[city, study forms (f full-time, c combined, d distance), credits, tuition amount, "
+    "tuition currency, studyin.gov.cz path]. A field the portal leaves empty stays null; "
+    "a missing fee is not a free programme."
+)
+
 NINE_HEIS: tuple[tuple[str, str], ...] = tuple(
     (item["msmtCode"].lower(), f"msmt-{item['msmtCode'].lower()}") for item in LISTED
 )
@@ -134,6 +147,7 @@ def build_compact(schools: list[dict], generated_at: str | None = None, link_rep
         "schools": schools,
     }
     _, report = stamp_programme_links(payload)
+    stamp_programme_details(payload)
     if link_report is not None:
         # What the link gate kept and what it dropped, so the build can say so.
         link_report.update(report)
@@ -210,6 +224,72 @@ def stamp_programme_links(payload: dict) -> tuple[dict, dict[str, int]]:
     payload["programmeLinkGeneratedAt"] = str(index.get("generatedAt") or "")
     report["published"] = len(kept)
     return payload, report
+
+
+def _fold(value: object) -> str:
+    import unicodedata
+
+    text = unicodedata.normalize("NFKD", str(value or "")).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z0-9]+", " ", text).strip()
+
+
+def programme_details(schools: list[dict], studyin: dict) -> dict[str, list]:
+    """studyin.gov.cz facts per register row, only where exactly one record matches."""
+    by_key: dict[tuple, list[dict]] = {}
+    by_loose: dict[tuple, list[dict]] = {}
+    for record in studyin.get("programmes") or []:
+        if not isinstance(record, dict):
+            continue
+        titles = {_fold(value) for value in (record.get("titles") or {}).values() if value}
+        faculty = _fold((record.get("facultyNames") or {}).get("cs"))
+        for title in titles:
+            base = (record.get("institutionId"), record.get("degree"), record.get("studyLanguage"), title)
+            by_key.setdefault((*base, faculty), []).append(record)
+            by_loose.setdefault(base, []).append(record)
+    details: dict[str, list] = {}
+    for school in schools:
+        for row in school.get("rows") or []:
+            ident, title, degree, faculty, _years, language, _isced = row
+            base = (school["id"], degree, language, _fold(title))
+            found = {id(item): item for item in by_key.get((*base, _fold(faculty)), [])}
+            if not found:
+                found = {id(item): item for item in by_loose.get(base, [])}
+            if len(found) != 1:
+                continue
+            record = next(iter(found.values()))
+            url = str(record.get("officialDirectoryUrl") or "")
+            if not url.startswith(STUDYIN_PREFIX):
+                continue
+            forms = "".join(
+                code
+                for form, code in STUDY_FORM_CODE.items()
+                if form in ((record.get("studyForms") or {}).get("en") or [])
+            )
+            tuition = record.get("tuition") if isinstance(record.get("tuition"), dict) else {}
+            amount = tuition.get("amount") if isinstance(tuition.get("amount"), (int, float)) and tuition["amount"] > 0 else None
+            details[ident] = [
+                record.get("city") or None,
+                forms or None,
+                int(record["credits"]) if isinstance(record.get("credits"), (int, float)) and record["credits"] > 0 else None,
+                amount,
+                str(tuition.get("currency") or "") or None if amount is not None else None,
+                url[len(STUDYIN_PREFIX):],
+            ]
+    return details
+
+
+def stamp_programme_details(payload: dict) -> dict:
+    if not STUDYIN.is_file():
+        return payload
+    try:
+        studyin = json.loads(STUDYIN.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return payload
+    details = programme_details(payload.get("schools") or [], studyin)
+    payload["programmeDetails"] = dict(sorted(details.items()))
+    payload["programmeDetailNote"] = PROGRAMME_DETAIL_NOTE
+    payload["counts"]["programmesWithDetails"] = len(details)
+    return payload
 
 
 def register_extracts() -> list[tuple[str, str]]:

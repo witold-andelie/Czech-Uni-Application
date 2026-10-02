@@ -55,6 +55,11 @@ export interface ProgrammePageLink {
   reachability: string;
 }
 
+/** [city, study forms ("f"/"c"/"d"), credits, tuition amount, tuition currency, studyin.gov.cz path] */
+export type ProgrammeDetail = [string | null, string | null, number | null, number | null, string | null, string];
+
+export const STUDYIN_PROGRAMME_BASE = "https://studyin.gov.cz/plan-your-studies/universities/";
+
 export interface CompactInventory {
   generatedAt: string;
   dataClass: "official_register_extract";
@@ -65,6 +70,8 @@ export interface CompactInventory {
   counts?: { schools: number; programmes: number; linkedProgrammes?: number };
   /** School-owned programme pages keyed by row id; rows absent here show the university site. */
   programmeLinks?: Record<string, ProgrammePageLink>;
+  /** studyin.gov.cz facts keyed by row id (build_nine_hei_inventory.py). */
+  programmeDetails?: Record<string, ProgrammeDetail>;
   schools: CompactSchool[];
 }
 
@@ -103,6 +110,7 @@ export function expandInventory(
 ): { programmes: Programme[]; offerings: Offering[] } {
   const portalById = new Map(portals.map((item) => [item.institutionId, item]));
   const programmeLinks = compact.programmeLinks ?? {};
+  const programmeDetails = compact.programmeDetails ?? {};
   const programmes: Programme[] = [];
   const offerings: Offering[] = [];
   const verifiedAt = null;
@@ -113,6 +121,9 @@ export function expandInventory(
       const [id, title, degreeCode, faculty, years, language, isced] = row;
       const degree = DEGREE[degreeCode] ?? "unknown";
       const programmeLink = programmeLinks[id];
+      const detail = programmeDetails[id];
+      const detailsSourceUrl = detail ? `${STUDYIN_PROGRAMME_BASE}${detail[5]}` : null;
+      const fee = detail && detail[3] != null && detail[4] ? { amount: detail[3], currency: detail[4] } : null;
       const names = localizedOriginal(title);
       const field = localizedOriginal(faculty || title);
       programmes.push({
@@ -137,15 +148,29 @@ export function expandInventory(
         durationSemesters: years == null ? null : Math.round(Number(years) * 2),
         field,
         iscedF: isced || null,
-        tuition: {
-          amount: null,
-          currency: null,
-          cycle: null,
-          published: false,
-          evidenceUrl: compact.sourceUrl || REGISTER_URL,
-          noteOriginal: null,
-          variants: [],
-        },
+        tuition: fee
+          ? {
+              amount: fee.amount,
+              currency: fee.currency,
+              cycle: null,
+              published: true,
+              evidenceUrl: detailsSourceUrl,
+              noteOriginal: null,
+              variants: [],
+            }
+          : {
+              amount: null,
+              currency: null,
+              cycle: null,
+              published: false,
+              evidenceUrl: compact.sourceUrl || REGISTER_URL,
+              noteOriginal: null,
+              variants: [],
+            },
+        studyForms: detail?.[1] ? ([...detail[1]].filter((code) => code === "f" || code === "c" || code === "d") as ("f" | "c" | "d")[]) : [],
+        programmeCity: detail?.[0] ?? null,
+        credits: detail?.[2] ?? null,
+        detailsSourceUrl,
         applicationUrl: portalApplicationUrl(portal, language),
         officialProgrammeUrl: programmeLink?.url ?? null,
         programmeLinkKind: programmeLink ? "school_programme_page" : null,
