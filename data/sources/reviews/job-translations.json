@@ -4690,7 +4690,15 @@
             "workingLanguages": []
           }
         }
-      ]
+      ],
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_it_support",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “VŘ na pozici pracovník IT oddělení na FJFI” (https://eud.is.cvut.cz/pub/deska/36000002/ifis/5488) is an IT-department staff post at FJFI (IT support, not research or research-technical work). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
     },
     "job-21000-84873": {
       "sourceHash": "sha256:dd0bdca38ba9775e3a1f149491436484b655e0f1d4a4f79815b59a7838d4baf8",
@@ -6656,41 +6664,38 @@
       ]
     },
     "job-43000-492828": {
-      "sourceHash": "sha256:ba5b891faba582f1d948ed43394deb9e7e2c76d2a8d9557efddbfa7097b07be5",
-      "evidenceHash": "sha256:ba5b891faba582f1d948ed43394deb9e7e2c76d2a8d9557efddbfa7097b07be5",
+      "sourceHash": "sha256:ab82d67c0381f450b7207f9d44a6d95b77330d0745537b76568c1675f5f15de5",
+      "evidenceHash": "sha256:ab82d67c0381f450b7207f9d44a6d95b77330d0745537b76568c1675f5f15de5",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "operator_source_review"
       },
-      "reviewEventId": "draft-2026-09-22-108",
-      "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). PEUNI recruitis captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewEventId": "rev-2026-10-02-batch-01",
+      "reviewedAt": "2026-10-02T20:24:17Z",
+      "reviewNote": "Checked 2026-10-02 against the live official notice (492828): MENDELU Recruitis advert; academic post with grant and contract research; master's degree in engineering or agriculture (or doctoral study within a year) - master's minimum; Czech and English 'very good'; 'Employment hours: 0.6 (24 hours per week)'; 'Length of employment: fixed-term for 1 year' (paid employment); apply by 31 Oct 2026; Lednice.",
       "title": {
-        "zh-CN": "助理，方向为生产系统机械化与可再生能源",
-        "en": "Assistant Specialising in the Mechanisation of Production Systems and Renewable Energy Sources",
-        "cs": "Odborný asistent specializující se na mechanizaci výrobních systémů a obnovitelné zdroje energie"
+        "zh-CN": "园艺学院园艺机械系助理（生产系统机械化与可再生能源方向）",
+        "en": "Assistant Specialising in the Mechanisation of Production Systems and Renewable Energy Sources (Department of Horticultural Machinery, Faculty of Horticulture)",
+        "cs": "Asistent/ka se zaměřením na mechanizaci výrobních systémů a obnovitelné zdroje energie (Ústav zahradnické techniky, Zahradnická fakulta MENDELU)"
       },
       "locales": {
         "zh-CN": {
           "status": "reviewed",
-          "contentHash": "sha256:8bc2612abdf659a782d90b951eea61c39f24cb297d024da4efcf8be7c35c392f",
-          "translatedFromHash": "sha256:ba5b891faba582f1d948ed43394deb9e7e2c76d2a8d9557efddbfa7097b07be5",
-          "reviewedAt": "2026-09-22T21:17:52Z"
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:87809de2d933337fe1434981c3e032c9f6114ac769be1f498f97d169164e7f40"
         },
         "en": {
           "status": "reviewed",
-          "contentHash": "sha256:a4799c16ddaef39adb6b3579a2a6a6497439d34cb97b55029af2315459248bde",
-          "translatedFromHash": "sha256:ba5b891faba582f1d948ed43394deb9e7e2c76d2a8d9557efddbfa7097b07be5",
-          "reviewedAt": "2026-09-22T21:17:52Z"
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:e89e6fbbb193f2e3e3052b62ff10b5a51895d68884390478b2cfc1ba7d033318"
         },
         "cs": {
           "status": "reviewed",
-          "contentHash": "sha256:f46f90f71fc3ebdf3974eca76689533aefb25ff66b1f739540c98deac829f83c",
-          "translatedFromHash": "sha256:ba5b891faba582f1d948ed43394deb9e7e2c76d2a8d9557efddbfa7097b07be5",
-          "reviewedAt": "2026-09-22T21:17:52Z"
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:fecf2c34122d1132493ab64d931e465493c9959a574030257222820352bdaf35"
         }
       },
-      "factHash": "sha256:ec32858bc4acd052b45e763b4a879b5f1bb24fc1b1aba0347b2fd501bd34a71a"
+      "factHash": "sha256:b410d64f1a3c0ac777232951db5c91cc3dff7949ad7001078669f139f8136fc6"
     },
     "job-43000-496117": {
       "sourceHash": "sha256:b8b2e6b74ce602862a044852859b3dec0c6e7e98c2f3d096338440a8fa3d9376",
@@ -6935,7 +6940,15 @@
             "officialDetailUrl": []
           }
         }
-      ]
+      ],
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "duplicate_record_of_job-21000-b1d06ab1e3be",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:34:12Z",
+        "note": "Operator decision 2026-10-02T20:34:12Z: “PhD student: near real-time optimization of non-linear problems with discrete decision variables” (https://www.aic.fel.cvut.cz/careers) is a hand-made placeholder for the AIC PhD studentship in near real-time optimisation, now harvested from its own posting page as job-21000-b1d06ab1e3be. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
     },
     "job-ctu-aic-postdoc-cybersecurity": {
       "sourceHash": "sha256:1bd7bc886e0a0f8441fe318d3b7efe74cd7457144be31b091e3d137d80d36260",
@@ -7002,7 +7015,15 @@
             "officialDetailUrl": []
           }
         }
-      ]
+      ],
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "duplicate_record_of_job-21000-f5d075989aab",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:34:12Z",
+        "note": "Operator decision 2026-10-02T20:34:12Z: “Postdoc in AI and Cybersecurity” (https://www.aic.fel.cvut.cz/careers) is a hand-made placeholder for the AIC postdoc in AI and cybersecurity, now harvested from its own posting page as job-21000-f5d075989aab. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
     },
     "job-ctu-roboprox-phd-hri": {
       "sourceHash": "sha256:9e027d3aff9580c169285fa36b9d41e95d34a76526dbf5815fd8075cb6f1c8e7",
@@ -8031,7 +8052,7 @@
       },
       "reviewEventId": "rev-2026-10-01-muni-05",
       "reviewedAt": "2026-10-01T20:08:56Z",
-      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81752 (main content): PhD position at CEITEC; no minimum degree stated (stays unknown); PhD enrolment; 'An attractive salary' (paid); good oral and written English; deadline 20 Oct 2026.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
+      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81752 (main content): PhD position at CEITEC; no minimum degree stated (stays unknown); PhD enrolment; 'An attractive salary' (paid); good oral and written English; deadline 20 Oct 2026.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.\n\nRe-bound 2026-10-02T20:34:12Z (operator): the page's 'Start date: can be from November 1st, 2026' is now read, and 'part-time working contract (min. 0.5 FTE) + study stipend' is now read as mixed employment and stipend funding with the workload left unknown (0.5 is a minimum); title and other facts unchanged.",
       "title": {
         "zh-CN": "博士生岗位：植物再生与发育（CEITEC）",
         "en": "PhD position – Plant regeneration and development (CEITEC MU)",
@@ -8054,7 +8075,7 @@
           "contentHash": "sha256:e7a01c8b2aa41d59346252d6ef8901c5de492b7c76ffefec13da64e4e22d0178"
         }
       },
-      "factHash": "sha256:2f77017796abc6636d7c2e310eb0ab83e2896959de2e70e5d8b019737c7e472a"
+      "factHash": "sha256:050b44f4a829b34587987a375d1f23597ed7384ce6ecbb2ffb80bf7d1e6d48b4"
     },
     "job-14000-81774": {
       "sourceHash": "sha256:4b23b7821f555404e7e3ce3c94c6a02caa77f0995568bd2949e4fbb0d47c8224",
@@ -8065,7 +8086,7 @@
       },
       "reviewEventId": "rev-2026-10-01-muni-06",
       "reviewedAt": "2026-10-01T20:08:56Z",
-      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81774 (main content): Faculty of Medicine, combined with a Masaryk Memorial Cancer Institute role; university education in General Medicine (MUDr., master's level) required, habilitation an advantage, PhD not stated as required; paid senior post; Czech required; deadline 26 Oct 2026.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
+      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81774 (main content): Faculty of Medicine, combined with a Masaryk Memorial Cancer Institute role; university education in General Medicine (MUDr., master's level) required, habilitation an advantage, PhD not stated as required; paid senior post; Czech required; deadline 26 Oct 2026.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.\n\nRe-bound 2026-10-02T20:34:12Z (operator): the page's 'Start date 1. 3. 2027' is now read (the detail page is read from its main content); title and every other reviewed fact unchanged.",
       "title": {
         "zh-CN": "医学院外科肿瘤学系主任",
         "en": "Head of the Department of Surgical Oncology (Faculty of Medicine)",
@@ -8088,7 +8109,7 @@
           "contentHash": "sha256:fb9b74d306e2ebda2a9278e5b62ea9b7c68bd30d3a5325835bae83d0104123e9"
         }
       },
-      "factHash": "sha256:41eb3e4b006a21904a71f3efd03fbb0296351238469461176aafd46928a8a0b1"
+      "factHash": "sha256:94cd2e788ad7c738178ac71a710121d048c3b8ca7fcb8e758cfee0a149b0c343"
     },
     "job-14000-81775": {
       "sourceHash": "sha256:fa8b168cec99b546eb167a86d0e16498006280d50f87ac33d8dbec92a815f089",
@@ -10197,6 +10218,666 @@
         }
       },
       "factHash": "sha256:b018b7826f48f0041a898a0770fa2ee701b8da7f98b64774a1ac7a7cbd11411c"
+    },
+    "job-43000-497777": {
+      "sourceHash": "sha256:3ef7d72aa730e5cc6636a17cf7a3673c903eb8f654cd043e6088b10be9fdd4aa",
+      "evidenceHash": "sha256:3ef7d72aa730e5cc6636a17cf7a3673c903eb8f654cd043e6088b10be9fdd4aa",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-batch-02",
+      "reviewedAt": "2026-10-02T20:24:17Z",
+      "reviewNote": "Checked 2026-10-02 against the live official notice (497777): Non-academic research post; master's degree in finance or related ('started doctoral studies ... is an advantage', not required); excellent English; 'Employment rate: 0.39 (15.6 hours per week)'; 'Duration of the employment relationship: for a fixed term until 30 September 2027' (paid); 'Apply for the selection process at 4 October 2026'.",
+      "title": {
+        "zh-CN": "商学院财务与会计系项目研究员 II（能源市场交易方向）",
+        "en": "Project Researcher II with a Focus on Energy Markets Trading (Department of Finance and Accounting, Faculty of Business and Economics)",
+        "cs": "Projektový výzkumný pracovník II se zaměřením na obchodování na energetických trzích (Ústav financí a účetnictví, Provozně ekonomická fakulta MENDELU)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:cbff13023c38248f35a276372bdac2660d79b8d75813834b51e911abafbb5453"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:69a2daf535b060a82a4745e67e2f955e11d7d7d9572fbcf11613220fb07336e1"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:4c107e760d8e36eb61931bd406a559040ec4c9b091eae6eb6d8972092dae9dc3"
+        }
+      },
+      "factHash": "sha256:4606d135f1906002e88225284b984477967649b2c2492ccab8e04e78b2e15dcb"
+    },
+    "job-43000-498518": {
+      "sourceHash": "sha256:e4861a40be575c91737b616e7a08ce344a120f391dc2534b1273d60fc6689e27",
+      "evidenceHash": "sha256:e4861a40be575c91737b616e7a08ce344a120f391dc2534b1273d60fc6689e27",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-batch-03",
+      "reviewedAt": "2026-10-02T20:24:17Z",
+      "reviewNote": "Checked 2026-10-02 against the live official notice (498518): 'A university degree at doctoral level (Ph.D.) in applied zoology or a related field'; excellent Czech and English, teaching in both; 'Workload: 1.0 (40 hours per week)'; 'fixed-term employment for 3 years' (paid); apply by 30 Oct 2026; start 1 Jan 2027.",
+      "title": {
+        "zh-CN": "农学院动物学、鱼类生产与水生生物学系应用昆虫学方向助理教授",
+        "en": "Assistant Professor Specialising in Applied Entomology (Department of Zoology, Fisheries, Hydrobiology and Apiculture, Faculty of AgriSciences)",
+        "cs": "Odborný asistent / odborná asistentka se zaměřením na aplikovanou entomologii (Ústav zoologie, rybářství, hydrobiologie a včelařství, Agronomická fakulta MENDELU)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:e1981d33fa7df6fe207b034cfecb154d86a3ce22599efd3c7ea9d546ea338b73"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:ab9e00d15edcb1c25273b3e64b65a798ac1a2ac56296612c974799241bd4b8b6"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:5d68676090beafb4647d7bb27bb12e9feedecdc9e312d6cfab7daac795c26ec9"
+        }
+      },
+      "factHash": "sha256:0a1645848818f1e806d3c72b3cdcdf545f5994f7104a493a7a2af648b4cb99d5"
+    },
+    "job-43000-498649": {
+      "sourceHash": "sha256:44809dec85837232fca7e95a4dc94aabbb9a57bd516580b19de7b74b92d7f93b",
+      "evidenceHash": "sha256:44809dec85837232fca7e95a4dc94aabbb9a57bd516580b19de7b74b92d7f93b",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-batch-04",
+      "reviewedAt": "2026-10-02T20:24:17Z",
+      "reviewNote": "Checked 2026-10-02 against the live official notice (498649): Research post on the 'Innovative Sandwich-Type Composite Doors with Reduced Flammability' project; 'a master's or doctoral degree in Wood Engineering ... or a related field' (master's minimum); no language requirement stated; 'Working hours: 0.4 FTE'; 'fixed-term contract for 2 years' (paid); apply by 13 Oct 2026.",
+      "title": {
+        "zh-CN": "林业与木材技术学院木材科学与技术系项目研究员 I（复合材料及其耐火性方向）",
+        "en": "Project Researcher I Specialising in Composite Materials and Their Fire Resistance (Department of Wood Science and Wood Technology, Faculty of Forestry and Wood Technology)",
+        "cs": "Projektový výzkumný pracovník I se zaměřením na kompozitní materiály a jejich požární odolnost (Ústav nauky o dřevě, Lesnická a dřevařská fakulta MENDELU)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:03557784c835e411e77e5ae8f5d74a48ae0fb635f8592754bd8ef58ce28a5a08"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:004c0453b5cded380cd3a9a340291b8adf5ace89f3860470afecb19dc820fd04"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:e3694cde726609306756530f7a9029684886785f59bb77a3daab619e1db4e853"
+        }
+      },
+      "factHash": "sha256:33403074fc2c691bb007017a210a2c229cb4d3b93c079c2a7080236511aa0106"
+    },
+    "job-51000-1aa23eaa4e90": {
+      "sourceHash": "sha256:4f77968ec37cecec57d8ee3474d96bc4ef70b20b5561ea742afdaef87dd0cd5a",
+      "evidenceHash": "sha256:4f77968ec37cecec57d8ee3474d96bc4ef70b20b5561ea742afdaef87dd0cd5a",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-batch-05",
+      "reviewedAt": "2026-10-02T20:24:17Z",
+      "reviewNote": "Checked 2026-10-02 against the live official notice (https://www.hamu.cz/cs/aktuality/vyberove-rizeni-na-vedoucivedouciho-katedry-jazzo-5535/): HAMU selection procedure: department head and teacher in the jazz programme; 'ukončené VŠ vzdělání v magisterském stupni' (master's minimum); English written and spoken, and the procedure is held in Czech; employment (paid, amount not stated); 'zašlete nejpozději do 30. 10. 2026'. The record's original text carries the news list's date and categories; the reviewed titles state the post.",
+      "title": {
+        "zh-CN": "音乐与舞蹈学院爵士音乐系系主任暨学术人员",
+        "en": "Head of the Department of Jazz Music and Academic Staff Member (Music and Dance Faculty, AMU)",
+        "cs": "Vedoucí Katedry jazzové hudby a akademický pracovník / akademická pracovnice (HAMU)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:65806180cfdf95ceaa3747646924b76f0d0bff5ef892ef1da83c530e1c708b57"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:4dbbcdedd2ca889c02a0bb8a1cbc7357bd3ebdf92e0490e35ea9e54e9dfcc71b"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:928b092357123baef00e2d52fbf1415f865b3d32c90e45875259c6ce096ec670"
+        }
+      },
+      "factHash": "sha256:03a27378142b60cb8ee94e9c1f5db4ff03152a940360a2740d628fee2272b9ff"
+    },
+    "job-28000-08dd710e2319": {
+      "sourceHash": "sha256:834f316e3b863f6df9298e2d3f42742290c1587c1039fb86cc63a3c02e4977cc",
+      "evidenceHash": "sha256:834f316e3b863f6df9298e2d3f42742290c1587c1039fb86cc63a3c02e4977cc",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-batch-06",
+      "reviewedAt": "2026-10-02T20:24:17Z",
+      "reviewNote": "Checked 2026-10-02 against the live official notice (https://kariera.utb.cz/pozice-akademickych-pracovniku-pracovnic-pro-ustav-zdravotnickych-ved/): One notice for three posts (health and social care 1.0; general medicine 0.5; nursing 1.0) with different qualifications (a university degree, or prof./doc./Ph.D. or starting doctoral study), so degree, workload and pay are left unknown for the bundle; English at least B2 in all three; apply by 14 Oct 2026.",
+      "title": {
+        "zh-CN": "人文学院卫生科学研究所学术职位（教授／副教授／助理教授，三个方向）",
+        "en": "Academic Positions (Professor, Associate Professor, Assistant Professor) at the Institute of Health Sciences, Faculty of Humanities",
+        "cs": "Pozice akademických pracovníků/pracovnic pro Ústav zdravotnických věd (Fakulta humanitních studií UTB)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:15db3c10f5b6a5c141d1ed946f003c16a0dc0c0605d79d4ec6a0159073fa57eb"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:07a7a8a6e71e0cbc1010fd7e5a62882f7ddf48f7332c70af806625e5f4413a41"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:24:17Z",
+          "contentHash": "sha256:53549d91bcb6a647e8e733a019a22c61ad88279ee0785e4c0b3f26ec3d9ba3c0"
+        }
+      },
+      "factHash": "sha256:71aaa5fdc9f7deaea4117425f99d0da01585fe5cce0ce14b01216a144386bae2"
+    },
+    "job-21000-5501": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_teaching_only",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Výběrové řízení na pozici Pedagogický asistent na Katedru softwarového inženýrství na FJFI” (https://eud.is.cvut.cz/pub/deska/36000002/ifis/5501) is a pedagogical assistant at the Department of Software Engineering whose notice describes teaching courses only. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-21000-5516": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_administrative",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Výběrové řízení - Vedoucí odboru výstavby a investiční činnosti (OVIČ)” (https://eud.is.cvut.cz/pub/deska/36000002/ifis/5516) is the head of the construction and investment office (administration). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-21000-5526": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_administrative",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Výběrové řízení - vedoucí/ho odboru strategického rozvoje ČVUT” (https://eud.is.cvut.cz/pub/deska/36000002/ifis/5526) is the head of the strategic development office (administration). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-12000-6ca92db24031": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_teaching_only",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Lektor Katedry molekulární biologie a genetiky (m/ž) (PRF JU)” (https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/17092026-kmbg-lektor.pdf) is a lecturer post whose duties are teaching, thesis supervision and outreach, with own research only an advantage. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-12000-d94b20ace0f6": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_operations",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Provozní technik/technička (ZSF JU)” (https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/10/01102026-zsf-pto-technik.pdf) is a facilities technician (building operations). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-17000-191": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_operations",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Recepční” (https://www.osu.cz/kariera/kariera-neakademicke-pozice/?inzeratid=191) is a receptionist post. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-26000-2001448639": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_administrative",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Asistent/ka projektu Ústavu automatizace a informatiky” (https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001448639) is a project-coordination assistant (task and deadline tracking; secondary school minimum). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-26000-2001459151": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_administrative",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Vedoucí / vedoucí Odboru kvality VUT v Brně” (https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001459151) is the head of the university quality office (administration). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-51000-28fd1f52be6b": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_administrative",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “22.09.2026 Aktuality AMU, Volná místa, konkursy, Volná místa, konkursy Výběrové řízení na pozici vedoucí/ho studijního o” (https://www.hamu.cz/cs/aktuality/vyberove-rizeni-na-pozici-vedouciho-studijniho-od-5519/) is the head of the study office (administration). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-56000-63b28e075626": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "not_a_vacancy_page_chrome",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “TOP” (https://www.vstecb.cz/volna-pracovni-mista/#top) is the page anchor 'TOP' on the VŠTE vacancy page, not a vacancy. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-56000-96fff5b5b037": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "not_a_vacancy_page_chrome",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Škola Základní informace” (https://www.vstecb.cz/volna-pracovni-mista/) is the menu entry 'Škola Základní informace' on the VŠTE vacancy page, not a vacancy. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-56000-c94a20b5374d": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "not_a_vacancy_page_chrome",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Přejít na hlavní obsah” (https://www.vstecb.cz/volna-pracovni-mista/#content) is the skip link 'Přejít na hlavní obsah' on the VŠTE vacancy page, not a vacancy. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-7s000-400d190ed770": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "not_a_vacancy_page_chrome",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:24:18Z",
+        "note": "Operator decision 2026-10-02T20:24:18Z: “Jsme panevropská” (https://www.peuni.cz/kariera/) is the career page heading 'Jsme panevropská' on peuni.cz/kariera, not a vacancy (the page lists no VR-*.pdf notice now). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-21000-1e3715a81f1d": {
+      "sourceHash": "sha256:1151a3e360ab54fcd44acc936c6cc3c3f440068f011eb2924b1cee14def90913",
+      "evidenceHash": "sha256:1151a3e360ab54fcd44acc936c6cc3c3f440068f011eb2924b1cee14def90913",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-01",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/robotics-systems-engineer---development-of-autonomous-robotic-systems-junior-senior), read from the page's main content: Research-technical engineering post on experimental robotic platforms; junior/student or senior profiles, no degree level stated (unknown); no language requirement or pay stated; full-time in Prague; no closing date. Czech and Chinese titles are reviewer translations.",
+      "title": {
+        "zh-CN": "人工智能中心机器人系统工程师（自主机器人系统开发，初级／高级）",
+        "en": "Robotics Systems Engineer – Development of Autonomous Robotic Systems (Junior / Senior), AI Center FEE CTU",
+        "cs": "Inženýr/ka robotických systémů – vývoj autonomních robotických systémů (junior / senior), Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:b19c46d60b7bd571f5c44638d308b89e1eff3c1b35f3279d345bd72ddb01410e"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:eab7ae17846d899313090157104e45c78e27416050ab5042708d306ff1af4bf5"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:65da3c28d624368f39f87421017fff40fefb9d68cfade8464cad2a602bf0da9c"
+        }
+      },
+      "factHash": "sha256:82708d5308d29be339a9d7ff2333eea1f4310607fd0ead1a6a0cce56d2d05007"
+    },
+    "job-21000-8e94bb5bd334": {
+      "sourceHash": "sha256:0b7e6f52d22d65407f6053aa21c7166eaee1e5e6055a0dbe959160646cfe3519",
+      "evidenceHash": "sha256:0b7e6f52d22d65407f6053aa21c7166eaee1e5e6055a0dbe959160646cfe3519",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-02",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/unreal-engine-5-developer---visualization-and-simulation-junior-senior), read from the page's main content: Research-technical development post (simulation and visualisation for research projects); no degree level, language or pay stated; contract, part-time or full-time; no closing date.",
+      "title": {
+        "zh-CN": "人工智能中心 Unreal Engine 5 开发工程师（可视化与仿真，初级／高级）",
+        "en": "Unreal Engine 5 Developer – Visualization and Simulation (Junior / Senior), AI Center FEE CTU",
+        "cs": "Vývojář/ka Unreal Engine 5 – vizualizace a simulace (junior / senior), Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:0e7f117bee5783fbf6cfc6d09ce73ab52219e194a281b826f4f6bf77a56150d5"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:e8b4f8018049d86c41e87db9ae828c635d0d23b4441291df5a43f2caf34c6a53"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:a49c5faff385f8219f2e257a26b74600a96d9f791afa8da8ba104fd55bc411d5"
+        }
+      },
+      "factHash": "sha256:5206aa3f847579995a7a3921b9e57471caf7a93e4f7282e471456ab71a6188f2"
+    },
+    "job-21000-51b46a06e47f": {
+      "sourceHash": "sha256:24b2e5a6ac5972e2e889c2c909508635ab2d5eb4d356a249d1909a2feb625f04",
+      "evidenceHash": "sha256:24b2e5a6ac5972e2e889c2c909508635ab2d5eb4d356a249d1909a2feb625f04",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-03",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/simulation-platform-developer-morai---junior-senior), read from the page's main content: Research-technical development of a research simulation platform with the opportunity for publications; no degree level, language or pay stated; no closing date.",
+      "title": {
+        "zh-CN": "人工智能中心仿真平台开发工程师（MORAI，初级／高级）",
+        "en": "Simulation Platform Developer (MORAI) – Junior / Senior, AI Center FEE CTU",
+        "cs": "Vývojář/ka simulační platformy MORAI (junior / senior), Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:c35752030ea790c73d35c1fd2e6f1382ce27e0c20e49255bf60027bc2b798267"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:53f21844ac29d1754a927ae97b7a1dac5f15aee90421e44cf536d9218b65cf73"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:554bbc5b8a0568d0b9257a02e2c947b2c28950ffd4f4a2750b3bddc11ed6c33b"
+        }
+      },
+      "factHash": "sha256:863ce00f9abd12bd75515ac1fd2771bd571d53397d7822b18663e26e1148b9db"
+    },
+    "job-21000-317daa22381a": {
+      "sourceHash": "sha256:ea56de3dcf56a1c4205f00ad98027117e27b69a06d77c8a8a3e032e92a2783a6",
+      "evidenceHash": "sha256:ea56de3dcf56a1c4205f00ad98027117e27b69a06d77c8a8a3e032e92a2783a6",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-04",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/front-end-developer---autonomous-robotic-systems-junior-senior), read from the page's main content: Research-technical UI development for autonomous robotic vehicles (thesis or dissertation possible); no degree level, language or pay stated; no closing date.",
+      "title": {
+        "zh-CN": "人工智能中心前端开发工程师（自主机器人系统，初级／高级）",
+        "en": "Front-end Developer – Autonomous Robotic Systems (Junior / Senior), AI Center FEE CTU",
+        "cs": "Front-end vývojář/ka – autonomní robotické systémy (junior / senior), Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:afa45d580eb953465622fdd3c2424af4286d49a3e83377ff6faea9d9c2d21d7b"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:a4c229e7df674b731f58f2884ea9fd969234f2d9cc9dc7e45ba2fd7538eda26a"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:9160fc0579f182cd64f96b2f3619a618d8b71c3f1098e732dcb9e247087af38a"
+        }
+      },
+      "factHash": "sha256:3a512ebb8a612c8ef2c5a6f247a871754b1b21e8b09c8c170e9be80e3e10c6a3"
+    },
+    "job-21000-b1d06ab1e3be": {
+      "sourceHash": "sha256:3f13d6b6cdb48e7cb43c57df174461e6c24e0e6853ad7efe068bbe864c399be3",
+      "evidenceHash": "sha256:3f13d6b6cdb48e7cb43c57df174461e6c24e0e6853ad7efe068bbe864c399be3",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-05",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/phd-near-real-time-optimization), read from the page's main content: PhD studentship on a ČEZ-linked project (doctoral enrolment required); 'A degree in mathematics, computer science, or similar' (level not stated, so unknown); written and spoken English; full-time for 3 years; 'comes with a monthly salary' (paid; the approximate EUR 30K p.a. is not recorded as an amount); no closing date.",
+      "title": {
+        "zh-CN": "人工智能中心博士研究生（含离散决策变量的非线性问题近实时优化）",
+        "en": "PhD Student – Near Real-Time Optimization of Non-Linear Problems with Discrete Decision Variables, AI Center FEE CTU",
+        "cs": "Doktorand/ka – optimalizace nelineárních úloh s diskrétními rozhodovacími proměnnými v téměř reálném čase, Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:36f004336730a3b9f43e278adbe6d590d4e8aea6a51d40c23f88b2562718aac5"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:442c429d36cb0a17fc7b0935829c17980ae62c47e6fa0bef32b60c684fee3995"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:fa656e1a8db06d015eabe4b9076e9e8a9cca02e811779fb11678e059b7acc5e8"
+        }
+      },
+      "factHash": "sha256:b1dbdb15a51377a7827044fdced4bfb1f438d8140ea6570e1e569618d8b4d104"
+    },
+    "job-21000-3956d8552f41": {
+      "sourceHash": "sha256:970c64aa7d35bd2790fd14c358a4adcc5e0f8a4312ab6cab5a9e4e2d6ad928a5",
+      "evidenceHash": "sha256:970c64aa7d35bd2790fd14c358a4adcc5e0f8a4312ab6cab5a9e4e2d6ad928a5",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-06",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/open-positions-in-field-robotics-autonomous-systems), read from the page's main content: One call for several kinds of post, so no single degree requirement (unknown); salary stated as a share of the Czech average (about 140% PhD, 185-217% postdoc and tenure-track, 150-185% engineers) - paid; no language requirement; no closing date.",
+      "title": {
+        "zh-CN": "人工智能中心计算机器人实验室野外机器人与自主系统研究及工程职位（博士／博士后／终身轨／开发）",
+        "en": "Open Positions in Field Robotics & Autonomous Systems: Research & Engineering (PhD / Postdoc / Tenure-Track / Developer), Computational Robotics Lab, AI Center FEE CTU",
+        "cs": "Volné pozice v polní robotice a autonomních systémech: výzkum a vývoj (doktorand / postdok / tenure-track / vývojář), Laboratoř výpočetní robotiky, Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:de61078f1e1861ee66c5d33b3cc6be0cbbdef377648ebad872705a6aaa1bd235"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:9710c94057eef1821197c2850c2f4ad994de6ac1ccf80355c5ea13ebc93234f7"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:a2f8e03ae4107f80212c735b5ae90e5c9177e45918b69619a4fa9ef09fde5974"
+        }
+      },
+      "factHash": "sha256:6605da444b4f706083f871066640a41446d7aa5ad2da0197206d64819df9d665"
+    },
+    "job-21000-bcc1cf979495": {
+      "sourceHash": "sha256:725cc271c2a211dbe3b35d2ca2c0486c8e22737954a4569ad50efa6e9c9d18a3",
+      "evidenceHash": "sha256:725cc271c2a211dbe3b35d2ca2c0486c8e22737954a4569ad50efa6e9c9d18a3",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-07",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/ai-leaders), read from the page's main content: Six senior research positions (AI & Cybersecurity, AI Safety, trusted media and language, computational robotics, multi-agent systems, AI & energy) for 'a visionary AI leader with a Ph.D.' (doctorate required); tenure-track and postdoc candidates; paid; no closing date.",
+      "title": {
+        "zh-CN": "人工智能中心六个高级研究职位（AI 领军人才招聘）",
+        "en": "Seeking AI Leaders: Six Senior Research Positions, AI Center FEE CTU",
+        "cs": "Hledáme lídry v AI: šest seniorních výzkumných pozic, Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:f5a7cdc554e01f9a5545633da70c738874ffb526bb07624314b9fe01bc26fb12"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:45c7a133b9e0aa0c1153a7a3a7d7a265f96451e9250b719a633188ebf63278b9"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:fa41d5c5a6a1f4f622a39493f1551f8b18a44c2439849794b4afa786f5a384a8"
+        }
+      },
+      "factHash": "sha256:c40b09e95049e1cb545b9de88ba460e0a8c21e56aa2a33144c9881ecbcae0e99"
+    },
+    "job-21000-dc7f28f71cc5": {
+      "sourceHash": "sha256:1aeeb2bd84bb44f0ac7ff15e3ae2c39aa733603fc2e3fcdfabd0871118e67e2d",
+      "evidenceHash": "sha256:1aeeb2bd84bb44f0ac7ff15e3ae2c39aa733603fc2e3fcdfabd0871118e67e2d",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-08",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/llm-agents-researcher), read from the page's main content: PhD and postdoctoral researchers on LLM agents; 'Holds at least a master's degree in computer science or other related field'; 'salary of 45k-59k CZK monthly brutto' for full time (paid; the k-written range is not recorded as an amount); no language requirement stated; start ASAP, no closing date.",
+      "title": {
+        "zh-CN": "人工智能中心大语言模型智能体研究员",
+        "en": "LLM Agents Researcher, AI Center FEE CTU",
+        "cs": "Výzkumník/ice v oblasti agentů velkých jazykových modelů (LLM), Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:7b1140b221a4df5c19b612467fa171e0ce62a5a869cd7dc3ee5fa16e64c8715d"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:8cfd782cc0bc1716e398169374d0745b3cf52435143edfac62bee5ea1626c64d"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:63edf4927360829359d59d4d7847ed77d2751187c949e57b02d795b97f6d2baa"
+        }
+      },
+      "factHash": "sha256:f9efb97008ada66d3ad868b83fa9990ed3a40a973f0192b612e9b815b6fa8091"
+    },
+    "job-21000-f5d075989aab": {
+      "sourceHash": "sha256:e282c90832958c8800e8cab37fbeffed80317429a355734e2c889c81bd4e43fb",
+      "evidenceHash": "sha256:e282c90832958c8800e8cab37fbeffed80317429a355734e2c889c81bd4e43fb",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-09",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/postdoc-in-ai-and-cybersecurity), read from the page's main content: Postdoctoral research on DNS attack detection for DNS4EU; the posting states no degree wording beyond the postdoc title (unknown); 'We offer a competitive salary' (paid); on-premises in Prague; no closing date. Replaces the hand-made placeholder job-ctu-aic-postdoc-cybersecurity.",
+      "title": {
+        "zh-CN": "人工智能中心人工智能与网络安全博士后（Stratosphere 实验室，DNS4EU 项目）",
+        "en": "Postdoc in AI and Cybersecurity (Stratosphere Laboratory, DNS4EU project), AI Center FEE CTU",
+        "cs": "Postdok v oblasti umělé inteligence a kybernetické bezpečnosti (Stratosphere Laboratory, projekt DNS4EU), Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:0add7e93f16721dd2b07d937c0aa752ed953a3115e302131a38ab986c3c7cf24"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:373cbe0a6e48491fa74626e11b7c0988d71a991769bc27bde821ae86a692e937"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:3520d729e1e25bf09e1d54c03746a0e52c81bcd62a6f443e1904ef66b67d7e84"
+        }
+      },
+      "factHash": "sha256:5bfa378ca5e40a4504b0199e38859879af9b43d8337b32750e53deeb1453983e"
+    },
+    "job-21000-54efd24ca654": {
+      "sourceHash": "sha256:078477027a0c248476efcde27aba06158a669f15c8743a925d6a76ae78e6d65f",
+      "evidenceHash": "sha256:078477027a0c248476efcde27aba06158a669f15c8743a925d6a76ae78e6d65f",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-aic-10",
+      "reviewedAt": "2026-10-02T20:34:12Z",
+      "reviewNote": "Checked 2026-10-02 against the live AIC FEL ČVUT careers posting (https://www.aic.fel.cvut.cz/careers/phd-in-artificial-intelligence), read from the page's main content: Doctoral study as a full-time job (enrolment required, master's minimum); scholarship plus project work, 'In total, you will earn approx. 50 000 CZK gross (2 000 EUR)' (recorded as 50,000 CZK, pay period not stated); no language requirement stated; no closing date.",
+      "title": {
+        "zh-CN": "人工智能中心人工智能方向博士研究生",
+        "en": "Ph.D. in Artificial Intelligence, AI Center FEE CTU",
+        "cs": "Doktorské studium v oblasti umělé inteligence, Centrum umělé inteligence FEL ČVUT"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:64853ce07729112de87f329be8fd3c442f60f2b9a4a8ccab64c7f4ab8c9e1966"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:5cfbebc9e54e57ad3c962ae07d1fdc531737cfefd249bd14271373cfffb0d9e0"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:34:12Z",
+          "contentHash": "sha256:e5b0ce966bc60a89c63fc663d4e2f04474092a2772dfcab3b588adbe0dd3a725"
+        }
+      },
+      "factHash": "sha256:8fc57a10c6d647752295f8582676aa5f54ac4f86ba6b62986f571534e6e75cc0"
+    },
+    "job-28000-f468d5cb17a5": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_operations",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:34:12Z",
+        "note": "Operator decision 2026-10-02T20:34:12Z: “Kuchař/kuchařka” (https://kariera.utb.cz/kuchar-kucharka-2/) is a cook post. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
+    },
+    "job-31000-a1d47766e561": {
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "out_of_scope_administrative",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:35:09Z",
+        "note": "Operator decision 2026-10-02T20:35:09Z: “Projektový specialista/projektová specialistka na dotační projekty a veřejné zakázky” (https://www.vse.cz/informace-o-vse/informace-a-predpisy/karierni-prilezitosti/projektovy-specialista-projektova-specialistka-na-dotacni-projekty-a-verejne-zakazky/) is a project-office specialist for grant projects and public procurement (legislation and administration). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
+      }
     }
   }
 }

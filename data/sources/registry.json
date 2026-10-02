@@ -602,6 +602,25 @@
     "note": "Only rows CIIRC marks Open are discovered; the facts come from the linked EURAXESS notice. EURAXESS keeps application deadlines that passed while CIIRC still lists the row Open, so the CIIRC status is authoritative and the detail deadline is ignored (no closing date is shown). The application target is the CIIRC page, which carries the official apply instructions."
   },
   {
+    "id": "ctu-fel-aic-careers",
+    "url": "https://www.aic.fel.cvut.cz/careers",
+    "purpose": "official Artificial Intelligence Center (FEL ČVUT) careers page; each posting links its own detail page under /careers/",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "msmt-vs_21000",
+    "coverageScope": "department",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "generic_listing_links",
+    "pathPatterns": [
+      "/careers/[a-z0-9-]+/?$"
+    ],
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "production_entrypoint_wired_2026-10-02",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Registered 2026-10-02: the page listed ten postings (PhD, postdoc, researcher and engineering roles) that were not harvested; only a hand-made placeholder for the AI and cybersecurity postdoc existed. The page's self link is not a posting."
+  },
+  {
     "id": "osu-central-careers",
     "url": "https://www.osu.cz/kariera/kariera-akademicke-pozice/",
     "pages": [
