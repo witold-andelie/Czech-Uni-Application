@@ -18,7 +18,19 @@ const pointer = JSON.parse(readFileSync(resolve(root, "data/published/current.js
 };
 const published = JSON.parse(
   readFileSync(resolve(root, "data/published", pointer.snapshotDir, "browse/nine-hei-jobs.json"), "utf8"),
-) as { jobs: ResearchJob[] };
+) as { jobs: ResearchJob[]; windows: { ownerId: string; closesAt: string | null }[] };
+// The default list hides a record whose window already closed, so the postdoc
+// must still be open today (the first one in the file may have expired since
+// publication; it did on 2026-10-03).
+// In Prague time, as the site judges windows (UTC was still "yesterday" at
+// 00:50 Prague on 2026-10-03 and picked a postdoc that had just closed).
+const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Prague" }).format(new Date());
+// The list walk finds a card through its live-window entityId, so the postdoc
+// also needs a window (RoboProX postdocs have none and link straight out).
+const ownWindows = (job: ResearchJob) => (published.windows ?? []).filter((window) => window.ownerId === job.id);
+const stillOpen = (job: ResearchJob) =>
+  ownWindows(job).length > 0 &&
+  ownWindows(job).every((window) => !window.closesAt || window.closesAt.slice(0, 10) >= today);
 
 const unstated = published.jobs.find(
   (job) =>
@@ -29,7 +41,14 @@ const unstated = published.jobs.find(
     job.employmentFte == null &&
     job.employmentStartsAt == null,
 );
-const postdoc = published.jobs.find((job) => (job.isPostdoc || job.track === "postdoc") && job.visibility === "public");
+const postdoc = published.jobs.find(
+  (job) =>
+    (job.isPostdoc || job.track === "postdoc") &&
+    job.visibility === "public" &&
+    job.lifecycleStatus !== "closed" &&
+    job.lifecycleStatus !== "expired" &&
+    stillOpen(job),
+);
 const PAGE_SIZE = 20;
 // An upper bound only: the list also hides records whose window already closed,
 // so the walk below stops at the first page without cards rather than trust this.

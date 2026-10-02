@@ -166,7 +166,11 @@ describe("active publication stays consistent with search invariants", () => {
     };
     const merged = defaultJobFilterQuery({ track: "all", masterEligible: false, search: "CZU" });
     const result = filterJobs(live, merged, now, "en");
-    assert.ok(result.page.length >= 1, "CZU alias must find the published CZU jobs");
+    // Only when the active snapshot has public CZU jobs: on a day it has none
+    // (the old portal's notices archived, new ones awaiting live proof) the
+    // search rightly finds nothing (A90: consistency, not fixed counts).
+    const publicCzu = jobsPayload.jobs.filter((job) => job.employerId === "msmt-vs_41000" && job.visibility === "public");
+    if (publicCzu.length) assert.ok(result.page.length >= 1, "CZU alias must find the published CZU jobs");
     assert.ok(result.page.every((view) => view.job.employerId === "msmt-vs_41000"));
   });
 });
