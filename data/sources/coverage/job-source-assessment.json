@@ -1,13 +1,13 @@
 {
   "assessmentSchemaVersion": 2,
-  "generatedAt": "2026-09-29T19:01:53Z",
-  "publicationVersion": "v2026-09-29.2",
-  "candidateGenerationId": "cg-f641e951ed8540f7a25a92fc4257f452",
-  "sourceRunSetDigest": "sha256:6f097dbdc5ae821015a6543674fa3caf743ffa4ec92d06ae422a888a70ece1d5",
+  "generatedAt": "2026-10-02T22:43:55Z",
+  "publicationVersion": "v2026-10-02.1",
+  "candidateGenerationId": "cg-19c6099d7f904a899e3f1847fda0b0a0",
+  "sourceRunSetDigest": "sha256:f7d41996104c2eae92a9f880018de4da476c4c9bd42ca3bc6383406faebc2361",
   "baselineInstitutions": 54,
   "summary": {
-    "registered_executed": 29,
-    "registered_never_executed": 2,
+    "registered_executed": 0,
+    "registered_never_executed": 31,
     "assessed_no_central_source": 22,
     "not_assessed": 1
   },
@@ -17,21 +17,21 @@
       "institutionId": "msmt-vs_51000",
       "officialName": "Akademie múzických umění v Praze",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "amu-central-vacancies",
           "url": "https://www.amu.cz/cs/uredni-deska/volna-mista-konkurzy/",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T22:32:57Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:32:57Z",
-      "currentCandidates": 2,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 3,
       "publicJobs": 2,
       "assessmentEvidence": {
         "checkedAt": "2026-09-22T21:50:00Z",
@@ -48,20 +48,20 @@
       "institutionId": "msmt-vs_52000",
       "officialName": "Akademie výtvarných umění v Praze",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "avu-selection-procedures",
           "url": "https://avu.cz/stranka/vyberova-rizeni",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T22:33:06Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:33:06Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
@@ -233,20 +233,20 @@
       "institutionId": "msmt-vs_54000",
       "officialName": "Janáčkova akademie múzických umění",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "jamu-faculty-vacancies",
           "url": "https://hf.jamu.cz/fakulta-hf/o-fakulte/volna-mista/",
           "scope": null,
           "parser": "inline_heading_jobs",
-          "lastSuccessAt": "2026-09-16T22:33:06Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:33:06Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
@@ -265,22 +265,22 @@
       "institutionId": "msmt-vs_12000",
       "officialName": "Jihočeská univerzita v Českých Budějovicích",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "jcu-central-vacancies",
           "url": "https://www.jcu.cz/cz/univerzita/volna-mista",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T22:23:28Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:23:28Z",
-      "currentCandidates": 11,
-      "publicJobs": 11,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 8,
+      "publicJobs": 6,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -289,22 +289,22 @@
       "institutionId": "msmt-vs_14000",
       "officialName": "Masarykova univerzita",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "muni-careers",
           "url": "https://www.muni.cz/en/about-us/careers",
           "scope": null,
           "parser": "muni_vacancies",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 5,
-      "publicJobs": 5,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 15,
+      "publicJobs": 14,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -313,20 +313,20 @@
       "institutionId": "msmt-vs_43000",
       "officialName": "Mendelova univerzita v Brně",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "mendelu-official-recruitis",
           "url": "https://orlz.mendelu.cz/en/job-vacancies",
           "scope": null,
           "parser": "recruitis_widget",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 4,
       "publicJobs": 4,
       "assessmentEvidence": null,
@@ -337,20 +337,20 @@
       "institutionId": "msmt-vs_75000",
       "officialName": "Metropolitní univerzita Praha, o. p. s.",
       "ownership": "private",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "mup-central-vacancies",
           "url": "https://www.mup.cz/job/",
           "scope": null,
           "parser": "inline_heading_jobs",
-          "lastSuccessAt": "2026-09-16T22:33:11Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:33:11Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
@@ -368,20 +368,20 @@
       "institutionId": "msmt-vs_7c000",
       "officialName": "Moravská vysoká škola Olomouc, o.p.s.",
       "ownership": "private",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "mvso-central-careers",
           "url": "https://www.mvso.cz/kariera",
           "scope": null,
           "parser": "inline_heading_jobs",
-          "lastSuccessAt": "2026-09-16T22:33:12Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:33:12Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
@@ -399,22 +399,22 @@
       "institutionId": "msmt-vs_17000",
       "officialName": "Ostravská univerzita",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "osu-central-careers",
           "url": "https://www.osu.cz/kariera/kariera-akademicke-pozice/",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T17:56:15Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T17:56:15Z",
-      "currentCandidates": 9,
-      "publicJobs": 1,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 11,
+      "publicJobs": 8,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -423,20 +423,20 @@
       "institutionId": "msmt-vs_7s000",
       "officialName": "Panevropská univerzita, a.s.",
       "ownership": "private",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "peuni-central-careers",
           "url": "https://www.peuni.cz/kariera/",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T22:35:14Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:35:14Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
@@ -454,20 +454,20 @@
       "institutionId": "msmt-vs_94000",
       "officialName": "Policejní akademie České republiky v Praze",
       "ownership": "state",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "polac-central-vacancies",
           "url": "https://www.polac.cz/urde/volna.html",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T22:33:13Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:33:13Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
@@ -529,20 +529,20 @@
       "institutionId": "msmt-vs_19000",
       "officialName": "Slezská univerzita v Opavě",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "slu-central-vacancies",
           "url": "https://www.slu.cz/slu/cz/volnamista",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T17:57:06Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T17:57:06Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": null,
@@ -553,21 +553,21 @@
       "institutionId": "msmt-vs_24000",
       "officialName": "Technická univerzita v Liberci",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "tul-central-careers",
           "url": "https://www.tul.cz/kariera/probihajici-vyberova-rizeni/",
           "scope": null,
           "parser": "tul_careers",
-          "lastSuccessAt": "2026-09-16T18:10:21Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T18:10:21Z",
-      "currentCandidates": 1,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 3,
       "publicJobs": 0,
       "assessmentEvidence": null,
       "nextCheckAt": null,
@@ -621,20 +621,20 @@
       "institutionId": "msmt-vs_6d000",
       "officialName": "University of New York in Prague, s.r.o.",
       "ownership": "private",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "unyp-central-careers",
           "url": "https://www.unyp.cz/jobs-at-unyp/",
           "scope": null,
           "parser": "inline_heading_jobs",
-          "lastSuccessAt": "2026-09-16T22:33:37Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:33:37Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": {
@@ -652,22 +652,22 @@
       "institutionId": "msmt-vs_18000",
       "officialName": "Univerzita Hradec Králové",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "uhk-central-selection",
           "url": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T18:09:32Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T18:09:32Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 7,
-      "publicJobs": 0,
+      "publicJobs": 7,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -700,21 +700,21 @@
       "institutionId": "msmt-vs_11000",
       "officialName": "Univerzita Karlova",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "cuni-central-open-positions",
           "url": "https://cuni.cz/vyberova-rizeni/ajax.php?lang=en&stav=active&apo=all",
           "scope": null,
           "parser": "cuni_ajax",
-          "lastSuccessAt": "2026-09-16T22:21:46Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:21:46Z",
-      "currentCandidates": 10,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 15,
       "publicJobs": 15,
       "assessmentEvidence": null,
       "nextCheckAt": null,
@@ -724,20 +724,20 @@
       "institutionId": "msmt-vs_95000",
       "officialName": "Univerzita obrany",
       "ownership": "state",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "unob-academic-selection",
           "url": "https://unob.cz/univerzita/kariera/vyberova-rizeni-na-mista-akademickych-pracovniku/",
           "scope": null,
           "parser": "inline_heading_jobs",
-          "lastSuccessAt": "2026-09-16T18:02:32Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T18:02:32Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": null,
@@ -748,22 +748,22 @@
       "institutionId": "msmt-vs_15000",
       "officialName": "Univerzita Palackého v Olomouci",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "upol-central-careers",
           "url": "https://pracuj.upol.cz/",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 2,
-      "publicJobs": 2,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 8,
+      "publicJobs": 6,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -772,21 +772,21 @@
       "institutionId": "msmt-vs_25000",
       "officialName": "Univerzita Pardubice",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "upce-central-vacancies",
           "url": "https://www.upce.cz/volna-mista",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 4,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 5,
       "publicJobs": 5,
       "assessmentEvidence": null,
       "nextCheckAt": null,
@@ -796,22 +796,22 @@
       "institutionId": "msmt-vs_28000",
       "officialName": "Univerzita Tomáše Bati ve Zlíně",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "utb-central-careers",
           "url": "https://kariera.utb.cz/volne-pozice/akademicke-pozice/",
           "scope": null,
           "parser": "utb_careers",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 8,
-      "publicJobs": 6,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 1,
+      "publicJobs": 1,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -866,22 +866,30 @@
       "institutionId": "msmt-vs_27000",
       "officialName": "Vysoká škola báňská – Technická univerzita Ostrava",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "vsb-job-opportunities",
           "url": "https://www.vsb.cz/cs/univerzita/informacni-deska/pracovni-prilezitosti/",
           "scope": null,
           "parser": "vsb_listing",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
+        },
+        {
+          "sourceId": "vsb-job-opportunities-en",
+          "url": "https://www.vsb.cz/en/university/informational-board/job-opportunities/",
+          "scope": null,
+          "parser": "vsb_listing",
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
-      "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 3,
-      "publicJobs": 3,
+      "registeredSourceCount": 2,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 5,
+      "publicJobs": 5,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -890,21 +898,21 @@
       "institutionId": "msmt-vs_22000",
       "officialName": "Vysoká škola chemicko-technologická v Praze",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "uct-academic-scientific-positions",
           "url": "https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice",
           "scope": null,
           "parser": "inline_heading_jobs",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 5,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 4,
       "publicJobs": 4,
       "assessmentEvidence": null,
       "nextCheckAt": null,
@@ -914,21 +922,21 @@
       "institutionId": "msmt-vs_31000",
       "officialName": "Vysoká škola ekonomická v Praze",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "vse-central-careers",
           "url": "https://www.vse.cz/informace-o-vse/informace-a-predpisy/karierni-prilezitosti/",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 1,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 2,
       "publicJobs": 1,
       "assessmentEvidence": null,
       "nextCheckAt": null,
@@ -1070,20 +1078,20 @@
       "institutionId": "msmt-vs_55000",
       "officialName": "Vysoká škola polytechnická Jihlava",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "vspj-academic-vacancies",
           "url": "https://www.vspj.cz/cs/skola/uredni-deska/nabidky-zamestnani/akademicke-pozice/",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T18:02:47Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T18:02:47Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": null,
@@ -1116,20 +1124,20 @@
       "institutionId": "msmt-vs_56000",
       "officialName": "Vysoká škola technická a ekonomická v Českých Budějovicích",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "vstecb-central-vacancies",
           "url": "https://www.vstecb.cz/volna-pracovni-mista/",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-16T18:07:05Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T18:07:05Z",
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
       "currentCandidates": 0,
       "publicJobs": 0,
       "assessmentEvidence": null,
@@ -1206,22 +1214,22 @@
       "institutionId": "msmt-vs_26000",
       "officialName": "Vysoké učení technické v Brně",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "vut-central-careers",
           "url": "https://vutbr.jobs.cz/",
           "scope": null,
           "parser": "lmc_graphql",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 12,
-      "publicJobs": 13,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 7,
+      "publicJobs": 7,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -1230,22 +1238,22 @@
       "institutionId": "msmt-vs_23000",
       "officialName": "Západočeská univerzita v Plzni",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "zcu-central-vacancies",
           "url": "https://dumbledore.zcu.cz/document/data/folder/workspace://SpacesStore/bd09d1ff-712d-46ac-803a-f4b32201ec68?folderSort=az&fileSort=lu_desc",
           "scope": null,
           "parser": "zcu_document_feed",
-          "lastSuccessAt": "2026-09-16T22:24:10Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-16T22:24:10Z",
-      "currentCandidates": 13,
-      "publicJobs": 13,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 22,
+      "publicJobs": 16,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -1254,22 +1262,22 @@
       "institutionId": "msmt-vs_41000",
       "officialName": "Česká zemědělská univerzita v Praze",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "czu-central-jobs",
-          "url": "https://jobs.czu.cz/",
+          "url": "https://jobs.czu.cz/wp-json/wp/v2/pozice",
           "scope": null,
-          "parser": "czu_wp_job_manager",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "parser": "czu_pozice_rest",
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
       "registeredSourceCount": 1,
-      "sourcesWithSuccessCount": 1,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 5,
-      "publicJobs": 4,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 8,
+      "publicJobs": 6,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null
@@ -1278,30 +1286,46 @@
       "institutionId": "msmt-vs_21000",
       "officialName": "České vysoké učení technické v Praze",
       "ownership": "public",
-      "assessmentStatus": "registered_executed",
+      "assessmentStatus": "registered_never_executed",
       "registeredSources": [
         {
           "sourceId": "ctu-central-notice-board",
           "url": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/?kategorie_id=66&pocet=100",
           "scope": null,
           "parser": "ctu_notice_board",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         },
         {
           "sourceId": "ctu-fee-careers",
           "url": "https://fel.cvut.cz/en/faculty/careers",
           "scope": null,
           "parser": "generic_listing_links",
-          "lastSuccessAt": "2026-09-11T20:25:25Z",
-          "executionEvidence": "scheduler_success_timestamp"
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
+        },
+        {
+          "sourceId": "ctu-ciirc-roboprox-positions",
+          "url": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+          "scope": null,
+          "parser": "roboprox_positions",
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
+        },
+        {
+          "sourceId": "ctu-fel-aic-careers",
+          "url": "https://www.aic.fel.cvut.cz/careers",
+          "scope": null,
+          "parser": "generic_listing_links",
+          "lastSuccessAt": null,
+          "executionEvidence": "none"
         }
       ],
-      "registeredSourceCount": 2,
-      "sourcesWithSuccessCount": 2,
-      "latestSourceSuccessAt": "2026-09-11T20:25:25Z",
-      "currentCandidates": 17,
-      "publicJobs": 16,
+      "registeredSourceCount": 4,
+      "sourcesWithSuccessCount": 0,
+      "latestSourceSuccessAt": null,
+      "currentCandidates": 31,
+      "publicJobs": 31,
       "assessmentEvidence": null,
       "nextCheckAt": null,
       "notes": null

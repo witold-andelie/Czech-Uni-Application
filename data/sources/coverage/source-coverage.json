@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T19:01:53Z",
+  "generatedAt": "2026-10-02T22:43:55Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-09-29.2",
-    "publishedAt": "2026-09-29T19:01:52Z",
-    "candidateGenerationId": "cg-f641e951ed8540f7a25a92fc4257f452",
-    "sourceRunSetDigest": "sha256:6f097dbdc5ae821015a6543674fa3caf743ffa4ec92d06ae422a888a70ece1d5",
+    "activeVersion": "v2026-10-02.1",
+    "publishedAt": "2026-10-02T22:43:54Z",
+    "candidateGenerationId": "cg-19c6099d7f904a899e3f1847fda0b0a0",
+    "sourceRunSetDigest": "sha256:f7d41996104c2eae92a9f880018de4da476c4c9bd42ca3bc6383406faebc2361",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -28,7 +28,7 @@
   "programmes": {
     "directorySourceId": "studyin",
     "sourceGeneratedAt": "2026-09-11T19:30:20Z",
-    "lastScheduledSuccessAt": "2026-09-11T19:30:20Z",
+    "lastScheduledSuccessAt": null,
     "refreshIntervalHours": 2,
     "directoryRecords": 5137,
     "mappedInstitutions": 54,
@@ -45,7 +45,7 @@
         "sourceId": "czu-study-english-programmes",
         "institutionId": "msmt-vs_41000",
         "sourceGeneratedAt": "2026-09-11T19:31:12Z",
-        "lastScheduledSuccessAt": "2026-09-11T19:31:12Z",
+        "lastScheduledSuccessAt": null,
         "refreshIntervalHours": 2,
         "declaredScope": "English bachelor and master programmes on study.czu.cz",
         "sourceCatalogueRecords": 36,
@@ -73,7 +73,7 @@
         "sourceId": "czu-studuj-bachelor-master-programmes",
         "institutionId": "msmt-vs_41000",
         "sourceGeneratedAt": "2026-09-11T19:33:42Z",
-        "lastScheduledSuccessAt": "2026-09-11T19:33:42Z",
+        "lastScheduledSuccessAt": null,
         "refreshIntervalHours": 2,
         "declaredScope": "Czech- and English-taught bachelor and master programmes on studuj.czu.cz",
         "sourceCatalogueRecords": 129,
@@ -112,7 +112,7 @@
         "sourceId": "czu-doctoral-faculty-admissions",
         "institutionId": "msmt-vs_41000",
         "sourceGeneratedAt": "2026-09-11T19:42:37Z",
-        "lastScheduledSuccessAt": "2026-09-11T19:42:37Z",
+        "lastScheduledSuccessAt": null,
         "refreshIntervalHours": 2,
         "declaredScope": "All CZU doctoral offerings in the current compact MŠMT register baseline, cross-checked against the six faculties' official 2026/2027 admissions evidence",
         "academicYear": "2026/2027",
@@ -531,11 +531,11 @@
     }
   },
   "jobs": {
-    "registeredOfficialListingSources": 33,
+    "registeredOfficialListingSources": 36,
     "lastRunCompleteSources": 1,
-    "lastDiscoverySuccessAt": "2026-09-16T22:35:14Z",
+    "lastDiscoverySuccessAt": null,
     "discoveryIntervalHours": 4,
-    "lastStatusRecheckSuccessAt": "2026-09-11T19:43:39Z",
+    "lastStatusRecheckSuccessAt": null,
     "statusRecheckIntervalHours": 1,
     "mappedBaselineInstitutions": 31,
     "baselineInstitutionCoveragePercent": 57.4,
@@ -543,8 +543,8 @@
     "assessedBaselineInstitutions": 53,
     "notAssessedBaselineInstitutions": 1,
     "assessmentStatusCounts": {
-      "registered_executed": 29,
-      "registered_never_executed": 2,
+      "registered_executed": 0,
+      "registered_never_executed": 31,
       "assessed_no_central_source": 22,
       "not_assessed": 1
     },
@@ -552,24 +552,25 @@
     "facultyOnlyConnections": 1,
     "assertedCompleteInstitutionSources": 0,
     "coverageScopeCounts": {
-      "institution_aggregator": 30,
+      "institution_aggregator": 31,
       "faculty": 2,
+      "department": 2,
       "research_network": 1
     },
     "independentNonHeiOfficialSources": 1,
     "inventoryRows": 5019,
-    "discoveredCandidates": 174,
-    "currentCandidates": 125,
-    "supportedCandidates": 112,
-    "unspecifiedScopeCandidates": 10,
-    "reviewPending": 25,
-    "approved": 87,
-    "public": 105,
-    "currentOpenOrUnknown": 112,
-    "currentPaidMasterScopeCandidates": 19,
-    "supportedPaidMasterScopeCandidates": 17,
-    "publishedRecords": 134,
-    "publishedPaidMasterScopeJobs": 13,
+    "discoveredCandidates": 301,
+    "currentCandidates": 165,
+    "supportedCandidates": 144,
+    "unspecifiedScopeCandidates": 21,
+    "reviewPending": 0,
+    "approved": 144,
+    "public": 90,
+    "currentOpenOrUnknown": 144,
+    "currentPaidMasterScopeCandidates": 40,
+    "supportedPaidMasterScopeCandidates": 40,
+    "publishedRecords": 189,
+    "publishedPaidMasterScopeJobs": 26,
     "sourceConnectedSchools": 31,
     "fullyAssessedSchoolScope": 0,
     "missingInstitutions": [
@@ -690,23 +691,23 @@
       }
     ],
     "lastDiscoveryRun": {
-      "runKind": "all_registered_sources",
+      "runKind": "adapter",
       "expectedSourceIds": [
-        "peuni-central-careers"
+        "ctu-fel-aic-careers"
       ],
       "completeSourceIds": [
-        "peuni-central-careers"
+        "ctu-fel-aic-careers"
       ],
       "deferredSourceIds": [],
-      "lastScheduledSuccessAt": "2026-09-16T22:35:14Z",
-      "lastAllSourceSuccessAt": "2026-09-16T22:35:14Z",
-      "singleSourceRefreshCannotCountAsAllSourceSuccess": false,
+      "lastScheduledSuccessAt": null,
+      "lastAllSourceSuccessAt": null,
+      "singleSourceRefreshCannotCountAsAllSourceSuccess": true,
       "perSourceRunStatus": [
         {
-          "sourceId": "peuni-central-careers",
+          "sourceId": "ctu-fel-aic-careers",
           "parserVersion": "generic_listing_links",
           "attempted": true,
-          "attempts": 2,
+          "attempts": 1,
           "failedAttempts": 0,
           "lastAttemptAt": null,
           "runComplete": true,
@@ -734,11 +735,11 @@
             "url": "https://cuni.cz/vyberova-rizeni/ajax.php?lang=en&stav=active&apo=all",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:21:46Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 10,
-        "currentPaidMasterScopeCandidates": 0,
+        "currentCandidateJobs": 15,
+        "currentPaidMasterScopeCandidates": 2,
         "publishedPaidMasterScopeJobs": 0
       },
       {
@@ -752,10 +753,10 @@
             "url": "https://www.jcu.cz/cz/univerzita/volna-mista",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:23:28Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 11,
+        "currentCandidateJobs": 8,
         "currentPaidMasterScopeCandidates": 1,
         "publishedPaidMasterScopeJobs": 1
       },
@@ -788,12 +789,12 @@
             "url": "https://www.muni.cz/en/about-us/careers",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 5,
-        "currentPaidMasterScopeCandidates": 4,
-        "publishedPaidMasterScopeJobs": 4
+        "currentCandidateJobs": 15,
+        "currentPaidMasterScopeCandidates": 9,
+        "publishedPaidMasterScopeJobs": 7
       },
       {
         "institutionId": "msmt-vs_15000",
@@ -806,10 +807,10 @@
             "url": "https://pracuj.upol.cz/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 2,
+        "currentCandidateJobs": 8,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -842,12 +843,12 @@
             "url": "https://www.osu.cz/kariera/kariera-akademicke-pozice/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T17:56:15Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 9,
+        "currentCandidateJobs": 11,
         "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_18000",
@@ -860,12 +861,12 @@
             "url": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T18:09:32Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 7,
-        "currentPaidMasterScopeCandidates": 0,
-        "publishedPaidMasterScopeJobs": 0
+        "currentPaidMasterScopeCandidates": 1,
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_19000",
@@ -878,7 +879,7 @@
             "url": "https://www.slu.cz/slu/cz/volnamista",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T17:57:06Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -896,19 +897,33 @@
             "url": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/?kategorie_id=66&pocet=100",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           },
           {
             "sourceId": "ctu-fee-careers",
             "url": "https://fel.cvut.cz/en/faculty/careers",
             "coverageScope": "faculty",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
+          },
+          {
+            "sourceId": "ctu-ciirc-roboprox-positions",
+            "url": "https://www.ciirc.cvut.cz/roboprox/job-positions/",
+            "coverageScope": "department",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": null
+          },
+          {
+            "sourceId": "ctu-fel-aic-careers",
+            "url": "https://www.aic.fel.cvut.cz/careers",
+            "coverageScope": "department",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 17,
-        "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 1
+        "currentCandidateJobs": 31,
+        "currentPaidMasterScopeCandidates": 13,
+        "publishedPaidMasterScopeJobs": 11
       },
       {
         "institutionId": "msmt-vs_22000",
@@ -921,12 +936,12 @@
             "url": "https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 5,
+        "currentCandidateJobs": 4,
         "currentPaidMasterScopeCandidates": 2,
-        "publishedPaidMasterScopeJobs": 1
+        "publishedPaidMasterScopeJobs": 0
       },
       {
         "institutionId": "msmt-vs_23000",
@@ -939,12 +954,12 @@
             "url": "https://dumbledore.zcu.cz/document/data/folder/workspace://SpacesStore/bd09d1ff-712d-46ac-803a-f4b32201ec68?folderSort=az&fileSort=lu_desc",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:24:10Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 13,
+        "currentCandidateJobs": 22,
         "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 1
+        "publishedPaidMasterScopeJobs": 0
       },
       {
         "institutionId": "msmt-vs_24000",
@@ -957,10 +972,10 @@
             "url": "https://www.tul.cz/kariera/probihajici-vyberova-rizeni/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T18:10:21Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 1,
+        "currentCandidateJobs": 3,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -975,10 +990,10 @@
             "url": "https://www.upce.cz/volna-mista",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 4,
+        "currentCandidateJobs": 5,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -993,10 +1008,10 @@
             "url": "https://vutbr.jobs.cz/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 12,
+        "currentCandidateJobs": 7,
         "currentPaidMasterScopeCandidates": 1,
         "publishedPaidMasterScopeJobs": 1
       },
@@ -1011,11 +1026,18 @@
             "url": "https://www.vsb.cz/cs/univerzita/informacni-deska/pracovni-prilezitosti/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
+          },
+          {
+            "sourceId": "vsb-job-opportunities-en",
+            "url": "https://www.vsb.cz/en/university/informational-board/job-opportunities/",
+            "coverageScope": "institution_aggregator",
+            "sourceCoverageClaim": "not_asserted",
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 3,
-        "currentPaidMasterScopeCandidates": 0,
+        "currentCandidateJobs": 5,
+        "currentPaidMasterScopeCandidates": 1,
         "publishedPaidMasterScopeJobs": 0
       },
       {
@@ -1029,10 +1051,10 @@
             "url": "https://kariera.utb.cz/volne-pozice/akademicke-pozice/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 8,
+        "currentCandidateJobs": 1,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -1047,10 +1069,10 @@
             "url": "https://www.vse.cz/informace-o-vse/informace-a-predpisy/karierni-prilezitosti/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 1,
+        "currentCandidateJobs": 2,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -1062,14 +1084,14 @@
         "sources": [
           {
             "sourceId": "czu-central-jobs",
-            "url": "https://jobs.czu.cz/",
+            "url": "https://jobs.czu.cz/wp-json/wp/v2/pozice",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 5,
-        "currentPaidMasterScopeCandidates": 4,
+        "currentCandidateJobs": 8,
+        "currentPaidMasterScopeCandidates": 1,
         "publishedPaidMasterScopeJobs": 0
       },
       {
@@ -1083,12 +1105,12 @@
             "url": "https://orlz.mendelu.cz/en/job-vacancies",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-11T20:25:25Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 4,
-        "currentPaidMasterScopeCandidates": 0,
-        "publishedPaidMasterScopeJobs": 0
+        "currentPaidMasterScopeCandidates": 3,
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_51000",
@@ -1101,12 +1123,12 @@
             "url": "https://www.amu.cz/cs/uredni-deska/volna-mista-konkurzy/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:32:57Z"
+            "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 2,
+        "currentCandidateJobs": 3,
         "currentPaidMasterScopeCandidates": 2,
-        "publishedPaidMasterScopeJobs": 2
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_52000",
@@ -1119,7 +1141,7 @@
             "url": "https://avu.cz/stranka/vyberova-rizeni",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:33:06Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -1147,7 +1169,7 @@
             "url": "https://hf.jamu.cz/fakulta-hf/o-fakulte/volna-mista/",
             "coverageScope": "faculty",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:33:06Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -1165,7 +1187,7 @@
             "url": "https://www.vspj.cz/cs/skola/uredni-deska/nabidky-zamestnani/akademicke-pozice/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T18:02:47Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -1183,7 +1205,7 @@
             "url": "https://www.vstecb.cz/volna-pracovni-mista/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T18:07:05Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -1221,7 +1243,7 @@
             "url": "https://www.unyp.cz/jobs-at-unyp/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:33:37Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -1319,7 +1341,7 @@
             "url": "https://www.mup.cz/job/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:33:11Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -1347,7 +1369,7 @@
             "url": "https://www.mvso.cz/kariera",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:33:12Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -1445,7 +1467,7 @@
             "url": "https://www.peuni.cz/kariera/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:35:14Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -1493,7 +1515,7 @@
             "url": "https://www.polac.cz/urde/volna.html",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T22:33:13Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
@@ -1511,7 +1533,7 @@
             "url": "https://unob.cz/univerzita/kariera/vyberova-rizeni-na-mista-akademickych-pracovniku/",
             "coverageScope": "institution_aggregator",
             "sourceCoverageClaim": "not_asserted",
-            "lastSuccessAt": "2026-09-16T18:02:32Z"
+            "lastSuccessAt": null
           }
         ],
         "currentCandidateJobs": 0,
