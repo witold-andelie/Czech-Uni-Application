@@ -1474,8 +1474,9 @@ def extract_employment_fte(text: str) -> float | None:
     bare_fte = r"\b(0[.,]\d{1,2}|1(?:[.,]0+)?)\s*FTE\b"
     patterns = (
         r"\bpracovn[ií]\s+[úu]vazek\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
-        # "- úvazek 1,0 – platové podmínky ..." (ČVUT rektorát, 2026-10-01).
-        r"\b[úu]vazek\s*[:=\-–]?\s*(0[.,]\d+|1[.,]0+)\b",
+        # "- úvazek 1,0 – platové podmínky ..." (ČVUT rektorát, 2026-10-01),
+        # "Výše úvazku 1,0" (VŠB, 2026-10-02).
+        r"\b[úu]vaz(?:ek|ku)\s*[:=\-–]?\s*(0[.,]\d+|1[.,]0+)\b",
         r"\b(?:position\s+workload|employment\s+(?:fte|fraction)|workload(?:\s*\(fte\))?)"
         r"\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         # A67/A68: MUNI adverts state "Working Hours: 0,5 FTE (part-time
@@ -1490,8 +1491,9 @@ def extract_employment_fte(text: str) -> float | None:
     for pattern in patterns:
         for match in re.finditer(pattern, text, re.I):
             # "Pracovní úvazek: 0,5 až 1,0" states a range: the workload is not
-            # one figure (ZČU FPE, 2026-10-01).
-            if re.match(r"\s*(?:až|to|[–-])\s*[01](?:[.,]\d+)?\b", text[match.end() :], re.I):
+            # one figure (ZČU FPE, 2026-10-01); so do two figures, "rozsah
+            # úvazku 0,30 a 0,45" (VUT FCH, 2026-10-02).
+            if re.match(r"\s*(?:až|to|a|and|nebo|or|[–-])\s*[01][.,]\d+\b|\s*(?:až|to|[–-])\s*1\b", text[match.end() :], re.I):
                 return None
             # "CZK 50,000 (gross monthly pay – 1.0 FTE – 40 hours per week)" is
             # the pay's basis, not the post's workload (ZČU, 2026-10-01).
@@ -3611,7 +3613,13 @@ def discover_ctu_notice_board_source(
 
 def parse_vsb_listing(html: str, page_url: str) -> list[dict]:
     """Parse active VŠB-TUO vacancy cards and exclude the completed section."""
-    active_html = re.split(r"Výsledky\s+ukončených\s+výběrových\s+řízení", html, maxsplit=1, flags=re.I)[0]
+    # The English board heads the same section "Results of the selection procedures".
+    active_html = re.split(
+        r"Výsledky\s+ukončených\s+výběrových\s+řízení|Results\s+of\s+the\s+selection\s+procedures",
+        html,
+        maxsplit=1,
+        flags=re.I,
+    )[0]
     starts = [
         match.start()
         for match in re.finditer(
@@ -4662,6 +4670,9 @@ def localized(title: str, zh_title: str | None = None, cs_title: str | None = No
     return {"zh-CN": zh_title or title, "en": title, "cs": cs_title or title}
 
 
+_CARRIED_PROVENANCE = ("officialDetailUrl", "listingUrl", "urlDirectness")
+
+
 def job_record(candidate: dict, verified_at: str, host_verified: bool, page_text: str = "", as_of: date | None = None) -> tuple[dict, dict | None]:
     cur_today = as_of or date.today()
     track = candidate["track"]
@@ -4859,6 +4870,14 @@ def harvest_candidates(
                     evidence.append(prev_evidence[ev_id])
             skipped.append({"id": candidate["id"], "reason": "past-deadline"})
             continue
+        # job_record builds the record afresh; provenance set elsewhere (the
+        # adapter's official detail URL, an operator's re-reviewed link) is
+        # kept from the stored record. The shard harvest dropped it from 15
+        # records on 2026-10-02.
+        prior = prev_jobs.get(candidate["id"]) or {}
+        for key in _CARRIED_PROVENANCE:
+            if job.get(key) is None and prior.get(key) is not None:
+                job[key] = prior[key]
         jobs.append(job)
         if window:
             windows.append(window)

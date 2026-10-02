@@ -39,6 +39,45 @@ def adapter_job_id(candidate: Candidate, source: dict) -> str:
     return snapshot_job_id(candidate.employer_id or source.get("employerId"), candidate.remote_id)
 
 
+def _reuse_stored_identities(incoming: list[dict[str, Any]], previous: dict[str, Any]) -> dict[str, str]:
+    """Keep a vacancy's stored identity when the stored record carries an older id.
+
+    The discovery path keeps a seed's id when a listed row has the same code
+    or URL (_merge_seed_and_discovered). The adapter computed the id from the
+    code alone, so VŠB procedure 70, stored and reviewed as job-27000-56,
+    became job-27000-70 - the record an operator had rejected as its
+    duplicate - and the open advert was archived (2026-10-02). Returns the
+    computed-to-stored id map and rewrites the incoming ids in place.
+    """
+    stored = [item for item in previous.get("jobs") or [] if isinstance(item, dict) and item.get("id")]
+    by_id = {item["id"]: item for item in stored}
+    url_counts: dict[str, int] = {}
+    for item in incoming:
+        url_counts[str(item.get("sourceUrl"))] = url_counts.get(str(item.get("sourceUrl")), 0) + 1
+    remapped: dict[str, str] = {}
+    for item in incoming:
+        own = by_id.get(item["id"])
+        if own is not None and own.get("publicationStatus") != "rejected":
+            continue
+        code = str(item.get("code") or "")
+        url = str(item.get("sourceUrl") or "")
+        matches = [
+            row
+            for row in stored
+            if row["id"] != item["id"]
+            and row.get("employerId") == item.get("employerId")
+            and row.get("publicationStatus") != "rejected"
+            and (
+                (code and str(row.get("sourceItemId") or "") == code)
+                or (url and url_counts.get(url) == 1 and row.get("sourceUrl") == url)
+            )
+        ]
+        if len(matches) == 1:
+            remapped[item["id"]] = matches[0]["id"]
+            item["id"] = matches[0]["id"]
+    return remapped
+
+
 def candidate_to_snapshot_job(candidate: Candidate, source: dict, now_text: str) -> dict[str, Any]:
     employer_id = candidate.employer_id or source.get("employerId")
     title = candidate.title
@@ -110,6 +149,11 @@ def candidate_to_harvest_candidate(candidate: Candidate, source: dict) -> dict[s
     for key in _HARVEST_FACT_KEYS:
         if facts.get(key) is not None:
             item[key] = facts[key]
+    # The discovery path defaults a vacancy's round to "regular"; the shard
+    # harvest reads adapter sources through that path too. Defaulting to
+    # "unspecified" here made the window flip with whichever path ran last,
+    # and the reviewed fact hash with it (ten CUNI approvals, 2026-10-02).
+    item.setdefault("roundType", "regular")
     # job_record reads "track" directly; an out-of-scope row keeps it as None.
     return {key: value for key, value in item.items() if value is not None or key == "track"}
 
@@ -206,7 +250,7 @@ def candidate_window(candidate: Candidate, job_id: str, today: date) -> dict[str
         "academicYear": None,
         "roundNumber": None,
         "roundLabelOriginal": candidate.remote_id,
-        "roundType": facts.get("roundType") or "unspecified",
+        "roundType": facts.get("roundType") or "regular",
         "applicantScope": None,
         "opensAt": opens,
         "closesAt": closes,
@@ -360,6 +404,7 @@ def harvest_adapter_source(
         from harvest_nine_hei_jobs import main_content_text
 
         incoming = [candidate_to_harvest_candidate(item, source) for item in outcome["candidates"]]
+        remapped = _reuse_stored_identities(incoming, previous or {})
         listed_ids = {item["id"] for item in incoming}
         # A detail page that belongs to one vacancy is read from its main
         # content; a page several vacancies share keeps entity_scope.
@@ -376,7 +421,10 @@ def harvest_adapter_source(
         stored = [item for item in seed_candidates_from_stored(previous or {}) if item["id"] in listed_ids]
         merged_candidates = _merge_seed_and_discovered(stored, incoming)
         processed = harvest_candidates(merged_candidates, fetch_page, previous or {}, current, sleep_seconds=0)
-        scope = {adapter_job_id(item, source): item for item in outcome["candidates"]}
+        scope = {}
+        for item in outcome["candidates"]:
+            ident = adapter_job_id(item, source)
+            scope[remapped.get(ident, ident)] = item
         for job in processed.get("jobs") or []:
             candidate = scope.get(job.get("id"))
             if candidate is None or job.get("lastAttemptReason") in {"past-deadline-archived"}:

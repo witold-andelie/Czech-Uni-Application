@@ -34,8 +34,13 @@ def load_case() -> tuple[dict, list[dict], dict]:
 
 
 def test_reviewed_record_is_approved_without_a_disposition() -> None:
+    from publication_rules import job_fact_hash
+
     job, windows, entry = load_case()
     entry = {key: value for key, value in entry.items() if key != "disposition"}
+    # The duplicate's own facts move with the live advert; what is under test
+    # is that only the disposition withholds a review that matches them.
+    entry["factHash"] = job_fact_hash(job, windows, entry["normalizationVersion"])
     applied = apply_translation_review(dict(job), job["sourceHash"], {DROP: entry}, windows)
     assert applied["publicationStatus"] == "approved"
     assert applied["translationStatus"] == "verified"

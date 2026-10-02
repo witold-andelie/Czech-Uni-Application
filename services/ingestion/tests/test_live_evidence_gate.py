@@ -21,6 +21,9 @@ from live_evidence import publication_gate  # noqa: E402
 
 NOW = datetime(2026, 9, 27, 12, 0, tzinfo=timezone.utc)
 RECENT = (NOW - timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%SZ")
+# The CLI judges evidence age on the real clock; its fixtures must be recent
+# relative to today, or the tests start failing a week after NOW (2026-10-02).
+CLI_RECENT = (datetime.now(timezone.utc) - timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def _job(ident: str, **overrides) -> dict:
@@ -137,8 +140,8 @@ def test_the_cli_reports_the_withheld_records_and_succeeds(tmp_path: Path):
     evidence_path.write_text(
         json.dumps(
             _evidence(
-                _matched("keep"),
-                {"candidateId": "unread", "status": "source_change_noted", "checkedAt": RECENT},
+                {"candidateId": "keep", "status": "matched", "checkedAt": CLI_RECENT},
+                {"candidateId": "unread", "status": "source_change_noted", "checkedAt": CLI_RECENT},
             )
         ),
         encoding="utf-8",
@@ -168,8 +171,8 @@ def test_the_cli_strict_flag_holds_on_a_single_record(tmp_path: Path):
     evidence_path.write_text(
         json.dumps(
             _evidence(
-                _matched("keep"),
-                {"candidateId": "unread", "status": "source_change_noted", "checkedAt": RECENT},
+                {"candidateId": "keep", "status": "matched", "checkedAt": CLI_RECENT},
+                {"candidateId": "unread", "status": "source_change_noted", "checkedAt": CLI_RECENT},
             )
         ),
         encoding="utf-8",

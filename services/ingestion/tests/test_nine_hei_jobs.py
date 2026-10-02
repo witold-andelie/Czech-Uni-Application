@@ -3114,3 +3114,77 @@ def test_only_a_reviewed_workload_is_carried_into_the_next_read() -> None:
         {"jobs": [{**stored, "publicationStatus": "approved"}], "windows": []}
     )
     assert approved[0]["employmentFte"] == 0.5
+
+
+def test_a_rebuilt_record_keeps_its_official_detail_url_and_listing() -> None:
+    """2026-10-02: the shard harvest dropped officialDetailUrl from 15 records."""
+    candidate = {
+        "id": "job-11000-x",
+        "employerId": "msmt-vs_11000",
+        "title": "Postdoctoral Researcher in Software Architectures",
+        "sourceUrl": "https://www.d3s.test/positions/2026-1/",
+        "track": "postdoc",
+        "_factHtml": "<main><h1>Postdoctoral Researcher in Software Architectures</h1>"
+        "<p>Requirements: a PhD in computer science. Deadline 31 December 2099.</p></main>",
+    }
+    previous = {
+        "jobs": [
+            {
+                "id": "job-11000-x",
+                "officialDetailUrl": "https://www.d3s.test/positions/2026-1/",
+                "listingUrl": "https://www.d3s.test/positions/",
+                "urlDirectness": "vacancy_document",
+            }
+        ],
+        "windows": [],
+        "evidence": [],
+    }
+    out = jobs_harvester.harvest_candidates([candidate], lambda url: (404, ""), previous, date(2026, 10, 2), sleep_seconds=0)
+    job = out["jobs"][0]
+    assert job["officialDetailUrl"] == "https://www.d3s.test/positions/2026-1/"
+    assert job["listingUrl"] == "https://www.d3s.test/positions/"
+    assert job["urlDirectness"] == "vacancy_document"
+
+
+def test_adapter_and_discovery_paths_default_the_same_round_type() -> None:
+    from adapters.base import Candidate
+    from engine.adapter_harvest import candidate_to_harvest_candidate
+
+    item = candidate_to_harvest_candidate(
+        Candidate(remote_id="7", official_detail_url="https://x.test/7", application_url=None, title="T", body_html=""),
+        {"id": "s", "employerId": "msmt-vs_11000"},
+    )
+    assert item["roundType"] == "regular"
+
+
+def test_genitive_workload_and_the_english_vsb_board() -> None:
+    fte = jobs_harvester.extract_employment_fte
+    assert fte("Výše úvazku 1,0 Předpokládané datum nástupu 1. 11. 2026") == 1.0
+    assert fte("(reg. číslo projektu: 26-20968S) rozsah úvazku 0,45 Kvalifikační požadavky") == 0.45
+    assert fte("(reg. číslo projektu: 24-10469S) rozsah úvazku 0,30 a 0,45 Kvalifikační požadavky") is None
+    html = (
+        '<div class="card"><h4 class="card-title">Backend Developer for Quantum integration</h4>'
+        '<p>Technical/Office Position software development</p>'
+        '<a href="/en/university/informational-board/job-opportunities/advert/?procedureId=74">Advert</a></div>'
+        "<h2>Results of the selection procedures</h2>"
+        '<div class="card"><h4 class="card-title">Researcher in software</h4>'
+        '<a href="/en/university/informational-board/job-opportunities/advert/?procedureId=12">Advert</a></div>'
+    )
+    rows = jobs_harvester.parse_vsb_listing(html, "https://www.vsb.cz/en/university/informational-board/job-opportunities/")
+    assert [row["code"] for row in rows] == ["74"]
+
+
+def test_adapter_reuses_the_stored_identity_of_an_older_id() -> None:
+    from engine.adapter_harvest import _reuse_stored_identities
+
+    incoming = [{"id": "job-27000-70", "employerId": "msmt-vs_27000", "code": "70", "sourceUrl": "https://v/?procedureId=70"}]
+    previous = {
+        "jobs": [
+            {"id": "job-27000-56", "employerId": "msmt-vs_27000", "sourceItemId": "70", "publicationStatus": "approved"},
+            {"id": "job-27000-70", "employerId": "msmt-vs_27000", "sourceItemId": "70", "publicationStatus": "rejected"},
+        ]
+    }
+    assert _reuse_stored_identities(incoming, previous) == {"job-27000-70": "job-27000-56"}
+    assert incoming[0]["id"] == "job-27000-56"
+    fresh = [{"id": "job-27000-77", "employerId": "msmt-vs_27000", "code": "77", "sourceUrl": "https://v/?procedureId=77"}]
+    assert _reuse_stored_identities(fresh, previous) == {} and fresh[0]["id"] == "job-27000-77"
