@@ -175,12 +175,14 @@ def run_adapter_pass(
                 payload = outcome["payload"]
                 status = payload["run"].get("status", "succeeded")
                 listed = payload.get("listed", 0)
+                source_rows = ((payload.get("discovery") or {}).get("listedBySource") or {}).get(ident, listed)
                 parsed = payload.get("parsed", 0)
                 candidates = payload.get("candidates", 0)
                 complete = bool(payload.get("complete"))
             else:
                 status = outcome["error"]
                 listed = parsed = candidates = 0
+                source_rows = None
                 complete = False
             started.append(
                 {
@@ -188,6 +190,7 @@ def run_adapter_pass(
                     "status": status,
                     "complete": complete,
                     "listed": listed,
+                    "sourceRows": source_rows,
                     "parsed": parsed,
                     "candidates": candidates,
                     "elapsed_s": elapsed,
@@ -209,6 +212,7 @@ def run_adapter_pass(
                 "status": result["run"]["status"],
                 "complete": result.get("complete"),
                 "listed": result["completeness"].listed_count,
+                "sourceRows": ((result.get("discovery") or {}).get("listedBySource") or {}).get(source.get("id")),
                 "parsed": result["completeness"].parsed_count,
                 "candidates": len(result.get("candidates") or []),
                 "elapsed_s": elapsed,
@@ -281,6 +285,16 @@ def main(argv: list[str] | None = None) -> int:
             cwd=ROOT,
         )
         report["snapshot"] = write_job_candidates(JOBS_OUT, report["snapshot"])
+        import source_health
+
+        source_health.record(
+            [
+                {"sourceId": item["sourceId"], "listed": item.get("sourceRows", item.get("listed")), "complete": bool(item.get("complete"))}
+                for item in report["started"]
+                if item.get("sourceId")
+            ],
+            JOBS_OUT.parent.parent / "coverage" / source_health.LEDGER.name,
+        )
         if store is not None:
             report["retention"] = prune_ingest_history(store)
     finally:

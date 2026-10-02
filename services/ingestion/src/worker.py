@@ -105,6 +105,13 @@ def write_job_candidates(path: Path, payload: dict) -> dict:
             flush=True,
         )
     atomic_write(path, payload)
+    if path.resolve() == JOBS_OUT.resolve():
+        import source_health
+
+        source_health.record(
+            source_health.observations_from_discovery(payload.get("discovery")),
+            path.parent.parent / "coverage" / source_health.LEDGER.name,
+        )
     return payload
 
 def pid_alive(pid: int) -> bool:
@@ -299,7 +306,7 @@ def harvest_jobs(
         deadline = time.monotonic() + budget_seconds if budget_seconds else None
         aggregate = {"runKind": "partial_checkpoint", "expectedSourceIds": [s["id"] for s in sources],
                      "completeSourceIds": [], "deferredSourceIds": [], "attempts": [],
-                     "discoveredCount": 0, "hostCooldowns": {}}
+                     "discoveredCount": 0, "hostCooldowns": {}, "listedBySource": {}}
         processed = set()
         skipped = []
         for position, source in enumerate(sources):
@@ -318,6 +325,7 @@ def harvest_jobs(
                 aggregate[key].extend(discovery.get(key) or [])
             aggregate["discoveredCount"] += int(discovery.get("discoveredCount") or 0)
             aggregate["hostCooldowns"].update(discovery.get("hostCooldowns") or {})
+            aggregate["listedBySource"].update(discovery.get("listedBySource") or {})
             processed.update(part.get("processedCandidateIds") or [])
             skipped.extend(part.get("skipped") or [])
             checkpoint = load_json(target)

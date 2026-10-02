@@ -39,12 +39,15 @@ class HarvestListingAdapter:
         self._complete = False
         self._reasons: list[str] = []
         self._details_ok = 0
+        self._source_rows: int | None = None
 
     def discover(self, context: dict[str, Any]) -> list[ListingReference]:
         fetch_page = context["fetch_page"]
         listing_source = {**self.source, "followDetails": False}
         result = discover_registered_candidates(fetch_page, registry=[listing_source])
         self._complete = self.source["id"] in (result.get("completeSourceIds") or [])
+        # Rows the listing yielded, quarantined ones included (source health).
+        self._source_rows = (result.get("listedBySource") or {}).get(self.source["id"])
         for attempt in result.get("attempts") or []:
             if attempt.get("ok") is False and attempt.get("reason"):
                 self._reasons.append(str(attempt["reason"]))
@@ -188,6 +191,7 @@ class HarvestListingAdapter:
             listed_count=listed,
             parsed_count=parsed,
             reasons=list(self._reasons),
+            extra={"sourceRows": self._source_rows} if self._source_rows is not None else {},
         )
 
 

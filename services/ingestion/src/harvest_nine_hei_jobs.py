@@ -3895,8 +3895,45 @@ def detect_source_language(text: str) -> str:
     return "cs" if any(marker in lowered for marker in czech_markers) else "en"
 
 
+_AVCR_BLOCK_RE = re.compile(
+    r"<b>(?P<posted>\d{2}/\d{2}/\d{4})</b>\s*<br>\s*<b>(?P<institute>.*?)</b>(?P<body>.*?)"
+    r"href=['\"](?P<href>[^'\"]*inzerat=(?P<code>\d+))['\"]"
+    r"(?P<tail>.*?)(?=<b>\d{2}/\d{2}/\d{4}</b>\s*<br>|$)",
+    re.I | re.S,
+)
+
+
 def parse_avcr_vacancies(html: str, base_url: str = "https://www.avcr.cz") -> list[dict]:
+    """Academy openings: since 2026-09 an inline list ("?inzerat=N" detail links),
+    earlier one linked page per opening. The institute named in each opening is
+    the employer, which the catalogue does not model yet (records quarantine)."""
     results = []
+    page_url = urljoin(base_url, "/en/about-us/career/selection-procedures/")
+    for block in _AVCR_BLOCK_RE.finditer(html):
+        positions = re.findall(r"<b>(.*?)</b>", block.group("body"), re.S)
+        title = visible_text(positions[-1]).rstrip(". ").strip() if positions else ""
+        if len(title) < 5:
+            continue
+        track = classify_track(title)
+        if not track:
+            continue
+        url = urljoin(page_url, unescape(block.group("href")))
+        deadline = re.search(r"deadline:\s*<b>(\d{2})/(\d{2})/(\d{4})</b>", block.group("tail"), re.I)
+        results.append(
+            {
+                "title": title,
+                "code": f"avcr{block.group('code')}",
+                "track": track,
+                "sourceUrl": url,
+                "applicationUrl": url,
+                "employerName": visible_text(block.group("institute")),
+                "listingDeadline": f"{deadline.group(3)}-{deadline.group(1)}-{deadline.group(2)}" if deadline else None,
+                "employerId": None,
+                "employerIdentityStatus": "unresolved",
+            }
+        )
+    if results:
+        return results
     link_pattern = re.compile(
         r"""href=["'](/en/about-us/career/selection-procedures/[^"']+)["'][^>]*>(.*?)</a>""",
         re.I | re.S,
@@ -4076,6 +4113,7 @@ def discover_registered_candidates(
     complete_source_ids: list[str] = []
     deferred_source_ids: list[str] = []
     expected_source_ids: list[str] = []
+    listed_by_source: dict[str, int] = {}
     post_json_fn = post_json or request_json
     fetch_attachment_fn = fetch_attachment or request_binary
     pdf_text_fn = pdf_text or extract_pdf_text
@@ -4135,6 +4173,7 @@ def discover_registered_candidates(
 
         found: list[dict] = []
         source_complete = True
+        quarantine_mark = len(quarantined)
         if parser == "czu_pozice_rest":
             # Paged at 100; a short page is the last one.
             per_page = int(source.get("perPage") or 100)
@@ -4320,6 +4359,9 @@ def discover_registered_candidates(
                 continue
             seen_found.add(identity)
             unique_found.append(listing_item)
+        # Rows the listing yielded, kept or quarantined: source_health.py
+        # alarms when a source that listed vacancies starts listing none.
+        listed_by_source[source["id"]] = len(unique_found) + len(quarantined) - quarantine_mark
 
         for listing_item in unique_found:
             item = {**listing_item}
@@ -4336,6 +4378,7 @@ def discover_registered_candidates(
                         "sourceId": source["id"],
                         "sourceUrl": item.get("sourceUrl"),
                         "title": item.get("title"),
+                        **({"employerName": item["employerName"]} if item.get("employerName") else {}),
                         "reason": "unresolved-legal-employer",
                     }
                 )
@@ -4506,6 +4549,7 @@ def discover_registered_candidates(
         "completeSourceIds": complete_source_ids,
         "expectedSourceIds": expected_source_ids,
         "deferredSourceIds": deferred_source_ids,
+        "listedBySource": listed_by_source,
         "runKind": "selected_sources" if selected is not None else "all_registered_sources",
     }
 
@@ -4654,6 +4698,7 @@ def harvest_with_registered_discovery(
         "completeSourceIds": discovery["completeSourceIds"],
         "expectedSourceIds": discovery.get("expectedSourceIds") or [],
         "deferredSourceIds": discovery.get("deferredSourceIds") or [],
+        "listedBySource": discovery.get("listedBySource") or {},
         "runKind": discovery.get("runKind") or "all_registered_sources",
         "hostCooldowns": export_host_cooldowns(),
     }

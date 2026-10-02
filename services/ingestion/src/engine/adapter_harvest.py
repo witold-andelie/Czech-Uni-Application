@@ -446,6 +446,12 @@ def harvest_adapter_source(
                 **({} if complete else {"reason": ",".join(outcome["completeness"].reasons) or "incomplete"}),
             }
         ],
+        # Listing rows including quarantined ones, for source_health.py.
+        "listedBySource": {
+            source["id"]: int(
+                (outcome["completeness"].extra or {}).get("sourceRows", outcome["completeness"].listed_count) or 0
+            )
+        },
         "quarantined": [],
         "discoveredCount": len(outcome["candidates"]) if complete else 0,
         "completeSourceIds": [source["id"]] if complete else [],
