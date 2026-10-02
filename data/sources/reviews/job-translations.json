@@ -963,36 +963,36 @@
     "job-22000-55dab25c16c1": {
       "sourceHash": "sha256:995e3f77111b5c1fc9c577d43c2674355393189f01b07a771d1d6b4f6e8fca42",
       "evidenceHash": "sha256:995e3f77111b5c1fc9c577d43c2674355393189f01b07a771d1d6b4f6e8fca42",
-      "factHash": "sha256:b78af46a993045e011f3a370a5bb743e9b3050a0ed745186362c32667fce4498",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "operator_source_review"
       },
-      "reviewEventId": "review-2026-09-16-coverage-job-22000-55dab25c16c1",
-      "reviewedAt": "2026-09-16T08:57:29Z",
-      "reviewNote": "Reviewed the specific PhD notice within the official multi-vacancy page, excluding adjacent advertisements. Master degree required; English working language; PhD enrolment offered starting September 2026, contract can start earlier; full-time employment for up to four years. Rolling applications until filled, not a fixed deadline. Salary amount unpublished.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewEventId": "rev-2026-10-02-vscht-04",
+      "reviewedAt": "2026-10-02T20:03:13Z",
+      "reviewNote": "Checked 2026-10-02 against the live VŠCHT page 'Výběrová řízení - akademické a vědecké pozice' (www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice), the advert's own section: GA ČR Junior Star project; 'Master's degree in chemistry, materials science, or related fields' and 'Enrolment in the PhD doctoral program' (master's minimum, doctoral enrolment required); 'Excellent command of English as a working language'; 'Full-time employment (40 hours/week) for up to 4 years' (paid); 'Applications will be reviewed on a rolling basis until the position is full' (rolling, no closing date). The Czech title is a reviewer translation.",
       "title": {
-        "zh-CN": "化学博士研究岗位：MAX相与MXene材料",
-        "en": "PhD Researcher in Chemistry: MAX Phases and MXenes",
-        "cs": "Doktorandská výzkumná pozice v chemii: MAX fáze a MXeny"
+        "zh-CN": "无机化学系化学博士研究岗位（MAX 相与 MXene 材料）",
+        "en": "PhD Researcher in Chemistry: MAX Phases and MXenes (Department of Inorganic Chemistry)",
+        "cs": "Doktorand/ka – výzkumná pozice v chemii: MAX fáze a MXeny (Ústav anorganické chemie)"
       },
       "locales": {
         "zh-CN": {
           "status": "reviewed",
-          "reviewedAt": "2026-09-16T08:57:29Z",
-          "contentHash": "sha256:bd025d086c213a1f401fafc5ee18a18c25ab2aa1e848b444f3863d39bb30a134"
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:3e843fb238310a14c70517c2aa83ad96a3cb1a5905af31803c36e62e22fb9458"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-09-16T08:57:29Z",
-          "contentHash": "sha256:00c1b275e07659443dc10c047ea6406954db6e23e35a0206240c947062f0910d"
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:88cc41986096de31729f134203bce53fbaff62a52fc129a62f67c2307e3bed7b"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-09-16T08:57:29Z",
-          "contentHash": "sha256:9d9a8095dfbc72c9c03bf28c5f2fd16b3a1834a6d05c007f66695a7a7eaaa90e"
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:281f957c3b709e3fad7cdf21ccac6365f606f1079d81e7e37a44b5d53fd47e1b"
         }
-      }
+      },
+      "factHash": "sha256:702b6866ea6068e0902290fc13b674b96b43e394692f86095bbccbc8b22b483c"
     },
     "job-21000-5441": {
       "sourceHash": "sha256:b94f11f4baa1c26c1fa0402c6c561ad741e5eeac7e2e38493f10ece3b1d4de09",
@@ -4841,62 +4841,38 @@
       "factHash": "sha256:2547b5863d5f4276fe104076df365b77a8c1b3fc9a83e787de06b2fa5904978c"
     },
     "job-22000-560": {
-      "sourceHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
-      "evidenceHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
+      "sourceHash": "sha256:aaa8219adf2c10ecd31b677bec13553b8573624b5675b20ad0d081c0d0eb9c37",
+      "evidenceHash": "sha256:aaa8219adf2c10ecd31b677bec13553b8573624b5675b20ad0d081c0d0eb9c37",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "operator_source_review"
       },
-      "reviewEventId": "draft-2026-09-22-066",
-      "reviewedAt": "2026-09-26T18:23:16Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). VŠCHT/UCT official pages captured.\n\nFact back-fill 2026-09-26T18:23:16Z (operator, from the live official page https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice): `workingLanguages` set from the sentences below, read on the page as fetched then (http 200, scrapling_get, sha256 sha256:b33c9667199f8b322). Values the page does not state were left alone: nothing here is inferred from the record's older stored text.\n\nworkingLanguages: cs — “• Český jazyk (C1), anglický jazyk (B2)”\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).",
+      "reviewEventId": "rev-2026-10-02-vscht-03",
+      "reviewedAt": "2026-10-02T20:03:13Z",
+      "reviewNote": "Checked 2026-10-02 against the live VŠCHT page 'Výběrová řízení - akademické a vědecké pozice' (www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice), the advert's own section: LC-MS analyses, method development and publishing (research-technical); 'Vysokoškolské vzdělání (minimálně Mgr./Ing.)' (master's minimum; the earlier review's doctorate was wrong and is corrected); Czech C1, English B2; 'Úvazek plný 1,0'; 'Pracovní smlouva na dobu určitou' (paid); no closing date stated, start 'ihned'.",
       "title": {
-        "zh-CN": "分析实验室专家工作人员（1.0 工时）- 560",
-        "en": "SPECIALIST WORKER IN THE ANALYTICAL LABORATORY (1.0 FTE) - 560",
-        "cs": "ODBORNÝ/NÁ PRACOVNÍK/CE V ANALYTICKÉ LABORATOŘI (úvazek 1,0) - 560"
+        "zh-CN": "生物活性物质法医分析实验室分析实验室专业人员",
+        "en": "Specialist in the Analytical Laboratory (Laboratory of Forensic Analysis of Biologically Active Substances, 1.0 FTE)",
+        "cs": "Odborný/ná pracovník/ce v analytické laboratoři (úvazek 1,0) - 560"
       },
       "locales": {
         "zh-CN": {
           "status": "reviewed",
-          "contentHash": "sha256:861b7eadaaaa98bacf8b4fc9b500df73a851320e5258e0388a393c46a3629136",
-          "translatedFromHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
-          "reviewedAt": "2026-09-22T21:17:52Z"
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:34bbd48b2d459ca7ce9404f4c928792b21f520f3ada593733058624acb78b9fd"
         },
         "en": {
           "status": "reviewed",
-          "contentHash": "sha256:e668989e3663ac02b4f7ac1257f4f52d7d5113f77f41f1364f37474b8fac14fb",
-          "translatedFromHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
-          "reviewedAt": "2026-09-22T21:17:52Z"
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:ec9ba7cd87a1295197c675e698f2f25d1799def04cf5ca088d6a1314f91ec324"
         },
         "cs": {
           "status": "reviewed",
-          "contentHash": "sha256:f286a49e3dc726b6a3046069e91004a8a434dc26e785501a0b03ff1bacea5495",
-          "translatedFromHash": "sha256:6fed190e5746d55f29129f285ee8084293423de48215d90df22a8a63b6ea3bd8",
-          "reviewedAt": "2026-09-22T21:17:52Z"
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:04fc423d75beffa4d5404f8027e01f9c18a92b854b7532d6153b361e1be54f6f"
         }
       },
-      "factHash": "sha256:71356e74157ebd2659af45f2d55e9c3be913b7e6b559acad8c202494279caa0d",
-      "factBackfills": [
-        {
-          "at": "2026-09-26T18:23:16Z",
-          "url": "https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice",
-          "httpStatus": 200,
-          "tool": "scrapling_get",
-          "textSha256": "sha256:b33c9667199f8b32226d1e565af1b6a6a17947cf0ea9b561edd67069961ecae2",
-          "resolvedFrom": null,
-          "fields": [
-            "workingLanguages"
-          ],
-          "basis": {
-            "workingLanguages": [
-              {
-                "matched": "cs",
-                "sentence": "• Český jazyk (C1), anglický jazyk (B2)"
-              }
-            ]
-          }
-        }
-      ]
+      "factHash": "sha256:741034aaee8d7bd16286b2bb6b30bf134dcee1c3ca4bdd3f5f17ca84434738e7"
     },
     "job-23000-1230b810-efab-4d26-87dd-c91660bb1c84": {
       "sourceHash": "sha256:0e57692ffad4ce4a4b164361138e6d81c20f2416bd97b3f546b2de2da47a8dd2",
@@ -4907,7 +4883,7 @@
       },
       "reviewEventId": "draft-2026-09-22-067",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院社会学与社会工作系主任",
         "en": "Academic staff member - Head of the Department of Sociology and Social Work at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -4933,7 +4909,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:1db4658da78f69907771449c5e49a5364b78288410fcacf6f59442f259467ace"
+      "factHash": "sha256:f8f154ee35b6eff140f2749bd34d67275eb9b4d9147b02846e61a40b42d49dd0"
     },
     "job-23000-12d5811e-022b-41df-81c8-78e3800139a2": {
       "sourceHash": "sha256:5680a7095ce2bcec3554491d4fe8cfbfaa4447981644ba5830f946e559c9276a",
@@ -4944,7 +4920,7 @@
       },
       "reviewEventId": "draft-2026-09-22-068",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院考古学系主任",
         "en": "Academic staff member - Head of the Department of Archaeology at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -4970,7 +4946,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:172794f3b977f452d769473a07731fb9fdc157f63e8dde20f59faf8941427f2f"
+      "factHash": "sha256:f8d120e7b873c1c1c484981db6d6f473b0775c58419eedce08433e89c1b1f23d"
     },
     "job-23000-1fef677c-9c9c-4791-a77a-5d83d74f9a8e": {
       "sourceHash": "sha256:d2f15281eb7622ef9678d62da91f6cab0d9e6237c90e89c7abe96596d9f3ec3d",
@@ -5018,7 +4994,7 @@
       },
       "reviewEventId": "draft-2026-09-22-070",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院历史科学系主任",
         "en": "Academic staff member - Head of the Department of Historical Sciences at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -5044,7 +5020,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:a55d48a277914bf3cfa586f01313cc8dc4b4b0857d4c33ca3749a276f365c60b"
+      "factHash": "sha256:f17f14c6340f26aa362581fcac552e683894b961aaa8588598dc3912fea88bf3"
     },
     "job-23000-5ba6abde-7df2-43f7-9e5f-250caa8a4169": {
       "sourceHash": "sha256:57c355c739d9fb4d1e29c9f2058390b5d3e50aee2b0d9328845ce5dc816c94fe",
@@ -5092,7 +5068,7 @@
       },
       "reviewEventId": "draft-2026-09-22-072",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院语文学研究系主任",
         "en": "Academic staff member - Head of the Department of Philological Studies at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -5118,7 +5094,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:c5a00316c8b27ec26bd816d6fe9210dc2a551f1c1e9e9731770268bf994904c6"
+      "factHash": "sha256:cea393f96519dca7d316659a12161c5fecb8f5e4d8e187824b83bbb2f6f0b9a6"
     },
     "job-23000-6cbee7a8-ea92-4508-9e13-7b591dfc84d2": {
       "sourceHash": "sha256:80a4944e7e11a007f218ec75f5da66b789040e4aa05095e12878d80b439fe83d",
@@ -5129,7 +5105,7 @@
       },
       "reviewEventId": "draft-2026-09-22-073",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院政治学与国际关系系主任",
         "en": "Academic staff member - Head of the Department of Political Science and International Relations at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -5155,7 +5131,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:798a65a33bef0fdf0583d1d2832d891f73070450b01ef1c77f42947e8e0b3bbd"
+      "factHash": "sha256:cf5b393f4f123733c1dbcef12d603f399d4ad01cb8c3f6b24f35fd21de6f1412"
     },
     "job-23000-74fc20c7-139d-4c69-95e0-dd773466fd7a": {
       "sourceHash": "sha256:008252d554fae018309761b55e76d044c54f5d1aa0f08fbb7070c813468b5bc1",
@@ -5240,7 +5216,7 @@
       },
       "reviewEventId": "draft-2026-09-22-076",
       "reviewedAt": "2026-09-22T21:17:52Z",
-      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.",
+      "reviewNote": "Operator translation draft: per-locale proposed title renderings binding translation hashes to the current source hash. Not yet verified against a live page; a reviewer must confirm facts and titles before approval.\n\nPromoted from operator_translation_draft on 2026-09-22T21:17:52Z: operator verified the trilingual titles against the source text and URL. Reason: Offline review 2026-09-22: trilingual title consistent with captured official notice text (sourceHash-bound, fact-v1). UWB xdoc/alfresco captured.\n\nRe-bound fact-v1 -> fact-v2 on 2026-10-01 from the candidate file, the record whose fact-v1 hash equals this review's: the reviewed facts are unchanged; window status and track/isPostdoc are no longer bound (owner decision).\n\nRe-bound 2026-10-01T21:10:30Z (operator): the notice's 'Úvazek: 1,0 (40 hod/týdně)' is now read as 1.0 FTE and its 'zašlete do 30. 10. 2026 do 12:00 hodin' as the application deadline (30 Oct 2026); title and every other fact unchanged, source text unchanged.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "学术工作人员 – 西波希米亚大学文学院哲学系主任",
         "en": "Academic staff member - Head of the Department of Philosophy at the Faculty of Philosophy and Arts, UWB in Pilsen",
@@ -5266,7 +5242,7 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:cfa7349aa334571698d11a242a11911d7e955995353ba253ba26099b71f9f89e"
+      "factHash": "sha256:6851a785a1350e541056999bad5a3b1621224b2c41e112280c7f05f00729b33c"
     },
     "job-23000-db5b1a33-b03b-42d9-83c6-a7d334afdb30": {
       "sourceHash": "sha256:d5b8802087c3ee4513dc1a51df5d13e960c9c5826a78b6cdfe1e09838c5a5117",
@@ -7237,7 +7213,15 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:1acf0f7ca2e85704b75e5df36471779804cd72848574aa2cac026401c59b2523"
+      "factHash": "sha256:1acf0f7ca2e85704b75e5df36471779804cd72848574aa2cac026401c59b2523",
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "duplicate_record_of_job-22000-560",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:03:13Z",
+        "note": "Duplicate record 2026-10-02T20:03:13Z (operator): job-uct-lab-analyst was hand-seeded for the analytical-laboratory specialist advert 560 on the VŠCHT academic-positions page. The registered source harvests the same advert as job-22000-560, reviewed 2026-10-02 against the advert's own section. One advert is published once, so this seed is rejected as a duplicate."
+      }
     },
     "job-uct-msca-pf-2026": {
       "sourceHash": "sha256:0ddcd8c6e54562a0e5f8b667e62e241bf3c2b0d3d689717be32a52555870f13a",
@@ -7311,7 +7295,15 @@
           "reviewedAt": "2026-09-22T21:17:52Z"
         }
       },
-      "factHash": "sha256:bb8d552adab3f1d53e267f527e613be7c88080c7bf1cff951a5d493dc69eac3b"
+      "factHash": "sha256:bb8d552adab3f1d53e267f527e613be7c88080c7bf1cff951a5d493dc69eac3b",
+      "disposition": {
+        "publicationStatus": "rejected",
+        "visibility": "archived",
+        "reason": "duplicate_record_of_job-22000-55dab25c16c1",
+        "decidedBy": "operator",
+        "decidedAt": "2026-10-02T20:03:13Z",
+        "note": "Duplicate record 2026-10-02T20:03:13Z (operator): job-uct-phd-chemistry was hand-seeded for the MAX phases / MXenes PhD researcher advert on the VŠCHT academic-positions page. The registered source harvests the same advert as job-22000-55dab25c16c1, reviewed 2026-10-02 against the advert's own section. One advert is published once, so this seed is rejected as a duplicate."
+      }
     },
     "job-upol-msca-pf-2026": {
       "sourceHash": "sha256:db5553072a48f529c9fe516cfbb1d48db90f2d16e8daaab7f8a234c72b174ab5",
@@ -7971,7 +7963,7 @@
       },
       "reviewEventId": "rev-2026-10-01-muni-03",
       "reviewedAt": "2026-10-01T20:08:56Z",
-      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81712 (main content): University education in the medical field (MD) required, no PhD; employment relationship with St. Anne's University Hospital (paid); fluent English and Czech; part-time; deadline 15 Oct 2026.",
+      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81712 (main content): University education in the medical field (MD) required, no PhD; employment relationship with St. Anne's University Hospital (paid); fluent English and Czech; part-time; deadline 15 Oct 2026.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "医学院职业医学系讲师（与圣安娜大学医院合办）",
         "en": "Instructor of the Department of Occupational Medicine, Faculty of Medicine MU and St. Anne's University Hospital",
@@ -7994,7 +7986,7 @@
           "contentHash": "sha256:0139f705d1c02fc80e1313e0b959f0b9c03e0a44bf05dff21157f53d4a6f775d"
         }
       },
-      "factHash": "sha256:55adfcc89f8495e635b5854b84e47c6338a741fc5084f9b643814d7ab8fde145"
+      "factHash": "sha256:c00c87d400ea7aeedeb28826efc7b0cf1d93713a97489d50922add5f9cd7ea30"
     },
     "job-14000-81734": {
       "sourceHash": "sha256:c91187477fe420e4083d70cf9ff4a771f1ee1767039028fd38708b25ee93906e",
@@ -8005,7 +7997,7 @@
       },
       "reviewEventId": "rev-2026-10-01-muni-04",
       "reviewedAt": "2026-10-01T20:08:56Z",
-      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81734 (main content): University education in the medical field (MD) and specialised qualification required, no PhD; employment relationship (paid); fluent English and Czech; part-time; deadline 18 Oct 2026.",
+      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81734 (main content): University education in the medical field (MD) and specialised qualification required, no PhD; employment relationship (paid); fluent English and Czech; part-time; deadline 18 Oct 2026.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "医学院第一外科学系助理教授",
         "en": "Assistant Professor of the First Department of Surgery, Faculty of Medicine MU",
@@ -8028,7 +8020,7 @@
           "contentHash": "sha256:d2085e230994b6f89d26f20a407f7e76d7f0198ff7dd833f13d1f4e680b25259"
         }
       },
-      "factHash": "sha256:ea6c0617519392ca376d00526ff6b380bf33544a3b172497dd954e076362f987"
+      "factHash": "sha256:5f977046b0121fd4024fed6d509ee6b01c22d1f111b2e0848e937792e5d62e02"
     },
     "job-14000-81752": {
       "sourceHash": "sha256:dda36c72113d9fbf8b0fdd01eace435c0b91e8f4f9152d3279bf6df06fb4751a",
@@ -8039,7 +8031,7 @@
       },
       "reviewEventId": "rev-2026-10-01-muni-05",
       "reviewedAt": "2026-10-01T20:08:56Z",
-      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81752 (main content): PhD position at CEITEC; no minimum degree stated (stays unknown); PhD enrolment; 'An attractive salary' (paid); good oral and written English; deadline 20 Oct 2026.",
+      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81752 (main content): PhD position at CEITEC; no minimum degree stated (stays unknown); PhD enrolment; 'An attractive salary' (paid); good oral and written English; deadline 20 Oct 2026.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "博士生岗位：植物再生与发育（CEITEC）",
         "en": "PhD position – Plant regeneration and development (CEITEC MU)",
@@ -8062,7 +8054,7 @@
           "contentHash": "sha256:e7a01c8b2aa41d59346252d6ef8901c5de492b7c76ffefec13da64e4e22d0178"
         }
       },
-      "factHash": "sha256:17e639367867efe5929ba1b6ad07078989610cd1b798f060991e607298e5662d"
+      "factHash": "sha256:2f77017796abc6636d7c2e310eb0ab83e2896959de2e70e5d8b019737c7e472a"
     },
     "job-14000-81774": {
       "sourceHash": "sha256:4b23b7821f555404e7e3ce3c94c6a02caa77f0995568bd2949e4fbb0d47c8224",
@@ -8073,7 +8065,7 @@
       },
       "reviewEventId": "rev-2026-10-01-muni-06",
       "reviewedAt": "2026-10-01T20:08:56Z",
-      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81774 (main content): Faculty of Medicine, combined with a Masaryk Memorial Cancer Institute role; university education in General Medicine (MUDr., master's level) required, habilitation an advantage, PhD not stated as required; paid senior post; Czech required; deadline 26 Oct 2026.",
+      "reviewNote": "Checked 2026-10-01 against the live muni.cz vacancy page 81774 (main content): Faculty of Medicine, combined with a Masaryk Memorial Cancer Institute role; university education in General Medicine (MUDr., master's level) required, habilitation an advantage, PhD not stated as required; paid senior post; Czech required; deadline 26 Oct 2026.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "医学院外科肿瘤学系主任",
         "en": "Head of the Department of Surgical Oncology (Faculty of Medicine)",
@@ -8096,7 +8088,7 @@
           "contentHash": "sha256:fb9b74d306e2ebda2a9278e5b62ea9b7c68bd30d3a5325835bae83d0104123e9"
         }
       },
-      "factHash": "sha256:9bc1ec06aa8466d87f7300257f8d1817ecd5ab3980b6ce15fe5ae49a0b89d2ad"
+      "factHash": "sha256:41eb3e4b006a21904a71f3efd03fbb0296351238469461176aafd46928a8a0b1"
     },
     "job-14000-81775": {
       "sourceHash": "sha256:fa8b168cec99b546eb167a86d0e16498006280d50f87ac33d8dbec92a815f089",
@@ -8651,7 +8643,7 @@
       },
       "reviewEventId": "rev-2026-10-01-ctu-02",
       "reviewedAt": "2026-10-01T20:34:20Z",
-      "reviewNote": "Checked 2026-10-01 against the official PDF attached to ČVUT electronic notice board item 5504: Rector's selection procedure; the institute's academic head; 'vědeckou hodnost Ph.D. nebo ekvivalentní' and documented research results required; good knowledge of English; 'úvazek 1,0 – platové podmínky se řídí Mzdovým předpisem univerzity' (paid, 1.0 FTE); 'Lhůta pro podání přihlášek je 17.10.2026'.",
+      "reviewNote": "Checked 2026-10-01 against the official PDF attached to ČVUT electronic notice board item 5504: Rector's selection procedure; the institute's academic head; 'vědeckou hodnost Ph.D. nebo ekvivalentní' and documented research results required; good knowledge of English; 'úvazek 1,0 – platové podmínky se řídí Mzdovým předpisem univerzity' (paid, 1.0 FTE); 'Lhůta pro podání přihlášek je 17.10.2026'.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "捷克理工大学马萨里克高等研究院院长",
         "en": "Director of the Masaryk Institute of Advanced Studies (CTU)",
@@ -8674,7 +8666,7 @@
           "contentHash": "sha256:5e5d9087fd9c5fa364f13952f3a023a37a490c2b721f5a09b0bbe4d10faab5d9"
         }
       },
-      "factHash": "sha256:659cea5aee1cbd947d03cd985f81a1adefbad0252bfb4944f489048bd539d60c"
+      "factHash": "sha256:4c9b0a0dceac3d31d02e161b2b301eb54d322aae81f511accd565dbd479d4330"
     },
     "job-21000-5514": {
       "sourceHash": "sha256:d489636c30a02ab33ba8d1f90b021b1019a3f0a1cb775ae4bb603a60d723b9c2",
@@ -9263,7 +9255,7 @@
       },
       "reviewEventId": "rev-2026-10-01-jcu-01",
       "reviewedAt": "2026-10-01T21:03:58Z",
-      "reviewNote": "Checked 2026-10-01 against the official PDF notice linked from the JČU vacancy list (www.jcu.cz/cz/univerzita/volna-mista): Centre for Polar Ecology, Faculty of Science; 'Ph.D. ve fyzické geografii, geomorfologii, kvartérní geologii nebo příbuzném oboru' required; 'velmi dobrou znalost angličtiny'; '100% pracovní úvazek' for 1 year, extendable; 'finanční ohodnocení ve výši 37.500,-Kč' (no pay period stated, so the cycle stays unspecified); applications to jobs@prf.jcu.cz by 15 Oct 2026. Replaces the 14 Sep notice version no longer listed.",
+      "reviewNote": "Checked 2026-10-01 against the official PDF notice linked from the JČU vacancy list (www.jcu.cz/cz/univerzita/volna-mista): Centre for Polar Ecology, Faculty of Science; 'Ph.D. ve fyzické geografii, geomorfologii, kvartérní geologii nebo příbuzném oboru' required; 'velmi dobrou znalost angličtiny'; '100% pracovní úvazek' for 1 year, extendable; 'finanční ohodnocení ve výši 37.500,-Kč' (no pay period stated, so the cycle stays unspecified); applications to jobs@prf.jcu.cz by 15 Oct 2026. Replaces the 14 Sep notice version no longer listed.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "理学院极地生态中心自然地理／北极研究方向博士后职位",
         "en": "Postdoctoral Position in Physical Geography / Arctic Research (Centre for Polar Ecology, Faculty of Science)",
@@ -9286,7 +9278,7 @@
           "contentHash": "sha256:983de70b6639fa9e1dde0446f0bb1905087d2610beff1434d6b5d9395998044c"
         }
       },
-      "factHash": "sha256:25bc2ed29c5128b3914703d73a7affca139e0f1f4ceb5264068ab1975d5066f5"
+      "factHash": "sha256:a58468d2c0f02419a99789757f54baf6d98ca544b1ffb9154b53df9294908ce8"
     },
     "job-12000-d65a89a0a489": {
       "sourceHash": "sha256:6a240523ea3cb347462725751aa51a80a2a0c308e431728c83941ef58f7d8f5c",
@@ -9705,7 +9697,7 @@
       },
       "reviewEventId": "rev-2026-10-01-zcu-03",
       "reviewedAt": "2026-10-01T21:18:56Z",
-      "reviewNote": "Checked 2026-10-01 against the official ZČU PDF notice from the university's public document feed (xdoc.zcu.cz): University-wide internal competition co-funded by the Pilsen Region; post-docs within 7 years of the Ph.D.; 'Properly completed doctoral study' required; English not lower than B2; at least 20 hours a week for 9-12 months, so the workload is not one figure (unknown); 'CZK 50,000 (gross monthly pay – 1.0 FTE – 40 hours per week)'; applications 'from 21 September to 31 October 2026'. The Czech title is a reviewer translation of the English notice.",
+      "reviewNote": "Checked 2026-10-01 against the official ZČU PDF notice from the university's public document feed (xdoc.zcu.cz): University-wide internal competition co-funded by the Pilsen Region; post-docs within 7 years of the Ph.D.; 'Properly completed doctoral study' required; English not lower than B2; at least 20 hours a week for 9-12 months, so the workload is not one figure (unknown); 'CZK 50,000 (gross monthly pay – 1.0 FTE – 40 hours per week)'; applications 'from 21 September to 31 October 2026'. The Czech title is a reviewer translation of the English notice.\n\nRe-bound 2026-10-02T20:00:29Z (operator): the window's default round type is now 'regular' on both harvest paths (it was 'unspecified' on the listing adapter only, so the review flipped with whichever path ran last); no stated fact, title or page text changed.",
       "title": {
         "zh-CN": "比尔森学术职业计划 2027（博士后职位）",
         "en": "Academic Career in Pilsen 2027 (post-doc positions)",
@@ -9728,7 +9720,7 @@
           "contentHash": "sha256:4c91b0f76a5ab3f7208b31576efd771440e0a250696d180dc4b01bd40c30ad0d"
         }
       },
-      "factHash": "sha256:c400a4cbd8d7fb1055e0d7d23b1f03d2351d56c98ee4d9ab9f1acb40a572dfdb"
+      "factHash": "sha256:685f774e6e515a2c635e8928482693e796bd5fd63c908039230055c5e38a0319"
     },
     "job-23000-e1951d9a-b787-42bf-a22d-954ea913b523": {
       "sourceHash": "sha256:92110c5a32719eb46e8d0705f36fae1bf07364215f60bcefc75dfd9abb3568b1",
@@ -9933,6 +9925,74 @@
         }
       },
       "factHash": "sha256:83703afaa4a33693fdd9a99b9ad1a2ec8bea440eb552851e7202b3ab9930ebd9"
+    },
+    "job-22000-218": {
+      "sourceHash": "sha256:df9063d8145c494a9021796dda7aee3e1d628f2d5fdd1e406c1f129e12df1b8d",
+      "evidenceHash": "sha256:df9063d8145c494a9021796dda7aee3e1d628f2d5fdd1e406c1f129e12df1b8d",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-vscht-01",
+      "reviewedAt": "2026-10-02T20:03:13Z",
+      "reviewNote": "Checked 2026-10-02 against the live VŠCHT page 'Výběrová řízení - akademické a vědecké pozice' (www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice), the advert's own section: 'vědecká hodnost CSc., Dr. nebo Ph.D. v oboru Energie a paliva' required; English spoken and written, 'Výborná znalost českého jazyka ... podmínkou'; úvazek 0,2; no pay stated (unconfirmed); 'doručte nejpozději do 02. 11. 2026'; start 1 Jan 2027.",
+      "title": {
+        "zh-CN": "环境保护技术学院能源研究所能源与燃料方向助理教授（0.2 工作量）",
+        "en": "Assistant Professor in Energy and Fuels, Department of Energy (Faculty of Environmental Technology, 0.2 FTE)",
+        "cs": "Odborný/á asistent/ka v oboru Energie a paliva (úvazek 0,2) na Ústav energetiky (218)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:db5f2e0881c7d2fe1f723732a9db6c27edd7c1c457495e7467fbacd1b2e1e7c2"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:7de7606a8afbd4b64d6af2eaaa893b1863b72d71a5d0d24fd077422687f27ee1"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:83e81676c351de5baa89eaf407694135c93d37f1b641b88dcd810ba1faffca1c"
+        }
+      },
+      "factHash": "sha256:8aa9aae2e503edfb0bc8b62d3564505563aa73019b2b913b1c87c8b5afd01717"
+    },
+    "job-22000-110": {
+      "sourceHash": "sha256:789931fc87b9d58429175b8bc2b8082103ab736074c0f4f194bd020418fdcde8",
+      "evidenceHash": "sha256:789931fc87b9d58429175b8bc2b8082103ab736074c0f4f194bd020418fdcde8",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "operator_source_review"
+      },
+      "reviewEventId": "rev-2026-10-02-vscht-02",
+      "reviewedAt": "2026-10-02T20:03:13Z",
+      "reviewNote": "Checked 2026-10-02 against the live VŠCHT page 'Výběrová řízení - akademické a vědecké pozice' (www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice), the advert's own section: 'Ukončené doktorské vysokoškolské vzdělání ... Vědecká hodnost Ph.D. nebo ekvivalentní' required; Czech and English 'nezbytnou podmínkou'; úvazek 1,0; 'pracovní poměr na 2 roky' (paid employment); deadline 26 Oct 2026; start from 11/2026.",
+      "title": {
+        "zh-CN": "化学技术学院有机化学研究所有机化学方向助理教授",
+        "en": "Assistant Professor in Organic Chemistry, Department of Organic Chemistry (Faculty of Chemical Technology)",
+        "cs": "Odborný/ná asistent/ka v oboru Organická chemie na Ústav organické chemie (úvazek 1,0) - 110"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:21f244c45392743b8ee66508338a9650797525f37c15646e966b7b229633f27d"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:c83503cf940f0b2c4165df06a9bb0a7af31249c4ad6cffcdf87658b397b3b873"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-10-02T20:03:13Z",
+          "contentHash": "sha256:704f3287479e47f8e5608e75cd7ad879ff8d79db86d7a2b8fac2a5d3475e9376"
+        }
+      },
+      "factHash": "sha256:f463b3e90f48ff761e34c8e438cc26f1d8305c0eb863c4a1693f6f22f018c93c"
     }
   }
 }
