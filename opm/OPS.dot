@@ -18,6 +18,7 @@ digraph OPS {
   subgraph cluster_localereview {
     graph [label="逐语种审核记录\nLocale Review Record", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="localereview"];
     localereview [label="", shape="point", width="0.01", style="invis", opm_kind="object", opm_anchor="true"];
+    machinetranslated [label="离线机器翻译（已标注）\nmachine-translated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
     reviewbound [label="已绑定源哈希\nhash bound", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
     reviewinvalid [label="源变更后失效\ninvalidated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
     reviewpending [label="待人工复核\npending", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];

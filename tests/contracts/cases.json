@@ -411,6 +411,19 @@
           }
         }
       ]
+    },
+    {
+      "id": "machine_title_under_human_review",
+      "expect": "reject",
+      "rules": ["REVIEW_TRANSLATION_NOT_REVIEWED"],
+      "note": "Machine-translated titles are accepted only from the automatic pipeline (owner decision 2026-10-02).",
+      "mutations": [
+        {
+          "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0.translationReview.locales.zh-CN",
+          "set": {"status": "machine"}
+        }
+      ]
     }
-  ]
+]
 }

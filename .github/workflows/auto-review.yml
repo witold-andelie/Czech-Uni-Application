@@ -1,0 +1,123 @@
+name: Automatic review, translation and publication
+
+# Owner decision 2026-10-02: no human step between harvest and the public
+# snapshot. After each refresh this workflow machine-translates new titles
+# offline on the runner's CPU (llama.cpp + an open-weight Qwen3 model, no
+# external translation service), approves every record that passes the
+# automatic gates (auto_review.py), and dispatches publish.yml. A record that
+# fails a gate is withheld with its reason; the live-evidence gate inside
+# publish.py still proves each published vacancy is announced.
+
+on:
+  workflow_run:
+    workflows: ["Scheduled official-source refresh"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      max_translations:
+        description: New model calls in this run (about 9 s each)
+        default: "250"
+      publish:
+        description: Dispatch publish.yml afterwards
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: auto-review
+  cancel-in-progress: false
+
+env:
+  LLAMA_BUILD: b11347
+  MODEL_FILE: Qwen3-8B-Q4_K_M.gguf
+  MODEL_URL: https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/main/Qwen3-8B-Q4_K_M.gguf
+
+jobs:
+  auto-review:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: services/ingestion/requirements-ci.txt
+      - name: Install Python dependencies
+        run: python -m pip install -r services/ingestion/requirements-ci.txt
+      - name: Restore llama.cpp and the translation model
+        id: model-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/llm
+          key: llm-${{ env.LLAMA_BUILD }}-${{ env.MODEL_FILE }}
+      - name: Download llama.cpp (CPU build) and the model
+        if: steps.model-cache.outputs.cache-hit != 'true'
+        run: |
+          set -euo pipefail
+          mkdir -p ~/llm/llama
+          curl -fsSL "https://github.com/ggml-org/llama.cpp/releases/download/${LLAMA_BUILD}/llama-${LLAMA_BUILD}-bin-ubuntu-x64.tar.gz" -o ~/llm/llama.tgz
+          tar -xzf ~/llm/llama.tgz -C ~/llm/llama
+          rm ~/llm/llama.tgz
+          curl -fsSL "$MODEL_URL" -o ~/llm/"$MODEL_FILE"
+          ls -la ~/llm
+      - name: Start the local translation server
+        run: |
+          set -euo pipefail
+          server=$(find ~/llm/llama -name llama-server -type f | head -1)
+          chmod +x "$server"
+          export LD_LIBRARY_PATH="$(dirname "$server"):${LD_LIBRARY_PATH:-}"
+          nohup "$server" -m ~/llm/"$MODEL_FILE" --jinja -c 4096 -t "$(nproc)" --port 8080 > "$RUNNER_TEMP/llama-server.log" 2>&1 &
+          for i in $(seq 1 150); do
+            if curl -sf http://127.0.0.1:8080/health > /dev/null; then echo "server ready after ${i}x2s"; exit 0; fi
+            sleep 2
+          done
+          tail -40 "$RUNNER_TEMP/llama-server.log"
+          exit 1
+      - name: Translate and review automatically
+        run: |
+          set -euo pipefail
+          python -u services/ingestion/src/auto_review.py --max-translations "${{ github.event.inputs.max_translations || '250' }}"
+          python -u services/ingestion/src/harvest_nine_hei_jobs.py --reconcile-reviews
+      - name: Coverage floors and publication validation
+        run: |
+          set -euo pipefail
+          python services/ingestion/src/check_job_coverage.py
+          python services/ingestion/src/publish.py --check-sources
+      - name: Commit automatic reviews on main
+        id: commit
+        run: |
+          set -euo pipefail
+          git add data/sources/reviews/job-auto-reviews.json data/sources/reviews/machine-title-translations.json data/sources/browse/nine-hei-jobs.json
+          if git diff --cached --quiet; then
+            echo 'No automatic review changes'
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Review and translate harvested vacancies automatically'
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            sleep 10
+          done
+          exit 1
+      - name: Publish the snapshot
+        if: ${{ github.event_name == 'workflow_run' || github.event.inputs.publish == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publish.yml --ref main -f operation=publish
+      - name: Translation server log
+        if: always()
+        run: tail -20 "$RUNNER_TEMP/llama-server.log" || true

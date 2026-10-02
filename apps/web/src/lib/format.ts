@@ -187,3 +187,11 @@ export function teachingLanguageLabel(codes: string[], mode: "single" | "joint_r
   if (codes.length === 1) return languageName(codes[0], locale);
   return codes.map((code) => languageName(code, locale)).join(", ");
 }
+
+/** The title shown in this locale is an offline machine translation. */
+export function jobTitleIsMachine(
+  job: { translationReview?: { locales?: Partial<Record<string, { status?: string }>> } | null },
+  locale: string,
+): boolean {
+  return job.translationReview?.locales?.[locale]?.status === "machine";
+}

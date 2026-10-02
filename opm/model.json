@@ -1597,6 +1597,35 @@
       "kind": "process",
       "en": "Incremental Review Triaging",
       "zh": "增量审核分流"
+    },
+    "machinetranslated": {
+      "id": "machinetranslated",
+      "kind": "state",
+      "owner": "localereview",
+      "en": "machine-translated",
+      "zh": "离线机器翻译（已标注）"
+    },
+    "autoreview": {
+      "id": "autoreview",
+      "kind": "process",
+      "en": "Automatic Reviewing",
+      "zh": "自动审核与离线翻译（2026-10-02 所有者决定）"
+    },
+    "titlemodel": {
+      "id": "titlemodel",
+      "kind": "object",
+      "en": "Offline Title Translation Model",
+      "zh": "离线标题翻译模型（llama.cpp + Qwen3-8B，CI 内运行）",
+      "physical": false,
+      "external": false
+    },
+    "autogates": {
+      "id": "autogates",
+      "kind": "object",
+      "en": "Automatic Review Gates",
+      "zh": "自动审核门槛",
+      "physical": false,
+      "external": false
     }
   },
   "diagrams": [
@@ -3360,6 +3389,31 @@
         {
           "source": "selectedsnapshot",
           "target": "snapshotstage",
+          "type": "instrument"
+        },
+        {
+          "source": "reviewpending",
+          "target": "autoreview",
+          "type": "input"
+        },
+        {
+          "source": "autoreview",
+          "target": "machinetranslated",
+          "type": "output"
+        },
+        {
+          "source": "titlemodel",
+          "target": "autoreview",
+          "type": "instrument"
+        },
+        {
+          "source": "autogates",
+          "target": "autoreview",
+          "type": "instrument"
+        },
+        {
+          "source": "machinetranslated",
+          "target": "selectrecords",
           "type": "instrument"
         }
       ],

@@ -381,7 +381,8 @@ describe("nine-HEI official career jobs", () => {
     assert.equal(window.opensAt, null);
     assert.ok(window.closesAt);
     assert.equal(window.datePrecision, "date");
-    assert.equal(mff.lifecycleStatus, "expired");
+    // Expired, or withdrawn from a complete official listing since: both are closed.
+    assert.ok(["expired", "unavailable"].includes(mff.lifecycleStatus), mff.lifecycleStatus);
     assert.equal(window.status, "closed");
   });
 });

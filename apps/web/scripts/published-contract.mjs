@@ -736,9 +736,11 @@ function validateDataset(snapshotRoot) {
       if (typeof review.evidenceHash !== "string" || !SHA_RE.test(review.evidenceHash)) errors.push(`REVIEW_EVIDENCE_HASH_MISMATCH: ${label} review evidenceHash is missing`);
       else if (review.evidenceHash !== job.sourceHash) errors.push(`REVIEW_EVIDENCE_HASH_MISMATCH: ${label} review evidenceHash does not match sourceHash`);
       else if (evidenceHashById[evidenceId] && review.evidenceHash !== evidenceHashById[evidenceId]) errors.push(`REVIEW_EVIDENCE_HASH_MISMATCH: ${label} evidence sourceHash does not match the review`);
+      // Machine titles only from the automatic pipeline (owner decision 2026-10-02).
+      const acceptedStatuses = reviewerRole(review.reviewer) === "automatic_pipeline" ? new Set(["reviewed", "machine"]) : new Set(["reviewed"]);
       for (const locale of LOCALES) {
         const item = review.locales[locale];
-        if (!item || item.status !== "reviewed") errors.push(`${label} ${locale} translation is not reviewed`);
+        if (!item || !acceptedStatuses.has(item.status)) errors.push(`REVIEW_TRANSLATION_NOT_REVIEWED: ${label} ${locale} translation is not reviewed`);
         else {
           if (item.translatedFromHash !== job.sourceHash) errors.push(`${label} ${locale} review is stale`);
           if (!isoDateTime(item.reviewedAt)) errors.push(`${label} ${locale} reviewedAt is invalid`);

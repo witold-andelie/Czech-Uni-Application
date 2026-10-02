@@ -493,8 +493,11 @@ def _validate_translation_review(
         if not isinstance(item, dict):
             errors.append(f"{label} has no {locale} review")
             continue
-        if item.get("status") != "reviewed":
-            errors.append(f"{label} {locale} translation is not reviewed")
+        # Machine titles are accepted only from the automatic pipeline (owner
+        # decision 2026-10-02); a human review states "reviewed" throughout.
+        accepted = {"reviewed", "machine"} if reviewer_role(review.get("reviewer")) == "automatic_pipeline" else {"reviewed"}
+        if item.get("status") not in accepted:
+            errors.append(rule("REVIEW_TRANSLATION_NOT_REVIEWED", f"{label} {locale} translation is not reviewed"))
         if source_hash is not None and item.get("translatedFromHash") != source_hash:
             errors.append(f"{label} {locale} review is stale")
         if not valid_iso_datetime(item.get("reviewedAt")):

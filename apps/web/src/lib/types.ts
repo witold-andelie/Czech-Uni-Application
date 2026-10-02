@@ -197,6 +197,9 @@ export interface ResearchJob {
   wholeOpportunityClosed: boolean;
   lastAttemptAt?: string | null;
   lastAttemptReason?: string | null;
+  /** "automatic" when approved by the automatic pipeline (owner decision 2026-10-02). */
+  reviewMode?: "human" | "automatic" | null;
+  translationReview?: { locales?: Partial<Record<string, { status?: string }>> } | null;
 }
 
 export interface SourceEvidence {

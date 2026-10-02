@@ -16,6 +16,7 @@ digraph SD3A {
   }
   subgraph cluster_localereview {
     graph [label="逐语种审核记录\nLocale Review Record", color="#64748B", style="solid", fontsize="12", opm_kind="object", opm_id="localereview"];
+    machinetranslated [label="离线机器翻译（已标注）\nmachine-translated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
     reviewbound [label="已绑定源哈希\nhash bound", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
     reviewinvalid [label="源变更后失效\ninvalidated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
     reviewpending [label="待人工复核\npending", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="localereview"];
@@ -35,6 +36,8 @@ digraph SD3A {
     validatedsnapshot [label="门禁已通过\nvalidated", shape="box", style="rounded,filled", fillcolor="#FFF7E6", color="#B7791F", opm_kind="state", opm_owner="snapshot"];
   }
   activepointer [label="当前版本原子指针\nActive Version Pointer", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  autogates [label="自动审核门槛\nAutomatic Review Gates", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  autoreview [label="自动审核与离线翻译（2026-10-02 所有者决定）\nAutomatic Reviewing", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   browserasset [label="带版本浏览器资源\nVersioned Browser Asset", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   browserpublish [label="导出版本化浏览器资源\nBrowser Asset Exporting", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   buildbinding [label="不可变构建版本绑定\nImmutable Build Binding", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
@@ -54,6 +57,7 @@ digraph SD3A {
   snapshotstage [label="隔离暂存候选快照\nSnapshot Staging", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   snapshotvalidate [label="校验发布业务契约\nPublication Contract Validating", shape="ellipse", style="filled", fillcolor="#EFF6FF", color="#174DA6", opm_kind="process"];
   statichost [label="第三方静态托管\nCloudflare Pages Host", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
+  titlemodel [label="离线标题翻译模型（llama.cpp + Qwen3-8B，CI 内运行）\nOffline Title Translation Model", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   withheldrecords [label="扣留记录（留在审核后台）\nWithheld Records", shape="box", style="filled", fillcolor="#F8FAFC", color="#64748B", opm_kind="object"];
   snapshotstage -> stagedsnapshot [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   stagedsnapshot -> snapshotvalidate [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
@@ -88,4 +92,9 @@ digraph SD3A {
   selectrecords -> selectedsnapshot [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   selectrecords -> withheldrecords [arrowhead="normal", color="#166534", label="result", opm_relation="result"];
   selectedsnapshot -> snapshotstage [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  reviewpending -> autoreview [arrowhead="normal", color="#B45309", label="input", opm_relation="input"];
+  autoreview -> machinetranslated [arrowhead="normal", color="#166534", label="output", opm_relation="output"];
+  titlemodel -> autoreview [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  autogates -> autoreview [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
+  machinetranslated -> selectrecords [arrowhead="odot", color="#64748B", label="instrument", opm_relation="instrument"];
 }

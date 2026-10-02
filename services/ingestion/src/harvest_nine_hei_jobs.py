@@ -41,6 +41,11 @@ from source_types import JOB_LISTING_SOURCE_TYPES  # noqa: E402
 RAW = ROOT / "work" / "raw" / "2026-09-06" / "jobs"
 OUT = ROOT / "data" / "sources" / "browse" / "nine-hei-jobs.json"
 REVIEWS = ROOT / "data" / "sources" / "reviews" / "job-translations.json"
+# Owner decision 2026-10-02: records without a matching human review are
+# reviewed by the automatic pipeline (auto_review.py); its entries live apart
+# from the human registry and are written only where no human review matches.
+AUTO_REVIEWS = ROOT / "data" / "sources" / "reviews" / "job-auto-reviews.json"
+AUTOMATIC_REVIEWER = "automatic_pipeline"
 SOURCE_REGISTRY = ROOT / "data" / "sources" / "registry.json"
 UA = (
     "Mozilla/5.0 (compatible; CzechUniApplyHarvest/0.1; "
@@ -526,7 +531,7 @@ def source_text_hash(text: str) -> str:
     return "sha256:" + hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 
 
-def load_job_reviews(path: Path = REVIEWS) -> dict[str, dict]:
+def _read_reviews(path: Path) -> dict[str, dict]:
     if not path.is_file():
         return {}
     try:
@@ -535,6 +540,22 @@ def load_job_reviews(path: Path = REVIEWS) -> dict[str, dict]:
         return {}
     reviews = payload.get("reviews") if isinstance(payload, dict) else None
     return reviews if isinstance(reviews, dict) else {}
+
+
+def load_job_reviews(path: Path = REVIEWS, auto_path: Path | None = None) -> dict[str, dict]:
+    """Human reviews, with automatic reviews where no human one applies.
+
+    An automatic entry is used only when it binds other facts than the human
+    entry (or there is none), and never over an operator disposition.
+    """
+    reviews = dict(_read_reviews(path))
+    automatic = _read_reviews(auto_path if auto_path is not None else (AUTO_REVIEWS if path == REVIEWS else path.with_name("job-auto-reviews.json")))
+    for ident, entry in automatic.items():
+        human = reviews.get(ident)
+        if isinstance(human, dict) and (human.get("disposition") or human.get("factHash") == entry.get("factHash")):
+            continue
+        reviews[ident] = entry
+    return reviews
 
 
 DISPOSITION_STATUSES = {"rejected"}
@@ -627,12 +648,13 @@ def apply_translation_review(
         isinstance(reviewed_title.get(locale), str) and reviewed_title[locale].strip()
         for locale in ("zh-CN", "en", "cs")
     )
+    accepted_statuses = {"reviewed", "machine"} if reviewer == AUTOMATIC_REVIEWER else {"reviewed"}
     translations_ok = (
         isinstance(locales, dict)
         and titles_ok
         and all(
             isinstance(locales.get(locale), dict)
-            and locales[locale].get("status") == "reviewed"
+            and locales[locale].get("status") in accepted_statuses
             and isinstance(locales[locale].get("reviewedAt"), str)
             and locales[locale]["reviewedAt"]
             and locales[locale].get("contentHash") == translation_content_hash(reviewed_title[locale])
@@ -651,7 +673,7 @@ def apply_translation_review(
         job["title"] = {locale: reviewed_title[locale] for locale in ("zh-CN", "en", "cs")}
         review_locales = {
             locale: {
-                "status": "reviewed",
+                "status": locales[locale].get("status") or "reviewed",
                 "translatedFromHash": source_hash,
                 "reviewedAt": locales[locale]["reviewedAt"],
                 "contentHash": translation_content_hash(reviewed_title[locale]),
@@ -660,6 +682,7 @@ def apply_translation_review(
         }
         job["translationStatus"] = "verified"
         job["publicationStatus"] = "approved"
+        job["reviewMode"] = "automatic" if reviewer == AUTOMATIC_REVIEWER else "human"
         if job.get("lifecycleStatus") == "unavailable":
             # Withdrawn from a complete official listing: the approval stays,
             # the vacancy is not shown as current. Binding used to re-publish

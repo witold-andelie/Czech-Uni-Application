@@ -16,7 +16,7 @@
     searchFromJobFilter,
   } from "../lib/catalog";
   import { t } from "../lib/i18n";
-  import { dataClassKey, fieldSep, formatDate, formatSalary, hostOf, jobSourceTitle, languageName, roundLabel, salaryTaxKey, text, windowRange, windowStatusLabel } from "../lib/format";
+  import { dataClassKey, fieldSep, formatDate, formatSalary, hostOf, jobSourceTitle, jobTitleIsMachine, languageName, roundLabel, salaryTaxKey, text, windowRange, windowStatusLabel } from "../lib/format";
   import { subscribeNow } from "../lib/clock";
   import { loadCatalogShell } from "../lib/loadCatalogClient";
   import { applySafetyOverlay, subscribeSafetyOverlay, type SafetyOverlay } from "../lib/safetyStatus";
@@ -217,6 +217,9 @@
                 {text(view.job.title, locale)}
               {/if}
             </h3>
+            {#if jobTitleIsMachine(view.job, locale)}
+              <p class="muted machine-title" data-machine-title style="font-size: 0.8em; margin-top: -0.5rem;">{t(locale, "jobs.machineTitle")} · {view.job.originalText}</p>
+            {/if}
             {#if locale === "zh-CN" && view.job.title.en && view.job.title.en !== view.job.title["zh-CN"]}
               <p class="muted original-title" style="font-size: 0.9em; margin-top: -0.5rem; margin-bottom: 0.75rem;">
                 {view.job.title.en}

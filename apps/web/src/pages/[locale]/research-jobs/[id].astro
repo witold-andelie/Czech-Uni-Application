@@ -4,7 +4,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import InstitutionTags from "../../../components/InstitutionTags.astro";
 import LiveWindows from "../../../components/LiveWindows.svelte";
 import { findJob, isMasterEligible, jobOpportunityClosed, jobThresholdKey, jobTrackOf, masterEligibilityUnknown, officialJobHref, safeHttpUrl } from "../../../lib/catalog";
-import { dataClassKey, fieldSep, formatDate, formatSalary, jobSourceTitle, languageName, salaryTaxKey, text } from "../../../lib/format";
+import { dataClassKey, fieldSep, formatDate, formatSalary, jobSourceTitle, jobTitleIsMachine, languageName, salaryTaxKey, text } from "../../../lib/format";
 import { LOCALES, localeFromParam, t } from "../../../lib/i18n";
 import { loadCatalog } from "../../../lib/loadCatalog";
 import { loadSafetyOverlayFromDisk } from "../../../lib/loadSafetyOverlay";
@@ -40,6 +40,8 @@ const phdKey =
     )}
     <p>{text(view.employer.displayName, locale)}{view.job.city ? ` · ${text(view.job.city, locale)}` : ''}</p>
     <InstitutionTags locale={locale} institution={view.employer} />
+    {jobTitleIsMachine(view.job, locale) && <p class="muted" data-machine-title>{t(locale, "jobs.machineTitleNote")}</p>}
+    {view.job.reviewMode === "automatic" && <p class="notice" data-automatic-review>{t(locale, "jobs.automaticReview")}</p>}
     {jobOpportunityClosed(view.job) && <p class="notice">{t(locale, "jobs.closedNotice")}</p>}
     <section class="summary-grid">
       <div class="panel">
