@@ -172,12 +172,32 @@ def _write(path: Path, reviews: dict, purpose: str) -> None:
     )
 
 
+SELF_TEST_TITLES = (
+    "Odborný/ná pracovník/ce v analytické laboratoři (úvazek 1,0)",
+    "Postdoktorská pozice ve fyzické geografii/arktickém výzkumu",
+    "Assistant Professor Specialising in Applied Entomology",
+)
+
+
+def self_test() -> int:
+    """Daily proof that the offline model answers and passes the checks."""
+    failures = 0
+    for title in SELF_TEST_TITLES:
+        result = translate_title(title, {}, llama_translate)
+        print(json.dumps(result, ensure_ascii=False))
+        failures += bool(result.get("problems"))
+    return 1 if failures else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     import argparse
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--max-translations", type=int, default=None, help="bound new model calls per run")
+    parser.add_argument("--self-test", action="store_true", help="translate fixed titles through the server and check them")
     args = parser.parse_args(argv)
+    if args.self_test:
+        return self_test()
     payload = json.loads(JOBS.read_text(encoding="utf-8"))
     human = _read_reviews(REVIEWS)
     auto = _read_reviews(AUTO_REVIEWS)

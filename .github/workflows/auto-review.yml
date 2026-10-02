@@ -82,6 +82,8 @@ jobs:
           done
           tail -40 "$RUNNER_TEMP/llama-server.log"
           exit 1
+      - name: Self-test the offline translation model
+        run: python -u services/ingestion/src/auto_review.py --self-test
       - name: Translate and review automatically
         run: |
           set -euo pipefail
