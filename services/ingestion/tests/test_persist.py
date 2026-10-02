@@ -122,16 +122,18 @@ def test_adapter_owned_source_is_not_written_by_generic_persist(monkeypatch) -> 
     monkeypatch.setattr("storage.persist.persist_enabled", lambda: True)
     monkeypatch.setattr("storage.persist.store_from_env", lambda: fake)
     result = persist_job_harvest(
-        expected_source_ids=["czu-central-jobs"],
-        complete_source_ids=["czu-central-jobs"],
+        # ZČU's document feed has its own adapter (CZU's portal no longer
+        # does since its 2026-10-01 rebuild).
+        expected_source_ids=["zcu-central-vacancies"],
+        complete_source_ids=["zcu-central-vacancies"],
         deferred_source_ids=[],
         attempts=[],
         jobs=[
             {
-                "id": "job-41000-1604",
-                "discoverySourceId": "czu-central-jobs",
-                "sourceUrl": "https://jobs.czu.cz/job/tf_asistent-znalostniho-transferu-t1/",
-                "employerId": "msmt-vs_41000",
+                "id": "job-23000-4158c63a-a888-4481-92d6-7826c7079076",
+                "discoverySourceId": "zcu-central-vacancies",
+                "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=4158c63a-a888-4481-92d6-7826c7079076;1.0&download=0",
+                "employerId": "msmt-vs_23000",
             }
         ],
     )

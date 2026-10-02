@@ -3227,3 +3227,36 @@ def test_shared_listing_rows_never_fold_into_one_stored_record() -> None:
     ]
     merged = jobs_harvester._merge_seed_and_discovered(seeds, listed)
     assert sorted(item["id"] for item in merged) == ["job-22000-110", "job-22000-218", "job-22000-560"]
+
+
+def test_czu_pozice_rest_rows() -> None:
+    payload = json.dumps(
+        [
+            {"id": 733, "status": "publish", "date": "2026-09-24T10:00:00", "link": "https://jobs.czu.cz/pozice/733/",
+             "title": {"rendered": "FLD: Vědecký, výzkumný a vývojový pracovník"}},
+            {"id": 9, "status": "draft", "link": "https://jobs.czu.cz/pozice/9/", "title": {"rendered": "Draft"}},
+        ]
+    )
+    rows = jobs_harvester.parse_czu_pozice_rest(payload)
+    assert rows == [
+        {
+            "title": "FLD: Vědecký, výzkumný a vývojový pracovník",
+            "code": "733",
+            "sourceUrl": "https://jobs.czu.cz/pozice/733/",
+            "applicationUrl": "https://jobs.czu.cz/pozice/733/",
+            "applicationMethod": "official_instructions",
+            "noticePostedAt": "2026-09-24",
+        }
+    ]
+
+
+def test_czu_degree_and_language_forms() -> None:
+    for body in (
+        "Požadavky Vysokoškolské vzdělání v magisterském studijním programu Dokončené doktorské studium – Ph.D.",
+        "Požadavky Ukončené vysokoškolské studium technického směru v doktorském stupni vzdělávání, minimální vzdělání Ph.D.",
+    ):
+        assert extract_qualifications("Odborný asistent", body)["minimumDegree"] == "doctorate", body
+    assert extract_qualifications(
+        "Asistent", "Požadavky vysokoškolské vzdělání v magisterském studijním programu v technickém oboru"
+    )["minimumDegree"] == "master"
+    assert jobs_harvester.stated_working_languages("Požadavky: vynikající znalost ČJ vynikající znalost AJ") == ["en", "cs"]

@@ -964,7 +964,12 @@ _CZ_DOCTORATE_RE = re.compile(
     r"ukon[cč]en[eé]\s+doktorsk[eé]\s+vzd[eě]l[aá]n[ií]|"
     r"absolvent\w*\s+doktorsk\w+\s+studijn\w+\s+program\w*|"
     r"vysoko[sš]kolsk[eé]\s+vzd[eě]l[aá]n[ií]\s+iii\.\s*stupn[eě]|"
-    r"\bdoktorsk[eé]\s+vzd[eě]l[aá]n[ií]\s+v\s+(?:uveden\w*|oboru|p[rř][ií]buzn\w*)"
+    r"\bdoktorsk[eé]\s+vzd[eě]l[aá]n[ií]\s+v\s+(?:uveden\w*|oboru|p[rř][ií]buzn\w*)|"
+    # "Dokončené doktorské studium – Ph.D.", "v doktorském stupni vzdělávání,
+    # minimální vzdělání Ph.D." (ČZU, 2026-10-02).
+    r"\b(?:ukon[cč]en|dokon[cč]en)[eé]\s+doktorsk[eé]\s+studium|"
+    r"\bv\s+doktorsk\w*\s+stupni\s+vzd[eě]l[aá]v[aá]n[ií]|"
+    r"\bminim[aá]ln[ií]\s+vzd[eě]l[aá]n[ií]\s*:?\s*ph\.?\s?d"
 )
 # Headings that open an advantages list ("Kvalifikační předpoklady – výhodou",
 # "Advantages:"); an inline "hematologie vítána" only qualifies its own item.
@@ -1077,6 +1082,9 @@ def extract_qualifications(title: str, body: str) -> dict:
         r"magistersk[eéý]\s+(?:vysoko[sš]kolsk[eéý]\s+)?studium|"
         # "absolvent magisterského studia Učitelství ..." (ZČU FPE, 2026-10-01).
         r"absolvent\w*\s+magistersk\w+\s+studi\w*|"
+        # "vzdělání v magisterském studijním programu", "v magisterském stupni
+        # vzdělávání" (ČZU, 2026-10-02).
+        r"v\s+magistersk\w*\s+(?:studijn\w+\s+program\w*|stupni)|"
         r"inženýrsk[eéý]\s+vzd[eě]l[aá]n[ií]|inzenyrsk[eéý]\s+vzdelani|"
         r"vysokoškolsk[eéý]\s+vzd[eě]l[aá]n[ií]\s+minim[aá]ln[eě]\s+druh[eé]ho\s+stupn[eě]|"
         r"vysokoskolske\s+vzdelani\s+minimalne\s+druheho\s+stupne)\b",
@@ -1369,7 +1377,12 @@ _LANGUAGE_STATED = (
     r"\b\w+\s+(?:i|a|nebo|či)\s+{adj}\s+jazy\w*",
 )
 # Czech abbreviations after "znalost": "znalost AJ a práce s PC" (UPOL LF, 2026-10-01).
-_LANGUAGE_ABBREVIATIONS = {"en": r"\bznalost\w*\s+aj\b", "de": r"\bznalost\w*\s+nj\b"}
+_LANGUAGE_ABBREVIATIONS = {
+    "en": r"\bznalost\w*\s+aj\b",
+    "de": r"\bznalost\w*\s+nj\b",
+    # "vynikající znalost ČJ" (ČZU, 2026-10-02).
+    "cs": r"\bznalost\w*\s+[cč]j\b",
+}
 _LANGUAGE_NEGATED = (
     r"{lang}[^.;]{{0,40}}?\b(?:is\s+not\s+(?:required|necessary)|not\s+required|není\s+(?:vyžadován\w*|nutn\w*|podmínk\w*))"
 )
@@ -3234,6 +3247,38 @@ def parse_tul_careers(html: str, page_url: str) -> list[dict]:
 _EURAXESS_HOSTS = {"euraxess.ec.europa.eu", "www.euraxess.cz", "euraxess.cz"}
 
 
+def parse_czu_pozice_rest(payload: str) -> list[dict]:
+    """Read CZU's public JetEngine "pozice" posts from the WordPress REST API.
+
+    The portal was rebuilt on 2026-10-01: the WP Job Manager listing and its
+    /job/ pages are gone, and every published vacancy is a "pozice" post.
+    Every published post is a row; the detail page decides the scope.
+    """
+    rows = json.loads(payload)
+    if not isinstance(rows, list):
+        raise ValueError("pozice feed is not a list")
+    results: list[dict] = []
+    for row in rows:
+        if not isinstance(row, dict) or row.get("status") != "publish":
+            continue
+        link = str(row.get("link") or "").strip()
+        title = visible_text(str((row.get("title") or {}).get("rendered") or "")).strip()
+        parsed = urlsplit(link)
+        if parsed.scheme not in {"http", "https"} or parsed.netloc.casefold() != "jobs.czu.cz" or not title:
+            raise ValueError(f"unexpected pozice row {row.get('id')}")
+        results.append(
+            {
+                "title": title,
+                "code": str(row["id"]),
+                "sourceUrl": link,
+                "applicationUrl": link,
+                "applicationMethod": "official_instructions",
+                "noticePostedAt": str(row.get("date") or "")[:10] or None,
+            }
+        )
+    return results
+
+
 def parse_roboprox_positions(html: str, page_url: str) -> list[dict]:
     """Read the rows CIIRC RoboProx marks Open; each links its EURAXESS notice.
 
@@ -3960,6 +4005,7 @@ def discover_registered_candidates(
             "ujep_open_positions",
             "tul_careers",
             "roboprox_positions",
+            "czu_pozice_rest",
             "zcu_document_feed",
         }:
             attempts.append(
@@ -3976,7 +4022,31 @@ def discover_registered_candidates(
 
         found: list[dict] = []
         source_complete = True
-        if parser == "zcu_document_feed":
+        if parser == "czu_pozice_rest":
+            # Paged at 100; a short page is the last one.
+            per_page = int(source.get("perPage") or 100)
+            for page_number in range(1, int(source.get("maxPages") or 10) + 1):
+                page_url = f"{source['url']}{'&' if '?' in source['url'] else '?'}per_page={per_page}&page={page_number}"
+                status, payload = fetch_page(page_url)
+                try:
+                    if status != 200:
+                        raise ValueError(f"HTTP {status}")
+                    page_rows = parse_czu_pozice_rest(payload)
+                except (ValueError, TypeError, KeyError) as exc:
+                    source_complete = False
+                    attempts.append({"sourceId": source["id"], "url": page_url, "status": status,
+                                     "ok": False, "kind": "listing", "reason": str(exc)})
+                    break
+                attempts.append({"sourceId": source["id"], "url": page_url, "status": status,
+                                 "ok": True, "kind": "listing"})
+                found.extend(page_rows)
+                if len(page_rows) < per_page:
+                    break
+            else:
+                source_complete = False
+                attempts.append({"sourceId": source["id"], "url": source["url"], "status": None,
+                                 "ok": False, "kind": "listing", "reason": "pagination-limit-exceeded"})
+        elif parser == "zcu_document_feed":
             status, payload = fetch_page(source["url"])
             try:
                 if status != 200:
