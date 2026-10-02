@@ -8,9 +8,90 @@
     "Ordered by the number of MŠMT register rows each school has (docs/ACCEPTANCE.md A100): the first",
     "twelve schools hold roughly three quarters of the register, so they are configured first. An",
     "empty entryUrls means 'discover generically': the school home page is read, its catalogue-like",
-    "links are followed one hop, and the school's sitemaps are read within the documented bounds."
+    "links are followed one hop, and the school's sitemaps are read within the documented bounds.",
+    "Catalogue outputs of programme_catalogues.py (one record per programme page, with the level, language and faculty the page states) come first among the harvested sources; programme-links.yml refreshes them daily before the resolver runs."
   ],
   "harvestedSources": [
+    {
+      "path": "data/sources/admissions/catalogue-cvut.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
+    {
+      "path": "data/sources/admissions/catalogue-jcu.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
+    {
+      "path": "data/sources/admissions/catalogue-muni.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
+    {
+      "path": "data/sources/admissions/catalogue-slu.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
+    {
+      "path": "data/sources/admissions/catalogue-tul.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
+    {
+      "path": "data/sources/admissions/catalogue-ujep.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
+    {
+      "path": "data/sources/admissions/catalogue-upce.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
+    {
+      "path": "data/sources/admissions/catalogue-utb.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
+    {
+      "path": "data/sources/admissions/catalogue-vfu.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
+    {
+      "path": "data/sources/admissions/catalogue-zcu.json",
+      "urlField": "officialProgrammeUrl",
+      "titleField": "titles",
+      "degreeField": "degree",
+      "languageField": "studyLanguage",
+      "facultyField": "faculty"
+    },
     {
       "path": "data/sources/admissions/czu-english-programmes.json",
       "urlField": "officialProgrammeUrl",

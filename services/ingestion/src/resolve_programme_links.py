@@ -542,6 +542,10 @@ class Candidate:
     # separates a title the register carries at two levels, not a claim about
     # this page on its own.
     row_degree: str = UNKNOWN_DEGREE
+    # The faculty the page itself names as providing the programme (a school
+    # catalogue record, programme_catalogues.py). Separates the register rows
+    # of one title, level and language at two faculties; empty when unstated.
+    faculty: str = ""
 
 
 @dataclass
@@ -626,11 +630,17 @@ class Match:
         title_key = normalise(candidate.title)
         if stated and stated != UNKNOWN_DEGREE:
             exact = self.by_language.get((title_key, stated, candidate.language)) or []
+            if len(exact) > 1 and candidate.faculty:
+                # The same title, level and language at several faculties: the
+                # page's own "provided by" names which one it is.
+                exact = [row for row in exact if normalise(row.faculty) == normalise(candidate.faculty)] or exact
             if len(exact) == 1:
                 return Binding(rows=exact, language=candidate.language)
             if len(exact) > 1:
                 return Binding(rows=exact, reason="ambiguous_register_rows")
             cross = self.by_title_degree.get((title_key, stated)) or []
+            if len(cross) > 1 and candidate.faculty:
+                cross = [row for row in cross if normalise(row.faculty) == normalise(candidate.faculty)] or cross
             if len(cross) == 1:
                 return Binding(rows=cross, language=cross[0].language)
             if len(cross) > 1:
@@ -761,6 +771,7 @@ def harvested_candidates(config: dict, now_text: str) -> dict[str, list[Candidat
             titles = raw_titles if isinstance(raw_titles, dict) else {"original": raw_titles}
             degree = degree_code(record.get(str(entry.get("degreeField") or "degree")))
             language = str(record.get(str(entry.get("languageField") or "studyLanguage")) or "").strip().lower()
+            faculty = str(record.get(str(entry.get("facultyField") or "faculty")) or "").strip()
             domain = registrable_host(url)
             for key, value in titles.items():
                 text = str(value or "").strip()
@@ -775,6 +786,7 @@ def harvested_candidates(config: dict, now_text: str) -> dict[str, list[Candidat
                         source_url=url,
                         matched_by="school_harvested_programme_page",
                         observed_at=now_text,
+                        faculty=faculty,
                     )
                 )
     return by_domain
@@ -1723,6 +1735,7 @@ def previous_candidates(previous: dict, target: dict, match: Match) -> list[Cand
                 matched_by="previous_run",
                 observed_at=str(entry.get("matchedAt") or ""),
                 checked_at=str(entry.get("checkedAt") or ""),
+                faculty=row.faculty,
             )
         )
     return candidates
