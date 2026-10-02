@@ -15,9 +15,11 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Callable
+from urllib.parse import urlsplit
 
 from harvest_nine_hei_jobs import AUTO_REVIEWS, AUTOMATIC_REVIEWER, REVIEWS, ROOT, _read_reviews
 from publication_rules import JOB_FACT_NORMALIZATION_VERSION, job_fact_hash, translation_content_hash
@@ -36,9 +38,49 @@ _CHROME_RE = re.compile(
 _DATE_PREFIX_RE = re.compile(r"^\s*\d{1,2}\.\s?\d{1,2}\.\s?\d{4}\b")
 
 
-def gate_blockers(job: dict, windows: list[dict], today: date) -> list[str]:
+EURAXESS_HOSTS = {"euraxess.ec.europa.eu", "www.euraxess.cz", "euraxess.cz"}
+EURAXESS_SOURCE = "euraxess-cz-jobs"
+_STOPWORDS = {
+    "with", "focus", "position", "researcher", "research", "assistant", "professor", "faculty", "university",
+    "department", "specializing", "specialising", "specialised", "specialized", "postdoctoral", "doctoral",
+    "student", "field", "fields", "and", "the", "for", "position", "positions",
+}
+
+
+def _host(url: str) -> str:
+    return urlsplit(str(url or "")).netloc.lower()
+
+
+def _tokens(text: str) -> set[str]:
+    text = unicodedata.normalize("NFKD", str(text or "")).encode("ascii", "ignore").decode().lower()
+    return {word for word in re.findall(r"[a-z0-9]{3,}", text)} - _STOPWORDS
+
+
+def duplicate_of(job: dict, others: list[dict]) -> str | None:
+    """A direct-source record of the same employer that announces the same vacancy."""
+    mine = [_tokens(job.get("originalText"))] + [_tokens(v) for v in (job.get("title") or {}).values()]
+    for other in others:
+        theirs = [_tokens(other.get("originalText"))] + [_tokens(v) for v in (other.get("title") or {}).values()]
+        for a in mine:
+            for b in theirs:
+                if a and b and len(a & b) / len(a | b) >= 0.6:
+                    return str(other["id"])
+    return None
+
+
+def gate_blockers(job: dict, windows: list[dict], today: date, others: list[dict] | None = None) -> list[str]:
     """Why this record may not be approved automatically; empty when it may."""
     reasons: list[str] = []
+    # EURAXESS finds vacancies; it is never the application target, and a
+    # vacancy a university source already carries is published once, from it.
+    if _host(job.get("sourceUrl")) in EURAXESS_HOSTS or job.get("discoverySourceId") == EURAXESS_SOURCE:
+        target = job.get("applicationUrl")
+        if not target or _host(target) in EURAXESS_HOSTS:
+            reasons.append("no-official-application-target")
+    if job.get("discoverySourceId") == EURAXESS_SOURCE and others:
+        twin = duplicate_of(job, others)
+        if twin:
+            reasons.append(f"duplicate-of-direct-source:{twin}")
     title = str(job.get("originalText") or "").strip()
     if not job.get("track") or job.get("catalogueScopeStatus") not in (None, "included"):
         reasons.append("outside-research-catalogue-scope")
@@ -113,6 +155,10 @@ def run(
         if isinstance(window, dict) and window.get("ownerId"):
             windows_by_owner.setdefault(str(window["ownerId"]), []).append(window)
     report = {"approved": [], "kept": [], "withheld": {}, "humanMatches": 0, "translated": 0, "deferred": 0}
+    direct_by_employer: dict[str, list[dict]] = {}
+    for other in payload.get("jobs") or []:
+        if other.get("discoverySourceId") != EURAXESS_SOURCE and other.get("visibility") != "archived":
+            direct_by_employer.setdefault(str(other.get("employerId")), []).append(other)
     for job in payload.get("jobs") or []:
         ident = job.get("id")
         if not ident:
@@ -127,7 +173,7 @@ def run(
             report["humanMatches"] += 1
             auto_reviews.pop(ident, None)
             continue
-        blockers = gate_blockers(job, windows, today)
+        blockers = gate_blockers(job, windows, today, direct_by_employer.get(str(job.get("employerId")), []))
         if blockers:
             report["withheld"][ident] = blockers
             auto_reviews.pop(ident, None)

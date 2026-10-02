@@ -37,6 +37,7 @@ from publication_rules import (  # noqa: E402
     translation_content_hash,
 )
 from source_types import JOB_LISTING_SOURCE_TYPES  # noqa: E402
+import euraxess_source  # noqa: E402
 
 RAW = ROOT / "work" / "raw" / "2026-09-06" / "jobs"
 OUT = ROOT / "data" / "sources" / "browse" / "nine-hei-jobs.json"
@@ -3356,6 +3357,38 @@ def parse_czu_pozice_rest(payload: str) -> list[dict]:
     return results
 
 
+def enrich_euraxess_rows(rows: list[dict], fetch_page, source_id: str) -> tuple[list[dict], list[dict], bool]:
+    """Read each EURAXESS notice: employer, facts and an official application address."""
+    from resolve_programme_links import domains_for_institutions
+
+    baseline = json.loads((ROOT / "data" / "sources" / "msmt-hei-baseline.json").read_text(encoding="utf-8"))
+    hosts = domains_for_institutions(baseline.get("institutions") or [])
+    out: list[dict] = []
+    attempts: list[dict] = []
+    complete = True
+    for row in rows:
+        status, html = fetch_page(row["sourceUrl"])
+        ok = page_ok(status, html)
+        attempts.append({"sourceId": source_id, "url": row["sourceUrl"], "status": status, "ok": ok, "kind": "detail"})
+        if not ok:
+            complete = False
+            continue
+        text = main_content_text(html) or visible_text(html)
+        fields = euraxess_source.detail_fields(text)
+        employer = euraxess_source.resolve_employer(fields.get("organisation") or "")
+        item = {**row, "euraxessOrganisation": fields.get("organisation"), "_factHtml": html}
+        if employer:
+            item["employerId"] = employer
+            parsed = parse_generic_job_page(html, row["sourceUrl"], row["title"]) or {}
+            item.update({key: value for key, value in parsed.items() if key not in {"title", "sourceUrl"}})
+            item["applicationUrl"] = euraxess_source.official_application_url(
+                html, row["sourceUrl"], fields.get("website"), hosts.get(employer, set())
+            )
+            item["applicationMethod"] = "official_instructions"
+        out.append(item)
+    return out, attempts, complete
+
+
 def parse_roboprox_positions(html: str, page_url: str) -> list[dict]:
     """Read the rows CIIRC RoboProx marks Open; each links its EURAXESS notice.
 
@@ -4084,6 +4117,7 @@ def discover_registered_candidates(
             "ujep_open_positions",
             "tul_careers",
             "roboprox_positions",
+            "euraxess_search",
             "czu_pozice_rest",
             "zcu_document_feed",
         }:
@@ -4164,7 +4198,7 @@ def discover_registered_candidates(
         else:
             queue = [source["url"], *(source.get("pages") or [])]
             visited: set[str] = set()
-            while queue and len(visited) < 20:
+            while queue and len(visited) < int(source.get("maxListingPages") or 20):
                 listing_url = urljoin(source["url"], str(queue.pop(0)))
                 if listing_url in visited:
                     continue
@@ -4237,6 +4271,13 @@ def discover_registered_candidates(
                     found.extend(parse_tul_careers(html, listing_url))
                 elif parser == "roboprox_positions":
                     found.extend(parse_roboprox_positions(html, listing_url))
+                elif parser == "euraxess_search":
+                    euraxess_rows, euraxess_attempts, euraxess_ok = enrich_euraxess_rows(
+                        euraxess_source.parse_search(html, listing_url), fetch_page, source["id"]
+                    )
+                    found.extend(euraxess_rows)
+                    attempts.extend(euraxess_attempts)
+                    source_complete = source_complete and euraxess_ok
                 elif parser == "vsb_listing":
                     found.extend(parse_vsb_listing(html, listing_url))
                 else:
@@ -4248,6 +4289,8 @@ def discover_registered_candidates(
                     if parser == "cuni_ajax"
                     else []
                     if parser == "roboprox_positions"
+                    else (euraxess_source.page_urls(html, source["url"]) if listing_url == source["url"] else [])
+                    if parser == "euraxess_search"
                     else _pagination_urls(html, listing_url)
                 )
                 for pagination_url in pagination_urls:
