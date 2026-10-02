@@ -143,6 +143,7 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          CI_REFRESH_SKIP_TASKS: programme_link_resolution
         run: python -u services/ingestion/src/ci_refresh.py
       - name: Save adapter harvest cursor
         if: ${{ always() && github.event.inputs.mode == 'adapters' }}

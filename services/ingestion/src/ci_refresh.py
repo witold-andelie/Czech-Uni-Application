@@ -51,6 +51,10 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
     output = output or ROOT / "work/runs/ci-refresh-summary.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     tasks = manager.get_pending_tasks()
+    # Tasks another workflow owns (programme-links.yml resolves programme
+    # pages in parallel shards; the shared tick never had the time for it).
+    skip = {item.strip() for item in os.environ.get("CI_REFRESH_SKIP_TASKS", "").split(",") if item.strip()}
+    tasks = [task for task in tasks if task.get("type") not in skip]
     # Status checks get first use of the bounded runner; the existing queue
     # determines the other tasks, including today's ordinary daily shard.
     state = manager.load_state()

@@ -2200,6 +2200,99 @@ def write_payload(payload: dict, path: Path | None = None) -> Path:
     return target
 
 
+def shard_schools(institutions: list[dict], index: int, count: int) -> list[str]:
+    """Every ``count``-th school of the rotation order, starting at ``index``.
+
+    Dealt round-robin, so each parallel shard of programme-links.yml starts
+    with one of the schools that have gone longest without being read.
+    """
+    return [str(item["id"]) for position, item in enumerate(institutions) if position % count == index]
+
+
+def schools_read(payload: dict) -> set[str]:
+    """Schools a run actually read: their coverage entry carries the run's time."""
+    stamp = str(payload.get("generatedAt") or "")
+    return {
+        str(entry.get("institutionId"))
+        for entry in (payload.get("coverage") or {}).get("schools") or []
+        if isinstance(entry, dict) and stamp and entry.get("resolvedAt") == stamp
+    }
+
+
+def merge_shards(
+    previous: dict,
+    shards: list[dict],
+    now: datetime | None = None,
+    floor: dict[str, int] | None = None,
+    kept_below_floor: list[str] | None = None,
+) -> dict:
+    """One index from parallel shard runs: each school as its own shard read it.
+
+    A school no shard reached keeps the previous index's entry, links and
+    unresolved rows, exactly as a budget-cut single run keeps them. So does a
+    school whose new read resolves fewer pages than its committed floor
+    (A100: coverage only rises; a drop is investigated, not committed).
+    """
+    links = dict(previous.get("links") or {})
+    unresolved = {
+        str(item.get("rowId")): item for item in previous.get("unresolved") or [] if isinstance(item, dict)
+    }
+    coverage = {
+        str(item.get("institutionId")): item
+        for item in (previous.get("coverage") or {}).get("schools") or []
+        if isinstance(item, dict)
+    }
+    retired = list(previous.get("retiredFromRegister") or [])
+    requests = 0
+    for shard in shards:
+        read = schools_read(shard)
+        requests += int(shard.get("requests") or 0)
+        for entry in (shard.get("coverage") or {}).get("schools") or []:
+            school = str(entry.get("institutionId"))
+            if school in read and int(entry.get("resolved") or 0) < int((floor or {}).get(school, 0)):
+                read.discard(school)
+                if kept_below_floor is not None:
+                    kept_below_floor.append(f"{school}: read {entry.get('resolved')}, floor {floor[school]}")
+        links = {key: value for key, value in links.items() if value.get("institutionId") not in read}
+        unresolved = {key: value for key, value in unresolved.items() if value.get("institutionId") not in read}
+        links.update({key: value for key, value in (shard.get("links") or {}).items() if value.get("institutionId") in read})
+        unresolved.update(
+            {str(item["rowId"]): item for item in shard.get("unresolved") or [] if item.get("institutionId") in read}
+        )
+        for entry in (shard.get("coverage") or {}).get("schools") or []:
+            if entry.get("institutionId") in read:
+                coverage[str(entry["institutionId"])] = entry
+        retired.extend(item for item in shard.get("retiredFromRegister") or [] if item not in retired)
+    for ident in set(links) & set(unresolved):
+        unresolved.pop(ident)
+    schools = sorted(coverage.values(), key=lambda item: str(item.get("institutionId")))
+    totals = {
+        "schools": len(schools),
+        "offerings": sum(int(item.get("offerings") or 0) for item in schools),
+        "resolved": len(links),
+        "unresolved": len(unresolved),
+        "rowsWithMultipleSchoolPages": sum(int(item.get("rowsWithMultipleSchoolPages") or 0) for item in schools),
+        "byReachability": summarize(str(link.get("reachability") or "") for link in links.values()),
+    }
+    return {
+        "generatedAt": (now or datetime.now(timezone.utc)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "dataClass": "school_owned_programme_page_index",
+        "note": NOTE,
+        "counts": {
+            "schools": totals["schools"],
+            "offerings": totals["offerings"],
+            "linked": totals["resolved"],
+            "unresolved": totals["unresolved"],
+            "rowsWithMultipleSchoolPages": totals["rowsWithMultipleSchoolPages"],
+        },
+        "coverage": {"totals": totals, "schools": schools},
+        "links": dict(sorted(links.items())),
+        "unresolved": [unresolved[key] for key in sorted(unresolved)],
+        "retiredFromRegister": retired,
+        "requests": requests,
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Resolve school-owned programme page links")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUT)
@@ -2216,7 +2309,58 @@ def main() -> None:
             f"(default {int(RECHECK_AFTER_SECONDS)}); 0 reads every link now"
         ),
     )
+    parser.add_argument("--previous", type=Path, default=None, help="index to merge with (default: --output)")
+    parser.add_argument("--shard", default=None, help="I/N: read only every N-th school of the rotation, from I")
+    parser.add_argument(
+        "--merge-shards", type=Path, nargs="+", default=None, help="merge shard outputs into --output and stop"
+    )
+    parser.add_argument("--raise-floor", action="store_true", help="with --merge-shards: ratchet the coverage floor up")
     args = parser.parse_args()
+    previous_path = args.previous or args.output
+
+    if args.merge_shards:
+        from check_programme_link_coverage import DEFAULT_FLOOR
+
+        shards = [load_previous(path) for path in args.merge_shards if path.is_file()]
+        floor_doc = load_previous(DEFAULT_FLOOR)
+        floor = {str(key): int(value) for key, value in (floor_doc.get("resolvedBySchool") or {}).items()}
+        kept: list[str] = []
+        payload = merge_shards(load_previous(previous_path), shards, floor=floor, kept_below_floor=kept)
+        write_payload(payload, args.output)
+        for line in kept:
+            print(f"::warning title=Programme links below floor::kept the previous links for {line}", flush=True)
+        if args.raise_floor and floor_doc:
+            # The floor is a ratchet: what the index now proves becomes the
+            # least it may prove tomorrow.
+            by_school = {entry["institutionId"]: int(entry.get("resolved") or 0) for entry in payload["coverage"]["schools"]}
+            floor_doc["resolvedBySchool"] = {
+                key: max(value, floor.get(key, 0)) for key, value in sorted(by_school.items())
+            }
+            floor_doc["resolvedTotal"] = max(int(floor_doc.get("resolvedTotal") or 0), payload["counts"]["linked"])
+            floor_doc["offeringsTotal"] = payload["counts"]["offerings"]
+            floor_doc["recordedFromGeneratedAt"] = payload["generatedAt"]
+            DEFAULT_FLOOR.write_text(json.dumps(floor_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(
+            json.dumps(
+                {
+                    "merged": len(shards),
+                    "schoolsRead": sorted(set().union(*(schools_read(shard) for shard in shards))) if shards else [],
+                    "counts": payload["counts"],
+                    "unresolvedReasons": summarize(item["reason"] for item in payload["unresolved"]),
+                },
+                ensure_ascii=False,
+            ),
+            flush=True,
+        )
+        return
+
+    previous = {} if args.no_merge else load_previous(previous_path)
+    institutions = None
+    if args.shard:
+        index, count = (int(part) for part in args.shard.split("/"))
+        institutions = rotation_order(baseline_schools(), previous)
+        args.school = shard_schools(institutions, index, count)
+        print(json.dumps({"shard": args.shard, "schools": args.school}), flush=True)
 
     fetch = None
     if args.live:
@@ -2234,8 +2378,9 @@ def main() -> None:
     payload = build_links(
         fetch=fetch,
         budget_seconds=args.budget_seconds,
-        previous={} if args.no_merge else load_previous(args.output),
+        previous=previous,
         school_ids=args.school,
+        institutions=institutions,
         recheck_after_seconds=args.recheck_seconds
         if args.recheck_seconds is not None
         else RECHECK_AFTER_SECONDS,

@@ -57,7 +57,7 @@ ALIASES = {
     "czech university of life sciences": "msmt-vs_41000",
     "university of pardubice": "msmt-vs_25000",
     "university of ostrava": "msmt-vs_17000",
-    "silesian university": "msmt-vs_16000",
+    "silesian university": "msmt-vs_19000",
     "prague university of economics and business": "msmt-vs_31000",
 }
 
