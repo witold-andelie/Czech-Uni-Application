@@ -932,5 +932,21 @@
     "collectionStatus": "official_entrypoint_verified_2026-09-17",
     "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
     "note": "The official page may point administrative jobs to a third-party ATS; only official-page evidence or an officially linked detail can enter candidates."
+  },
+  {
+    "id": "euraxess-cz-jobs",
+    "url": "https://euraxess.ec.europa.eu/jobs/search?f%5B0%5D=job_country%3A747&f%5B1%5D=offer_type%3Ajob_offer",
+    "purpose": "EU EURAXESS job portal filtered to the Czech Republic: discovers university vacancies posted nowhere else we read (doctoral studentship topics, faculty and research-centre posts)",
+    "official": true,
+    "sourceType": "official_job_listing_supplemental",
+    "coverageScope": "national_aggregator",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "euraxess_search",
+    "followDetails": false,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "production_entrypoint_wired_2026-10-03",
+    "adapter": "services/ingestion/src/euraxess_source.py",
+    "note": "Owner decision 2026-10-03. Each notice is read in full; the employer is the Organisation/Company it names, resolved to an MŠMT university (others are quarantined until research employers are modelled). The application target is an address on that university's own domains found in the notice; EURAXESS is never the application target, and a vacancy a direct university source already carries is withheld as a duplicate by auto_review.py.",
+    "maxListingPages": 60
   }
 ]
