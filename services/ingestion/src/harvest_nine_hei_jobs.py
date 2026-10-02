@@ -332,6 +332,8 @@ ASSISTANT_MARKERS = (
     # (CIIRC RoboProX, 2026-10-01).
     "phd in ",
     "ph.d. in ",
+    # "PhD researcher position in Chemistry – 1 FTE" (VŠCHT, 2026-10-02).
+    "phd researcher",
 )
 SKIP_MARKERS = (
     "dean",
@@ -1031,14 +1033,15 @@ def extract_qualifications(title: str, body: str) -> dict:
         r"(?:candidate|applicant|researcher|uchaze[cč])[^.\n]{0,100}\b(?:with|m[aá])\s*:?\s*[•·▪]?\s*(?:a\s+)?ph\.?d\.?\b|"
         r"\b(?:m[ií]t|have)\s*:\s*[•·▪]\s*ph\.?\s?d\.?\s+(?:in|ve?|z)\b|"
         # "má vědeckou hodnost Ph.D. nebo ekvivalentní" in any case form (ČVUT, 2026-10-01).
-        r"v[eě]deck\w+\s+hodnost\w*\s+ph\.?\s?d|"
+        # Also "vědecká hodnost CSc., Dr. nebo Ph.D. v oboru" (VŠCHT, 2026-10-02).
+        r"v[eě]deck\w+\s+hodnost\w*\s+(?:(?:csc|dr|drsc)\.?,?\s+(?:nebo\s+)?){0,3}ph\.?\s?d|"
         # "Academic degree PhD or scientific rank of CSc" (MUNI LF, 2026-10-01).
         r"academic\s+degree\s+(?:of\s+)?ph\.?d\.?\b|scientific\s+rank\s+of\s+csc\b|"
         # "require" also covers "We require Ph.D." (UHK FIM, 2026-10-01).
         # Not "Skills/Qualifications for Ph.D. candidates", a PhD studentship's
         # heading (CIIRC RoboProX, 2026-10-01).
         r"(?:must|should|require[sd]?|requirement|qualification|po[zž]adujeme)[^.\n]{0,120}\bph\.?d\.?\b"
-        r"(?!\.?\s*(?:candidates?|students?|positions?|stud(?:y|ies)|program\w*)\b))",
+        r"(?!\.?\s*(?:candidates?|students?|positions?|stud(?:y|ies)|program\w*|doctoral|researchers?)\b))",
         blob,
     ):
         doctorate_required = True
@@ -1889,12 +1892,14 @@ def assistant_enrollment(title: str, body: str) -> str:
             "doktorand",
             "phd in ",
             "ph.d. in ",
+            "phd researcher",
         )
     )
     explicit_required_patterns = (
         r"\b(?:must|required|requirement|condition)[^.\n]{0,80}(?:enrol|enroll|registration)[^.\n]{0,40}(?:ph\.?d|doctoral)",
         r"\b(?:enrol|enroll|registration)[^.\n]{0,60}(?:ph\.?d|doctoral)[^.\n]{0,40}(?:must|required|condition)",
-        r"\b(?:enrolled|enrolment|enrollment|registration)\s+in\s+(?:a\s+)?(?:ph\.?d|doctoral)\b",
+        # "Enrolment in the PhD doctoral program" (VŠCHT, 2026-10-02).
+        r"\b(?:enrolled|enrolment|enrollment|registration)\s+in\s+(?:a\s+|the\s+)?(?:ph\.?d|doctoral)\b",
         r"\bz[aá]pis\s+do\s+doktorsk[eé]ho\s+studia\b",
         # "Požadujeme ... Přijetí do Doktorského studijního programu Rybářství"
         # (JČU FROV, 2026-10-01).
@@ -3843,15 +3848,41 @@ _PLACEHOLDER_VALUES: tuple = (None, "", "unconfirmed", "unknown", "unspecified",
 def _merge_seed_and_discovered(seeds: list[dict], discovered: list[dict]) -> list[dict]:
     """Preserve reviewed stable IDs while allowing newly listed jobs through."""
     merged = [dict(item) for item in seeds]
+    # A URL identifies a vacancy only where no other listed row shares it. On a
+    # faculty listing every advert has the page's URL, and matching by it
+    # folded VŠCHT 218 and 110 into other records - their identities never
+    # appeared and 560 took 110's deadline (2026-10-02). Different codes are
+    # different vacancies, and one stored record absorbs one listed row.
+    url_counts: dict[str, int] = {}
     for candidate in discovered:
-        match_index = None
-        for index, existing in enumerate(merged):
-            same_employer = existing.get("employerId") == candidate.get("employerId")
-            same_code = candidate.get("code") and existing.get("code") == candidate.get("code")
-            same_url = existing.get("sourceUrl") == candidate.get("sourceUrl")
-            if same_employer and (same_code or same_url):
-                match_index = index
+        url_counts[str(candidate.get("sourceUrl"))] = url_counts.get(str(candidate.get("sourceUrl")), 0) + 1
+    seed_count = len(merged)
+    taken: set[int] = set()
+    for candidate in discovered:
+        match_index = next(
+            (
+                index
+                for index, existing in enumerate(merged[:seed_count])
+                if index not in taken and candidate.get("id") and existing.get("id") == candidate.get("id")
+            ),
+            None,
+        )
+        for index, existing in enumerate(merged[:seed_count]):
+            if match_index is not None:
                 break
+            if index in taken or existing.get("employerId") != candidate.get("employerId"):
+                continue
+            codes_differ = bool(candidate.get("code") and existing.get("code") and existing.get("code") != candidate.get("code"))
+            same_code = bool(candidate.get("code")) and existing.get("code") == candidate.get("code")
+            same_url = (
+                existing.get("sourceUrl") == candidate.get("sourceUrl")
+                and url_counts.get(str(candidate.get("sourceUrl"))) == 1
+                and not codes_differ
+            )
+            if same_code or same_url:
+                match_index = index
+        if match_index is not None:
+            taken.add(match_index)
         if match_index is None:
             merged.append(candidate)
         else:
@@ -4670,6 +4701,11 @@ def localized(title: str, zh_title: str | None = None, cs_title: str | None = No
     return {"zh-CN": zh_title or title, "en": title, "cs": cs_title or title}
 
 
+_ROLLING_RE = re.compile(
+    r"\bon\s+a\s+rolling\s+basis\b|\buntil\s+(?:the\s+)?positions?\s+(?:is|are)\s+(?:full|filled)\b|"
+    r"\bpr[ůu]b[eě][žz]n[eě]\s+a[žz]\s+do\s+obsazen[ií]",
+    re.I,
+)
 _CARRIED_PROVENANCE = ("officialDetailUrl", "listingUrl", "urlDirectness")
 
 
@@ -4699,6 +4735,11 @@ def job_record(candidate: dict, verified_at: str, host_verified: bool, page_text
         # EURAXESS keeps passed deadlines on rows CIIRC lists Open).
         closes = opens = None
     closed = page_is_closed(fact_text, title) if page_text else False
+    round_type = candidate.get("roundType")
+    if not closes and round_type in (None, "regular", "unspecified") and _ROLLING_RE.search(fact_text or ""):
+        # "Applications will be reviewed on a rolling basis until the position
+        # is full" states no closing date (VŠCHT PhD, D3S, 2026-10-02).
+        round_type = "rolling"
     if closes and closes < cur_today and not closed:
         return {}, None
     langs = candidate.get("workingLanguages")
@@ -4763,7 +4804,7 @@ def job_record(candidate: dict, verified_at: str, host_verified: bool, page_text
         "eligibilityGranularity": candidate.get("eligibilityGranularity") or "vacancy",
     }
     window = None
-    if opens or closes or candidate.get("roundType") == "rolling":
+    if opens or closes or round_type == "rolling":
         precision = "date" if (opens or closes) else "unknown"
         status = "closed" if closed else "unknown"
         window = {
@@ -4773,14 +4814,14 @@ def job_record(candidate: dict, verified_at: str, host_verified: bool, page_text
             "academicYear": None,
             "roundNumber": None,
             "roundLabelOriginal": candidate.get("code"),
-            "roundType": candidate.get("roundType") or "unspecified",
+            "roundType": round_type or "unspecified",
             "applicantScope": None,
             "opensAt": iso_date(opens),
             "closesAt": iso_date(closes),
             "timezone": "Europe/Prague",
             "datePrecision": precision,
             "status": status,
-            "conditionalOnVacancies": candidate.get("roundType") == "rolling",
+            "conditionalOnVacancies": round_type == "rolling",
             "applicationUrl": candidate.get("applicationUrl") or candidate["sourceUrl"],
             "sourceEvidenceId": f"ev-{candidate['id']}",
         }
@@ -4824,6 +4865,9 @@ def harvest_candidates(
             evidence.append(prev_evidence[ev_id])
 
     live_fetch_count = 0
+    shared_urls: dict[str, int] = {}
+    for candidate in candidates:
+        shared_urls[candidate["sourceUrl"]] = shared_urls.get(candidate["sourceUrl"], 0) + 1
     for candidate in candidates:
         url = candidate["sourceUrl"]
         embedded_html = candidate.get("_factHtml")
@@ -4846,7 +4890,11 @@ def harvest_candidates(
         lowered = text.lower()
         if candidate["title"].split("(")[0].strip().lower() not in lowered and candidate["title"].lower() not in lowered:
             tokens = [token for token in re.split(r"\W+", candidate["title"].lower()) if len(token) > 4]
-            if sum(token in lowered for token in tokens[:4]) < 2:
+            # A page several vacancies share (a faculty's listing) names many
+            # similar posts; a loose token match there read a withdrawn
+            # vacancy's facts from another advert (VŠCHT 143/319/321 took
+            # 110's deadline, 2026-10-02). There the title must appear as is.
+            if shared_urls[url] > 1 or sum(token in lowered for token in tokens[:4]) < 2:
                 reason = "title-not-found"
                 skipped.append({"id": candidate["id"], "reason": reason})
                 keep_previous(candidate["id"], reason)

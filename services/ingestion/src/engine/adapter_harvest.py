@@ -154,6 +154,8 @@ def candidate_to_harvest_candidate(candidate: Candidate, source: dict) -> dict[s
     # "unspecified" here made the window flip with whichever path ran last,
     # and the reviewed fact hash with it (ten CUNI approvals, 2026-10-02).
     item.setdefault("roundType", "regular")
+    if isinstance(facts.get("_factText"), str) and facts["_factText"].strip():
+        item["_factText"] = facts["_factText"]
     # job_record reads "track" directly; an out-of-scope row keeps it as None.
     return {key: value for key, value in item.items() if value is not None or key == "track"}
 
@@ -412,7 +414,7 @@ def harvest_adapter_source(
         for item in incoming:
             url_counts[item["sourceUrl"]] = url_counts.get(item["sourceUrl"], 0) + 1
         for item in incoming:
-            if url_counts[item["sourceUrl"]] == 1:
+            if url_counts[item["sourceUrl"]] == 1 and not item.get("_factText"):
                 main_text = main_content_text(item.get("_factHtml") or "")
                 if main_text:
                     item["_factText"] = main_text

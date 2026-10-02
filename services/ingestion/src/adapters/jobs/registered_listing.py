@@ -121,7 +121,20 @@ class HarvestListingAdapter:
             if reference is None:
                 continue
             listing = reference.extra.get("listing") or {}
-            parsed = parse_generic_job_page(document.body, document.url, reference.title)
+            if (
+                self.source.get("followDetails", True) is False
+                and listing.get("track")
+                and not (isinstance(listing.get("_factHtml"), str) and listing["_factHtml"].strip())
+            ):
+                # The "detail" is the listing page itself, shared by every row:
+                # facts parsed from the whole page belong to whichever advert
+                # comes first (VŠCHT 560 and a rolling PhD took 110's deadline,
+                # 2026-10-02). The row's own section was parsed at discovery.
+                parsed = {key: value for key, value in listing.items() if not key.startswith("_")}
+                if isinstance(listing.get("_factText"), str) and listing["_factText"].strip():
+                    parsed["_factText"] = listing["_factText"]
+            else:
+                parsed = parse_generic_job_page(document.body, document.url, reference.title)
             track = (
                 parsed.get("track")
                 if isinstance(parsed, dict)

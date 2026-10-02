@@ -3188,3 +3188,42 @@ def test_adapter_reuses_the_stored_identity_of_an_older_id() -> None:
     assert incoming[0]["id"] == "job-27000-56"
     fresh = [{"id": "job-27000-77", "employerId": "msmt-vs_27000", "code": "77", "sourceUrl": "https://v/?procedureId=77"}]
     assert _reuse_stored_identities(fresh, previous) == {} and fresh[0]["id"] == "job-27000-77"
+
+
+def test_vscht_doctorate_rolling_basis_and_phd_researcher() -> None:
+    assert extract_qualifications(
+        "Odborný/á asistent/ka v oboru Energie a paliva",
+        "Požadavky: Ukončené VŠ vzdělání v oboru; vědecká hodnost CSc., Dr. nebo Ph.D. v oboru Energie a paliva",
+    )["doctorateRequired"] is True
+    phd = extract_qualifications(
+        "PhD researcher position in Chemistry – 1 FTE",
+        "Desired skills and qualifications: - Master's degree in chemistry; What we offer: - Enrolment in the PhD "
+        "doctoral program starting in September 2026",
+    )
+    assert phd["doctoralEnrollment"] == "required" and phd["minimumDegree"] == "master"
+    assert classify_track("PhD researcher position in Chemistry – 1 FTE", "research") == "assistant"
+    base = _a75_review_job()
+    base["title"] = "PhD researcher position in Chemistry"
+    base.pop("sourceHash", None)
+    base.pop("closesAt", None)
+    _, window = jobs_harvester.job_record(
+        base,
+        "2026-10-02T00:00:00Z",
+        True,
+        "PhD researcher position in Chemistry Closing date for applications: Applications will be reviewed on a "
+        "rolling basis until the position is full.",
+        as_of=date(2026, 10, 2),
+    )
+    assert window["roundType"] == "rolling" and window["closesAt"] is None
+
+
+def test_shared_listing_rows_never_fold_into_one_stored_record() -> None:
+    url = "https://www.vscht.test/akademicke-pozice"
+    seeds = [{"id": "job-22000-560", "employerId": "e", "code": "560", "sourceUrl": url}]
+    listed = [
+        {"id": "job-22000-218", "employerId": "e", "code": "218", "sourceUrl": url},
+        {"id": "job-22000-110", "employerId": "e", "code": "110", "sourceUrl": url},
+        {"id": "job-22000-560", "employerId": "e", "code": "560", "sourceUrl": url},
+    ]
+    merged = jobs_harvester._merge_seed_and_discovered(seeds, listed)
+    assert sorted(item["id"] for item in merged) == ["job-22000-110", "job-22000-218", "job-22000-560"]
