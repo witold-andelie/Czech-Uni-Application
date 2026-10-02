@@ -15,10 +15,13 @@ from adapters.base import Candidate, CompletenessResult, ListingReference, RawDo
 from html import escape
 
 from harvest_nine_hei_jobs import (
+    NOTICE_BUNDLE_FACTS,
     _stable_discovered_id,
     classify_track,
     discover_registered_candidates,
+    is_notice_bundle,
     parse_generic_job_page,
+    visible_text,
 )
 
 SCOPE_FROM_TRACK = {
@@ -148,6 +151,9 @@ class HarvestListingAdapter:
                 facts = dict(parsed)
                 catalogue = "included"
                 scope = SCOPE_FROM_TRACK.get(track or "", "unknown")
+            if isinstance(parsed, dict) and is_notice_bundle(self.adapter_key, visible_text(document.body)):
+                # Same rule as the discovery path, so the two never disagree.
+                facts.update(NOTICE_BUNDLE_FACTS)
             if listing.get("ignoreDetailDeadline") is True:
                 facts = {key: value for key, value in facts.items() if key not in {"closesAt", "opensAt"}}
                 facts["ignoreDetailDeadline"] = True

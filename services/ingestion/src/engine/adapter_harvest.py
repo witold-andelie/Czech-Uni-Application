@@ -117,7 +117,7 @@ _HARVEST_FACT_KEYS = (
     "closesAt", "opensAt", "roundType", "salaryAmount", "salaryAmountMin", "salaryAmountMax",
     "salaryCurrency", "salaryCycle", "salaryTax", "basisFte", "employmentFte", "employmentStartsAt",
     "workingLanguages", "fundingType", "sourceLanguage", "laboratory", "caseNumber", "noticeRemoveAt",
-    "ignoreDetailDeadline",
+    "ignoreDetailDeadline", "eligibilityGranularity",
 )
 
 

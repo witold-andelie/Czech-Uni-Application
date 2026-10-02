@@ -61,3 +61,24 @@ def test_harvested_jobs_outside_the_ledger_are_queued_screened_or_skipped() -> N
     assert queue["summary"]["newClosedOrExpiredSkipped"] == 1
     text = markdown_packets(queue, school="tul")
     assert "# School `tul`" in text and "Scope screen" in text and "Kuchař" in text
+
+
+def test_operator_decisions_and_page_only_changes_are_not_packets() -> None:
+    jobs = {"generatedAt": "2026-10-02T10:00:00Z", "jobs": [
+        {"id": "page-moved", "applicationUrl": "https://uni.cz/job/1", "sourceHash": "new-page",
+         "translationStatus": "verified", "publicationStatus": "approved", "translationReview": {"factHash": "facts"}},
+        {"id": "duplicate", "applicationUrl": "https://uni.cz/job/2", "sourceHash": "old",
+         "translationStatus": "stale", "translationReview": {"factHash": "other"}},
+    ]}
+    ledger = {"candidateGenerationId": "generation", "rows": [
+        {"candidateId": "page-moved", "employerId": "school", "decision": "approved_public", "blockers": []},
+        {"candidateId": "duplicate", "employerId": "school", "decision": "blocked", "blockers": []},
+    ]}
+    reviewed = {"sourceHash": "old", "factHash": "facts",
+                "locales": {locale: {"status": "reviewed"} for locale in ("zh-CN", "en", "cs")}}
+    reviews = {"page-moved": reviewed,
+               "duplicate": {**reviewed, "disposition": {"publicationStatus": "rejected", "reason": "duplicate_record_of_x"}}}
+    queue = build_queue(jobs, ledger, {"reviews": reviews})
+    assert queue["packets"] == []
+    assert queue["summary"]["unchangedApprovedCarriedForward"] == 1
+    assert queue["summary"]["operatorDecidedSkipped"] == 1

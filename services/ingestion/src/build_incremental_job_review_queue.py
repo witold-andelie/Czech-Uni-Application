@@ -96,6 +96,7 @@ def build_queue(jobs_payload: dict, ledger: dict, reviews_payload: dict, *, toda
     new_rows, scope_screen, closed_new = _new_candidate_rows(jobs_payload, ledger, today)
     deadlines = _deadlines(jobs_payload)
     not_listed = 0
+    operator_decided = 0
     for row in list(ledger.get("rows") or []) + new_rows:
         ident = row["candidateId"]
         job = jobs.get(ident)
@@ -112,9 +113,18 @@ def build_queue(jobs_payload: dict, ledger: dict, reviews_payload: dict, *, toda
             not_listed += 1
             continue
         review = reviews.get(ident) or {}
+        # An operator decision (a duplicate, a post outside the catalogue's
+        # scope) is final until the operator revisits it; listing it daily
+        # buried the vacancies that need a review (2026-10-02).
+        if isinstance(review.get("disposition"), dict):
+            operator_decided += 1
+            continue
+        # Owner decision 2026-10-01: approval binds to the reviewed facts and
+        # titles, not the page text. A page whose other text changed keeps its
+        # approval (the live-evidence gate still proves it is announced), so
+        # it is not a review packet.
         same_review = (
             job.get("translationStatus") == "verified"
-            and review.get("sourceHash") == job.get("sourceHash")
             and review.get("factHash") == (job.get("translationReview") or {}).get("factHash")
             and all((review.get("locales") or {}).get(locale, {}).get("status") == "reviewed"
                     for locale in ("zh-CN", "en", "cs"))
@@ -122,7 +132,10 @@ def build_queue(jobs_payload: dict, ledger: dict, reviews_payload: dict, *, toda
         if row.get("decision") == "approved_public" and same_review:
             carried += 1
             continue
-        if row.get("decision") == "new_candidate" and job.get("publicationStatus") == "approved" and same_review:
+        # A current approval whose facts still match its review outranks an
+        # older ledger flag ("evidence_changed_since_review" from a page-text
+        # change): it is published and carried, not a packet.
+        if job.get("publicationStatus") == "approved" and same_review:
             carried += 1
             continue
         url = job.get("applicationUrl") or job.get("sourceUrl") or ""
@@ -167,6 +180,7 @@ def build_queue(jobs_payload: dict, ledger: dict, reviews_payload: dict, *, toda
                     "newCandidatesOutsideLedger": len(new_rows),
                     "newClosedOrExpiredSkipped": closed_new,
                     "notListedSkipped": not_listed,
+                    "operatorDecidedSkipped": operator_decided,
                     "scopeScreen": len(scope_screen),
                     "unchangedApprovedCarriedForward": carried,
                     "pendingPackets": len(packets),

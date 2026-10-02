@@ -1013,7 +1013,9 @@ def extract_qualifications(title: str, body: str) -> dict:
     doctoral_student = any(
         _in_required_context(blob, match.start())
         for match in re.finditer(
-            r"\bstudent\w*\s+(?:of\s+)?(?:an?\s+)?(?:ph\.?\s?d\.?|doktorsk\w*)\s+(?:study|studi\w*|program\w*)|"
+            # The applicant ("student", "studentka", "students"), not "pro
+            # studenty – Doktorské studium" in a site menu (HAMU, 2026-10-02).
+            r"\bstudent(?:ka|s)?\b(?:\s*/\s*studentka)?\s+(?:of\s+)?(?:an?\s+)?(?:ph\.?\s?d\.?|doktorsk\w*)\s+(?:study|studi\w*|program\w*)|"
             # "student nebo absolvent doktorského studijního oboru" (ZČU FPE, 2026-10-01).
             r"\bstudent\w*\s+nebo\s+absolvent\w*\s+doktorsk\w+\s+studi\w*",
             blob,
@@ -1042,6 +1044,8 @@ def extract_qualifications(title: str, body: str) -> dict:
         r"v[eě]deck\w+\s+hodnost\w*\s+(?:(?:csc|dr|drsc)\.?,?\s+(?:nebo\s+)?){0,3}ph\.?\s?d|"
         # "Academic degree PhD or scientific rank of CSc" (MUNI LF, 2026-10-01).
         r"academic\s+degree\s+(?:of\s+)?ph\.?d\.?\b|scientific\s+rank\s+of\s+csc\b|"
+        # "A university degree at doctoral level (Ph.D.)" (MENDELU, 2026-10-02).
+        r"degree\s+at\s+(?:the\s+)?doctoral\s+level|"
         # "require" also covers "We require Ph.D." (UHK FIM, 2026-10-01).
         # Not "Skills/Qualifications for Ph.D. candidates", a PhD studentship's
         # heading (CIIRC RoboProX, 2026-10-01).
@@ -1078,7 +1082,8 @@ def extract_qualifications(title: str, body: str) -> dict:
         r"(?:university|higher)\s+education\s+in\s+(?:the\s+)?(?:general\s+)?medic(?:ine|al\s+field)|"
         r"title\s+md\b|"
         # "min. stupeň vzdělání: magisterské vysokoškolské studium" (UHK PřF, 2026-10-01).
-        r"\b(?:master'?s?(?:\s+degree)?|master\s+degree|magistersk[eéý]\s+vzd[eě]l[aá]n[ií]|"
+        # The degree, not the verb: "master ROS/ROS2 middleware" (AIC, 2026-10-02).
+        r"\b(?:master(?:'s|’s|s\b)|master\s+(?:degree|level)|magistersk[eéý]\s+vzd[eě]l[aá]n[ií]|"
         r"magistersk[eéý]\s+(?:vysoko[sš]kolsk[eéý]\s+)?studium|"
         # "absolvent magisterského studia Učitelství ..." (ZČU FPE, 2026-10-01).
         r"absolvent\w*\s+magistersk\w+\s+studi\w*|"
@@ -1267,7 +1272,7 @@ _APPLY_BY_RE = re.compile(
     # not end the sentence; PDF text also breaks lines mid-sentence.
     r"(?:[^.;]|\.(?=\S)){0,160}?(?<!\breviewed)(?<!\bevaluated)(?<!\binformed)(?<!\bnotified)"
     # "no later than" as well (UHK FIM: "send the documents no later than 8. 10. 2026").
-    r"(?<!\bdecided)(?<!\bstart)(?<!\bstarting)(?<!\bcontacted)\s+(?:by|no\s+later\s+than)\s+(?=\d|[A-Za-z]+\s+\d)",
+    r"(?<!\bdecided)(?<!\bstart)(?<!\bstarting)(?<!\bcontacted)\s+(?:by|no\s+later\s+than|at)\s+(?=\d|[A-Za-z]+\s+\d)",
     re.I,
 )
 # Czech: "zasílejte e-mailem na adresu: …@uhk.cz do 16.10.2026" (UHK PřF). "do"
@@ -1493,7 +1498,8 @@ def extract_employment_fte(text: str) -> float | None:
         # "- úvazek 1,0 – platové podmínky ..." (ČVUT rektorát, 2026-10-01),
         # "Výše úvazku 1,0" (VŠB, 2026-10-02).
         r"\b[úu]vaz(?:ek|ku)\s*[:=\-–]?\s*(0[.,]\d+|1[.,]0+)\b",
-        r"\b(?:position\s+workload|employment\s+(?:fte|fraction)|workload(?:\s*\(fte\))?)"
+        # "Employment hours: 0.6", "Employment rate: 0.39" (MENDELU, 2026-10-02).
+        r"\b(?:position\s+workload|employment\s+(?:fte|fraction|hours|rate)|workload(?:\s*\(fte\))?)"
         r"\s*[:=\-]?\s*(0(?:[.,]\d+)?|1(?:[.,]0+)?)\b",
         # A67/A68: MUNI adverts state "Working Hours: 0,5 FTE (part-time
         # employment of 20 hours per week)". Czech decimal commas included.
@@ -1513,6 +1519,14 @@ def extract_employment_fte(text: str) -> float | None:
                 return None
             # "CZK 50,000 (gross monthly pay – 1.0 FTE – 40 hours per week)" is
             # the pay's basis, not the post's workload (ZČU, 2026-10-01).
+            # "part-time working contract (min. 0.5 FTE)" is a bound, not the
+            # post's workload (MUNI CEITEC, 2026-10-02).
+            if re.search(
+                r"\b(?:min|max)\.?\s*$|\b(?:minimum|maximum|at\s+least|up\s+to|alespo[ňn]|minim[aá]ln[eě]|maxim[aá]ln[eě]|a[žz])\s*$",
+                text[max(0, match.start() - 14) : match.start()],
+                re.I,
+            ):
+                continue
             if pattern == bare_fte and re.search(
                 r"\b(?:pay|salary|wage)\b[^.;]{0,15}$", text[max(0, match.start() - 30) : match.start()], re.I
             ):
@@ -1635,6 +1649,10 @@ def _money_occurrences(text: str) -> list[dict]:
             start = match.start() - (len(before) - trailing.start())
             candidates.append((start, match.start(), trailing.group(1)))
         leading = re.match(rf"^[{_MONEY_SPACE_CHARS}]*({_MONEY_NUMBER.pattern})", after)
+        # "EUR 30K p.a." is thirty thousand, not 30: a k-suffixed figure is
+        # left unread rather than misread (AIC, 2026-10-02).
+        if leading and re.match(r"[kK]\b", after[leading.end(1) :]):
+            leading = None
         if leading:
             start = match.end() + leading.start(1)
             candidates.append((start, start + len(leading.group(1)), leading.group(1)))
@@ -1830,6 +1848,10 @@ def extract_salary_facts(text: str) -> dict:
         start, end = _sentence_bounds(text, occurrence["start"])
         sentence = text[start:end]
         if not SALARY_TERM_RE.search(sentence):
+            continue
+        # One amount quoted in two currencies ("50 000 CZK gross (2 000 EUR)",
+        # AIC 2026-10-02) is one statement, not a second role's pay.
+        if occurrence["currency"] != chosen["currency"]:
             continue
         other = parse_money_number(occurrence["raw"])
         if other is None or other == amount:
@@ -2966,7 +2988,11 @@ def parse_generic_job_page(html: str, page_url: str, title_hint: str = "") -> di
         title = visible_text(heading.group(1)) if heading else ""
     if not title:
         return None
-    scoped_text = entity_scope(text, title)
+    # A single vacancy's page is read from its <main> content: slicing at the
+    # title's last mention landed in a "Recommended careers" box repeating the
+    # title and lost the stated pay (AIC, 2026-10-02). Pages without <main>
+    # keep the title-scoped slice.
+    scoped_text = main_content_text(html) or entity_scope(text, title)
     # A69: read the whole scoped vacancy body. A fixed character prefix hides
     # qualification, funding and salary facts that appear further down the page.
     track = classify_track(title, scoped_text)
@@ -2988,6 +3014,8 @@ def parse_generic_job_page(html: str, page_url: str, title_hint: str = "") -> di
             # "The researcher will be employed at CEITEC MU", "Part-time contract", "PhD stipend" (MUNI CEITEC).
             r"\b(salary|wage|remuneration|stipend|be employed|(?:part|full)[- ]time contract|"
             r"employment relationship|employment contract|fixed[- ]term contract|contract of employment|"
+            # "fixed-term employment for 3 years", "Length of employment" (MENDELU, 2026-10-02).
+            r"fixed[- ]term employment|length of employment|"
             # PDF text may space the hyphen: "full - time employment" (ČVUT FSv).
             r"full\s*-\s*time employment|full\s*-\s*time position|gross|"
             r"pracovn[ií]\s+smlouva|pracovn[ií]\s+[úu]vazek|pracovn[ií]\s+pom[eě]r|pracovn[eě]pr[aá]vn[ií](?:ho| vztah)|mzda|mzdov\w*|"
@@ -3245,6 +3273,32 @@ def parse_tul_careers(html: str, page_url: str) -> list[dict]:
 
 
 _EURAXESS_HOSTS = {"euraxess.ec.europa.eu", "www.euraxess.cz", "euraxess.cz"}
+
+
+# One notice filling several posts with different requirements and workloads
+# states no single post's facts. UTB: "obsazení 3 pozic", "obsazení pozic
+# akademických pracovníků" (2026-10-02, Ústav zdravotnických věd: 1,0/0,5/1,0).
+NOTICE_BUNDLE_FACTS = {
+    "minimumDegree": "unknown",
+    "doctorateRequired": None,
+    "doctoralEnrollment": "unspecified",
+    "salaryAmount": None,
+    "salaryCurrency": None,
+    "basisFte": None,
+    "employmentFte": None,
+    "eligibilityGranularity": "notice_bundle",
+}
+
+
+def is_notice_bundle(parser: str, text: str) -> bool:
+    return parser == "utb_careers" and bool(
+        re.search(
+            r"\bobsazen[ií]\s+(?:celkem\s+)?\d+\s+(?:voln(?:[ýy]ch|ych)\s+)?(?:pracovn\w*\s+)?pozic|"
+            r"\bobsazen[ií]\s+pozic\s+akademick",
+            text,
+            re.I,
+        )
+    )
 
 
 def parse_czu_pozice_rest(payload: str) -> list[dict]:
@@ -3775,11 +3829,13 @@ def detect_source_language(text: str) -> str:
         "pozadujeme",
         "pracovní poměr",
         "pracovni pomer",
-        "termín",
-        "termin",
         "doktorské studium",
         "doktorske studium",
     )
+    # "termín" as a whole word only: as a substring it matched English
+    # "determine" and "terminal" (AIC, MUNI, 2026-10-02).
+    if re.search(r"\btermín\b|\btermin\b", lowered):
+        return "cs"
     return "cs" if any(marker in lowered for marker in czech_markers) else "en"
 
 
@@ -4344,25 +4400,9 @@ def discover_registered_candidates(
                             }
                         )
                         continue
-                    multi_position = parser == "utb_careers" and bool(
-                        re.search(
-                            r"\bobsazen[ií]\s+(?:celkem\s+)?\d+\s+"
-                            r"(?:voln(?:[ýy]ch|ych)\s+)?(?:pracovn\w*\s+)?pozic",
-                            visible_text(detail_html),
-                            re.I,
-                        )
-                    )
+                    multi_position = is_notice_bundle(parser, visible_text(detail_html))
                     if multi_position:
-                        parsed.update(
-                            {
-                                "minimumDegree": "unknown",
-                                "doctorateRequired": None,
-                                "doctoralEnrollment": "unspecified",
-                                "salaryAmount": None,
-                                "salaryCurrency": None,
-                                "basisFte": None,
-                            }
-                        )
+                        parsed.update(NOTICE_BUNDLE_FACTS)
                     item = {
                         **item,
                         **parsed,

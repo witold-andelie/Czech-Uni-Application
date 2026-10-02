@@ -3260,3 +3260,65 @@ def test_czu_degree_and_language_forms() -> None:
         "Asistent", "Požadavky vysokoškolské vzdělání v magisterském studijním programu v technickém oboru"
     )["minimumDegree"] == "master"
     assert jobs_harvester.stated_working_languages("Požadavky: vynikající znalost ČJ vynikající znalost AJ") == ["en", "cs"]
+
+
+def test_mendelu_workload_doctorate_deadline_and_employment_forms() -> None:
+    fte = jobs_harvester.extract_employment_fte
+    assert fte("Employment hours: 0.6 (24 hours per week) Work location: Lednice") == 0.6
+    assert fte("Employment rate: 0.39 (15.6 hours per week)") == 0.39
+    assert fte("Job type: part-time working contract (min. 0.5 FTE) + study stipend") is None
+    assert extract_qualifications(
+        "Assistant Professor", "What do we expect from you? A university degree at doctoral level (Ph.D.) in applied zoology"
+    )["doctorateRequired"] is True
+    assert jobs_harvester.extract_deadline(
+        "Interested? Apply for the selection process at 4 October 2026 and send us: Professional resume"
+    ) == date(2026, 10, 4)
+    assert jobs_harvester.extract_deadline("Apply at the faculty office in person.") is None
+
+
+def test_site_menu_is_not_a_doctoral_student_requirement_and_utb_bundles() -> None:
+    menu = (
+        "Studijní oddělení Harmonogram akademického roku Pro studenty Doktorské studium Závěrečná práce "
+        "Požadavky: ukončené VŠ vzdělání v magisterském stupni, znalost anglického jazyka"
+    )
+    assert extract_qualifications("Vedoucí Katedry jazzové hudby", menu)["doctoralEnrollment"] == "unspecified"
+    assert extract_qualifications(
+        "Junior", "Požadavky: Student doktorského studia v oboru stavební mechanika"
+    )["doctoralEnrollment"] == "required"
+    assert jobs_harvester.is_notice_bundle(
+        "utb_careers", "Ústav zdravotnických věd vypisuje výběrové řízení na obsazení pozic akademických pracovníků/pracovnic"
+    )
+    assert not jobs_harvester.is_notice_bundle("utb_careers", "výběrové řízení na obsazení pozice odborného asistenta")
+    assert jobs_harvester.NOTICE_BUNDLE_FACTS["employmentFte"] is None
+
+
+def test_single_vacancy_page_is_read_from_main_and_k_amounts_are_not_misread() -> None:
+    title = "Postdoc in AI and Cybersecurity"
+    html = (
+        "<html><body><nav>Admissions Master's study</nav><main><h1>Postdoc in AI and Cybersecurity</h1>"
+        "<p>Research position at the Stratosphere Laboratory: research, publish and develop new techniques to "
+        "detect and stop advanced DNS attacks for a European DNS security infrastructure. The position comes "
+        "with a monthly salary and a travel budget, on premises in Prague.</p>"
+        "<h2>Recommended careers</h2><p>Postdoc in AI and Cybersecurity Help safeguard EU users.</p></main>"
+        "<footer>Contact: Ing. Jana Nováková</footer></body></html>"
+    )
+    parsed = jobs_harvester.parse_generic_job_page(html, "https://aic.test/careers/postdoc", title)
+    assert parsed["paidStatus"] == "confirmed"
+    assert parsed["minimumDegree"] == "unknown"
+    facts = jobs_harvester.extract_salary_facts("a monthly salary of approximately EUR 30K p.a. before tax")
+    assert facts["amount"] != 30.0
+
+
+def test_one_amount_in_two_currencies_and_english_termin_words() -> None:
+    facts = jobs_harvester.extract_salary_facts("In total, you will earn approx. 50 000 CZK gross (2 000 EUR) a month.")
+    assert facts["reason"] != "multiple-salary-statements"
+    assert jobs_harvester.detect_source_language("We will determine the terminal conditions of the research.") == "en"
+    assert jobs_harvester.detect_source_language("Termín pro podání přihlášek: 24. 10. 2026") == "cs"
+
+
+def test_the_verb_master_is_not_a_masters_degree() -> None:
+    assert extract_qualifications(
+        "Robotics Systems Engineer", "develop advanced hardware, integrate sensors, and master ROS/ROS2 middleware"
+    )["minimumDegree"] == "unknown"
+    for body in ("Holds at least a master’s degree in computer science", "Masters in physics required", "Master degree in chemistry"):
+        assert extract_qualifications("Researcher", body)["minimumDegree"] == "master", body
