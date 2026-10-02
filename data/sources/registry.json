@@ -325,6 +325,22 @@
     "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py"
   },
   {
+    "id": "vsb-job-opportunities-en",
+    "url": "https://www.vsb.cz/en/university/informational-board/job-opportunities/",
+    "purpose": "official VŠB-TUO English vacancy board, which carries English-only adverts (procedure ids) not listed on the Czech board",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "msmt-vs_27000",
+    "coverageScope": "institution_aggregator",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "vsb_listing",
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "production_entrypoint_wired_2026-10-02",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Registered 2026-10-02: the English board listed procedures 69, 74 and 76 while the Czech board listed 70 and 77. Ids are keyed by procedureId, so an advert posted on both boards keeps one identity."
+  },
+  {
     "id": "uct-academic-scientific-positions",
     "url": "https://www.vscht.cz/uredni-deska/vyberova-rizeni/akademicke-pozice",
     "purpose": "official UCT Prague inline academic and scientific vacancy notices with per-heading fact boundaries",
