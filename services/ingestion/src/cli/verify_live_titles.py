@@ -197,6 +197,12 @@ def load_tasks(only_status: str) -> list[dict[str, Any]]:
         elif isinstance(job.get("title"), dict):
             title_locales = job["title"]
         titles = [{"title": value, "locale": locale} for locale, value in title_locales.items() if isinstance(value, str) and value.strip()]
+        # The official title is what the page shows; reviewed titles are often
+        # normalised or carry the faculty, and failed to match ten records that
+        # the page announces verbatim (2026-10-03).
+        original = str(job.get("originalText") or "").strip()
+        if original and all(item["title"] != original for item in titles):
+            titles.append({"title": original, "locale": "original"})
         tasks.append(
             {
                 "candidateId": job["id"],
@@ -307,6 +313,15 @@ def main() -> None:
     merge_source = args.merge_from if args.merge_from is not None else args.output
     previous_rows, previous_generated_at = ({}, None) if args.no_merge else load_previous_rows(merge_source)
 
+    # Unconfirmed and oldest evidence first: in file order a budget-bounded
+    # pass skipped the same tail every day, and those records never verified.
+    confirmed = {"matched", "operator_verified"}
+
+    def _priority(task: dict[str, Any]) -> tuple[int, str]:
+        row = previous_rows.get(task["candidateId"]) or {}
+        return (1 if row.get("status") in confirmed else 0, str(row.get("checkedAt") or ""))
+
+    tasks.sort(key=_priority)
     started = time.time()
     last_by_host: dict[str, float] = defaultdict(float)
     rows: list[dict[str, Any]] = []
