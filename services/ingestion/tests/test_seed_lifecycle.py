@@ -40,17 +40,11 @@ def test_d3s_seed_survives_with_no_deadline() -> None:
 
 
 def test_active_snapshot_keeps_expired_cenmas_out_and_d3s_in() -> None:
-    pointer = json.loads((ROOT / "data" / "published" / "current.json").read_text(encoding="utf-8"))
-    assert pointer["snapshotDir"] == f"snapshots/{pointer['activeVersion']}"
+    # An immutable snapshot: the active one changes with every daily publication.
     payload = json.loads(
-        (
-            ROOT
-            / "data"
-            / "published"
-            / pointer["snapshotDir"]
-            / "browse"
-            / "nine-hei-jobs.json"
-        ).read_text(encoding="utf-8")
+        (ROOT / "data" / "published" / "snapshots" / "v2026-09-29.2" / "browse" / "nine-hei-jobs.json").read_text(
+            encoding="utf-8"
+        )
     )
     job_ids = {item["id"] for item in payload["jobs"]}
     assert "job-cuni-d3s-postdoc" in job_ids

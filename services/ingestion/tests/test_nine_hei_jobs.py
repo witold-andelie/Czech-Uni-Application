@@ -2532,7 +2532,8 @@ def test_uhk_biology_body_evidence_classifies_postdoc() -> None:
         "doctorateRequired": parsed["doctorateRequired"],
         "doctoralEnrollment": parsed["doctoralEnrollment"],
     }
-    job, _ = jobs_harvester.job_record(base, "2026-09-13T00:00:00Z", True, "")
+    # Judged on the notice's own day: its deadline (2 Oct 2026) has since passed.
+    job, _ = jobs_harvester.job_record(base, "2026-09-13T00:00:00Z", True, "", as_of=date(2026, 9, 13))
     assert job["isPostdoc"] is True
 
 

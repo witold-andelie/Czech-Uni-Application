@@ -15,8 +15,10 @@ from harvest_nine_hei_jobs import (  # noqa: E402
     reconcile_stored_reviews,
 )
 
-CANDIDATES = ROOT / "data" / "sources" / "browse" / "nine-hei-jobs.json"
-REVIEWS = ROOT / "data" / "sources" / "reviews" / "job-translations.json"
+# A frozen copy of the two VŠB records and their reviews: the live files change daily.
+FROZEN_PATH = Path(__file__).parent / "fixtures" / "frozen_live_records.json"
+CANDIDATES = FROZEN_PATH
+REVIEWS = FROZEN_PATH
 KEEP = "job-27000-56"
 DROP = "job-27000-70"
 REASON = f"duplicate_record_of_{KEEP}"
@@ -31,6 +33,10 @@ def load_case() -> tuple[dict, list[dict], dict]:
     )
     reviews = json.loads(REVIEWS.read_text(encoding="utf-8"))
     return job, ([window] if window else []), reviews["reviews"][DROP]
+
+
+def frozen_reviews() -> dict:
+    return json.loads(REVIEWS.read_text(encoding="utf-8"))["reviews"]
 
 
 def test_reviewed_record_is_approved_without_a_disposition() -> None:
@@ -61,7 +67,7 @@ def test_recorded_duplicate_disposition_survives_reconciliation() -> None:
     jobs = [item for item in payload["jobs"] if item["id"] in {KEEP, DROP}]
     payload["jobs"] = jobs
     payload["windows"] = [item for item in payload.get("windows") or [] if item.get("ownerId") in {KEEP, DROP}]
-    reconciled = reconcile_stored_reviews(payload)
+    reconciled = reconcile_stored_reviews(payload, reviews=frozen_reviews())
     applied = next(item for item in reconciled["jobs"] if item["id"] == DROP)
     assert applied["publicationStatus"] == "rejected"
     assert applied["visibility"] == "archived"
