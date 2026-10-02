@@ -106,3 +106,33 @@ def test_a_stated_faculty_separates_same_titled_register_rows() -> None:
     assert match.bind(plain).reason == "ambiguous_register_rows"
     stated = resolver.Candidate(url="https://x.cz/a", title="Sociální práce", degree="b", language="cs", faculty="Filozofická fakulta")
     assert [row.ident for row in match.bind(stated).rows] == ["r1"]
+
+
+def test_uis_level_page_rows_carry_code_language_and_info_page() -> None:
+    html = (
+        '<table><tr><td class="odsazena">Fakulta: </td><td class="odsazena">Agronomická fakulta</td></tr>'
+        '<tr><td class="odsazena">Typ studia: </td><td class="odsazena">Magisterský navazující</td></tr></table>'
+        "<b>Výběr studijního programu</b><table><thead><tr><th>Kód</th></tr></thead><tbody >"
+        '<tr class=" uis-hl-table lbn" ><td>N0811A370020</td><td>N-AEG Agroekologie</td><td>Čeština</td>'
+        '<td><a href="/katalog/plany.pl?fakulta=14;poc_obdobi=824;typ_studia=4;program=2077;info=1;lang=cz">i</a></td></tr>'
+        '<tr><td>N0811A370016</td><td>N-GAE General Agriculture</td><td>Angličtina</td>'
+        '<td><a href="/katalog/plany.pl?fakulta=14;poc_obdobi=824;typ_studia=4;program=2070;info=1;lang=cz">i</a></td></tr>'
+        "</tbody></table>"
+    )
+    rows = pc.uis_programmes(html, "https://is.mendelu.cz/katalog/plany.pl?fakulta=14;poc_obdobi=824;typ_studia=4;lang=cz")
+    assert [(r["titles"]["original"], r["degree"], r["studyLanguage"], r["programmeCode"]) for r in rows] == [
+        ("Agroekologie", "master", "cs", "N0811A370020"),
+        ("General Agriculture", "master", "en", "N0811A370016"),
+    ]
+    assert rows[0]["faculty"] == "Agronomická fakulta"
+    assert rows[0]["officialProgrammeUrl"].startswith("https://is.mendelu.cz/katalog/plany.pl?fakulta=14;")
+
+
+def test_uis_periods_of_the_current_academic_year_only() -> None:
+    html = (
+        '<tr><td><b>ZS 2026/2027</b></td><td><a href="/katalog/plany.pl?fakulta=14;poc_obdobi=824;lang=cz">x</a></td></tr>'
+        '<tr><td>2026/2027 - doktorská studia</td><td><a href="/katalog/plany.pl?fakulta=14;poc_obdobi=825;lang=cz">x</a></td></tr>'
+        '<tr><td>ZS 2025/2026</td><td><a href="/katalog/plany.pl?fakulta=14;poc_obdobi=700;lang=cz">x</a></td></tr>'
+    )
+    links = pc.uis_period_links(html, "https://is.mendelu.cz/katalog/plany.pl?fakulta=14;;lang=cz", 2026)
+    assert [link.split("poc_obdobi=")[1][:3] for link in links] == ["824", "825"]

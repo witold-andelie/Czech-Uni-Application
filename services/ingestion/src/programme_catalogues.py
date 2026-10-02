@@ -386,8 +386,110 @@ def stag_harvester(key: str) -> Callable[..., dict]:
     return harvest
 
 
+# --------------------------------------------------------------------------- #
+# UIS schools: the public study-programme browser (katalog/plany.pl) lists,
+# per faculty and intake period, each level's programmes with their teaching
+# language and an information page per programme.
+# --------------------------------------------------------------------------- #
+
+UIS_SCHOOLS = {
+    "mendelu": ("msmt-vs_43000", "https://is.mendelu.cz"),
+    "vse": ("msmt-vs_31000", "https://insis.vse.cz"),
+    "czu": ("msmt-vs_41000", "https://is.czu.cz"),
+}
+UIS_LEVELS = {
+    "bakalářský": "bachelor",
+    "magisterský navazující": "master",
+    "navazující magisterský": "master",
+    "magisterský": "master",
+    "doktorský": "doctorate",
+}
+_UIS_PREFIX_RE = re.compile(r"^[A-Z]{1,3}-[A-Z0-9_]+\s+")
+
+
+def _uis_cells(row_html: str) -> list[str]:
+    return [page_text(cell) for cell in re.findall(r"<td\b[^>]*>(.*?)</td>", row_html, re.S)]
+
+
+def uis_period_links(html: str, page_url: str, year: int) -> list[str]:
+    """The intake periods of ``year``/``year+1`` (regular and doctoral) on a faculty page."""
+    label = f"{year}/{year + 1}"
+    links = []
+    for row in re.findall(r"<tr\b[^>]*>(.*?)</tr>", html, re.S):
+        if label in page_text(row):
+            href = re.search(r'href="([^"]*poc_obdobi=\d+[^"]*)"', row)
+            if href:
+                links.append(urljoin(page_url, unescape(href.group(1))))
+    return links
+
+
+def uis_programmes(html: str, page_url: str) -> list[dict]:
+    """Programme rows of one faculty / period / level page."""
+    faculty = (re.search(r"Fakulta:\s*</td>\s*<td[^>]*>(.*?)</td>", html, re.S) or [None, ""])[1]
+    level_text = (re.search(r"Typ studia:\s*</td>\s*<td[^>]*>(.*?)</td>", html, re.S) or [None, ""])[1]
+    level = UIS_LEVELS.get(page_text(level_text).lower())
+    if not level:
+        return []
+    table = re.search(r"Výběr studijního programu.*?<tbody\s*>(.*?)</tbody>", html, re.S)
+    records = []
+    for row in re.findall(r"<tr\b[^>]*>(.*?)</tr>", table.group(1) if table else "", re.S):
+        cells = _uis_cells(row)
+        info = re.search(r'href="([^"]*program=\d+;info=1[^"]*)"', row)
+        if len(cells) < 3 or not info:
+            continue
+        language = STAG_LANGUAGES.get(cells[2].strip().lower())
+        title = _UIS_PREFIX_RE.sub("", cells[1]).strip()
+        if not (language and title):
+            continue
+        records.append(
+            {
+                "officialProgrammeUrl": urljoin(page_url, unescape(info.group(1))),
+                "titles": {"original": title},
+                "degree": level,
+                "studyLanguage": language,
+                "faculty": page_text(faculty),
+                "programmeCode": cells[0] or None,
+            }
+        )
+    return records
+
+
+def uis_harvester(key: str) -> Callable[..., dict]:
+    _institution, base = UIS_SCHOOLS[key]
+
+    def harvest(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
+        year = academic_year()
+        failures: list[dict] = []
+        pages = 0
+
+        def get(url: str) -> str:
+            nonlocal pages
+            pages += 1
+            status, html = fetch(url)
+            if status != 200 or not html:
+                failures.append({"url": url, "status": status})
+                return ""
+            return html
+
+        root = f"{base}/katalog/plany.pl?lang=cz"
+        faculties = sorted({urljoin(root, unescape(h)) for h in re.findall(r'href="([^"]*plany\.pl\?fakulta=\d+;;lang=cz)"', get(root))})
+        records: list[dict] = []
+        for faculty_url in faculties:
+            for period_url in uis_period_links(get(faculty_url), faculty_url, year):
+                html = get(period_url)
+                levels = {urljoin(period_url, unescape(h)) for h in re.findall(r'href="([^"]*typ_studia=\d+[^"]*)"', html)}
+                for level_url in sorted(levels):
+                    records.extend(uis_programmes(get(level_url), level_url))
+        unique = {(item["officialProgrammeUrl"]): item for item in records}
+        log(f"{key}: {len(faculties)} faculties, {len(unique)} programme(s) for {year}/{year + 1}")
+        return {"programmes": list(unique.values()), "failures": failures, "listingPages": pages}
+
+    return harvest
+
+
 ADAPTERS = {
     **{key: (value[0], f"catalogue-{key}.json", stag_harvester(key)) for key, value in STAG_SCHOOLS.items()},
+    **{key: (value[0], f"catalogue-{key}.json", uis_harvester(key)) for key, value in UIS_SCHOOLS.items()},
     "muni": ("msmt-vs_14000", "catalogue-muni.json", harvest_muni),
     "slu": ("msmt-vs_19000", "catalogue-slu.json", harvest_slu),
     "cvut": ("msmt-vs_21000", "catalogue-cvut.json", harvest_cvut),
