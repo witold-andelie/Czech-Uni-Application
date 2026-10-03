@@ -745,7 +745,7 @@
     "id": "avcr-selection-procedures",
     "url": "https://www.avcr.cz/en/about-us/career/selection-procedures/",
     "baseUrl": "https://www.avcr.cz",
-    "purpose": "official Academy vacancy discovery; records are quarantined until the actual employing institute is mapped and evidenced",
+    "purpose": "official Academy vacancy list; each opening's employer is the institute it names, resolved to the MŠMT register of public research institutions",
     "official": true,
     "sourceType": "official_job_listing",
     "employerId": null,
@@ -755,9 +755,9 @@
     "parser": "avcr_vacancies",
     "followDetails": true,
     "refreshIntervalHours": 4,
-    "collectionStatus": "adapter_integrated_quarantine_2026-09-10",
+    "collectionStatus": "adapter_integrated_2026-10-03",
     "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
-    "note": "The Academy portal is not assigned as the employer. Each vacancy needs an evidenced institute identity before it can enter catalogue candidates."
+    "note": "The Academy portal is not the employer. Each opening names its institute; harvest_research_institutions.py supplies the v. v. i. register record (IČO, website) it resolves to. An institute the register does not name unambiguously stays quarantined."
   },
   {
     "id": "euraxess",

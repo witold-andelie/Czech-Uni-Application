@@ -37,7 +37,7 @@ def test_avcr_inline_list_yields_research_openings_with_institute_and_deadline()
     assert rows[1]["employerName"] == "Heyrovský Institute of the CAS"
 
 
-def test_avcr_openings_quarantine_with_their_institute_and_count_as_listed() -> None:
+def test_avcr_openings_resolve_to_their_institute_and_count_as_listed() -> None:
     source = {
         "id": "avcr-selection-procedures",
         "url": "https://www.avcr.cz/en/about-us/career/selection-procedures/",
@@ -49,11 +49,9 @@ def test_avcr_openings_quarantine_with_their_institute_and_count_as_listed() -> 
         "followDetails": True,
     }
     result = harvest.discover_registered_candidates(lambda url: (200, AVCR_INLINE), registry=[source])
-    assert result["candidates"] == []
-    assert {row["employerName"] for row in result["quarantined"]} == {
-        "Institute of Physics of the CAS",
-        "Heyrovský Institute of the CAS",
-    }
+    # The institute each opening names is its employer (v. v. i. register).
+    assert {row["employerId"] for row in result["candidates"]} == {"rvvi-68378271", "rvvi-61388955"}
+    assert result["quarantined"] == []
     assert result["listedBySource"] == {"avcr-selection-procedures": 2}
 
 

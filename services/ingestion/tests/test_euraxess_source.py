@@ -31,13 +31,17 @@ def test_search_rows_pages_and_detail_fields() -> None:
     }
 
 
-def test_employers_resolve_to_universities_only() -> None:
+def test_employers_resolve_to_universities_and_public_research_institutions() -> None:
     assert eu.resolve_employer("Charles University, Faculty of Science") == "msmt-vs_11000"
     assert eu.resolve_employer("CEITEC MU") == "msmt-vs_14000"
     assert eu.resolve_employer("VSCHT Praha") == "msmt-vs_22000"
     assert eu.resolve_employer("Czech Technical University in Prague") == "msmt-vs_21000"
-    assert eu.resolve_employer("Institute of Physics of the Czech Academy of Sciences") is None
+    # Public research institutions from the v. v. i. register (IČO 68378271).
+    assert eu.resolve_employer("Institute of Physics of the Czech Academy of Sciences") == "rvvi-68378271"
+    assert eu.resolve_employer("Fyzikální ústav AV ČR, v. v. i.") == "rvvi-68378271"
+    assert eu.resolve_employer("Institute of Physics of Materials of the CAS") == "rvvi-68081723"
     assert eu.resolve_employer("Faculty of Electrical Engineering") is None
+    assert eu.research_hosts()["rvvi-68378271"] == {"fzu.cz"}
 
 
 def test_application_target_is_on_the_employers_own_domain() -> None:

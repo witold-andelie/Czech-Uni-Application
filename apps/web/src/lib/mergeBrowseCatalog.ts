@@ -102,6 +102,59 @@ function durationSemesters(value: string | null): number | null {
   return Math.round(amount);
 }
 
+/** A public research institution from the MŠMT v. v. i. register (harvest_research_institutions.py). */
+export interface ResearchEmployerRecord {
+  id: string;
+  officialName: string;
+  officialNameEn?: string | null;
+  legalType: "research_institute";
+  ownership: "public";
+  ico?: string | null;
+  officialUrl?: string | null;
+  seat?: string | null;
+  city?: string | null;
+  founder?: string | null;
+  source?: { registryUrl?: string; detailUrl?: string };
+}
+
+export function institutionFromResearch(item: ResearchEmployerRecord): Institution {
+  return {
+    id: item.id,
+    officialName: item.officialName,
+    // The register's Czech name is the source text; the English name is the
+    // Academy's own. No Chinese name is recorded, so Chinese shows the
+    // official name, as for a university without a recorded translation.
+    displayName: { "zh-CN": item.officialName, en: item.officialNameEn || item.officialName, cs: item.officialName },
+    country: "CZ",
+    city: cityFromBaseline({ seat: item.seat ?? null, region: item.city ?? "" } as BaselineInstitution),
+    ownership: "public",
+    ownershipEvidenceId: "rvvi-register",
+    legalType: "research_institute",
+    orientation: "research",
+    officialUrl: item.officialUrl || "",
+    cscseReference: {
+      lookupStatus: "unverified",
+      operatorListStatus: null,
+      evidenceKind: "none",
+      officialMatchedName: null,
+      matchedAwardingInstitutionId: null,
+      lookupUrl: "http://yxcx.cscse.edu.cn/rzyxmd",
+      checkedAt: null,
+      operatorListDated: null,
+      sourceVersion: null,
+      evidenceId: null,
+      reviewer: null,
+      matchConfidence: null,
+      notices: [],
+    },
+    dataClass: "official_register_extract",
+    ico: item.ico ?? null,
+    seat: item.seat ?? null,
+    founder: item.founder ?? null,
+    registerUrl: item.source?.detailUrl ?? item.source?.registryUrl ?? null,
+  };
+}
+
 export function institutionFromBaseline(item: BaselineInstitution): Institution {
   const rec = item.cscseReference;
   return {

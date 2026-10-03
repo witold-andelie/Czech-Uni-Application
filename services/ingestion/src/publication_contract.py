@@ -670,6 +670,35 @@ def withheld_reasons(job: dict[str, Any], label: str) -> list[str]:
     return reasons
 
 
+RESEARCH_EMPLOYER_ID_RE = re.compile(r"^rvvi-\d{8}$")
+
+
+def _validate_research_employers(raw: Any, errors: list[str]) -> set[str]:
+    if raw is None:
+        return set()
+    if not isinstance(raw, list):
+        errors.append(rule("RESEARCH_EMPLOYER_INVALID", "researchEmployers must be a list"))
+        return set()
+    ids: set[str] = set()
+    for item in raw:
+        ident = item.get("id") if isinstance(item, dict) else None
+        problems = [
+            not isinstance(item, dict),
+            not (isinstance(ident, str) and RESEARCH_EMPLOYER_ID_RE.fullmatch(ident)),
+            isinstance(item, dict) and not (isinstance(item.get("officialName"), str) and item["officialName"].strip()),
+            isinstance(item, dict) and item.get("legalType") != "research_institute",
+            isinstance(item, dict) and item.get("ownership") != "public",
+            isinstance(item, dict) and item.get("officialUrl") is not None and not valid_web_url(item.get("officialUrl")),
+            isinstance(item, dict) and not valid_web_url((item.get("source") or {}).get("registryUrl"), https_only=True),
+            ident in ids,
+        ]
+        if any(problems):
+            errors.append(rule("RESEARCH_EMPLOYER_INVALID", f"research employer {ident!r} is malformed or repeated"))
+            continue
+        ids.add(ident)
+    return ids
+
+
 def _validate_jobs(
     data: dict[str, Any],
     institution_ids: set[str],
@@ -677,6 +706,9 @@ def _validate_jobs(
     *,
     snapshot_version: str | None = None,
 ) -> int:
+    # Public research institutions that employ published vacancies, from the
+    # official v. v. i. register (harvest_research_institutions.py).
+    institution_ids = institution_ids | _validate_research_employers(data.get("researchEmployers"), errors)
     jobs = data.get("jobs")
     job_ids = _unique_ids(jobs, "research jobs", errors)
     evidence = data.get("evidence")

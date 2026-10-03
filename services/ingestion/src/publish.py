@@ -147,7 +147,25 @@ def _live_evidence_path(sources_dir: Path = SOURCES_DIR) -> Path:
     return sources_dir / "coverage" / "live-title-verification.json"
 
 
-def _select_approved_jobs(staging_root: Path, evidence_path: Path = LIVE_EVIDENCE) -> tuple[list[str], list[str]]:
+def _research_employers(path: Path, employer_ids: set[str]) -> list[dict]:
+    """Register records of the public research institutions published jobs name."""
+    if not path.is_file():
+        return []
+    records = json.loads(path.read_text(encoding="utf-8")).get("institutions") or []
+    keep = ("id", "officialName", "officialNameEn", "legalType", "ownership", "ownershipOriginal", "ico", "officialUrl",
+            "webHost", "seat", "city", "founder", "registeredOn", "source", "officialNameEnSource")
+    return [
+        {key: record[key] for key in keep if key in record}
+        for record in records
+        if isinstance(record, dict) and record.get("id") in employer_ids
+    ]
+
+
+def _select_approved_jobs(
+    staging_root: Path,
+    evidence_path: Path = LIVE_EVIDENCE,
+    research_path: Path = SOURCES_DIR / "research-institutions.json",
+) -> tuple[list[str], list[str]]:
     """Keep only records explicitly approved for the public snapshot.
 
     Returns the ids excluded because they are not approved, and any error that
@@ -239,6 +257,13 @@ def _select_approved_jobs(staging_root: Path, evidence_path: Path = LIVE_EVIDENC
             "empty research library; see publicationSelection.withheld for the recorded reasons"
         )
     payload["jobs"] = publishable
+    # Employers that are public research institutions, not universities, travel
+    # with the jobs that name them (official v. v. i. register records).
+    research = _research_employers(research_path, {str(item.get("employerId")) for item in publishable})
+    if research:
+        payload["researchEmployers"] = research
+    else:
+        payload.pop("researchEmployers", None)
     payload["windows"] = windows
     payload["evidence"] = evidence
     payload["counts"] = {"jobs": len(publishable), "skipped": len(skipped)}
@@ -288,7 +313,7 @@ def _prepare_candidate(source_dir: Path, staging_root: Path) -> tuple[Validation
     if errors:
         return ValidationResult(errors, {}), generation
     _excluded, selection_errors = _select_approved_jobs(
-        staging_root, _live_evidence_path(source_dir)
+        staging_root, _live_evidence_path(source_dir), source_dir / "research-institutions.json"
     )
     result = validate_dataset(staging_root)
     if selection_errors:

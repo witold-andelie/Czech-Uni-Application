@@ -69,6 +69,12 @@ export interface Institution {
   officialUrl: string;
   cscseReference: CscseReference;
   dataClass: DataClass;
+  // Public research institutions (v. v. i.) only: register facts and the
+  // register entry that states them.
+  ico?: string | null;
+  seat?: string | null;
+  founder?: string | null;
+  registerUrl?: string | null;
 }
 
 export interface ApplicationWindow {

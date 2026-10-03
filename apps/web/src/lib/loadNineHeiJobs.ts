@@ -9,5 +9,6 @@ export function loadNineHeiJobs(): HarvestedJobsSnapshot {
     jobs: payload.jobs ?? [],
     windows: payload.windows ?? [],
     evidence: payload.evidence ?? [],
+    researchEmployers: payload.researchEmployers ?? [],
   };
 }

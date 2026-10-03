@@ -2,7 +2,7 @@ import type { ApplyPortal } from "./loadApplyPortals.ts";
 import type { BaselineInstitution } from "./loadBaseline.ts";
 import type { AdmissionsTracerSnapshot } from "./loadAdmissionsTracer.ts";
 import { expandInventory, LISTED_HEI_IDS, overlayKey, type CompactInventory } from "./expandInventory.ts";
-import { institutionFromBaseline } from "./mergeBrowseCatalog.ts";
+import { institutionFromBaseline, institutionFromResearch, type ResearchEmployerRecord } from "./mergeBrowseCatalog.ts";
 import type { ApplicationWindow, CatalogSnapshot, Institution, Offering, Programme, ResearchJob, SourceEvidence } from "./types.ts";
 
 export interface HarvestedJobsSnapshot {
@@ -11,6 +11,8 @@ export interface HarvestedJobsSnapshot {
   jobs: ResearchJob[];
   windows: ApplicationWindow[];
   evidence?: SourceEvidence[];
+  /** Public research institutions that employ published vacancies (v. v. i. register). */
+  researchEmployers?: ResearchEmployerRecord[];
 }
 
 export interface ReviewedAdmissionsSnapshot {
@@ -61,10 +63,13 @@ export function buildBrowseCatalog(input: {
   const fromCompact = input.compact.schools.map((school) => school.id);
   const institutionIds = [...new Set([...LISTED_HEI_IDS, ...fromCompact, ...employerIds])];
   const institutions: Institution[] = [];
+  const researchById = new Map((input.jobs.researchEmployers ?? []).map((item) => [item.id, item]));
   for (const id of institutionIds) {
     const school = byId.get(id);
-    if (!school) throw new Error(`Missing baseline for ${id}`);
-    institutions.push(institutionFromBaseline(school));
+    const research = researchById.get(id);
+    if (school) institutions.push(institutionFromBaseline(school));
+    else if (research) institutions.push(institutionFromResearch(research));
+    else throw new Error(`Missing baseline for ${id}`);
   }
 
   const expanded = expandInventory(input.compact, input.portals);

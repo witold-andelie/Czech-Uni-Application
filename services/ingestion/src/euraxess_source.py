@@ -8,8 +8,10 @@ university; the application target is an address on that university's own
 domains found in the notice. EURAXESS itself is never the application target
 (a record without an official address is kept but not published), and a
 vacancy that a direct university source already carries is not published twice
-(auto_review.py). Non-university employers (CAS institutes, ELI, CDV) are kept
-out until the catalogue models research employers.
+(auto_review.py). Public research institutions (AV ČR institutes and other
+v. v. i.) are employers too, from the MŠMT register (harvest_research_
+institutions.py); their own website host, not the shared cas.cz, is where the
+application address must be. Other employers (hospitals, companies) stay out.
 """
 
 from __future__ import annotations
@@ -64,12 +66,49 @@ ALIASES = {
 
 def _norm(text: str) -> str:
     text = unicodedata.normalize("NFKD", unescape(str(text or ""))).encode("ascii", "ignore").decode().lower()
+    # "Archeology"/"Archaeology": the Academy writes both for one institute.
+    text = text.replace("archeolog", "archaeolog")
     return re.sub(r"[^a-z0-9]+", " ", text).strip()
+
+
+RESEARCH_INSTITUTIONS = ROOT / "data" / "sources" / "research-institutions.json"
+
+
+def research_institutions() -> list[dict]:
+    if not RESEARCH_INSTITUTIONS.is_file():
+        return []
+    return json.loads(RESEARCH_INSTITUTIONS.read_text(encoding="utf-8")).get("institutions") or []
+
+
+def research_name_variants(record: dict) -> set[str]:
+    """The ways notices name a public research institution.
+
+    "Fyzikální ústav AV ČR, v. v. i." / "Institute of Physics of the CAS" are
+    also written "... of the Czech Academy of Sciences" or "... Academy of
+    Sciences of the Czech Republic"; the legal suffix is often left out.
+    """
+    variants: set[str] = set()
+    czech = _norm(record.get("officialName") or "")
+    if czech:
+        variants.add(czech)
+        variants.add(re.sub(r"\s+(?:v v i|verejna vyzkumna instituce)$", "", czech))
+    english = _norm(record.get("officialNameEn") or "")
+    if english:
+        variants.add(english)
+        for academy in ("the czech academy of sciences", "the academy of sciences of the czech republic"):
+            variants.add(english.replace("the cas", academy))
+        variants.add(english.replace(" of the cas", " cas"))
+    return {variant for variant in variants if len(variant) >= 12}
+
+
+def research_hosts() -> dict[str, set[str]]:
+    """Each institution's own website host (asu.cas.cz, not the shared cas.cz)."""
+    return {item["id"]: {item["webHost"]} for item in research_institutions() if item.get("webHost")}
 
 
 @lru_cache(maxsize=1)
 def name_index() -> dict[str, str]:
-    """Normalised university names (register, studyin cs/en, aliases) -> employer id."""
+    """Normalised employer names (register, studyin cs/en, aliases, research institutions) -> id."""
     index: dict[str, str] = {}
     baseline = json.loads((ROOT / "data" / "sources" / "msmt-hei-baseline.json").read_text(encoding="utf-8"))
     for item in baseline.get("institutions") or []:
@@ -82,6 +121,9 @@ def name_index() -> dict[str, str]:
                 if name and row.get("institutionId"):
                     index.setdefault(_norm(name), row["institutionId"])
     index.update(ALIASES)
+    for record in research_institutions():
+        for variant in research_name_variants(record):
+            index.setdefault(variant, record["id"])
     return index
 
 

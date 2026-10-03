@@ -3363,6 +3363,8 @@ def enrich_euraxess_rows(rows: list[dict], fetch_page, source_id: str) -> tuple[
 
     baseline = json.loads((ROOT / "data" / "sources" / "msmt-hei-baseline.json").read_text(encoding="utf-8"))
     hosts = domains_for_institutions(baseline.get("institutions") or [])
+    # A research institute's own host only: AV ČR institutes share cas.cz.
+    hosts.update(euraxess_source.research_hosts())
     out: list[dict] = []
     attempts: list[dict] = []
     complete = True
@@ -4371,7 +4373,9 @@ def discover_registered_candidates(
                 item["employerId"] = next(
                     (employer for prefix, employer in mappings.items() if str(item.get("sourceUrl") or "").startswith(prefix)),
                     None,
-                )
+                ) or euraxess_source.resolve_employer(item.get("employerName") or "")
+                if item["employerId"] and not str(item["employerId"]).startswith("rvvi-"):
+                    item["employerId"] = None  # an Academy opening is never a university's
             if not item.get("employerId"):
                 quarantined.append(
                     {

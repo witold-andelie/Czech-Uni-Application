@@ -511,6 +511,36 @@ function institutionDomains(baseline) {
   return domains;
 }
 
+function researchEmployerIds(raw, errors) {
+  // Public research institutions that employ published vacancies, from the
+  // official v. v. i. register; same rules as publication_contract.py.
+  const ids = new Set();
+  if (raw === undefined || raw === null) return ids;
+  if (!Array.isArray(raw)) {
+    errors.push("RESEARCH_EMPLOYER_INVALID: researchEmployers must be a list");
+    return ids;
+  }
+  for (const item of raw) {
+    const ident = item && typeof item === "object" ? item.id : undefined;
+    const problems = [
+      !item || typeof item !== "object" || Array.isArray(item),
+      !(typeof ident === "string" && /^rvvi-\d{8}$/.test(ident)),
+      !(typeof item?.officialName === "string" && item.officialName.trim()),
+      item?.legalType !== "research_institute",
+      item?.ownership !== "public",
+      item?.officialUrl !== null && item?.officialUrl !== undefined && !webUrl(item.officialUrl, false),
+      !webUrl(item?.source?.registryUrl, true),
+      ids.has(ident),
+    ];
+    if (problems.some(Boolean)) {
+      errors.push(`RESEARCH_EMPLOYER_INVALID: research employer ${JSON.stringify(ident)} is malformed or repeated`);
+      continue;
+    }
+    ids.add(ident);
+  }
+  return ids;
+}
+
 function validateProgrammeDetails(inventory, rowIds, errors) {
   // studyin.gov.cz facts beside existing rows, in the fixed six-field shape
   // build_nine_hei_inventory.py writes; same rules as publication_contract.py.
@@ -754,10 +784,11 @@ function validateDataset(snapshotRoot) {
     validateWindow(item, "research job window", errors, jobIds, jobEvidenceIds, "research_job");
     urls(item, ["applicationUrl"], `research job window ${item.id}`, errors, true);
   }
+  const employerIds = new Set([...institutionIds, ...researchEmployerIds(jobsData.researchEmployers, errors)]);
   for (const job of Array.isArray(jobsData.jobs) ? jobsData.jobs : []) {
     if (!jobIds.has(job.id)) continue;
     const label = `research job ${job.id}`;
-    if (!institutionIds.has(job.employerId)) errors.push(`${label} references unknown employer ${JSON.stringify(job.employerId)}`);
+    if (!employerIds.has(job.employerId)) errors.push(`${label} references unknown employer ${JSON.stringify(job.employerId)}`);
     localized(job.title, `${label}.title`, errors);
     if (job.laboratory != null) localized(job.laboratory, `${label}.laboratory`, errors);
     if (job.publicationStatus !== "approved") errors.push(`${label} is not approved for publication`);

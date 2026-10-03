@@ -17,6 +17,9 @@ const ownershipClass = `ownership-${institution.ownership}`;
 const recClass = `cscse-${rec.lookupStatus}`;
 const operatorClass = rec.operatorListStatus === "listed" ? "cscse-operator-listed" : "cscse-operator-absent";
 const legal = institution.legalType === "research_institute" ? t(locale, "institution.researchOrg") : null;
+// A research institute awards no degrees, so degree recognition says nothing
+// about it; its tag states what the register does: a public research institution.
+const research = institution.legalType === "research_institute";
 ---
 <div class="tags">
   {legal ? (
@@ -24,13 +27,14 @@ const legal = institution.legalType === "research_institute" ? t(locale, "instit
   ) : (
     <span class:list={["tag", ownershipClass]}>{t(locale, "institution.ownership")}{fieldSep(locale)}{ownershipLabel(institution.ownership, locale)}</span>
   )}
-  <span class:list={["tag", recClass]}>{t(locale, recKey)}</span>
-  {rec.evidenceKind === "operator_supplied_list" && (
+  {research && <span class:list={["tag", ownershipClass]}>{t(locale, "institution.publicResearch")}</span>}
+  {!research && <span class:list={["tag", recClass]}>{t(locale, recKey)}</span>}
+  {!research && rec.evidenceKind === "operator_supplied_list" && (
     <span class:list={["tag", operatorClass]}>{t(locale, operatorKey)}</span>
   )}
   <span class="tag">{t(locale, dataClassKey(institution.dataClass))}</span>
 </div>
-{!compact && (
+{!compact && !research && (
   <div class="disclaimer">
     <p>{t(locale, "recognition.disclaimer")}</p>
     {rec.evidenceKind === "operator_supplied_list" && <p>{t(locale, "recognition.operatorProvenance")}</p>}

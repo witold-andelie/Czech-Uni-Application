@@ -85,7 +85,19 @@ const websiteOnly = Boolean(baselineItem) && !hasPortal && !hasInventory && !has
             </a>
           </p>
         )}
-        <h2>{t(locale, "nav.programmes")}</h2>
+        {fixture.legalType === "research_institute" && (
+          <>
+            {fixture.ico && <p>{t(locale, "institutions.ico")}{fieldSep(locale)}{fixture.ico}</p>}
+            {fixture.seat && <p>{t(locale, "institutions.seat")}{fieldSep(locale)}{fixture.seat}</p>}
+            {safeHttpUrl(fixture.registerUrl ?? null) && (
+              <p class="disclaimer">
+                {t(locale, "institutions.researchRegister")}{fieldSep(locale)}
+                <a class="external" href={safeHttpUrl(fixture.registerUrl ?? null) ?? ""} rel="noopener noreferrer" target="_blank">rvvi.msmt.cz</a>
+              </p>
+            )}
+          </>
+        )}
+        {groups.length > 0 && <h2>{t(locale, "nav.programmes")}</h2>}
         {groups.map((group) => (
           <section>
             <h3>{group.label}</h3>
