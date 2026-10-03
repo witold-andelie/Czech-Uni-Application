@@ -197,3 +197,10 @@ def test_a_refresh_stub_is_read_again_in_its_cookie_session() -> None:
 def test_stag_page_must_name_its_programme() -> None:
     assert pc.stag_page_names("<h1>Studijní plány: Bezpečnost a kvalita potravin</h1>", "Bezpečnost a kvalita potravin")
     assert not pc.stag_page_names("<html><body></body></html>", "Bezpečnost a kvalita potravin")
+
+
+def test_amu_programme_page_states_name_and_level() -> None:
+    html = '<section class="school-program-detail"><h1 id="nazev">Bicí nástroje</h1> <p id="typ_programu"><i>Bakalářský</i></p></section>'
+    row = pc.parse_amu_programme(html, "https://www.hamu.cz/cs/katedry-programy/katedra-bicich-nastroju/studijni-programy/bici-nastroje-206/")
+    assert (row["titles"]["original"], row["degree"], row["faculty"]) == ("Bicí nástroje", "bachelor", "Hudební a taneční fakulta")
+    assert pc.parse_amu_programme("<h1>Kontakt</h1>", "https://www.hamu.cz/cs/kontakt/") is None

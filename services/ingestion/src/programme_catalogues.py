@@ -506,7 +506,77 @@ def uis_harvester(key: str) -> Callable[..., dict]:
     return harvest
 
 
+# --------------------------------------------------------------------------- #
+# Academy of Performing Arts in Prague: each faculty's programme sitemap, and
+# per programme page the name (h1#nazev) and level (p#typ_programu).
+# --------------------------------------------------------------------------- #
+
+AMU_FACULTIES = {
+    "www.damu.cz": "Divadelní fakulta",
+    "www.famu.cz": "Filmová a televizní fakulta",
+    "www.hamu.cz": "Hudební a taneční fakulta",
+}
+
+
+def amu_level(text: str) -> str | None:
+    lowered = text.strip().lower()
+    if lowered.startswith("bakalář"):
+        return "bachelor"
+    if lowered.startswith(("magister", "navazující")):
+        return "master"
+    if lowered.startswith("doktor"):
+        return "doctorate"
+    return None
+
+
+def parse_amu_programme(html: str, url: str) -> dict | None:
+    name = re.search(r'<h1[^>]*id="nazev"[^>]*>(.*?)</h1>', html, re.S)
+    level = re.search(r'<p[^>]*id="typ_programu"[^>]*>(.*?)</p>', html, re.S)
+    if not (name and level):
+        return None
+    degree = amu_level(page_text(level.group(1)))
+    title = page_text(name.group(1))
+    if not (degree and title):
+        return None
+    return {
+        "officialProgrammeUrl": url,
+        "titles": {"original": title},
+        "degree": degree,
+        # The page does not state its teaching language; the title decides
+        # (an English-taught programme is named in English in the register).
+        "studyLanguage": "",
+        "faculty": AMU_FACULTIES.get(urlsplit(url).netloc, ""),
+    }
+
+
+def harvest_amu(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
+    records: list[dict] = []
+    failures: list[dict] = []
+    pages = 0
+    for host in AMU_FACULTIES:
+        sitemap = f"https://{host}/sitemap-programs.xml"
+        status, body = fetch(sitemap)
+        pages += 1
+        if status != 200:
+            failures.append({"url": sitemap, "status": status})
+            continue
+        for url in sorted({unescape(loc) for loc in re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", body)}):
+            if "/cs/" not in url:
+                continue
+            status, html = fetch(url)
+            pages += 1
+            if status != 200 or not html:
+                failures.append({"url": url, "status": status})
+                continue
+            record = parse_amu_programme(html, url)
+            if record:
+                records.append(record)
+    log(f"amu: {len(records)} programme page(s) from {pages} read(s)")
+    return {"programmes": records, "failures": failures, "listingPages": pages}
+
+
 ADAPTERS = {
+    "amu": ("msmt-vs_51000", "catalogue-amu.json", harvest_amu),
     **{key: (value[0], f"catalogue-{key}.json", stag_harvester(key)) for key, value in STAG_SCHOOLS.items()},
     **{key: (value[0], f"catalogue-{key}.json", uis_harvester(key)) for key, value in UIS_SCHOOLS.items()},
     "muni": ("msmt-vs_14000", "catalogue-muni.json", harvest_muni),
