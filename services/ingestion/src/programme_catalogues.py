@@ -885,7 +885,53 @@ def harvest_osu(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
     return {"programmes": records, "failures": [], "listingPages": 1}
 
 
+# --------------------------------------------------------------------------- #
+# Brno University of Technology: the students' programme list names every
+# programme per faculty under its level heading, with its teaching language.
+# --------------------------------------------------------------------------- #
+
+VUT_LIST = "https://www.vut.cz/studenti/programy"
+VUT_LEVELS = {"bakalářský": "bachelor", "magisterský navazující": "master", "magisterský": "master", "doktorský": "doctorate"}
+
+
+def parse_vut_list(html: str, page_url: str = VUT_LIST) -> list[dict]:
+    records = []
+    for faculty_block in re.split(r'<li class="c-faculties-list__item">', html)[1:]:
+        faculty = page_text((re.search(r'<h2 class="b-faculty-list__title[^"]*">(.*?)</h2>', faculty_block, re.S) or [None, ""])[1])
+        parts = re.split(r'<h3 class="c-programmes__title[^"]*">(.*?)</h3>', faculty_block)
+        for heading, section in zip(parts[1::2], parts[2::2]):
+            level = VUT_LEVELS.get(page_text(heading).lower())
+            if not level:
+                continue  # "Mezinárodně uznávaný" (MBA-type courses) are not register programmes
+            for item in re.split(r'<li class="c-programmes__item">', section)[1:]:
+                link = re.search(r'<a href="(/studenti/programy/program/\d+)"[^>]*>(.*?)</a>', item, re.S)
+                if not link:
+                    continue
+                meta = [page_text(value).lower() for value in re.findall(r'<span class="b-branch__meta-item">(.*?)</span>', item, re.S)]
+                title = re.sub(r"\s*\([A-Z0-9][A-Z0-9_+-]*\)\s*$", "", page_text(link.group(2))).strip()
+                records.append(
+                    {
+                        "officialProgrammeUrl": urljoin(page_url, link.group(1)),
+                        "titles": {"original": title},
+                        "degree": level,
+                        "studyLanguage": "en" if "angličtina" in meta else "cs",
+                        "faculty": faculty,
+                    }
+                )
+    return records
+
+
+def harvest_vut(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
+    status, html = fetch(VUT_LIST)
+    if status != 200 or not html:
+        return {"programmes": [], "failures": [{"url": VUT_LIST, "status": status}], "listingPages": 1}
+    records = parse_vut_list(html)
+    log(f"vut: {len(records)} programme page(s)")
+    return {"programmes": records, "failures": [], "listingPages": 1}
+
+
 ADAPTERS = {
+    "vut": ("msmt-vs_26000", "catalogue-vut.json", harvest_vut),
     "osu": ("msmt-vs_17000", "catalogue-osu.json", harvest_osu),
     "uhk": ("msmt-vs_18000", "catalogue-uhk.json", harvest_uhk),
     "vscht": ("msmt-vs_22000", "catalogue-vscht.json", harvest_vscht),

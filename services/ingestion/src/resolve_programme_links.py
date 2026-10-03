@@ -650,6 +650,13 @@ class Match:
         # No level stated on the page: bind only when the exact title names one
         # register row, so a bachelor page can never take over a master's row.
         by_title = self.by_title.get(title_key) or []
+        if len(by_title) > 1:
+            # The register carries the title in two teaching languages at one
+            # level; the page's own address (/cs/…, /en/…) says which it is.
+            language = candidate.language or address_language(candidate.url)
+            same_language = [row for row in by_title if row.language == language] if language else []
+            if len(same_language) == 1 and len({row.degree for row in by_title}) == 1:
+                return Binding(rows=same_language, language=language)
         if len(by_title) == 1:
             return Binding(rows=by_title, language=by_title[0].language)
         if len(by_title) > 1:
@@ -703,6 +710,25 @@ def page_language(url: str) -> str:
         return ""
     first = urllib.parse.unquote(segments[0]).casefold()
     return "cs" if first == "cz" else (first if first in PAGE_LANGUAGES else "")
+
+
+def address_language(url: str) -> str:
+    """"cs" or "en" when the address states it: a leading path segment
+    (is.cuni.cz/studium/v4/en/…) or a lang= query; "" otherwise."""
+    try:
+        parts = urllib.parse.urlsplit(url)
+    except ValueError:
+        return ""
+    query = urllib.parse.parse_qs(parts.query).get("lang") or []
+    candidates = [item.casefold() for item in query] + [
+        urllib.parse.unquote(segment).casefold() for segment in parts.path.split("/") if segment
+    ][:3]
+    for value in candidates:
+        if value in {"cs", "cz"}:
+            return "cs"
+        if value == "en":
+            return "en"
+    return ""
 
 
 def candidate_rank(candidate: Candidate, row: Row, kept: bool = False) -> tuple[int, int, int, int, str]:

@@ -255,3 +255,32 @@ def test_osu_programme_name_binds_only_a_single_specialisation() -> None:
     assert rows["3"]["titles"] == {"original": "Zpěv", "programme": "Zpěv a herectví"}
     assert rows["1"]["officialProgrammeUrl"] == "https://www.osu.cz/studijniobory/?specializaceid=1"
     assert rows["1"]["degree"] == "bachelor" and rows["1"]["faculty"] == "Fakulta umění"
+
+
+def test_the_page_address_language_separates_a_title_taught_in_two_languages() -> None:
+    rows = [
+        resolver.Row("cs1", "s", "Fyzika", "d", "cs", "Matematicko-fyzikální fakulta"),
+        resolver.Row("en1", "s", "Fyzika", "d", "en", "Matematicko-fyzikální fakulta"),
+    ]
+    match = resolver.Match(rows)
+    page = resolver.Candidate(url="https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program/accreditation/9", title="Fyzika")
+    assert [row.ident for row in match.bind(page).rows] == ["en1"]
+    unknown = resolver.Candidate(url="https://is.cuni.cz/program/9", title="Fyzika")
+    assert match.bind(unknown).reason == "ambiguous_register_rows"
+
+
+def test_vut_list_states_faculty_level_and_language() -> None:
+    html = (
+        '<li class="c-faculties-list__item"><h2 class="b-faculty-list__title h3">Fakulta chemická</h2>'
+        '<h3 class="c-programmes__title h4">Bakalářský</h3><ul><li class="c-programmes__item"><h4>'
+        '<a href="/studenti/programy/program/9880" class="b-programme__link">Chemie a technologie materiálů (BPCP_CHTM)</a></h4>'
+        '<p class="b-programme__meta"><span class="b-branch__meta-item">3 roky</span></p></li></ul>'
+        '<h3 class="c-programmes__title h4">Doktorský</h3><ul><li class="c-programmes__item"><h4>'
+        '<a href="/studenti/programy/program/9900" class="b-programme__link">Chemistry (DPA-CH)</a></h4>'
+        '<p class="b-programme__meta"><span class="b-branch__meta-item">angličtina</span></p></li></ul></li>'
+    )
+    rows = pc.parse_vut_list(html)
+    assert [(r["titles"]["original"], r["degree"], r["studyLanguage"], r["faculty"]) for r in rows] == [
+        ("Chemie a technologie materiálů", "bachelor", "cs", "Fakulta chemická"),
+        ("Chemistry", "doctorate", "en", "Fakulta chemická"),
+    ]
