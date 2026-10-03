@@ -30,6 +30,14 @@ function loadBrowse() {
   const cuni = JSON.parse(readFileSync(resolve(root, "data/sources/admissions/cuni-mff-cs-tracer.json"), "utf8")) as AdmissionsTracerSnapshot;
   const muni = JSON.parse(readFileSync(resolve(root, "data/sources/admissions/muni-fi-tracer.json"), "utf8")) as AdmissionsTracerSnapshot;
   const jobs = JSON.parse(readFileSync(resolve(root, "data/sources/browse/nine-hei-jobs.json"), "utf8")) as HarvestedJobsSnapshot;
+  // The candidate file names public research institutions only by id;
+  // publish.py attaches their register records (researchEmployers), so do the same.
+  const researchPath = resolve(root, "data/sources/research-institutions.json");
+  if (existsSync(researchPath)) {
+    const register = JSON.parse(readFileSync(researchPath, "utf8")) as { institutions: NonNullable<HarvestedJobsSnapshot["researchEmployers"]> };
+    const named = new Set(jobs.jobs.map((job) => job.employerId));
+    jobs.researchEmployers = register.institutions.filter((item) => named.has(item.id));
+  }
   const reviewedPath = resolve(root, "data/sources/admissions/reviewed-offerings.json");
   const reviewed = existsSync(reviewedPath)
     ? (JSON.parse(readFileSync(reviewedPath, "utf8")) as ReviewedAdmissionsSnapshot)
