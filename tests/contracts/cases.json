@@ -368,26 +368,14 @@
       ]
     },
     {
-      "id": "research_employer_valid",
-      "expect": "accept",
-      "rules": [],
-      "mutations": [
-        {
-          "file": "browse/nine-hei-jobs.json",
-          "path": "",
-          "set": {"researchEmployers": [{"id": "rvvi-68378271", "officialName": "Fyzikální ústav AV ČR, v. v. i.", "officialNameEn": "Institute of Physics of the CAS", "legalType": "research_institute", "ownership": "public", "ico": "68378271", "officialUrl": "http://www.fzu.cz", "source": {"registryUrl": "https://rvvi.msmt.cz/", "detailUrl": "https://rvvi.msmt.cz/detail.php?ic=68378271"}}]}
-        }
-      ]
-    },
-    {
-      "id": "research_employer_malformed_id",
+      "id": "research_employers_not_a_list",
       "expect": "reject",
       "rules": ["RESEARCH_EMPLOYER_INVALID"],
       "mutations": [
         {
           "file": "browse/nine-hei-jobs.json",
           "path": "",
-          "set": {"researchEmployers": [{"id": "fzu", "officialName": "Fyzikální ústav AV ČR, v. v. i.", "officialNameEn": "Institute of Physics of the CAS", "legalType": "research_institute", "ownership": "public", "ico": "68378271", "officialUrl": "http://www.fzu.cz", "source": {"registryUrl": "https://rvvi.msmt.cz/", "detailUrl": "https://rvvi.msmt.cz/detail.php?ic=68378271"}}]}
+          "set": {"researchEmployers": "not a list"}
         }
       ]
     },

@@ -259,7 +259,15 @@ def _select_approved_jobs(
     payload["jobs"] = publishable
     # Employers that are public research institutions, not universities, travel
     # with the jobs that name them (official v. v. i. register records).
-    research = _research_employers(research_path, {str(item.get("employerId")) for item in publishable})
+    named = {str(item.get("employerId")) for item in publishable}
+    research = _research_employers(research_path, named)
+    if not research:
+        # Republishing a snapshot as its own source: the register file is not
+        # beside it, but the records it already carries still apply.
+        research = [
+            item for item in payload.get("researchEmployers") or []
+            if isinstance(item, dict) and item.get("id") in named
+        ]
     if research:
         payload["researchEmployers"] = research
     else:

@@ -66,3 +66,14 @@ def test_euraxess_records_need_an_official_target_and_are_not_published_twice() 
     other = {"id": "job-11000-other", "employerId": "msmt-vs_11000", "originalText": "Head of the Department of Law"}
     assert auto_review.gate_blockers(
         {**base, "applicationUrl": "https://natur.cuni.cz/x"}, [], date(2026, 10, 3), [other]) == []
+
+
+def test_a_malformed_research_employer_record_is_rejected() -> None:
+    import publication_contract as pc
+
+    good = {"id": "rvvi-68378271", "officialName": "Fyzikální ústav AV ČR, v. v. i.", "legalType": "research_institute",
+            "ownership": "public", "officialUrl": "http://www.fzu.cz", "source": {"registryUrl": "https://rvvi.msmt.cz/"}}
+    errors: list[str] = []
+    assert pc._validate_research_employers([good], errors) == {"rvvi-68378271"} and errors == []
+    pc._validate_research_employers([{**good, "id": "fzu"}, {**good, "legalType": "university"}], errors)
+    assert len(errors) == 2 and all(error.startswith("RESEARCH_EMPLOYER_INVALID") for error in errors)

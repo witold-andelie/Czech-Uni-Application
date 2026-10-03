@@ -11,7 +11,7 @@ import {
   jobFilterFromSearch,
   searchFromJobFilter,
 } from "./catalog.ts";
-import { institutionFromBaseline } from "./mergeBrowseCatalog.ts";
+import { institutionFromBaseline, institutionFromResearch, type ResearchEmployerRecord } from "./mergeBrowseCatalog.ts";
 import type { CatalogSnapshot, Institution, ResearchJob } from "./types.ts";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../../..");
@@ -147,7 +147,7 @@ describe("active publication stays consistent with search invariants", () => {
     const snapshotDir = resolve(root, "data/published", pointer.snapshotDir);
     const jobsPayload = JSON.parse(
       readFileSync(resolve(snapshotDir, "browse/nine-hei-jobs.json"), "utf8"),
-    ) as { jobs: ResearchJob[]; windows: CatalogSnapshot["windows"] };
+    ) as { jobs: ResearchJob[]; windows: CatalogSnapshot["windows"]; researchEmployers?: ResearchEmployerRecord[] };
     const baseline = JSON.parse(
       readFileSync(resolve(snapshotDir, "msmt-hei-baseline.json"), "utf8"),
     ) as { institutions: Parameters<typeof institutionFromBaseline>[0][] };
@@ -155,8 +155,10 @@ describe("active publication stays consistent with search invariants", () => {
     for (const job of jobsPayload.jobs) {
       if (employersLive.some((item) => item.id === job.employerId)) continue;
       const item = baseline.institutions.find((row) => row.id === job.employerId);
-      assert.ok(item, `baseline missing employer ${job.employerId}`);
-      employersLive.push(institutionFromBaseline(item));
+      // Public research institutions travel with the jobs (researchEmployers).
+      const research = (jobsPayload.researchEmployers ?? []).find((row) => row.id === job.employerId);
+      assert.ok(item || research, `baseline missing employer ${job.employerId}`);
+      employersLive.push(item ? institutionFromBaseline(item) : institutionFromResearch(research!));
     }
     const live: CatalogSnapshot = {
       ...base,
