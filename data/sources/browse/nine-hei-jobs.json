@@ -24059,8 +24059,8 @@
         "decidedAt": "2026-09-26T18:31:54Z",
         "note": "Duplicate record 2026-09-26T18:31:54Z (operator): job-27000-56 and job-27000-70 both describe the VŠB-TUO advert procedureId=70 - same sourceItemId, same sourceUrl, same trilingual title differing only in the spacing of the Czech form. One advert must be published once, so this record is rejected as a duplicate of job-27000-56, whose Czech title is the advert's own heading verbatim and whose lifecycleStatus records what the live page shows. The position itself is published once, under job-27000-56; nothing here asserts anything the official page does not state.\n\nofficial heading as published: “Odborný asistent / Odborná asistentka”"
       },
-      "lastAttemptAt": "2026-10-03T17:05:31Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-09-26T18:31:54Z",
+      "lastAttemptReason": "duplicate_record_of_job-27000-56"
     },
     {
       "id": "job-56000-c94a20b5374d",
@@ -24157,8 +24157,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Přejít na hlavní obsah” (https://www.vstecb.cz/volna-pracovni-mista/#content) is the skip link 'Přejít na hlavní obsah' on the VŠTE vacancy page, not a vacancy. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-03T17:08:30Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "not_a_vacancy_page_chrome"
     },
     {
       "id": "job-56000-96fff5b5b037",
@@ -24255,8 +24255,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Škola Základní informace” (https://www.vstecb.cz/volna-pracovni-mista/) is the menu entry 'Škola Základní informace' on the VŠTE vacancy page, not a vacancy. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-03T17:08:30Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "not_a_vacancy_page_chrome"
     },
     {
       "id": "job-56000-63b28e075626",
@@ -24353,8 +24353,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “TOP” (https://www.vstecb.cz/volna-pracovni-mista/#top) is the page anchor 'TOP' on the VŠTE vacancy page, not a vacancy. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-03T17:08:30Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "not_a_vacancy_page_chrome"
     },
     {
       "id": "job-51000-f7c301b5d9ab",
@@ -34880,14 +34880,14 @@
       "employerId": "msmt-vs_17000",
       "title": {
         "zh-CN": "教育学院成人教育学、成人教育评估与人力资源管理方向助理教授",
-        "en": "Odborný asistent / odborná asistentka se zaměřením na andragogiku, evaluaci ve vzdělávání dospělých a řízení lidských zdrojů",
+        "en": "Assistant Professor in Andragogy, Evaluation in Adult Education and Human Resource Management (Faculty of Education)",
         "cs": "Odborný asistent / odborná asistentka se zaměřením na andragogiku, evaluaci ve vzdělávání dospělých a řízení lidských zdrojů"
       },
       "laboratory": null,
       "originalText": "Odborný asistent / odborná asistentka se zaměřením na andragogiku, evaluaci ve vzdělávání dospělých a řízení lidských zdrojů",
       "sourceLanguage": "cs",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-03T17:14:25Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -34913,7 +34913,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -34935,37 +34935,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:b4ab37d6b13a3315f01db42d1ee5aee775244b8b5f86c3305690551fe813a248",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:b4ab37d6b13a3315f01db42d1ee5aee775244b8b5f86c3305690551fe813a248",
         "factHash": "sha256:73d612c392bc0f46cfefa6bb8a9dc12e8cbb568fc079dd93592013ea2c373f02",
         "evidenceHash": "sha256:b4ab37d6b13a3315f01db42d1ee5aee775244b8b5f86c3305690551fe813a248",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "operator_source_review"
+          "role": "automatic_pipeline"
         },
         "locales": {
           "zh-CN": {
-            "status": "missing",
+            "status": "reviewed",
             "translatedFromHash": "sha256:b4ab37d6b13a3315f01db42d1ee5aee775244b8b5f86c3305690551fe813a248",
-            "reviewedAt": "2026-10-01T20:23:30Z",
+            "reviewedAt": "2026-10-03T17:14:25Z",
             "contentHash": "sha256:c95b846c236af047169fbd6f9e6f747103861d2fa4b1234c8deecca2291c6045"
           },
           "en": {
-            "status": "missing",
+            "status": "reviewed",
             "translatedFromHash": "sha256:b4ab37d6b13a3315f01db42d1ee5aee775244b8b5f86c3305690551fe813a248",
-            "reviewedAt": "2026-10-01T20:23:30Z",
+            "reviewedAt": "2026-10-03T17:14:25Z",
             "contentHash": "sha256:8de47a1ac0998642cea6096ee6a0ca6321be90927ac99e4837203dd7e96a3f06"
           },
           "cs": {
-            "status": "missing",
+            "status": "reviewed",
             "translatedFromHash": "sha256:b4ab37d6b13a3315f01db42d1ee5aee775244b8b5f86c3305690551fe813a248",
-            "reviewedAt": "2026-10-01T20:23:30Z",
+            "reviewedAt": "2026-10-03T17:14:25Z",
             "contentHash": "sha256:7db2e2cfd498377624b4910b57c37aa5b1d2c186c866fd3dbb64665959bfc750"
           }
         }
       },
-      "officialDetailUrl": "https://www.osu.cz/kariera/kariera-akademicke-pozice/?inzeratid=183"
+      "officialDetailUrl": "https://www.osu.cz/kariera/kariera-akademicke-pozice/?inzeratid=183",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-17000-186",
@@ -36164,15 +36165,15 @@
       "id": "job-rvvi-68378271-avcr1908",
       "employerId": "rvvi-68378271",
       "title": {
-        "zh-CN": "Postdoctoral Researcher – Magnetism in Thin-Film Materials",
+        "zh-CN": "博士后研究员——薄膜材料中的磁性",
         "en": "Postdoctoral Researcher – Magnetism in Thin-Film Materials",
-        "cs": "Postdoctoral Researcher – Magnetism in Thin-Film Materials"
+        "cs": "Postdoktorand – Magnetismus v tenkých filmových materiálech"
       },
       "laboratory": null,
       "originalText": "Postdoctoral Researcher – Magnetism in Thin-Film Materials",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-03T17:14:25Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -36197,7 +36198,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -36215,49 +36216,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:9380fbf94107a0294b4f7f0bf515de8ef5c1ba77f00ae9abc67815cf4b3cf05b",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:9380fbf94107a0294b4f7f0bf515de8ef5c1ba77f00ae9abc67815cf4b3cf05b",
         "factHash": "sha256:3a5185305ba961f0c1fab0b8584471231992b7fddda1770f62920eaeefbb9113",
         "evidenceHash": "sha256:9380fbf94107a0294b4f7f0bf515de8ef5c1ba77f00ae9abc67815cf4b3cf05b",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:9380fbf94107a0294b4f7f0bf515de8ef5c1ba77f00ae9abc67815cf4b3cf05b",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:73f9a90dbc6438bcd8b12a1dbc8d1b3a3e0dd94bd5db3ccca846515b0feb341b"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:9380fbf94107a0294b4f7f0bf515de8ef5c1ba77f00ae9abc67815cf4b3cf05b",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:cabc2ac74a6e3952bbc51063ad7b4695f14c9d45fc14fe60c4e526336c5476b2"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:9380fbf94107a0294b4f7f0bf515de8ef5c1ba77f00ae9abc67815cf4b3cf05b",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:27fcf43409d2b48ab7d300a6dec89de006ce5106d84e37ba45b9f3794b0320ec"
           }
         }
       },
-      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1908"
+      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1908",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-61388955-avcr1904",
       "employerId": "rvvi-61388955",
       "title": {
-        "zh-CN": "PhD student",
+        "zh-CN": "博士研究生",
         "en": "PhD student",
-        "cs": "PhD student"
+        "cs": "Doktorand"
       },
       "laboratory": null,
       "originalText": "PhD student",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-03T17:14:25Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -36282,7 +36286,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -36300,49 +36304,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:c67d9ef5bec1db47385235e9d561d068d275f9a7451f8be58a9df12bf60bd2f0",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:c67d9ef5bec1db47385235e9d561d068d275f9a7451f8be58a9df12bf60bd2f0",
         "factHash": "sha256:f583fa3ca3dceaae052ca3d7cd04f16b95076f69fb4431d5f1396a136e9d86a4",
         "evidenceHash": "sha256:c67d9ef5bec1db47385235e9d561d068d275f9a7451f8be58a9df12bf60bd2f0",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:c67d9ef5bec1db47385235e9d561d068d275f9a7451f8be58a9df12bf60bd2f0",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:21c8fac6c465d6afc4d2ab68642283971472fea187293d1b3dcf7fb322302256"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:c67d9ef5bec1db47385235e9d561d068d275f9a7451f8be58a9df12bf60bd2f0",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:3ab066feebb70b2710b6ba015d427383c3f5659d410c22f76f011e7de16a5852"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:c67d9ef5bec1db47385235e9d561d068d275f9a7451f8be58a9df12bf60bd2f0",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:9e49ea33857cb6dc5fa88c51aa00ed7a1e8ba7cd04f737d867ac560dd6b57799"
           }
         }
       },
-      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1904"
+      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1904",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-67985815-avcr1900",
       "employerId": "rvvi-67985815",
       "title": {
-        "zh-CN": "Postdoctoral Fellowhips",
+        "zh-CN": "博士后奖学金",
         "en": "Postdoctoral Fellowhips",
-        "cs": "Postdoctoral Fellowhips"
+        "cs": "Postdoktorandská stipendia"
       },
       "laboratory": null,
       "originalText": "Postdoctoral Fellowhips",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-03T17:14:25Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -36367,7 +36374,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -36385,49 +36392,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:2afd1b2e25fa12b5ac2c806369ff8442f0416243ce25c0e44077e4bbbaf7d2eb",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:2afd1b2e25fa12b5ac2c806369ff8442f0416243ce25c0e44077e4bbbaf7d2eb",
         "factHash": "sha256:762a41850fa34a2e7fa8369fc7db38ac761e8ffcc5bada7af7929e1e22453f51",
         "evidenceHash": "sha256:2afd1b2e25fa12b5ac2c806369ff8442f0416243ce25c0e44077e4bbbaf7d2eb",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:2afd1b2e25fa12b5ac2c806369ff8442f0416243ce25c0e44077e4bbbaf7d2eb",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:7a88954cc36455629a256249e93e918d85a130b17f281ed3a6c3658b2bc0ba31"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:2afd1b2e25fa12b5ac2c806369ff8442f0416243ce25c0e44077e4bbbaf7d2eb",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:1a698d2a9cd3c08e405689c867bcafbcfa6d8ded72dd624be27f79a0d757f2b5"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:2afd1b2e25fa12b5ac2c806369ff8442f0416243ce25c0e44077e4bbbaf7d2eb",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:643137ebe4ef967b6de9617cf33265bfbc61247a4beac1d44c4a85fdfc100682"
           }
         }
       },
-      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1900"
+      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1900",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-61389013-avcr1901",
       "employerId": "rvvi-61389013",
       "title": {
-        "zh-CN": "Postdoctoral position Department of Nanostructured Polymers and Composites",
+        "zh-CN": "纳米结构聚合物与复合材料系博士后职位",
         "en": "Postdoctoral position Department of Nanostructured Polymers and Composites",
-        "cs": "Postdoctoral position Department of Nanostructured Polymers and Composites"
+        "cs": "Postdoktorandská pozice Ústavu nanostrukturovaných polymerů a kompozitů"
       },
       "laboratory": null,
       "originalText": "Postdoctoral position Department of Nanostructured Polymers and Composites",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-03T17:14:25Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -36452,7 +36462,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -36470,49 +36480,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:d5793882b7bca675f47a55b499ea64d744f080e35b1009f5394c64ec3391eefa",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:d5793882b7bca675f47a55b499ea64d744f080e35b1009f5394c64ec3391eefa",
         "factHash": "sha256:6b635f5cca699a1cd67a86e7fbb4e3941050cd563eb730f18cd8d4c91e7c7ca9",
         "evidenceHash": "sha256:d5793882b7bca675f47a55b499ea64d744f080e35b1009f5394c64ec3391eefa",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:d5793882b7bca675f47a55b499ea64d744f080e35b1009f5394c64ec3391eefa",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:9d7d65b71b23834e7f1bbf394cd858e2247f7b0636310bd880c0ecac2cbdf5ed"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d5793882b7bca675f47a55b499ea64d744f080e35b1009f5394c64ec3391eefa",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:63a75457ee89a444cd647a690b87a0b5c1a0fc7d604e001cf10cfcc953e447c8"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:d5793882b7bca675f47a55b499ea64d744f080e35b1009f5394c64ec3391eefa",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:bb75d83ca8a641b1a6bff4e8a8065e8a7f8691c6e1edbf6adcb8d276f4bd91e7"
           }
         }
       },
-      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1901"
+      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1901",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-61388955-avcr1897",
       "employerId": "rvvi-61388955",
       "title": {
-        "zh-CN": "Senior scientist / postdoctoral researcher in Electrochemistry",
+        "zh-CN": "高级科学家/博士后研究员，电化学领域",
         "en": "Senior scientist / postdoctoral researcher in Electrochemistry",
-        "cs": "Senior scientist / postdoctoral researcher in Electrochemistry"
+        "cs": "Senior scientist / postdoktorand v elektrochemii"
       },
       "laboratory": null,
       "originalText": "Senior scientist / postdoctoral researcher in Electrochemistry",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-03T17:14:25Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -36537,7 +36550,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -36555,49 +36568,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:7bda0e564760c4b2d55841f58d39150a606b89e0da875541df0780d7d6d382ca",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:7bda0e564760c4b2d55841f58d39150a606b89e0da875541df0780d7d6d382ca",
         "factHash": "sha256:3e46447c30385eec679eebc84f953ab241fc216b84364c59011e9828e8e43243",
         "evidenceHash": "sha256:7bda0e564760c4b2d55841f58d39150a606b89e0da875541df0780d7d6d382ca",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:7bda0e564760c4b2d55841f58d39150a606b89e0da875541df0780d7d6d382ca",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:12abe20025844c927c08beee437b4b7b7ce79a25f456412547b30c6a828f1fa3"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:7bda0e564760c4b2d55841f58d39150a606b89e0da875541df0780d7d6d382ca",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:75bec99aefff1dab5489b620c8d9a9818399f71e553f6e358930fb11c14ad8f7"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:7bda0e564760c4b2d55841f58d39150a606b89e0da875541df0780d7d6d382ca",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:6f61c496477770419830475d8ccde6154e548cd69b28f5a22e4ca963d9105f42"
           }
         }
       },
-      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1897"
+      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1897",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-67985815-avcr1898",
       "employerId": "rvvi-67985815",
       "title": {
-        "zh-CN": "Postdoctoral and Student Positions",
+        "zh-CN": "博士后和学生职位",
         "en": "Postdoctoral and Student Positions",
-        "cs": "Postdoctoral and Student Positions"
+        "cs": "Postdoktorandské a studentské pozice"
       },
       "laboratory": null,
       "originalText": "Postdoctoral and Student Positions",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-03T17:14:25Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -36622,7 +36638,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -36640,49 +36656,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:b7398cc61b4a6c9ab64fd6997aa67f9ad22eded2df2015bc9cd49bf83c9bdb61",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:b7398cc61b4a6c9ab64fd6997aa67f9ad22eded2df2015bc9cd49bf83c9bdb61",
         "factHash": "sha256:c557a1e6653e083c3c077d9d3df196e3600d164f9aca8aa741167eb7a279fb1e",
         "evidenceHash": "sha256:b7398cc61b4a6c9ab64fd6997aa67f9ad22eded2df2015bc9cd49bf83c9bdb61",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:b7398cc61b4a6c9ab64fd6997aa67f9ad22eded2df2015bc9cd49bf83c9bdb61",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:9df56671da92062f0178801dcf93eee1629ebeba3cf40a739f544a2eab1102d6"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:b7398cc61b4a6c9ab64fd6997aa67f9ad22eded2df2015bc9cd49bf83c9bdb61",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:6b4b310a1ef3df715436b2dc3c0740597b1aed6bcaae073b12460fac9aee1064"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:b7398cc61b4a6c9ab64fd6997aa67f9ad22eded2df2015bc9cd49bf83c9bdb61",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:327ffa444fad87d1523b23c503b1ba9a64d42516d99a9c4bc4d1c51927cc7ddb"
           }
         }
       },
-      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1898"
+      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1898",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-67985912-avcr1888",
       "employerId": "rvvi-67985912",
       "title": {
-        "zh-CN": "Junior Researcher",
+        "zh-CN": "初级研究员",
         "en": "Junior Researcher",
         "cs": "Junior Researcher"
       },
       "laboratory": null,
       "originalText": "Junior Researcher",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-03T17:14:25Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -36707,7 +36726,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -36725,35 +36744,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:55bf96bcdc728f28e34281e466dbc0eff6de342bebf8294157114db148a3f0a9",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:55bf96bcdc728f28e34281e466dbc0eff6de342bebf8294157114db148a3f0a9",
         "factHash": "sha256:92d877c44255b711e056f72310c58499d90876c384a4915b122e8b7f406beeeb",
         "evidenceHash": "sha256:55bf96bcdc728f28e34281e466dbc0eff6de342bebf8294157114db148a3f0a9",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:55bf96bcdc728f28e34281e466dbc0eff6de342bebf8294157114db148a3f0a9",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:c525ce090e7c202f03d97cb690ea820d457529509f85efa4196d6622e0dcc2f3"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:55bf96bcdc728f28e34281e466dbc0eff6de342bebf8294157114db148a3f0a9",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:1381b96b500684512fd2a2d63855d70ca4ae88711be6b392cf96ab11cf0f2a10"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:55bf96bcdc728f28e34281e466dbc0eff6de342bebf8294157114db148a3f0a9",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:1381b96b500684512fd2a2d63855d70ca4ae88711be6b392cf96ab11cf0f2a10"
           }
         }
       },
-      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1888"
+      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1888",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-61389013-avcr1887",
@@ -36844,15 +36866,15 @@
       "id": "job-rvvi-86652036-avcr1883",
       "employerId": "rvvi-86652036",
       "title": {
-        "zh-CN": "Senior Scientist in Metabolomics and Mass Spectrometry",
+        "zh-CN": "代谢组学和质谱分析领域的高级科学家",
         "en": "Senior Scientist in Metabolomics and Mass Spectrometry",
-        "cs": "Senior Scientist in Metabolomics and Mass Spectrometry"
+        "cs": "Senior vědecký pracovník ve metabolomice a hmotové spektrometrii"
       },
       "laboratory": null,
       "originalText": "Senior Scientist in Metabolomics and Mass Spectrometry",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-03T17:14:25Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -36877,7 +36899,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -36895,35 +36917,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:6cde52fc3794cb7ad6c246baa0051288df3f4b5609018e7e11aebcab6476ea6b",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:6cde52fc3794cb7ad6c246baa0051288df3f4b5609018e7e11aebcab6476ea6b",
         "factHash": "sha256:423f49eee4423436b127dfc6043e549677534dcb59d062e14569b7cc53d27163",
         "evidenceHash": "sha256:6cde52fc3794cb7ad6c246baa0051288df3f4b5609018e7e11aebcab6476ea6b",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:6cde52fc3794cb7ad6c246baa0051288df3f4b5609018e7e11aebcab6476ea6b",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:cc8ca08388c66581d9c649153d2fba05b513e14189eef4df67a0286f7e7cf2be"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:6cde52fc3794cb7ad6c246baa0051288df3f4b5609018e7e11aebcab6476ea6b",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:79494f415b945c1e40fd8849a8a21720a117dd7fd1ce26c0f251c446f5a37276"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:6cde52fc3794cb7ad6c246baa0051288df3f4b5609018e7e11aebcab6476ea6b",
+            "reviewedAt": "2026-10-03T17:14:25Z",
+            "contentHash": "sha256:d6bc6d7bc022eefbc274ec277147f93cb7d49005b7c0084bf14e1f11f1876bb6"
           }
         }
       },
-      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1883"
+      "officialDetailUrl": "https://www.avcr.cz/en/about-us/career/selection-procedures/?inzerat=1883",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-51000-4be885073b64",
