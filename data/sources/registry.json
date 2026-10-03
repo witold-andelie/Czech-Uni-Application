@@ -886,6 +886,22 @@
     "note": "Public research institution's own vacancy list (v. v. i. register employer). The institute lists every post it has; researchTitlesOnly keeps the ones whose title names a research or research-technical role, and administration titles are left out. The same vacancy on the Academy's central list or EURAXESS is published once, from here."
   },
   {
+    "id": "icpf-careers",
+    "url": "https://www.icpf.cas.cz/nabidky-zamestnani/",
+    "purpose": "official vacancy list of the Institute of Chemical Process Fundamentals of the CAS",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-67985858",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "inline_heading_jobs",
+    "followDetails": false,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-03",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list; each vacancy is a section of the page (no detail pages), read by the inline-heading parser. Published once even if the Academy's central list or EURAXESS repeats it."
+  },
+  {
     "id": "euraxess",
     "url": "https://www.euraxess.cz/jobs/search",
     "purpose": "vacancy discovery; filter actual country",
