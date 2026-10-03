@@ -157,3 +157,23 @@ def test_faculty_probe_binds_the_row_the_page_says_provides_it() -> None:
     assert list(probed) == ["lf1"]
     assert probed["lf1"][0][0].url == "https://is.cuni.cz/a/1"
     assert unresolved == {"lf3": "ambiguous_register_rows"}
+
+
+def test_a_page_on_another_faculty_site_is_not_bound() -> None:
+    rows = {
+        "a": resolver.Row("a", "s", "Pediatrie", "d", "cs", "2. lékařská fakulta"),
+        "b": resolver.Row("b", "s", "Radiologie", "d", "cs", "2. lékařská fakulta"),
+        "c": resolver.Row("c", "s", "Historie", "b", "cs", "Filozofická fakulta"),
+    }
+    page = lambda url: resolver.Candidate(url=url, title="x")
+    grouped = {
+        "a": [(page("https://www.lf2.cuni.cz/uchazeci/pediatrie"), "cs")],
+        "b": [(page("https://www.lf2.cuni.cz/uchazeci/radiologie"), "cs")],
+        "c": [(page("https://www.lf2.cuni.cz/fakulta/o-fakulte/historie"), "cs")],
+    }
+    assert resolver.faculty_sites(grouped, rows) == {"www.lf2.cuni.cz": "2. lékařská fakulta"}
+    # A university-wide catalogue with several rows of several faculties is nobody's.
+    central = {key: [(page(f"https://is.cuni.cz/{key}"), "cs")] for key in rows}
+    central["d"] = [(page("https://is.cuni.cz/d"), "cs")]
+    rows["d"] = resolver.Row("d", "s", "Archeologie", "b", "cs", "Filozofická fakulta")
+    assert resolver.faculty_sites(central, rows) == {}

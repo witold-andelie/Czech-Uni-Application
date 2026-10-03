@@ -1706,8 +1706,21 @@ def resolve_school(
     links: dict[str, Link] = {}
     rows_by_ident = {row.ident: row for row in match.rows}
     multiple_pages = 0
-    for ident, bindings in grouped.items():
+    foreign_sites = faculty_sites(grouped, rows_by_ident)
+    for ident, bindings in list(grouped.items()):
         row = rows_by_ident[ident]
+        # A page on a site that belongs to another faculty is not this row's
+        # page, however its title reads: "Historie" (Faculty of Arts) once bound
+        # to the 2nd Faculty of Medicine's "Historie fakulty" (2026-10-03).
+        allowed = [
+            item
+            for item in bindings
+            if not row.faculty or foreign_sites.get(host_of(item[0].url), row.faculty) == row.faculty
+        ]
+        if not allowed:
+            unresolved[ident] = "page_on_another_faculty_site"
+            continue
+        bindings = allowed
         candidate, language = min(
             bindings,
             key=lambda item: candidate_rank(
@@ -1733,6 +1746,33 @@ def resolve_school(
         )
         unresolved.pop(ident, None)
     return links, unresolved, multiple_pages, notes
+
+
+def faculty_sites(grouped: dict[str, list[tuple[Candidate, str]]], rows_by_ident: dict[str, Row]) -> dict[str, str]:
+    """Hosts whose programme pages almost all belong to one faculty's rows.
+
+    Learned from this school's own bindings: a host whose pages bind at least
+    two rows of one faculty and at most one row of any other is that faculty's
+    site (lf2.cuni.cz, fit.cvut.cz), and the single other row is the stray. A
+    university-wide catalogue carries several rows of several faculties and is
+    nobody's, however unevenly its faculties are sized (VFU's STAG catalogue:
+    32 rows of one faculty, 16 of another).
+    """
+    counts: dict[str, dict[str, int]] = {}
+    for ident, bindings in grouped.items():
+        faculty = rows_by_ident[ident].faculty
+        if not faculty:
+            continue
+        for host in {host_of(candidate.url) for candidate, _language in bindings}:
+            counts.setdefault(host, {})
+            counts[host][faculty] = counts[host].get(faculty, 0) + 1
+    sites: dict[str, str] = {}
+    for host, by_faculty in counts.items():
+        total = sum(by_faculty.values())
+        faculty, top = max(by_faculty.items(), key=lambda item: item[1])
+        if top >= 2 and total - top <= 1:
+            sites[host] = faculty
+    return sites
 
 
 def school_target(institution: dict, override: dict) -> dict:
