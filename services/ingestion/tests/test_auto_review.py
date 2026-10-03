@@ -124,3 +124,14 @@ def test_contract_accepts_machine_titles_only_from_the_automatic_pipeline() -> N
         errors: list[str] = []
         _validate_translation_review({**job, "translationReview": review(role)}, "job-y", errors, windows=[], evidence_hash=source)
         assert (not any("not reviewed" in error for error in errors)) is ok, (role, errors)
+
+
+def test_an_approved_vacancy_its_page_announces_closed_is_archived() -> None:
+    payload = {"jobs": [_job()], "windows": []}
+    auto: dict = {}
+    auto_review.run(payload, {}, auto, {}, today=TODAY, now=NOW, translate=_fake)
+    closed = dict(payload["jobs"][0], lifecycleStatus="closed", visibility="review_pending")
+    job = apply_translation_review(closed, closed["sourceHash"], {"job-x": auto["job-x"]}, [])
+    # Never "approved" while "review_pending": the publication check refuses that.
+    assert job["publicationStatus"] == "approved"
+    assert job["visibility"] == "archived"

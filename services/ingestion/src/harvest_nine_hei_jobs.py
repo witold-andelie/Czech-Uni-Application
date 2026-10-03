@@ -690,7 +690,12 @@ def apply_translation_review(
             # every such record (53 on 2026-10-01, e.g. ČVUT notices whose page
             # now reads "Dokument není vyvěšen").
             job["visibility"] = "archived"
-        elif job.get("lifecycleStatus") not in {"closed", "expired"}:
+        elif job.get("lifecycleStatus") in {"closed", "expired"}:
+            # A vacancy its own page announces closed is archived, never left
+            # "review_pending" while approved (2026-10-03, ČVUT AIC PhD topic:
+            # the publication check refused the whole candidate set).
+            job["visibility"] = "archived"
+        else:
             job["visibility"] = "public"
         job["reviewedAt"] = max(item["reviewedAt"] for item in review_locales.values())
         job["translationReview"] = {
