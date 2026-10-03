@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T20:43:44Z",
+  "generatedAt": "2026-10-03T21:37:41Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-10-03.12",
-    "publishedAt": "2026-10-03T20:43:44Z",
-    "candidateGenerationId": "cg-8552790e71c642c3a2bc978edc277225",
-    "sourceRunSetDigest": "sha256:9a5e0657be97cc10e19f9ee8f7079a65509ecc29018508379a958c44949c32f2",
+    "activeVersion": "v2026-10-03.13",
+    "publishedAt": "2026-10-03T21:37:41Z",
+    "candidateGenerationId": "cg-74f43b8d68614316bf6c8db8ee3e069f",
+    "sourceRunSetDigest": "sha256:d103d5d821720ce5aef115f4e5e24c2ab5ab5ced940045e41704057bc39b4bab",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -532,7 +532,7 @@
   },
   "jobs": {
     "registeredOfficialListingSources": 44,
-    "lastRunCompleteSources": 10,
+    "lastRunCompleteSources": 8,
     "lastDiscoverySuccessAt": null,
     "discoveryIntervalHours": 4,
     "lastStatusRecheckSuccessAt": null,
@@ -562,17 +562,17 @@
     "independentNonHeiOfficialSources": 9,
     "inventoryRows": 5019,
     "discoveredCandidates": 424,
-    "currentCandidates": 293,
+    "currentCandidates": 279,
     "supportedCandidates": 271,
-    "unspecifiedScopeCandidates": 22,
+    "unspecifiedScopeCandidates": 8,
     "reviewPending": 43,
     "approved": 228,
-    "public": 155,
+    "public": 223,
     "currentOpenOrUnknown": 271,
-    "currentPaidMasterScopeCandidates": 64,
-    "supportedPaidMasterScopeCandidates": 64,
-    "publishedRecords": 245,
-    "publishedPaidMasterScopeJobs": 44,
+    "currentPaidMasterScopeCandidates": 58,
+    "supportedPaidMasterScopeCandidates": 58,
+    "publishedRecords": 313,
+    "publishedPaidMasterScopeJobs": 57,
     "sourceConnectedSchools": 31,
     "fullyAssessedSchoolScope": 0,
     "missingInstitutions": [
@@ -693,64 +693,26 @@
       }
     ],
     "lastDiscoveryRun": {
-      "runKind": "partial_checkpoint",
+      "runKind": "selected_sources",
       "expectedSourceIds": [
-        "vsb-job-opportunities-en",
-        "ctu-ciirc-roboprox-positions",
-        "ctu-fel-aic-careers",
-        "fzu-careers",
-        "flu-careers",
-        "it-careers",
-        "imc-careers",
-        "soc-careers",
-        "img-careers",
-        "icpf-careers",
-        "euraxess-cz-jobs",
-        "vut-central-careers",
-        "czu-central-jobs",
-        "jcu-central-vacancies",
-        "upce-central-vacancies",
-        "utb-central-careers",
-        "cuni-central-open-positions",
         "muni-careers",
-        "upol-central-careers",
-        "vsb-job-opportunities",
-        "uct-academic-scientific-positions",
-        "ctu-central-notice-board",
-        "ctu-fee-careers",
-        "vse-central-careers",
-        "mendelu-official-recruitis",
-        "ujep-open-positions",
-        "uhk-central-selection",
-        "tul-central-careers",
-        "osu-central-careers",
+        "czu-central-jobs",
+        "upce-central-vacancies",
         "slu-central-vacancies",
-        "vetuni-central-vacancies",
         "unob-academic-selection",
-        "vstecb-central-vacancies",
-        "vspj-academic-vacancies",
-        "avcr-selection-procedures",
-        "zcu-central-vacancies",
-        "amu-central-vacancies",
-        "avu-selection-procedures",
         "jamu-faculty-vacancies",
-        "mup-central-vacancies",
-        "mvso-central-careers",
         "peuni-central-careers",
-        "polac-central-vacancies",
         "unyp-central-careers"
       ],
       "completeSourceIds": [
-        "ctu-ciirc-roboprox-positions",
-        "ctu-fel-aic-careers",
-        "flu-careers",
-        "fzu-careers",
-        "icpf-careers",
-        "imc-careers",
-        "img-careers",
-        "it-careers",
-        "soc-careers",
-        "vsb-job-opportunities-en"
+        "czu-central-jobs",
+        "jamu-faculty-vacancies",
+        "muni-careers",
+        "peuni-central-careers",
+        "slu-central-vacancies",
+        "unob-academic-selection",
+        "unyp-central-careers",
+        "upce-central-vacancies"
       ],
       "deferredSourceIds": [],
       "lastScheduledSuccessAt": null,
@@ -758,444 +720,84 @@
       "singleSourceRefreshCannotCountAsAllSourceSuccess": true,
       "perSourceRunStatus": [
         {
-          "sourceId": "vsb-job-opportunities-en",
-          "parserVersion": "vsb_listing",
+          "sourceId": "muni-careers",
+          "parserVersion": "muni_vacancies",
           "attempted": true,
-          "attempts": 1,
+          "attempts": 17,
           "failedAttempts": 0,
           "lastAttemptAt": null,
           "runComplete": true,
           "overdue": false
-        },
-        {
-          "sourceId": "ctu-ciirc-roboprox-positions",
-          "parserVersion": "roboprox_positions",
-          "attempted": true,
-          "attempts": 1,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "ctu-fel-aic-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": true,
-          "attempts": 1,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "fzu-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": true,
-          "attempts": 1,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "flu-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": true,
-          "attempts": 1,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "it-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": true,
-          "attempts": 1,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "imc-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": true,
-          "attempts": 1,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "soc-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": true,
-          "attempts": 1,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "img-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": true,
-          "attempts": 1,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "icpf-careers",
-          "parserVersion": "inline_heading_jobs",
-          "attempted": true,
-          "attempts": 1,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "euraxess-cz-jobs",
-          "parserVersion": "euraxess_search",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "vut-central-careers",
-          "parserVersion": "lmc_graphql",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
         },
         {
           "sourceId": "czu-central-jobs",
           "parserVersion": "czu_pozice_rest",
-          "attempted": false,
-          "attempts": 0,
+          "attempted": true,
+          "attempts": 9,
           "failedAttempts": 0,
           "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "jcu-central-vacancies",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
+          "runComplete": true,
+          "overdue": false
         },
         {
           "sourceId": "upce-central-vacancies",
           "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
+          "attempted": true,
+          "attempts": 13,
           "failedAttempts": 0,
           "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "utb-central-careers",
-          "parserVersion": "utb_careers",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "cuni-central-open-positions",
-          "parserVersion": "cuni_ajax",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "muni-careers",
-          "parserVersion": "muni_vacancies",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "upol-central-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "vsb-job-opportunities",
-          "parserVersion": "vsb_listing",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "uct-academic-scientific-positions",
-          "parserVersion": "inline_heading_jobs",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "ctu-central-notice-board",
-          "parserVersion": "ctu_notice_board",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "ctu-fee-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "vse-central-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "mendelu-official-recruitis",
-          "parserVersion": "recruitis_widget",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "ujep-open-positions",
-          "parserVersion": "ujep_open_positions",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "uhk-central-selection",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "tul-central-careers",
-          "parserVersion": "tul_careers",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "osu-central-careers",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
+          "runComplete": true,
+          "overdue": false
         },
         {
           "sourceId": "slu-central-vacancies",
           "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
+          "attempted": true,
+          "attempts": 1,
           "failedAttempts": 0,
           "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "vetuni-central-vacancies",
-          "parserVersion": "inline_heading_jobs",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
+          "runComplete": true,
+          "overdue": false
         },
         {
           "sourceId": "unob-academic-selection",
           "parserVersion": "inline_heading_jobs",
-          "attempted": false,
-          "attempts": 0,
+          "attempted": true,
+          "attempts": 4,
           "failedAttempts": 0,
           "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "vstecb-central-vacancies",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "vspj-academic-vacancies",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "avcr-selection-procedures",
-          "parserVersion": "avcr_vacancies",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "zcu-central-vacancies",
-          "parserVersion": "zcu_document_feed",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "amu-central-vacancies",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "avu-selection-procedures",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
+          "runComplete": true,
+          "overdue": false
         },
         {
           "sourceId": "jamu-faculty-vacancies",
           "parserVersion": "inline_heading_jobs",
-          "attempted": false,
-          "attempts": 0,
+          "attempted": true,
+          "attempts": 2,
           "failedAttempts": 0,
           "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "mup-central-vacancies",
-          "parserVersion": "inline_heading_jobs",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "mvso-central-careers",
-          "parserVersion": "inline_heading_jobs",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
+          "runComplete": true,
+          "overdue": false
         },
         {
           "sourceId": "peuni-central-careers",
           "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
+          "attempted": true,
+          "attempts": 1,
           "failedAttempts": 0,
           "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
-        },
-        {
-          "sourceId": "polac-central-vacancies",
-          "parserVersion": "generic_listing_links",
-          "attempted": false,
-          "attempts": 0,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
+          "runComplete": true,
+          "overdue": false
         },
         {
           "sourceId": "unyp-central-careers",
           "parserVersion": "inline_heading_jobs",
-          "attempted": false,
-          "attempts": 0,
+          "attempted": true,
+          "attempts": 1,
           "failedAttempts": 0,
           "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
+          "runComplete": true,
+          "overdue": false
         }
       ]
     },
@@ -1272,9 +874,9 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 10,
+        "currentCandidateJobs": 8,
         "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_13000",
@@ -1308,8 +910,8 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 29,
-        "currentPaidMasterScopeCandidates": 17,
+        "currentCandidateJobs": 28,
+        "currentPaidMasterScopeCandidates": 11,
         "publishedPaidMasterScopeJobs": 11
       },
       {
@@ -1362,9 +964,9 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 13,
+        "currentCandidateJobs": 10,
         "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_18000",
@@ -1439,7 +1041,7 @@
         ],
         "currentCandidateJobs": 46,
         "currentPaidMasterScopeCandidates": 27,
-        "publishedPaidMasterScopeJobs": 16
+        "publishedPaidMasterScopeJobs": 27
       },
       {
         "institutionId": "msmt-vs_22000",
@@ -1473,7 +1075,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 25,
+        "currentCandidateJobs": 19,
         "currentPaidMasterScopeCandidates": 1,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -1606,7 +1208,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 8,
+        "currentCandidateJobs": 6,
         "currentPaidMasterScopeCandidates": 1,
         "publishedPaidMasterScopeJobs": 1
       },
