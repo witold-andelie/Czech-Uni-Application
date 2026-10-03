@@ -294,8 +294,16 @@ def harvest_slu(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
         if status != 200 or not html:
             failures.append({"url": url, "status": status})
             continue
-        records.extend(parse_slu_finder(html, language))
-    log(f"slu: {len(records)} programme variant page(s)")
+        found = parse_slu_finder(html, language)
+        if not found:
+            # Readable here but empty on the CI runner (2026-10-03): say what came back.
+            stated = re.search(r"Nalezeno záznamů:\s*\d+", page_text(html))
+            failures.append(
+                {"url": url, "status": status, "bytes": len(html), "stated": stated.group(0) if stated else None,
+                 "panels": html.count('class="panel-group"')}
+            )
+        records.extend(found)
+    log(f"slu: {len(records)} programme variant page(s); {failures if not records else ''}")
     return {"programmes": records, "failures": failures, "listingPages": 2}
 
 
