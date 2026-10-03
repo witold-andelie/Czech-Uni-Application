@@ -255,6 +255,14 @@ jobs:
             work/raw/
           if-no-files-found: error
           retention-days: 3
+      # The programme link index and the inventory built from it belong to
+      # programme-links.yml, which commits them several times a day. The tick
+      # rebuilds the inventory locally; left modified, it conflicted with those
+      # commits when a push rebased onto main and corrupted the JSON
+      # (2026-10-03). Restore both before anything is committed.
+      - name: Leave the files another workflow owns as they are on main
+        if: ${{ always() && github.ref == 'refs/heads/main' }}
+        run: git checkout -- data/sources/browse/nine-hei-inventory.json data/sources/admissions/programme-links.json
       - name: Commit refreshed live-verification evidence on main
         if: ${{ always() && steps.live_verify.outcome == 'success' && github.ref == 'refs/heads/main' }}
         env:
@@ -280,28 +288,6 @@ jobs:
       # sources failed: files are written atomically per source, and the
       # coverage floors below refuse any drop (A100/A101). Gating on a fully
       # green tick meant nothing was ever committed.
-      - name: Commit the refreshed programme page link index on main
-        if: ${{ always() && steps.crawl.outcome != 'skipped' && github.ref == 'refs/heads/main' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          python services/ingestion/src/check_programme_link_coverage.py
-          git add data/sources/admissions/programme-links.json
-          if ! git diff --cached --quiet; then
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m 'Refresh school-owned programme page link index'
-            # main moves while a tick runs (link index, reviews, publications):
-            # rebase onto it and retry instead of losing the tick's data.
-            pushed=false
-            for attempt in 1 2 3 4; do
-              if git pull --rebase --autostash origin main && git push origin HEAD:main; then pushed=true; break; fi
-              sleep 15
-            done
-            $pushed
-            # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
-            gh workflow run ci.yml --ref main
-          fi
       - name: Commit harvested job candidates on main
         if: ${{ always() && github.ref == 'refs/heads/main' && (steps.crawl.outcome != 'skipped' || steps.adapters.outcome != 'skipped') }}
         env:
