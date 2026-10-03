@@ -225,3 +225,9 @@ def test_vsb_lists_carry_level_language_and_faculty() -> None:
     )
     row = pc.parse_vsb_en(en, pc.VSB_LISTS_EN["bachelor"], "bachelor")[0]
     assert (row["titles"]["original"], row["studyLanguage"], row["faculty"]) == ("Applied Geology", "en", "Hornicko-geologická fakulta")
+
+
+def test_vscht_level_comes_from_the_programme_code() -> None:
+    assert pc.vscht_level("B") == "bachelor" and pc.vscht_level("an") == "master" and pc.vscht_level("D") is None
+    assert pc.vscht_title("<title>Fuel Cells and Hydrogen Engineering AN110 - Study at UCT Prague</title>", "en") == "Fuel Cells and Hydrogen Engineering"
+    assert pc.vscht_title("<title>Program | Studuj VŠCHT</title><h1>\n Chemie \n</h1>", "cs") == "Chemie"

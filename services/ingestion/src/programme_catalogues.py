@@ -681,7 +681,71 @@ def harvest_vsb(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
     return {"programmes": records, "failures": failures, "listingPages": 4}
 
 
+# --------------------------------------------------------------------------- #
+# UCT Prague (VŠCHT): Czech bachelor's and follow-up master's lists on
+# studuj.vscht.cz and the English lists on study.vscht.cz. The programme code
+# in each address states the level (B…/AB… bachelor, N…/AN… master); the
+# page names the programme. Doctoral programmes are listed only by script.
+# --------------------------------------------------------------------------- #
+
+VSCHT_LISTS = (
+    ("https://studuj.vscht.cz/studijni-programy/bakalarske/", "cs"),
+    ("https://studuj.vscht.cz/studijni-programy/navazujici-magisterske", "cs"),
+    ("https://study.vscht.cz/degree-programmes/bachelor", "en"),
+    ("https://study.vscht.cz/degree-programmes/master", "en"),
+)
+_VSCHT_LINK_RE = re.compile(r'href="([^"#]*(?:/program/([A-Z]+)\d+|/degree-programmes/(?:bachelor|master)/([a-z]+)\d+))"')
+
+
+def vscht_level(code: str) -> str | None:
+    code = code.upper()
+    if code in {"B", "AB"}:
+        return "bachelor"
+    if code in {"N", "AN"}:
+        return "master"
+    return None
+
+
+def vscht_title(html: str, language: str) -> str:
+    if language == "cs":
+        heading = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.S)
+        return page_text(heading.group(1)) if heading else ""
+    title = re.search(r"<title[^>]*>(.*?)</title>", html, re.S)
+    text = page_text(title.group(1)) if title else ""
+    return re.sub(r"\s+A[BN]\d+\s+-\s+Study at UCT Prague$", "", text).strip() if " - Study at UCT Prague" in text else ""
+
+
+def harvest_vscht(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
+    records: list[dict] = []
+    failures: list[dict] = []
+    pages = 0
+    for list_url, language in VSCHT_LISTS:
+        status, html = fetch(list_url)
+        pages += 1
+        if status != 200 or not html:
+            failures.append({"url": list_url, "status": status})
+            continue
+        links = {}
+        for match in _VSCHT_LINK_RE.finditer(html):
+            links[urljoin(list_url, unescape(match.group(1)))] = vscht_level(match.group(2) or match.group(3) or "")
+        for url, level in sorted(links.items()):
+            if not level:
+                continue
+            status, page = fetch(url)
+            pages += 1
+            title = vscht_title(page, language) if status == 200 and page else ""
+            if not title:
+                failures.append({"url": url, "status": status})
+                continue
+            records.append(
+                {"officialProgrammeUrl": url, "titles": {"original": title}, "degree": level, "studyLanguage": language, "faculty": ""}
+            )
+    log(f"vscht: {len(records)} programme page(s)")
+    return {"programmes": records, "failures": failures, "listingPages": pages}
+
+
 ADAPTERS = {
+    "vscht": ("msmt-vs_22000", "catalogue-vscht.json", harvest_vscht),
     "vsb": ("msmt-vs_27000", "catalogue-vsb.json", harvest_vsb),
     "amu": ("msmt-vs_51000", "catalogue-amu.json", harvest_amu),
     **{key: (value[0], f"catalogue-{key}.json", stag_harvester(key)) for key, value in STAG_SCHOOLS.items()},
