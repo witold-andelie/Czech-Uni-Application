@@ -814,7 +814,71 @@ def harvest_uhk(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
     return {"programmes": records, "failures": failures, "listingPages": pages}
 
 
+# --------------------------------------------------------------------------- #
+# University of Ostrava: one list of every specialisation with its programme
+# name, faculty, level, form and duration, each linking its detail page.
+# --------------------------------------------------------------------------- #
+
+OSU_LIST = "https://www.osu.cz/studijniobory"
+OSU_LEVELS = {
+    "bakalářské": "bachelor",
+    "navazující magisterské": "master",
+    "magisterské navazující": "master",
+    "magisterské": "master",
+    "doktorské": "doctorate",
+}
+
+
+def parse_osu_list(html: str, page_url: str = OSU_LIST) -> list[dict]:
+    records = []
+    for block in re.split(r'<div class="w100 bb">', html)[1:]:
+        link = re.search(r'<a href="([^"]*specializaceid=\d+)"[^>]*>(.*?)</a>', block, re.S)
+        programme = re.search(r'<div class="w100">\((.*?)\)', block, re.S)
+        faculty = re.search(r'<div class="w20 lfloat">(.*?)</div>', block, re.S)
+        level = re.search(r'<div class="w15 rfloat">(.*?)</div>', block, re.S)
+        if not (link and level):
+            continue
+        degree = OSU_LEVELS.get(page_text(level.group(1)).lower())
+        if not degree:
+            continue
+        titles = {"original": page_text(link.group(2))}
+        if programme and page_text(programme.group(1)) != titles["original"]:
+            titles["programme"] = page_text(programme.group(1))
+        url = urljoin(page_url.rstrip("/") + "/", unescape(link.group(1)))
+        records.append(
+            {
+                "officialProgrammeUrl": url,
+                "titles": titles,
+                "degree": degree,
+                "studyLanguage": "",
+                "faculty": page_text(faculty.group(1)) if faculty else "",
+            }
+        )
+    unique = list({(item["officialProgrammeUrl"], item["degree"]): item for item in records}.values())
+    # A programme taught in several specialisations has no single page of its
+    # own here; its name binds only where one specialisation carries it.
+    counts: dict[tuple, int] = {}
+    for item in unique:
+        if "programme" in item["titles"]:
+            key = (item["titles"]["programme"], item["degree"], item["faculty"])
+            counts[key] = counts.get(key, 0) + 1
+    for item in unique:
+        if "programme" in item["titles"] and counts[(item["titles"]["programme"], item["degree"], item["faculty"])] > 1:
+            del item["titles"]["programme"]
+    return unique
+
+
+def harvest_osu(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
+    status, html = fetch(OSU_LIST)
+    if status != 200 or not html:
+        return {"programmes": [], "failures": [{"url": OSU_LIST, "status": status}], "listingPages": 1}
+    records = parse_osu_list(html)
+    log(f"osu: {len(records)} specialisation page(s)")
+    return {"programmes": records, "failures": [], "listingPages": 1}
+
+
 ADAPTERS = {
+    "osu": ("msmt-vs_17000", "catalogue-osu.json", harvest_osu),
     "uhk": ("msmt-vs_18000", "catalogue-uhk.json", harvest_uhk),
     "vscht": ("msmt-vs_22000", "catalogue-vscht.json", harvest_vscht),
     "vsb": ("msmt-vs_27000", "catalogue-vsb.json", harvest_vsb),

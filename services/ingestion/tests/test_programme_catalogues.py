@@ -239,3 +239,19 @@ def test_uhk_programme_page_states_level_language_and_faculty() -> None:
     assert (row["titles"]["original"], row["degree"], row["studyLanguage"], row["faculty"]) == (
         "Archeologie", "master", "cs", "Filozofická fakulta",
     )
+
+
+def test_osu_programme_name_binds_only_a_single_specialisation() -> None:
+    def entry(spec_id: int, spec: str, programme: str) -> str:
+        return (
+            f'<div class="w100 bb"><div class="w70 lfloat"><div class="w65 lfloat"><div class="w100 pb1">'
+            f'<a href="./?specializaceid={spec_id}" title="detail">{spec}</a></div><div class="w100">({programme})</div></div>'
+            f'<div class="w20 lfloat">Fakulta umění</div><div class="w15 rfloat">bakalářské</div></div></div>'
+        )
+
+    html = entry(1, "Akordeon", "Instrumentální hra") + entry(2, "Klavír", "Instrumentální hra") + entry(3, "Zpěv", "Zpěv a herectví")
+    rows = {row["officialProgrammeUrl"].rsplit("=", 1)[1]: row for row in pc.parse_osu_list(html)}
+    assert rows["1"]["titles"] == {"original": "Akordeon"}
+    assert rows["3"]["titles"] == {"original": "Zpěv", "programme": "Zpěv a herectví"}
+    assert rows["1"]["officialProgrammeUrl"] == "https://www.osu.cz/studijniobory/?specializaceid=1"
+    assert rows["1"]["degree"] == "bachelor" and rows["1"]["faculty"] == "Fakulta umění"
