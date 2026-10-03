@@ -760,6 +760,132 @@
     "note": "The Academy portal is not the employer. Each opening names its institute; harvest_research_institutions.py supplies the v. v. i. register record (IČO, website) it resolves to. An institute the register does not name unambiguously stays quarantined."
   },
   {
+    "id": "fzu-careers",
+    "url": "https://www.fzu.cz/kariera/volna-mista",
+    "purpose": "official vacancy list of the Institute of Physics of the CAS",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-68378271",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "generic_listing_links",
+    "pathPatterns": [
+      "/kariera/volna-mista/[a-z0-9-]+$"
+    ],
+    "researchTitlesOnly": true,
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-03",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list (v. v. i. register employer). The institute lists every post it has; researchTitlesOnly keeps the ones whose title names a research or research-technical role, and administration titles are left out. The same vacancy on the Academy's central list or EURAXESS is published once, from here."
+  },
+  {
+    "id": "flu-careers",
+    "url": "https://www.flu.cas.cz/cz/o-nas/volna-mista/aktualne-vypsane-pozice",
+    "purpose": "official vacancy list of the Institute of Philosophy of the CAS",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-67985955",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "generic_listing_links",
+    "pathPatterns": [
+      "/aktualne-vypsane-pozice/[a-z0-9-]+$"
+    ],
+    "researchTitlesOnly": true,
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-03",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list (v. v. i. register employer). The institute lists every post it has; researchTitlesOnly keeps the ones whose title names a research or research-technical role, and administration titles are left out. The same vacancy on the Academy's central list or EURAXESS is published once, from here."
+  },
+  {
+    "id": "it-careers",
+    "url": "https://www.it.cas.cz/kariera/volne-pozice/",
+    "purpose": "official vacancy list of the Institute of Thermomechanics of the CAS",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-61388998",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "generic_listing_links",
+    "pathPatterns": [
+      "^https://www\\.it\\.cas\\.cz/(?!kariera|wp-|page)[a-z0-9-]{20,}/?$"
+    ],
+    "researchTitlesOnly": true,
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-03",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list (v. v. i. register employer). The institute lists every post it has; researchTitlesOnly keeps the ones whose title names a research or research-technical role, and administration titles are left out. The same vacancy on the Academy's central list or EURAXESS is published once, from here."
+  },
+  {
+    "id": "imc-careers",
+    "url": "https://www.imc.cas.cz/cs/o-ustavu/pracovni-mista/",
+    "purpose": "official vacancy list of the Institute of Macromolecular Chemistry of the CAS",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-61389013",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "generic_listing_links",
+    "pathPatterns": [
+      "/cs/o-ustavu/pracovni-mista/(?!hr-award)[a-z0-9-]{12,}/?$"
+    ],
+    "researchTitlesOnly": true,
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-03",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list (v. v. i. register employer). The institute lists every post it has; researchTitlesOnly keeps the ones whose title names a research or research-technical role, and administration titles are left out. The same vacancy on the Academy's central list or EURAXESS is published once, from here."
+  },
+  {
+    "id": "soc-careers",
+    "url": "https://www.soc.cas.cz/cz/aktuality/vyberova-rizeni",
+    "purpose": "official vacancy list of the Institute of Sociology of the CAS",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-68378025",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "generic_listing_links",
+    "pathPatterns": [
+      "/cz/aktuality/vyberova-rizeni/[a-z0-9-]+$"
+    ],
+    "researchTitlesOnly": true,
+    "excludeTitlePatterns": [
+      "^Zapojte se"
+    ],
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-03",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list (v. v. i. register employer). The institute lists every post it has; researchTitlesOnly keeps the ones whose title names a research or research-technical role, and administration titles are left out. The same vacancy on the Academy's central list or EURAXESS is published once, from here."
+  },
+  {
+    "id": "img-careers",
+    "url": "https://www.img.cas.cz/kariera/volna-mista/",
+    "purpose": "official vacancy list of the Institute of Molecular Genetics of the CAS",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-68378050",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "generic_listing_links",
+    "pathPatterns": [
+      "/20\\d\\d/\\d\\d/\\d+-[a-z0-9-]+/?$"
+    ],
+    "researchTitlesOnly": true,
+    "pages": [
+      "https://www.img.cas.cz/kariera/phd-program/volne-phd-pozice/"
+    ],
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-03",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list (v. v. i. register employer). The institute lists every post it has; researchTitlesOnly keeps the ones whose title names a research or research-technical role, and administration titles are left out. The same vacancy on the Academy's central list or EURAXESS is published once, from here."
+  },
+  {
     "id": "euraxess",
     "url": "https://www.euraxess.cz/jobs/search",
     "purpose": "vacancy discovery; filter actual country",

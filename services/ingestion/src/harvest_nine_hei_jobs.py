@@ -3130,24 +3130,42 @@ def _listing_identity(url: str) -> tuple[str, str, str, str]:
     return (parsed.scheme.casefold(), parsed.netloc.casefold(), parsed.path, parsed.query)
 
 
+# Administration posts a research institute lists beside its research ones,
+# whose titles still mention research ("Asistent zástupce ředitele pro vědu a
+# výzkum", "Hlavní manažer projektu … výzkum"). Applied only to research-
+# institute sources (researchTitlesOnly), never to university listings.
+INSTITUTE_ADMIN_TITLE_RE = re.compile(
+    r"\b(?:asistent\w*\s+(?:ředitel|zástupce|vedoucí)\w*|(?:hlavní\s+)?manaž\w*|manager|"
+    r"specialist\S*\s+(?:na|pro)\s+(?:produkc|nábor|grant|rozpoč|plánov|pr\b|komunikac|marketing|ekonom|financ|personál|akc|veřejn)\w*|hr\b|personalist\w*|referent\w*|koordinátor\w*|coordinator|"
+    r"účetní|accountant|administrativ\w*|administrator|sekretář\w*|secretary|knihovn\w*|librarian)",
+    re.I,
+)
+
+
 def parse_generic_listing_links(
     html: str,
     page_url: str,
     path_patterns: list[str] | None = None,
     allowed_hosts: list[str] | None = None,
+    research_titles_only: bool = False,
+    exclude_titles: list[str] | None = None,
 ) -> list[dict]:
     """Extract configured vacancy detail links without treating nav links as jobs."""
     patterns = [re.compile(value, re.I) for value in (path_patterns or [])]
     current_host = urlsplit(page_url).netloc.casefold()
     permitted_hosts = {current_host, *(host.casefold() for host in (allowed_hosts or []))}
     listing_identity = _listing_identity(page_url)
+    # Relative links resolve against the page's <base href> when it declares
+    # one (imc.cas.cz: base /cs/, links "o-ustavu/pracovni-mista/…").
+    declared_base = re.search(r"(?is)<base\b[^>]*href=[\"']([^\"']+)[\"']", html)
+    link_base = urljoin(page_url, unescape(declared_base.group(1)).strip()) if declared_base else page_url
     results: list[dict] = []
     seen: set[str] = set()
     for match in re.finditer(
         r"(?is)<a\b[^>]*href=[\"']([^\"']+)[\"'][^>]*>(.*?)</a>", html
     ):
         href = unescape(match.group(1)).strip()
-        absolute = urljoin(page_url, href)
+        absolute = urljoin(link_base, href)
         parsed = urlsplit(absolute)
         if parsed.scheme not in {"http", "https"} or parsed.netloc.casefold() not in permitted_hosts:
             continue
@@ -3161,7 +3179,15 @@ def parse_generic_listing_links(
         title = visible_text(match.group(2))
         if not title or absolute in seen:
             continue
-        if not patterns and classify_track(title) is None:
+        # A research institute lists every vacancy it has (HR, workshop,
+        # budget); its detail pages all mention research, so for such a
+        # source the title itself must name a research or research-technical
+        # role (FZU, 2026-10-03).
+        if (not patterns or research_titles_only) and classify_track(title) is None:
+            continue
+        if research_titles_only and INSTITUTE_ADMIN_TITLE_RE.search(title):
+            continue
+        if any(re.search(pattern, title, re.I) for pattern in exclude_titles or []):
             continue
         seen.add(absolute)
         code_match = re.search(
@@ -4278,6 +4304,10 @@ def discover_registered_candidates(
                             else None,
                             source.get("allowedHosts")
                             if isinstance(source.get("allowedHosts"), list)
+                            else None,
+                            research_titles_only=source.get("researchTitlesOnly") is True,
+                            exclude_titles=source.get("excludeTitlePatterns")
+                            if isinstance(source.get("excludeTitlePatterns"), list)
                             else None,
                         )
                     )

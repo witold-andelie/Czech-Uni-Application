@@ -113,3 +113,23 @@ def test_record_writes_a_day_keyed_ledger(tmp_path: Path) -> None:
     ledger = json.loads(path.read_text(encoding="utf-8"))
     assert ledger["sources"]["a"]["history"] == [{"day": "2026-10-03", "listed": 4, "complete": True}]
     assert ledger["sources"]["a"]["peakListed"] == 4
+
+
+def test_institute_listings_honour_base_href_and_keep_research_titles_only() -> None:
+    html = (
+        '<base href="https://www.imc.cas.cz/cs/">'
+        '<a href="o-ustavu/pracovni-mista/postdoktorandska-pozice-polymery">Postdoktorandská pozice v Oddělení polymerů</a>'
+        '<a href="o-ustavu/pracovni-mista/hr-asistentka">HR asistent*ka</a>'
+        '<a href="o-ustavu/pracovni-mista/asistent-reditele">Asistent / asistentka zástupce ředitele pro vědu a výzkum</a>'
+        '<a href="o-ustavu/pracovni-mista/zapojte-se">Zapojte se do honorovaného výzkumu</a>'
+    )
+    rows = harvest.parse_generic_listing_links(
+        html,
+        "https://www.imc.cas.cz/cs/o-ustavu/pracovni-mista/",
+        [r"/cs/o-ustavu/pracovni-mista/[a-z0-9-]+$"],
+        research_titles_only=True,
+        exclude_titles=["^Zapojte se"],
+    )
+    assert [row["sourceUrl"] for row in rows] == [
+        "https://www.imc.cas.cz/cs/o-ustavu/pracovni-mista/postdoktorandska-pozice-polymery"
+    ]

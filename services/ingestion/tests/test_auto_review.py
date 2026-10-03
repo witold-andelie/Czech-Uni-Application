@@ -135,3 +135,13 @@ def test_an_approved_vacancy_its_page_announces_closed_is_archived() -> None:
     # Never "approved" while "review_pending": the publication check refuses that.
     assert job["publicationStatus"] == "approved"
     assert job["visibility"] == "archived"
+
+
+def test_an_academy_list_opening_the_institute_posts_itself_is_published_once() -> None:
+    own = _job(id="job-rvvi-1-own", employerId="rvvi-1", originalText="Postdoctoral position in nanostructured polymers",
+               discoverySourceId="imc-careers")
+    central = _job(id="job-rvvi-1-avcr", employerId="rvvi-1", originalText="Postdoctoral position in nanostructured polymers",
+                   discoverySourceId="avcr-selection-procedures")
+    reasons = auto_review.gate_blockers(central, [], TODAY, [own])
+    assert reasons == ["duplicate-of-direct-source:job-rvvi-1-own"]
+    assert auto_review.gate_blockers(own, [], TODAY, [central]) == []

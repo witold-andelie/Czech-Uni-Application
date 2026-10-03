@@ -40,6 +40,10 @@ _DATE_PREFIX_RE = re.compile(r"^\s*\d{1,2}\.\s?\d{1,2}\.\s?\d{4}\b")
 
 EURAXESS_HOSTS = {"euraxess.ec.europa.eu", "www.euraxess.cz", "euraxess.cz"}
 EURAXESS_SOURCE = "euraxess-cz-jobs"
+# Aggregators that repeat vacancies an employer also posts on its own page:
+# EURAXESS, and the Academy's central list of its institutes' openings. A
+# vacancy the employer's own source carries is published once, from it.
+AGGREGATOR_SOURCES = {EURAXESS_SOURCE, "avcr-selection-procedures"}
 _STOPWORDS = {
     "with", "focus", "position", "researcher", "research", "assistant", "professor", "faculty", "university",
     "department", "specializing", "specialising", "specialised", "specialized", "postdoctoral", "doctoral",
@@ -77,7 +81,7 @@ def gate_blockers(job: dict, windows: list[dict], today: date, others: list[dict
         target = job.get("applicationUrl")
         if not target or _host(target) in EURAXESS_HOSTS:
             reasons.append("no-official-application-target")
-    if job.get("discoverySourceId") == EURAXESS_SOURCE and others:
+    if job.get("discoverySourceId") in AGGREGATOR_SOURCES and others:
         twin = duplicate_of(job, others)
         if twin:
             reasons.append(f"duplicate-of-direct-source:{twin}")
@@ -157,7 +161,7 @@ def run(
     report = {"approved": [], "kept": [], "withheld": {}, "humanMatches": 0, "translated": 0, "deferred": 0}
     direct_by_employer: dict[str, list[dict]] = {}
     for other in payload.get("jobs") or []:
-        if other.get("discoverySourceId") != EURAXESS_SOURCE and other.get("visibility") != "archived":
+        if other.get("discoverySourceId") not in AGGREGATOR_SOURCES and other.get("visibility") != "archived":
             direct_by_employer.setdefault(str(other.get("employerId")), []).append(other)
     for job in payload.get("jobs") or []:
         ident = job.get("id")
