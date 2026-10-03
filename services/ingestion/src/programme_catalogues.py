@@ -930,7 +930,87 @@ def harvest_vut(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
     return {"programmes": records, "failures": [], "listingPages": 1}
 
 
+# --------------------------------------------------------------------------- #
+# Charles University: the SIS catalogue of accredited study programmes, 50 per
+# page, each row stating faculty, level, name, teaching language and form. The
+# catalogue redirects in a loop without a session cookie, as browsers keep one.
+# --------------------------------------------------------------------------- #
+
+CUNI_LIST = "https://is.cuni.cz/studium/v4/{lang}/anonymous/study-programs/program"
+CUNI_LEVELS = {
+    "bakalářské": "bachelor", "navazující magisterské": "master", "magisterské": "master", "doktorské": "doctorate",
+    "bachelor": "bachelor", "bachelor's": "bachelor", "follow-up master": "master", "follow-up master's": "master",
+    "master": "master", "master's": "master", "doctoral": "doctorate",
+}
+CUNI_LANGUAGES = {**STAG_LANGUAGES, "czech": "cs", "english": "en", "german": "de", "russian": "ru", "french": "fr", "spanish": "es"}
+
+
+def parse_cuni_page(html: str, page_url: str) -> list[dict]:
+    records = []
+    for row in re.findall(r'<tr class="js_table-row table__row">(.*?)</tr>', html, re.S):
+        cells = re.findall(r"<td[^>]*>(.*?)</td>", row, re.S)
+        if len(cells) < 4:
+            continue
+        link = re.search(r'<a href="([^"]*accreditation/\d+)"[^>]*>(.*?)</a>', cells[2], re.S)
+        level = CUNI_LEVELS.get(page_text(cells[1]).lower())
+        language = CUNI_LANGUAGES.get(page_text(cells[3]).lower())
+        if not (link and level and language):
+            continue
+        records.append(
+            {
+                "officialProgrammeUrl": urljoin(page_url, unescape(link.group(1))),
+                "titles": {"original": page_text(link.group(2))},
+                "degree": level,
+                "studyLanguage": language,
+                "faculty": page_text(cells[0]),
+            }
+        )
+    return records
+
+
+def _session_fetch() -> FetchPage:
+    import http.cookiejar
+    import urllib.request
+
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+    headers = {"User-Agent": "Mozilla/5.0 (compatible; CzechUniApplyBot; +https://czech-uni-application.com/contact)"}
+
+    def fetch(url: str) -> tuple[int, str]:
+        try:
+            with opener.open(urllib.request.Request(url, headers=headers), timeout=60) as response:
+                return int(response.status), response.read().decode("utf-8", errors="replace")
+        except Exception as exc:  # noqa: BLE001
+            return int(getattr(exc, "code", 0) or 0), ""
+
+    return fetch
+
+
+def harvest_cuni(fetch: FetchPage, log: Callable[[str], None] = print, session: FetchPage | None = None) -> dict:
+    session = throttled(session or _session_fetch())
+    records: dict[str, dict] = {}
+    failures: list[dict] = []
+    pages = 0
+    for lang in ("cs", "en"):
+        base = CUNI_LIST.format(lang=lang)
+        for number in range(1, 80):
+            url = base if number == 1 else f"{base}?page={number}"
+            status, html = session(url)
+            pages += 1
+            if status != 200 or not html:
+                failures.append({"url": url, "status": status})
+                break
+            found = parse_cuni_page(html, url)
+            new = [item for item in found if item["officialProgrammeUrl"] not in records]
+            for item in new:
+                records[item["officialProgrammeUrl"]] = item
+            if not new:
+                break
+    log(f"cuni: {len(records)} accreditation page(s) from {pages} listing page(s)")
+    return {"programmes": list(records.values()), "failures": failures, "listingPages": pages}
+
+
 ADAPTERS = {
+    "cuni": ("msmt-vs_11000", "catalogue-cuni.json", harvest_cuni),
     "vut": ("msmt-vs_26000", "catalogue-vut.json", harvest_vut),
     "osu": ("msmt-vs_17000", "catalogue-osu.json", harvest_osu),
     "uhk": ("msmt-vs_18000", "catalogue-uhk.json", harvest_uhk),

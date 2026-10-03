@@ -292,3 +292,17 @@ def test_the_address_states_the_level_when_the_text_does_not() -> None:
     assert resolver.degree_stated("Fyzika", "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/1-fyzika") == "u"
     # The text decides when it states a level.
     assert resolver.degree_stated("Fyzika (Bc.)", url) == "b"
+
+
+def test_cuni_sis_rows_state_faculty_level_language() -> None:
+    html = (
+        '<tr class="js_table-row table__row"><td class="table__cell"> Katolická teologická fakulta </td>'
+        '<td class="table__cell"> bakalářské </td><td class="table__cell"> '
+        '<a href="/studium/v4/cs/anonymous/study-programs/program/accreditation/1369" >Dějiny křesťanského umění</a> </td>'
+        '<td class="table__cell"> čeština </td><td class="table__cell"> prezenční </td></tr>'
+    )
+    row = pc.parse_cuni_page(html, "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program")[0]
+    assert (row["titles"]["original"], row["degree"], row["studyLanguage"], row["faculty"]) == (
+        "Dějiny křesťanského umění", "bachelor", "cs", "Katolická teologická fakulta",
+    )
+    assert row["officialProgrammeUrl"] == "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1369"
