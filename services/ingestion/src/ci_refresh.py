@@ -55,6 +55,12 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
     # pages in parallel shards; the shared tick never had the time for it).
     skip = {item.strip() for item in os.environ.get("CI_REFRESH_SKIP_TASKS", "").split(",") if item.strip()}
     tasks = [task for task in tasks if task.get("type") not in skip]
+    # An operator can run a daily task now instead of at its next due time
+    # (refresh.yml input force_tasks), e.g. to read newly registered sources.
+    force = [item.strip() for item in os.environ.get("CI_REFRESH_FORCE_TASKS", "").split(",") if item.strip()]
+    for kind in force:
+        if kind in VOLATILE_TASKS and kind not in skip and not any(task.get("type") == kind for task in tasks):
+            tasks.append({"type": kind, "priority": "forced", "reason": "forced by the operator"})
     # Status checks get first use of the bounded runner; the existing queue
     # determines the other tasks, including today's ordinary daily shard.
     state = manager.load_state()

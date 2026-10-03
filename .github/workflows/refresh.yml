@@ -12,6 +12,9 @@ on:
         options:
           - adapters
           - full
+      force_tasks:
+        description: daily tasks to run now even if not due (e.g. job_discovery)
+        default: ""
 
 permissions:
   contents: read
@@ -149,6 +152,7 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           CI_REFRESH_SKIP_TASKS: programme_link_resolution
+          CI_REFRESH_FORCE_TASKS: ${{ github.event.inputs.force_tasks || '' }}
         run: python -u services/ingestion/src/ci_refresh.py
       - name: Save adapter harvest cursor
         if: ${{ always() && github.event.inputs.mode == 'adapters' }}

@@ -140,3 +140,17 @@ def test_task_gets_a_graceful_budget_below_its_hard_timeout(tmp_path):
 
     run_tick(manager, run=run, output=tmp_path / "report.json")
     assert 0 < seen["budget"] < seen["timeout"]
+
+
+def test_an_operator_can_force_a_task_that_is_not_due(tmp_path, monkeypatch):
+    monkeypatch.setenv("CI_REFRESH_FORCE_TASKS", "job_discovery")
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: []
+    seen = []
+
+    def run(command, **kwargs):
+        seen.append(command[-1])
+        raise subprocess.TimeoutExpired(command, kwargs["timeout"])
+
+    run_tick(manager, run=run, output=tmp_path / "report.json")
+    assert seen == ["--discover-jobs"]
