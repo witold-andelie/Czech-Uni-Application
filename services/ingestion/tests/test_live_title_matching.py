@@ -263,7 +263,6 @@ def test_gate_cli_withholds_one_record_and_publishes_the_rest(tmp_path: Path) ->
 
 
 def test_a_record_the_budget_did_not_reach_keeps_its_earlier_confirmation(tmp_path: Path) -> None:
-    import subprocess
 
     script = ROOT / "services" / "ingestion" / "src" / "cli" / "verify_live_titles.py"
     source = script.read_text(encoding="utf-8")
