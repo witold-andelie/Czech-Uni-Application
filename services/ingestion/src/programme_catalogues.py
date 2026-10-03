@@ -744,7 +744,78 @@ def harvest_vscht(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
     return {"programmes": records, "failures": failures, "listingPages": pages}
 
 
+# --------------------------------------------------------------------------- #
+# University of Hradec Králové: the paged applicants' programme list; each
+# programme page states "Typ studia: … Vyučovací jazyk: …" and its faculty is
+# the first path segment.
+# --------------------------------------------------------------------------- #
+
+UHK_LIST = "https://www.uhk.cz/cs/univerzita-hradec-kralove/prijimaci-zkousky/studijni-programy"
+UHK_FACULTIES = {
+    "fakulta-informatiky-a-managementu": "Fakulta informatiky a managementu",
+    "filozoficka-fakulta": "Filozofická fakulta",
+    "pedagogicka-fakulta": "Pedagogická fakulta",
+    "prirodovedecka-fakulta": "Přírodovědecká fakulta",
+}
+UHK_LEVELS = {
+    "bakalářské": "bachelor",
+    "navazující magisterské": "master",
+    "magisterské navazující": "master",
+    "magisterské": "master",
+    "doktorské": "doctorate",
+}
+_UHK_LINK_RE = re.compile(r'href="(/cs/([a-z-]+)/prijimaci-zkousky/studijni-programy/[a-z0-9-]+)"')
+
+
+def parse_uhk_programme(html: str, url: str) -> dict | None:
+    heading = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.S)
+    text = page_text(html)
+    level = UHK_LEVELS.get(((re.search(r"Typ studia:\s*(.+?)\s+Forma studia:", text) or [None, ""])[1]).strip().lower())
+    language = STAG_LANGUAGES.get(((re.search(r"Vyučovací jazyk:\s*(\w+)", text) or [None, ""])[1]).strip().lower())
+    title = page_text(heading.group(1)) if heading else ""
+    if not (title and level and language):
+        return None
+    segment = urlsplit(url).path.split("/")[2]
+    return {
+        "officialProgrammeUrl": url,
+        "titles": {"original": title},
+        "degree": level,
+        "studyLanguage": language,
+        "faculty": UHK_FACULTIES.get(segment, ""),
+    }
+
+
+def harvest_uhk(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
+    links: list[str] = []
+    failures: list[dict] = []
+    pages = 0
+    for number in range(1, 40):
+        url = UHK_LIST if number == 1 else f"{UHK_LIST}?rjPC22%3ApageNumber={number}&ramJetParameterContext=rjPC22"
+        status, html = fetch(url)
+        pages += 1
+        if status != 200 or not html:
+            failures.append({"url": url, "status": status})
+            break
+        found = [urljoin(UHK_LIST, match.group(1)) for match in _UHK_LINK_RE.finditer(html) if match.group(2) in UHK_FACULTIES]
+        new = [item for item in dict.fromkeys(found) if item not in links]
+        if not new:
+            break
+        links.extend(new)
+    records = []
+    for url in links:
+        status, html = fetch(url)
+        pages += 1
+        record = parse_uhk_programme(html, url) if status == 200 and html else None
+        if record:
+            records.append(record)
+        else:
+            failures.append({"url": url, "status": status})
+    log(f"uhk: {len(links)} programme page(s) listed, {len(records)} read")
+    return {"programmes": records, "failures": failures, "listingPages": pages}
+
+
 ADAPTERS = {
+    "uhk": ("msmt-vs_18000", "catalogue-uhk.json", harvest_uhk),
     "vscht": ("msmt-vs_22000", "catalogue-vscht.json", harvest_vscht),
     "vsb": ("msmt-vs_27000", "catalogue-vsb.json", harvest_vsb),
     "amu": ("msmt-vs_51000", "catalogue-amu.json", harvest_amu),

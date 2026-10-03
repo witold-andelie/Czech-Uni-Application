@@ -231,3 +231,11 @@ def test_vscht_level_comes_from_the_programme_code() -> None:
     assert pc.vscht_level("B") == "bachelor" and pc.vscht_level("an") == "master" and pc.vscht_level("D") is None
     assert pc.vscht_title("<title>Fuel Cells and Hydrogen Engineering AN110 - Study at UCT Prague</title>", "en") == "Fuel Cells and Hydrogen Engineering"
     assert pc.vscht_title("<title>Program | Studuj VŠCHT</title><h1>\n Chemie \n</h1>", "cs") == "Chemie"
+
+
+def test_uhk_programme_page_states_level_language_and_faculty() -> None:
+    html = "<h1>Archeologie</h1><p>Typ studia: Magisterské navazující Forma studia: Prezenční Doba studia: 2 roky Vyučovací jazyk: Čeština</p>"
+    row = pc.parse_uhk_programme(html, "https://www.uhk.cz/cs/filozoficka-fakulta/prijimaci-zkousky/studijni-programy/archeologie-25")
+    assert (row["titles"]["original"], row["degree"], row["studyLanguage"], row["faculty"]) == (
+        "Archeologie", "master", "cs", "Filozofická fakulta",
+    )
