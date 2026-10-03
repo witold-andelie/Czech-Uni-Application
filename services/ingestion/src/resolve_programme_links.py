@@ -186,18 +186,32 @@ def degree_stated(text: str, url: str = "") -> str:
     different levels, or none at all, give UNKNOWN_DEGREE, and an unknown level
     binds a page only when the title identifies exactly one register row.
     """
-    stated = ""
-    for pattern, degree in (
-        (BACHELOR_TOKEN_RE, "b"),
-        (MASTER_TOKEN_RE, "m"),
-        (DOCTORAL_TOKEN_RE, "d"),
-    ):
-        if not pattern.search(text or ""):
-            continue
-        if stated and stated != degree:
-            return UNKNOWN_DEGREE
-        stated = degree
-    return stated or UNKNOWN_DEGREE
+    def level_in(value: str) -> str:
+        stated = ""
+        for pattern, degree in (
+            (BACHELOR_TOKEN_RE, "b"),
+            (MASTER_TOKEN_RE, "m"),
+            (DOCTORAL_TOKEN_RE, "d"),
+        ):
+            if not pattern.search(value or ""):
+                continue
+            if stated and stated != degree:
+                return UNKNOWN_DEGREE
+            stated = degree
+        return stated or UNKNOWN_DEGREE
+
+    level = level_in(text)
+    if level != UNKNOWN_DEGREE or not url:
+        return level
+    # The text states none: the address may (fs.cvut.cz/…/navazujici-magisterske-
+    # programy/…). Only the path is read, never the host, and a path naming two
+    # levels (…/bakalarske-a-magisterske-studium/…) states none. Until
+    # 2026-10-03 this argument was accepted and ignored.
+    try:
+        path = urllib.parse.unquote(urllib.parse.urlsplit(url).path).casefold()
+    except ValueError:
+        return UNKNOWN_DEGREE
+    return level_in(re.sub(r"[-_/]+", " ", path))
 
 
 # --------------------------------------------------------------------------- #

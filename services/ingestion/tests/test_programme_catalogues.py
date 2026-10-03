@@ -284,3 +284,11 @@ def test_vut_list_states_faculty_level_and_language() -> None:
         ("Chemie a technologie materiálů", "bachelor", "cs", "Fakulta chemická"),
         ("Chemistry", "doctorate", "en", "Fakulta chemická"),
     ]
+
+
+def test_the_address_states_the_level_when_the_text_does_not() -> None:
+    url = "https://www.fs.cvut.cz/zajemci-o-studium/formy-studia/navazujici-magisterske-programy/epi-program/"
+    assert resolver.degree_stated("Energetika a procesní inženýrství", url) == "m"
+    assert resolver.degree_stated("Fyzika", "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/1-fyzika") == "u"
+    # The text decides when it states a level.
+    assert resolver.degree_stated("Fyzika (Bc.)", url) == "b"
