@@ -136,3 +136,24 @@ def test_uis_periods_of_the_current_academic_year_only() -> None:
     )
     links = pc.uis_period_links(html, "https://is.mendelu.cz/katalog/plany.pl?fakulta=14;;lang=cz", 2026)
     assert [link.split("poc_obdobi=")[1][:3] for link in links] == ["824", "825"]
+
+
+def test_faculty_probe_binds_the_row_the_page_says_provides_it() -> None:
+    rows = [
+        resolver.Row("lf1", "s", "General Medicine", "m", "en", "1. lékařská fakulta"),
+        resolver.Row("lf3", "s", "General Medicine", "m", "en", "3. lékařská fakulta"),
+    ]
+    match = resolver.Match(rows)
+    pages = {
+        "https://is.cuni.cz/a/1": "<p>Související akreditace Fakulta Název 3. lékařská fakulta</p><p>Zajištění výuky Fakulta: 1. lékařská fakulta (1LF)</p>",
+        "https://is.cuni.cz/a/2": "<p>Fakulta Název 1. lékařská fakulta 3. lékařská fakulta</p>",
+    }
+    candidates = [resolver.Candidate(url=url, title="General Medicine", language="en") for url in pages]
+    unresolved = {"lf1": "ambiguous_register_rows", "lf3": "ambiguous_register_rows"}
+    fetch = resolver.ThrottledFetch(lambda url: (200, pages[url]), sleep=lambda _s: None)
+    probed, _notes = resolver.probe_faculties(
+        match, unresolved, {resolver.normalise("General Medicine"): candidates}, fetch, resolver.Limits(), resolver.Budget(60)
+    )
+    assert list(probed) == ["lf1"]
+    assert probed["lf1"][0][0].url == "https://is.cuni.cz/a/1"
+    assert unresolved == {"lf3": "ambiguous_register_rows"}

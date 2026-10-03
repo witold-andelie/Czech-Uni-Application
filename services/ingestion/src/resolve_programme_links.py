@@ -1539,6 +1539,90 @@ def probe_levels(
     return probed, notes
 
 
+FACULTY_LABEL_RE = re.compile(r"(?:\b(?:Fakulta|Faculty)\s*:|\bZajišťuje\b|\bProvided by\b)\s*", re.I)
+
+
+def faculties_stated(body: str, faculties: Iterable[str]) -> set[str]:
+    """Which of ``faculties`` the page names right after a faculty label.
+
+    Only a labelled value counts ("Fakulta: Právnická fakulta", "Zajišťuje
+    Lékařská fakulta", "Provided by Faculty of ..."): a page footer or a table
+    of related programmes names every faculty, so a bare mention proves nothing.
+    """
+    text = visible_text(body)
+    wanted = {normalise(name): name for name in faculties if name}
+    found: set[str] = set()
+    for label in FACULTY_LABEL_RE.finditer(text):
+        following = normalise(text[label.end() : label.end() + 160])
+        for key, name in wanted.items():
+            if key and following.startswith(key):
+                found.add(name)
+    return found
+
+
+def probe_faculties(
+    match: Match,
+    unresolved: dict[str, str],
+    candidates_by_title: dict[str, list[Candidate]],
+    fetch: ThrottledFetch,
+    limits: Limits,
+    budget: Budget,
+) -> tuple[dict[str, list[tuple[Candidate, str]]], list[str]]:
+    """Separate a title the register carries at two faculties, using the page.
+
+    Charles University teaches General Medicine at five faculties; its catalogue
+    links name only the programme, while each accreditation page states
+    "Zajištění výuky – Fakulta: 1. lékařská fakulta". The page is read and the
+    row is bound only when exactly one of the title's faculties is stated there
+    (and, when the page states a level, at that level). Bounded like the level
+    probe and sharing its budget.
+    """
+    notes: list[str] = []
+    probed: dict[str, list[tuple[Candidate, str]]] = {}
+    rows_by_title: dict[str, list[Row]] = {}
+    for row in match.rows:
+        rows_by_title.setdefault(normalise(row.title), []).append(row)
+    outstanding = sorted(
+        title_key
+        for title_key, rows in rows_by_title.items()
+        if len({item.faculty for item in rows}) > 1
+        and any(unresolved.get(row.ident) == "ambiguous_register_rows" for row in rows)
+        and candidates_by_title.get(title_key)
+    )
+    reads = 0
+    for title_key in outstanding:
+        if reads >= limits.max_level_probes or budget.expired:
+            notes.append("faculty_probe_budget_exhausted")
+            break
+        if fetch.school_requests >= limits.max_page_fetches:
+            notes.append("budget_exhausted")
+            break
+        rows = rows_by_title[title_key]
+        for candidate in candidates_by_title[title_key]:
+            if reads >= limits.max_level_probes or budget.expired:
+                break
+            reads += 1
+            status, body = fetch(candidate.url)
+            if status != 200 or not body:
+                continue
+            stated = faculties_stated(body, {row.faculty for row in rows})
+            if len(stated) != 1:
+                continue
+            level = degree_stated(page_level_evidence(body))
+            chosen = [
+                row
+                for row in rows
+                if row.faculty in stated
+                and (level == UNKNOWN_DEGREE or row.degree == level)
+                and (not candidate.language or row.language == candidate.language or len(rows) == 1)
+            ]
+            if len(chosen) != 1:
+                continue
+            probed.setdefault(chosen[0].ident, []).append((candidate, chosen[0].language))
+            unresolved.pop(chosen[0].ident, None)
+    return probed, notes
+
+
 def resolve_school(
     target: dict,
     match: Match,
@@ -1604,6 +1688,12 @@ def resolve_school(
 
     if live:
         probed, probe_notes = probe_levels(
+            match, unresolved, candidates_by_title, fetch, limits, budget
+        )
+        notes.extend(probe_notes)
+        for ident, bindings in probed.items():
+            grouped.setdefault(ident, []).extend(bindings)
+        probed, probe_notes = probe_faculties(
             match, unresolved, candidates_by_title, fetch, limits, budget
         )
         notes.extend(probe_notes)

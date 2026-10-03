@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import json
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -219,8 +219,15 @@ def test_gate_cli_withholds_one_record_and_publishes_the_rest(tmp_path: Path) ->
         json.dumps({"jobs": [_job("confirmed"), _job("gone")], "windows": []}), encoding="utf-8"
     )
     evidence = tmp_path / "evidence.json"
+    # The CLI judges freshness against the real clock: check "now".
+    checked = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     evidence.write_text(
-        json.dumps(_evidence([_row("confirmed", "matched"), _row("gone", "source_change_noted")])),
+        json.dumps(
+            {
+                **_evidence([_row("confirmed", "matched", checked), _row("gone", "source_change_noted", checked)]),
+                "generatedAt": checked,
+            }
+        ),
         encoding="utf-8",
     )
     script = ROOT / "services" / "ingestion" / "src" / "cli" / "check_live_evidence.py"
@@ -243,7 +250,7 @@ def test_gate_cli_withholds_one_record_and_publishes_the_rest(tmp_path: Path) ->
     assert "gone has no live verification within 7 days (source_change_noted)" in strict.stdout
 
     evidence.write_text(
-        json.dumps(_evidence([_row("confirmed", "matched"), _row("gone", "matched")])),
+        json.dumps({**_evidence([_row("confirmed", "matched", checked), _row("gone", "matched", checked)]), "generatedAt": checked}),
         encoding="utf-8",
     )
     passed = subprocess.run(
