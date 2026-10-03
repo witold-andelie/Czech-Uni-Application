@@ -1,35 +1,35 @@
 {
   "ledgerSchemaVersion": 1,
-  "generatedAt": "2026-10-02T22:43:55Z",
-  "publicationVersion": "v2026-10-02.1",
-  "candidateGenerationId": "cg-19c6099d7f904a899e3f1847fda0b0a0",
-  "sourceRunSetDigest": "sha256:f7d41996104c2eae92a9f880018de4da476c4c9bd42ca3bc6383406faebc2361",
-  "currentCandidates": 165,
+  "generatedAt": "2026-10-03T04:59:28Z",
+  "publicationVersion": "v2026-10-03.1",
+  "candidateGenerationId": "cg-cd58188cc8364f0eb13ec8c4055f168b",
+  "sourceRunSetDigest": "sha256:27b8fb169494a487f0e044c7620548c45fa30c40e5479bf7e0620e208f54f194",
+  "currentCandidates": 233,
   "summary": {
-    "approved_public": 90,
-    "blocked": 75,
+    "approved_public": 91,
+    "blocked": 142,
     "blockerCounts": {
       "unconfirmed_pay_evidence": 0,
-      "unspecified_scope": 21,
+      "unspecified_scope": 23,
       "evidence_changed_since_review": 0,
-      "trilingual_review_missing": 21,
+      "trilingual_review_missing": 61,
       "review_incomplete": 0
     },
     "unknownAttributeCounts": {
-      "degree_unstated": 55,
-      "doctoral_enrollment_unspecified": 141
+      "degree_unstated": 85,
+      "doctoral_enrollment_unspecified": 203
     }
   },
   "bySchool": {
     "msmt-vs_18000": {
-      "current": 7,
+      "current": 10,
       "approved_public": 7,
-      "blocked": 0
+      "blocked": 3
     },
     "msmt-vs_11000": {
-      "current": 15,
-      "approved_public": 1,
-      "blocked": 14
+      "current": 34,
+      "approved_public": 2,
+      "blocked": 32
     },
     "msmt-vs_26000": {
       "current": 7,
@@ -37,29 +37,29 @@
       "blocked": 0
     },
     "msmt-vs_17000": {
-      "current": 11,
+      "current": 13,
       "approved_public": 8,
-      "blocked": 3
-    },
-    "msmt-vs_23000": {
-      "current": 22,
-      "approved_public": 14,
-      "blocked": 8
-    },
-    "msmt-vs_43000": {
-      "current": 4,
-      "approved_public": 1,
-      "blocked": 3
-    },
-    "msmt-vs_27000": {
-      "current": 5,
-      "approved_public": 0,
       "blocked": 5
     },
+    "msmt-vs_23000": {
+      "current": 25,
+      "approved_public": 14,
+      "blocked": 11
+    },
+    "msmt-vs_43000": {
+      "current": 9,
+      "approved_public": 1,
+      "blocked": 8
+    },
+    "msmt-vs_27000": {
+      "current": 7,
+      "approved_public": 0,
+      "blocked": 7
+    },
     "msmt-vs_21000": {
-      "current": 31,
+      "current": 46,
       "approved_public": 19,
-      "blocked": 12
+      "blocked": 27
     },
     "msmt-vs_15000": {
       "current": 8,
@@ -72,9 +72,9 @@
       "blocked": 2
     },
     "msmt-vs_14000": {
-      "current": 15,
+      "current": 29,
       "approved_public": 12,
-      "blocked": 3
+      "blocked": 17
     },
     "msmt-vs_28000": {
       "current": 1,
@@ -82,9 +82,9 @@
       "blocked": 1
     },
     "msmt-vs_12000": {
-      "current": 8,
+      "current": 10,
       "approved_public": 4,
-      "blocked": 4
+      "blocked": 6
     },
     "msmt-vs_51000": {
       "current": 3,
@@ -97,9 +97,14 @@
       "blocked": 8
     },
     "msmt-vs_22000": {
-      "current": 4,
+      "current": 6,
       "approved_public": 0,
-      "blocked": 4
+      "blocked": 6
+    },
+    "msmt-vs_7c000": {
+      "current": 1,
+      "approved_public": 0,
+      "blocked": 1
     },
     "msmt-vs_13000": {
       "current": 6,
@@ -236,13 +241,59 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-10-03",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T09:02:34Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu463713",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Lecturer at the Department of Experimental Plant Biology",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/463713",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-03",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-18000-eu463910",
+      "employerId": "msmt-vs_18000",
+      "originalText": "Postdoctoral Researcher in Bioorganic Chemistry (Modulators of Mitochondrial Enzymes in Neurodegeneration)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/463910",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-03",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -330,6 +381,29 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-23000-eu464061",
+      "employerId": "msmt-vs_23000",
+      "originalText": "RESEARCHER (R2)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/464061",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-04",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-43000-497777",
       "employerId": "msmt-vs_43000",
       "originalText": "Project Researcher II with a Focus on Energy Markets Trading",
@@ -348,6 +422,29 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T20:28:58Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-43000-eu466666",
+      "employerId": "msmt-vs_43000",
+      "originalText": "Project Researcher II with a Focus on Energy Markets Trading",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/466666",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-04",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -522,6 +619,29 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-43000-eu451093",
+      "employerId": "msmt-vs_43000",
+      "originalText": "Assistant specialising in the Mechanisation of Production Systems and Renewable Energy Sources",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/451093",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-07",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-18000-ebb5341d8eaa",
       "employerId": "msmt-vs_18000",
       "originalText": "FIM - Academic staff member for teaching courses focused on management and marketing subjectsin English for the Department of Management",
@@ -690,6 +810,48 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-18000-eu465336",
+      "employerId": "msmt-vs_18000",
+      "originalText": "Postdoctoral Researcher, Faculty of Informatics and management",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/465336",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-10",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu466323",
+      "employerId": "msmt-vs_21000",
+      "originalText": "PhD position in “Semantic Communication for Robots”",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/466323",
+      "track": "assistant",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "required",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-11",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": false
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-26000-2001455359",
       "employerId": "msmt-vs_26000",
       "originalText": "Vědecko-výzkumný pracovník/pracovnice - junior (R1) Ústavu stavební mechaniky",
@@ -753,6 +915,29 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-43000-eu469956",
+      "employerId": "msmt-vs_43000",
+      "originalText": "Project Researcher I Specializing in Composite Materials and Their Fire Resistance",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469956",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-13",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-17000-196",
       "employerId": "msmt-vs_17000",
       "originalText": "Administrátor/ka portálových aplikací – junior",
@@ -795,6 +980,29 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T19:51:35Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-27000-eu466892",
+      "employerId": "msmt-vs_27000",
+      "originalText": "Senior Research Centre Leader – Electron-Beam Engineering and CVD Synthesis of Low-Dimensional Materials",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/466892",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-14",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -906,6 +1114,27 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-01T21:09:04Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-18000-eu464128",
+      "employerId": "msmt-vs_18000",
+      "originalText": "Postdoctoral Researcher, Faculty of Education, University of Hradec Králové (2027-2029)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/464128",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-15",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1077,6 +1306,69 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T20:30:18Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu461358",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Doctoral student (Automation of Continuous Experimentation Processes)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/461358",
+      "track": "assistant",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "required",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-18",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": false
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu467238",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Postdoctoral Researcher in MENA Constitutionalism and Field Research",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/467238",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-19",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu467239",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Postdoctoral Researcher in Comparative Constitutional Law and Political Community",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/467239",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-19",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1272,6 +1564,121 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-11000-eu467959",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Research Scientist with teaching responsibilities at the Institute for Environmental Studies (M/F)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/467959",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-23",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu467960",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Assistant Professor at the Insititute for Environmental Studies (M/Ž)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/467960",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-23",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu467961",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Research Scientist with teaching responsibilities at the Institute for Environmental Studies (M/F)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/467961",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-23",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu467962",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Research Scientist with teaching responsibilities at the Institute for Environmental Studies (M/F)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/467962",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-23",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu467963",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Assistant Professor at the Institute for Environmental Studies (M/Ž)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/467963",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-23",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-21000-5514",
       "employerId": "msmt-vs_21000",
       "originalText": "Výběrové řizení - Odborný asistent/ka/,Docent/ka/,Profesor/ka/, Lektor/ka v oboru Informatika - počítačové sítě a internet věcí",
@@ -1290,6 +1697,27 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T19:58:17Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-27000-eu469739",
+      "employerId": "msmt-vs_27000",
+      "originalText": "Postdoctoral Researcher in Micro-and Nanorobotics",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469739",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-23",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1332,6 +1760,52 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T09:02:34Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu468236",
+      "employerId": "msmt-vs_11000",
+      "originalText": "The Faculty of Physical Education and Sport is seeking an academic staff member for the position of Assistant Professor at the Department of Sports Games, with a 0.5 FTE appointment and a starting date by agreement.",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468236",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-24",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu468237",
+      "employerId": "msmt-vs_11000",
+      "originalText": "he Faculty of Physical Education and Sport is seeking an academic staff member for the position of Assistant Professor at the Department of Sports Games, with a 0.5 FTE appointment and a starting date by agreement.",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468237",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-24",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1503,6 +1977,29 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-11000-eu468577",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Postdoctoral Researcher in Structural Biology and Cytoskeletal Dynamics",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468577",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-26",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-14000-81774",
       "employerId": "msmt-vs_14000",
       "originalText": "Head of the Department of Surgical Oncology",
@@ -1566,6 +2063,29 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-11000-eu469340",
+      "employerId": "msmt-vs_11000",
+      "originalText": "FaF_VZ4_105: PhD Student, 0,15 FTE (project NETPHARM)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469340",
+      "track": "assistant",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-29",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-14000-81795",
       "employerId": "msmt-vs_14000",
       "originalText": "Instructor / Assistant Professor for Department of Radiology and Nuclear Medicine of Faculty of Medicine MU ( joint workplaces with the University Hospital Brno)",
@@ -1584,6 +2104,52 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T20:30:18Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-43000-eu469647",
+      "employerId": "msmt-vs_43000",
+      "originalText": "Assistant Professor Specialising in Applied Entomology",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469647",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-29",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-12000-eu464519",
+      "employerId": "msmt-vs_12000",
+      "originalText": "Postdoctoral Researcher in (Bio)Physics",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/464519",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-30",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1632,6 +2198,30 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-14000-eu469730",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Scientific Director of the Preclinical Centre",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469730",
+      "track": null,
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "unspecified",
+      "nearestDeadline": "2026-10-30",
+      "decision": "blocked",
+      "blockers": [
+        "unspecified_scope",
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-17000-194",
       "employerId": "msmt-vs_17000",
       "originalText": "Odborný asistent / odborná asistentka se zaměřením na biofyziku a molekulární biologii",
@@ -1671,6 +2261,50 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-01T20:32:27Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-17000-eu469550",
+      "employerId": "msmt-vs_17000",
+      "originalText": "Assistant Professor specializing in Biophysics and Molecular Biology",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469550",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-30",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-17000-eu469555",
+      "employerId": "msmt-vs_17000",
+      "originalText": "Assistant Professor specializing in Biophysics",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469555",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-30",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1842,6 +2476,27 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-23000-eu469546",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Recognised researcher (R2) in Archaeology, Faculty of Arts, University of West Bohemia",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469546",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-30",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-43000-498518",
       "employerId": "msmt-vs_43000",
       "originalText": "Assistant Professor Specialising in Applied Entomology",
@@ -1947,6 +2602,96 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-11000-eu455960",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Senior Researcher - ERA Chair in Regional Competitiveness and Industrial Transformation",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/455960",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-31",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu458106",
+      "employerId": "msmt-vs_11000",
+      "originalText": "SCIENTIFIC POSITION Junior Group Leader in Virology (M/F)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/458106",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-31",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu470018",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Research Assistant in Biochemistry (M/F)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/470018",
+      "track": "assistant",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-31",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu470019",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Head of the Department of Analytical Chemistry (M/F)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/470019",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-31",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-12000-0734174e7128",
       "employerId": "msmt-vs_12000",
       "originalText": "Vědecký pracovník/Vědecká pracovnice do Laboratoře výživy (FROV JU)",
@@ -1965,6 +2710,29 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T20:00:04Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-12000-eu464866",
+      "employerId": "msmt-vs_12000",
+      "originalText": "Postdoctoral Researcher in (Bio)Physics",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/464866",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-31",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2055,6 +2823,29 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-23000-eu467125",
+      "employerId": "msmt-vs_23000",
+      "originalText": "Academic Career in Pilsen 2027",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/467125",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-10-31",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-43000-492828",
       "employerId": "msmt-vs_43000",
       "originalText": "Assistant Specialising in the Mechanisation of Production Systems and Renewable Energy Sources",
@@ -2094,6 +2885,29 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T09:02:34Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu461971",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Assistant Professor at the department of Political Science",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/461971",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-11-01",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2178,6 +2992,99 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T20:29:05Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu469707",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Director of the Institute – Academic Staff Member – Professor / Associate Professor / Assistant Professor",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469707",
+      "track": null,
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "unspecified",
+      "nearestDeadline": "2026-11-15",
+      "decision": "blocked",
+      "blockers": [
+        "unspecified_scope",
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu468193",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Intratumoral heterogeneity in cellular response to p53 and ISR activation",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468193",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-11-29",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu468194",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Mechanism of the cell death induced by joint activation of p53 and ISR networks (Mechanismus buněčné smrti indukované současnou aktivací p53 a ISR)",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468194",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-11-29",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu468195",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Identification and functional characterization of post translational-mediated controls acting during meiosis in C. elegans",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468195",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-11-29",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2268,6 +3175,390 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-14000-eu450327",
+      "employerId": "msmt-vs_14000",
+      "originalText": "PhD Candidate: How do viruses hijack the cell's protein factory",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/450327",
+      "track": "assistant",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "required",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-11-30",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": false
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu469274",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Postdoctoral Researcher in structural virology",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/469274",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-11-30",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428498",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Multiscale, Stochastic and Data-Driven Modeling of Materials and Processes",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428498",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428505",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Innovative processes and equipment in green materials, chemicals, and advanced biofuels production technologies",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428505",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428521",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Magnetic sensors and actuators",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428521",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428526",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Wide-Bandgap Electronics for Energy Conversion",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428526",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428534",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Learning while searching in symbolic planners",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428534",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428536",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Multilevel Modeling of Outcome Predictors Following Subthalamic Deep Brain Stimulation in Parkinson’s Disease",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428536",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428543",
+      "employerId": "msmt-vs_21000",
+      "originalText": "High-Velocity Dust Impacts on Tungsten Plasma-Facing Materials: A Predictive Multi-Scale Modeling Framework with Experimental Validation",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428543",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428552",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Explainable end-to-end differentiable perception for self-supervised learning in robotics",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428552",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428564",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Liquid Phase Chemistry of Homologues of Superheavy Elements",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428564",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428892",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Accelerator mass spectrometry in analysis of environmental samples",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428892",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428898",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Superintegrability in classical and quantum mechanics",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428898",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428902",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Study of novel scintillator materials for high-energy physics and applications",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428902",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428939",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Quantum metrology of electrical quantities",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428939",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-eu428959",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Novel methods of demolition waste recognition and classification",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/428959",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-03",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-22000-eu329295",
+      "employerId": "msmt-vs_22000",
+      "originalText": "Characterization and modelling of particle flow properties",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/329295",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-13",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-22000-eu329316",
+      "employerId": "msmt-vs_22000",
+      "originalText": "CFD Modelling of Multiphase Flows in Complex and Non-Newtonian Fluids",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/329316",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-13",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-14000-81775",
       "employerId": "msmt-vs_14000",
       "originalText": "PhD Candidate in (Un) Structural Biology of Wnt Signaling",
@@ -2307,6 +3598,94 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T20:30:18Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu468191",
+      "employerId": "msmt-vs_14000",
+      "originalText": "PostDoc in (Un) Structural Biology of Wnt Signaling",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468191",
+      "track": "postdoc",
+      "isPostdoc": true,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-23",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu468192",
+      "employerId": "msmt-vs_14000",
+      "originalText": "PhD Candidate in (Un) Structural Biology of Wnt Signaling",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468192",
+      "track": "assistant",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "required",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-23",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": false
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-7c000-eu459760",
+      "employerId": "msmt-vs_7c000",
+      "originalText": "Researcher in the Department of Management",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/459760",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-12-31",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-43000-eu459342",
+      "employerId": "msmt-vs_43000",
+      "originalText": "Assistant Professor with a Focus on Ruminant Nutrition",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/459342",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2027-01-05",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2352,6 +3731,119 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-14000-eu465466",
+      "employerId": "msmt-vs_14000",
+      "originalText": "cryo-EM of ribosomal complexes involved in eukaryotic translation control",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/465466",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2027-01-08",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu465478",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Fully Funded PhD Position in Structural Biology of Eukaryotic Translation Control",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/465478",
+      "track": "assistant",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "required",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2027-01-08",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": false
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu465479",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Research Specialist in Structural Biology",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/465479",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2027-01-08",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu465754",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Fully Funded PhD Position in Structural Biology of Eukaryotic Translation Control",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/465754",
+      "track": "assistant",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "required",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2027-01-08",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": false
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-eu465755",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Research Specialist in Structural Biology",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/465755",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2027-01-08",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-11000-202701-ap2-mff-iuuk-080",
       "employerId": "msmt-vs_11000",
       "originalText": "Assistant Professor of Theoretical Computer Science at the Computer Science Institute of Charles University",
@@ -2370,6 +3862,29 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-02T09:02:34Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-eu463103",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Assistant Professor of Theoretical Computer Science at the Computer Science Institute of Charles University",
+      "sourceUrl": "https://euraxess.ec.europa.eu/jobs/463103",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2027-01-31",
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-02T23:15:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
