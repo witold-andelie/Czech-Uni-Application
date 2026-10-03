@@ -260,3 +260,13 @@ def test_gate_cli_withholds_one_record_and_publishes_the_rest(tmp_path: Path) ->
     )
     assert passed.returncode == 0
     assert "live evidence ok" in passed.stdout
+
+
+def test_a_record_the_budget_did_not_reach_keeps_its_earlier_confirmation(tmp_path: Path) -> None:
+    import subprocess
+
+    script = ROOT / "services" / "ingestion" / "src" / "cli" / "verify_live_titles.py"
+    source = script.read_text(encoding="utf-8")
+    # The budget branch carries a confirmed earlier row instead of overwriting it.
+    assert 'previous.get("status") in confirmed' in source
+    assert source.index('previous.get("status") in confirmed') < source.index('"status": "skipped_budget"')

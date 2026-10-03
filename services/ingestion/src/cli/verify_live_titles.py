@@ -330,6 +330,13 @@ def main() -> None:
         if args.limit and processed >= args.limit:
             break
         if time.time() - started >= args.budget:
+            # Not read this run is not evidence of anything: a confirmation
+            # from an earlier run stays until its own age runs out. Writing a
+            # "skipped" row over it withheld 30 verified vacancies (2026-10-03).
+            previous = previous_rows.get(task["candidateId"])
+            if previous and previous.get("status") in confirmed:
+                rows.append({**previous, "carriedFrom": previous.get("carriedFrom") or previous_generated_at})
+                continue
             rows.append({**task_meta(task), "status": "skipped_budget", "checkedAt": ts(), "httpStatus": None, "matched": False, "reason": "wall-clock budget exhausted"})
             continue
         host = urlsplit(task["sourceUrl"]).netloc

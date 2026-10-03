@@ -27,7 +27,7 @@ jobs:
   refresh:
     runs-on: ubuntu-24.04
     # A full tick measured ~46 min (2026-09-28/29); keep headroom for the commit steps.
-    timeout-minutes: ${{ github.event.inputs.mode == 'adapters' && 20 || 60 }}
+    timeout-minutes: ${{ github.event.inputs.mode == 'adapters' && 20 || 80 }}
     permissions:
       contents: write
       actions: write
@@ -174,9 +174,9 @@ jobs:
           # and a wall-clock budget so a tick can never run away. A 404/403/
           # 500/timeout is recorded as source evidence change, never as a
           # closed vacancy (docs/REFRESH_POLICY.md).
-          LIVE_VERIFY_BUDGET_SECONDS: "780"
+          LIVE_VERIFY_BUDGET_SECONDS: "1500"
         run: |
-          budget="${LIVE_VERIFY_BUDGET_SECONDS:-780}"
+          budget="${LIVE_VERIFY_BUDGET_SECONDS:-1500}"
           python -u services/ingestion/src/cli/verify_live_titles.py --budget "$budget" || true
           python - <<'PY'
           import json
