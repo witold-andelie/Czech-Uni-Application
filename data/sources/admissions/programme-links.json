@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-10-03T08:17:52Z",
+  "generatedAt": "2026-10-03T10:52:19Z",
   "dataClass": "school_owned_programme_page_index",
   "note": "School-owned programme page links for the MŠMT register inventory. Each link was resolved from the university's own site by exact normalised title/degree/language equality; a row without a proven page keeps the university-site fallback and is listed under unresolved. No fuzzy or partial matching, and no invented URLs.",
   "counts": {
     "schools": 53,
     "offerings": 5019,
-    "linked": 3892,
-    "unresolved": 1127,
-    "rowsWithMultipleSchoolPages": 2149
+    "linked": 4021,
+    "unresolved": 998,
+    "rowsWithMultipleSchoolPages": 2303
   },
   "coverage": {
     "totals": {
       "schools": 53,
       "offerings": 5019,
-      "resolved": 3892,
-      "unresolved": 1127,
-      "rowsWithMultipleSchoolPages": 2149,
+      "resolved": 4021,
+      "unresolved": 998,
+      "rowsWithMultipleSchoolPages": 2303,
       "byReachability": {
         "access_control": 1,
-        "http_200_title_not_confirmed": 3099,
-        "unverified": 2,
-        "verified": 790
+        "http_200_title_not_confirmed": 3108,
+        "unverified": 39,
+        "verified": 873
       }
     },
     "schools": [
@@ -38,7 +38,7 @@
           "ambiguous_register_rows": 20,
           "no_candidate_page": 51
         },
-        "resolvedAt": "2026-10-03T06:54:06Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       },
       {
@@ -73,7 +73,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 8
         },
-        "resolvedAt": "2026-10-03T06:53:57Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       },
       {
@@ -85,16 +85,14 @@
         "offerings": 534,
         "resolved": 447,
         "unresolved": 87,
-        "rowsWithMultipleSchoolPages": 136,
+        "rowsWithMultipleSchoolPages": 137,
         "unresolvedReasons": {
           "ambiguous_register_rows": 14,
           "no_candidate_page": 69,
           "page_states_another_level": 4
         },
-        "resolvedAt": "2026-10-03T06:54:09Z",
-        "notes": [
-          "promoted_to_https: 1"
-        ]
+        "resolvedAt": "2026-10-03T09:27:26Z",
+        "notes": []
       },
       {
         "institutionId": "msmt-vs_15000",
@@ -110,7 +108,7 @@
           "ambiguous_register_rows": 7,
           "no_candidate_page": 77
         },
-        "resolvedAt": "2026-10-03T06:53:57Z",
+        "resolvedAt": "2026-10-03T09:27:11Z",
         "notes": [
           "catalogue_unreachable_http_401",
           "catalogue_unreachable_http_404 (x2)"
@@ -141,14 +139,14 @@
           "osu.cz"
         ],
         "offerings": 169,
-        "resolved": 133,
-        "unresolved": 36,
+        "resolved": 134,
+        "unresolved": 35,
         "rowsWithMultipleSchoolPages": 133,
         "unresolvedReasons": {
           "ambiguous_register_rows": 1,
-          "no_candidate_page": 35
+          "no_candidate_page": 34
         },
-        "resolvedAt": "2026-10-03T06:54:03Z",
+        "resolvedAt": "2026-10-03T09:27:13Z",
         "notes": [
           "level_probe_budget_exhausted"
         ]
@@ -160,14 +158,14 @@
           "uhk.cz"
         ],
         "offerings": 126,
-        "resolved": 80,
-        "unresolved": 46,
-        "rowsWithMultipleSchoolPages": 40,
+        "resolved": 94,
+        "unresolved": 32,
+        "rowsWithMultipleSchoolPages": 53,
         "unresolvedReasons": {
-          "ambiguous_register_rows": 19,
-          "no_candidate_page": 27
+          "ambiguous_register_rows": 15,
+          "no_candidate_page": 17
         },
-        "resolvedAt": "2026-10-03T06:53:59Z",
+        "resolvedAt": "2026-10-03T09:27:26Z",
         "notes": [
           "catalogue_unreachable_http_401",
           "catalogue_unreachable_http_404 (x4)"
@@ -180,14 +178,13 @@
           "slu.cz"
         ],
         "offerings": 74,
-        "resolved": 0,
-        "unresolved": 74,
+        "resolved": 52,
+        "unresolved": 22,
         "rowsWithMultipleSchoolPages": 0,
         "unresolvedReasons": {
-          "no_candidate_page": 22,
-          "page_states_nothing": 52
+          "no_candidate_page": 22
         },
-        "resolvedAt": "2026-10-03T03:35:28Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       },
       {
@@ -204,7 +201,7 @@
           "ambiguous_register_rows": 18,
           "no_candidate_page": 68
         },
-        "resolvedAt": "2026-10-03T06:54:09Z",
+        "resolvedAt": "2026-10-03T09:27:18Z",
         "notes": [
           "catalogue_unreachable_http_404 (x4)"
         ]
@@ -216,15 +213,15 @@
           "vscht.cz"
         ],
         "offerings": 116,
-        "resolved": 43,
-        "unresolved": 73,
+        "resolved": 61,
+        "unresolved": 55,
         "rowsWithMultipleSchoolPages": 11,
         "unresolvedReasons": {
-          "ambiguous_register_rows": 25,
-          "no_candidate_page": 40,
-          "page_returned_404": 8
+          "ambiguous_register_rows": 12,
+          "no_candidate_page": 36,
+          "page_returned_404": 7
         },
-        "resolvedAt": "2026-10-03T06:54:03Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": [
           "catalogue_unreachable_http_403",
           "catalogue_unreachable_http_404 (x11)"
@@ -243,7 +240,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 49
         },
-        "resolvedAt": "2026-10-03T06:53:59Z",
+        "resolvedAt": "2026-10-03T09:27:18Z",
         "notes": []
       },
       {
@@ -259,7 +256,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 5
         },
-        "resolvedAt": "2026-10-03T06:54:03Z",
+        "resolvedAt": "2026-10-03T09:27:11Z",
         "notes": []
       },
       {
@@ -271,12 +268,11 @@
         "offerings": 152,
         "resolved": 141,
         "unresolved": 11,
-        "rowsWithMultipleSchoolPages": 82,
+        "rowsWithMultipleSchoolPages": 72,
         "unresolvedReasons": {
-          "no_candidate_page": 2,
-          "page_states_nothing": 9
+          "no_candidate_page": 11
         },
-        "resolvedAt": "2026-10-03T03:35:13Z",
+        "resolvedAt": "2026-10-03T09:27:11Z",
         "notes": []
       },
       {
@@ -294,7 +290,7 @@
           "ambiguous_register_rows": 19,
           "no_candidate_page": 19
         },
-        "resolvedAt": "2026-10-03T06:53:57Z",
+        "resolvedAt": "2026-10-03T09:27:26Z",
         "notes": []
       },
       {
@@ -304,15 +300,15 @@
           "vsb.cz"
         ],
         "offerings": 293,
-        "resolved": 228,
-        "unresolved": 65,
-        "rowsWithMultipleSchoolPages": 17,
+        "resolved": 235,
+        "unresolved": 58,
+        "rowsWithMultipleSchoolPages": 148,
         "unresolvedReasons": {
-          "ambiguous_register_rows": 16,
+          "ambiguous_register_rows": 10,
           "no_candidate_page": 47,
-          "page_states_another_level": 2
+          "page_states_another_level": 1
         },
-        "resolvedAt": "2026-10-03T06:54:06Z",
+        "resolvedAt": "2026-10-03T09:27:13Z",
         "notes": [
           "catalogue_unreachable_http_404 (x3)"
         ]
@@ -330,7 +326,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 35
         },
-        "resolvedAt": "2026-10-03T06:54:09Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       },
       {
@@ -347,7 +343,7 @@
           "ambiguous_register_rows": 3,
           "no_candidate_page": 19
         },
-        "resolvedAt": "2026-10-03T06:53:59Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": [
           "catalogue_unreachable_http_404 (x2)"
         ]
@@ -365,7 +361,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 12
         },
-        "resolvedAt": "2026-10-03T06:54:06Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": [
           "catalogue_unreachable_http_404 (x2)"
         ]
@@ -385,7 +381,7 @@
           "no_candidate_page": 14,
           "page_states_nothing": 8
         },
-        "resolvedAt": "2026-10-03T06:53:59Z",
+        "resolvedAt": "2026-10-03T09:27:13Z",
         "notes": [
           "catalogue_unreachable_http_404"
         ]
@@ -400,13 +396,13 @@
           "hamu.cz"
         ],
         "offerings": 101,
-        "resolved": 27,
-        "unresolved": 74,
-        "rowsWithMultipleSchoolPages": 0,
+        "resolved": 64,
+        "unresolved": 37,
+        "rowsWithMultipleSchoolPages": 19,
         "unresolvedReasons": {
-          "no_candidate_page": 74
+          "no_candidate_page": 37
         },
-        "resolvedAt": "2026-10-03T06:54:05Z",
+        "resolvedAt": "2026-10-03T09:27:11Z",
         "notes": [
           "budget_exhausted (x2)",
           "budget_exhausted"
@@ -425,7 +421,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 12
         },
-        "resolvedAt": "2026-10-03T06:54:05Z",
+        "resolvedAt": "2026-10-03T09:27:26Z",
         "notes": []
       },
       {
@@ -443,7 +439,7 @@
           "ambiguous_register_rows": 6,
           "page_returned_404": 2
         },
-        "resolvedAt": "2026-10-03T06:54:03Z",
+        "resolvedAt": "2026-10-03T09:27:26Z",
         "notes": [
           "catalogue_unreachable_http_404 (x10)"
         ]
@@ -461,7 +457,7 @@
         "unresolvedReasons": {
           "ambiguous_register_rows": 19
         },
-        "resolvedAt": "2026-10-03T06:54:09Z",
+        "resolvedAt": "2026-10-03T09:27:13Z",
         "notes": [
           "catalogue_unreachable_http_403 (x2)"
         ]
@@ -479,7 +475,7 @@
         "unresolvedReasons": {
           "ambiguous_register_rows": 2
         },
-        "resolvedAt": "2026-10-03T06:53:57Z",
+        "resolvedAt": "2026-10-03T09:27:18Z",
         "notes": []
       },
       {
@@ -496,7 +492,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-03T06:54:03Z",
+        "resolvedAt": "2026-10-03T09:27:18Z",
         "notes": [
           "catalogue_unreachable_http_404 (x6)"
         ]
@@ -516,7 +512,7 @@
           "no_candidate_page": 15,
           "page_states_another_level": 1
         },
-        "resolvedAt": "2026-10-03T06:54:09Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": [
           "catalogue_unreachable_http_404"
         ]
@@ -553,7 +549,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 1
         },
-        "resolvedAt": "2026-10-03T06:53:57Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": [
           "catalogue_unreachable_http_404 (x3)"
         ]
@@ -569,7 +565,7 @@
         "unresolved": 0,
         "rowsWithMultipleSchoolPages": 0,
         "unresolvedReasons": {},
-        "resolvedAt": "2026-10-03T06:54:03Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       },
       {
@@ -585,7 +581,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-03T06:53:59Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       },
       {
@@ -601,7 +597,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 1
         },
-        "resolvedAt": "2026-10-03T06:54:06Z",
+        "resolvedAt": "2026-10-03T09:27:26Z",
         "notes": []
       },
       {
@@ -617,7 +613,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-03T03:35:11Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       },
       {
@@ -633,7 +629,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 2
         },
-        "resolvedAt": "2026-10-03T06:54:06Z",
+        "resolvedAt": "2026-10-03T09:27:18Z",
         "notes": []
       },
       {
@@ -647,7 +643,7 @@
         "unresolved": 0,
         "rowsWithMultipleSchoolPages": 4,
         "unresolvedReasons": {},
-        "resolvedAt": "2026-10-03T06:53:59Z",
+        "resolvedAt": "2026-10-03T09:27:11Z",
         "notes": [
           "catalogue_unreachable_http_404"
         ]
@@ -665,7 +661,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 13
         },
-        "resolvedAt": "2026-10-03T03:35:16Z",
+        "resolvedAt": "2026-10-03T09:27:18Z",
         "notes": []
       },
       {
@@ -695,7 +691,7 @@
         "unresolved": 0,
         "rowsWithMultipleSchoolPages": 27,
         "unresolvedReasons": {},
-        "resolvedAt": "2026-10-03T06:53:57Z",
+        "resolvedAt": "2026-10-03T09:27:13Z",
         "notes": [
           "catalogue_unreachable_http_404 (x4)"
         ]
@@ -711,7 +707,7 @@
         "unresolved": 0,
         "rowsWithMultipleSchoolPages": 0,
         "unresolvedReasons": {},
-        "resolvedAt": "2026-10-03T06:53:59Z",
+        "resolvedAt": "2026-10-03T09:27:26Z",
         "notes": []
       },
       {
@@ -727,7 +723,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-03T06:53:57Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       },
       {
@@ -743,7 +739,7 @@
         "unresolvedReasons": {
           "ambiguous_register_rows": 2
         },
-        "resolvedAt": "2026-10-03T06:54:06Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": [
           "catalogue_unreachable_http_404 (x3)"
         ]
@@ -762,7 +758,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 7
         },
-        "resolvedAt": "2026-10-03T06:54:05Z",
+        "resolvedAt": "2026-10-03T09:27:18Z",
         "notes": []
       },
       {
@@ -779,7 +775,7 @@
           "ambiguous_register_rows": 3,
           "no_candidate_page": 6
         },
-        "resolvedAt": "2026-10-03T06:53:57Z",
+        "resolvedAt": "2026-10-03T09:27:11Z",
         "notes": []
       },
       {
@@ -795,7 +791,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 2
         },
-        "resolvedAt": "2026-10-03T06:54:09Z",
+        "resolvedAt": "2026-10-03T09:27:26Z",
         "notes": []
       },
       {
@@ -811,9 +807,9 @@
         "unresolvedReasons": {
           "no_candidate_page": 1
         },
-        "resolvedAt": "2026-10-03T06:53:59Z",
+        "resolvedAt": "2026-10-03T09:27:18Z",
         "notes": [
-          "catalogue_unreachable_http_404"
+          "catalogue_unreachable_http_0"
         ]
       },
       {
@@ -830,7 +826,7 @@
           "ambiguous_register_rows": 3,
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-03T03:35:28Z",
+        "resolvedAt": "2026-10-03T09:27:13Z",
         "notes": [
           "catalogue_unreachable_http_403"
         ]
@@ -849,7 +845,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 2
         },
-        "resolvedAt": "2026-10-03T06:54:09Z",
+        "resolvedAt": "2026-10-03T09:27:18Z",
         "notes": []
       },
       {
@@ -866,7 +862,7 @@
           "ambiguous_register_rows": 2,
           "no_candidate_page": 3
         },
-        "resolvedAt": "2026-10-03T06:54:03Z",
+        "resolvedAt": "2026-10-03T09:27:13Z",
         "notes": [
           "catalogue_unreachable_http_403 (x44)"
         ]
@@ -885,7 +881,7 @@
           "ambiguous_register_rows": 2,
           "no_candidate_page": 3
         },
-        "resolvedAt": "2026-10-03T06:53:59Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       },
       {
@@ -902,7 +898,7 @@
           "ambiguous_register_rows": 12,
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-03T03:35:13Z",
+        "resolvedAt": "2026-10-03T09:27:26Z",
         "notes": []
       },
       {
@@ -918,7 +914,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-03T06:54:03Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": [
           "catalogue_unreachable_http_404 (x14)"
         ]
@@ -936,7 +932,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 8
         },
-        "resolvedAt": "2026-10-03T06:54:06Z",
+        "resolvedAt": "2026-10-03T09:27:13Z",
         "notes": []
       },
       {
@@ -952,7 +948,7 @@
         "unresolvedReasons": {
           "ambiguous_register_rows": 2
         },
-        "resolvedAt": "2026-10-03T06:54:06Z",
+        "resolvedAt": "2026-10-03T09:27:20Z",
         "notes": []
       }
     ]
@@ -1512,6 +1508,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T04:14:32Z"
+    },
+    "inv-02e1188d015c": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/transkulturni-komunikace-8",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Transkulturní komunikace",
+      "rowTitle": "Transkulturní komunikace",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/transkulturni-komunikace-8",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Transkulturní komunikace",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:24Z"
     },
     "inv-03161bf45ca2": {
       "url": "https://wstag.jcu.cz/ects/browser/FZE/2072?lang=cs",
@@ -2293,6 +2304,21 @@
       "matchedAt": "2026-09-27T12:32:37Z",
       "checkedAt": "2026-10-03T03:39:39Z"
     },
+    "inv-0674c72bc86c": {
+      "url": "https://www.famu.cz/cs/katedry/katedra-strihove-skladby/pro-uchazece/strihova-skladba-224/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Střihová skladba",
+      "rowTitle": "Střihová skladba",
+      "sourceUrl": "https://www.famu.cz/cs/katedry/katedra-strihove-skladby/pro-uchazece/strihova-skladba-224/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-0683c0f16232": {
       "url": "https://portal.upce.cz/ects/browser/FCH/552?lang=cs",
       "kind": "school_programme_page",
@@ -2352,6 +2378,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T03:35:16Z",
       "checkedAt": "2026-10-03T03:53:54Z"
+    },
+    "inv-06b563cd0081": {
+      "url": "https://is.slu.cz/program/1321?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Audiovizuální tvorba",
+      "rowTitle": "Audiovizuální tvorba",
+      "sourceUrl": "https://is.slu.cz/program/1321?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Audiovizuální tvorba",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:27:55Z"
     },
     "inv-06c1b4013c25": {
       "url": "https://studuj.czu.cz/programmes/systemove-inzenyrstvi-2/",
@@ -3493,6 +3534,21 @@
       "matchedAt": "2026-09-28T16:18:36Z",
       "checkedAt": "2026-09-28T16:21:40Z"
     },
+    "inv-0bb2959a40b1": {
+      "url": "https://is.slu.cz/program/724?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Management v sociálních službách",
+      "rowTitle": "Management v sociálních službách",
+      "sourceUrl": "https://is.slu.cz/program/724?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Management v sociálních službách",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:24Z"
+    },
     "inv-0bb7b6bdc785": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/73",
       "kind": "school_programme_page",
@@ -4513,6 +4569,36 @@
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-10-02T23:41:04Z"
     },
+    "inv-0f787c1238e4": {
+      "url": "https://is.slu.cz/program/613?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Historie a kulturní dědictví v regionální praxi",
+      "rowTitle": "Historie a kulturní dědictví v regionální praxi",
+      "sourceUrl": "https://is.slu.cz/program/613?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Historie a kulturní dědictví v regionální praxi",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:19Z"
+    },
+    "inv-0f7f057472dc": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-bicich-nastroju/studijni-programy/bici-nastroje-206/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Bicí nástroje",
+      "rowTitle": "Bicí nástroje",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-bicich-nastroju/studijni-programy/bici-nastroje-206/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-0fc57a07b4ab": {
       "url": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/23286-sociology",
       "kind": "school_programme_page",
@@ -4542,6 +4628,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-10-02T23:53:03Z"
+    },
+    "inv-0fd815694dc9": {
+      "url": "https://www.famu.cz/cs/katedry/katedra-scenaristiky-a-dramaturgie/pro-uchazece/scenaristika-a-dramaturgie-231/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Scenáristika a dramaturgie",
+      "rowTitle": "Scenáristika a dramaturgie",
+      "sourceUrl": "https://www.famu.cz/cs/katedry/katedra-scenaristiky-a-dramaturgie/pro-uchazece/scenaristika-a-dramaturgie-231/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-0fdb90bbd527": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1670",
@@ -4609,7 +4710,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "school pedagogy",
+      "matchedTitle": "School Pedagogy",
       "rowTitle": "School Pedagogy",
       "sourceUrl": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/22964-informatics-for-secondary-school-teachers",
       "matchedBy": "school_catalogue_anchor",
@@ -5233,6 +5334,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:54:18Z"
     },
+    "inv-1289b26c48fe": {
+      "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=974&academicYearId=66&studyLanguageIds=1",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_27000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Finance",
+      "rowTitle": "Finance",
+      "sourceUrl": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=974&academicYearId=66&studyLanguageIds=1",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy - VŠB-TUO",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-03T09:27:13Z",
+      "checkedAt": "2026-10-03T10:00:09Z"
+    },
     "inv-1293a0e649c0": {
       "url": "https://www.vut.cz/studenti/programy/program/9844",
       "kind": "school_programme_page",
@@ -5803,6 +5919,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:14:49Z"
     },
+    "inv-1502bc77e67f": {
+      "url": "https://is.slu.cz/program/362?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Tvůrčí fotografie",
+      "rowTitle": "Tvůrčí fotografie",
+      "sourceUrl": "https://is.slu.cz/program/362?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Tvůrčí fotografie",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:46Z"
+    },
     "inv-150c48819fab": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4135",
       "kind": "school_programme_page",
@@ -6057,6 +6188,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:40:04Z"
+    },
+    "inv-1645ad671944": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/socialni-pedagogika",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Sociální pedagogika",
+      "rowTitle": "Sociální pedagogika",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/socialni-pedagogika",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociální pedagogika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:20Z"
     },
     "inv-1648d94079af": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23782-dejepis-se-zamerenim-na-vzdelavani",
@@ -6552,6 +6698,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T08:12:48Z",
       "checkedAt": "2026-10-03T00:51:58Z"
+    },
+    "inv-186cd7290ba8": {
+      "url": "https://is.slu.cz/program/363?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Knihovnictví",
+      "rowTitle": "Knihovnictví",
+      "sourceUrl": "https://is.slu.cz/program/363?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Knihovnictví",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:49Z"
     },
     "inv-1879420afc2d": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1019",
@@ -8188,6 +8349,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:56:06Z"
     },
+    "inv-1f1da33d5d50": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/informatika-se-zamerenim-na-vzdelavani",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Informatika se zaměřením na vzdělávání",
+      "rowTitle": "Informatika se zaměřením na vzdělávání",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/informatika-se-zamerenim-na-vzdelavani",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Informatika se zaměřením na vzdělávání",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:16Z"
+    },
     "inv-1f277e5c3845": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4297",
       "kind": "school_programme_page",
@@ -8263,6 +8439,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:44:11Z"
     },
+    "inv-1f4093ab8a31": {
+      "url": "https://is.slu.cz/program/521?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Informatika a angličtina",
+      "rowTitle": "Informatika a angličtina",
+      "sourceUrl": "https://is.slu.cz/program/521?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Informatika a angličtina",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:02Z"
+    },
     "inv-1f6a392504d5": {
       "url": "https://www.savs.cz/studijni-programy-a-specializace/prumyslovy-management-18",
       "kind": "school_programme_page",
@@ -8277,6 +8468,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:14:05Z",
       "checkedAt": "2026-10-02T23:43:11Z"
+    },
+    "inv-1f791dfd2650": {
+      "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=1203&academicYearId=66&studyLanguageIds=1",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_27000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Výpočetní technologie v materiálových vědách",
+      "rowTitle": "Výpočetní technologie v materiálových vědách",
+      "sourceUrl": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=1203&academicYearId=66&studyLanguageIds=1",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy - VŠB-TUO",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-03T09:27:13Z",
+      "checkedAt": "2026-10-03T10:00:06Z"
     },
     "inv-1fb622679678": {
       "url": "https://portal.ujep.cz/ects/browser/PF/1338?lang=cs",
@@ -8397,6 +8603,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T03:35:13Z",
       "checkedAt": "2026-10-03T04:40:04Z"
+    },
+    "inv-2062d325b106": {
+      "url": "https://www.uhk.cz/cs/filozoficka-fakulta/prijimaci-zkousky/studijni-programy/pomocne-vedy-historicke-a-archivnictvi",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Pomocné vědy historické a archivnictví",
+      "rowTitle": "Pomocné vědy historické a archivnictví",
+      "sourceUrl": "https://www.uhk.cz/cs/filozoficka-fakulta/prijimaci-zkousky/studijni-programy/pomocne-vedy-historicke-a-archivnictvi",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Pomocné vědy historické a archivnictví",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:10Z"
     },
     "inv-207434fa30a0": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/687",
@@ -8697,6 +8918,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:44:50Z",
       "checkedAt": "2026-10-02T23:53:22Z"
+    },
+    "inv-2235bfa6634a": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-skladby/studijni-programy/composition-252/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "Composition",
+      "rowTitle": "Composition",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-skladby/studijni-programy/composition-252/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-224c769104cd": {
       "url": "https://studuj.czu.cz/programmes/ucitelstvi-praktickeho-vyucovani/",
@@ -9208,6 +9444,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:40:30Z"
     },
+    "inv-246157e16010": {
+      "url": "https://is.slu.cz/program/2143?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Historická dokumentaristika a mediální prezentace dějin",
+      "rowTitle": "Historická dokumentaristika a mediální prezentace dějin",
+      "sourceUrl": "https://is.slu.cz/program/2143?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Historická dokumentaristika a mediální prezentace dějin",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:33Z"
+    },
     "inv-246da3edddb7": {
       "url": "https://palestra.cz/studijni-programy/bakalarske-studium/fyzioterapie/",
       "kind": "school_programme_page",
@@ -9372,6 +9623,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-28T18:18:58Z"
+    },
+    "inv-2515367f5c75": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/B111",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Chemické technologie",
+      "rowTitle": "Chemické technologie",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/B111",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Chemické technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:24Z"
     },
     "inv-252014bbffda": {
       "url": "https://www.muni.cz/uchazeci/navazujici-magisterske-studium/nabidka-studia/23373-management-sportu",
@@ -10557,6 +10823,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:14:28Z"
+    },
+    "inv-29d01fd8953a": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/N103",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Syntéza a výroba léčiv",
+      "rowTitle": "Syntéza a výroba léčiv",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/N103",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Syntéza a výroba léčiv",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:50Z"
     },
     "inv-29f624c9b31a": {
       "url": "https://portal.upce.cz/ects/browser/FES/815?lang=cs",
@@ -12088,6 +12369,21 @@
       "matchedAt": "2026-09-28T21:11:54Z",
       "checkedAt": "2026-09-28T21:19:12Z"
     },
+    "inv-30e45d995ebb": {
+      "url": "https://www.damu.cz/cs/katedry-programy/katedra-scenografie/studijni-programy/scenografie-259/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Scénografie",
+      "rowTitle": "Scénografie",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/katedra-scenografie/studijni-programy/scenografie-259/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-311c46295586": {
       "url": "https://portal.upce.cz/ects/browser/FCH/777?lang=cs",
       "kind": "school_programme_page",
@@ -13108,6 +13404,21 @@
       "matchedAt": "2026-09-27T12:32:37Z",
       "checkedAt": "2026-10-03T03:40:14Z"
     },
+    "inv-3528b1f653f3": {
+      "url": "https://is.slu.cz/program/361?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Německý jazyk",
+      "rowTitle": "Německý jazyk",
+      "sourceUrl": "https://is.slu.cz/program/361?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Německý jazyk",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:44Z"
+    },
     "inv-35325bd974eb": {
       "url": "https://stag.upol.cz/ects/browser/PDF/1846?lang=cs",
       "kind": "school_programme_page",
@@ -13122,6 +13433,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:53:16Z"
+    },
+    "inv-3533ccb0340f": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/B103",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Technologie konzervování-restaurování objektů kulturního dědictví",
+      "rowTitle": "Technologie konzervování-restaurování objektů kulturního dědictví",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/B103",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Technologie konzervování-restaurování objektů kulturního dědictví",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:13Z"
     },
     "inv-353654c5001c": {
       "url": "https://is.czu.cz/katalog/plany.pl?fakulta=10;poc_obdobi=1349;typ_ss=;typ_studia=3;program=1530;info=1;misto_vyuky=;lang=cz",
@@ -13242,6 +13568,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-28T19:29:13Z",
       "checkedAt": "2026-09-28T19:39:35Z"
+    },
+    "inv-35dcca2c3e9d": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/N308",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Technologie potravin",
+      "rowTitle": "Technologie potravin",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/N308",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Technologie potravin",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:43:07Z"
     },
     "inv-35e8a49fbbb3": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24632-sdruzena-umenovedna-studia",
@@ -15403,6 +15744,21 @@
       "matchedAt": "2026-09-28T17:56:15Z",
       "checkedAt": "2026-09-28T18:02:31Z"
     },
+    "inv-3e1ab581ec37": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-teorie/studijni-programy/hudebni-teorie-258/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Hudební teorie",
+      "rowTitle": "Hudební teorie",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-teorie/studijni-programy/hudebni-teorie-258/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-3e6e47876002": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1924?lang=cs",
       "kind": "school_programme_page",
@@ -15447,6 +15803,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T03:35:04Z",
       "checkedAt": "2026-10-03T03:37:58Z"
+    },
+    "inv-3e77102b89b0": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-tance/studijni-programy/tanecni-veda-219/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Taneční věda",
+      "rowTitle": "Taneční věda",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-tance/studijni-programy/tanecni-veda-219/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-3ea22aea8fd9": {
       "url": "https://wstag.jcu.cz/ects/browser/FPE/1229?lang=cs",
@@ -16303,6 +16674,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:52:02Z"
     },
+    "inv-42fd4c2de2ad": {
+      "url": "https://is.slu.cz/program/601?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Angličtina pro odbornou praxi",
+      "rowTitle": "Angličtina pro odbornou praxi",
+      "sourceUrl": "https://is.slu.cz/program/601?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Angličtina pro odbornou praxi",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:08Z"
+    },
     "inv-43172b684a74": {
       "url": "https://fss.osu.cz/?specializaceid=3443",
       "kind": "school_programme_page",
@@ -16603,6 +16989,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:51:11Z"
     },
+    "inv-44209cf51484": {
+      "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=990&academicYearId=66&studyLanguageIds=1",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_27000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Petroleum Engineering",
+      "rowTitle": "Petroleum Engineering",
+      "sourceUrl": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=990&academicYearId=66&studyLanguageIds=1",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy - VŠB-TUO",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-03T09:27:13Z",
+      "checkedAt": "2026-10-03T10:00:10Z"
+    },
     "inv-4434e4b8fc56": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3952",
       "kind": "school_programme_page",
@@ -16828,6 +17229,36 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:14:56Z"
     },
+    "inv-454949d44f55": {
+      "url": "https://is.slu.cz/program/481?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Sociální patologie a prevence",
+      "rowTitle": "Sociální patologie a prevence",
+      "sourceUrl": "https://is.slu.cz/program/481?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociální patologie a prevence",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:00Z"
+    },
+    "inv-454eb9cbd6a1": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/B107",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Bioinformatika a chemická informatika",
+      "rowTitle": "Bioinformatika a chemická informatika",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/B107",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Bioinformatika a chemická informatika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:21Z"
+    },
     "inv-456d46b3fc7b": {
       "url": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/24166-study-of-religions",
       "kind": "school_programme_page",
@@ -16842,6 +17273,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-28T17:48:12Z",
       "checkedAt": "2026-09-28T18:23:45Z"
+    },
+    "inv-4577ce5e4763": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-dirigovani/studijni-programy/dirigovani-226/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Dirigování",
+      "rowTitle": "Dirigování",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-dirigovani/studijni-programy/dirigovani-226/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-45818ce0a5db": {
       "url": "https://bilakniha.cvut.cz/cs/predmet10785002.html",
@@ -17278,6 +17724,21 @@
       "matchedAt": "2026-10-03T03:35:16Z",
       "checkedAt": "2026-10-03T03:53:24Z"
     },
+    "inv-47e312265b2c": {
+      "url": "https://is.slu.cz/program/566?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Multimediální techniky",
+      "rowTitle": "Multimediální techniky",
+      "sourceUrl": "https://is.slu.cz/program/566?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Multimediální techniky",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:06Z"
+    },
     "inv-4808c7f6f00d": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4968",
       "kind": "school_programme_page",
@@ -17352,6 +17813,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:25:33Z"
+    },
+    "inv-48476f207d1b": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-zpevu-a-operni-rezie/studijni-programy/zpev-272/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Zpěv",
+      "rowTitle": "Zpěv",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-zpevu-a-operni-rezie/studijni-programy/zpev-272/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-4848f4aba660": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24326-divadelni-studia",
@@ -17788,6 +18264,21 @@
       "matchedAt": "2026-09-28T19:29:13Z",
       "checkedAt": "2026-09-28T19:39:40Z"
     },
+    "inv-4a63cfb28370": {
+      "url": "https://is.slu.cz/program/1783?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Všeobecné ošetřovatelství",
+      "rowTitle": "Všeobecné ošetřovatelství",
+      "sourceUrl": "https://is.slu.cz/program/1783?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Všeobecné ošetřovatelství",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:17Z"
+    },
     "inv-4a897a501d22": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/doctoral-degree/doctoral-degree-detail/?programmeId=922",
       "kind": "school_programme_page",
@@ -18028,6 +18519,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:39:54Z"
     },
+    "inv-4b34f1c35dcb": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/B401",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Chemie",
+      "rowTitle": "Chemie",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/B401",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Chemie",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:36Z"
+    },
     "inv-4b3aca5bedbc": {
       "url": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/23059-business-management",
       "kind": "school_programme_page",
@@ -18207,6 +18713,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:51:29Z"
+    },
+    "inv-4c43abf560c8": {
+      "url": "https://is.slu.cz/program/1943?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Sociální práce ve veřejné správě",
+      "rowTitle": "Sociální práce ve veřejné správě",
+      "sourceUrl": "https://is.slu.cz/program/1943?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociální práce ve veřejné správě",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:25Z"
     },
     "inv-4c4d8ec1417a": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2730?lang=cs",
@@ -19446,7 +19967,7 @@
       "language": "cs",
       "matchedTitle": "Scénická tvorba a teorie scénické tvorby",
       "rowTitle": "Scénická tvorba a teorie scénické tvorby",
-      "sourceUrl": "https://www.damu.cz/cs/studium/doktorske-studium/prijimaci-rizeni",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/ustav-teorie-scenicke-tvorby/studijni-programy/scenicka-tvorba-a-teorie-scenicke-tvorby-264/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Scénická tvorba a teorie scénické tvorby",
       "reachability": "verified",
@@ -19647,6 +20168,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-10-02T23:40:42Z"
+    },
+    "inv-5217e085cbb8": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-bicich-nastroju/studijni-programy/bici-nastroje-221/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Bicí nástroje",
+      "rowTitle": "Bicí nástroje",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-bicich-nastroju/studijni-programy/bici-nastroje-221/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-521b526abcd6": {
       "url": "https://stag.upol.cz/ects/browser/PDF/2013?lang=cs",
@@ -20083,6 +20619,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:13:31Z"
     },
+    "inv-535406c3aef7": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/informacni-a-komunikacni-technologie-ve-vzdelavani",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Informační a komunikační technologie ve vzdělávání",
+      "rowTitle": "Informační a komunikační technologie ve vzdělávání",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/informacni-a-komunikacni-technologie-ve-vzdelavani",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Informační a komunikační technologie ve vzdělávání",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:14Z"
+    },
     "inv-535f26c50196": {
       "url": "https://stag.upol.cz/ects/browser/PDF/2662?lang=cs",
       "kind": "school_programme_page",
@@ -20142,6 +20693,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:54:35Z"
+    },
+    "inv-53a486bbe3d5": {
+      "url": "https://is.slu.cz/program/784?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Veřejná ekonomika a správa",
+      "rowTitle": "Veřejná ekonomika a správa",
+      "sourceUrl": "https://is.slu.cz/program/784?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Veřejná ekonomika a správa",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:30Z"
     },
     "inv-53ab82a63e12": {
       "url": "https://wstag.jcu.cz/ects/browser/FPR/1583?lang=cs",
@@ -20713,6 +21279,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:36:28Z"
     },
+    "inv-560d39c6f900": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/B105",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Syntéza a výroba léčiv",
+      "rowTitle": "Syntéza a výroba léčiv",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/B105",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Syntéza a výroba léčiv",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:17Z"
+    },
     "inv-561be9f08b01": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1127",
       "kind": "school_programme_page",
@@ -20772,6 +21353,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-28T18:20:18Z"
+    },
+    "inv-565656a7b1b8": {
+      "url": "https://www.damu.cz/cs/katedry-programy/katedra-vychovne-dramatiky/studijni-programy/dramaticka-vychova-190/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Dramatická výchova",
+      "rowTitle": "Dramatická výchova",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/katedra-vychovne-dramatiky/studijni-programy/dramaticka-vychova-190/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-5659ca100b9b": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2809?lang=cs",
@@ -21043,6 +21639,36 @@
       "matchedAt": "2026-10-03T03:35:13Z",
       "checkedAt": "2026-10-03T04:39:02Z"
     },
+    "inv-574c6a871a2d": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/N101",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Chemické technologie",
+      "rowTitle": "Chemické technologie",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/N101",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Chemické technologie",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:43Z"
+    },
+    "inv-5755d80af1a0": {
+      "url": "https://is.slu.cz/program/1763?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Inovativní podnikání",
+      "rowTitle": "Inovativní podnikání",
+      "sourceUrl": "https://is.slu.cz/program/1763?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Inovativní podnikání",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:15Z"
+    },
     "inv-575dc14ca7c2": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1202",
       "kind": "school_programme_page",
@@ -21237,6 +21863,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:24:56Z"
+    },
+    "inv-583a000d2a11": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-skladby/studijni-programy/composition-241/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "Composition",
+      "rowTitle": "Composition",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-skladby/studijni-programy/composition-241/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-5857d89a40f6": {
       "url": "https://studuj.czu.cz/programmes/systemova-arboristika/",
@@ -21732,6 +22373,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T03:35:16Z",
       "checkedAt": "2026-10-03T03:54:07Z"
+    },
+    "inv-5af24ccd4165": {
+      "url": "https://www.famu.cz/cs/katedry/katedra-scenaristiky-a-dramaturgie/pro-uchazece/scenaristika-a-dramaturgie-200/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Scenáristika a dramaturgie",
+      "rowTitle": "Scenáristika a dramaturgie",
+      "sourceUrl": "https://www.famu.cz/cs/katedry/katedra-scenaristiky-a-dramaturgie/pro-uchazece/scenaristika-a-dramaturgie-200/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-5af6f2aa167f": {
       "url": "https://portal.zcu.cz/ects/browser/FPE/1806?lang=cs",
@@ -22288,6 +22944,21 @@
       "matchedAt": "2026-09-27T20:31:07Z",
       "checkedAt": "2026-10-03T00:29:39Z"
     },
+    "inv-5d6dc3f4db1c": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/socialni-patologie-a-prevence",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Sociální patologie a prevence",
+      "rowTitle": "Sociální patologie a prevence",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/socialni-patologie-a-prevence",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociální patologie a prevence",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:19Z"
+    },
     "inv-5d81de22ffac": {
       "url": "https://portal.upce.cz/ects/browser/FF/478?lang=cs",
       "kind": "school_programme_page",
@@ -22453,6 +23124,21 @@
       "matchedAt": "2026-10-03T06:53:59Z",
       "checkedAt": "2026-10-03T07:01:16Z"
     },
+    "inv-5e14fe4388e7": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/B305",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Chemie a technologie potravin",
+      "rowTitle": "Chemie a technologie potravin",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/B305",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Chemie a technologie potravin",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:33Z"
+    },
     "inv-5e1f2f6744a4": {
       "url": "https://wstag.jcu.cz/ects/browser/FZS/1240?lang=cs",
       "kind": "school_programme_page",
@@ -22587,6 +23273,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:44:50Z",
       "checkedAt": "2026-10-02T23:52:56Z"
+    },
+    "inv-5edf3d33f484": {
+      "url": "https://www.damu.cz/cs/katedry-programy/katedra-autorske-tvorby-a-pedagogiky/studijni-programy/authorial-acting-216/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "Authorial Acting",
+      "rowTitle": "Authorial Acting",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/katedra-autorske-tvorby-a-pedagogiky/studijni-programy/authorial-acting-216/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-5ee814623cee": {
       "url": "https://www.mup.cz/studijni-programy/magisterske-studium/medialni-studia/",
@@ -22903,6 +23604,21 @@
       "matchedAt": "2026-09-27T20:10:34Z",
       "checkedAt": "2026-10-03T00:25:44Z"
     },
+    "inv-60961a63aba7": {
+      "url": "https://is.slu.cz/program/564?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Kulturní dramaturgie v divadelní praxi",
+      "rowTitle": "Kulturní dramaturgie v divadelní praxi",
+      "sourceUrl": "https://is.slu.cz/program/564?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Kulturní dramaturgie v divadelní praxi",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:04Z"
+    },
     "inv-609c02b39f8b": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24280-polska-studia",
       "kind": "school_programme_page",
@@ -23098,6 +23814,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:50:53Z"
     },
+    "inv-6159f152c58f": {
+      "url": "https://is.slu.cz/program/2063?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Tvůrčí fotografie",
+      "rowTitle": "Tvůrčí fotografie",
+      "sourceUrl": "https://is.slu.cz/program/2063?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Tvůrčí fotografie",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:31Z"
+    },
     "inv-615be0cc05cd": {
       "url": "https://www.jcu.cz/prijimaci-zkousky/studijni-programy/studijni-program?program=3583",
       "kind": "school_programme_page",
@@ -23127,6 +23858,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:13:20Z"
+    },
+    "inv-6167b5dcf413": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/N105",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Technologie konzervování-restaurování objektů kulturního dědictví",
+      "rowTitle": "Technologie konzervování-restaurování objektů kulturního dědictví",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/N105",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Technologie konzervování-restaurování objektů kulturního dědictví",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:57Z"
     },
     "inv-6190c75085ee": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24471-cesky-jazyk-a-literatura",
@@ -23578,6 +24324,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:54:48Z"
     },
+    "inv-63465e203561": {
+      "url": "https://www.uhk.cz/cs/filozoficka-fakulta/prijimaci-zkousky/studijni-programy/sociologie",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Sociologie",
+      "rowTitle": "Sociologie",
+      "sourceUrl": "https://www.uhk.cz/cs/filozoficka-fakulta/prijimaci-zkousky/studijni-programy/sociologie",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociologie",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:13Z"
+    },
     "inv-63685976a70c": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=895&academicYearId=66&studyLanguageIds=1",
       "kind": "school_programme_page",
@@ -23757,6 +24518,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:41:44Z"
+    },
+    "inv-644f74917131": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-produkce/studijni-programy/hudebni-produkce-242/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Hudební produkce",
+      "rowTitle": "Hudební produkce",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-produkce/studijni-programy/hudebni-produkce-242/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-646aa18bae1f": {
       "url": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/25565-surgery-and-reproductive-medicine",
@@ -25393,6 +26169,21 @@
       "matchedAt": "2026-09-28T16:18:36Z",
       "checkedAt": "2026-09-28T16:21:12Z"
     },
+    "inv-6b98be4e6d46": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-tance/studijni-programy/tanecni-veda-210/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Taneční věda",
+      "rowTitle": "Taneční věda",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-tance/studijni-programy/tanecni-veda-210/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-6ba3e81669a1": {
       "url": "https://portal.upce.cz/ects/browser/FZS/652?lang=cs",
       "kind": "school_programme_page",
@@ -25422,6 +26213,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
       "checkedAt": "2026-09-28T16:23:17Z"
+    },
+    "inv-6bacf929bf81": {
+      "url": "https://is.slu.cz/program/981?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Multimediální techniky",
+      "rowTitle": "Multimediální techniky",
+      "sourceUrl": "https://is.slu.cz/program/981?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Multimediální techniky",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:41Z"
     },
     "inv-6bb39e2bdae8": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1057",
@@ -25512,6 +26318,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:36:46Z"
+    },
+    "inv-6c5f74c94b0f": {
+      "url": "https://is.slu.cz/program/1241?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Teoretická fyzika a astrofyzika",
+      "rowTitle": "Teoretická fyzika a astrofyzika",
+      "sourceUrl": "https://is.slu.cz/program/1241?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Teoretická fyzika a astrofyzika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:27:50Z"
     },
     "inv-6c8b5a3deea6": {
       "url": "https://portal.ujep.cz/ects/browser/PRF/1226?lang=cs",
@@ -26413,6 +27234,21 @@
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-10-02T23:48:49Z"
     },
+    "inv-6f5c6b8eaf3c": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-tance/studijni-programy/choreografie-209/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Choreografie",
+      "rowTitle": "Choreografie",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-tance/studijni-programy/choreografie-209/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-6f6d1ff60287": {
       "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/ucitelstvi-pro-1.-stupen-zakladnich-skol",
       "kind": "school_programme_page",
@@ -26803,6 +27639,21 @@
       "matchedAt": "2026-09-28T17:48:12Z",
       "checkedAt": "2026-09-28T18:23:12Z"
     },
+    "inv-70f3b758f411": {
+      "url": "https://is.slu.cz/program/611?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Němčina pro odbornou praxi",
+      "rowTitle": "Němčina pro odbornou praxi",
+      "sourceUrl": "https://is.slu.cz/program/611?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Němčina pro odbornou praxi",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:17Z"
+    },
     "inv-70f54e5551fc": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/5011",
       "kind": "school_programme_page",
@@ -26832,6 +27683,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T03:35:16Z",
       "checkedAt": "2026-10-03T03:53:42Z"
+    },
+    "inv-70fe5a7e5d43": {
+      "url": "https://is.slu.cz/program/922?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Speciální pedagogika",
+      "rowTitle": "Speciální pedagogika",
+      "sourceUrl": "https://is.slu.cz/program/922?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Speciální pedagogika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:36Z"
     },
     "inv-711094d99121": {
       "url": "https://studuj.czu.cz/programmes/hodnoceni-a-ochrana-pudy/",
@@ -27042,6 +27908,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:50:07Z"
+    },
+    "inv-721a47c13030": {
+      "url": "https://www.damu.cz/cs/katedry-programy/katedra-vychovne-dramatiky/studijni-programy/dramaticka-vychova-191/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Dramatická výchova",
+      "rowTitle": "Dramatická výchova",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/katedra-vychovne-dramatiky/studijni-programy/dramaticka-vychova-191/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-722bdd8083a8": {
       "url": "https://www.jcu.cz/prijimaci-zkousky/studijni-programy/studijni-program?program=3296",
@@ -27613,6 +28494,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:14:39Z"
     },
+    "inv-7486691fb0ba": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-zpevu-a-operni-rezie/studijni-programy/zpev-253/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Zpěv",
+      "rowTitle": "Zpěv",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-zpevu-a-operni-rezie/studijni-programy/zpev-253/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-748b5b4b5df8": {
       "url": "https://ff.osu.cz/?specializaceid=3825",
       "kind": "school_programme_page",
@@ -27657,6 +28553,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T03:35:13Z",
       "checkedAt": "2026-10-03T04:38:44Z"
+    },
+    "inv-74af93abaeda": {
+      "url": "https://www.damu.cz/cs/katedry-programy/katedra-produkce/studijni-programy/produkce-186/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Produkce",
+      "rowTitle": "Produkce",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/katedra-produkce/studijni-programy/produkce-186/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-74ba4b56943a": {
       "url": "https://portal.zcu.cz/ects/browser/FPE/1628?lang=cs",
@@ -28123,6 +29034,21 @@
       "matchedAt": "2026-09-27T12:13:49Z",
       "checkedAt": "2026-10-03T00:37:55Z"
     },
+    "inv-769815e829d1": {
+      "url": "https://is.slu.cz/program/2703?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Tvůrčí fotografie",
+      "rowTitle": "Tvůrčí fotografie",
+      "sourceUrl": "https://is.slu.cz/program/2703?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Tvůrčí fotografie",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:41Z"
+    },
     "inv-76a4f5ab91b5": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1899?lang=cs",
       "kind": "school_programme_page",
@@ -28212,6 +29138,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T21:57:04Z",
       "checkedAt": "2026-10-03T00:02:48Z"
+    },
+    "inv-76febedcf487": {
+      "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/doctoral-degree/doctoral-degree-detail/?programmeId=921",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_27000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "Geotechnics and Underground Engineering",
+      "rowTitle": "Geotechnics and Underground Engineering",
+      "sourceUrl": "https://www.vsb.cz/en/study/degree-students/degree-studies/doctoral-degree/doctoral-degree-detail/?programmeId=921",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Doctoral degree detail - VSB-TUO",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-03T09:27:13Z",
+      "checkedAt": "2026-10-03T10:00:13Z"
     },
     "inv-770276d187d8": {
       "url": "https://portal.zcu.cz/ects/browser/FST/1713?lang=cs",
@@ -29397,6 +30338,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:50:46Z"
+    },
+    "inv-7b45c76ba7cb": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-produkce/studijni-programy/hudebni-produkce-204/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Hudební produkce",
+      "rowTitle": "Hudební produkce",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-produkce/studijni-programy/hudebni-produkce-204/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-7b4e5c6569f9": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/bachelor-degree/bachelor-degree-detail/?programmeId=1164",
@@ -30943,6 +31899,21 @@
       "matchedAt": "2026-09-27T17:41:06Z",
       "checkedAt": "2026-10-03T00:24:11Z"
     },
+    "inv-82a6428f69ca": {
+      "url": "https://is.slu.cz/program/1585?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Finance a účetnictví",
+      "rowTitle": "Finance a účetnictví",
+      "sourceUrl": "https://is.slu.cz/program/1585?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Finance a účetnictví",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:04Z"
+    },
     "inv-82b7084fc52a": {
       "url": "https://portal.zcu.cz/ects/browser/FPE/1672?lang=cs",
       "kind": "school_programme_page",
@@ -31302,6 +32273,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T03:35:13Z",
       "checkedAt": "2026-10-03T04:38:24Z"
+    },
+    "inv-84396e54468f": {
+      "url": "https://www.famu.cz/cs/katedry/katedra-strihove-skladby/pro-uchazece/strihova-skladba-213/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Střihová skladba",
+      "rowTitle": "Střihová skladba",
+      "sourceUrl": "https://www.famu.cz/cs/katedry/katedra-strihove-skladby/pro-uchazece/strihova-skladba-213/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-84404a7cfb91": {
       "url": "https://stag.upol.cz/ects/browser/PFA/3343?lang=cs",
@@ -32233,6 +33219,21 @@
       "matchedAt": "2026-10-02T23:30:59Z",
       "checkedAt": "2026-10-02T23:46:53Z"
     },
+    "inv-8868577ac69f": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-nonverbalniho-divadla/studijni-programy/nonverbalni-divadlo-211/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Nonverbální divadlo",
+      "rowTitle": "Nonverbální divadlo",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-nonverbalniho-divadla/studijni-programy/nonverbalni-divadlo-211/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-887f73847aa2": {
       "url": "https://www.vut.cz/en/students/programmes/branch/17970",
       "kind": "school_programme_page",
@@ -32413,6 +33414,21 @@
       "matchedAt": "2026-09-27T20:17:34Z",
       "checkedAt": "2026-10-02T23:39:30Z"
     },
+    "inv-8953cdede401": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/N201",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Energie a paliva",
+      "rowTitle": "Energie a paliva",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/N201",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Energie a paliva",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:43:04Z"
+    },
     "inv-895574be732d": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2471?lang=cs",
       "kind": "school_programme_page",
@@ -32487,6 +33503,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:53:44Z",
       "checkedAt": "2026-10-03T00:38:51Z"
+    },
+    "inv-899cbf74542a": {
+      "url": "https://is.slu.cz/program/4240?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Sociální management",
+      "rowTitle": "Sociální management",
+      "sourceUrl": "https://is.slu.cz/program/4240?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociální management",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:56Z"
     },
     "inv-89ace5b215fb": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1235",
@@ -33516,7 +34547,7 @@
       "language": "cs",
       "matchedTitle": "Teorie a praxe divadelní tvorby",
       "rowTitle": "Teorie a praxe divadelní tvorby",
-      "sourceUrl": "https://www.damu.cz/cs/studium/doktorske-studium/prijimaci-rizeni",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/katedra-teorie-a-kritiky/studijni-programy/teorie-a-praxe-divadelni-tvorby-208/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Teorie a praxe divadelní tvorby",
       "reachability": "verified",
@@ -34318,6 +35349,21 @@
       "matchedAt": "2026-09-28T17:56:15Z",
       "checkedAt": "2026-09-28T18:01:23Z"
     },
+    "inv-91605d4ef415": {
+      "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/bachelor-degree/bachelor-degree-detail/?programmeId=1228",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_27000",
+      "degree": "b",
+      "language": "en",
+      "matchedTitle": "SMART Engineering",
+      "rowTitle": "SMART Engineering",
+      "sourceUrl": "https://www.vsb.cz/en/study/degree-students/degree-studies/bachelor-degree/bachelor-degree-detail/?programmeId=1228",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Bachelor degree detail - VSB-TUO",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-03T09:27:13Z",
+      "checkedAt": "2026-10-03T10:00:11Z"
+    },
     "inv-91697ead2193": {
       "url": "https://portal.upce.cz/ects/browser/FEI/644?lang=cs",
       "kind": "school_programme_page",
@@ -34933,6 +35979,21 @@
       "matchedAt": "2026-10-03T03:35:04Z",
       "checkedAt": "2026-10-03T03:49:02Z"
     },
+    "inv-9412f15baf95": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-skladby/studijni-programy/skladba-257/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Skladba",
+      "rowTitle": "Skladba",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-skladby/studijni-programy/skladba-257/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-94165d3d1c51": {
       "url": "https://stag.upol.cz/ects/browser/PDF/2049?lang=cs",
       "kind": "school_programme_page",
@@ -35157,6 +36218,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T12:30:20Z",
       "checkedAt": "2026-10-02T23:52:58Z"
+    },
+    "inv-94b8d38f781b": {
+      "url": "https://is.slu.cz/program/1805?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Manažerská informatika",
+      "rowTitle": "Manažerská informatika",
+      "sourceUrl": "https://is.slu.cz/program/1805?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Manažerská informatika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:21Z"
     },
     "inv-94be5d330fca": {
       "url": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/23233-media-and-journalism-studies",
@@ -35397,6 +36473,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-28T17:56:15Z",
       "checkedAt": "2026-09-28T18:02:19Z"
+    },
+    "inv-961bb316c656": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-skladby/studijni-programy/skladba-256/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Skladba",
+      "rowTitle": "Skladba",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-skladby/studijni-programy/skladba-256/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-96204b23c4a1": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/5040",
@@ -36252,6 +37343,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:32:39Z"
+    },
+    "inv-9999012d9e3c": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/socialni-pedagogika-6",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Sociální pedagogika",
+      "rowTitle": "Sociální pedagogika",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/socialni-pedagogika-6",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociální pedagogika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:21Z"
     },
     "inv-999e2a4f200e": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/411",
@@ -37333,6 +38439,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:39:25Z"
     },
+    "inv-9fc32c8d74c0": {
+      "url": "https://is.slu.cz/program/1807?lang=en",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "Economics and Management",
+      "rowTitle": "Economics and Management",
+      "sourceUrl": "https://is.slu.cz/program/1807?lang=en",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Economics and Management",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:23Z"
+    },
     "inv-9fd6b63f65d3": {
       "url": "https://www.utb.cz/uchazec/celozivotni-vzdelavani/nabidka-studia/technologie-a-hodnoceni-potravin/",
       "kind": "school_programme_page",
@@ -38413,6 +39534,21 @@
       "matchedAt": "2026-09-27T21:44:50Z",
       "checkedAt": "2026-10-02T23:52:59Z"
     },
+    "inv-a4b23dad42f3": {
+      "url": "https://is.slu.cz/program/1592?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Cestovní ruch a turismus",
+      "rowTitle": "Cestovní ruch a turismus",
+      "sourceUrl": "https://is.slu.cz/program/1592?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Cestovní ruch a turismus",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:08Z"
+    },
     "inv-a4b34c04cd3e": {
       "url": "https://www.muni.cz/uchazeci/navazujici-magisterske-studium/nabidka-studia/23730-ucitelstvi-biologie-pro-stredni-skoly",
       "kind": "school_programme_page",
@@ -38697,6 +39833,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T08:12:48Z",
       "checkedAt": "2026-10-03T03:55:03Z"
+    },
+    "inv-a5c5e03c38b8": {
+      "url": "https://study.vscht.cz/degree-programmes/master/an406",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "Chemical Engineering and Bioengineering",
+      "rowTitle": "Chemical Engineering and Bioengineering",
+      "sourceUrl": "https://study.vscht.cz/degree-programmes/master/an406",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Chemical Engineering and Bioengineering AN406 - Study at UCT Prague",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:43:13Z"
     },
     "inv-a5e35652fe5a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1176",
@@ -39148,6 +40299,21 @@
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-10-02T23:51:22Z"
     },
+    "inv-a7545ed82a1f": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-zvukove-tvorby-a-hudebni-rezie/studijni-programy/zvukova-tvorba-a-hudebni-rezie-248/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Zvuková tvorba a hudební režie",
+      "rowTitle": "Zvuková tvorba a hudební režie",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-zvukove-tvorby-a-hudebni-rezie/studijni-programy/zvukova-tvorba-a-hudebni-rezie-248/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-a76f31753765": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/doctoral-degree/doctoral-degree-detail/?programmeId=1093",
       "kind": "school_programme_page",
@@ -39177,6 +40343,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:44:08Z"
+    },
+    "inv-a77b3879b0b1": {
+      "url": "https://is.slu.cz/program/383?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Matematika",
+      "rowTitle": "Matematika",
+      "sourceUrl": "https://is.slu.cz/program/383?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Matematika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:53Z"
     },
     "inv-a77b70ae04de": {
       "url": "https://portal.zcu.cz/ects/browser/FAV/2210?lang=cs",
@@ -40183,6 +41364,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:50:43Z"
     },
+    "inv-acd78450ff8a": {
+      "url": "https://is.slu.cz/program/1484?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Pediatrické ošetřovatelství",
+      "rowTitle": "Pediatrické ošetřovatelství",
+      "sourceUrl": "https://is.slu.cz/program/1484?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Pediatrické ošetřovatelství",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:02Z"
+    },
     "inv-acef71f3b90e": {
       "url": "https://bilakniha.cvut.cz/cs/program1240571888305.html",
       "kind": "school_programme_page",
@@ -40392,6 +41588,21 @@
       "reachability": "unverified",
       "matchedAt": "2026-09-27T19:49:58Z",
       "checkedAt": "2026-10-03T00:23:54Z"
+    },
+    "inv-ae10ec77e773": {
+      "url": "https://www.damu.cz/cs/katedry-programy/katedra-autorske-tvorby-a-pedagogiky/studijni-programy/drama-psychosomatika-a-autorstvi-v-pedagogice-a-socialni-praxi-265/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Drama, psychosomatika a autorství v pedagogice a sociální praxi",
+      "rowTitle": "Drama, psychosomatika a autorství v pedagogice a sociální praxi",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/katedra-autorske-tvorby-a-pedagogiky/studijni-programy/drama-psychosomatika-a-autorstvi-v-pedagogice-a-socialni-praxi-265/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-ae20a2400f76": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3985",
@@ -41323,6 +42534,21 @@
       "matchedAt": "2026-09-27T17:21:51Z",
       "checkedAt": "2026-10-02T23:48:37Z"
     },
+    "inv-b278e18272b6": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/pedagogika-predskolniho-veku-se-zamerenim-na-deti-se-specialnimi-potrebami",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Pedagogika předškolního věku se zaměřením na děti se speciálními potřebami",
+      "rowTitle": "Pedagogika předškolního věku se zaměřením na děti se speciálními potřebami",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/pedagogika-predskolniho-veku-se-zamerenim-na-deti-se-specialnimi-potrebami",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Pedagogika předškolního věku se zaměřením na děti se speciálními potřebami",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:17Z"
+    },
     "inv-b28d2decad92": {
       "url": "https://is.czu.cz/katalog/plany.pl?fakulta=20;poc_obdobi=1342;typ_ss=;typ_studia=4;program=1433;info=1;misto_vyuky=;lang=cz",
       "kind": "school_programme_page",
@@ -41398,6 +42624,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:40:21Z"
     },
+    "inv-b2f1c7320e7e": {
+      "url": "https://is.slu.cz/program/1341?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Historie se zaměřením na české a československé dějiny",
+      "rowTitle": "Historie se zaměřením na české a československé dějiny",
+      "sourceUrl": "https://is.slu.cz/program/1341?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Historie se zaměřením na české a československé dějiny",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:27:57Z"
+    },
     "inv-b324c95f50d0": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=1202&academicYearId=66&studyLanguageIds=1",
       "kind": "school_programme_page",
@@ -41412,6 +42653,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:41:06Z",
       "checkedAt": "2026-10-03T00:23:31Z"
+    },
+    "inv-b33605764f57": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-teorie/studijni-programy/hudebni-teorie-205/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Hudební teorie",
+      "rowTitle": "Hudební teorie",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-teorie/studijni-programy/hudebni-teorie-205/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-b340129fa58e": {
       "url": "https://www.vspj.cz/cs/zajemce-o-studium/e-prihlaska?oborwid=8",
@@ -42223,6 +43479,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:39:06Z"
     },
+    "inv-b579fd489f71": {
+      "url": "https://www.uhk.cz/cs/filozoficka-fakulta/prijimaci-zkousky/studijni-programy/socialni-prace",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Sociální práce",
+      "rowTitle": "Sociální práce",
+      "sourceUrl": "https://www.uhk.cz/cs/filozoficka-fakulta/prijimaci-zkousky/studijni-programy/socialni-prace",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociální práce",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:12Z"
+    },
     "inv-b59ab75cd350": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24374-teorie-a-dejiny-filmu-a-audiovizualni-kultury",
       "kind": "school_programme_page",
@@ -42357,6 +43628,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T21:57:04Z",
       "checkedAt": "2026-10-03T00:03:03Z"
+    },
+    "inv-b608b48d903d": {
+      "url": "https://www.famu.cz/cs/katedry/katedra-kamery/pro-uchazece/kamera-222/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Kamera",
+      "rowTitle": "Kamera",
+      "sourceUrl": "https://www.famu.cz/cs/katedry/katedra-kamery/pro-uchazece/kamera-222/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-b614a0015525": {
       "url": "https://stag.tul.cz/ects/browser/FP/1397?lang=cs",
@@ -43003,6 +44289,21 @@
       "matchedAt": "2026-09-28T16:18:36Z",
       "checkedAt": "2026-09-28T16:22:07Z"
     },
+    "inv-b79fa5162302": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/N104",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Chemie",
+      "rowTitle": "Chemie",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/N104",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Chemie",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:53Z"
+    },
     "inv-b7a6a9e3c1d7": {
       "url": "https://fis.vse.cz/english/about/phd/econometrics-and-operations-research/",
       "kind": "school_programme_page",
@@ -43122,6 +44423,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:51:17Z"
+    },
+    "inv-b844bdcd478a": {
+      "url": "https://is.slu.cz/program/2583?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Sociální politika ve veřejné správě",
+      "rowTitle": "Sociální politika ve veřejné správě",
+      "sourceUrl": "https://is.slu.cz/program/2583?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociální politika ve veřejné správě",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:39Z"
     },
     "inv-b84a2f12ffa0": {
       "url": "https://bilakniha.cvut.cz/cs/program1122661867705.html",
@@ -43363,6 +44679,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:13:32Z"
     },
+    "inv-b921355ea9e8": {
+      "url": "https://is.slu.cz/program/761?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Dentální hygiena",
+      "rowTitle": "Dentální hygiena",
+      "sourceUrl": "https://is.slu.cz/program/761?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Dentální hygiena",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:26Z"
+    },
     "inv-b927d9b0676d": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1073",
       "kind": "school_programme_page",
@@ -43512,6 +44843,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T08:12:48Z",
       "checkedAt": "2026-10-03T00:51:32Z"
+    },
+    "inv-ba0b80c0972b": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/B202",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Energie a paliva",
+      "rowTitle": "Energie a paliva",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/B202",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Energie a paliva",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:29Z"
     },
     "inv-ba1bccef0d25": {
       "url": "https://stag.upol.cz/ects/browser/PDF/2007?lang=cs",
@@ -43678,6 +45024,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:54:45Z"
     },
+    "inv-bafa1349428c": {
+      "url": "https://www.osu.cz/studijniobory/?specializaceid=3166",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_17000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Ekonomická geografie a regionální rozvoj",
+      "rowTitle": "Ekonomická geografie a regionální rozvoj",
+      "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=3166",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Udržitelný územní rozvoj a trh nemovitostí / Ostravská univerzita",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-03T09:27:13Z",
+      "checkedAt": "2026-10-03T09:53:02Z"
+    },
     "inv-bb36941936d9": {
       "url": "https://www.vut.cz/en/students/programmes/programme/9696",
       "kind": "school_programme_page",
@@ -43752,6 +45113,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:14:19Z"
+    },
+    "inv-bb837a33659a": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/B402",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Chemické inženýrství a bioinženýrství",
+      "rowTitle": "Chemické inženýrství a bioinženýrství",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/B402",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Chemické inženýrství a bioinženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:40Z"
     },
     "inv-bb998dcdf479": {
       "url": "https://stag.tul.cz/ects/browser/FZS/1347?lang=cs",
@@ -44998,6 +46374,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:36:50Z"
     },
+    "inv-c0f415a8fa90": {
+      "url": "https://is.slu.cz/program/1986?lang=en",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "d",
+      "language": "en",
+      "matchedTitle": "Economics and Management",
+      "rowTitle": "Economics and Management",
+      "sourceUrl": "https://is.slu.cz/program/1986?lang=en",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Economics and Management",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:29Z"
+    },
     "inv-c0f5782270c7": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3904",
       "kind": "school_programme_page",
@@ -45162,6 +46553,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:53:08Z"
+    },
+    "inv-c1e18d286988": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-produkce/studijni-programy/hudebni-produkce-220/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Hudební produkce",
+      "rowTitle": "Hudební produkce",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-hudebni-produkce/studijni-programy/hudebni-produkce-220/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-c1e9bdbe8957": {
       "url": "https://www.vs-prigo.cz/cs/studijni-programy/ekonomika-management",
@@ -45628,6 +47034,21 @@
       "matchedAt": "2026-09-27T21:44:50Z",
       "checkedAt": "2026-10-02T23:54:25Z"
     },
+    "inv-c3f8eeb64fa6": {
+      "url": "https://is.slu.cz/program/1121?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Informatika",
+      "rowTitle": "Informatika",
+      "sourceUrl": "https://is.slu.cz/program/1121?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Informatika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:27:48Z"
+    },
     "inv-c3f98a4cf58d": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1944?lang=cs",
       "kind": "school_programme_page",
@@ -45643,6 +47064,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:50:54Z"
     },
+    "inv-c4090dc7304c": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/N102",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Chemie a technologie materiálů",
+      "rowTitle": "Chemie a technologie materiálů",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/N102",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Chemie a technologie materiálů",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:42:47Z"
+    },
     "inv-c40969a566c3": {
       "url": "https://portal.upce.cz/ects/browser/FCH/610?lang=cs",
       "kind": "school_programme_page",
@@ -45657,6 +47093,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:13:40Z"
+    },
+    "inv-c41210bd4ff0": {
+      "url": "https://is.slu.cz/program/961?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Porodní asistence",
+      "rowTitle": "Porodní asistence",
+      "sourceUrl": "https://is.slu.cz/program/961?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Porodní asistence",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:38Z"
     },
     "inv-c424de2fb4e1": {
       "url": "https://fis.vse.cz/english/about/bachelors-degree-programs/economic-data-science/",
@@ -45852,6 +47303,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-28T17:56:15Z",
       "checkedAt": "2026-09-28T18:01:48Z"
+    },
+    "inv-c5350ddca991": {
+      "url": "https://www.famu.cz/cs/katedry/katedra-kamery/pro-uchazece/kamera-227/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Kamera",
+      "rowTitle": "Kamera",
+      "sourceUrl": "https://www.famu.cz/cs/katedry/katedra-kamery/pro-uchazece/kamera-227/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-c53d550372fb": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1714",
@@ -46228,6 +47694,21 @@
       "matchedAt": "2026-09-27T12:30:20Z",
       "checkedAt": "2026-10-02T23:53:12Z"
     },
+    "inv-c6a5cefb002f": {
+      "url": "https://is.slu.cz/program/921?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Edukační péče o seniory",
+      "rowTitle": "Edukační péče o seniory",
+      "sourceUrl": "https://is.slu.cz/program/921?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Edukační péče o seniory",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:34Z"
+    },
     "inv-c6de893b4730": {
       "url": "https://www.utb.cz/vyhledavac-oboru/chemie-potravin-a-bioaktivnich-latek-mgr/",
       "kind": "school_programme_page",
@@ -46498,6 +47979,21 @@
       "matchedAt": "2026-10-03T03:35:04Z",
       "checkedAt": "2026-10-03T03:37:40Z"
     },
+    "inv-c7b7b51b11c1": {
+      "url": "https://is.slu.cz/program/603?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Historie a kulturní dědictví v regionální praxi",
+      "rowTitle": "Historie a kulturní dědictví v regionální praxi",
+      "sourceUrl": "https://is.slu.cz/program/603?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Historie a kulturní dědictví v regionální praxi",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:11Z"
+    },
     "inv-c7c9cd957f97": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1683",
       "kind": "school_programme_page",
@@ -46677,6 +48173,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T20:27:27Z",
       "checkedAt": "2026-09-27T20:30:07Z"
+    },
+    "inv-c8fc7338e53e": {
+      "url": "https://is.slu.cz/program/605?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Historie-muzeologie",
+      "rowTitle": "Historie-muzeologie",
+      "sourceUrl": "https://is.slu.cz/program/605?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Historie-muzeologie",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:13Z"
     },
     "inv-c8fff7bbdd3e": {
       "url": "https://mendelu.cz/studijni-programy/mezinarodni-teritorialni-studia/",
@@ -47878,6 +49389,21 @@
       "matchedAt": "2026-09-27T21:50:43Z",
       "checkedAt": "2026-10-02T23:43:08Z"
     },
+    "inv-ce6664388c7d": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/transkulturni-komunikace",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Transkulturní komunikace",
+      "rowTitle": "Transkulturní komunikace",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/transkulturni-komunikace",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Transkulturní komunikace",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:23Z"
+    },
     "inv-ce68e3cdb4d3": {
       "url": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/23888-didactics-of-foreign-language",
       "kind": "school_programme_page",
@@ -48132,6 +49658,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T12:13:49Z",
       "checkedAt": "2026-10-03T00:37:40Z"
+    },
+    "inv-cf16ba651753": {
+      "url": "https://is.slu.cz/program/801?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Veřejná správa a sociální politika",
+      "rowTitle": "Veřejná správa a sociální politika",
+      "sourceUrl": "https://is.slu.cz/program/801?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Veřejná správa a sociální politika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:32Z"
     },
     "inv-cf18f98377f1": {
       "url": "https://phd.vse.cz/pro-zajemce/nabidka-doktorskych-programu/regionalni-rozvoj/",
@@ -49723,6 +51264,21 @@
       "matchedAt": "2026-09-27T12:15:53Z",
       "checkedAt": "2026-10-03T00:15:49Z"
     },
+    "inv-d5ded95d2fc1": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-jazzove-hudby/studijni-programy/jazzova-hudba-181/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Jazzová hudba",
+      "rowTitle": "Jazzová hudba",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-jazzove-hudby/studijni-programy/jazzova-hudba-181/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-d5e1af17621a": {
       "url": "https://stag.upol.cz/ects/browser/PRF/3194?lang=cs",
       "kind": "school_programme_page",
@@ -50143,6 +51699,21 @@
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-28T18:20:56Z"
     },
+    "inv-d7d9eaf86d82": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/ucitelstvi-pro-materske-skoly",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Učitelství pro mateřské školy",
+      "rowTitle": "Učitelství pro mateřské školy",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/ucitelstvi-pro-materske-skoly",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Učitelství pro mateřské školy",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:25Z"
+    },
     "inv-d7df0c0aceb4": {
       "url": "https://bilakniha.cvut.cz/cs/program1156404080805.html",
       "kind": "school_programme_page",
@@ -50428,6 +51999,21 @@
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-10-02T23:40:07Z"
     },
+    "inv-d92c4357c0e4": {
+      "url": "https://is.slu.cz/program/2543?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Kamera, střihová skladba a digitální postprodukce",
+      "rowTitle": "Kamera, střihová skladba a digitální postprodukce",
+      "sourceUrl": "https://is.slu.cz/program/2543?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Kamera, střihová skladba a digitální postprodukce",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:36Z"
+    },
     "inv-d9320e58f915": {
       "url": "https://stag.upol.cz/ects/browser/FIF/2551?lang=cs",
       "kind": "school_programme_page",
@@ -50682,6 +52268,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T08:12:48Z",
       "checkedAt": "2026-10-03T03:54:42Z"
+    },
+    "inv-da33d7d6132f": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/N106",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Bioinformatika a chemická informatika",
+      "rowTitle": "Bioinformatika a chemická informatika",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/N106",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Bioinformatika a chemická informatika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:43:01Z"
     },
     "inv-da47b0b2f003": {
       "url": "https://www.uhk.cz/cs/filozoficka-fakulta/prijimaci-zkousky/studijni-programy/politologie-1",
@@ -51313,6 +52914,21 @@
       "matchedAt": "2026-09-28T17:48:12Z",
       "checkedAt": "2026-09-28T18:23:11Z"
     },
+    "inv-dcc44e0c9787": {
+      "url": "https://is.slu.cz/program/1701?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Informatika",
+      "rowTitle": "Informatika",
+      "sourceUrl": "https://is.slu.cz/program/1701?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Informatika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:12Z"
+    },
     "inv-dcc4525e1a54": {
       "url": "https://wstag.jcu.cz/ects/browser/FZE/1521?lang=cs",
       "kind": "school_programme_page",
@@ -51733,6 +53349,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-09-28T18:37:57Z"
     },
+    "inv-de3463693ddd": {
+      "url": "https://is.slu.cz/program/1361?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Mezinárodní obchod",
+      "rowTitle": "Mezinárodní obchod",
+      "sourceUrl": "https://is.slu.cz/program/1361?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Mezinárodní obchod",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:00Z"
+    },
     "inv-de3560d3d60e": {
       "url": "https://df.jamu.cz/studijni-obory/dramaticka-umeni-4/",
       "kind": "school_programme_page",
@@ -51912,6 +53543,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:46:28Z"
+    },
+    "inv-df1cfcbcf338": {
+      "url": "https://is.slu.cz/program/1983?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "d",
+      "language": "cs",
+      "matchedTitle": "Ekonomika a management",
+      "rowTitle": "Ekonomika a management",
+      "sourceUrl": "https://is.slu.cz/program/1983?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Ekonomika a management",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:27Z"
     },
     "inv-df2dd7564204": {
       "url": "https://www.fs.cvut.cz/en/prospective-students/accredited-study-programmes/doctoral-study-programme/phd-rsp-en/",
@@ -52873,6 +54519,21 @@
       "matchedAt": "2026-09-27T12:13:49Z",
       "checkedAt": "2026-10-03T00:37:39Z"
     },
+    "inv-e2f10319bed3": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-jazzove-hudby/studijni-programy/jazzova-hudba-180/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Jazzová hudba",
+      "rowTitle": "Jazzová hudba",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-jazzove-hudby/studijni-programy/jazzova-hudba-180/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-e3047544a4ca": {
       "url": "https://ff.osu.cz/?specializaceid=2724",
       "kind": "school_programme_page",
@@ -52977,6 +54638,36 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:52:43Z"
+    },
+    "inv-e36483057c5f": {
+      "url": "https://is.slu.cz/program/1301?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Digitální business",
+      "rowTitle": "Digitální business",
+      "sourceUrl": "https://is.slu.cz/program/1301?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Digitální business",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:27:53Z"
+    },
+    "inv-e3670b797781": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-nonverbalniho-divadla/studijni-programy/nonverbalni-divadlo-218/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Nonverbální divadlo",
+      "rowTitle": "Nonverbální divadlo",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-nonverbalniho-divadla/studijni-programy/nonverbalni-divadlo-218/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-e3858ad41e24": {
       "url": "https://portal.upce.cz/ects/browser/DFJ/625?lang=cs",
@@ -53458,6 +55149,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:49:41Z"
     },
+    "inv-e53fddd7f8f4": {
+      "url": "https://www.damu.cz/cs/katedry-programy/katedra-alternativniho-a-loutkoveho-divadla/studijni-programy/alternativni-a-loutkove-divadlo-184/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Alternativní a loutkové divadlo",
+      "rowTitle": "Alternativní a loutkové divadlo",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/katedra-alternativniho-a-loutkoveho-divadla/studijni-programy/alternativni-a-loutkove-divadlo-184/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-e552d6a2a477": {
       "url": "https://portal.ujep.cz/ects/browser/PRF/1223?lang=cs",
       "kind": "school_programme_page",
@@ -53937,6 +55643,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T03:35:13Z",
       "checkedAt": "2026-10-03T04:38:46Z"
+    },
+    "inv-e7a48c3f1f27": {
+      "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=1227&academicYearId=66&studyLanguageIds=1",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_27000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "SMART Engineering",
+      "rowTitle": "SMART Engineering",
+      "sourceUrl": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=1227&academicYearId=66&studyLanguageIds=1",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy - VŠB-TUO",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-03T09:27:13Z",
+      "checkedAt": "2026-10-03T10:00:07Z"
     },
     "inv-e7af64c5c0c8": {
       "url": "https://mendelu.cz/en/studijni-programy/applied-statistics-and-operations-research/",
@@ -54733,6 +56454,21 @@
       "matchedAt": "2026-09-27T21:47:36Z",
       "checkedAt": "2026-10-03T00:13:50Z"
     },
+    "inv-eb2a7ddbc80b": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/socialni-patologie-a-edukace-v-neziskovem-sektoru",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Sociální patologie a edukace v neziskovém sektoru",
+      "rowTitle": "Sociální patologie a edukace v neziskovém sektoru",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/socialni-patologie-a-edukace-v-neziskovem-sektoru",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Sociální patologie a edukace v neziskovém sektoru",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:18Z"
+    },
     "inv-eb34ce971144": {
       "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/vytvarna-tvorba-se-zamerenim-na-vzdelavani",
       "kind": "school_programme_page",
@@ -55318,6 +57054,21 @@
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-10-02T23:52:07Z"
     },
+    "inv-ed0023f4ad81": {
+      "url": "https://is.slu.cz/program/609?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Italština pro odbornou praxi",
+      "rowTitle": "Italština pro odbornou praxi",
+      "sourceUrl": "https://is.slu.cz/program/609?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Italština pro odbornou praxi",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:15Z"
+    },
     "inv-ed1391a6d3a5": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/145",
       "kind": "school_programme_page",
@@ -55542,6 +57293,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:50:28Z"
+    },
+    "inv-ee95ca730b4c": {
+      "url": "https://www.damu.cz/cs/katedry-programy/katedra-cinoherniho-divadla/studijni-programy/dramaturgie-cinoherniho-divadla-240/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Dramaturgie činoherního divadla",
+      "rowTitle": "Dramaturgie činoherního divadla",
+      "sourceUrl": "https://www.damu.cz/cs/katedry-programy/katedra-cinoherniho-divadla/studijni-programy/dramaturgie-cinoherniho-divadla-240/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
     },
     "inv-eec2ac432582": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1674",
@@ -56353,6 +58119,21 @@
       "matchedAt": "2026-09-27T12:13:49Z",
       "checkedAt": "2026-10-03T00:38:06Z"
     },
+    "inv-f2c9e88a6501": {
+      "url": "https://is.slu.cz/program/781?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Veřejná ekonomika a správa",
+      "rowTitle": "Veřejná ekonomika a správa",
+      "sourceUrl": "https://is.slu.cz/program/781?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Veřejná ekonomika a správa",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:28Z"
+    },
     "inv-f2d6056e1336": {
       "url": "https://stag.tul.cz/ects/browser/FP/1608?lang=cs",
       "kind": "school_programme_page",
@@ -56773,6 +58554,21 @@
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-09-28T18:20:15Z"
     },
+    "inv-f4bb5ebf0809": {
+      "url": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/specialni-pedagogika",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_18000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Speciální pedagogika",
+      "rowTitle": "Speciální pedagogika",
+      "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/specialni-pedagogika",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Speciální pedagogika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:26Z",
+      "checkedAt": "2026-10-03T09:42:22Z"
+    },
     "inv-f4c3ba6639eb": {
       "url": "https://www.vsb.cz/cs/uchazec/?programmeId=907&academicYearId=66&studyLanguageIds=1",
       "kind": "school_programme_page",
@@ -57072,6 +58868,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:54:42Z"
+    },
+    "inv-f60d57d64d99": {
+      "url": "https://is.slu.cz/program/365?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Audiovizuální tvorba",
+      "rowTitle": "Audiovizuální tvorba",
+      "sourceUrl": "https://is.slu.cz/program/365?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Audiovizuální tvorba",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:51Z"
     },
     "inv-f61aed59de9c": {
       "url": "https://portal.upce.cz/ects/browser/FCH/632?lang=cs",
@@ -57508,6 +59319,21 @@
       "matchedAt": "2026-09-27T12:30:20Z",
       "checkedAt": "2026-10-02T23:52:48Z"
     },
+    "inv-f7c910800491": {
+      "url": "https://www.hamu.cz/cs/katedry-programy/katedra-dirigovani/studijni-programy/dirigovani-212/",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_51000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Dirigování",
+      "rowTitle": "Dirigování",
+      "sourceUrl": "https://www.hamu.cz/cs/katedry-programy/katedra-dirigovani/studijni-programy/dirigovani-212/",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": null,
+      "reachability": "unverified",
+      "matchedAt": "2026-10-03T09:27:11Z",
+      "checkedAt": ""
+    },
     "inv-f7d0c2a99031": {
       "url": "https://stag.tul.cz/ects/browser/FM/1504?lang=cs",
       "kind": "school_programme_page",
@@ -57808,6 +59634,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:49:35Z"
     },
+    "inv-f97b9ba4bdf1": {
+      "url": "https://is.slu.cz/program/4600?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Udržitelné podnikání",
+      "rowTitle": "Udržitelné podnikání",
+      "sourceUrl": "https://is.slu.cz/program/4600?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Udržitelné podnikání",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:58Z"
+    },
     "inv-f98e87084f60": {
       "url": "https://www.peuni.cz/studijni-programy/bakalarske-studium/bezpecnostni-studia/",
       "kind": "school_programme_page",
@@ -57822,6 +59663,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
       "checkedAt": "2026-09-28T18:26:51Z"
+    },
+    "inv-f98ffdfa2020": {
+      "url": "https://studuj.vscht.cz/studijni-programy/program/N401",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_22000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Chemické inženýrství a bioinženýrství",
+      "rowTitle": "Chemické inženýrství a bioinženýrství",
+      "sourceUrl": "https://studuj.vscht.cz/studijni-programy/program/N401",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Chemické inženýrství a bioinženýrství",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:43:11Z"
     },
     "inv-f99b124daafd": {
       "url": "https://bilakniha.cvut.cz/cs/program1241713104105.html",
@@ -58258,6 +60114,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:52:37Z"
     },
+    "inv-fbcb2dcfe6d7": {
+      "url": "https://is.slu.cz/program/721?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Marketing",
+      "rowTitle": "Marketing",
+      "sourceUrl": "https://is.slu.cz/program/721?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Marketing",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:29:21Z"
+    },
     "inv-fbe43e95f318": {
       "url": "https://portal.ujep.cz/ects/browser/FF/1563?lang=cs",
       "kind": "school_programme_page",
@@ -58482,6 +60353,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:41:06Z",
       "checkedAt": "2026-10-03T00:23:16Z"
+    },
+    "inv-fc8ed0e5e26a": {
+      "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=948&academicYearId=66&studyLanguageIds=1",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_27000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Finance",
+      "rowTitle": "Finance",
+      "sourceUrl": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=948&academicYearId=66&studyLanguageIds=1",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy - VŠB-TUO",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-03T09:27:13Z",
+      "checkedAt": "2026-10-03T10:00:08Z"
     },
     "inv-fcd26769d212": {
       "url": "https://wstag.jcu.cz/ects/browser/FZE/1520?lang=cs",
@@ -58873,6 +60759,36 @@
       "matchedAt": "2026-09-27T23:09:25Z",
       "checkedAt": "2026-10-02T23:53:09Z"
     },
+    "inv-fe2da28b4591": {
+      "url": "https://is.slu.cz/program/1590?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Manažerská informatika",
+      "rowTitle": "Manažerská informatika",
+      "sourceUrl": "https://is.slu.cz/program/1590?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Manažerská informatika",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:06Z"
+    },
+    "inv-fe4d671d973b": {
+      "url": "https://is.slu.cz/program/1803?lang=en",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "en",
+      "matchedTitle": "Economics and Management",
+      "rowTitle": "Economics and Management",
+      "sourceUrl": "https://is.slu.cz/program/1803?lang=en",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Economics and Management",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:19Z"
+    },
     "inv-fe4dde95c993": {
       "url": "https://stag.upol.cz/ects/browser/PDF/2000?lang=cs",
       "kind": "school_programme_page",
@@ -59188,6 +61104,21 @@
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:47:59Z"
     },
+    "inv-ff41723dbe6a": {
+      "url": "https://is.slu.cz/program/1596?lang=cs",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_19000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Bankovnictví, peněžnictví, pojišťovnictví",
+      "rowTitle": "Bankovnictví, peněžnictví, pojišťovnictví",
+      "sourceUrl": "https://is.slu.cz/program/1596?lang=cs",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Bankovnictví, peněžnictví, pojišťovnictví",
+      "reachability": "verified",
+      "matchedAt": "2026-10-03T09:27:20Z",
+      "checkedAt": "2026-10-03T09:28:10Z"
+    },
     "inv-ff6dae714007": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/master-degree/master-degree-detail/?programmeId=957",
       "kind": "school_programme_page",
@@ -59376,11 +61307,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-02e1188d015c",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-02f854ff1d97",
       "reason": "no_candidate_page"
@@ -59456,11 +61382,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-0674c72bc86c",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-06a5a97c454b",
       "reason": "no_candidate_page"
@@ -59469,11 +61390,6 @@
       "institutionId": "msmt-vs_19000",
       "rowId": "inv-06b2359f4c0d",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-06b563cd0081",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -59596,11 +61512,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-0bb2959a40b1",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_61000",
       "rowId": "inv-0be5c39697d6",
       "reason": "no_candidate_page"
@@ -59628,7 +61539,7 @@
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-0d78ef3ae72e",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_16000",
@@ -59681,21 +61592,6 @@
       "reason": "page_states_nothing"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-0f787c1238e4",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-0f7f057472dc",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-0fd815694dc9",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-0fecb0b4e85b",
       "reason": "no_candidate_page"
@@ -59708,7 +61604,7 @@
     {
       "institutionId": "msmt-vs_25000",
       "rowId": "inv-1003d88d9890",
-      "reason": "page_states_nothing"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_11000",
@@ -59749,11 +61645,6 @@
       "institutionId": "msmt-vs_28000",
       "rowId": "inv-127dc584c4bc",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_27000",
-      "rowId": "inv-1289b26c48fe",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_6u000",
@@ -59801,11 +61692,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-1502bc77e67f",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-1516e8ec4893",
       "reason": "no_candidate_page"
@@ -59846,11 +61732,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-1645ad671944",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-1657ceec6ff7",
       "reason": "no_candidate_page"
@@ -59884,11 +61765,6 @@
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-180bc32aec6f",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-186cd7290ba8",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_17000",
@@ -60046,24 +61922,9 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-1f1da33d5d50",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-1f2a5d555b63",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-1f4093ab8a31",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_27000",
-      "rowId": "inv-1f791dfd2650",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -60078,11 +61939,6 @@
     {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-2048c2f9b1d6",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-2062d325b106",
       "reason": "no_candidate_page"
     },
     {
@@ -60118,11 +61974,6 @@
     {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-21941d529723",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-2235bfa6634a",
       "reason": "no_candidate_page"
     },
     {
@@ -60171,11 +62022,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-246157e16010",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_63000",
       "rowId": "inv-24738088b89b",
       "reason": "no_candidate_page"
@@ -60189,11 +62035,6 @@
       "institutionId": "msmt-vs_43000",
       "rowId": "inv-24f767216a12",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-2515367f5c75",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_28000",
@@ -60299,11 +62140,6 @@
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-29a0360e6e22",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-29d01fd8953a",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_26000",
@@ -60438,7 +62274,7 @@
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-30014093e7c2",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -60463,11 +62299,6 @@
     {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-30a56867c59e",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-30e45d995ebb",
       "reason": "no_candidate_page"
     },
     {
@@ -60538,7 +62369,7 @@
     {
       "institutionId": "msmt-vs_25000",
       "rowId": "inv-3354db9cb76c",
-      "reason": "page_states_nothing"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -60561,16 +62392,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-3528b1f653f3",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-3533ccb0340f",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-35563074990c",
       "reason": "no_candidate_page"
@@ -60579,11 +62400,6 @@
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-359a7d6f9a83",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-35dcca2c3e9d",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_7u000",
@@ -60736,19 +62552,9 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-3e1ab581ec37",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-3e5cf2401e26",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-3e77102b89b0",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_27000",
@@ -60836,11 +62642,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-42fd4c2de2ad",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_16000",
       "rowId": "inv-430cdc99428b",
       "reason": "page_states_nothing"
@@ -60864,11 +62665,6 @@
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-43da15e332b2",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_27000",
-      "rowId": "inv-44209cf51484",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_23000",
@@ -60901,23 +62697,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-454949d44f55",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-454eb9cbd6a1",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-455dc22a808d",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-4577ce5e4763",
       "reason": "no_candidate_page"
     },
     {
@@ -60951,18 +62732,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-47e312265b2c",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_41000",
       "rowId": "inv-48370c7f9e21",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-48476f207d1b",
       "reason": "no_candidate_page"
     },
     {
@@ -61016,11 +62787,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-4a63cfb28370",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_23000",
       "rowId": "inv-4aac1d37b305",
       "reason": "no_candidate_page"
@@ -61043,11 +62809,6 @@
     {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-4b317420fc53",
-      "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-4b34f1c35dcb",
       "reason": "ambiguous_register_rows"
     },
     {
@@ -61084,11 +62845,6 @@
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-4c42a6d3251f",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-4c43abf560c8",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_25000",
@@ -61201,11 +62957,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-5217e085cbb8",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-521828629e2f",
       "reason": "ambiguous_register_rows"
@@ -61246,18 +62997,8 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-535406c3aef7",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_16000",
       "rowId": "inv-538d500020c6",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-53a486bbe3d5",
       "reason": "page_states_nothing"
     },
     {
@@ -61322,11 +63063,6 @@
     },
     {
       "institutionId": "msmt-vs_22000",
-      "rowId": "inv-560d39c6f900",
-      "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
       "rowId": "inv-56284ebe10ff",
       "reason": "ambiguous_register_rows"
     },
@@ -61334,11 +63070,6 @@
       "institutionId": "msmt-vs_7p000",
       "rowId": "inv-562d33424ca9",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-565656a7b1b8",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -61361,16 +63092,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-574c6a871a2d",
-      "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-5755d80af1a0",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_41000",
       "rowId": "inv-576701c666ed",
       "reason": "no_candidate_page"
@@ -61378,11 +63099,6 @@
     {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-5773e605d121",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-583a000d2a11",
       "reason": "no_candidate_page"
     },
     {
@@ -61426,11 +63142,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-5af24ccd4165",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-5b6166885e18",
       "reason": "no_candidate_page"
@@ -61466,11 +63177,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-5d6dc3f4db1c",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_19000",
       "rowId": "inv-5da9a3b734ac",
       "reason": "no_candidate_page"
@@ -61478,21 +63184,11 @@
     {
       "institutionId": "msmt-vs_25000",
       "rowId": "inv-5dd8817616d0",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-5e14fe4388e7",
-      "reason": "ambiguous_register_rows"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-5ea028939e1a",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-5edf3d33f484",
       "reason": "no_candidate_page"
     },
     {
@@ -61541,11 +63237,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-60961a63aba7",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-60a53d94fe5c",
       "reason": "no_candidate_page"
@@ -61554,16 +63245,6 @@
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-60d87c1c1e63",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-6159f152c58f",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-6167b5dcf413",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_27000",
@@ -61626,11 +63307,6 @@
       "reason": "page_states_nothing"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-63465e203561",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_53000",
       "rowId": "inv-635c7d9979a8",
       "reason": "ambiguous_register_rows"
@@ -61648,11 +63324,6 @@
     {
       "institutionId": "msmt-vs_23000",
       "rowId": "inv-63f9b646d72f",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-644f74917131",
       "reason": "no_candidate_page"
     },
     {
@@ -61766,16 +63437,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-6b98be4e6d46",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-6bacf929bf81",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_54000",
       "rowId": "inv-6baf5bb3fd2c",
       "reason": "ambiguous_register_rows"
@@ -61784,11 +63445,6 @@
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-6c3772561b2e",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-6c5f74c94b0f",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_43000",
@@ -61841,11 +63497,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-6f5c6b8eaf3c",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_54000",
       "rowId": "inv-6f6c66e7ea99",
       "reason": "ambiguous_register_rows"
@@ -61876,16 +63527,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-70f3b758f411",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-70fe5a7e5d43",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_31000",
       "rowId": "inv-71e1659bbbec",
       "reason": "no_candidate_page"
@@ -61893,11 +63534,6 @@
     {
       "institutionId": "msmt-vs_6n000",
       "rowId": "inv-72162a528c0e",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-721a47c13030",
       "reason": "no_candidate_page"
     },
     {
@@ -61936,11 +63572,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-7486691fb0ba",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-74896790badd",
       "reason": "no_candidate_page"
@@ -61948,11 +63579,6 @@
     {
       "institutionId": "msmt-vs_61000",
       "rowId": "inv-74a7153bae19",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-74af93abaeda",
       "reason": "no_candidate_page"
     },
     {
@@ -62006,11 +63632,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-769815e829d1",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-76b7a152e206",
       "reason": "no_candidate_page"
@@ -62019,11 +63640,6 @@
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-76db51361806",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_27000",
-      "rowId": "inv-76febedcf487",
-      "reason": "page_states_another_level"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -62083,11 +63699,6 @@
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-7b07401d1f67",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-7b45c76ba7cb",
       "reason": "no_candidate_page"
     },
     {
@@ -62221,11 +63832,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-82a6428f69ca",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_53000",
       "rowId": "inv-82d835f12997",
       "reason": "page_returned_404"
@@ -62263,11 +63869,6 @@
     {
       "institutionId": "msmt-vs_23000",
       "rowId": "inv-84327d84656c",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-84396e54468f",
       "reason": "no_candidate_page"
     },
     {
@@ -62357,11 +63958,6 @@
     },
     {
       "institutionId": "msmt-vs_51000",
-      "rowId": "inv-8868577ac69f",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
       "rowId": "inv-88db43514985",
       "reason": "no_candidate_page"
     },
@@ -62376,11 +63972,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-8953cdede401",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-89603dcf5b80",
       "reason": "ambiguous_register_rows"
@@ -62389,11 +63980,6 @@
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-8961e88fc0c1",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-899cbf74542a",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_19000",
@@ -62517,11 +64103,6 @@
     },
     {
       "institutionId": "msmt-vs_27000",
-      "rowId": "inv-91605d4ef415",
-      "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_27000",
       "rowId": "inv-91699a6983b9",
       "reason": "ambiguous_register_rows"
     },
@@ -62601,11 +64182,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-9412f15baf95",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-9422e870f8db",
       "reason": "no_candidate_page"
@@ -62614,11 +64190,6 @@
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-942a28ffce60",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-94b8d38f781b",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_24000",
@@ -62653,11 +64224,6 @@
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-955baa4cfa21",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-961bb316c656",
       "reason": "no_candidate_page"
     },
     {
@@ -62729,11 +64295,6 @@
       "institutionId": "msmt-vs_53000",
       "rowId": "inv-9983bb5efd43",
       "reason": "page_returned_404"
-    },
-    {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-9999012d9e3c",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_16000",
@@ -62818,11 +64379,6 @@
     {
       "institutionId": "msmt-vs_16000",
       "rowId": "inv-9f91bed3ac4f",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-9fc32c8d74c0",
       "reason": "page_states_nothing"
     },
     {
@@ -62936,11 +64492,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-a4b23dad42f3",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-a4cba5ac0b9f",
       "reason": "no_candidate_page"
@@ -62964,11 +64515,6 @@
       "institutionId": "msmt-vs_28000",
       "rowId": "inv-a5bfe8613976",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-a5c5e03c38b8",
-      "reason": "page_returned_404"
     },
     {
       "institutionId": "msmt-vs_61000",
@@ -63001,11 +64547,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-a7545ed82a1f",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-a765003d1d28",
       "reason": "no_candidate_page"
@@ -63014,11 +64555,6 @@
       "institutionId": "msmt-vs_28000",
       "rowId": "inv-a77944682834",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-a77b3879b0b1",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -63083,7 +64619,7 @@
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-a9f065e22fbc",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -63156,19 +64692,9 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-acd78450ff8a",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_54000",
       "rowId": "inv-acdf88e24e3d",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-ae10ec77e773",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_22000",
@@ -63256,29 +64782,14 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-b278e18272b6",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-b2b23f8ba010",
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-b2f1c7320e7e",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_16000",
       "rowId": "inv-b31ec8c52a8b",
       "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-b33605764f57",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -63341,19 +64852,9 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-b579fd489f71",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_16000",
       "rowId": "inv-b5de37a53888",
       "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-b608b48d903d",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_16000",
@@ -63376,24 +64877,14 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-b79fa5162302",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_25000",
       "rowId": "inv-b7b9ec05a033",
-      "reason": "page_states_nothing"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-b83da43f9e54",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-b844bdcd478a",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_43000",
@@ -63411,19 +64902,9 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-b921355ea9e8",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-b926c7c6cd0d",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-ba0b80c0972b",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_23000",
@@ -63446,11 +64927,6 @@
       "reason": "page_states_nothing"
     },
     {
-      "institutionId": "msmt-vs_17000",
-      "rowId": "inv-bafa1349428c",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_23000",
       "rowId": "inv-bb53a1fe501b",
       "reason": "no_candidate_page"
@@ -63459,11 +64935,6 @@
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-bb5aac45a1a9",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-bb837a33659a",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -63561,11 +65032,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-c0f415a8fa90",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-c13480cf4456",
       "reason": "no_candidate_page"
@@ -63578,11 +65044,6 @@
     {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-c18db6c64373",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-c1e18d286988",
       "reason": "no_candidate_page"
     },
     {
@@ -63621,24 +65082,9 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-c3f8eeb64fa6",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_7u000",
       "rowId": "inv-c4033a7c827c",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-c4090dc7304c",
-      "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-c41210bd4ff0",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_22000",
@@ -63676,11 +65122,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-c5350ddca991",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-c5f84a721990",
       "reason": "no_candidate_page"
@@ -63706,11 +65147,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-c6a5cefb002f",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-c7536beaa979",
       "reason": "no_candidate_page"
@@ -63729,11 +65165,6 @@
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-c7ab8d0ebcdd",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-c7b7b51b11c1",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_53000",
@@ -63784,11 +65215,6 @@
       "institutionId": "msmt-vs_31000",
       "rowId": "inv-c8ba10e4ec46",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-c8fc7338e53e",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_7u000",
@@ -63866,11 +65292,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-ce6664388c7d",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-ce7323404d37",
       "reason": "no_candidate_page"
@@ -63894,11 +65315,6 @@
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-cf02b6d59ef9",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-cf16ba651753",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_19000",
@@ -64026,11 +65442,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-d5ded95d2fc1",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-d60869ce8827",
       "reason": "no_candidate_page"
@@ -64061,11 +65472,6 @@
       "reason": "page_returned_404"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-d7d9eaf86d82",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-d8462ade08a0",
       "reason": "no_candidate_page"
@@ -64084,11 +65490,6 @@
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-d91e11b10e01",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-d92c4357c0e4",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_18000",
@@ -64116,11 +65517,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-da33d7d6132f",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-da3fbb7c8f61",
       "reason": "no_candidate_page"
@@ -64133,7 +65529,7 @@
     {
       "institutionId": "msmt-vs_25000",
       "rowId": "inv-dadc5950a017",
-      "reason": "page_states_nothing"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_7v000",
@@ -64176,11 +65572,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-dcc44e0c9787",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-dd1cfdfc7e13",
       "reason": "no_candidate_page"
@@ -64189,11 +65580,6 @@
       "institutionId": "msmt-vs_23000",
       "rowId": "inv-ddb173c46185",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-de3463693ddd",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_51000",
@@ -64219,11 +65605,6 @@
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-df173275207f",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-df1cfcbcf338",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_51000",
@@ -64268,7 +65649,7 @@
     {
       "institutionId": "msmt-vs_25000",
       "rowId": "inv-e10197240ba6",
-      "reason": "page_states_nothing"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -64283,7 +65664,7 @@
     {
       "institutionId": "msmt-vs_25000",
       "rowId": "inv-e1c68f2c1d6c",
-      "reason": "page_states_nothing"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -64301,11 +65682,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-e2f10319bed3",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_54000",
       "rowId": "inv-e343f503f739",
       "reason": "ambiguous_register_rows"
@@ -64318,16 +65694,6 @@
     {
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-e35854ac82b2",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-e36483057c5f",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-e3670b797781",
       "reason": "no_candidate_page"
     },
     {
@@ -64376,11 +65742,6 @@
       "reason": "page_states_nothing"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-e53fddd7f8f4",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-e614490fff08",
       "reason": "page_states_another_level"
@@ -64404,11 +65765,6 @@
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-e7936d832f43",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_27000",
-      "rowId": "inv-e7a48c3f1f27",
-      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -64471,11 +65827,6 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-eb2a7ddbc80b",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_61000",
       "rowId": "inv-ebb5b2258324",
       "reason": "no_candidate_page"
@@ -64531,11 +65882,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-ed0023f4ad81",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-ed8b9b6bdb73",
       "reason": "ambiguous_register_rows"
@@ -64548,11 +65894,6 @@
     {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-ee6615acc508",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-ee95ca730b4c",
       "reason": "no_candidate_page"
     },
     {
@@ -64676,11 +66017,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-f2c9e88a6501",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_15000",
       "rowId": "inv-f32290112d4b",
       "reason": "no_candidate_page"
@@ -64716,11 +66052,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_18000",
-      "rowId": "inv-f4bb5ebf0809",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_51000",
       "rowId": "inv-f4fff0371280",
       "reason": "no_candidate_page"
@@ -64739,11 +66070,6 @@
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-f55bcb8490a3",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-f60d57d64d99",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_23000",
@@ -64796,11 +66122,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_51000",
-      "rowId": "inv-f7c910800491",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_7d000",
       "rowId": "inv-f8123da90b79",
       "reason": "ambiguous_register_rows"
@@ -64813,21 +66134,11 @@
     {
       "institutionId": "msmt-vs_25000",
       "rowId": "inv-f86650ad6e1c",
-      "reason": "page_states_nothing"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-f8bac430ce1a",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-f97b9ba4bdf1",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_22000",
-      "rowId": "inv-f98ffdfa2020",
       "reason": "ambiguous_register_rows"
     },
     {
@@ -64886,11 +66197,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-fbcb2dcfe6d7",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_11000",
       "rowId": "inv-fbdcbb432880",
       "reason": "no_candidate_page"
@@ -64906,11 +66212,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_27000",
-      "rowId": "inv-fc8ed0e5e26a",
-      "reason": "ambiguous_register_rows"
-    },
-    {
       "institutionId": "msmt-vs_18000",
       "rowId": "inv-fd2fec6f78df",
       "reason": "no_candidate_page"
@@ -64921,19 +66222,9 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-fe2da28b4591",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_52000",
       "rowId": "inv-fe2e5a384916",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-fe4d671d973b",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_11000",
@@ -64943,7 +66234,7 @@
     {
       "institutionId": "msmt-vs_25000",
       "rowId": "inv-fe665ef9c9b4",
-      "reason": "page_states_nothing"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_13000",
@@ -64969,13 +66260,8 @@
       "institutionId": "msmt-vs_26000",
       "rowId": "inv-ff0462d20269",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_19000",
-      "rowId": "inv-ff41723dbe6a",
-      "reason": "page_states_nothing"
     }
   ],
   "retiredFromRegister": [],
-  "requests": 5375
+  "requests": 5322
 }
