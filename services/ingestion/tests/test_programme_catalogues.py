@@ -177,3 +177,23 @@ def test_a_page_on_another_faculty_site_is_not_bound() -> None:
     central["d"] = [(page("https://is.cuni.cz/d"), "cs")]
     rows["d"] = resolver.Row("d", "s", "Archeologie", "b", "cs", "Filozofická fakulta")
     assert resolver.faculty_sites(central, rows) == {}
+
+
+def test_a_refresh_stub_is_read_again_in_its_cookie_session() -> None:
+    from engine.transport import fetch_official_page, is_refresh_stub
+
+    stub = '<!DOCTYPE HTML><html><head><title></title><meta http-equiv="refresh" content="1"></head><body></body></html>'
+    page = "<html><head><title>Historie</title></head><body><h1>Historie</h1>" + "x" * 3000 + "</body></html>"
+    assert is_refresh_stub(stub) and not is_refresh_stub(page)
+    result = fetch_official_page(
+        "https://is.slu.cz/program/1082?lang=cs",
+        ordinary=lambda url: (200, stub),
+        cookie_get=lambda url: (200, page),
+        allow_browser=False,
+    )
+    assert result.body == page
+
+
+def test_stag_page_must_name_its_programme() -> None:
+    assert pc.stag_page_names("<h1>Studijní plány: Bezpečnost a kvalita potravin</h1>", "Bezpečnost a kvalita potravin")
+    assert not pc.stag_page_names("<html><body></body></html>", "Bezpečnost a kvalita potravin")

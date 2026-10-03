@@ -354,6 +354,16 @@ def stag_records(programmes: list[dict], faculties: dict[str, str], ects_base: s
     return records
 
 
+def stag_page_names(html: str, title: str) -> bool:
+    import unicodedata
+
+    def fold(value: str) -> str:
+        value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode().lower()
+        return re.sub(r"[^a-z0-9]+", " ", value).strip()
+
+    return bool(title) and fold(title) in fold(page_text(html))
+
+
 def stag_harvester(key: str) -> Callable[..., dict]:
     _institution, ws_base, ects_base = STAG_SCHOOLS[key]
 
@@ -379,9 +389,18 @@ def stag_harvester(key: str) -> Callable[..., dict]:
         for unit in sorted(units, key=lambda item: item.get("platnostDo") is None):
             if unit.get("zkratka") and unit.get("nazev"):
                 faculties[str(unit["zkratka"])] = str(unit["nazev"])
-        records = stag_records(programmes, faculties, ects_base, year)
-        log(f"{key}: {len(programmes)} programme(s) in STAG, {len(records)} accredited in {year}")
-        return {"programmes": records, "failures": failures, "listingPages": 2}
+        accredited = stag_records(programmes, faculties, ects_base, year)
+        # The ECTS catalogue shows a programme only while it has a study plan
+        # for the year; for the others it answers 200 with an empty page (VFU
+        # 103, a current bachelor's, 2026-10-03). Only a page that names the
+        # programme is offered as its page.
+        records = []
+        for record in accredited:
+            status, html = fetch(record["officialProgrammeUrl"])
+            if status == 200 and len(html or "") >= 2048 and stag_page_names(html, record["titles"]["original"]):
+                records.append(record)
+        log(f"{key}: {len(programmes)} programme(s) in STAG, {len(accredited)} accredited in {year}, {len(records)} with a catalogue page")
+        return {"programmes": records, "failures": failures, "listingPages": 2 + len(accredited)}
 
     return harvest
 
@@ -521,12 +540,22 @@ def main(argv: list[str] | None = None) -> int:
         result = fetch_official_page(url, allow_browser=False)
         return result.status, result.body
 
-    for key in args.school or sorted(ADAPTERS):
-        institution_id, filename, harvest = ADAPTERS[key]
+    from concurrent.futures import ThreadPoolExecutor
+
+    def read(key: str):
         try:
-            result = harvest(throttled(fetch))
+            return key, ADAPTERS[key][2](throttled(fetch)), None
         except Exception as exc:  # one school's outage must not stop the others
-            print(f"::warning title=Programme catalogue::{key}: {type(exc).__name__}: {exc}")
+            return key, None, exc
+
+    # Schools are different hosts, each spaced on its own, so they are read
+    # side by side; one school's pages are still read one at a time.
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        outcomes = list(pool.map(read, args.school or sorted(ADAPTERS)))
+    for key, result, error in outcomes:
+        institution_id, filename, _harvest = ADAPTERS[key]
+        if error is not None:
+            print(f"::warning title=Programme catalogue::{key}: {type(error).__name__}: {error}")
             continue
         path = OUT_DIR / filename
         previous = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}

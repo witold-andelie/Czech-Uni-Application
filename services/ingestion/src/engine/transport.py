@@ -109,6 +109,38 @@ def _record(attempts: list[dict[str, Any]], tool: str, status: int, body: str, r
     )
 
 
+_REFRESH_STUB_RE = re.compile(r"<meta[^>]+http-equiv\s*=\s*[\"']?refresh", re.I)
+
+
+def is_refresh_stub(body: str) -> bool:
+    """A tiny page that only asks the browser to reload (IS at is.slu.cz).
+
+    The first answer sets a session cookie and a <meta refresh>; the reload,
+    sent with that cookie, returns the page. Nothing else is in the stub.
+    """
+    return bool(body) and len(body) < 2048 and bool(_REFRESH_STUB_RE.search(body)) and not _plain(body).strip()
+
+
+def _cookie_reread(url: str, timeout: int = 40) -> tuple[int, str]:
+    """Read ``url`` twice in one cookie session, as a browser's refresh does."""
+    import http.cookiejar
+    import urllib.request
+
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+    headers = {"User-Agent": "Mozilla/5.0 (compatible; CzechUniApplyBot; +https://czech-uni-application.com/contact)"}
+    status, body = 0, ""
+    for _ in range(2):
+        try:
+            with opener.open(urllib.request.Request(url, headers=headers), timeout=timeout) as response:
+                status = int(response.status)
+                body = response.read().decode(response.headers.get_content_charset() or "utf-8", errors="replace")
+        except Exception:  # noqa: BLE001 - the caller keeps the first answer
+            return 0, ""
+        if not is_refresh_stub(body):
+            break
+    return status, body
+
+
 def _live_scrapling_get(url: str, timeout: int = 40) -> tuple[int, str]:
     try:
         from scrapling.fetchers import Fetcher
@@ -166,6 +198,7 @@ def fetch_official_page(
     wait_selector: str | None = None,
     required_markers: tuple[str, ...] = (),
     allow_browser: bool = True,
+    cookie_get: OrdinaryGet | None = None,
 ) -> FetchResult:
     """Escalate only when the cheaper read is insufficient.
 
@@ -179,6 +212,11 @@ def fetch_official_page(
         from harvest_nine_hei_jobs import request as ordinary
 
     status, body = ordinary(url)
+    if status == 200 and is_refresh_stub(body):
+        again_status, again_body = (cookie_get or _cookie_reread)(url)
+        _record(attempts, "ordinary_http", status, body, "refresh-stub")
+        if again_status == 200 and again_body and not is_refresh_stub(again_body):
+            status, body = again_status, again_body
     blocked = access_control_reason(status, body)
     weak = insufficiency_reason(status, body, required_markers)
     _record(attempts, "ordinary_http", status, body, blocked or weak)

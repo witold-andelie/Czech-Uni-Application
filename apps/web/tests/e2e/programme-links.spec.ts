@@ -81,16 +81,24 @@ async function assertCardsStateTheirLink(page: Page, pageLabel: string, fallback
   return { withPage, withoutPage };
 }
 
-/** The card of the first row that states `label`, so its detail can be opened. */
-async function cardStatingLabel(page: Page, label: string): Promise<Locator> {
-  await firstCardShown(page);
-  const cards = page.locator("article.result-card");
-  const total = await cards.count();
-  for (let index = 0; index < total; index += 1) {
-    const card = cards.nth(index);
-    if ((await linksOfCard(card)).some((link) => link.label === label)) return card;
+/**
+ * The card of the first row that states `label`, so its detail can be opened.
+ * Walks the result pages: which rows have a page found changes with every
+ * resolver run, so the first page may hold only one of the two labels.
+ */
+async function cardStatingLabel(page: Page, locale: TestLocale, label: string): Promise<Locator> {
+  for (let pageNumber = 1; pageNumber <= EN_PAGES; pageNumber += 1) {
+    await page.goto(`${listUrl(locale)}&page=${pageNumber}`);
+    await waitForProgrammeResults(page, locale);
+    await firstCardShown(page);
+    const cards = page.locator("article.result-card");
+    const total = await cards.count();
+    for (let index = 0; index < total; index += 1) {
+      const card = cards.nth(index);
+      if ((await linksOfCard(card)).some((link) => link.label === label)) return card;
+    }
   }
-  throw new Error(`no result card states "${label}"`);
+  throw new Error(`no result card on the first ${EN_PAGES} pages states "${label}"`);
 }
 
 /** The href of the detail link whose whole text is `label`, if it is there. */
@@ -135,10 +143,7 @@ for (const locale of LOCALES) {
     const pageLabel = msg(locale, "programme.link.page");
     const fallbackLabel = msg(locale, "programme.link.fallback");
 
-    await page.goto(listUrl(locale));
-    await waitForProgrammeResults(page, locale);
-
-    let card = await cardStatingLabel(page, pageLabel);
+    let card = await cardStatingLabel(page, locale, pageLabel);
     await card.locator("h3 a").first().click();
     // The pattern is not anchored: `toHaveURL` matches the whole URL, origin
     // included, so `^` can never match it (the other specs are unanchored too).
@@ -147,9 +152,7 @@ for (const locale of LOCALES) {
     expect(detailHref, "the detail page does not name the programme page").toMatch(/^https:\/\//i);
     expect(CZU_HOST.test(new URL(String(detailHref)).hostname), `${detailHref} is not a CZU page`).toBeTruthy();
 
-    await page.goto(listUrl(locale));
-    await waitForProgrammeResults(page, locale);
-    card = await cardStatingLabel(page, fallbackLabel);
+    card = await cardStatingLabel(page, locale, fallbackLabel);
     await card.locator("h3 a").first().click();
     await expect(page).toHaveURL(new RegExp(`/${locale}/programmes/[^/]+`));
     const fallbackHref = await officialHrefStating(page, fallbackLabel);
