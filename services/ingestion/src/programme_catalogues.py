@@ -575,7 +575,114 @@ def harvest_amu(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
     return {"programmes": records, "failures": failures, "listingPages": pages}
 
 
+# --------------------------------------------------------------------------- #
+# VŠB – Technical University of Ostrava: the applicants' programme list (Czech
+# programmes, by level section, faculty abbreviation per entry) and the three
+# English degree-study lists (by faculty heading).
+# --------------------------------------------------------------------------- #
+
+VSB_LIST_CS = "https://www.vsb.cz/cs/uchazec/studijni-programy/"
+VSB_LISTS_EN = {
+    "bachelor": "https://www.vsb.cz/en/study/degree-students/degree-studies/bachelor-degree/",
+    "master": "https://www.vsb.cz/en/study/degree-students/degree-studies/master-degree/",
+    "doctorate": "https://www.vsb.cz/en/study/degree-students/degree-studies/doctoral-degree/",
+}
+VSB_SECTIONS_CS = {
+    "Bakalářské programy": "bachelor",
+    "Navazující magisterské programy": "master",
+    "Doktorské programy": "doctorate",
+}
+VSB_FACULTIES = {
+    "FEI": "Fakulta elektrotechniky a informatiky",
+    "HGF": "Hornicko-geologická fakulta",
+    "FS": "Fakulta strojní",
+    "FMT": "Fakulta materiálově-technologická",
+    "FAST": "Fakulta stavební",
+    "EKF": "Ekonomická fakulta",
+    "FBI": "Fakulta bezpečnostního inženýrství",
+}
+VSB_FACULTIES_EN = (
+    ("electrical engineering", "FEI"),
+    ("mining", "HGF"),
+    ("mechanical", "FS"),
+    ("materials", "FMT"),
+    ("civil", "FAST"),
+    ("economics", "EKF"),
+    ("safety", "FBI"),
+)
+
+
+def parse_vsb_cs(html: str, page_url: str) -> list[dict]:
+    records = []
+    marks = sorted(
+        (match.start(), VSB_SECTIONS_CS[page_text(match.group(1))])
+        for match in re.finditer(r"<h[2-4][^>]*>(.*?)</h[2-4]>", html, re.S)
+        if page_text(match.group(1)) in VSB_SECTIONS_CS
+    )
+    for start, level in marks:
+        following = [position for position, _ in marks if position > start]
+        section = html[start : following[0] if following else len(html)]
+        for entry in re.finditer(
+            r"<a[^>]*href='([^']*programmeId=\d+[^']*)'[^>]*><span class='text'>(.*?)</span></a>\s*<span class='faculty[^']*'>(.*?)</span>",
+            section,
+            re.S,
+        ):
+            abbreviation = (re.search(r"\(([A-Z]+)\)", page_text(entry.group(3))) or [None, ""])[1]
+            records.append(
+                {
+                    "officialProgrammeUrl": urljoin(page_url, unescape(entry.group(1))),
+                    "titles": {"original": page_text(entry.group(2))},
+                    "degree": level,
+                    "studyLanguage": "cs",
+                    "faculty": VSB_FACULTIES.get(abbreviation, ""),
+                }
+            )
+    return records
+
+
+def parse_vsb_en(html: str, page_url: str, level: str) -> list[dict]:
+    records = []
+    for block in re.split(r"(?=<h2\b)", html):
+        heading = re.match(r"<h2[^>]*>(.*?)</h2>", block, re.S)
+        if not heading:
+            continue
+        name = page_text(heading.group(1)).lower()
+        faculty = next((VSB_FACULTIES[code] for key, code in VSB_FACULTIES_EN if key in name), "")
+        if not faculty:
+            continue
+        for entry in re.finditer(r"<a href='([^']*programmeId=\d+[^']*)'><span class='text'>(.*?)</span>", block, re.S):
+            records.append(
+                {
+                    "officialProgrammeUrl": urljoin(page_url, unescape(entry.group(1))),
+                    "titles": {"original": re.sub(r"\s+", " ", page_text(entry.group(2)))},
+                    "degree": level,
+                    "studyLanguage": "en",
+                    "faculty": faculty,
+                }
+            )
+    return records
+
+
+def harvest_vsb(fetch: FetchPage, log: Callable[[str], None] = print) -> dict:
+    records: list[dict] = []
+    failures: list[dict] = []
+    status, html = fetch(VSB_LIST_CS)
+    if status == 200 and html:
+        records.extend(parse_vsb_cs(html, VSB_LIST_CS))
+    else:
+        failures.append({"url": VSB_LIST_CS, "status": status})
+    for level, url in VSB_LISTS_EN.items():
+        status, html = fetch(url)
+        if status == 200 and html:
+            records.extend(parse_vsb_en(html, url, level))
+        else:
+            failures.append({"url": url, "status": status})
+    log(f"vsb: {len(records)} programme page(s)")
+    return {"programmes": records, "failures": failures, "listingPages": 4}
+
+
 ADAPTERS = {
+    "vsb": ("msmt-vs_27000", "catalogue-vsb.json", harvest_vsb),
     "amu": ("msmt-vs_51000", "catalogue-amu.json", harvest_amu),
     **{key: (value[0], f"catalogue-{key}.json", stag_harvester(key)) for key, value in STAG_SCHOOLS.items()},
     **{key: (value[0], f"catalogue-{key}.json", uis_harvester(key)) for key, value in UIS_SCHOOLS.items()},

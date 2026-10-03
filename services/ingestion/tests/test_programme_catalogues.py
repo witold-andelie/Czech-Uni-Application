@@ -204,3 +204,24 @@ def test_amu_programme_page_states_name_and_level() -> None:
     row = pc.parse_amu_programme(html, "https://www.hamu.cz/cs/katedry-programy/katedra-bicich-nastroju/studijni-programy/bici-nastroje-206/")
     assert (row["titles"]["original"], row["degree"], row["faculty"]) == ("Bicí nástroje", "bachelor", "Hudební a taneční fakulta")
     assert pc.parse_amu_programme("<h1>Kontakt</h1>", "https://www.hamu.cz/cs/kontakt/") is None
+
+
+def test_vsb_lists_carry_level_language_and_faculty() -> None:
+    cs = (
+        "<h2>Bakalářské programy</h2><ul><li><a class='show-tooltip' href='.?programmeId=764&academicYearId=66&studyLanguageIds=1'>"
+        "<span class='text'>Aplikovaná elektronika</span></a><span class='faculty show-tooltip'>&nbsp;(FEI)&nbsp;</span></li></ul>"
+        "<h2>Doktorské programy</h2><ul><li><a href='.?programmeId=900&academicYearId=66&studyLanguageIds=1'>"
+        "<span class='text'>Informatika</span></a><span class='faculty show-tooltip'>&nbsp;(FEI)&nbsp;</span></li></ul>"
+    )
+    rows = pc.parse_vsb_cs(cs, pc.VSB_LIST_CS)
+    assert [(r["titles"]["original"], r["degree"], r["faculty"]) for r in rows] == [
+        ("Aplikovaná elektronika", "bachelor", "Fakulta elektrotechniky a informatiky"),
+        ("Informatika", "doctorate", "Fakulta elektrotechniky a informatiky"),
+    ]
+    assert rows[0]["officialProgrammeUrl"] == "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=764&academicYearId=66&studyLanguageIds=1"
+    en = (
+        "<h2>Faculty of Mining and Geology</h2><div><ul><li><a href='/en/study/degree-students/degree-studies/bachelor-degree/"
+        "bachelor-degree-detail/?programmeId=1126'><span class='text'>Applied  Geology</span></a></li></ul></div>"
+    )
+    row = pc.parse_vsb_en(en, pc.VSB_LISTS_EN["bachelor"], "bachelor")[0]
+    assert (row["titles"]["original"], row["studyLanguage"], row["faculty"]) == ("Applied Geology", "en", "Hornicko-geologická fakulta")
