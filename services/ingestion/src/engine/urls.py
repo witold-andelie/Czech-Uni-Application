@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from urllib.parse import parse_qs, urlsplit
 
 
@@ -76,7 +77,9 @@ def is_generic_listing_url(url: str, source: dict) -> bool:
         parts = [item for item in path.casefold().split("/") if item]
         if parts[:4] == ["en", "about-us", "careers", "vacancies"] and (len(parts) < 5 or not parts[4].isdigit()):
             return True
-    if host == "jobs.czu.cz" and not path.casefold().startswith("/job/"):
+    # ČZU's vacancy pages were /job/<slug>/ and, since the 2026-10 site, are
+    # /pozice/<slug>/; the bare /pozice/ and every other page is the listing.
+    if host == "jobs.czu.cz" and not re.match(r"^/(?:job|pozice)/[^/]+$", path.casefold()):
         return True
     return False
 

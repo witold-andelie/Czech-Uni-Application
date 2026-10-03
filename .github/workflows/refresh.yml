@@ -265,7 +265,14 @@ jobs:
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -m 'Refresh live per-candidate title-verification evidence'
-            git push origin HEAD
+            # main moves while a tick runs (link index, reviews, publications):
+            # rebase onto it and retry instead of losing the tick's data.
+            pushed=false
+            for attempt in 1 2 3 4; do
+              if git pull --rebase origin main && git push origin HEAD:main; then pushed=true; break; fi
+              sleep 15
+            done
+            $pushed
             # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
             gh workflow run ci.yml --ref main
           fi
@@ -284,7 +291,14 @@ jobs:
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -m 'Refresh school-owned programme page link index'
-            git push origin HEAD
+            # main moves while a tick runs (link index, reviews, publications):
+            # rebase onto it and retry instead of losing the tick's data.
+            pushed=false
+            for attempt in 1 2 3 4; do
+              if git pull --rebase origin main && git push origin HEAD:main; then pushed=true; break; fi
+              sleep 15
+            done
+            $pushed
             # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
             gh workflow run ci.yml --ref main
           fi
@@ -302,7 +316,14 @@ jobs:
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -m 'Refresh harvested official job candidates'
-            git push origin HEAD
+            # main moves while a tick runs (link index, reviews, publications):
+            # rebase onto it and retry instead of losing the tick's data.
+            pushed=false
+            for attempt in 1 2 3 4; do
+              if git pull --rebase origin main && git push origin HEAD:main; then pushed=true; break; fi
+              sleep 15
+            done
+            $pushed
             gh workflow run ci.yml --ref main
           fi
       - name: Keep two recovery bundles to bound artifact storage
@@ -322,7 +343,14 @@ jobs:
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -m 'Refresh verified official vacancy closure status'
-            git push origin HEAD
+            # main moves while a tick runs (link index, reviews, publications):
+            # rebase onto it and retry instead of losing the tick's data.
+            pushed=false
+            for attempt in 1 2 3 4; do
+              if git pull --rebase origin main && git push origin HEAD:main; then pushed=true; break; fi
+              sleep 15
+            done
+            $pushed
             # GITHUB_TOKEN pushes do not trigger push workflows: dispatch CI explicitly.
             gh workflow run ci.yml --ref main
           fi

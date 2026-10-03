@@ -56,3 +56,9 @@ def test_muni_and_czu_listing_roots_are_generic() -> None:
         {"url": "https://jobs.czu.cz/"},
     )
     assert ok is True
+
+
+def test_czu_pozice_pages_are_vacancies_and_the_bare_listing_is_not() -> None:
+    assert official_detail_allowed("https://jobs.czu.cz/pozice/fld-asistent/", {"url": ""}) == (True, None)
+    assert official_detail_allowed("https://jobs.czu.cz/pozice/733/", {"url": ""}) == (True, None)
+    assert official_detail_allowed("https://jobs.czu.cz/pozice/", {"url": ""})[1] == "official-detail-url-is-generic-listing"
