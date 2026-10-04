@@ -961,6 +961,42 @@
     "note": "Public research institution's own vacancy list; each vacancy is an accordion item, and items under 'Archiv inzerátů' (class archive) are old adverts and are left out. Only research and research-technical titles are kept."
   },
   {
+    "id": "ilab-careers",
+    "url": "https://www.i-lab.cz/o-nas/kariera",
+    "purpose": "official vacancy list of the Institute of Spa and Balneology (Institut lázeňství a balneologie, v. v. i.)",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-08122539",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "generic_listing_links",
+    "pathPatterns": [
+      "/o-nas/kariera/[a-z0-9-]{8,}/?$"
+    ],
+    "researchTitlesOnly": true,
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-04",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list; only research and research-technical titles are kept. Published once even if the Academy's central list or EURAXESS repeats a vacancy."
+  },
+  {
+    "id": "utia-careers",
+    "url": "https://utia.cas.cz/cs/kariera/",
+    "purpose": "official vacancy page of the Institute of Information Theory and Automation of the CAS (recurring postdoctoral calls)",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-67985556",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "inline_heading_jobs",
+    "followDetails": false,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-04",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list; only research and research-technical titles are kept. Published once even if the Academy's central list or EURAXESS repeats a vacancy."
+  },
+  {
     "id": "euraxess",
     "url": "https://www.euraxess.cz/jobs/search",
     "purpose": "vacancy discovery; filter actual country",
