@@ -160,3 +160,17 @@ def test_anchored_sections_read_each_listed_vacancy() -> None:
         ("PhdCompass", "https://www.ipp.cas.cz/o-ufp/volna-mista/#PhdCompass")
     ]
     assert "HR" not in rows[0]["_factText"]
+
+
+def test_accordion_items_skip_the_archive_and_read_to_the_item_end() -> None:
+    html = (
+        '<h2>Volná místa</h2><ul class="accordion">'
+        '<li class="accordion-item" data-accordion-item><a class="accordion-title"><h3 class="title">Doktorand / doktorandka v archeologii</h3></a>'
+        "<div><p>Požadujeme:</p><ul><li>Mgr. v oboru archeologie</li></ul>"
+        "<p>Přihlášky zasílejte do 31. 12. 2026 na e-mail ústavu.</p></div></li></ul>"
+        '<h2>Archiv inzerátů</h2><ul class="accordion">'
+        '<li class="accordion-item archive" data-accordion-item><h3 class="title">Postdoktorand / postdoktorandka</h3><div>Old.</div></li></ul>'
+    )
+    rows = harvest.parse_accordion_items(html, "https://www.arub.cz/o-nas/volna-mista/")
+    assert [row["title"] for row in rows] == ["Doktorand / doktorandka v archeologii"]
+    assert rows[0]["closesAt"] == "2026-12-31"

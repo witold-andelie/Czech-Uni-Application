@@ -3940,6 +3940,47 @@ def parse_anchored_sections(html: str, page_url: str) -> list[dict]:
     return results
 
 
+def parse_accordion_items(html: str, page_url: str, skip_class: str = "archive") -> list[dict]:
+    """Vacancies listed as accordion items (arub.cz): a heading, then the text.
+
+    An item whose class marks it as archived ("Archiv inzerátů") is an old
+    advert and is left out; so is any item whose heading names no research or
+    research-technical role.
+    """
+    results: list[dict] = []
+    # An item runs to the next item, the last one to the next section heading:
+    # its own requirement lists close </ul> long before the item ends.
+    items = list(re.finditer(r'(?is)<li\b[^>]*class="([^"]*accordion-item[^"]*)"[^>]*>', html))
+    for index, match in enumerate(items):
+        if index + 1 < len(items):
+            end = items[index + 1].start()
+        else:
+            section = re.search(r"(?is)<h2\b", html[match.end():])
+            end = match.end() + section.start() if section else len(html)
+        classes, body = match.group(1), html[match.end():end]
+        if skip_class and skip_class in classes.split():
+            continue
+        heading = re.search(r"(?is)<h[2-4]\b[^>]*>(.*?)</h[2-4]>", body)
+        title = visible_text(heading.group(1)) if heading else ""
+        if not title or classify_track(title) is None or INSTITUTE_ADMIN_TITLE_RE.search(title):
+            continue
+        parsed = parse_generic_job_page(f"<h1>{escape(title)}</h1>{body}", page_url, title)
+        if parsed is None:
+            continue
+        parsed.update(
+            {
+                "title": title,
+                "code": hashlib.sha256(title.encode("utf-8")).hexdigest()[:12],
+                "sourceUrl": page_url,
+                "applicationUrl": page_url,
+                "applicationMethod": "official_instructions",
+                "_factText": visible_text(body),
+            }
+        )
+        results.append(parsed)
+    return results
+
+
 def parse_inline_heading_jobs(html: str, page_url: str) -> list[dict]:
     """Parse official pages where multiple complete vacancies are inline."""
     headings = list(re.finditer(r"(?is)<h2\b[^>]*>(.*?)</h2>", html))
@@ -4271,6 +4312,7 @@ def discover_registered_candidates(
             "roboprox_positions",
             "json_links",
             "anchored_sections",
+            "accordion_items",
             "euraxess_search",
             "czu_pozice_rest",
             "zcu_document_feed",
@@ -4428,6 +4470,8 @@ def discover_registered_candidates(
                     found.extend(parse_ujep_open_positions(html, listing_url))
                 elif parser == "tul_careers":
                     found.extend(parse_tul_careers(html, listing_url))
+                elif parser == "accordion_items":
+                    found.extend(parse_accordion_items(html, listing_url, str(source.get("skipItemClass", "archive"))))
                 elif parser == "anchored_sections":
                     found.extend(parse_anchored_sections(html, listing_url))
                 elif parser == "json_links":
