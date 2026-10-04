@@ -59,7 +59,12 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
     # (refresh.yml input force_tasks), e.g. to read newly registered sources.
     force = [item.strip() for item in os.environ.get("CI_REFRESH_FORCE_TASKS", "").split(",") if item.strip()]
     for kind in force:
-        if kind in VOLATILE_TASKS and kind not in skip and not any(task.get("type") == kind for task in tasks):
+        if kind not in VOLATILE_TASKS or kind in skip:
+            continue
+        queued = [task for task in tasks if task.get("type") == kind]
+        for task in queued:
+            task["priority"] = "forced"
+        if not queued:
             tasks.append({"type": kind, "priority": "forced", "reason": "forced by the operator"})
     # Status checks get first use of the bounded runner; the existing queue
     # determines the other tasks, including today's ordinary daily shard.
@@ -69,6 +74,10 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
                 else state.get(VOLATILE_TASKS[task["type"]]["stateKey"], {}))
         return (task["type"] != "job_recheck", info.get("lastAttemptAt") or "")
     tasks.sort(key=task_order)
+    # A forced task is what the operator asked for now: it runs first, before
+    # the tick's budget goes to rechecks and overdue shards (2026-10-04: the
+    # forced discovery was deferred behind them).
+    tasks.sort(key=lambda task: task.get("priority") != "forced")
     _emit(
         "ci_refresh: "
         + json.dumps(

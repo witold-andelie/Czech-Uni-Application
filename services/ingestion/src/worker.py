@@ -1110,8 +1110,26 @@ def _recheck_open_jobs_unlocked(
     closed_count = 0
     now_text = _aware_utc(now).strftime("%Y-%m-%dT%H:%M:%SZ")
     updated_jobs = []
+    # Bounded: the tick kills a task at its timeout and everything it read
+    # was lost (2026-10-04, ~380 jobs). Stop between jobs at the budget, keep
+    # the rest as they are, and read the longest-unchecked jobs first so the
+    # daily runs cover every job in turn.
+    budget = task_budget_seconds()
+    deadline = time.monotonic() + budget if budget else None
+    deferred_count = 0
+    original_order = [str(job.get("id")) for job in jobs if isinstance(job, dict)]
+    jobs = sorted(
+        jobs,
+        key=lambda job: max(str(job.get("lastStatusCheckedAt") or ""), str(job.get("lastAttemptAt") or ""))
+        if isinstance(job, dict)
+        else "",
+    )
 
     for job in jobs:
+        if deadline is not None and time.monotonic() >= deadline and isinstance(job, dict):
+            updated_jobs.append(job)
+            deferred_count += 1
+            continue
         if not isinstance(job, dict) or not job.get("id"):
             continue
         if (
@@ -1262,6 +1280,8 @@ def _recheck_open_jobs_unlocked(
                 flush=True,
             )
 
+    position = {ident: index for index, ident in enumerate(original_order)}
+    updated_jobs.sort(key=lambda job: position.get(str(job.get("id")), len(position)))
     merged = dict(previous)
     merged["jobs"] = updated_jobs
     merged["windows"] = updated_windows
@@ -1271,6 +1291,7 @@ def _recheck_open_jobs_unlocked(
         "httpSucceeded": http_success_count,
         "failed": failure_count,
         "closed": closed_count,
+        "deferredToNextRun": deferred_count,
     }
     atomic_write(jobs_path, merged)
     from safety_status import maybe_publish_from_recheck

@@ -350,3 +350,31 @@ def test_partial_shard_is_recorded_as_failure(tmp_path: Path, monkeypatch: pytes
     assert result["status"] == "partial"
     assert result["failed"] == 1
     assert calls == ["failure"]
+
+
+def test_a_recheck_stops_at_its_budget_and_keeps_the_rest(tmp_path, monkeypatch):
+    import json as _json
+
+    import worker
+
+    jobs_path = tmp_path / "jobs.json"
+    jobs = [
+        {"id": f"job-{index}", "sourceUrl": f"https://example.cz/{index}", "lifecycleStatus": "unknown",
+         "visibility": "public", "lastStatusCheckedAt": f"2026-10-0{index}T00:00:00Z"}
+        for index in (3, 1, 2)
+    ]
+    jobs_path.write_text(_json.dumps({"jobs": jobs, "windows": []}), encoding="utf-8")
+    monkeypatch.setenv("WORKER_TASK_BUDGET_SECONDS", "0.000001")
+    clock = iter([0.0] + [10.0] * 100)
+    monkeypatch.setattr(worker.time, "monotonic", lambda: next(clock))
+    result = worker.recheck_open_jobs(
+        fetch_page=lambda url: (200, "<h1>Open</h1>"),
+        jobs_path=jobs_path,
+        schedule_manager=worker.ScheduleManager(tmp_path / "state.json"),
+        use_lock=False,
+        safety_dir=tmp_path / "safety",
+    )
+    written = _json.loads(jobs_path.read_text(encoding="utf-8"))
+    assert [job["id"] for job in written["jobs"]] == ["job-3", "job-1", "job-2"]
+    assert written["lastRecheckResult"]["deferredToNextRun"] == 3
+    assert isinstance(result, dict)

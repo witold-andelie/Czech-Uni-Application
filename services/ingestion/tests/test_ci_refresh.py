@@ -154,3 +154,21 @@ def test_an_operator_can_force_a_task_that_is_not_due(tmp_path, monkeypatch):
 
     run_tick(manager, run=run, output=tmp_path / "report.json")
     assert seen == ["--discover-jobs"]
+
+
+def test_a_forced_task_runs_before_rechecks_and_shards(tmp_path, monkeypatch):
+    monkeypatch.setenv("CI_REFRESH_FORCE_TASKS", "job_discovery")
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [
+        {"type": "job_recheck"},
+        {"type": "shard_refresh", "shardIndex": 0},
+        {"type": "job_discovery"},
+    ]
+    seen = []
+
+    def run(command, **kwargs):
+        seen.append(command[-1])
+        raise subprocess.TimeoutExpired(command, kwargs["timeout"])
+
+    run_tick(manager, run=run, output=tmp_path / "report.json")
+    assert seen[0] == "--discover-jobs"
