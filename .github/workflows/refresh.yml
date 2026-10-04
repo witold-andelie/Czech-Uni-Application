@@ -281,7 +281,7 @@ jobs:
             # rebase onto it and retry instead of losing the tick's data.
             pushed=false
             for attempt in 1 2 3 4; do
-              if git pull --rebase --autostash origin main && git push origin HEAD:main; then pushed=true; break; fi
+              if git pull --rebase --autostash -X theirs origin main && git push origin HEAD:main; then pushed=true; break; fi
               sleep 15
             done
             $pushed
@@ -310,7 +310,7 @@ jobs:
             # rebase onto it and retry instead of losing the tick's data.
             pushed=false
             for attempt in 1 2 3 4; do
-              if git pull --rebase --autostash origin main && git push origin HEAD:main; then pushed=true; break; fi
+              if git pull --rebase --autostash -X theirs origin main && git push origin HEAD:main; then pushed=true; break; fi
               sleep 15
             done
             $pushed
@@ -337,7 +337,7 @@ jobs:
             # rebase onto it and retry instead of losing the tick's data.
             pushed=false
             for attempt in 1 2 3 4; do
-              if git pull --rebase --autostash origin main && git push origin HEAD:main; then pushed=true; break; fi
+              if git pull --rebase --autostash -X theirs origin main && git push origin HEAD:main; then pushed=true; break; fi
               sleep 15
             done
             $pushed

@@ -60,9 +60,17 @@ const MAX_PAGES = Math.ceil(published.jobs.length / PAGE_SIZE) + 1;
  * The ids surface in the rendered markup through each card's live-window
  * `entityId`, which is how the other publication specs pin public lists too.
  */
-async function listedOnSomePage(page: Page, urlFor: (pageNumber: number) => string, id: string): Promise<boolean> {
+async function listedOnSomePage(
+  page: Page,
+  urlFor: (pageNumber: number) => string,
+  id: string,
+  ready?: (page: Page) => Promise<void>,
+): Promise<boolean> {
   for (let pageNumber = 1; pageNumber <= MAX_PAGES; pageNumber += 1) {
     await page.goto(urlFor(pageNumber));
+    // The static page renders the unfiltered list; filters from the URL apply
+    // once the client has started, so a check must wait for that.
+    if (ready) await ready(page);
     const cards = page.locator("article.result-card");
     if ((await cards.count()) === 0) break; // past the last page, or an empty result set
     if (await page.evaluate((needle) => document.body.innerHTML.includes(needle), id)) return true;
@@ -113,6 +121,9 @@ test.describe("pay state and default job scope (2026-09-26 owner decision)", () 
         page,
         (pageNumber) => `/${locale}/research-jobs?applied=1&paid=1&page=${pageNumber}`,
         unstated!.id,
+        async (current) => {
+          await expect(current.getByRole("button", { name: msg(locale, "jobs.paidOnly"), pressed: true })).toBeVisible();
+        },
       );
       expect(found, "the confirmed-pay filter must keep its promise").toBe(false);
     });
