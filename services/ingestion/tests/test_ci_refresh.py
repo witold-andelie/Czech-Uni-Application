@@ -172,3 +172,29 @@ def test_a_forced_task_runs_before_rechecks_and_shards(tmp_path, monkeypatch):
 
     run_tick(manager, run=run, output=tmp_path / "report.json")
     assert seen[0] == "--discover-jobs"
+
+
+def test_a_shard_with_some_failed_sources_is_done_and_not_retried(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.record_shard_partial(2, "9 source operations failed in shard 2")
+    info = manager.load_state()["shards"]["2"]
+    assert info["status"] == "completed" and info["retryAt"] is None
+    assert info["lastError"] == "9 source operations failed in shard 2"
+    assert not any(task.get("shardIndex") == 2 and task.get("priority") == "retry" for task in manager.get_pending_tasks())
+
+
+def test_a_retry_runs_after_the_days_due_work(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [
+        {"type": "shard_refresh", "shardIndex": 1, "priority": "retry"},
+        {"type": "job_discovery"},
+        {"type": "shard_refresh", "shardIndex": 3},
+    ]
+    seen = []
+
+    def run(command, **kwargs):
+        seen.append(command[-1])
+        raise subprocess.TimeoutExpired(command, kwargs["timeout"])
+
+    run_tick(manager, run=run, output=tmp_path / "report.json")
+    assert seen[-1] == "1"

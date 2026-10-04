@@ -74,6 +74,10 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
                 else state.get(VOLATILE_TASKS[task["type"]]["stateKey"], {}))
         return (task["type"] != "job_recheck", info.get("lastAttemptAt") or "")
     tasks.sort(key=task_order)
+    # A retry of a task that failed outright (a timeout, a crash) goes after
+    # the day's due work: one failure must not crowd out the rest (owner,
+    # 2026-10-04). Individual source failures are not retried at all.
+    tasks.sort(key=lambda task: task.get("priority") == "retry")
     # A forced task is what the operator asked for now: it runs first, before
     # the tick's budget goes to rechecks and overdue shards (2026-10-04: the
     # forced discovery was deferred behind them).

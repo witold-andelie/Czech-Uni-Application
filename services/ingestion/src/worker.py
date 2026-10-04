@@ -1458,7 +1458,10 @@ def run_once(
             if total_failures == 0:
                 sched_mgr.record_shard_success(plan["shard"], now)
             else:
-                sched_mgr.record_shard_failure(
+                # Individual source failures are recorded per source and
+                # dropped; the shard is done until its next turn instead of
+                # being retried ahead of other work (owner, 2026-10-04).
+                sched_mgr.record_shard_partial(
                     plan["shard"],
                     f"{total_failures} source operations failed in shard {plan['shard']}",
                     now,

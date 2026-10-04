@@ -564,6 +564,26 @@ class ScheduleManager:
             info["lastError"] = None
             self._clear_lease(info)
 
+    def record_shard_partial(self, shard_index: int, error: str, now: datetime | None = None) -> None:
+        """A shard that ran through with some sources failing is done for its cycle.
+
+        Owner decision 2026-10-04: individual source failures are recorded and
+        dropped, never retried ahead of other work. The failed sources keep
+        their own failure records (record_source_result) and are read again in
+        the shard's next ordinary turn.
+        """
+        current = now or datetime.now(timezone.utc)
+        with self._transaction(current) as state:
+            info = state["shards"][str(shard_index)]
+            info["lastAttemptAt"] = to_iso(current)
+            info["lastSuccessAt"] = to_iso(current)
+            info["nextDueAt"] = to_iso(current + timedelta(hours=SLA_HOURS))
+            info["retryAt"] = None
+            info["status"] = "completed"
+            info["attempts"] = 0
+            info["lastError"] = str(error)
+            self._clear_lease(info)
+
     def record_shard_failure(self, shard_index: int, error: str, now: datetime | None = None) -> None:
         current = now or datetime.now(timezone.utc)
         with self._transaction(current) as state:

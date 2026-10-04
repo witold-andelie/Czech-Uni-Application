@@ -316,7 +316,8 @@ def test_lmc_authoritative_missing_detail_is_hidden_as_unavailable(
     assert payload["windows"][0]["closedReason"] == "official_application_unavailable"
 
 
-def test_partial_shard_is_recorded_as_failure(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_partial_shard_is_recorded_as_done_not_failed(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Owner decision 2026-10-04: individual source failures are dropped, not retried."""
     calls: list[str] = []
 
     class FakeSchedule:
@@ -328,6 +329,9 @@ def test_partial_shard_is_recorded_as_failure(tmp_path: Path, monkeypatch: pytes
 
         def record_shard_failure(self, *_args, **_kwargs):
             calls.append("failure")
+
+        def record_shard_partial(self, *_args, **_kwargs):
+            calls.append("partial")
 
     plan = {
         "date": "2026-09-07",
@@ -349,7 +353,7 @@ def test_partial_shard_is_recorded_as_failure(tmp_path: Path, monkeypatch: pytes
     result = worker.run_once(skip_portals=True, now=NOW)
     assert result["status"] == "partial"
     assert result["failed"] == 1
-    assert calls == ["failure"]
+    assert calls == ["partial"]
 
 
 def test_a_recheck_stops_at_its_budget_and_keeps_the_rest(tmp_path, monkeypatch):
