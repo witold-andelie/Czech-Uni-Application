@@ -483,6 +483,11 @@
       "mutations": [
         {
           "file": "browse/nine-hei-jobs.json",
+          "path": "jobs.0.translationReview",
+          "set": {"reviewer": {"role": "operator"}}
+        },
+        {
+          "file": "browse/nine-hei-jobs.json",
           "path": "jobs.0.translationReview.locales.zh-CN",
           "set": {"status": "machine"}
         }
