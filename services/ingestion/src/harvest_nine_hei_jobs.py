@@ -3142,6 +3142,39 @@ INSTITUTE_ADMIN_TITLE_RE = re.compile(
 )
 
 
+def parse_json_links(payload: str, page_url: str, source: dict) -> list[dict]:
+    """Vacancy links from an employer's own JSON list (IOCB's /en/api/open-positions).
+
+    The source names where the items are ("itemsPath", dot separated), which
+    fields hold the link, title and type, and which types are research posts
+    ("typeAllow"); an item of another type, or without a link or title, is
+    left out. Titles still pass the research-title filters.
+    """
+    try:
+        data = json.loads(payload)
+    except (TypeError, ValueError):
+        return []
+    for key in str(source.get("itemsPath") or "").split("."):
+        if key:
+            data = data.get(key) if isinstance(data, dict) else None
+    allowed = {str(value) for value in source.get("typeAllow") or []}
+    rows = []
+    for item in data if isinstance(data, list) else []:
+        if not isinstance(item, dict):
+            continue
+        link = str(item.get(source.get("linkField") or "link") or "").strip()
+        title = re.sub(r"\s+", " ", str(item.get(source.get("titleField") or "title") or "")).strip()
+        kind = str(item.get(source.get("typeField") or "type") or "")
+        if not link or not title or (allowed and kind not in allowed):
+            continue
+        if INSTITUTE_ADMIN_TITLE_RE.search(title):
+            continue
+        url = urljoin(str(source.get("linkBase") or page_url), link)
+        ident = item.get(source.get("idField") or "id")
+        rows.append({"title": title, "sourceUrl": url, "code": str(ident) if ident not in (None, "") else None})
+    return rows
+
+
 def parse_generic_listing_links(
     html: str,
     page_url: str,
@@ -3859,6 +3892,54 @@ def parse_vsb_listing(html: str, page_url: str) -> list[dict]:
     return results
 
 
+def parse_anchored_sections(html: str, page_url: str) -> list[dict]:
+    """Vacancies a page lists inline under an in-page contents list.
+
+    The contents list links "#ID" for each vacancy (ipp.cas.cz: "#EME",
+    "#PhdCompass"); the vacancy runs from the element carrying that id to the
+    next listed one. Only links whose text names a research or research-
+    technical role count, and each section must read as a vacancy.
+    """
+    anchors: list[tuple[str, str]] = []
+    base = urlsplit(page_url)
+    for href, label in re.findall(r"(?is)<a\b[^>]*href=[\"']([^\"']*#[^\"']+)[\"'][^>]*>(.*?)</a>", html):
+        target = urlsplit(urljoin(page_url, unescape(href)))
+        if (target.netloc, target.path) != (base.netloc, base.path) or not target.fragment:
+            continue
+        title = visible_text(label)
+        if title and target.fragment not in {ident for ident, _ in anchors}:
+            anchors.append((target.fragment, title))
+    # Every listed section bounds its neighbours; only research ones are read.
+    starts: list[tuple[int, str, str]] = []
+    for ident, title in anchors:
+        found = re.search(rf"""(?is)<[a-z0-9]+\b[^>]*\b(?:id|name)=["']{re.escape(ident)}["']""", html)
+        if found:
+            starts.append((found.start(), ident, title))
+    starts.sort()
+    results: list[dict] = []
+    for index, (position, ident, title) in enumerate(starts):
+        if classify_track(title) is None or INSTITUTE_ADMIN_TITLE_RE.search(title):
+            continue
+        end = starts[index + 1][0] if index + 1 < len(starts) else len(html)
+        fragment = html[position:end]
+        url = f"{page_url.split('#')[0]}#{ident}"
+        parsed = parse_generic_job_page(f"<h1>{escape(title)}</h1>{fragment}", url, title)
+        if parsed is None:
+            continue
+        parsed.update(
+            {
+                "title": title,
+                "code": ident,
+                "sourceUrl": url,
+                "applicationUrl": url,
+                "applicationMethod": "official_instructions",
+                "_factText": visible_text(fragment),
+            }
+        )
+        results.append(parsed)
+    return results
+
+
 def parse_inline_heading_jobs(html: str, page_url: str) -> list[dict]:
     """Parse official pages where multiple complete vacancies are inline."""
     headings = list(re.finditer(r"(?is)<h2\b[^>]*>(.*?)</h2>", html))
@@ -4188,6 +4269,8 @@ def discover_registered_candidates(
             "ujep_open_positions",
             "tul_careers",
             "roboprox_positions",
+            "json_links",
+            "anchored_sections",
             "euraxess_search",
             "czu_pozice_rest",
             "zcu_document_feed",
@@ -4345,6 +4428,10 @@ def discover_registered_candidates(
                     found.extend(parse_ujep_open_positions(html, listing_url))
                 elif parser == "tul_careers":
                     found.extend(parse_tul_careers(html, listing_url))
+                elif parser == "anchored_sections":
+                    found.extend(parse_anchored_sections(html, listing_url))
+                elif parser == "json_links":
+                    found.extend(parse_json_links(html, listing_url, source))
                 elif parser == "roboprox_positions":
                     found.extend(parse_roboprox_positions(html, listing_url))
                 elif parser == "euraxess_search":

@@ -902,6 +902,48 @@
     "note": "Public research institution's own vacancy list; each vacancy is a section of the page (no detail pages), read by the inline-heading parser. Published once even if the Academy's central list or EURAXESS repeats it."
   },
   {
+    "id": "uochb-careers",
+    "url": "https://www.uochb.cz/en/api/open-positions",
+    "purpose": "official open-positions list of the Institute of Organic Chemistry and Biochemistry of the CAS (the JSON its open-positions page reads)",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-61388963",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "json_links",
+    "itemsPath": "payload",
+    "linkField": "link",
+    "titleField": "title",
+    "typeField": "type",
+    "idField": "openPositionId",
+    "typeAllow": [
+      "Scientific position",
+      "PhD project"
+    ],
+    "linkBase": "https://www.uochb.cz/",
+    "followDetails": true,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-04",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list (v. v. i. register employer); only research and research-technical titles are kept, administration titles left out. Published once even if the Academy's central list or EURAXESS repeats a vacancy."
+  },
+  {
+    "id": "ipp-careers",
+    "url": "https://www.ipp.cas.cz/o-ufp/volna-mista/",
+    "purpose": "official vacancy list of the Institute of Plasma Physics of the CAS",
+    "official": true,
+    "sourceType": "official_job_listing",
+    "employerId": "rvvi-61389021",
+    "coverageScope": "institution",
+    "sourceCoverageClaim": "not_asserted",
+    "parser": "anchored_sections",
+    "followDetails": false,
+    "refreshIntervalHours": 24,
+    "collectionStatus": "registered_2026-10-04",
+    "adapter": "services/ingestion/src/harvest_nine_hei_jobs.py",
+    "note": "Public research institution's own vacancy list (v. v. i. register employer); only research and research-technical titles are kept, administration titles left out. Published once even if the Academy's central list or EURAXESS repeats a vacancy."
+  },
+  {
     "id": "euraxess",
     "url": "https://www.euraxess.cz/jobs/search",
     "purpose": "vacancy discovery; filter actual country",

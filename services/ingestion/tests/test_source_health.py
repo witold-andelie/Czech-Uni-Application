@@ -133,3 +133,30 @@ def test_institute_listings_honour_base_href_and_keep_research_titles_only() -> 
     assert [row["sourceUrl"] for row in rows] == [
         "https://www.imc.cas.cz/cs/o-ustavu/pracovni-mista/postdoktorandska-pozice-polymery"
     ]
+
+
+def test_json_links_keep_research_types_only() -> None:
+    payload = (
+        '{"type":"success","payload":['
+        '{"openPositionId":427,"link":"\/en\/open-positions\/427\/postdoc","type":"Scientific position","title":"Postdoctoral fellow in computational chemistry"},'
+        '{"openPositionId":430,"link":"\/en\/open-positions\/430\/hr","type":"Other position","title":"HR generalist"}]}'
+    )
+    source = {"itemsPath": "payload", "idField": "openPositionId", "typeAllow": ["Scientific position"], "linkBase": "https://www.uochb.cz/"}
+    rows = harvest.parse_json_links(payload, "https://www.uochb.cz/en/api/open-positions", source)
+    assert rows == [{"title": "Postdoctoral fellow in computational chemistry", "sourceUrl": "https://www.uochb.cz/en/open-positions/427/postdoc", "code": "427"}]
+
+
+def test_anchored_sections_read_each_listed_vacancy() -> None:
+    html = (
+        '<ul><li><a href="#PhdCompass">Postdoctoral position in COMPASS Upgrade ECRH team</a></li>'
+        '<li><a href="#HR">HR asistent*ka</a></li></ul>'
+        '<div><b id="PhdCompass">Postdoctoral position in COMPASS Upgrade ECRH team</b></div>'
+        "<div>A postdoctoral research position is available. Requirements: PhD in physics. Deadline: 31. 12. 2026. "
+        "Send a motivation letter and CV to the institute.</div>"
+        '<div><b id="HR">HR asistent*ka</b></div><div>Personnel administration.</div>'
+    )
+    rows = harvest.parse_anchored_sections(html, "https://www.ipp.cas.cz/o-ufp/volna-mista/")
+    assert [(row["code"], row["sourceUrl"]) for row in rows] == [
+        ("PhdCompass", "https://www.ipp.cas.cz/o-ufp/volna-mista/#PhdCompass")
+    ]
+    assert "HR" not in rows[0]["_factText"]
