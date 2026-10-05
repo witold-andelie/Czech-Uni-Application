@@ -17,6 +17,10 @@ from storage.postgres import load_database_env, require_database, store_from_env
 ROOT = Path(__file__).resolve().parents[3]
 # Seconds between a task's graceful budget and its hard timeout.
 GRACE_SECONDS = 180
+# A task is not started with less time than it needs to do anything useful:
+# a shard started with 52 s left was killed and recorded as failed (2026-10-05).
+MIN_START_SECONDS = {"shard_refresh": 300, "job_discovery": 180, "job_recheck": 180}
+DEFAULT_MIN_START_SECONDS = 60
 FLAGS = {
     "job_recheck": "--recheck-jobs",
     "job_discovery": "--discover-jobs",
@@ -97,7 +101,7 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
     worker_env.setdefault("PLAYWRIGHT_LAUNCH_TIMEOUT", "30000")
     for task in tasks:
         remaining = int(deadline - clock())
-        if remaining < 30:
+        if remaining < MIN_START_SECONDS.get(task["type"], DEFAULT_MIN_START_SECONDS):
             report["deferred"].append(task)
             _emit(f"ci_refresh: defer {task.get('type')} remaining_s={remaining}", log)
             continue

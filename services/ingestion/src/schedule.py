@@ -661,6 +661,21 @@ class ScheduleManager:
                 info.update(metrics)
             self._clear_lease(info)
 
+    def record_volatile_partial(
+        self,
+        task_type: str,
+        error: str,
+        *,
+        metrics: dict[str, Any] | None = None,
+        now: datetime | None = None,
+    ) -> None:
+        """A task that ran through with some sources failing is done until it is
+        next due; the failures stay recorded per source (owner, 2026-10-04, A109)."""
+        self.record_volatile_success(task_type, metrics=metrics, now=now)
+        current = now or datetime.now(timezone.utc)
+        with self._transaction(current) as state:
+            state[VOLATILE_TASKS[task_type]["stateKey"]]["lastError"] = str(error)
+
     def record_volatile_failure(
         self,
         task_type: str,

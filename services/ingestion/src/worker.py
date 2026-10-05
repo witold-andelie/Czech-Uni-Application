@@ -459,7 +459,9 @@ def discover_all_jobs(
         result["status"] = "succeeded" if not failed_sources else "partial"
         result["failedSources"] = failed_sources
         if failed_sources:
-            manager.record_volatile_failure(
+            # Individual source failures are recorded above and dropped; the
+            # discovery is done until it is next due (A109), not retried.
+            manager.record_volatile_partial(
                 "job_discovery",
                 f"{len(failed_sources)}/{len(source_results)} registered job sources failed",
                 metrics=metrics,

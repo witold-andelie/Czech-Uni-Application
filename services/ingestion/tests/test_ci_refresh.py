@@ -198,3 +198,25 @@ def test_a_retry_runs_after_the_days_due_work(tmp_path):
 
     run_tick(manager, run=run, output=tmp_path / "report.json")
     assert seen[-1] == "1"
+
+
+def test_a_shard_is_not_started_without_time_to_do_anything(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [{"type": "shard_refresh", "shardIndex": 2}, {"type": "programme_availability"}]
+    seen = []
+
+    def run(command, **kwargs):
+        seen.append(command[-1])
+        return SimpleNamespace(returncode=0)
+
+    report = run_tick(manager, budget=120, run=run, output=tmp_path / "report.json")
+    assert [task["type"] for task in report["deferred"]] == ["shard_refresh"]
+    assert seen == ["--refresh-programme-availability"]
+
+
+def test_a_discovery_with_some_failed_sources_is_done_not_retried(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.record_volatile_partial("job_discovery", "3/60 registered job sources failed")
+    info = manager.load_state()["jobDiscovery"]
+    assert info["status"] == "completed" and info["retryAt"] is None
+    assert info["lastError"] == "3/60 registered job sources failed"
