@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-10-04T11:40:46Z",
+  "generatedAt": "2026-10-05T12:26:21Z",
   "dataClass": "school_owned_programme_page_index",
   "note": "School-owned programme page links for the MŠMT register inventory. Each link was resolved from the university's own site by exact normalised title/degree/language equality; a row without a proven page keeps the university-site fallback and is listed under unresolved. No fuzzy or partial matching, and no invented URLs.",
   "counts": {
     "schools": 53,
     "offerings": 5019,
-    "linked": 4080,
-    "unresolved": 939,
-    "rowsWithMultipleSchoolPages": 2327
+    "linked": 4095,
+    "unresolved": 924,
+    "rowsWithMultipleSchoolPages": 2332
   },
   "coverage": {
     "totals": {
       "schools": 53,
       "offerings": 5019,
-      "resolved": 4080,
-      "unresolved": 939,
-      "rowsWithMultipleSchoolPages": 2327,
+      "resolved": 4095,
+      "unresolved": 924,
+      "rowsWithMultipleSchoolPages": 2332,
       "byReachability": {
         "access_control": 1,
-        "http_200_title_not_confirmed": 3141,
+        "http_200_title_not_confirmed": 3156,
         "unverified": 50,
         "verified": 888
       }
@@ -31,14 +31,14 @@
           "cuni.cz"
         ],
         "offerings": 912,
-        "resolved": 853,
-        "unresolved": 59,
-        "rowsWithMultipleSchoolPages": 552,
+        "resolved": 868,
+        "unresolved": 44,
+        "rowsWithMultipleSchoolPages": 547,
         "unresolvedReasons": {
           "ambiguous_register_rows": 5,
-          "no_candidate_page": 54
+          "no_candidate_page": 39
         },
-        "resolvedAt": "2026-10-04T10:15:02Z",
+        "resolvedAt": "2026-10-05T11:01:18Z",
         "notes": []
       },
       {
@@ -73,7 +73,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 8
         },
-        "resolvedAt": "2026-10-04T10:14:57Z",
+        "resolvedAt": "2026-10-05T11:01:10Z",
         "notes": []
       },
       {
@@ -85,13 +85,13 @@
         "offerings": 534,
         "resolved": 447,
         "unresolved": 87,
-        "rowsWithMultipleSchoolPages": 138,
+        "rowsWithMultipleSchoolPages": 137,
         "unresolvedReasons": {
           "ambiguous_register_rows": 14,
           "no_candidate_page": 69,
           "page_states_another_level": 4
         },
-        "resolvedAt": "2026-10-04T10:15:10Z",
+        "resolvedAt": "2026-10-05T11:01:10Z",
         "notes": []
       },
       {
@@ -108,7 +108,7 @@
           "ambiguous_register_rows": 7,
           "no_candidate_page": 77
         },
-        "resolvedAt": "2026-10-04T10:15:00Z",
+        "resolvedAt": "2026-10-05T11:01:09Z",
         "notes": [
           "catalogue_unreachable_http_401",
           "catalogue_unreachable_http_404 (x2)"
@@ -146,7 +146,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 34
         },
-        "resolvedAt": "2026-10-04T10:14:57Z",
+        "resolvedAt": "2026-10-05T11:01:18Z",
         "notes": [
           "level_probe_budget_exhausted"
         ]
@@ -184,8 +184,10 @@
         "unresolvedReasons": {
           "no_candidate_page": 22
         },
-        "resolvedAt": "2026-10-04T10:15:01Z",
-        "notes": []
+        "resolvedAt": "2026-10-05T11:01:15Z",
+        "notes": [
+          "catalogue_unreachable_http_403 (x2)"
+        ]
       },
       {
         "institutionId": "msmt-vs_21000",
@@ -202,7 +204,7 @@
           "no_candidate_page": 63,
           "page_on_another_faculty_site": 1
         },
-        "resolvedAt": "2026-10-04T10:15:02Z",
+        "resolvedAt": "2026-10-05T11:01:09Z",
         "notes": []
       },
       {
@@ -220,9 +222,8 @@
           "no_candidate_page": 36,
           "page_returned_404": 7
         },
-        "resolvedAt": "2026-10-04T10:14:57Z",
+        "resolvedAt": "2026-10-05T11:01:09Z",
         "notes": [
-          "catalogue_unreachable_http_0",
           "catalogue_unreachable_http_403",
           "catalogue_unreachable_http_404 (x11)"
         ]
@@ -240,7 +241,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 49
         },
-        "resolvedAt": "2026-10-04T10:15:10Z",
+        "resolvedAt": "2026-10-05T11:01:18Z",
         "notes": []
       },
       {
@@ -256,7 +257,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 5
         },
-        "resolvedAt": "2026-10-04T10:15:01Z",
+        "resolvedAt": "2026-10-05T11:01:10Z",
         "notes": []
       },
       {
@@ -272,7 +273,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 11
         },
-        "resolvedAt": "2026-10-04T10:15:02Z",
+        "resolvedAt": "2026-10-05T11:01:17Z",
         "notes": []
       },
       {
@@ -290,7 +291,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 14
         },
-        "resolvedAt": "2026-10-04T10:15:08Z",
+        "resolvedAt": "2026-10-05T11:01:15Z",
         "notes": []
       },
       {
@@ -307,9 +308,9 @@
           "ambiguous_register_rows": 2,
           "no_candidate_page": 56
         },
-        "resolvedAt": "2026-10-04T10:15:08Z",
+        "resolvedAt": "2026-10-05T11:01:10Z",
         "notes": [
-          "catalogue_unreachable_http_404 (x3)"
+          "catalogue_unreachable_http_404 (x4)"
         ]
       },
       {
@@ -325,7 +326,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 35
         },
-        "resolvedAt": "2026-10-04T10:15:00Z",
+        "resolvedAt": "2026-10-05T11:01:17Z",
         "notes": []
       },
       {
@@ -342,7 +343,7 @@
           "ambiguous_register_rows": 2,
           "no_candidate_page": 20
         },
-        "resolvedAt": "2026-10-04T10:15:10Z",
+        "resolvedAt": "2026-10-05T11:01:09Z",
         "notes": [
           "catalogue_unreachable_http_404 (x2)"
         ]
@@ -360,7 +361,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 12
         },
-        "resolvedAt": "2026-10-04T10:14:57Z",
+        "resolvedAt": "2026-10-05T11:01:17Z",
         "notes": [
           "catalogue_unreachable_http_404 (x2)"
         ]
@@ -380,7 +381,7 @@
           "no_candidate_page": 14,
           "page_states_nothing": 8
         },
-        "resolvedAt": "2026-10-04T10:15:01Z",
+        "resolvedAt": "2026-10-05T11:01:18Z",
         "notes": [
           "catalogue_unreachable_http_404"
         ]
@@ -397,11 +398,11 @@
         "offerings": 101,
         "resolved": 64,
         "unresolved": 37,
-        "rowsWithMultipleSchoolPages": 19,
+        "rowsWithMultipleSchoolPages": 8,
         "unresolvedReasons": {
           "no_candidate_page": 37
         },
-        "resolvedAt": "2026-10-04T10:15:00Z",
+        "resolvedAt": "2026-10-05T11:01:15Z",
         "notes": [
           "budget_exhausted (x2)",
           "budget_exhausted"
@@ -420,7 +421,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 12
         },
-        "resolvedAt": "2026-10-04T10:14:57Z",
+        "resolvedAt": "2026-10-05T11:01:15Z",
         "notes": []
       },
       {
@@ -438,7 +439,7 @@
           "ambiguous_register_rows": 1,
           "page_returned_404": 2
         },
-        "resolvedAt": "2026-10-04T10:15:01Z",
+        "resolvedAt": "2026-10-05T11:01:09Z",
         "notes": [
           "catalogue_unreachable_http_404 (x10)"
         ]
@@ -474,7 +475,7 @@
         "unresolvedReasons": {
           "ambiguous_register_rows": 2
         },
-        "resolvedAt": "2026-10-04T10:15:02Z",
+        "resolvedAt": "2026-10-05T11:01:15Z",
         "notes": []
       },
       {
@@ -491,7 +492,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-04T10:15:02Z",
+        "resolvedAt": "2026-10-05T11:01:10Z",
         "notes": [
           "catalogue_unreachable_http_404 (x6)"
         ]
@@ -510,7 +511,7 @@
           "ambiguous_register_rows": 2,
           "no_candidate_page": 15
         },
-        "resolvedAt": "2026-10-04T10:15:08Z",
+        "resolvedAt": "2026-10-05T11:01:18Z",
         "notes": [
           "catalogue_unreachable_http_404"
         ]
@@ -528,7 +529,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 5
         },
-        "resolvedAt": "2026-10-04T10:15:08Z",
+        "resolvedAt": "2026-10-05T11:01:09Z",
         "notes": [
           "catalogue_unreachable_http_404"
         ]
@@ -547,7 +548,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 1
         },
-        "resolvedAt": "2026-10-04T10:15:00Z",
+        "resolvedAt": "2026-10-05T11:01:15Z",
         "notes": [
           "catalogue_unreachable_http_404 (x3)"
         ]
@@ -563,7 +564,7 @@
         "unresolved": 0,
         "rowsWithMultipleSchoolPages": 0,
         "unresolvedReasons": {},
-        "resolvedAt": "2026-10-04T10:15:08Z",
+        "resolvedAt": "2026-10-05T11:01:17Z",
         "notes": []
       },
       {
@@ -579,7 +580,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-04T10:15:00Z",
+        "resolvedAt": "2026-10-05T11:01:10Z",
         "notes": []
       },
       {
@@ -595,7 +596,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 1
         },
-        "resolvedAt": "2026-10-04T10:15:10Z",
+        "resolvedAt": "2026-10-05T11:01:17Z",
         "notes": []
       },
       {
@@ -627,7 +628,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 2
         },
-        "resolvedAt": "2026-10-04T10:15:10Z",
+        "resolvedAt": "2026-10-05T11:01:15Z",
         "notes": []
       },
       {
@@ -641,7 +642,7 @@
         "unresolved": 0,
         "rowsWithMultipleSchoolPages": 4,
         "unresolvedReasons": {},
-        "resolvedAt": "2026-10-03T18:07:20Z",
+        "resolvedAt": "2026-10-05T11:01:15Z",
         "notes": [
           "catalogue_unreachable_http_404"
         ]
@@ -659,7 +660,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 13
         },
-        "resolvedAt": "2026-10-04T10:14:57Z",
+        "resolvedAt": "2026-10-05T11:01:15Z",
         "notes": []
       },
       {
@@ -675,7 +676,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 1
         },
-        "resolvedAt": "2026-10-04T10:15:10Z",
+        "resolvedAt": "2026-10-05T11:01:10Z",
         "notes": []
       },
       {
@@ -689,7 +690,7 @@
         "unresolved": 0,
         "rowsWithMultipleSchoolPages": 27,
         "unresolvedReasons": {},
-        "resolvedAt": "2026-10-04T10:15:02Z",
+        "resolvedAt": "2026-10-05T11:01:18Z",
         "notes": [
           "catalogue_unreachable_http_404 (x4)"
         ]
@@ -705,7 +706,7 @@
         "unresolved": 0,
         "rowsWithMultipleSchoolPages": 0,
         "unresolvedReasons": {},
-        "resolvedAt": "2026-10-04T10:15:00Z",
+        "resolvedAt": "2026-10-05T11:01:18Z",
         "notes": []
       },
       {
@@ -721,7 +722,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-04T10:15:01Z",
+        "resolvedAt": "2026-10-05T11:01:17Z",
         "notes": []
       },
       {
@@ -737,7 +738,7 @@
         "unresolvedReasons": {
           "ambiguous_register_rows": 2
         },
-        "resolvedAt": "2026-10-04T10:15:02Z",
+        "resolvedAt": "2026-10-05T11:01:09Z",
         "notes": [
           "catalogue_unreachable_http_404 (x3)"
         ]
@@ -770,12 +771,11 @@
         "unresolved": 9,
         "rowsWithMultipleSchoolPages": 0,
         "unresolvedReasons": {
-          "no_candidate_page": 9
+          "ambiguous_register_rows": 3,
+          "no_candidate_page": 6
         },
-        "resolvedAt": "2026-10-04T10:15:08Z",
-        "notes": [
-          "homepage_unreachable_http_0"
-        ]
+        "resolvedAt": "2026-10-05T11:01:15Z",
+        "notes": []
       },
       {
         "institutionId": "msmt-vs_7m000",
@@ -790,7 +790,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 2
         },
-        "resolvedAt": "2026-10-04T10:15:10Z",
+        "resolvedAt": "2026-10-05T11:01:18Z",
         "notes": []
       },
       {
@@ -806,9 +806,8 @@
         "unresolvedReasons": {
           "no_candidate_page": 1
         },
-        "resolvedAt": "2026-10-04T10:14:57Z",
+        "resolvedAt": "2026-10-05T11:01:10Z",
         "notes": [
-          "budget_exhausted",
           "catalogue_unreachable_http_0"
         ]
       },
@@ -826,7 +825,7 @@
           "ambiguous_register_rows": 3,
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-04T10:15:00Z",
+        "resolvedAt": "2026-10-05T11:01:09Z",
         "notes": [
           "catalogue_unreachable_http_403"
         ]
@@ -845,7 +844,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 2
         },
-        "resolvedAt": "2026-10-04T10:15:10Z",
+        "resolvedAt": "2026-10-05T11:01:09Z",
         "notes": []
       },
       {
@@ -861,7 +860,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 3
         },
-        "resolvedAt": "2026-10-04T10:15:00Z",
+        "resolvedAt": "2026-10-05T11:01:17Z",
         "notes": [
           "catalogue_unreachable_http_403 (x44)"
         ]
@@ -880,7 +879,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 3
         },
-        "resolvedAt": "2026-10-04T10:14:57Z",
+        "resolvedAt": "2026-10-05T11:01:18Z",
         "notes": []
       },
       {
@@ -912,7 +911,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-04T10:15:01Z",
+        "resolvedAt": "2026-10-05T11:01:15Z",
         "notes": [
           "catalogue_unreachable_http_404 (x14)"
         ]
@@ -930,7 +929,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 8
         },
-        "resolvedAt": "2026-10-04T10:15:01Z",
+        "resolvedAt": "2026-10-05T11:01:10Z",
         "notes": []
       },
       {
@@ -942,15 +941,12 @@
         "offerings": 32,
         "resolved": 30,
         "unresolved": 2,
-        "rowsWithMultipleSchoolPages": 0,
+        "rowsWithMultipleSchoolPages": 22,
         "unresolvedReasons": {
-          "no_candidate_page": 2
+          "ambiguous_register_rows": 2
         },
-        "resolvedAt": "2026-10-04T10:15:02Z",
-        "notes": [
-          "budget_exhausted (x2)",
-          "budget_exhausted"
-        ]
+        "resolvedAt": "2026-10-05T11:01:17Z",
+        "notes": []
       }
     ]
   },
@@ -1876,7 +1872,7 @@
       "institutionId": "msmt-vs_61000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "vzdelavani a rozvoj dospelych",
+      "matchedTitle": "Vzdělávání a rozvoj dospělých",
       "rowTitle": "Vzdělávání a rozvoj dospělých",
       "sourceUrl": "https://www.ambis.cz/bakalarske-studium",
       "matchedBy": "school_catalogue_anchor",
@@ -2296,7 +2292,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "microscopy",
+      "matchedTitle": "Microscopy",
       "rowTitle": "Microscopy",
       "sourceUrl": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/biology-chemistry-geography-and-geology",
       "matchedBy": "school_catalogue_anchor",
@@ -2469,6 +2465,21 @@
       "reachability": "verified",
       "matchedAt": "2026-10-03T03:35:04Z",
       "checkedAt": "2026-10-03T03:47:40Z"
+    },
+    "inv-06e289ff510c": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4646",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Anglický jazyk se zaměřením na vzdělávání",
+      "rowTitle": "Anglický jazyk se zaměřením na vzdělávání",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4646",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:48:57Z"
     },
     "inv-06e8ceb09bb4": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4104",
@@ -2716,7 +2727,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "neurosciences",
+      "matchedTitle": "Neurosciences",
       "rowTitle": "Neurosciences",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -3076,7 +3087,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "verejna sprava",
+      "matchedTitle": "Veřejná správa",
       "rowTitle": "Veřejná správa",
       "sourceUrl": "https://www.law.muni.cz/content/cs/chci-studovat/bakalarske-studium/bakalarske-programy/kriminalisticka-studia",
       "matchedBy": "school_catalogue_anchor",
@@ -3766,7 +3777,7 @@
       "institutionId": "msmt-vs_61000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "bezpecnostni management",
+      "matchedTitle": "Bezpečnostní management",
       "rowTitle": "Bezpečnostní management",
       "sourceUrl": "https://www.ambis.cz/bakalarske-studium",
       "matchedBy": "school_catalogue_anchor",
@@ -4516,7 +4527,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "paediatrics",
+      "matchedTitle": "Paediatrics",
       "rowTitle": "Paediatrics",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -4846,7 +4857,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "teorie a praxe trestniho a spravniho procesu",
+      "matchedTitle": "Teorie a praxe trestního a správního procesu",
       "rowTitle": "Teorie a praxe trestního a správního procesu",
       "sourceUrl": "https://www.law.muni.cz/content/cs/chci-studovat/bakalarske-studium/bakalarske-programy/kriminalisticka-studia",
       "matchedBy": "school_catalogue_anchor",
@@ -7150,6 +7161,21 @@
       "matchedAt": "2026-10-03T18:07:01Z",
       "checkedAt": "2026-10-03T18:36:24Z"
     },
+    "inv-1a1982040538": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1727",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Učitelství geografie pro střední školy",
+      "rowTitle": "Učitelství geografie pro střední školy",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1727",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:48:39Z"
+    },
     "inv-1a1d73da4226": {
       "url": "https://studuj.czu.cz/programmes/ochrana-krajiny-a-vyuzivani-prirodnich-zdroju/",
       "kind": "school_programme_page",
@@ -7450,6 +7476,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:54:14Z"
     },
+    "inv-1b5345b07b31": {
+      "url": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program/accreditation/1559",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "landscape and society",
+      "rowTitle": "Landscape and Society",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=23",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Study programmes Study Information System",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:23:40Z",
+      "checkedAt": "2026-10-05T11:49:20Z"
+    },
     "inv-1b5f7f22e6c7": {
       "url": "https://prf.osu.cz/?specializaceid=4019",
       "kind": "school_programme_page",
@@ -7636,7 +7677,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "genetics molecular biology and virology",
+      "matchedTitle": "Genetics, Molecular Biology and Virology",
       "rowTitle": "Genetics, Molecular Biology and Virology",
       "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=23",
       "matchedBy": "school_catalogue_anchor",
@@ -7936,7 +7977,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "Theoretical Legal Sciences - Law and Legal Theory in European Context",
+      "matchedTitle": "Theoretical Legal Sciences – Law and Legal Theory in European Context",
       "rowTitle": "Theoretical Legal Sciences – Law and Legal Theory in European Context",
       "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/454",
       "matchedBy": "school_catalogue_anchor",
@@ -8146,7 +8187,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "letovy provoz",
+      "matchedTitle": "Letový provoz",
       "rowTitle": "Letový provoz",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -8815,6 +8856,21 @@
       "matchedAt": "2026-10-03T03:35:16Z",
       "checkedAt": "2026-10-03T03:54:25Z"
     },
+    "inv-20a0f6a2a133": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3767",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Hra na nástroj se zaměřením na vzdělávání",
+      "rowTitle": "Hra na nástroj se zaměřením na vzdělávání",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3767",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:48:48Z"
+    },
     "inv-20a469c22631": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3772",
       "kind": "school_programme_page",
@@ -8844,6 +8900,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:51:06Z"
+    },
+    "inv-2131db03d954": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1422",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Francouzský jazyk se zaměřením na vzdělávání",
+      "rowTitle": "Francouzský jazyk se zaměřením na vzdělávání",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1422",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:48:24Z"
     },
     "inv-214f595afbca": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4000",
@@ -9226,7 +9297,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "pohyb a zdravi",
+      "matchedTitle": "Pohyb a zdraví",
       "rowTitle": "Pohyb a zdraví",
       "sourceUrl": "https://www.fsps.muni.cz/chci-studovat/bakalarske-studium/programy",
       "matchedBy": "school_catalogue_anchor",
@@ -10786,7 +10857,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "pravo a pravni veda",
+      "matchedTitle": "Právo a právní věda",
       "rowTitle": "Právo a právní věda",
       "sourceUrl": "https://www.law.muni.cz/content/cs/chci-studovat/magisterske-studium/prominuti-zkousky",
       "matchedBy": "school_catalogue_anchor",
@@ -10861,7 +10932,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "tourism",
+      "matchedTitle": "Tourism",
       "rowTitle": "Tourism",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -10936,7 +11007,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "special education",
+      "matchedTitle": "Special Education",
       "rowTitle": "Special Education",
       "sourceUrl": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/teacher-training-pedagogy",
       "matchedBy": "school_catalogue_anchor",
@@ -11221,7 +11292,7 @@
       "institutionId": "msmt-vs_22000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "chemistry technology and materials",
+      "matchedTitle": "Chemistry, Technology and Materials",
       "rowTitle": "Chemistry, Technology and Materials",
       "sourceUrl": "https://study.vscht.cz/degree-programmes/master",
       "matchedBy": "school_catalogue_anchor",
@@ -11514,6 +11585,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:55:21Z"
+    },
+    "inv-2c7ec4046c67": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/758",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Buněčná biologie",
+      "rowTitle": "Buněčná biologie",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/758",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:49:02Z"
     },
     "inv-2ca5740987d7": {
       "url": "https://stag.upol.cz/ects/browser/PDF/2087?lang=cs",
@@ -12856,7 +12942,7 @@
       "institutionId": "msmt-vs_61000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "mezinarodni vztahy a diplomacie",
+      "matchedTitle": "Mezinárodní vztahy a diplomacie",
       "rowTitle": "Mezinárodní vztahy a diplomacie",
       "sourceUrl": "https://www.ambis.cz/bakalarske-studium",
       "matchedBy": "school_catalogue_anchor",
@@ -14026,7 +14112,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "musicology",
+      "matchedTitle": "Musicology",
       "rowTitle": "Musicology",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/history-philosophy-arts",
       "matchedBy": "school_catalogue_anchor",
@@ -14431,7 +14517,7 @@
       "institutionId": "msmt-vs_61000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "cestovni ruch",
+      "matchedTitle": "Cestovní ruch",
       "rowTitle": "Cestovní ruch",
       "sourceUrl": "https://www.ambis.cz/bakalarske-studium",
       "matchedBy": "school_catalogue_anchor",
@@ -15331,7 +15417,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "telesna vychova a sport",
+      "matchedTitle": "Tělesná výchova a sport",
       "rowTitle": "Tělesná výchova a sport",
       "sourceUrl": "https://www.fsps.muni.cz/chci-studovat/bakalarske-studium/programy",
       "matchedBy": "school_catalogue_anchor",
@@ -16441,7 +16527,7 @@
       "institutionId": "msmt-vs_61000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "bezpecnostni management",
+      "matchedTitle": "Bezpečnostní management",
       "rowTitle": "Bezpečnostní management",
       "sourceUrl": "https://www.ambis.cz/magisterske-studium",
       "matchedBy": "school_catalogue_anchor",
@@ -17386,7 +17472,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "digitalni ekonomika a spolecnost",
+      "matchedTitle": "Digitální ekonomika a společnost",
       "rowTitle": "Digitální ekonomika a společnost",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -18901,7 +18987,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "Bioinformatics and computational biology",
+      "matchedTitle": "Bioinformatics and Computational Biology",
       "rowTitle": "Bioinformatics and Computational Biology",
       "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4213",
       "matchedBy": "school_catalogue_anchor",
@@ -19840,6 +19926,21 @@
       "matchedAt": "2026-09-27T12:01:49Z",
       "checkedAt": "2026-10-04T10:54:54Z"
     },
+    "inv-4f073e58ccdf": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/46",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Antropologická studia",
+      "rowTitle": "Antropologická studia",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/46",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:48:52Z"
+    },
     "inv-4f0fadc4ccf9": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4087",
       "kind": "school_programme_page",
@@ -20656,7 +20757,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "pharmacology",
+      "matchedTitle": "Pharmacology",
       "rowTitle": "Pharmacology",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/biology-chemistry-geography-and-geology",
       "matchedBy": "school_catalogue_anchor",
@@ -20686,7 +20787,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "hygiene preventive medicine and epidemiology",
+      "matchedTitle": "Hygiene, Preventive Medicine and Epidemiology",
       "rowTitle": "Hygiene, Preventive Medicine and Epidemiology",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -21106,7 +21207,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "geology",
+      "matchedTitle": "Geology",
       "rowTitle": "Geology",
       "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=23",
       "matchedBy": "school_catalogue_anchor",
@@ -21136,7 +21237,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "dentistry and otorinolaryngology",
+      "matchedTitle": "Dentistry and Otorinolaryngology",
       "rowTitle": "Dentistry and Otorinolaryngology",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -21166,7 +21267,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "applied geology",
+      "matchedTitle": "Applied Geology",
       "rowTitle": "Applied Geology",
       "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=23",
       "matchedBy": "school_catalogue_anchor",
@@ -21204,6 +21305,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T12:32:37Z",
       "checkedAt": "2026-10-03T03:39:40Z"
+    },
+    "inv-5416b9cd41dc": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/778",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Fyziologie živočichů",
+      "rowTitle": "Fyziologie živočichů",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/778",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:49:07Z"
     },
     "inv-541a44b8bc6e": {
       "url": "https://www.muni.cz/uchazeci/navazujici-magisterske-studium/nabidka-studia/23329-psychologie",
@@ -21946,7 +22062,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "Media and Communication studies",
+      "matchedTitle": "Media and Communication Studies",
       "rowTitle": "Media and Communication Studies",
       "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4083",
       "matchedBy": "school_catalogue_anchor",
@@ -22966,7 +23082,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "bezpecnostne pravni studia",
+      "matchedTitle": "Bezpečnostně právní studia",
       "rowTitle": "Bezpečnostně právní studia",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -24961,7 +25077,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "surgery and reproductive medicine",
+      "matchedTitle": "Surgery and Reproductive Medicine",
       "rowTitle": "Surgery and Reproductive Medicine",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -25554,6 +25670,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-04T11:15:07Z"
+    },
+    "inv-6673b1d205c8": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/848",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Ekologie",
+      "rowTitle": "Ekologie",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/848",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:49:11Z"
     },
     "inv-6676aba841a8": {
       "url": "https://wstag.jcu.cz/ects/browser/FFI/1195?lang=cs",
@@ -26521,7 +26652,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "Experimental intensive care medicine",
+      "matchedTitle": "Experimental Intensive Care Medicine",
       "rowTitle": "Experimental Intensive Care Medicine",
       "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4572",
       "matchedBy": "school_catalogue_anchor",
@@ -27241,7 +27372,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "healthcare simulation",
+      "matchedTitle": "Healthcare Simulation",
       "rowTitle": "Healthcare Simulation",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -27879,6 +28010,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:28:02Z",
       "checkedAt": "2026-10-03T00:51:41Z"
+    },
+    "inv-6fe882fa4453": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/886",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Hydrologie a hydrogeologie",
+      "rowTitle": "Hydrologie a hydrogeologie",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/886",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:49:16Z"
     },
     "inv-7004beb02bad": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/392",
@@ -29131,7 +29277,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "specialist for clinical embryology and assisted reproduction technology",
+      "matchedTitle": "Specialist for Clinical Embryology and Assisted Reproduction Technology",
       "rowTitle": "Specialist for Clinical Embryology and Assisted Reproduction Technology",
       "sourceUrl": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/biology-chemistry-geography-and-geology",
       "matchedBy": "school_catalogue_anchor",
@@ -32131,7 +32277,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "provoz a rizeni letecke dopravy",
+      "matchedTitle": "Provoz a řízení letecké dopravy",
       "rowTitle": "Provoz a řízení letecké dopravy",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -32275,6 +32421,21 @@
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-02T23:52:48Z"
     },
+    "inv-81dd1dd13b23": {
+      "url": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program/accreditation/778",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "animal physiology",
+      "rowTitle": "Animal Physiology",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=23",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Study programmes Study Information System",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:23:40Z",
+      "checkedAt": "2026-10-05T11:49:24Z"
+    },
     "inv-81e1565a6dd7": {
       "url": "https://www.fbmi.cvut.cz/cs/uchazec/prijimaci-rizeni-informace?section=cnp",
       "kind": "school_programme_page",
@@ -32304,6 +32465,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T17:41:06Z",
       "checkedAt": "2026-10-03T00:24:23Z"
+    },
+    "inv-81f55e897fde": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/193",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Reprodukční a vývojová biologie",
+      "rowTitle": "Reprodukční a vývojová biologie",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/193",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:48:43Z"
     },
     "inv-81faaf3bfe27": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2805?lang=cs",
@@ -32881,7 +33057,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "podnikani a management",
+      "matchedTitle": "Podnikání a management",
       "rowTitle": "Podnikání a management",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -34546,7 +34722,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "Artificial intelligence and data processing",
+      "matchedTitle": "Artificial Intelligence and Data Processing",
       "rowTitle": "Artificial Intelligence and Data Processing",
       "sourceUrl": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/27699-artificial-intelligence-and-data-processing",
       "matchedBy": "school_harvested_programme_page",
@@ -36451,7 +36627,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "trenerstvi",
+      "matchedTitle": "Trenérství",
       "rowTitle": "Trenérství",
       "sourceUrl": "https://www.fsps.muni.cz/chci-studovat/bakalarske-studium/programy",
       "matchedBy": "school_catalogue_anchor",
@@ -36781,7 +36957,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "cestovni ruch a turismus",
+      "matchedTitle": "Cestovní ruch a turismus",
       "rowTitle": "Cestovní ruch a turismus",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -36886,7 +37062,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "Media and journalism studies",
+      "matchedTitle": "Media and Journalism Studies",
       "rowTitle": "Media and Journalism Studies",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/23260-media-and-journalism-studies",
       "matchedBy": "school_harvested_programme_page",
@@ -37321,7 +37497,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "medical microbiology immunology and pathology",
+      "matchedTitle": "Medical Microbiology, Immunology and Pathology",
       "rowTitle": "Medical Microbiology, Immunology and Pathology",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/biology-chemistry-geography-and-geology",
       "matchedBy": "school_catalogue_anchor",
@@ -37651,7 +37827,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "economics",
+      "matchedTitle": "Economics",
       "rowTitle": "Economics",
       "sourceUrl": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/economics-business-management-and-finance",
       "matchedBy": "school_catalogue_anchor",
@@ -38161,7 +38337,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "jihovychodoevropska studia",
+      "matchedTitle": "Jihovýchodoevropská studia",
       "rowTitle": "Jihovýchodoevropská studia",
       "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program?page=18",
       "matchedBy": "school_catalogue_anchor",
@@ -38611,7 +38787,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "entrepreneurship and management",
+      "matchedTitle": "Entrepreneurship and Management",
       "rowTitle": "Entrepreneurship and Management",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -38866,7 +39042,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "podnikani a management",
+      "matchedTitle": "Podnikání a management",
       "rowTitle": "Podnikání a management",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -41476,7 +41652,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "imaging methods and medical physics",
+      "matchedTitle": "Imaging Methods and Medical Physics",
       "rowTitle": "Imaging Methods and Medical Physics",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/mathematics-and-physics",
       "matchedBy": "school_catalogue_anchor",
@@ -41574,6 +41750,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T12:15:53Z",
       "checkedAt": "2026-10-03T00:15:51Z"
+    },
+    "inv-ab43b6697078": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1434",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Dějepis se zaměřením na vzdělávání",
+      "rowTitle": "Dějepis se zaměřením na vzdělávání",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1434",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:48:29Z"
     },
     "inv-ab47eeebcb0a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1069",
@@ -42016,7 +42207,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "physiotherapy",
+      "matchedTitle": "Physiotherapy",
       "rowTitle": "Physiotherapy",
       "sourceUrl": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -42796,7 +42987,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "rizeni lidskych zdroju",
+      "matchedTitle": "Řízení lidských zdrojů",
       "rowTitle": "Řízení lidských zdrojů",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -43171,7 +43362,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "anesthesiology intensive medicine and pain management",
+      "matchedTitle": "Anesthesiology, Intensive Medicine and Pain Management",
       "rowTitle": "Anesthesiology, Intensive Medicine and Pain Management",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -43914,6 +44105,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:34:03Z",
       "checkedAt": "2026-10-02T23:50:28Z"
+    },
+    "inv-b495df021c4f": {
+      "url": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program/accreditation/886",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "en",
+      "matchedTitle": "hydrology and hydrogeology",
+      "rowTitle": "Hydrology and hydrogeology",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=23",
+      "matchedBy": "school_catalogue_anchor",
+      "pageTitle": "Study programmes Study Information System",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:23:40Z",
+      "checkedAt": "2026-10-05T11:49:29Z"
     },
     "inv-b496a5da31e6": {
       "url": "https://portal.zcu.cz/ects/browser/FF/1881?lang=cs",
@@ -45031,7 +45237,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "historical sociology",
+      "matchedTitle": "Historical Sociology",
       "rowTitle": "Historical Sociology",
       "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=33",
       "matchedBy": "school_catalogue_anchor",
@@ -45151,7 +45357,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "psychologie",
+      "matchedTitle": "Psychologie",
       "rowTitle": "Psychologie",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -45256,7 +45462,7 @@
       "institutionId": "msmt-vs_61000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "management a hospodareni ve verejne sprave",
+      "matchedTitle": "Management a hospodaření ve veřejné správě",
       "rowTitle": "Management a hospodaření ve veřejné správě",
       "sourceUrl": "https://www.ambis.cz/bakalarske-studium",
       "matchedBy": "school_catalogue_anchor",
@@ -45556,7 +45762,7 @@
       "institutionId": "msmt-vs_22000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "environmental technology and engineering imete",
+      "matchedTitle": "Environmental Technology and Engineering (IMETE)",
       "rowTitle": "Environmental Technology and Engineering (IMETE)",
       "sourceUrl": "https://study.vscht.cz/degree-programmes/master",
       "matchedBy": "school_catalogue_anchor",
@@ -46051,7 +46257,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "provoz a rizeni letecke dopravy management leteckych podniku",
+      "matchedTitle": "Provoz a řízení letecké dopravy – management leteckých podniků",
       "rowTitle": "Provoz a řízení letecké dopravy – management leteckých podniků",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -47236,7 +47442,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "botany",
+      "matchedTitle": "Botany",
       "rowTitle": "Botany",
       "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=23",
       "matchedBy": "school_catalogue_anchor",
@@ -47686,7 +47892,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "social geography and regional development",
+      "matchedTitle": "Social Geography and Regional Development",
       "rowTitle": "Social Geography and Regional Development",
       "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=23",
       "matchedBy": "school_catalogue_anchor",
@@ -49696,7 +49902,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Bioanalytická laboratorní diagnostika ve zdravotnictví – Embryolog",
+      "matchedTitle": "Bioanalytická laboratorní diagnostika ve zdravotnictví - Embryolog",
       "rowTitle": "Bioanalytická laboratorní diagnostika ve zdravotnictví - Embryolog",
       "sourceUrl": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23396-bioanalyticka-laboratorni-diagnostika-ve-zdravotnictvi-embryolog",
       "matchedBy": "school_harvested_programme_page",
@@ -49966,7 +50172,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "bioethics",
+      "matchedTitle": "Bioethics",
       "rowTitle": "Bioethics",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -50641,7 +50847,7 @@
       "institutionId": "msmt-vs_61000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "ekonomika a management podniku",
+      "matchedTitle": "Ekonomika a management podniku",
       "rowTitle": "Ekonomika a management podniku",
       "sourceUrl": "https://www.ambis.cz/bakalarske-studium",
       "matchedBy": "school_catalogue_anchor",
@@ -51541,7 +51747,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "management sportu",
+      "matchedTitle": "Management sportu",
       "rowTitle": "Management sportu",
       "sourceUrl": "https://www.fsps.muni.cz/chci-studovat/bakalarske-studium/programy",
       "matchedBy": "school_catalogue_anchor",
@@ -52216,7 +52422,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "internal medicine",
+      "matchedTitle": "Internal Medicine",
       "rowTitle": "Internal Medicine",
       "sourceUrl": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/medicine-healthcare",
       "matchedBy": "school_catalogue_anchor",
@@ -54931,7 +55137,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "special education",
+      "matchedTitle": "Special Education",
       "rowTitle": "Special Education",
       "sourceUrl": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/teacher-training-pedagogy",
       "matchedBy": "school_catalogue_anchor",
@@ -56641,7 +56847,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "management",
+      "matchedTitle": "Management",
       "rowTitle": "Management",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -58501,7 +58707,7 @@
       "institutionId": "msmt-vs_61000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "mezinarodni vztahy a diplomacie",
+      "matchedTitle": "Mezinárodní vztahy a diplomacie",
       "rowTitle": "Mezinárodní vztahy a diplomacie",
       "sourceUrl": "https://www.ambis.cz/magisterske-studium",
       "matchedBy": "school_catalogue_anchor",
@@ -60166,7 +60372,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "religionistika",
+      "matchedTitle": "Religionistika",
       "rowTitle": "Religionistika",
       "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program?page=2",
       "matchedBy": "school_catalogue_anchor",
@@ -60189,6 +60395,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T12:30:20Z",
       "checkedAt": "2026-10-02T23:52:48Z"
+    },
+    "inv-f7b9482b4b00": {
+      "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1559",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_11000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Krajina a společnost",
+      "rowTitle": "Krajina a společnost",
+      "sourceUrl": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1559",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Studijní programy Studijní informační systém",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-05T11:01:18Z",
+      "checkedAt": "2026-10-05T11:48:34Z"
     },
     "inv-f7c910800491": {
       "url": "https://www.hamu.cz/cs/katedry-programy/katedra-dirigovani/studijni-programy/dirigovani-212/",
@@ -60376,7 +60597,7 @@
       "institutionId": "msmt-vs_22000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "chemistry",
+      "matchedTitle": "Chemistry",
       "rowTitle": "Chemistry",
       "sourceUrl": "https://phd.vscht.cz/prospective-doctoral-candidates/double-degree-en",
       "matchedBy": "school_catalogue_anchor",
@@ -60451,7 +60672,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "obchodnepravni studia",
+      "matchedTitle": "Obchodněprávní studia",
       "rowTitle": "Obchodněprávní studia",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -60526,7 +60747,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "bezpecnostni studia",
+      "matchedTitle": "Bezpečnostní studia",
       "rowTitle": "Bezpečnostní studia",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -60871,7 +61092,7 @@
       "institutionId": "msmt-vs_14000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Fyzika – nanotechnologie",
+      "matchedTitle": "Fyzika - nanotechnologie",
       "rowTitle": "Fyzika - nanotechnologie",
       "sourceUrl": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23606-fyzika-nanotechnologie",
       "matchedBy": "school_catalogue_anchor",
@@ -61291,7 +61512,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "air transport",
+      "matchedTitle": "Air Transport",
       "rowTitle": "Air Transport",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -61336,7 +61557,7 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "marketingove komunikace",
+      "matchedTitle": "Marketingové komunikace",
       "rowTitle": "Marketingové komunikace",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
@@ -62273,11 +62494,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-06e289ff510c",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_52000",
       "rowId": "inv-06facf2650c3",
       "reason": "no_candidate_page"
@@ -62290,7 +62506,7 @@
     {
       "institutionId": "msmt-vs_95000",
       "rowId": "inv-076d6afd9954",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_23000",
@@ -62658,11 +62874,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-1a1982040538",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_7e000",
       "rowId": "inv-1a6dcdd02e29",
       "reason": "no_candidate_page"
@@ -62690,11 +62901,6 @@
     {
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-1b420f16434f",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-1b5345b07b31",
       "reason": "no_candidate_page"
     },
     {
@@ -62760,7 +62966,7 @@
     {
       "institutionId": "msmt-vs_7j000",
       "rowId": "inv-1ef3480dcd3e",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -62788,19 +62994,9 @@
       "reason": "ambiguous_register_rows"
     },
     {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-20a0f6a2a133",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_7p000",
       "rowId": "inv-210d06395019",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-2131db03d954",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_26000",
@@ -63030,11 +63226,6 @@
     {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-2c2b47abfc45",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-2c7ec4046c67",
       "reason": "no_candidate_page"
     },
     {
@@ -63330,7 +63521,7 @@
     {
       "institutionId": "msmt-vs_7j000",
       "rowId": "inv-3d4f7ac1f13c",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -63638,11 +63829,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-4f073e58ccdf",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-4f3739125439",
       "reason": "no_candidate_page"
@@ -63778,11 +63964,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-5416b9cd41dc",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_14000",
       "rowId": "inv-5420151b8f6c",
       "reason": "no_candidate_page"
@@ -63915,7 +64096,7 @@
     {
       "institutionId": "msmt-vs_95000",
       "rowId": "inv-5bfb50cd512e",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_13000",
@@ -64088,11 +64269,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-6673b1d205c8",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_19000",
       "rowId": "inv-6727e1504591",
       "reason": "no_candidate_page"
@@ -64226,11 +64402,6 @@
       "institutionId": "msmt-vs_54000",
       "rowId": "inv-6f6c66e7ea99",
       "reason": "ambiguous_register_rows"
-    },
-    {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-6fe882fa4453",
-      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_23000",
@@ -64500,16 +64671,6 @@
     {
       "institutionId": "msmt-vs_27000",
       "rowId": "inv-81cf97dd554a",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-81dd1dd13b23",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-81f55e897fde",
       "reason": "no_candidate_page"
     },
     {
@@ -65120,7 +65281,7 @@
     {
       "institutionId": "msmt-vs_7j000",
       "rowId": "inv-a34e112575f2",
-      "reason": "no_candidate_page"
+      "reason": "ambiguous_register_rows"
     },
     {
       "institutionId": "msmt-vs_28000",
@@ -65308,11 +65469,6 @@
       "reason": "page_states_nothing"
     },
     {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-ab43b6697078",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_7u000",
       "rowId": "inv-ab50e1a6cfd3",
       "reason": "no_candidate_page"
@@ -65450,11 +65606,6 @@
     {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-b4703f82caad",
-      "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-b495df021c4f",
       "reason": "no_candidate_page"
     },
     {
@@ -66708,11 +66859,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_11000",
-      "rowId": "inv-f7b9482b4b00",
-      "reason": "no_candidate_page"
-    },
-    {
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-f7b95f3176df",
       "reason": "no_candidate_page"
@@ -66854,5 +67000,5 @@
     }
   ],
   "retiredFromRegister": [],
-  "requests": 5886
+  "requests": 4698
 }
