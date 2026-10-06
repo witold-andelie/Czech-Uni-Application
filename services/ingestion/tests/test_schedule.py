@@ -299,3 +299,37 @@ def test_daily_task_runs_at_a_slightly_earlier_wake_next_day(tmp_path: Path) -> 
 
     assert "job_discovery" not in same_day
     assert "job_discovery" in next_wake
+
+
+def test_a_failed_shard_on_its_own_day_is_that_days_work(tmp_path: Path) -> None:
+    """2026-10-06: shards 1-4 failed once, queued as retries behind the day's work, never ran."""
+    from schedule import shard_index_for_date
+
+    mgr = ScheduleManager(tmp_path / "schedule-state.json")
+    failed = datetime(2026, 10, 4, 16, 0, tzinfo=timezone.utc)
+    now = datetime(2026, 10, 7, 9, 0, tzinfo=timezone.utc)
+    today = shard_index_for_date(now.date())
+    other = (today + 1) % 5
+    mgr.init_state(failed)
+    mgr.record_shard_failure(today, "timed out", now=failed)
+    mgr.record_shard_failure(other, "timed out", now=failed)
+    tasks = {t["shardIndex"]: t["priority"] for t in mgr.get_pending_tasks(now) if t["type"] == "shard_refresh"}
+    assert tasks[today] == "daily_scheduled"
+    assert tasks[other] == "retry"
+    # Tried again today and failed: a later tick the same day is a retry.
+    mgr.record_shard_failure(today, "timed out", now=now)
+    later = {t["shardIndex"]: t["priority"] for t in mgr.get_pending_tasks(now + timedelta(hours=3))
+             if t["type"] == "shard_refresh"}
+    assert later[today] == "retry"
+
+
+def test_a_failed_daily_task_gets_its_ordinary_turn_the_next_day(tmp_path: Path) -> None:
+    """2026-10-06: job discovery failed once and stayed last in every tick for weeks."""
+    mgr = ScheduleManager(tmp_path / "schedule-state.json")
+    failed = datetime(2026, 10, 5, 9, 0, tzinfo=timezone.utc)
+    mgr.init_state(failed)
+    mgr.record_volatile_failure("job_discovery", "1/5 registered job sources failed", now=failed)
+    soon = [t for t in mgr.get_pending_tasks(failed + timedelta(hours=1)) if t["type"] == "job_discovery"]
+    assert [t["priority"] for t in soon] == ["retry"]
+    next_day = [t for t in mgr.get_pending_tasks(failed + timedelta(hours=23, minutes=50)) if t["type"] == "job_discovery"]
+    assert [t["priority"] for t in next_day] == ["daily_job_discovery"]

@@ -26,8 +26,10 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-24.04
-    # A full tick measured ~46 min (2026-09-28/29); keep headroom for the commit steps.
-    timeout-minutes: ${{ github.event.inputs.mode == 'adapters' && 20 || 80 }}
+    # Setup ~5 min + task tick <=75 min + live verification <=25 min + commits.
+    # At a 35-min tick discovery and four shards never ran (2026-10-06); the
+    # repository is public, so hosted-runner minutes are not billed.
+    timeout-minutes: ${{ github.event.inputs.mode == 'adapters' && 20 || 135 }}
     permissions:
       contents: write
       actions: write
@@ -152,6 +154,7 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           CI_REFRESH_SKIP_TASKS: programme_link_resolution
+          CI_REFRESH_BUDGET_SECONDS: "4500"
           CI_REFRESH_FORCE_TASKS: ${{ github.event.inputs.force_tasks || '' }}
         run: python -u services/ingestion/src/ci_refresh.py
       - name: Save adapter harvest cursor

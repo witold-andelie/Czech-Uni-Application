@@ -382,3 +382,45 @@ def test_a_recheck_stops_at_its_budget_and_keeps_the_rest(tmp_path, monkeypatch)
     assert [job["id"] for job in written["jobs"]] == ["job-3", "job-1", "job-2"]
     assert written["lastRecheckResult"]["deferredToNextRun"] == 3
     assert isinstance(result, dict)
+
+
+def test_a_shard_out_of_time_stops_between_schools_and_is_done(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """2026-10-06: every shard was killed in its portal probes and retried behind other work."""
+    import worker
+
+    calls: list[tuple[str, str]] = []
+
+    class FakeSchedule:
+        def record_source_result(self, *_args, **_kwargs):
+            return None
+
+        def record_shard_success(self, *_args, **_kwargs):
+            calls.append(("success", ""))
+
+        def record_shard_partial(self, _shard, error, *_args, **_kwargs):
+            calls.append(("partial", error))
+
+        def record_shard_failure(self, *_args, **_kwargs):
+            calls.append(("failure", ""))
+
+    schools = [{"id": "a", "msmtCode": "VS_A", "officialUrl": "https://a.cz"}, {"id": "b", "msmtCode": "VS_B", "officialUrl": "https://b.cz"}]
+    plan = {"date": "2026-10-06", "shard": 2, "shardCount": 5, "institutionIds": ["a", "b"], "jobIds": [],
+            "counts": {}, "schools": schools, "jobs": []}
+    order: list[str] = []
+    monkeypatch.setattr(worker, "plan_for_day", lambda *_args, **_kwargs: plan)
+    monkeypatch.setattr(worker, "RunLock", lambda: nullcontext())
+    monkeypatch.setattr(worker, "ScheduleManager", FakeSchedule)
+    monkeypatch.setattr(worker, "harvest_jobs", lambda *_args, **_kwargs: order.append("jobs") or {})
+    monkeypatch.setattr(worker, "baseline_schools", lambda: schools)
+    monkeypatch.setattr(worker, "rebuild_inventory", lambda: {})
+    monkeypatch.setattr(worker, "atomic_write", lambda *_args: None)
+    monkeypatch.setattr(worker, "RUNS", tmp_path)
+    monkeypatch.setenv("WORKER_TASK_BUDGET_SECONDS", "1")
+    clock = iter([0.0] + [100.0] * 100)
+    monkeypatch.setattr(worker.time, "monotonic", lambda: next(clock))
+    result = worker.run_once(now=NOW)
+    assert order == ["jobs"]
+    assert result["programmes"] == [] and result["portals"]["attempts"] == []
+    assert result["deferredSchools"] == ["a", "b"]
+    assert result["status"] == "partial"
+    assert calls == [("partial", "2 schools not reached in the time budget in shard 2")]

@@ -264,7 +264,8 @@ def extra_paths(official: str) -> list[str]:
     ]
 
 
-def harvest_rows(institutions: list[dict]) -> list[dict]:
+def harvest_rows(institutions: list[dict], deadline: float | None = None) -> list[dict]:
+    """Probe each institution; with a monotonic deadline, stop between them."""
     last_host_at: dict[str, float] = {}
     cache: dict[str, dict] = {}
     rows: list[dict] = []
@@ -283,6 +284,8 @@ def harvest_rows(institutions: list[dict]) -> list[dict]:
         return result
 
     for item in institutions:
+        if deadline is not None and time.monotonic() >= deadline:
+            break
         iid = item["id"]
         official = item.get("officialUrl")
         candidates: list[str] = []

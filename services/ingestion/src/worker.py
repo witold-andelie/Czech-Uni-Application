@@ -231,12 +231,14 @@ def plan_for_day(
     }
 
 
-def harvest_programmes(schools: list[dict], force: bool) -> list[dict]:
+def harvest_programmes(schools: list[dict], force: bool, deadline: float | None = None) -> list[dict]:
     from harvest_cscse24_programmes import SLEEP_SECONDS, harvest_one
     from parse_msmt_programmes import csv_for_code, parse_school_csv, write_school_programmes
 
     log = []
     for index, school in enumerate(schools):
+        if deadline is not None and time.monotonic() >= deadline:
+            break
         if index:
             time.sleep(SLEEP_SECONDS)
         result = harvest_one(school, force)
@@ -980,11 +982,12 @@ def refresh_czu_doctoral_programme_availability(
         raise
 
 
-def harvest_portals(schools: list[dict], all_ids: list[str]) -> dict:
+def harvest_portals(schools: list[dict], all_ids: list[str], deadline: float | None = None) -> dict:
     from harvest_apply_portals import harvest_rows
 
     previous = load_json(PORTALS_OUT)
-    rows = harvest_rows(schools)
+    # A school not reached keeps its last probe (merge_sharded_portals).
+    rows = harvest_rows(schools, deadline)
     merged = merge_sharded_portals(previous, rows, all_ids)
     merged["generatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     merged["dataClass"] = previous.get("dataClass") or "official_admissions_extract"
@@ -1383,13 +1386,27 @@ def run_once(
         return report
 
     sched_mgr = ScheduleManager()
+    # The tick's graceful budget: stop between schools and keep what is done
+    # instead of being killed at the hard timeout and losing the shard's
+    # report (2026-10-06: every shard was killed in its portal probes).
+    budget = task_budget_seconds()
+    deadline = time.monotonic() + budget if budget else None
     with RunLock():
         try:
-            report["programmes"] = harvest_programmes(plan["schools"], force)
+            # Vacancies first: they are the site's core and the stage that
+            # cannot stop between schools.
             report["jobs"] = harvest_jobs(plan["jobs"], set(plan["institutionIds"]))
+            report["programmes"] = harvest_programmes(plan["schools"], force, deadline)
             if not skip_portals:
-                report["portals"] = harvest_portals(plan["schools"], [item["id"] for item in baseline_schools()])
+                report["portals"] = harvest_portals(plan["schools"], [item["id"] for item in baseline_schools()], deadline)
             report["inventory"] = rebuild_inventory()
+            programme_codes = {item.get("msmtCode") for item in report["programmes"]}
+            portal_ids = {item.get("institutionId") for item in report.get("portals", {}).get("attempts", [])}
+            report["deferredSchools"] = sorted(
+                school["id"] for school in plan["schools"]
+                if school.get("msmtCode") not in programme_codes
+                or (not skip_portals and school["id"] not in portal_ids)
+            )
             programme_success = lambda item: (
                 item.get("status") in {"ok", "skipped_existing"}
                 and isinstance(item.get("parsedProgrammes"), int)
@@ -1413,7 +1430,8 @@ def run_once(
             report["jobFailures"] = job_failures
             report["portalFailures"] = [item.get("institutionId") for item in portal_failures]
             total_failures = report["failed"] + len(job_failures) + len(portal_failures)
-            report["status"] = "succeeded" if total_failures == 0 else "partial"
+            deferred_schools = len(report["deferredSchools"])
+            report["status"] = "succeeded" if total_failures == 0 and not deferred_schools else "partial"
 
             school_id_by_code = {school.get("msmtCode"): school.get("id") for school in plan["schools"]}
             for item in report["programmes"]:
@@ -1457,15 +1475,21 @@ def run_once(
                 json.dumps(report, ensure_ascii=False, indent=2) + "\n",
                 encoding="utf-8",
             )
-            if total_failures == 0:
+            if total_failures == 0 and not deferred_schools:
                 sched_mgr.record_shard_success(plan["shard"], now)
             else:
                 # Individual source failures are recorded per source and
                 # dropped; the shard is done until its next turn instead of
                 # being retried ahead of other work (owner, 2026-10-04).
+                # Schools the budget did not reach keep their last results.
+                notes = []
+                if total_failures:
+                    notes.append(f"{total_failures} source operations failed")
+                if deferred_schools:
+                    notes.append(f"{deferred_schools} schools not reached in the time budget")
                 sched_mgr.record_shard_partial(
                     plan["shard"],
-                    f"{total_failures} source operations failed in shard {plan['shard']}",
+                    f"{'; '.join(notes)} in shard {plan['shard']}",
                     now,
                 )
         except Exception as exc:

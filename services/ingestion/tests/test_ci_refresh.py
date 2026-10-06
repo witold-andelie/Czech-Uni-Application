@@ -90,7 +90,9 @@ def test_started_task_failure_still_fails_the_tick(tmp_path):
 def test_never_attempted_source_precedes_recent_long_retry(tmp_path):
     manager = ScheduleManager(tmp_path / "state.json")
     manager.record_volatile_failure("job_discovery", "timeout")
-    manager.get_pending_tasks = lambda: [{"type": "job_discovery"}, {"type": "czu_doctoral_programme_availability"}]
+    # Within its interval a failed task is queued as a retry (schedule.py).
+    manager.get_pending_tasks = lambda: [{"type": "job_discovery", "priority": "retry"},
+                                         {"type": "czu_doctoral_programme_availability"}]
     seen = []
     def run(command, **kwargs):
         seen.append(command[-1])
@@ -220,3 +222,30 @@ def test_a_discovery_with_some_failed_sources_is_done_not_retried(tmp_path):
     info = manager.load_state()["jobDiscovery"]
     assert info["status"] == "completed" and info["retryAt"] is None
     assert info["lastError"] == "3/60 registered job sources failed"
+
+
+def test_discovery_runs_right_after_the_recheck(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [
+        {"type": "czu_programme_availability"},
+        {"type": "shard_refresh", "shardIndex": 0, "priority": "daily_scheduled"},
+        {"type": "job_discovery"},
+        {"type": "job_recheck"},
+    ]
+    seen = []
+
+    def run(command, **kwargs):
+        seen.append((command[-1], kwargs["timeout"]))
+        return SimpleNamespace(returncode=0)
+
+    run_tick(manager, budget=6000, run=run, output=tmp_path / "report.json")
+    assert [flag for flag, _ in seen] == ["--recheck-jobs", "--discover-jobs", "--refresh-czu-programmes", "0"]
+    assert dict(seen)["--discover-jobs"] == 1500 and dict(seen)["0"] == 1200
+
+
+def test_the_tick_budget_comes_from_the_workflow(tmp_path, monkeypatch):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [{"type": "programme_availability"}]
+    monkeypatch.setenv("CI_REFRESH_BUDGET_SECONDS", "30")
+    report = run_tick(manager, run=lambda *a, **k: SimpleNamespace(returncode=0), output=tmp_path / "report.json")
+    assert [task["type"] for task in report["deferred"]] == ["programme_availability"]

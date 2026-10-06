@@ -21,6 +21,13 @@ GRACE_SECONDS = 180
 # a shard started with 52 s left was killed and recorded as failed (2026-10-05).
 MIN_START_SECONDS = {"shard_refresh": 300, "job_discovery": 180, "job_recheck": 180}
 DEFAULT_MIN_START_SECONDS = 60
+# Hard timeouts per task. Discovery reads ~60 registered sources and a shard
+# reads a fifth of the schools; at 900 s each was cut off or never reached
+# (2026-10-06). Both stop between sources on their own graceful budget.
+TASK_TIMEOUT_SECONDS = {"job_discovery": 1500, "shard_refresh": 1200}
+# Due work first: job closures, then new vacancies, then the rest in order of
+# their last attempt (the site's core is the vacancy list; owner, 2026-09-27).
+FIRST_TASKS = ("job_recheck", "job_discovery")
 FLAGS = {
     "job_recheck": "--recheck-jobs",
     "job_discovery": "--discover-jobs",
@@ -49,9 +56,15 @@ def task_command(task: dict) -> list[str]:
     return command + [FLAGS[task["type"]]]
 
 
-def run_tick(manager=None, *, budget=2100, task_timeout=900,
+def tick_budget_seconds(default: int = 2100) -> int:
+    value = os.environ.get("CI_REFRESH_BUDGET_SECONDS", "").strip()
+    return int(value) if value.isdigit() and int(value) > 0 else default
+
+
+def run_tick(manager=None, *, budget=None, task_timeout=900,
              run=subprocess.run, clock=time.monotonic, output=None, log=None) -> dict:
     manager = manager or ScheduleManager()
+    budget = tick_budget_seconds() if budget is None else budget
     output = output or ROOT / "work/runs/ci-refresh-summary.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     tasks = manager.get_pending_tasks()
@@ -76,7 +89,8 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
     def task_order(task):
         info = (state["shards"].get(str(task["shardIndex"]), {}) if task["type"] == "shard_refresh"
                 else state.get(VOLATILE_TASKS[task["type"]]["stateKey"], {}))
-        return (task["type"] != "job_recheck", info.get("lastAttemptAt") or "")
+        first = FIRST_TASKS.index(task["type"]) if task["type"] in FIRST_TASKS else len(FIRST_TASKS)
+        return (first, info.get("lastAttemptAt") or "")
     tasks.sort(key=task_order)
     # A retry of a task that failed outright (a timeout, a crash) goes after
     # the day's due work: one failure must not crowd out the rest (owner,
@@ -106,7 +120,7 @@ def run_tick(manager=None, *, budget=2100, task_timeout=900,
             _emit(f"ci_refresh: defer {task.get('type')} remaining_s={remaining}", log)
             continue
         kind = task["type"]
-        timeout = min(task_timeout, remaining)
+        timeout = min(TASK_TIMEOUT_SECONDS.get(kind, task_timeout), remaining)
         error = None
         _emit(f"ci_refresh: start {kind} timeout_s={timeout}", log)
         started = clock()

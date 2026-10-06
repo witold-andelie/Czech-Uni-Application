@@ -434,6 +434,8 @@ class ScheduleManager:
         for _elapsed, index in overdue:
             tasks.append({"type": "shard_refresh", "shardIndex": index, "priority": "overdue_catchup", "reason": "SLA >120h breach catch-up"})
 
+        today_shard = shard_index_for_date(utc_today(current))
+        today_start = datetime(current.year, current.month, current.day, tzinfo=timezone.utc)
         for index in range(SHARD_COUNT):
             if any(task.get("type") == "shard_refresh" and task.get("shardIndex") == index for task in tasks):
                 continue
@@ -443,9 +445,18 @@ class ScheduleManager:
                 continue
             retry_at = parse_iso(info.get("retryAt"))
             if retry_at and retry_at <= current:
-                tasks.append({"type": "shard_refresh", "shardIndex": index, "priority": "retry", "reason": f"Retry after failure: {info.get('lastError')}"})
+                # A failed shard on its own day is that day's work, not a
+                # retry behind it: as a retry it went last and never ran again
+                # (2026-10-06: shards 1-4 had never completed).
+                last_success = parse_iso(info.get("lastSuccessAt"))
+                last_attempt = parse_iso(info.get("lastAttemptAt"))
+                if (index == today_shard and (last_success is None or last_success < today_start)
+                        and (last_attempt is None or last_attempt < today_start)):
+                    tasks.append({"type": "shard_refresh", "shardIndex": index, "priority": "daily_scheduled",
+                                  "reason": f"Regular daily 1/5 rotation shard {index} (last failure: {info.get('lastError')})"})
+                else:
+                    tasks.append({"type": "shard_refresh", "shardIndex": index, "priority": "retry", "reason": f"Retry after failure: {info.get('lastError')}"})
 
-        today_shard = shard_index_for_date(utc_today(current))
         today_info = state["shards"][str(today_shard)]
         lease_until = parse_iso(today_info.get("leaseUntil"))
         retry_at = parse_iso(today_info.get("retryAt"))
@@ -453,7 +464,6 @@ class ScheduleManager:
         retry_backoff_active = retry_at is not None and retry_at > current
         if not already_queued and not retry_backoff_active and not (lease_until and lease_until > current):
             last_success = parse_iso(today_info.get("lastSuccessAt"))
-            today_start = datetime(current.year, current.month, current.day, tzinfo=timezone.utc)
             if last_success is None or last_success < today_start:
                 tasks.append({"type": "shard_refresh", "shardIndex": today_shard, "priority": "daily_scheduled", "reason": f"Regular daily 1/5 rotation shard {today_shard}"})
 
@@ -465,16 +475,31 @@ class ScheduleManager:
             retry_at = parse_iso(info.get("retryAt"))
             if retry_at and retry_at > current:
                 continue
+            next_due = parse_iso(info.get("nextDueAt"))
             if retry_at and retry_at <= current:
+                # A failed task gets its ordinary turn once a full interval
+                # has passed since its last attempt; only extra attempts in
+                # between are retries behind the day's due work. Without this
+                # a failure kept job discovery last for weeks (2026-10-06).
+                last_attempt = parse_iso(info.get("lastAttemptAt"))
+                turn = timedelta(hours=spec["intervalHours"] - WAKE_JITTER_HOURS)
+                if last_attempt is not None and last_attempt + turn > current:
+                    tasks.append(
+                        {
+                            "type": task_type,
+                            "priority": "retry",
+                            "reason": f"Retry after failure: {info.get('lastError')}",
+                        }
+                    )
+                    continue
                 tasks.append(
                     {
                         "type": task_type,
-                        "priority": "retry",
-                        "reason": f"Retry after failure: {info.get('lastError')}",
+                        "priority": spec["priority"],
+                        "reason": f"{spec['reason']} (last failure: {info.get('lastError')})",
                     }
                 )
                 continue
-            next_due = parse_iso(info.get("nextDueAt"))
             if next_due is None or next_due <= current + timedelta(hours=WAKE_JITTER_HOURS):
                 tasks.append(
                     {
