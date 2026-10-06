@@ -424,3 +424,79 @@ def test_a_shard_out_of_time_stops_between_schools_and_is_done(tmp_path: Path, m
     assert result["deferredSchools"] == ["a", "b"]
     assert result["status"] == "partial"
     assert calls == [("partial", "2 schools not reached in the time budget in shard 2")]
+
+
+def _stated_deadline_case(tmp_path, page_text, opens_at="2026-08-26"):
+    jobs_path = tmp_path / "jobs.json"
+    jobs_path.write_text(json.dumps({
+        "jobs": [{"id": "job-x", "sourceUrl": "https://example.cz/x", "lifecycleStatus": "open", "visibility": "public",
+                  "publicationStatus": "approved", "originalText": "Odborný asistent", "title": {"en": "Assistant professor"}}],
+        "windows": [{"id": "w-x", "ownerId": "job-x", "opensAt": opens_at, "closesAt": None, "status": "unknown"}],
+    }), encoding="utf-8")
+    worker.recheck_open_jobs(
+        fetch_page=lambda url: (200, f"<h1>Odborný asistent</h1><p>{page_text}</p>"),
+        now=datetime(2026, 10, 6, 12, 0, tzinfo=timezone.utc),
+        jobs_path=jobs_path,
+        schedule_manager=ScheduleManager(tmp_path / "state.json"),
+        use_lock=False,
+        safety_dir=tmp_path / "safety",
+    )
+    payload = json.loads(jobs_path.read_text(encoding="utf-8"))
+    return payload["jobs"][0], payload["windows"][0]
+
+
+def test_a_stated_deadline_that_passed_archives_the_vacancy(tmp_path):
+    """2026-10-06: six VUT adverts past their 18-25 Sept deadlines stayed open with no closing date."""
+    job, window = _stated_deadline_case(tmp_path, "Přihlášky odešlete pomocí formuláře do 25.9.2026.")
+    assert (job["lifecycleStatus"], job["visibility"], job["lastAttemptReason"]) == ("expired", "archived", "stated_deadline_passed")
+    assert (window["closesAt"], window["status"], window["closedReason"]) == ("2026-09-25", "closed", "deadline_expired")
+
+
+def test_a_future_or_earlier_stated_date_leaves_the_vacancy_open(tmp_path):
+    job, window = _stated_deadline_case(tmp_path, "Přihlášky odešlete do 25.10.2026.")
+    assert (job["lifecycleStatus"], job["visibility"], window["closesAt"]) == ("open", "public", None)
+    # A date before this round opened is not its deadline.
+    job, window = _stated_deadline_case(tmp_path, "Přihlášky odešlete do 25.6.2026.")
+    assert (job["lifecycleStatus"], window["closesAt"]) == ("open", None)
+
+
+def test_the_shard_reads_only_live_stored_vacancies_and_keeps_their_scope(tmp_path, monkeypatch):
+    """2026-10-03: a delisted VUT advert archived the day before was rebuilt as open by the shard re-read."""
+    import harvest_nine_hei_jobs
+
+    jobs_path = tmp_path / "jobs.json"
+    base = {"employerId": "msmt-vs_26000", "sourceUrl": "https://vutbr.jobs.cz/x", "track": "post_master",
+            "title": {"cs": "Odborný asistent"}, "sourceLanguage": "cs"}
+    jobs_path.write_text(json.dumps({"jobs": [
+        {**base, "id": "live", "visibility": "public", "lifecycleStatus": "open", "catalogueScopeStatus": "unspecified"},
+        {**base, "id": "gone", "visibility": "archived", "lifecycleStatus": "unavailable"},
+    ]}), encoding="utf-8")
+    monkeypatch.setattr(worker, "JOBS_OUT", jobs_path)
+    school = {"id": "msmt-vs_26000", "msmtCode": "VS_26000"}
+    plan = worker.plan_for_day(datetime(2026, 10, 6).date(), [school], shard=0, assignments_path=tmp_path / "a.json")
+    assert plan["jobIds"] == ["live"]
+    assert plan["jobs"][0]["_keepStoredScope"] is True
+    html = "<h1>Odborný asistent</h1><p>Výzkum a publikační činnost v oboru.</p>"
+    seed = {**plan["jobs"][0], "_factHtml": html}
+    previous = json.loads(jobs_path.read_text(encoding="utf-8"))
+    payload = harvest_nine_hei_jobs.harvest_candidates([seed], lambda url: (200, html), previous, sleep_seconds=0)
+    assert payload["jobs"][0]["catalogueScopeStatus"] == "unspecified"
+
+
+def test_a_source_whose_table_decides_openness_keeps_its_posts(tmp_path, monkeypatch):
+    """Dry run 2026-10-06: EURAXESS dates long past archived 16 RoboProx posts CIIRC still lists Open."""
+    monkeypatch.setattr(worker, "load_registry", lambda: [{"id": "roboprox", "parser": "roboprox_positions"}])
+    jobs_path = tmp_path / "jobs.json"
+    job = {"id": "job-r", "sourceUrl": "https://euraxess.ec.europa.eu/jobs/1", "lifecycleStatus": "unknown",
+           "visibility": "public", "discoverySourceId": "roboprox", "originalText": "PhD position"}
+    jobs_path.write_text(json.dumps({"jobs": [job], "windows": []}), encoding="utf-8")
+    worker.recheck_open_jobs(
+        fetch_page=lambda url: (200, "<h1>PhD position</h1><p>Application deadline: 31 March 2026</p>"),
+        now=datetime(2026, 10, 6, 12, 0, tzinfo=timezone.utc),
+        jobs_path=jobs_path,
+        schedule_manager=ScheduleManager(tmp_path / "state.json"),
+        use_lock=False,
+        safety_dir=tmp_path / "safety",
+    )
+    stored = json.loads(jobs_path.read_text(encoding="utf-8"))["jobs"][0]
+    assert (stored["lifecycleStatus"], stored["visibility"]) == ("unknown", "public")

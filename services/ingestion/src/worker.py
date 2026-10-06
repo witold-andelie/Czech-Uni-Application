@@ -195,6 +195,14 @@ def save_shard_assignments(mapping: dict[str, int], path: Path | None = None) ->
     )
 
 
+def _archived_job(job: dict) -> bool:
+    return (
+        job.get("visibility") == "archived"
+        or bool(job.get("wholeOpportunityClosed"))
+        or job.get("lifecycleStatus") in {"closed", "expired", "unavailable"}
+    )
+
+
 def plan_for_day(
     day,
     schools: list[dict] | None = None,
@@ -214,7 +222,19 @@ def plan_for_day(
     selected = [item for item in schools if item["id"] in selected_ids]
     from harvest_nine_hei_jobs import seed_candidates_from_stored
 
-    jobs = seed_candidates_from_stored(load_json(JOBS_OUT), selected_ids)
+    stored = load_json(JOBS_OUT)
+    # An archived vacancy is not re-read from its old address. VUT's jobs.cz
+    # detail page still answers 200 with the title after the school delists
+    # an advert; the re-read found no deadline in the script shell and rebuilt
+    # an archived, past-deadline vacancy as open (job-26000-2001394239,
+    # 2026-10-03). A vacancy the school lists again returns through discovery.
+    live = {**stored, "jobs": [job for job in stored.get("jobs") or [] if not _archived_job(job)]}
+    jobs = seed_candidates_from_stored(live, selected_ids)
+    # The re-read has no new scope evidence: the scope the source's own
+    # discovery decided stays (the shard wrote "included" over a CUNI teaching
+    # post its adapter had left unspecified, 2026-10-06).
+    for job in jobs:
+        job["_keepStoredScope"] = True
     return {
         "date": day.isoformat(),
         "shard": shard_idx,
@@ -1017,6 +1037,13 @@ def _aware_utc(value: datetime) -> datetime:
     return value.astimezone(timezone.utc)
 
 
+# Sources whose own listing, not the linked notice, says whether a post is
+# open: CIIRC RoboProx lists rows Open while their EURAXESS notices keep
+# deadlines that passed long ago (parse_roboprox_positions). Reading those
+# dates archived 16 open PhD and postdoc posts in a dry run (2026-10-06).
+LISTING_DECIDES_OPENNESS = {"roboprox_positions"}
+
+
 def _window_deadline_passed(window: dict, now: datetime) -> bool:
     from harvest_nine_hei_jobs import parse_date
 
@@ -1058,7 +1085,11 @@ def _recheck_open_jobs_unlocked(
         SLEEP,
         _lmc_detail_payload,
         _lmc_job_ad,
+        entity_scope,
+        extract_deadline,
+        main_content_text,
         page_is_closed,
+        parse_date,
         parse_lmc_widget_config,
         request_json,
         visible_text,
@@ -1275,6 +1306,38 @@ def _recheck_open_jobs_unlocked(
                 window["closedReason"] = "whole_opportunity_closed"
                 window["closedAt"] = now_text
             all_windows_closed = True
+        if (
+            not all_windows_closed
+            and job_windows
+            and not any(window.get("closesAt") for window in job_windows)
+            and not (source and source.get("parser") in LISTING_DECIDES_OPENNESS)
+        ):
+            # A deadline the official text states but the record never
+            # captured. VUT's ATS keeps a delisted advert answering with its
+            # full text; ten records whose deadlines (9-25 Sept) had passed
+            # stayed open with no closing date (2026-10-06). A date before the
+            # window opened is not this round's deadline. Only a recorded round
+            # is closed this way: a source whose own table decides openness
+            # keeps its records without a window on purpose.
+            source_title = str(job.get("originalText") or title_en or "")
+            stated = extract_deadline(main_content_text(html) or entity_scope(text, source_title))
+            opened = next((parse_date(str(w["opensAt"])) for w in job_windows if w.get("opensAt")), None)
+            zone = next((w.get("timezone") for w in job_windows if w.get("timezone")), None)
+            if (
+                stated is not None
+                and (opened is None or stated >= opened)
+                and _window_deadline_passed({"closesAt": stated.isoformat(), "timezone": zone}, now)
+            ):
+                for window in job_windows:
+                    window["closesAt"] = stated.isoformat()
+                    window["status"] = "closed"
+                    window["closedReason"] = "deadline_expired"
+                    window["closedAt"] = now_text
+                job_copy["lifecycleStatus"] = "expired"
+                job_copy["visibility"] = "archived"
+                job_copy["wholeOpportunityClosed"] = False
+                job_copy["lastAttemptReason"] = "stated_deadline_passed"
+                all_windows_closed = True
         if all_windows_closed:
             closed_count += 1
         updated_jobs.append(job_copy)

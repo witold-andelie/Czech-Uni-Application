@@ -982,6 +982,9 @@ DEADLINE_MARKERS = (
     "deadline",
     "termín",
     "termin",
+    # Last: an explicit application deadline above wins over the advert's
+    # validity (CTU FEE careers, "Valid until 9. 9. 2026").
+    "valid until",
 )
 
 
@@ -4242,6 +4245,8 @@ def _merge_seed_and_discovered(seeds: list[dict], discovered: list[dict]) -> lis
                 if not (value in _PLACEHOLDER_VALUES and seed.get(key) not in _PLACEHOLDER_VALUES)
             }
             merged[match_index] = {**seed, **informative, "id": seed["id"]}
+            # A listing that names the vacancy again is new scope evidence.
+            merged[match_index].pop("_keepStoredScope", None)
     return merged
 
 
@@ -5317,6 +5322,8 @@ def harvest_candidates(
         for key in _CARRIED_PROVENANCE:
             if job.get(key) is None and prior.get(key) is not None:
                 job[key] = prior[key]
+        if candidate.get("_keepStoredScope") and prior.get("catalogueScopeStatus"):
+            job["catalogueScopeStatus"] = prior["catalogueScopeStatus"]
         jobs.append(job)
         if window:
             windows.append(window)

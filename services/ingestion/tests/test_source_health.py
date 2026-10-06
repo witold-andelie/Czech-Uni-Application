@@ -138,8 +138,8 @@ def test_institute_listings_honour_base_href_and_keep_research_titles_only() -> 
 def test_json_links_keep_research_types_only() -> None:
     payload = (
         '{"type":"success","payload":['
-        '{"openPositionId":427,"link":"\/en\/open-positions\/427\/postdoc","type":"Scientific position","title":"Postdoctoral fellow in computational chemistry"},'
-        '{"openPositionId":430,"link":"\/en\/open-positions\/430\/hr","type":"Other position","title":"HR generalist"}]}'
+        r'{"openPositionId":427,"link":"\/en\/open-positions\/427\/postdoc","type":"Scientific position","title":"Postdoctoral fellow in computational chemistry"},'
+        r'{"openPositionId":430,"link":"\/en\/open-positions\/430\/hr","type":"Other position","title":"HR generalist"}]}'
     )
     source = {"itemsPath": "payload", "idField": "openPositionId", "typeAllow": ["Scientific position"], "linkBase": "https://www.uochb.cz/"}
     rows = harvest.parse_json_links(payload, "https://www.uochb.cz/en/api/open-positions", source)
@@ -192,3 +192,8 @@ def test_removed_notice_pages_do_not_raise_the_incomplete_alarm() -> None:
     }
     rows = {row["sourceId"]: row["complete"] for row in source_health.observations_from_discovery(discovery)}
     assert rows == {"ujep": True, "slow": False}
+
+
+def test_an_advert_validity_date_is_its_deadline_when_nothing_else_is_stated() -> None:
+    assert str(harvest.extract_deadline("Event Manager. Valid until 9. 9. 2026 Are you interested")) == "2026-09-09"
+    assert str(harvest.extract_deadline("Application deadline: 31 October 2026. Valid until 9. 9. 2026")) == "2026-10-31"
