@@ -24,7 +24,11 @@ DEFAULT_MIN_START_SECONDS = 60
 # Hard timeouts per task. Discovery reads ~60 registered sources and a shard
 # reads a fifth of the schools; at 900 s each was cut off or never reached
 # (2026-10-06). Both stop between sources on their own graceful budget.
-TASK_TIMEOUT_SECONDS = {"job_discovery": 1500, "shard_refresh": 1200}
+TASK_TIMEOUT_SECONDS = {"job_discovery": 1800, "shard_refresh": 1200}
+# Discovery's slowest sources (EURAXESS pages 60 result pages with their
+# notices, AV ČR ~250 s) need more than the default grace: EURAXESS started
+# 17 s before the graceful budget ended and the task was killed (2026-10-06).
+TASK_GRACE_SECONDS = {"job_discovery": 420}
 # Due work first: job closures, then new vacancies, then the rest in order of
 # their last attempt (the site's core is the vacancy list; owner, 2026-09-27).
 FIRST_TASKS = ("job_recheck", "job_discovery")
@@ -127,7 +131,8 @@ def run_tick(manager=None, *, budget=None, task_timeout=900,
         try:
             # Leave room for the source already in flight to finish, so a task
             # that can stop between sources returns before the hard kill.
-            task_env = {**worker_env, "WORKER_TASK_BUDGET_SECONDS": str(max(timeout - GRACE_SECONDS, 30))}
+            grace = TASK_GRACE_SECONDS.get(kind, GRACE_SECONDS)
+            task_env = {**worker_env, "WORKER_TASK_BUDGET_SECONDS": str(max(timeout - grace, 30))}
             result = run(
                 task_command(task),
                 cwd=ROOT,

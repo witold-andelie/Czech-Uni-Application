@@ -174,3 +174,21 @@ def test_accordion_items_skip_the_archive_and_read_to_the_item_end() -> None:
     rows = harvest.parse_accordion_items(html, "https://www.arub.cz/o-nas/volna-mista/")
     assert [row["title"] for row in rows] == ["Doktorand / doktorandka v archeologii"]
     assert rows[0]["closesAt"] == "2026-12-31"
+
+
+def test_removed_notice_pages_do_not_raise_the_incomplete_alarm() -> None:
+    """2026-10-06: UJEP's listing kept linking three expired notices whose pages answer 404."""
+    discovery = {
+        "expectedSourceIds": ["ujep", "slow"],
+        "completeSourceIds": [],
+        "listedBySource": {"ujep": 12, "slow": 30},
+        "attempts": [
+            {"sourceId": "ujep", "kind": "listing", "status": 200, "ok": True},
+            {"sourceId": "ujep", "kind": "detail", "status": 404, "ok": False},
+            {"sourceId": "ujep", "kind": "detail", "status": 410, "ok": False},
+            {"sourceId": "slow", "kind": "detail", "status": 404, "ok": False},
+            {"sourceId": "slow", "kind": "listing", "status": 429, "ok": False},
+        ],
+    }
+    rows = {row["sourceId"]: row["complete"] for row in source_health.observations_from_discovery(discovery)}
+    assert rows == {"ujep": True, "slow": False}

@@ -240,7 +240,21 @@ def test_discovery_runs_right_after_the_recheck(tmp_path):
 
     run_tick(manager, budget=6000, run=run, output=tmp_path / "report.json")
     assert [flag for flag, _ in seen] == ["--recheck-jobs", "--discover-jobs", "--refresh-czu-programmes", "0"]
-    assert dict(seen)["--discover-jobs"] == 1500 and dict(seen)["0"] == 1200
+    assert dict(seen)["--discover-jobs"] == 1800 and dict(seen)["0"] == 1200
+
+
+def test_discovery_leaves_room_for_its_slowest_source(tmp_path):
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.get_pending_tasks = lambda: [{"type": "job_discovery"}]
+    seen = {}
+
+    def run(command, **kwargs):
+        seen["timeout"] = kwargs["timeout"]
+        seen["budget"] = float(kwargs["env"]["WORKER_TASK_BUDGET_SECONDS"])
+        return SimpleNamespace(returncode=0)
+
+    run_tick(manager, budget=6000, run=run, output=tmp_path / "report.json")
+    assert seen["timeout"] - seen["budget"] == 420
 
 
 def test_the_tick_budget_comes_from_the_workflow(tmp_path, monkeypatch):

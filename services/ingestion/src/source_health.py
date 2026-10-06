@@ -30,6 +30,8 @@ INCOMPLETE_DAYS = 3
 # A source counts as one that "listed vacancies" when it once listed at least
 # this many rows; a one-post school going quiet is not an alarm.
 PEAK_ROWS = 3
+# A listed notice's own page answering "not found" or "gone".
+REMOVED_PAGE_STATUSES = {404, 410}
 
 
 def observations_from_discovery(discovery: dict | None) -> list[dict]:
@@ -43,12 +45,27 @@ def observations_from_discovery(discovery: dict | None) -> list[dict]:
         if isinstance(attempt, dict) and attempt.get("kind") == "adapter" and attempt.get("sourceId"):
             listed.setdefault(attempt["sourceId"], int(attempt.get("listed") or 0))
     attempted = {attempt.get("sourceId") for attempt in discovery.get("attempts") or [] if isinstance(attempt, dict)}
+    # A listed notice whose page the school has removed (404/410) keeps the
+    # harvest incomplete, so absence never archives anything, but the source
+    # itself works: UJEP's open-positions article kept linking three expired
+    # notices and raised the alarm for days (2026-10-06). Any other failure,
+    # a 429, a timeout or an unreadable listing, still counts.
+    failures: dict[str, list[dict]] = {}
+    for attempt in discovery.get("attempts") or []:
+        if isinstance(attempt, dict) and not attempt.get("ok", True):
+            failures.setdefault(attempt.get("sourceId"), []).append(attempt)
     rows = []
     for source_id in discovery.get("expectedSourceIds") or []:
         # A checkpoint of a bounded pass lists sources it has not reached yet.
         if source_id in deferred or (source_id not in listed and source_id not in attempted):
             continue
-        rows.append({"sourceId": source_id, "listed": listed.get(source_id), "complete": source_id in complete})
+        failed = failures.get(source_id) or []
+        removed_pages_only = bool(failed) and all(
+            str(item.get("kind") or "").startswith("detail") and item.get("status") in REMOVED_PAGE_STATUSES
+            for item in failed
+        )
+        rows.append({"sourceId": source_id, "listed": listed.get(source_id),
+                     "complete": source_id in complete or removed_pages_only})
     return rows
 
 
