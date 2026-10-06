@@ -8,8 +8,11 @@ on:
   workflow_dispatch:
     inputs:
       url:
-        description: URL to fetch
-        required: true
+        description: URL to fetch (ignored when source_id is set)
+        default: ""
+      source_id:
+        description: Registered job source to discover end to end instead (read-only)
+        default: ""
       pattern:
         description: Regular expression whose matches to print from the visible text
         default: "Search results\\s*\\(\\d+\\)"
@@ -31,6 +34,7 @@ jobs:
       - name: Install the collector
         run: python -m pip install --disable-pip-version-check -r services/ingestion/requirements-runtime.txt
       - name: Fetch as the collector does
+        if: ${{ github.event.inputs.source_id == '' }}
         env:
           URL: ${{ github.event.inputs.url }}
           PATTERN: ${{ github.event.inputs.pattern }}
@@ -46,4 +50,31 @@ jobs:
           print("request uri", h._request_uri(url))
           print("matches", re.findall(pattern, text)[:5])
           print("text head", text[:1500])
+          PY
+      - name: Discover one registered source as the refresh does
+        if: ${{ github.event.inputs.source_id != '' }}
+        env:
+          SOURCE_ID: ${{ github.event.inputs.source_id }}
+        run: |
+          python - <<'PY'
+          import os, re, sys, time
+          from collections import Counter
+          sys.path.insert(0, "services/ingestion/src")
+          import harvest_nine_hei_jobs as h
+          from engine.transport import live_fetcher
+          seen = []
+          ordinary = h.request
+          def logged(url, *args, **kwargs):
+              status, body = ordinary(url, *args, **kwargs)
+              seen.append((url, status))
+              return status, body
+          h.request = logged
+          source = next(s for s in h.load_registered_job_sources() if s["id"] == os.environ["SOURCE_ID"])
+          started = time.monotonic()
+          result = h.discover_registered_candidates(live_fetcher(source), registry=[{**source, "followDetails": False}])
+          pages = sorted({int(m.group(1)) if (m := re.search(r"[?&]page=(\d+)", u)) else 0 for u, _ in seen if "search" in u or "page=" in u})
+          print("elapsed_s", int(time.monotonic() - started), "requests", len(seen), "statuses", dict(Counter(s for _, s in seen)))
+          print("listing pages requested", pages)
+          print("listed", result.get("listedBySource"), "complete", result.get("completeSourceIds"))
+          print("failed", [(a.get("kind"), a.get("status"), a.get("reason")) for a in result.get("attempts") or [] if not a.get("ok", True)][:20])
           PY
