@@ -72,6 +72,16 @@ def duplicate_of(job: dict, others: list[dict]) -> str | None:
     return None
 
 
+# Owner decision 2026-10-06: the head of a teaching centre is not catalogued;
+# heads of research institutes, departments and data or computing centres
+# are. A title that names research is never read as a teaching centre.
+_TEACHING_CENTRE_HEAD_RE = re.compile(
+    r"(?i)\b(?:vedouc\w*|head|ředitel\w*|reditel\w*|director)\b.{0,40}?\b(?:centr\w*|center|centre)\b"
+    r".{0,40}?(?:výuk\w*|vyuk\w*|teaching|education)"
+)
+_RESEARCH_TITLE_RE = re.compile(r"(?i)research|výzkum|vyzkum|vědeck|vedeck")
+
+
 def gate_blockers(job: dict, windows: list[dict], today: date, others: list[dict] | None = None) -> list[str]:
     """Why this record may not be approved automatically; empty when it may."""
     reasons: list[str] = []
@@ -97,6 +107,8 @@ def gate_blockers(job: dict, windows: list[dict], today: date, others: list[dict
         reasons.append("title-implausible")
     if _CHROME_RE.match(title) or _DATE_PREFIX_RE.match(title):
         reasons.append("title-is-page-chrome")
+    if _TEACHING_CENTRE_HEAD_RE.search(title) and not _RESEARCH_TITLE_RE.search(title):
+        reasons.append("teaching-centre-head")
     for window in windows:
         closes = window.get("closesAt")
         if isinstance(closes, str) and closes[:10] < today.isoformat():

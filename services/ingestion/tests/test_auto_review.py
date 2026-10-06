@@ -145,3 +145,19 @@ def test_an_academy_list_opening_the_institute_posts_itself_is_published_once() 
     reasons = auto_review.gate_blockers(central, [], TODAY, [own])
     assert reasons == ["duplicate-of-direct-source:job-rvvi-1-own"]
     assert auto_review.gate_blockers(own, [], TODAY, [central]) == []
+
+
+def test_a_teaching_centre_head_is_withheld_but_research_and_data_centre_heads_are_not() -> None:
+    """Owner decision 2026-10-06."""
+    import auto_review
+
+    def blockers(title):
+        job = {"originalText": title, "track": "post_master", "catalogueScopeStatus": "included",
+               "applicationUrl": "https://pracuj.upol.cz/x", "sourceHash": "sha256:x", "lifecycleStatus": "unknown"}
+        return auto_review.gate_blockers(job, [], date(2026, 10, 6))
+
+    assert "teaching-centre-head" in blockers("Vedoucí Centra pro výuku cizích jazyků")
+    assert "teaching-centre-head" in blockers("Head of the Center for Foreign Language Teaching")
+    for kept in ("VŘ - ředitel VIC", "Head of Institute of Medical Genetics and Genomics",
+                 "Head of the Centre for Educational Research", "Senior Research Centre Leader – CVD Synthesis"):
+        assert "teaching-centre-head" not in blockers(kept)
