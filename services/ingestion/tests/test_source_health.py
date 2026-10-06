@@ -197,3 +197,27 @@ def test_removed_notice_pages_do_not_raise_the_incomplete_alarm() -> None:
 def test_an_advert_validity_date_is_its_deadline_when_nothing_else_is_stated() -> None:
     assert str(harvest.extract_deadline("Event Manager. Valid until 9. 9. 2026 Are you interested")) == "2026-09-09"
     assert str(harvest.extract_deadline("Application deadline: 31 October 2026. Valid until 9. 9. 2026")) == "2026-10-31"
+
+
+def test_an_adapter_attempt_with_only_removed_notice_pages_is_healthy() -> None:
+    """2026-10-06 18:01: the adapter path reports UJEP as one attempt with joined reasons."""
+    def row(reason):
+        discovery = {"expectedSourceIds": ["ujep"], "completeSourceIds": [], "listedBySource": {"ujep": 13},
+                     "attempts": [{"sourceId": "ujep", "kind": "adapter", "ok": False, "listed": 13, "reason": reason}]}
+        return source_health.observations_from_discovery(discovery)[0]["complete"]
+
+    assert row("removed-detail-page,removed-detail-page,removed-detail-page") is True
+    assert row("removed-detail-page,invalid-detail-response") is False
+    assert row("incomplete") is False
+
+
+def test_the_listing_adapter_names_a_removed_notice_page_apart() -> None:
+    from adapters.base import ListingReference
+    from adapters.jobs.registered_listing import HarvestListingAdapter
+
+    adapter = HarvestListingAdapter({"id": "ujep", "url": "https://zamo.ujep.cz/open/", "parser": "ujep_open_positions"})
+    for status in (404, 503):
+        ref = ListingReference(remote_id="x", detail_url=f"https://zamo.ujep.cz/{status}/", title="Lecturer",
+                               listing_url="https://zamo.ujep.cz/open/")
+        assert adapter.fetch_detail(ref, {"fetch_page": lambda url, s=status: (s, "")}) == []
+    assert adapter._reasons == ["removed-detail-page", "invalid-detail-response"]

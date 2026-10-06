@@ -224,6 +224,11 @@ def fetch_official_page(
         return FetchResult(status, body, "ordinary_http", url, True, [blocked], attempts)
     if weak is None:
         return FetchResult(status, body, "ordinary_http", url, False, [], attempts)
+    if status == 429:
+        # Throttled after the ordinary read's own backoff: another tool sends
+        # more requests to a host asking for fewer, and EURAXESS answered the
+        # Scrapling GET with 429 too (2026-10-06). Report it as throttled.
+        return FetchResult(status, body, "ordinary_http", url, False, [weak, "throttled-not-escalated"], attempts)
     reasons.append(weak)
 
     get_fn = scrapling_get or _live_scrapling_get

@@ -151,3 +151,19 @@ def test_official_fetcher_records_escalation_for_adapters() -> None:
     assert status == 200
     assert "job_listing" in body
     assert fetcher.attempts[0]["tool"] == "scrapling_fetch"
+
+
+def test_a_throttled_read_is_not_escalated_to_other_tools() -> None:
+    """2026-10-06: EURAXESS answered the Scrapling GET sent after a 429 with 429 too."""
+    def boom(_url: str, **_kwargs):
+        raise AssertionError("a throttled host must not get more requests")
+
+    result = fetch_official_page(
+        "https://euraxess.ec.europa.eu/jobs/search?page=10",
+        ordinary=lambda _url: (429, ""),
+        scrapling_get=boom,
+        scrapling_fetch=boom,
+    )
+    assert result.status == 429
+    assert "throttled-not-escalated" in result.reasons
+    assert [item["tool"] for item in result.attempts] == ["ordinary_http"]

@@ -65,6 +65,14 @@ MAX_PDF_BYTES = 20 * 1024 * 1024
 MAX_PDF_PAGES = 12
 TRANSIENT_HTTP_STATUSES = {0, 408, 425, 429, 500, 502, 503, 504}
 REQUEST_RETRY_DELAYS = (3.0, 12.0)
+# A 429 without a usable Retry-After: EURAXESS answers "Retry-After: 0.000" after
+# about 20 quick requests and recovers within 15 s when left alone (measured
+# 2026-10-06); retried after 3 s and 12 s, every ninth result page was lost.
+THROTTLE_RETRY_DELAYS = (15.0, 15.0)
+# Least time between two requests to a host that throttles. One request a
+# second read 40 EURAXESS pages without a single 429 (2026-10-06).
+HOST_MIN_INTERVAL_SECONDS = {"euraxess.ec.europa.eu": 1.0}
+_HOST_LAST_REQUEST: dict[str, float] = {}
 MAX_IN_PROCESS_RETRY_SECONDS = 30.0
 # A69: bumped whenever extraction logic changes. Stored records remember which
 # parser version produced their facts so offline replay can target stale ones.
@@ -2015,8 +2023,15 @@ def _request_bytes_with_retry(
     if until is not None:
         return TransportResult(status=429, body=b"", headers={}, retry_at=until, deferred=True)
     last = TransportResult(status=0, body=b"")
+    host = (urlsplit(url).hostname or "").lower()
+    min_interval = HOST_MIN_INTERVAL_SECONDS.get(host)
     for attempt in range(len(REQUEST_RETRY_DELAYS) + 1):
         headers: dict[str, str] = {}
+        if min_interval:
+            gap = _HOST_LAST_REQUEST.get(host, 0.0) + min_interval - time.monotonic()
+            if gap > 0:
+                sleeper(gap)
+            _HOST_LAST_REQUEST[host] = time.monotonic()
         try:
             with urllib.request.urlopen(req, timeout=timeout, context=CTX) as response:
                 body = response.read() if max_bytes is None else response.read(max_bytes + 1)
@@ -2052,8 +2067,9 @@ def _request_bytes_with_retry(
                 continue
         if attempt == len(REQUEST_RETRY_DELAYS):
             return last
-        sleeper(REQUEST_RETRY_DELAYS[attempt])
-        current = _aware_now(current + timedelta(seconds=REQUEST_RETRY_DELAYS[attempt]))
+        delays = THROTTLE_RETRY_DELAYS if status == 429 else REQUEST_RETRY_DELAYS
+        sleeper(delays[attempt])
+        current = _aware_now(current + timedelta(seconds=delays[attempt]))
     return last  # pragma: no cover - loop always returns
 
 

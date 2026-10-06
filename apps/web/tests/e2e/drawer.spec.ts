@@ -5,6 +5,7 @@ import {
   filterOpenButton,
   focusedInsideDialog,
   msg,
+  waitForIsland,
   waitForProgrammeResults,
 } from "./helpers";
 
@@ -12,6 +13,7 @@ async function openFilterDrawer(page, locale, path: string) {
   await page.setViewportSize(VIEWPORTS.phone);
   await page.goto(path);
   if (path.includes("/programmes")) await waitForProgrammeResults(page, locale);
+  else await waitForIsland(page, "JobResults");
   const trigger = filterOpenButton(page, locale);
   await expect(trigger).toBeVisible();
   await trigger.click();
@@ -110,6 +112,7 @@ test("filter changes update the URL without closing the mobile sheet", async ({ 
 test("200% zoom and long Czech filter labels stay usable at 390px", async ({ page }) => {
   await page.setViewportSize(VIEWPORTS.phone);
   await page.goto("/cs/research-jobs");
+  await waitForIsland(page, "JobResults");
   await filterOpenButton(page, "cs").click();
   const dialog = page.getByRole("dialog");
   const close = dialog.getByRole("button", { name: msg("cs", "filter.close") });

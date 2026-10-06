@@ -34,6 +34,18 @@ PEAK_ROWS = 3
 REMOVED_PAGE_STATUSES = {404, 410}
 
 
+def _removed_pages_only(attempt: dict) -> bool:
+    """A failed attempt whose only failures are listed notices the school removed."""
+    if str(attempt.get("kind") or "").startswith("detail"):
+        return attempt.get("status") in REMOVED_PAGE_STATUSES
+    # An adapter reports one attempt per source with its reasons joined; the
+    # 2026-10-06 18:01 refresh read UJEP this way and the alarm fired again.
+    if attempt.get("kind") == "adapter":
+        reasons = [item for item in str(attempt.get("reason") or "").split(",") if item]
+        return bool(reasons) and all(item == "removed-detail-page" for item in reasons)
+    return False
+
+
 def observations_from_discovery(discovery: dict | None) -> list[dict]:
     """Per-source {sourceId, listed, complete} from a harvest's discovery block."""
     if not isinstance(discovery, dict):
@@ -60,10 +72,7 @@ def observations_from_discovery(discovery: dict | None) -> list[dict]:
         if source_id in deferred or (source_id not in listed and source_id not in attempted):
             continue
         failed = failures.get(source_id) or []
-        removed_pages_only = bool(failed) and all(
-            str(item.get("kind") or "").startswith("detail") and item.get("status") in REMOVED_PAGE_STATUSES
-            for item in failed
-        )
+        removed_pages_only = bool(failed) and all(_removed_pages_only(item) for item in failed)
         rows.append({"sourceId": source_id, "listed": listed.get(source_id),
                      "complete": source_id in complete or removed_pages_only})
     return rows

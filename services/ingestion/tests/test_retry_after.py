@@ -125,8 +125,10 @@ def test_missing_or_malformed_retry_after_keeps_local_backoff(monkeypatch) -> No
     req = jobs.urllib.request.Request("https://jobs.example.test/list")
     result = jobs._request_bytes_with_retry(req, timeout=1, now=NOW, sleep_fn=sleeps.append)
     assert result.status == 200
-    assert sleeps == [REQUEST_RETRY_DELAYS[0]]
-    assert MAX_IN_PROCESS_RETRY_SECONDS == 30.0
+    # A 429 without a usable delay waits the throttle backoff (EURAXESS recovers
+    # within 15 s; 3 s lost a page every ninth, 2026-10-06).
+    assert sleeps == [jobs.THROTTLE_RETRY_DELAYS[0]]
+    assert sum(jobs.THROTTLE_RETRY_DELAYS) <= MAX_IN_PROCESS_RETRY_SECONDS == 30.0
 
 
 def test_http_error_body_timeout_still_returns_status(monkeypatch) -> None:
@@ -164,3 +166,63 @@ def test_host_cooldown_survives_process_restart_without_new_request(monkeypatch)
     result = jobs._request_bytes_with_retry(req, timeout=1, now=NOW, sleep_fn=lambda _s: None)
     assert result.deferred is True
     assert result.status == 429
+
+
+def test_a_transient_server_error_keeps_the_short_local_backoff(monkeypatch) -> None:
+    clear_host_cooldowns()
+    sleeps: list[float] = []
+    calls = 0
+
+    class Response:
+        status = 200
+        headers = {}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def read(self, *_args) -> bytes:
+            return b"ok"
+
+    def fake_urlopen(*_args, **_kwargs):
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            raise _http_error(503, {})
+        return Response()
+
+    monkeypatch.setattr(jobs.urllib.request, "urlopen", fake_urlopen)
+    req = jobs.urllib.request.Request("https://jobs.example.test/list")
+    assert jobs._request_bytes_with_retry(req, timeout=1, now=NOW, sleep_fn=sleeps.append).status == 200
+    assert sleeps == [REQUEST_RETRY_DELAYS[0]]
+
+
+def test_a_throttling_host_is_read_at_most_once_a_second(monkeypatch) -> None:
+    clear_host_cooldowns()
+    sleeps: list[float] = []
+
+    class Response:
+        status = 200
+        headers = {}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def read(self, *_args) -> bytes:
+            return b"ok"
+
+    monkeypatch.setattr(jobs.urllib.request, "urlopen", lambda *_a, **_k: Response())
+    monkeypatch.setattr(jobs, "_HOST_LAST_REQUEST", {})
+    clock = iter([100.0, 100.0, 100.2, 101.0, 105.0, 105.0])
+    monkeypatch.setattr(jobs.time, "monotonic", lambda: next(clock))
+    for _ in range(3):
+        req = jobs.urllib.request.Request("https://euraxess.ec.europa.eu/jobs/1")
+        jobs._request_bytes_with_retry(req, timeout=1, now=NOW, sleep_fn=sleeps.append)
+    # First request at once; the second 0.2 s later waits 0.8 s; the third,
+    # 4 s after that, does not wait.
+    assert [round(value, 3) for value in sleeps] == [0.8]

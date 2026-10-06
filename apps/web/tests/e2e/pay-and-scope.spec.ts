@@ -2,7 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { LOCALES, msg } from "./helpers";
+import { LOCALES, escapeRegExp, msg, waitForIsland, type TestLocale } from "./helpers";
 import type { ResearchJob } from "../../src/lib/types.ts";
 
 // The 2026-09-26 owner decision changed two things the product used to promise:
@@ -62,14 +62,24 @@ const MAX_PAGES = Math.ceil(published.jobs.length / PAGE_SIZE) + 1;
  */
 async function listedOnSomePage(
   page: Page,
+  locale: TestLocale,
   urlFor: (pageNumber: number) => string,
   id: string,
   ready?: (page: Page) => Promise<void>,
 ): Promise<boolean> {
   for (let pageNumber = 1; pageNumber <= MAX_PAGES; pageNumber += 1) {
     await page.goto(urlFor(pageNumber));
-    // The static page renders the unfiltered list; filters from the URL apply
-    // once the client has started, so a check must wait for that.
+    // The static page renders the unfiltered first page; the page number and
+    // filters from the URL apply once the client has started (onMount). Read
+    // before that, every "page" was page 1 and a postdoc on page 2 was never
+    // found on a fast machine (local precheck, 2026-10-06).
+    await waitForIsland(page, "JobResults");
+    const shown = new RegExp(
+      escapeRegExp(msg(locale, "pagination.pageOf", { n: pageNumber, total: "TOTAL" })).replace("TOTAL", "\\d+"),
+    );
+    await expect
+      .poll(async () => (await page.locator("article.result-card").count()) === 0 || (await page.getByText(shown).count()) > 0)
+      .toBe(true);
     if (ready) await ready(page);
     const cards = page.locator("article.result-card");
     if ((await cards.count()) === 0) break; // past the last page, or an empty result set
@@ -107,6 +117,7 @@ test.describe("pay state and default job scope (2026-09-26 owner decision)", () 
       await page.setViewportSize({ width: 1440, height: 900 });
       const found = await listedOnSomePage(
         page,
+        locale,
         (pageNumber) => `/${locale}/research-jobs?applied=1&page=${pageNumber}`,
         postdoc!.id,
       );
@@ -119,6 +130,7 @@ test.describe("pay state and default job scope (2026-09-26 owner decision)", () 
       await expect(page.locator("article.result-card, .empty").first()).toBeVisible();
       const found = await listedOnSomePage(
         page,
+        locale,
         (pageNumber) => `/${locale}/research-jobs?applied=1&paid=1&page=${pageNumber}`,
         unstated!.id,
         async (current) => {

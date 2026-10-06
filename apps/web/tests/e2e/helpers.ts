@@ -38,6 +38,14 @@ export async function waitForProgrammeResults(page: Page, locale: TestLocale): P
   await expect(page.getByText(msg(locale, "inventory.loading"))).toHaveCount(0, { timeout: 30_000 });
 }
 
+// A Svelte island's buttons do nothing until the client has hydrated it (Astro
+// then drops the island's `ssr` attribute). Clicked earlier under load, the
+// filter button opened no dialog and four drawer tests timed out (local
+// precheck, 2026-10-06).
+export async function waitForIsland(page: Page, component: string): Promise<void> {
+  await page.locator(`astro-island[component-url*="/${component}."]:not([ssr])`).first().waitFor({ state: "attached", timeout: 30_000 });
+}
+
 export function filterOpenButton(page: Page, locale: TestLocale) {
   return page.getByRole("button", { name: new RegExp(`^${escapeRegExp(msg(locale, "filter.drawer"))}`) });
 }

@@ -105,7 +105,10 @@ class HarvestListingAdapter:
         else:
             status, body = context["fetch_page"](reference.detail_url)
             if status != 200 or not body:
-                self._reasons.append("invalid-detail-response")
+                # A listed notice whose page the school removed (404/410) is
+                # named apart: the read stays incomplete, but source health
+                # does not count it as a failing source (UJEP, 2026-10-06).
+                self._reasons.append("removed-detail-page" if status in (404, 410) else "invalid-detail-response")
                 return []
         self._details_ok += 1
         return [

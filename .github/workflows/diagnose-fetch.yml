@@ -1,0 +1,49 @@
+name: Diagnose an official-source fetch from the runner
+
+# Read-only. Some sources answer GitHub's runners differently from a local
+# machine (EURAXESS, 2026-10-06: 102 Czech offers locally, 55+ pages in CI).
+# Fetch one URL with the collector's own request function and print what the
+# runner receives; nothing is committed or published.
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: URL to fetch
+        required: true
+      pattern:
+        description: Regular expression whose matches to print from the visible text
+        default: "Search results\\s*\\(\\d+\\)"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Install the collector
+        run: python -m pip install --disable-pip-version-check -r services/ingestion/requirements-runtime.txt
+      - name: Fetch as the collector does
+        env:
+          URL: ${{ github.event.inputs.url }}
+          PATTERN: ${{ github.event.inputs.pattern }}
+        run: |
+          python - <<'PY'
+          import os, re, sys
+          sys.path.insert(0, "services/ingestion/src")
+          import harvest_nine_hei_jobs as h
+          url, pattern = os.environ["URL"], os.environ["PATTERN"]
+          status, html = h.request(url)
+          text = re.sub(r"\s+", " ", h.visible_text(html))
+          print("status", status, "bytes", len(html))
+          print("request uri", h._request_uri(url))
+          print("matches", re.findall(pattern, text)[:5])
+          print("text head", text[:1500])
+          PY
