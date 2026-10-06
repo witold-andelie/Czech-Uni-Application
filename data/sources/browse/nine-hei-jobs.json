@@ -7291,9 +7291,9 @@
           }
         }
       },
-      "lastAttemptAt": "2026-10-06T21:02:31Z",
+      "lastAttemptAt": "2026-10-06T16:00:00Z",
       "lastStatusCheckedAt": "2026-10-06T15:07:01Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptReason": "out_of_scope_operations",
       "reviewDisposition": {
         "publicationStatus": "rejected",
         "visibility": "archived",
@@ -11428,8 +11428,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Jsme panevropská” (https://www.peuni.cz/kariera/) is the career page heading 'Jsme panevropská' on peuni.cz/kariera, not a vacancy (the page lists no VR-*.pdf notice now). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-06T20:48:58Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "not_a_vacancy_page_chrome"
     },
     {
       "id": "job-13000-82834adac5d0",
@@ -12383,8 +12383,8 @@
         "decidedAt": "2026-09-26T18:31:54Z",
         "note": "Duplicate record 2026-09-26T18:31:54Z (operator): job-27000-56 and job-27000-70 both describe the VŠB-TUO advert procedureId=70 - same sourceItemId, same sourceUrl, same trilingual title differing only in the spacing of the Czech form. One advert must be published once, so this record is rejected as a duplicate of job-27000-56, whose Czech title is the advert's own heading verbatim and whose lifecycleStatus records what the live page shows. The position itself is published once, under job-27000-56; nothing here asserts anything the official page does not state.\n\nofficial heading as published: “Odborný asistent / Odborná asistentka”"
       },
-      "lastAttemptAt": "2026-10-06T20:59:56Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-09-26T18:31:54Z",
+      "lastAttemptReason": "duplicate_record_of_job-27000-56"
     },
     {
       "id": "job-27000-54",
@@ -26358,13 +26358,13 @@
       "title": {
         "zh-CN": "机器人语义通信领域的博士职位",
         "en": "PhD position in “Semantic Communication for Robots”",
-        "cs": "PhD position in “Semantic Communication for Robots”"
+        "cs": "Doktorská pozice v oblasti \"Sémantické komunikace pro roboty\""
       },
       "laboratory": null,
       "originalText": "PhD position in “Semantic Communication for Robots”",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -26389,7 +26389,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -26411,35 +26411,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
         "factHash": "sha256:f1e32367e5e24f01d6fc9186f09b089d542becddb4abf2125cbd57be1abdef89",
         "evidenceHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:c5427e61aa5d92b0c77e609004cd2d4f05bc454da9a8ded214aaa271b2fe86b4"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:28a63efb00f3a3d54cedcaaaa92386013e0317b047135c31236c94976458a8d5"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:bf3422cb6da3e4fd6547b483b0f16929aabe7d578b9e06b995716bfa56817983"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/466323"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/466323",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-7c000-eu459760",
@@ -26453,7 +26456,7 @@
       "originalText": "Researcher in the Department of Management",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T13:40:57Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -26510,23 +26513,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:cc3f888d2715ed887db47673ae1a427cb2b3c705c81c9b8c7487c64c9cb214da",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:ffa856493111bbc969282200648e45c4ae551ef04aee3acaad55d8fc50f69cc7"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:cc3f888d2715ed887db47673ae1a427cb2b3c705c81c9b8c7487c64c9cb214da",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:b7cedb5fda292578c92fefaf4c603518d98fc097d4183fd51703e88b63f54f86"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:cc3f888d2715ed887db47673ae1a427cb2b3c705c81c9b8c7487c64c9cb214da",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:37f528d1139998008be335b36779b7aea2d6b594d6e4d14a4d9101d9082090a2"
           }
-        },
-        "reviewedSourceHash": "sha256:854dc6de6e6b54710df5c257744eaac15798330e95fcfbd631c148045d02cb1d"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/459760"
     },
@@ -26542,7 +26544,7 @@
       "originalText": "Assistant Professor with a Focus on Ruminant Nutrition",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T13:40:57Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -26603,23 +26605,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:f2d1c0491373194d26762bc6ea5d57aacd70c698c1ca7d69298158a512598c62",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:a0231fc5a9b3ea7ae83c4925bac8409855b0a5cd0fd1850e6a1543ba0fca3681"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:f2d1c0491373194d26762bc6ea5d57aacd70c698c1ca7d69298158a512598c62",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:f659ba38aaa67fe42916e6fdcaa588febebbefaf5b33b917522701bed1c4388f"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:f2d1c0491373194d26762bc6ea5d57aacd70c698c1ca7d69298158a512598c62",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:22fb7fe33f7579ce8c2ec0055e3bdd8b32853ccf4607843532b9789a07e08774"
           }
-        },
-        "reviewedSourceHash": "sha256:3c1f7202cddd58d124558b3001cd3a657e936d71b1018e07304c439ebcf40351"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/459342"
     },
@@ -26719,13 +26720,13 @@
       "title": {
         "zh-CN": "拆除废物识别和分类的新方法",
         "en": "Novel methods of demolition waste recognition and classification",
-        "cs": "Novel methods of demolition waste recognition and classification"
+        "cs": "Nové metody rozpoznávání a klasifikace odpadu z demolice"
       },
       "laboratory": null,
       "originalText": "Novel methods of demolition waste recognition and classification",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -26750,7 +26751,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -26772,7 +26773,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:0ff8889fc759ca6c4d83cc2fd65d5105d4673086a83c3bbc7f4e513bac9e6f8a",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:0ff8889fc759ca6c4d83cc2fd65d5105d4673086a83c3bbc7f4e513bac9e6f8a",
         "factHash": "sha256:720aeb5e5425ba25a2245b35cb2224081552ac3dd045d340270d4f5504df5c61",
@@ -26783,26 +26784,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:bb0a0d923a26fc2699d6036a99c39f8d1c8d336a20f15b33eda29f7d2fc2335d",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:0ff8889fc759ca6c4d83cc2fd65d5105d4673086a83c3bbc7f4e513bac9e6f8a",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:83054e479f12659ea7410f9367c8270c7e0b4eba30ec4001952ce976df3853ab"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:bb0a0d923a26fc2699d6036a99c39f8d1c8d336a20f15b33eda29f7d2fc2335d",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:0ff8889fc759ca6c4d83cc2fd65d5105d4673086a83c3bbc7f4e513bac9e6f8a",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:541ba55ef9ec4c2f0a6f30b3171ca27f550bb6dcd5aaf649218d92c4e74f06e8"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:bb0a0d923a26fc2699d6036a99c39f8d1c8d336a20f15b33eda29f7d2fc2335d",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:0ff8889fc759ca6c4d83cc2fd65d5105d4673086a83c3bbc7f4e513bac9e6f8a",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:2e0f166694617a511d9c5c2bbd902ecebc42549e2c3848a6c065b2e640aef56e"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428959"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428959",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428939",
@@ -26810,13 +26812,13 @@
       "title": {
         "zh-CN": "电气量的量子计量",
         "en": "Quantum metrology of electrical quantities",
-        "cs": "Quantum metrology of electrical quantities"
+        "cs": "Kvantová metrologie elektrických veličin"
       },
       "laboratory": null,
       "originalText": "Quantum metrology of electrical quantities",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -26841,7 +26843,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -26863,7 +26865,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:e72e683a879bd03c97edbfe406e8533e45d0824aa6983485e83171959c9c31ee",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:e72e683a879bd03c97edbfe406e8533e45d0824aa6983485e83171959c9c31ee",
         "factHash": "sha256:e4f320dd3ec03803efc824f36c872d50928419d14911fe9be67276b09df8bc83",
@@ -26874,26 +26876,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:011f8eb2eb8d2581c9b72bf1c0bcbb3be80b399151057e3bea9094952f7eb42c",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:e72e683a879bd03c97edbfe406e8533e45d0824aa6983485e83171959c9c31ee",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:702d134d9d66c14b205c917ab36ee5dad2507330be43d2f3c2bf5eb5bc391ca2"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:011f8eb2eb8d2581c9b72bf1c0bcbb3be80b399151057e3bea9094952f7eb42c",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:e72e683a879bd03c97edbfe406e8533e45d0824aa6983485e83171959c9c31ee",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:001b04e27f6f958531d116aa9f4fed512e73ced763ed4c786d06573c15b3da27"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:011f8eb2eb8d2581c9b72bf1c0bcbb3be80b399151057e3bea9094952f7eb42c",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:e72e683a879bd03c97edbfe406e8533e45d0824aa6983485e83171959c9c31ee",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:25c78771516be8f000e84b99bff5e9188e1a99106738ecc2a3ac3e16a45afcfe"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428939"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428939",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428902",
@@ -26901,13 +26904,13 @@
       "title": {
         "zh-CN": "高能物理及应用新型闪烁材料的研究",
         "en": "Study of novel scintillator materials for high-energy physics and applications",
-        "cs": "Study of novel scintillator materials for high-energy physics and applications"
+        "cs": "Výzkum nových scintilačních materiálů pro vysoké energie fyziku a aplikace"
       },
       "laboratory": null,
       "originalText": "Study of novel scintillator materials for high-energy physics and applications",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -26932,7 +26935,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -26954,7 +26957,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:bd138f041c910fb275ced9af72040e8bc7e118552ea6b726c22becf228162a5b",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:bd138f041c910fb275ced9af72040e8bc7e118552ea6b726c22becf228162a5b",
         "factHash": "sha256:09d1bed42dcd8a858cb30f554d616992c563fac7ecadb1707b40a4686d753b97",
@@ -26965,26 +26968,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:9576e215ecca0ddc7ab594578d4dec48a5b40452cc055ffc0fba9d40d83e6ed8",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:bd138f041c910fb275ced9af72040e8bc7e118552ea6b726c22becf228162a5b",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:ccf673132798925fd0c4fd721c27be1cc4eeb192a6bc9fb47b36d30010ea4514"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:9576e215ecca0ddc7ab594578d4dec48a5b40452cc055ffc0fba9d40d83e6ed8",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:bd138f041c910fb275ced9af72040e8bc7e118552ea6b726c22becf228162a5b",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:33e045af39b88c3fec3e0f28ea5ace9677e75868e7137e2b83e8af009a05b4dc"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:9576e215ecca0ddc7ab594578d4dec48a5b40452cc055ffc0fba9d40d83e6ed8",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:bd138f041c910fb275ced9af72040e8bc7e118552ea6b726c22becf228162a5b",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:b7d76dab202b1351ff0994c5eb5e66669f1bf7434e7b8b08e89aebaff2baf02d"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428902"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428902",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428898",
@@ -26992,13 +26996,13 @@
       "title": {
         "zh-CN": "经典与量子力学中的超可积性",
         "en": "Superintegrability in classical and quantum mechanics",
-        "cs": "Superintegrability in classical and quantum mechanics"
+        "cs": "Superintegrabilita v klasické a kvantové mechanice"
       },
       "laboratory": null,
       "originalText": "Superintegrability in classical and quantum mechanics",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27023,7 +27027,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27045,7 +27049,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:c90abb8f4f6d71facb12d4b863970a8e3e95f9eb7fb16a9f3379f29b816f247e",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:c90abb8f4f6d71facb12d4b863970a8e3e95f9eb7fb16a9f3379f29b816f247e",
         "factHash": "sha256:652a463d801099cc2cac34296bd741aafbdb805d96f1d97f99e282046394242d",
@@ -27056,26 +27060,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:5817e8ce2a68376076c84545281311e221ebe00baf738f79a406206d8ceb66a5",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:c90abb8f4f6d71facb12d4b863970a8e3e95f9eb7fb16a9f3379f29b816f247e",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:84dc4737295e400cc0360fec0f86abd17ad65b5c93bb3383f6db7fb3b2cded6f"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:5817e8ce2a68376076c84545281311e221ebe00baf738f79a406206d8ceb66a5",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:c90abb8f4f6d71facb12d4b863970a8e3e95f9eb7fb16a9f3379f29b816f247e",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:dfcd23017cc7de64fb5060c82dac31bbc1a9214b1b4528c8a39fadfd3ce74c04"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:5817e8ce2a68376076c84545281311e221ebe00baf738f79a406206d8ceb66a5",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:c90abb8f4f6d71facb12d4b863970a8e3e95f9eb7fb16a9f3379f29b816f247e",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:bc4bfcc1ee9ea5d39034fb8c3254d4befaf35b9792e869570085a0fad4d82e5f"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428898"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428898",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428892",
@@ -27083,13 +27088,13 @@
       "title": {
         "zh-CN": "环境样品分析中的加速器质谱法",
         "en": "Accelerator mass spectrometry in analysis of environmental samples",
-        "cs": "Accelerator mass spectrometry in analysis of environmental samples"
+        "cs": "Akcelerátorová hmotová spektrometrie ve výzkumu prostředí"
       },
       "laboratory": null,
       "originalText": "Accelerator mass spectrometry in analysis of environmental samples",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27114,7 +27119,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27136,7 +27141,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:d59f7ee6e5f256facef8d1369ac0578825dfb1d6ef66afe5b72fd0b303aeca3b",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:d59f7ee6e5f256facef8d1369ac0578825dfb1d6ef66afe5b72fd0b303aeca3b",
         "factHash": "sha256:41badd376e1185825595c7a69adf0a1acd3738a68fb12ecff6e34a68530badbc",
@@ -27147,26 +27152,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:12804874359cefdc1d8bc27cf414a7e18b60ce76fe188852d374ebdd7cbd6e57",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:d59f7ee6e5f256facef8d1369ac0578825dfb1d6ef66afe5b72fd0b303aeca3b",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:0dca6276fec0e3881e85a39ac99e57adde046a6955f04b6bbf473b65e58cb056"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:12804874359cefdc1d8bc27cf414a7e18b60ce76fe188852d374ebdd7cbd6e57",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d59f7ee6e5f256facef8d1369ac0578825dfb1d6ef66afe5b72fd0b303aeca3b",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:76f44ae80ae4e8aa6245a26c9c640bb28f97e263eedc6becc3776ab52e898548"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:12804874359cefdc1d8bc27cf414a7e18b60ce76fe188852d374ebdd7cbd6e57",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:d59f7ee6e5f256facef8d1369ac0578825dfb1d6ef66afe5b72fd0b303aeca3b",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:f2558360e41670b2bb23a2003655d5cadcf2ec862bcf00c156987c700cf07ae4"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428892"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428892",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428564",
@@ -27174,13 +27180,13 @@
       "title": {
         "zh-CN": "超重元素同系物的液相化学",
         "en": "Liquid Phase Chemistry of Homologues of Superheavy Elements",
-        "cs": "Liquid Phase Chemistry of Homologues of Superheavy Elements"
+        "cs": "Kapalná fázová chemie homologů superhavelých prvků"
       },
       "laboratory": null,
       "originalText": "Liquid Phase Chemistry of Homologues of Superheavy Elements",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27205,7 +27211,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27227,7 +27233,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:3207295d4bde519c1265b76d2b715eaecee03467512f343c3bab53461fc4fa55",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:3207295d4bde519c1265b76d2b715eaecee03467512f343c3bab53461fc4fa55",
         "factHash": "sha256:d854a09c9662b3b02baa11f9c91d7dc4f21f948ea5bb2a4d5e44066e115498dd",
@@ -27238,26 +27244,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:d96e87e323e4e16cafa15b68d475015c03638e54a33d10e3fdb426cd3d31f835",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:3207295d4bde519c1265b76d2b715eaecee03467512f343c3bab53461fc4fa55",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:36c60e6fcebdd50e58f0fe53bbd6d6e3a36daa2a981b7090098759e1ffd2f029"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:d96e87e323e4e16cafa15b68d475015c03638e54a33d10e3fdb426cd3d31f835",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:3207295d4bde519c1265b76d2b715eaecee03467512f343c3bab53461fc4fa55",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:402a9328de6ca11732665a1ce2f574fdd425ea2a8d4dd0da185b40b7e24387b1"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:d96e87e323e4e16cafa15b68d475015c03638e54a33d10e3fdb426cd3d31f835",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:3207295d4bde519c1265b76d2b715eaecee03467512f343c3bab53461fc4fa55",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:1ef972667508c122a55630ce5814ef69405fc013292a41e348aa730513c918c1"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428564"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428564",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428552",
@@ -27354,13 +27361,13 @@
       "title": {
         "zh-CN": "高能尘埃对钨等离子体面对材料的影响：一种具有实验验证的预测多尺度建模框架",
         "en": "High-Velocity Dust Impacts on Tungsten Plasma-Facing Materials: A Predictive Multi-Scale Modeling Framework with Experimental Validation",
-        "cs": "High-Velocity Dust Impacts on Tungsten Plasma-Facing Materials: A Predictive Multi-Scale Modeling Framework with Experimental Validation"
+        "cs": "Vysokorychlostní dopady prachu na tyčinky z wolframu v plazmových povrchových materiálech: Prediktivní rámec víceúrovňového modelování s experimentální validací"
       },
       "laboratory": null,
       "originalText": "High-Velocity Dust Impacts on Tungsten Plasma-Facing Materials: A Predictive Multi-Scale Modeling Framework with Experimental Validation",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27385,7 +27392,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27407,7 +27414,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:5a95e6689d5ecc5cfd9b1b413ee5ae3aef40c9e57b74584f19b340c6810cb24d",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:5a95e6689d5ecc5cfd9b1b413ee5ae3aef40c9e57b74584f19b340c6810cb24d",
         "factHash": "sha256:ac7aa69c4dcc2ec8649640a06b3da00499365ecaecd2b27eff62288987497703",
@@ -27418,26 +27425,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:a2490bd16db9d3fedb867b628fc33558e2baaf6416ac808889580e698edd0013",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:5a95e6689d5ecc5cfd9b1b413ee5ae3aef40c9e57b74584f19b340c6810cb24d",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:57d6a8633abb5bc921c659aa072c946100f355b568d42479ad95d98da7475d0e"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:a2490bd16db9d3fedb867b628fc33558e2baaf6416ac808889580e698edd0013",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:5a95e6689d5ecc5cfd9b1b413ee5ae3aef40c9e57b74584f19b340c6810cb24d",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:a203be9c06b7d4b2cb7be4e0e5b6fab13417c731608158dd17ee5c10faddc221"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:a2490bd16db9d3fedb867b628fc33558e2baaf6416ac808889580e698edd0013",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:5a95e6689d5ecc5cfd9b1b413ee5ae3aef40c9e57b74584f19b340c6810cb24d",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:f6c42bd529add6d599febcb74c62baf8e4d03f9a642a5888b950297966b8b086"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428543"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428543",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428536",
@@ -27445,13 +27453,13 @@
       "title": {
         "zh-CN": "帕金森病亚苍白球深脑刺激后结果预测因子的多层建模",
         "en": "Multilevel Modeling of Outcome Predictors Following Subthalamic Deep Brain Stimulation in Parkinson’s Disease",
-        "cs": "Multilevel Modeling of Outcome Predictors Following Subthalamic Deep Brain Stimulation in Parkinson’s Disease"
+        "cs": "Multivrstvové modelování prediktorů výsledků po subtalamické hluboké mozkové stimulaci u nemocí Parkinsonova"
       },
       "laboratory": null,
       "originalText": "Multilevel Modeling of Outcome Predictors Following Subthalamic Deep Brain Stimulation in Parkinson’s Disease",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27476,7 +27484,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27498,7 +27506,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:c80074cec81723f4d1cf58de8a4cd233161fa08b7edcc0a7e66a63f70c9b3c97",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:c80074cec81723f4d1cf58de8a4cd233161fa08b7edcc0a7e66a63f70c9b3c97",
         "factHash": "sha256:8a25493eec40b9ea8d74792246e27e67f202a3caf99843e619990d46fdc6d121",
@@ -27509,26 +27517,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:4cabb11aa010af723f0f82e5efc33f9197a172a045e3b08285adfd969a892183",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:c80074cec81723f4d1cf58de8a4cd233161fa08b7edcc0a7e66a63f70c9b3c97",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:95f58314eae8cd5ad9c6fbe140d1f39063ff079ca83ae84c2177a76471539de9"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:4cabb11aa010af723f0f82e5efc33f9197a172a045e3b08285adfd969a892183",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:c80074cec81723f4d1cf58de8a4cd233161fa08b7edcc0a7e66a63f70c9b3c97",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:4763d92f765aeaebaf9d850af6f642122dd7c8f27bd8f766581921b48940edb6"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:4cabb11aa010af723f0f82e5efc33f9197a172a045e3b08285adfd969a892183",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:c80074cec81723f4d1cf58de8a4cd233161fa08b7edcc0a7e66a63f70c9b3c97",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:28dd5dc20cb761c98e4078752fab07adc317d8e15cbcf3a75ad687ef023ec201"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428536"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428536",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428534",
@@ -27536,13 +27545,13 @@
       "title": {
         "zh-CN": "在符号规划器中学习与搜索",
         "en": "Learning while searching in symbolic planners",
-        "cs": "Learning while searching in symbolic planners"
+        "cs": "Učení během hledání v symbolických plánerech"
       },
       "laboratory": null,
       "originalText": "Learning while searching in symbolic planners",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27567,7 +27576,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27589,7 +27598,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:a1fadea16f72e2dc21a7e3c4415bb8fdc838e8c4d3196e3a0c5639350bb08d51",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:a1fadea16f72e2dc21a7e3c4415bb8fdc838e8c4d3196e3a0c5639350bb08d51",
         "factHash": "sha256:b9c8edacc12f24bba2b40cbdab0068e01faa1f863b0dd002b5e407920bc69b80",
@@ -27600,26 +27609,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:70941d9e4e8bd7f7c2a91286e5809e02d0bb7aa7d35635ca05d185d2d9f2c780",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:a1fadea16f72e2dc21a7e3c4415bb8fdc838e8c4d3196e3a0c5639350bb08d51",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:1414ae8ee06ff745fc7818fa87a3838df50098c057e986f5548e0ba4c4bf326d"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:70941d9e4e8bd7f7c2a91286e5809e02d0bb7aa7d35635ca05d185d2d9f2c780",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:a1fadea16f72e2dc21a7e3c4415bb8fdc838e8c4d3196e3a0c5639350bb08d51",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:00909dd547be986716d3b64031637e358484114e9d8fe4c37c025ebe1d547f31"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:70941d9e4e8bd7f7c2a91286e5809e02d0bb7aa7d35635ca05d185d2d9f2c780",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:a1fadea16f72e2dc21a7e3c4415bb8fdc838e8c4d3196e3a0c5639350bb08d51",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:9ab803991a1fcdfc54ac3f29f1c69a0e80e7670b00fbf89a2b3ecdf403449508"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428534"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428534",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428526",
@@ -27627,13 +27637,13 @@
       "title": {
         "zh-CN": "宽禁带电子用于能量转换",
         "en": "Wide-Bandgap Electronics for Energy Conversion",
-        "cs": "Wide-Bandgap Electronics for Energy Conversion"
+        "cs": "Širokopásmová elektronika pro energetickou konverzi"
       },
       "laboratory": null,
       "originalText": "Wide-Bandgap Electronics for Energy Conversion",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27658,7 +27668,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27680,7 +27690,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:6cae87e4220f23cec1f0ef165312970787b46d994a2093d5f4cba0983ea57ab2",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:6cae87e4220f23cec1f0ef165312970787b46d994a2093d5f4cba0983ea57ab2",
         "factHash": "sha256:7ec0ea2584ada9b3c85960bac888b28925009bc46e6155cad0554c0eb0cdb258",
@@ -27691,26 +27701,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:1b15ab62dcd330b2cba04b9bde7ed46b6f614a7cc6782e97caa28f6bb3a2a277",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:6cae87e4220f23cec1f0ef165312970787b46d994a2093d5f4cba0983ea57ab2",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:8c94560426c6caf003ac6f86a0665f6c928ffe641077209c44be2ebc4d2bb9b9"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:1b15ab62dcd330b2cba04b9bde7ed46b6f614a7cc6782e97caa28f6bb3a2a277",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:6cae87e4220f23cec1f0ef165312970787b46d994a2093d5f4cba0983ea57ab2",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:fd27935e47455faa3b01607529731c87365d81206b6d9a07be9254f64578f636"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:1b15ab62dcd330b2cba04b9bde7ed46b6f614a7cc6782e97caa28f6bb3a2a277",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:6cae87e4220f23cec1f0ef165312970787b46d994a2093d5f4cba0983ea57ab2",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:b8677018f8f0aaf02a4783f75c34234b7fb1663ca655ca4cb8afb9c7c62de369"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428526"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428526",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428521",
@@ -27718,13 +27729,13 @@
       "title": {
         "zh-CN": "磁传感器和执行器",
         "en": "Magnetic sensors and actuators",
-        "cs": "Magnetic sensors and actuators"
+        "cs": "Magnetické senzory a aktuátory"
       },
       "laboratory": null,
       "originalText": "Magnetic sensors and actuators",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27749,7 +27760,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27771,7 +27782,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:c5b776499749c6cb284a0c672f44311452b15fbbb0c8b11ce1cda00252f4e97f",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:c5b776499749c6cb284a0c672f44311452b15fbbb0c8b11ce1cda00252f4e97f",
         "factHash": "sha256:d405b482a0bc6ba864f314ed683adbcfe538df9f480706c582cd8c8194f4d823",
@@ -27782,26 +27793,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:cafcfeca740d790624d9270b0221dfc66f586b14c1603f0878b628990e48bd75",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:c5b776499749c6cb284a0c672f44311452b15fbbb0c8b11ce1cda00252f4e97f",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:b708ec5c78182704694b53594915649521bbfda5f84c0db739c2630326a37804"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:cafcfeca740d790624d9270b0221dfc66f586b14c1603f0878b628990e48bd75",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:c5b776499749c6cb284a0c672f44311452b15fbbb0c8b11ce1cda00252f4e97f",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:b1b94ace87827f38030ba8974ee27a48e5e0fbabdbfbeac67804771443692655"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:cafcfeca740d790624d9270b0221dfc66f586b14c1603f0878b628990e48bd75",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:c5b776499749c6cb284a0c672f44311452b15fbbb0c8b11ce1cda00252f4e97f",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:1f0a2448212f3596be1bf4ffd2536195e6af856a862b216797b5589e34b75e47"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428521"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428521",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428505",
@@ -27809,13 +27821,13 @@
       "title": {
         "zh-CN": "绿色材料、化学品和先进生物燃料生产技术中的创新工艺与设备",
         "en": "Innovative processes and equipment in green materials, chemicals, and advanced biofuels production technologies",
-        "cs": "Innovative processes and equipment in green materials, chemicals, and advanced biofuels production technologies"
+        "cs": "Inovativní procesy a zařízení v produkcí zelených materiálů, chemikálií a pokročilých biopaliv"
       },
       "laboratory": null,
       "originalText": "Innovative processes and equipment in green materials, chemicals, and advanced biofuels production technologies",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27840,7 +27852,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27862,7 +27874,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:a8c12c518f072f7fbb1b9d58bb8e37fff7360bf5a78420978cf71369fb96a593",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:a8c12c518f072f7fbb1b9d58bb8e37fff7360bf5a78420978cf71369fb96a593",
         "factHash": "sha256:41844b6c69c347d0574b5437ff83b5a5d2413847562dd8aa59a0e4d382fcd852",
@@ -27873,26 +27885,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:5970cc48c9cd579dfab1ef11859cda7f07f0a09aa84d9a339ed0bc9f2039bb57",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:a8c12c518f072f7fbb1b9d58bb8e37fff7360bf5a78420978cf71369fb96a593",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:2493b5e435c923f67c4f33e8977d23eebb47cf1d8d76f2482efbd36e2529af0a"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:5970cc48c9cd579dfab1ef11859cda7f07f0a09aa84d9a339ed0bc9f2039bb57",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:a8c12c518f072f7fbb1b9d58bb8e37fff7360bf5a78420978cf71369fb96a593",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:71cc61963469c08aacb20af80a64039d00e41af4f1c32fc1a05b82c5fbd2c767"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:5970cc48c9cd579dfab1ef11859cda7f07f0a09aa84d9a339ed0bc9f2039bb57",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:a8c12c518f072f7fbb1b9d58bb8e37fff7360bf5a78420978cf71369fb96a593",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:c06f80bf93ad9e251abae25915f4f4befa9b78589a0b82872986556bccdfa72e"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428505"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428505",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-eu428498",
@@ -27900,13 +27913,13 @@
       "title": {
         "zh-CN": "材料和过程的多尺度、随机和数据驱动建模",
         "en": "Multiscale, Stochastic and Data-Driven Modeling of Materials and Processes",
-        "cs": "Multiscale, Stochastic and Data-Driven Modeling of Materials and Processes"
+        "cs": "Multiskalární, stochastické a datově podmíněné modelování materiálů a procesů"
       },
       "laboratory": null,
       "originalText": "Multiscale, Stochastic and Data-Driven Modeling of Materials and Processes",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -27931,7 +27944,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -27953,7 +27966,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:fde4b0335eefdc36df0a1a002e5fc88a49a2a23b6b76c97e46e0a3b5f21992b1",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:fde4b0335eefdc36df0a1a002e5fc88a49a2a23b6b76c97e46e0a3b5f21992b1",
         "factHash": "sha256:bcb0b2063fa275f6259e1c603c31e3e3a30608ef81cae8af827ccf3c54cb8a7a",
@@ -27964,26 +27977,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:53f54b172019b56655859b69b47f15e4901bcc09fdc18bddb69807248bfb37ff",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:fde4b0335eefdc36df0a1a002e5fc88a49a2a23b6b76c97e46e0a3b5f21992b1",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:8ecfc5748b3fedeaaf1ac734b4a182ad590b17357f45ae0c942e96007d453057"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:53f54b172019b56655859b69b47f15e4901bcc09fdc18bddb69807248bfb37ff",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:fde4b0335eefdc36df0a1a002e5fc88a49a2a23b6b76c97e46e0a3b5f21992b1",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:f62483fda7566af85e55ad85015208dfe58d7919922bd4475c77adfe970a44f7"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:53f54b172019b56655859b69b47f15e4901bcc09fdc18bddb69807248bfb37ff",
-            "reviewedAt": "2026-10-03T19:13:50Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:fde4b0335eefdc36df0a1a002e5fc88a49a2a23b6b76c97e46e0a3b5f21992b1",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:228d67aa5a6deaf086fe2e30b8ad1ceb1e7f1feb2d539459aed39414c7a39d3b"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428498"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/428498",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-17000-eu469555",
@@ -27997,7 +28011,7 @@
       "originalText": "Assistant Professor specializing in Biophysics",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-03T21:37:25Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -28059,23 +28073,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:7f85f2b11132bc53e78c094c84af817cc6f077ac244fd4ba448beee182da9541",
-            "reviewedAt": "2026-10-03T21:37:25Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:922cf2ca8e7e9b35c4a61582169535631c939b43af06306728f1cb14077a9c19"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:7f85f2b11132bc53e78c094c84af817cc6f077ac244fd4ba448beee182da9541",
-            "reviewedAt": "2026-10-03T21:37:25Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:23bb36a5dbb1c54616950a24d05e01a5500d57f37957a6d17f7d013b80291b7f"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:7f85f2b11132bc53e78c094c84af817cc6f077ac244fd4ba448beee182da9541",
-            "reviewedAt": "2026-10-03T21:37:25Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:8397c6c797e7fdd27235f526a68310d7680ce531354c461eaeced722afda1901"
           }
-        },
-        "reviewedSourceHash": "sha256:d5acbf451a06553301a92fc81f7c561caa206cd2b7afae34e7e3deff634a064d"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/469555"
     },
@@ -28181,7 +28194,7 @@
       "originalText": "Recognised researcher (R2) in Archaeology, Faculty of Arts, University of West Bohemia",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T13:40:57Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -28242,23 +28255,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:e55852712bec0647934a6fb1a7fb7cfa5276288301ca2917407f31468d36cd9a",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:e2f37b3bbee8434aebdacf87bfbe34cc6fbaa12496c4dd0d48bb4d094b3568e8"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:e55852712bec0647934a6fb1a7fb7cfa5276288301ca2917407f31468d36cd9a",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:dedc3a42995cd9116231a7eabcc4ed0ad9964ce12ffb247f27e23dc89865a754"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:e55852712bec0647934a6fb1a7fb7cfa5276288301ca2917407f31468d36cd9a",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:8945f59755d3763f4739f725316fb209aa38f6262c8416a4de3ff4f12c6e9f9b"
           }
-        },
-        "reviewedSourceHash": "sha256:2cf8222d4511442473b81492f86c0900c0165fe7d98f3cb1501c0f9fa1b5e72a"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/469546"
     },
@@ -29613,7 +29625,7 @@
       "originalText": "cryo-EM of ribosomal complexes involved in eukaryotic translation control",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T13:40:57Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -29674,23 +29686,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:08d0934501e211d3d164cdef869bf85fb39075e992b9763648abf4416adb77b1",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:6205b6b8395eb70bfbb016da9f72cd87a41554d217552c8e753d5205742fa27a"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:08d0934501e211d3d164cdef869bf85fb39075e992b9763648abf4416adb77b1",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:a5a9e6a694bea1d7c2e3b833541035260e0a7e78dc233eb5eb5a29a52258e3d0"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:08d0934501e211d3d164cdef869bf85fb39075e992b9763648abf4416adb77b1",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:18c05b629610c43e99a4ec927786435afba1fd16c3588abf964ea9889990fe20"
           }
-        },
-        "reviewedSourceHash": "sha256:ef23f6dae0f282d9d430bcb9f13e5e625d243fb05813bc47676d5d973f43d04c"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/465466"
     },
@@ -29884,7 +29895,7 @@
       "originalText": "Doctoral student (Automation of Continuous Experimentation Processes)",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T13:40:57Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -29945,23 +29956,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:8a1b99e71ec0ecfcb1459590fcf434a5b14bf4616ba74c92ea59bf14a66ccd03",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:488a67a989c7239f6225d215a7c2e2a121f923bfbf002bead94091fce5c0e1a4"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:8a1b99e71ec0ecfcb1459590fcf434a5b14bf4616ba74c92ea59bf14a66ccd03",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:c604830c581d95a8261feb19e0010d34d886d31ef45b4cdc94072dbac8b8573c"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:8a1b99e71ec0ecfcb1459590fcf434a5b14bf4616ba74c92ea59bf14a66ccd03",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:9ac20d8c87a275fc11db7f08da4a6c960e8db76c34dde2ed9e0b5f58b9c66a1a"
           }
-        },
-        "reviewedSourceHash": "sha256:1ef49a80f223b502327667c7049a03b197c3b4dfbabac22671af145809f87c53"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/461358"
     },
@@ -30066,7 +30076,7 @@
       "originalText": "Postdoctoral Researcher, Faculty of Informatics and management",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T13:40:57Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -30127,23 +30137,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:60dcbcbf281d5ae2f652d2c6ccb80d871f1cf355b5383a435a12021c3507d531",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:537feb11245f74ce93725543bdd7bbed07940a438ed6e9b552bcd0275b592540"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:60dcbcbf281d5ae2f652d2c6ccb80d871f1cf355b5383a435a12021c3507d531",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:543acc30f4b73f30121c384d0737f75ae2dfbf61e6326bf870d2b9e7578fdec4"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:60dcbcbf281d5ae2f652d2c6ccb80d871f1cf355b5383a435a12021c3507d531",
-            "reviewedAt": "2026-10-06T13:40:57Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:c36dc95269557ec0ca0f9b77cec5f3f6500fe2e2d9b192c4131dc629d7012590"
           }
-        },
-        "reviewedSourceHash": "sha256:0994aae5bf61235514bf52e7156fbe27da6558268d4ea2d37baee94e78443608"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/465336"
     },
@@ -30428,7 +30437,7 @@
       "originalText": "Postdoctoral Researcher in Micro-and Nanorobotics",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T16:15:20Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -30489,23 +30498,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:9c82b7587d20315e2446f5f0be382ca06fa45253fa3a30af331164df82e2a245",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:06c8c8c48e4eed432dd161e869b50e91516c4253eb2e4e7feb7f4b28fb1b40b3"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:9c82b7587d20315e2446f5f0be382ca06fa45253fa3a30af331164df82e2a245",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:816a3c90bfad789ac213ef1715ed85acccb6aa4af2c985ef93b6ddb06dfb564e"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:9c82b7587d20315e2446f5f0be382ca06fa45253fa3a30af331164df82e2a245",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:1d57e93858c10daeff01824d850dd8c4b4cc0f1b4b373189e69b7027b892d0de"
           }
-        },
-        "reviewedSourceHash": "sha256:f387c7ef92b86d401303b89c6560530e6b286cdba06ca29cfe59eb237d61b863"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/469739"
     },
@@ -31328,7 +31336,7 @@
       "originalText": "Postdoctoral Researcher in MENA Constitutionalism and Field Research",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T16:15:20Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -31389,23 +31397,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:156fa25cc182e57e9203f12a6d489f1b5db564e9929324a6e8620cc208e875e7",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:313b78bb12134c35d38058a976a21a4b2b49ec363bad1488975f09af2eaea81c"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:156fa25cc182e57e9203f12a6d489f1b5db564e9929324a6e8620cc208e875e7",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:c57698a16c341998838a98dbc76faf1d285409ee7b81383eeb8d8cf1145e1a27"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:156fa25cc182e57e9203f12a6d489f1b5db564e9929324a6e8620cc208e875e7",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:a855173c56240212e186cd6d00d123447334285ee3519d48facf3ac68dbd3dd9"
           }
-        },
-        "reviewedSourceHash": "sha256:7af6caf1407032e1d8d6bf78aa00fd36fed4b1a4dfa7ad974bc1d9058ef2f4e0"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/467238"
     },
@@ -31421,7 +31428,7 @@
       "originalText": "Postdoctoral Researcher in Comparative Constitutional Law and Political Community",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T16:15:20Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -31482,23 +31489,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:0bd231691a197f85a6619386b65432c16ba0ee79681c2499095b0aaea2717f8e",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:cfd55da3f4a151b83735acba2106d204b6c81a1d9ec82e482c4520bf06e7df90"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:0bd231691a197f85a6619386b65432c16ba0ee79681c2499095b0aaea2717f8e",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:889d84bf69d2f24ff46cd495b24e9b3629bae5dc77be99ac0baa3d7286647555"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:0bd231691a197f85a6619386b65432c16ba0ee79681c2499095b0aaea2717f8e",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:0f42e3f0888f730d4055ba07c7885d24b0f9dc5ed716fb25e218421d4ae78afb"
           }
-        },
-        "reviewedSourceHash": "sha256:8fc439881b4735c830561448edae7042102418fa3dfbbaf0d32a92a57683c658"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/467239"
     },
@@ -31871,7 +31877,7 @@
       "originalText": "Senior Researcher - ERA Chair in Regional Competitiveness and Industrial Transformation",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T16:15:20Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -31932,23 +31938,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:b025911bea74f76759c101a8d71b6e77a930e7e6fd60affa11d4c5eda069e79a",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:c597f9c4558482dc0a19c1afc885aa5cdfe70d3e251e518a355f0ac31ace6ec1"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:b025911bea74f76759c101a8d71b6e77a930e7e6fd60affa11d4c5eda069e79a",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:fa513b722401e81a4e2ef1d4dc9d693202c402518fae11a15668e9b11d624921"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:b025911bea74f76759c101a8d71b6e77a930e7e6fd60affa11d4c5eda069e79a",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:4003b7b2a51b0240c49400ad4045738a637b99d4082a4f6f8e271ce4ec1f44bb"
           }
-        },
-        "reviewedSourceHash": "sha256:99e423480fe14675710c88a3268ea77eea9ca35567c8a9b4651c19d12f45b53c"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/455960"
     },
@@ -31964,7 +31969,7 @@
       "originalText": "CFD Modelling of Multiphase Flows in Complex and Non-Newtonian Fluids",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T16:15:20Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -32025,23 +32030,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:3d75439fb1b8ebbbba887c3cdd0f324451eba5411990a0f0de813fff1afa17de",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:97a48836a1c29dc5375095ec275bb90f84cc0c02863bcaf15f6a7d4bad15f9d8"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:3d75439fb1b8ebbbba887c3cdd0f324451eba5411990a0f0de813fff1afa17de",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:c273443206d12e6f2844128b51fe78e952cae1af242b7df41957e91aa5c2dc59"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:3d75439fb1b8ebbbba887c3cdd0f324451eba5411990a0f0de813fff1afa17de",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:5071e15094aeae0a111904ee50a75729755cd26f2492654e8b990210437aee91"
           }
-        },
-        "reviewedSourceHash": "sha256:d5bddddd65d4e2707dcd1765cf9ce7e36a8a9e04e09fbf8b012406c7e0bf566b"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/329316"
     },
@@ -32057,7 +32061,7 @@
       "originalText": "Characterization and modelling of particle flow properties",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T16:15:20Z",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -32118,23 +32122,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:6557f3426179f1c6a55aa2a0a4771e4a71437a4feaf4d42f1f63df9c3616029f",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:a543f6f0e13138ee4e055c4264e13a618467829bcb32660cc120f36e71654834"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:6557f3426179f1c6a55aa2a0a4771e4a71437a4feaf4d42f1f63df9c3616029f",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:d3d6f31234211dc6db94b96e9b80f33adb0026a33ff77cdb2a3e294362a46cc3"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:6557f3426179f1c6a55aa2a0a4771e4a71437a4feaf4d42f1f63df9c3616029f",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-06T21:33:18Z",
             "contentHash": "sha256:96cf075d11e594fe8b864affe46754e5a348154a25b6d58e375f4a5328008376"
           }
-        },
-        "reviewedSourceHash": "sha256:901b1700f9337d94e32783760dffa4c05d40d404f3a2074a22448e51566be2bd"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/329295"
     },
@@ -32846,15 +32849,15 @@
       "id": "job-rvvi-61388955-eu468144",
       "employerId": "rvvi-61388955",
       "title": {
-        "zh-CN": "PhD student",
+        "zh-CN": "博士研究生",
         "en": "PhD student",
-        "cs": "PhD student"
+        "cs": "Doktorand"
       },
       "laboratory": null,
       "originalText": "PhD student",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -32880,7 +32883,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -32898,35 +32901,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:d60de3ebdc2b846c5f15be6bf91e719f779fdfd904d4694c0795b09966c0c6ce",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:d60de3ebdc2b846c5f15be6bf91e719f779fdfd904d4694c0795b09966c0c6ce",
         "factHash": "sha256:1185554197eb10b0160323d2847065589a9c378b4c67fb9b27bc2fca34b54da0",
         "evidenceHash": "sha256:d60de3ebdc2b846c5f15be6bf91e719f779fdfd904d4694c0795b09966c0c6ce",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:d60de3ebdc2b846c5f15be6bf91e719f779fdfd904d4694c0795b09966c0c6ce",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:21c8fac6c465d6afc4d2ab68642283971472fea187293d1b3dcf7fb322302256"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d60de3ebdc2b846c5f15be6bf91e719f779fdfd904d4694c0795b09966c0c6ce",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:3ab066feebb70b2710b6ba015d427383c3f5659d410c22f76f011e7de16a5852"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:d60de3ebdc2b846c5f15be6bf91e719f779fdfd904d4694c0795b09966c0c6ce",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:9e49ea33857cb6dc5fa88c51aa00ed7a1e8ba7cd04f737d867ac560dd6b57799"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/468144"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/468144",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-68378050-eu465221",
@@ -33187,15 +33193,15 @@
       "id": "job-rvvi-61389005-eu417557",
       "employerId": "rvvi-61389005",
       "title": {
-        "zh-CN": "Scientist or Postdoctoral Researcher for CRL AMS",
+        "zh-CN": "科学家或博士后研究员（CRL AMS）",
         "en": "Scientist or Postdoctoral Researcher for CRL AMS",
-        "cs": "Scientist or Postdoctoral Researcher for CRL AMS"
+        "cs": "Vědec nebo postdoktorand pro CRL AMS"
       },
       "laboratory": null,
       "originalText": "Scientist or Postdoctoral Researcher for CRL AMS",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -33220,7 +33226,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -33238,49 +33244,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:6c30e726181f8ef12bfd63ba110b6d0a4c71fe38c03873a7c1a9912dfcfe614b",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:6c30e726181f8ef12bfd63ba110b6d0a4c71fe38c03873a7c1a9912dfcfe614b",
         "factHash": "sha256:cf7dcb1f8aa7f308437ac2ebcbc06dffc7b20b2dff27c6306a0bb88d1c1faa33",
         "evidenceHash": "sha256:6c30e726181f8ef12bfd63ba110b6d0a4c71fe38c03873a7c1a9912dfcfe614b",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:6c30e726181f8ef12bfd63ba110b6d0a4c71fe38c03873a7c1a9912dfcfe614b",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:60e66c70d1d6b5dc4cf95c9d9ef5c5d2c33bb0b4354a35cd317f4908d8146876"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:6c30e726181f8ef12bfd63ba110b6d0a4c71fe38c03873a7c1a9912dfcfe614b",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:efaf0bd35b2dda25d0b91e99de5712c7effcfaf5abcf78cac4a53edaf8a011db"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:6c30e726181f8ef12bfd63ba110b6d0a4c71fe38c03873a7c1a9912dfcfe614b",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:51a9684028575db95f275617c4344af57d56a2950bab0c02c8634caf3dff36cd"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/417557"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/417557",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-61389005-eu417558",
       "employerId": "rvvi-61389005",
       "title": {
-        "zh-CN": "Scientist or Postdoctoral Researcher for CRL IRMS",
+        "zh-CN": "科学家或博士后研究员，CRL IRMS",
         "en": "Scientist or Postdoctoral Researcher for CRL IRMS",
-        "cs": "Scientist or Postdoctoral Researcher for CRL IRMS"
+        "cs": "Vědec nebo postdoktorand pro CRL IRMS"
       },
       "laboratory": null,
       "originalText": "Scientist or Postdoctoral Researcher for CRL IRMS",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -33305,7 +33314,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -33323,35 +33332,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "notice_bundle",
       "sourceHash": "sha256:8cefda6b7e7b6cd80576a332ee4b6c2188fd24f3aeb65bf50bf9e0826dbb417c",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:8cefda6b7e7b6cd80576a332ee4b6c2188fd24f3aeb65bf50bf9e0826dbb417c",
         "factHash": "sha256:76c5477c35880471ec05a02c5f7faaea58cb4b9585f472af9281aed6b49a6b5d",
         "evidenceHash": "sha256:8cefda6b7e7b6cd80576a332ee4b6c2188fd24f3aeb65bf50bf9e0826dbb417c",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:8cefda6b7e7b6cd80576a332ee4b6c2188fd24f3aeb65bf50bf9e0826dbb417c",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:39ba305d39a89f449f8e18aca8bd2c366574f04e9f4fb55509cac35de16f46f9"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8cefda6b7e7b6cd80576a332ee4b6c2188fd24f3aeb65bf50bf9e0826dbb417c",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:96d02ece76a415a9d711fa0b55e7979f5469d507924d57859de325f4707f193c"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:8cefda6b7e7b6cd80576a332ee4b6c2188fd24f3aeb65bf50bf9e0826dbb417c",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:7ea0e9b00f1e8ff068d3791ba9c5e7752f4d7b880fb2f4366ff22c125746424e"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/417558"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/417558",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-rvvi-67985807-eu417556",
@@ -33442,15 +33454,15 @@
       "id": "job-rvvi-61389005-eu356514",
       "employerId": "rvvi-61389005",
       "title": {
-        "zh-CN": "Postdoctoral Fellow OR Senior Scientist for neutron diffraction research specializing in strain/stress characterization – CANAM",
+        "zh-CN": "中子衍射研究的博士后研究员或高级科学家，专攻应变/应力表征 – CANAM",
         "en": "Postdoctoral Fellow OR Senior Scientist for neutron diffraction research specializing in strain/stress characterization – CANAM",
-        "cs": "Postdoctoral Fellow OR Senior Scientist for neutron diffraction research specializing in strain/stress characterization – CANAM"
+        "cs": "Postdoktorand nebo senior vědec pro výzkum neutronové difrakce specializující se na charakterizaci napětí a deformace – CANAM"
       },
       "laboratory": null,
       "originalText": "Postdoctoral Fellow OR Senior Scientist for neutron diffraction research specializing in strain/stress characterization – CANAM",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-06T21:33:18Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -33475,7 +33487,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -33493,35 +33505,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:e2abc3d9c18cbf75451c61646c2f5ae665f2ee9d7d8ede4584bc5de9d3a40964",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:e2abc3d9c18cbf75451c61646c2f5ae665f2ee9d7d8ede4584bc5de9d3a40964",
         "factHash": "sha256:2a53fd2889ad0759c0c0d0f27bb81c8653027114afa72e424c566beaad320049",
         "evidenceHash": "sha256:e2abc3d9c18cbf75451c61646c2f5ae665f2ee9d7d8ede4584bc5de9d3a40964",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:e2abc3d9c18cbf75451c61646c2f5ae665f2ee9d7d8ede4584bc5de9d3a40964",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:91fa4ff49dfd280de4ed6898b14fb5e04f627c76353b94cf16a92f26ad0968c1"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:e2abc3d9c18cbf75451c61646c2f5ae665f2ee9d7d8ede4584bc5de9d3a40964",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:0ab1703b98b0e799dd0fe0cf53e0db6180bac2d5563eb833206a77f8b72e6941"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:e2abc3d9c18cbf75451c61646c2f5ae665f2ee9d7d8ede4584bc5de9d3a40964",
+            "reviewedAt": "2026-10-06T21:33:18Z",
+            "contentHash": "sha256:0d4f5e5fcf56eed3b444a1f15f72ddcb02765f6cbed9b8d0757563e9ed3fe9c9"
           }
         }
       },
-      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/356514"
+      "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/356514",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-11000-202701-ap2-mff-iuuk-080",
