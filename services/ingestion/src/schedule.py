@@ -241,10 +241,12 @@ class ScheduleManager:
             # Persisted intervalHours from an older 1h/4h/2h policy is not
             # authoritative. Owner decision 2026-09-27: once a day.
             target["intervalHours"] = spec["intervalHours"]
-            last_success = parse_iso(target.get("lastSuccessAt"))
-            if last_success is not None:
+            # The daily cadence counts from the last regular run; an extra run
+            # an operator forced does not move it (keep_regular_due).
+            basis = parse_iso(target.get("dueBasisAt")) or parse_iso(target.get("lastSuccessAt"))
+            if basis is not None:
                 target["nextDueAt"] = to_iso(
-                    last_success + timedelta(hours=spec["intervalHours"])
+                    basis + timedelta(hours=spec["intervalHours"])
                 )
         return state
 
@@ -675,6 +677,7 @@ class ScheduleManager:
             info = state[spec["stateKey"]]
             info["lastAttemptAt"] = to_iso(current)
             info["lastSuccessAt"] = to_iso(current)
+            info["dueBasisAt"] = to_iso(current)
             info["nextDueAt"] = to_iso(
                 current + timedelta(hours=spec["intervalHours"])
             )
@@ -685,6 +688,27 @@ class ScheduleManager:
             if metrics:
                 info.update(metrics)
             self._clear_lease(info)
+
+    def keep_regular_due(self, task_type: str, basis: datetime | None, now: datetime | None = None) -> None:
+        """An operator's extra run does not postpone the task's regular daily run.
+
+        A forced run that succeeds moves nextDueAt a full interval on. When the
+        task was not yet due at that tick, its regular turn stays where it was:
+        recheck and discovery forced at 15:04 and 18:01 on 2026-10-06 were not
+        run by the next morning's scheduled tick. A task that was due anyway
+        had its regular run, and the new due time stands.
+        """
+        if basis is None:
+            return
+        spec = VOLATILE_TASKS[task_type]
+        current = now or datetime.now(timezone.utc)
+        regular_due = basis + timedelta(hours=spec["intervalHours"])
+        if regular_due <= current + timedelta(hours=WAKE_JITTER_HOURS):
+            return
+        with self._transaction(current) as state:
+            info = state[spec["stateKey"]]
+            info["dueBasisAt"] = to_iso(basis)
+            info["nextDueAt"] = to_iso(regular_due)
 
     def record_volatile_partial(
         self,

@@ -5,7 +5,7 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from ci_refresh import run_tick, task_command, tick_exit_code
-from schedule import ScheduleManager
+from schedule import ScheduleManager, to_iso
 
 
 def test_normal_daily_shard_is_executed(tmp_path):
@@ -263,3 +263,39 @@ def test_the_tick_budget_comes_from_the_workflow(tmp_path, monkeypatch):
     monkeypatch.setenv("CI_REFRESH_BUDGET_SECONDS", "30")
     report = run_tick(manager, run=lambda *a, **k: SimpleNamespace(returncode=0), output=tmp_path / "report.json")
     assert [task["type"] for task in report["deferred"]] == ["programme_availability"]
+
+
+def test_a_forced_extra_run_keeps_the_regular_daily_run(tmp_path):
+    """2026-10-07: recheck and discovery forced the evening before were skipped by the morning tick."""
+    from datetime import datetime, timedelta, timezone
+
+    manager = ScheduleManager(tmp_path / "state.json")
+    morning = datetime.now(timezone.utc) - timedelta(hours=9)
+    manager.record_volatile_success("job_recheck", now=morning)  # regular run: due again morning + 24 h
+    manager.get_pending_tasks = lambda: [{"type": "job_recheck", "priority": "forced"}]
+
+    def run(command, **kwargs):
+        manager.record_volatile_success("job_recheck")  # the worker's own record moves the due time on
+        return SimpleNamespace(returncode=0)
+
+    run_tick(manager, budget=6000, run=run, output=tmp_path / "report.json")
+    info = manager.load_state()["jobRecheck"]
+    assert info["nextDueAt"] == to_iso(morning + timedelta(hours=24))
+    next_morning = morning + timedelta(hours=23, minutes=40)
+    assert any(t["type"] == "job_recheck" for t in ScheduleManager(tmp_path / "state.json").get_pending_tasks(next_morning))
+
+
+def test_a_forced_run_of_a_task_already_due_is_its_regular_run(tmp_path):
+    from datetime import datetime, timedelta, timezone
+
+    manager = ScheduleManager(tmp_path / "state.json")
+    manager.record_volatile_success("job_discovery", now=datetime.now(timezone.utc) - timedelta(hours=30))
+    manager.get_pending_tasks = lambda: [{"type": "job_discovery", "priority": "forced"}]
+
+    def run(command, **kwargs):
+        manager.record_volatile_success("job_discovery")
+        return SimpleNamespace(returncode=0)
+
+    run_tick(manager, budget=6000, run=run, output=tmp_path / "report.json")
+    due = manager.load_state()["jobDiscovery"]["nextDueAt"]
+    assert due > to_iso(datetime.now(timezone.utc) + timedelta(hours=23))

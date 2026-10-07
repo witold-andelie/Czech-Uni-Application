@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Callable
 
 from engine.runtime import require_http_fetcher, write_runtime_report
-from schedule import ScheduleManager, VOLATILE_TASKS
+from schedule import ScheduleManager, VOLATILE_TASKS, parse_iso
 from storage.postgres import load_database_env, require_database, store_from_env
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -126,6 +126,9 @@ def run_tick(manager=None, *, budget=None, task_timeout=900,
         kind = task["type"]
         timeout = min(TASK_TIMEOUT_SECONDS.get(kind, task_timeout), remaining)
         error = None
+        forced = task.get("priority") == "forced" and kind in VOLATILE_TASKS
+        prior = manager.load_state()[VOLATILE_TASKS[kind]["stateKey"]] if forced else {}
+        basis = parse_iso(prior.get("dueBasisAt")) or parse_iso(prior.get("lastSuccessAt"))
         _emit(f"ci_refresh: start {kind} timeout_s={timeout}", log)
         started = clock()
         try:
@@ -153,6 +156,9 @@ def run_tick(manager=None, *, budget=None, task_timeout=900,
         info = (state["shards"][str(task["shardIndex"])] if kind == "shard_refresh"
                 else state[VOLATILE_TASKS[kind]["stateKey"]])
         failed = bool(error) or info.get("status") != "completed"
+        if forced and not failed:
+            # An extra run the operator asked for keeps the daily run in place.
+            manager.keep_regular_due(kind, basis)
         report["failed"] |= failed
         report["tasks"].append({"task": task, "failed": failed, "error": error or info.get("lastError")})
         _emit(
