@@ -7495,9 +7495,9 @@
           }
         }
       },
-      "lastAttemptAt": "2026-10-07T10:44:44Z",
+      "lastAttemptAt": "2026-10-06T16:00:00Z",
       "lastStatusCheckedAt": "2026-10-06T15:07:01Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptReason": "out_of_scope_operations",
       "reviewDisposition": {
         "publicationStatus": "rejected",
         "visibility": "archived",
@@ -10066,8 +10066,8 @@
         "decidedAt": "2026-09-26T18:31:54Z",
         "note": "Duplicate record 2026-09-26T18:31:54Z (operator): job-27000-56 and job-27000-70 both describe the VŠB-TUO advert procedureId=70 - same sourceItemId, same sourceUrl, same trilingual title differing only in the spacing of the Czech form. One advert must be published once, so this record is rejected as a duplicate of job-27000-56, whose Czech title is the advert's own heading verbatim and whose lifecycleStatus records what the live page shows. The position itself is published once, under job-27000-56; nothing here asserts anything the official page does not state.\n\nofficial heading as published: “Odborný asistent / Odborná asistentka”"
       },
-      "lastAttemptAt": "2026-10-07T10:43:14Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-09-26T18:31:54Z",
+      "lastAttemptReason": "duplicate_record_of_job-27000-56"
     },
     {
       "id": "job-27000-54",
@@ -10544,8 +10544,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Přejít na hlavní obsah” (https://www.vstecb.cz/volna-pracovni-mista/#content) is the skip link 'Přejít na hlavní obsah' on the VŠTE vacancy page, not a vacancy. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-07T10:37:00Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "not_a_vacancy_page_chrome"
     },
     {
       "id": "job-56000-96fff5b5b037",
@@ -10642,8 +10642,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Škola Základní informace” (https://www.vstecb.cz/volna-pracovni-mista/) is the menu entry 'Škola Základní informace' on the VŠTE vacancy page, not a vacancy. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-07T10:37:00Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "not_a_vacancy_page_chrome"
     },
     {
       "id": "job-56000-63b28e075626",
@@ -10740,8 +10740,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “TOP” (https://www.vstecb.cz/volna-pracovni-mista/#top) is the page anchor 'TOP' on the VŠTE vacancy page, not a vacancy. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-07T10:37:00Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "not_a_vacancy_page_chrome"
     },
     {
       "id": "job-51000-f7c301b5d9ab",
@@ -13113,8 +13113,8 @@
       "laboratory": null,
       "originalText": "PhD position in “Semantic Communication for Robots”",
       "sourceLanguage": "en",
-      "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T21:33:18Z",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -13161,33 +13161,31 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
-      "publicationStatus": "approved",
+      "publicationStatus": "review_pending",
       "translationReview": {
         "sourceHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
         "factHash": "sha256:f1e32367e5e24f01d6fc9186f09b089d542becddb4abf2125cbd57be1abdef89",
         "evidenceHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
         "normalizationVersion": "fact-v2",
-        "reviewer": {
-          "role": "automatic_pipeline"
-        },
+        "reviewer": null,
         "locales": {
           "zh-CN": {
-            "status": "machine",
-            "translatedFromHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
-            "reviewedAt": "2026-10-06T21:33:18Z",
-            "contentHash": "sha256:c5427e61aa5d92b0c77e609004cd2d4f05bc454da9a8ded214aaa271b2fe86b4"
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
           },
           "en": {
-            "status": "reviewed",
-            "translatedFromHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
-            "reviewedAt": "2026-10-06T21:33:18Z",
-            "contentHash": "sha256:28a63efb00f3a3d54cedcaaaa92386013e0317b047135c31236c94976458a8d5"
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
           },
           "cs": {
-            "status": "machine",
-            "translatedFromHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
-            "reviewedAt": "2026-10-06T21:33:18Z",
-            "contentHash": "sha256:bf3422cb6da3e4fd6547b483b0f16929aabe7d578b9e06b995716bfa56817983"
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
           }
         }
       },
@@ -23078,8 +23076,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Recepční” (https://www.osu.cz/kariera/kariera-neakademicke-pozice/?inzeratid=191) is a receptionist post. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-07T10:34:30Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "out_of_scope_operations",
       "officialDetailUrl": "https://www.osu.cz/kariera/kariera-neakademicke-pozice/?inzeratid=191"
     },
     {
@@ -25129,7 +25127,7 @@
       "originalText": "Robotics Systems Engineer – Development of Autonomous Robotic Systems (Junior / Senior)",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T16:15:20Z",
+      "reviewedAt": "2026-10-07T11:16:01Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "required",
@@ -25190,23 +25188,22 @@
           "zh-CN": {
             "status": "reviewed",
             "translatedFromHash": "sha256:af00c04710d0332969afb06213bedf68762859c6502d7fff74677cc0f934f818",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:b19c46d60b7bd571f5c44638d308b89e1eff3c1b35f3279d345bd72ddb01410e"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:af00c04710d0332969afb06213bedf68762859c6502d7fff74677cc0f934f818",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:eab7ae17846d899313090157104e45c78e27416050ab5042708d306ff1af4bf5"
           },
           "cs": {
             "status": "reviewed",
             "translatedFromHash": "sha256:af00c04710d0332969afb06213bedf68762859c6502d7fff74677cc0f934f818",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:65da3c28d624368f39f87421017fff40fefb9d68cfade8464cad2a602bf0da9c"
           }
-        },
-        "reviewedSourceHash": "sha256:10635bb5384c463d1b33a5f323eef0b999f73508ad681d07051ab3d70fcf8b60"
+        }
       },
       "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/robotics-systems-engineer---development-of-autonomous-robotic-systems-junior-senior"
     },
@@ -25401,14 +25398,14 @@
       "employerId": "msmt-vs_21000",
       "title": {
         "zh-CN": "人工智能中心前端开发工程师（自主机器人系统，初级／高级）",
-        "en": "Front-end Developer – Autonomous Robotic Systems (Junior / Senior)",
-        "cs": "Front-end Developer – Autonomous Robotic Systems (Junior / Senior)"
+        "en": "Front-end Developer – Autonomous Robotic Systems (Junior / Senior), AI Center FEE CTU",
+        "cs": "Front-end vývojář/ka – autonomní robotické systémy (junior / senior), Centrum umělé inteligence FEL ČVUT"
       },
       "laboratory": null,
       "originalText": "Front-end Developer – Autonomous Robotic Systems (Junior / Senior)",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-02T20:34:12Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -25433,7 +25430,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -25455,37 +25452,39 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:e4bcc57830dabc16bb6ecaec7516365862de18203778b0ddee20dc41aec1a095",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:e4bcc57830dabc16bb6ecaec7516365862de18203778b0ddee20dc41aec1a095",
         "factHash": "sha256:3a512ebb8a612c8ef2c5a6f247a871754b1b21e8b09c8c170e9be80e3e10c6a3",
         "evidenceHash": "sha256:e4bcc57830dabc16bb6ecaec7516365862de18203778b0ddee20dc41aec1a095",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "automatic_pipeline"
+          "role": "operator_source_review"
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:e04ae8680bab42568a67b2f5a41e79dda2c9ba46e0261e054dec22a19c29c6c4",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:e4bcc57830dabc16bb6ecaec7516365862de18203778b0ddee20dc41aec1a095",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:afa45d580eb953465622fdd3c2424af4286d49a3e83377ff6faea9d9c2d21d7b"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:e04ae8680bab42568a67b2f5a41e79dda2c9ba46e0261e054dec22a19c29c6c4",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:e4bcc57830dabc16bb6ecaec7516365862de18203778b0ddee20dc41aec1a095",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:a4c229e7df674b731f58f2884ea9fd969234f2d9cc9dc7e45ba2fd7538eda26a"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:e04ae8680bab42568a67b2f5a41e79dda2c9ba46e0261e054dec22a19c29c6c4",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:e4bcc57830dabc16bb6ecaec7516365862de18203778b0ddee20dc41aec1a095",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:9160fc0579f182cd64f96b2f3619a618d8b71c3f1098e732dcb9e247087af38a"
           }
-        }
+        },
+        "reviewedSourceHash": "sha256:ea56de3dcf56a1c4205f00ad98027117e27b69a06d77c8a8a3e032e92a2783a6"
       },
-      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/front-end-developer---autonomous-robotic-systems-junior-senior"
+      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/front-end-developer---autonomous-robotic-systems-junior-senior",
+      "reviewMode": "human"
     },
     {
       "id": "job-21000-b1d06ab1e3be",
@@ -25585,14 +25584,14 @@
       "employerId": "msmt-vs_21000",
       "title": {
         "zh-CN": "人工智能中心计算机器人实验室野外机器人与自主系统研究及工程职位（博士／博士后／终身轨／开发）",
-        "en": "Open Positions in Field Robotics & Autonomous Systems: Research & Engineering (PhD/Postdoc/Tenure/Dev)",
-        "cs": "Open Positions in Field Robotics & Autonomous Systems: Research & Engineering (PhD/Postdoc/Tenure/Dev)"
+        "en": "Open Positions in Field Robotics & Autonomous Systems: Research & Engineering (PhD / Postdoc / Tenure-Track / Developer), Computational Robotics Lab, AI Center FEE CTU",
+        "cs": "Volné pozice v polní robotice a autonomních systémech: výzkum a vývoj (doktorand / postdok / tenure-track / vývojář), Laboratoř výpočetní robotiky, Centrum umělé inteligence FEL ČVUT"
       },
       "laboratory": null,
       "originalText": "Open Positions in Field Robotics & Autonomous Systems: Research & Engineering (PhD/Postdoc/Tenure/Dev)",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-02T20:34:12Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -25617,7 +25616,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -25639,51 +25638,53 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:10814cadf4377af4adf11e0e55cc57cdcb27c597698fc18527e0557ea207459f",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:10814cadf4377af4adf11e0e55cc57cdcb27c597698fc18527e0557ea207459f",
         "factHash": "sha256:6605da444b4f706083f871066640a41446d7aa5ad2da0197206d64819df9d665",
         "evidenceHash": "sha256:10814cadf4377af4adf11e0e55cc57cdcb27c597698fc18527e0557ea207459f",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "automatic_pipeline"
+          "role": "operator_source_review"
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:c126ebdeaab0537a27ef9e7afe7b6244949c458d3b0f5fc793f2265aefe13560",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:10814cadf4377af4adf11e0e55cc57cdcb27c597698fc18527e0557ea207459f",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:de61078f1e1861ee66c5d33b3cc6be0cbbdef377648ebad872705a6aaa1bd235"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:c126ebdeaab0537a27ef9e7afe7b6244949c458d3b0f5fc793f2265aefe13560",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:10814cadf4377af4adf11e0e55cc57cdcb27c597698fc18527e0557ea207459f",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:9710c94057eef1821197c2850c2f4ad994de6ac1ccf80355c5ea13ebc93234f7"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:c126ebdeaab0537a27ef9e7afe7b6244949c458d3b0f5fc793f2265aefe13560",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:10814cadf4377af4adf11e0e55cc57cdcb27c597698fc18527e0557ea207459f",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:a2f8e03ae4107f80212c735b5ae90e5c9177e45918b69619a4fa9ef09fde5974"
           }
-        }
+        },
+        "reviewedSourceHash": "sha256:970c64aa7d35bd2790fd14c358a4adcc5e0f8a4312ab6cab5a9e4e2d6ad928a5"
       },
-      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/open-positions-in-field-robotics-autonomous-systems"
+      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/open-positions-in-field-robotics-autonomous-systems",
+      "reviewMode": "human"
     },
     {
       "id": "job-21000-bcc1cf979495",
       "employerId": "msmt-vs_21000",
       "title": {
         "zh-CN": "人工智能中心六个高级研究职位（AI 领军人才招聘）",
-        "en": "Seeking AI Leaders to Shape the Future with Us",
-        "cs": "Seeking AI Leaders to Shape the Future with Us"
+        "en": "Seeking AI Leaders: Six Senior Research Positions, AI Center FEE CTU",
+        "cs": "Hledáme lídry v AI: šest seniorních výzkumných pozic, Centrum umělé inteligence FEL ČVUT"
       },
       "laboratory": null,
       "originalText": "Seeking AI Leaders to Shape the Future with Us",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-02T20:34:12Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -25708,7 +25709,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -25730,51 +25731,53 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:f854ce004087d1da8b4b546e950afb99244fefc89305062c5f43fc78ffbb178c",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:f854ce004087d1da8b4b546e950afb99244fefc89305062c5f43fc78ffbb178c",
         "factHash": "sha256:c40b09e95049e1cb545b9de88ba460e0a8c21e56aa2a33144c9881ecbcae0e99",
         "evidenceHash": "sha256:f854ce004087d1da8b4b546e950afb99244fefc89305062c5f43fc78ffbb178c",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "automatic_pipeline"
+          "role": "operator_source_review"
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:e68348b8ba6d280d0f058394186a1472fc405610503c3a2626d74c1eb1ab4706",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:f854ce004087d1da8b4b546e950afb99244fefc89305062c5f43fc78ffbb178c",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:f5a7cdc554e01f9a5545633da70c738874ffb526bb07624314b9fe01bc26fb12"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:e68348b8ba6d280d0f058394186a1472fc405610503c3a2626d74c1eb1ab4706",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:f854ce004087d1da8b4b546e950afb99244fefc89305062c5f43fc78ffbb178c",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:45c7a133b9e0aa0c1153a7a3a7d7a265f96451e9250b719a633188ebf63278b9"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:e68348b8ba6d280d0f058394186a1472fc405610503c3a2626d74c1eb1ab4706",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:f854ce004087d1da8b4b546e950afb99244fefc89305062c5f43fc78ffbb178c",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:fa41d5c5a6a1f4f622a39493f1551f8b18a44c2439849794b4afa786f5a384a8"
           }
-        }
+        },
+        "reviewedSourceHash": "sha256:725cc271c2a211dbe3b35d2ca2c0486c8e22737954a4569ad50efa6e9c9d18a3"
       },
-      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/ai-leaders"
+      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/ai-leaders",
+      "reviewMode": "human"
     },
     {
       "id": "job-21000-dc7f28f71cc5",
       "employerId": "msmt-vs_21000",
       "title": {
         "zh-CN": "人工智能中心大语言模型智能体研究员",
-        "en": "LLM Agents Researcher",
-        "cs": "LLM Agents Researcher"
+        "en": "LLM Agents Researcher, AI Center FEE CTU",
+        "cs": "Výzkumník/ice v oblasti agentů velkých jazykových modelů (LLM), Centrum umělé inteligence FEL ČVUT"
       },
       "laboratory": null,
       "originalText": "LLM Agents Researcher",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-07T11:16:01Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -25799,7 +25802,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -25821,51 +25824,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:460d92d7f16e0a44ac0cf46ed482239a5059b8e9f55fe26304bcb34851f017e1",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:460d92d7f16e0a44ac0cf46ed482239a5059b8e9f55fe26304bcb34851f017e1",
         "factHash": "sha256:690119c79058e118014e37b9124933363342244a190230360c35332b1f715f10",
         "evidenceHash": "sha256:460d92d7f16e0a44ac0cf46ed482239a5059b8e9f55fe26304bcb34851f017e1",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "operator_source_review"
+          "role": "automatic_pipeline"
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:1aeeb2bd84bb44f0ac7ff15e3ae2c39aa733603fc2e3fcdfabd0871118e67e2d",
-            "reviewedAt": "2026-10-02T20:34:12Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:460d92d7f16e0a44ac0cf46ed482239a5059b8e9f55fe26304bcb34851f017e1",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:7b1140b221a4df5c19b612467fa171e0ce62a5a869cd7dc3ee5fa16e64c8715d"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:1aeeb2bd84bb44f0ac7ff15e3ae2c39aa733603fc2e3fcdfabd0871118e67e2d",
-            "reviewedAt": "2026-10-02T20:34:12Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:460d92d7f16e0a44ac0cf46ed482239a5059b8e9f55fe26304bcb34851f017e1",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:8cfd782cc0bc1716e398169374d0745b3cf52435143edfac62bee5ea1626c64d"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:1aeeb2bd84bb44f0ac7ff15e3ae2c39aa733603fc2e3fcdfabd0871118e67e2d",
-            "reviewedAt": "2026-10-02T20:34:12Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:460d92d7f16e0a44ac0cf46ed482239a5059b8e9f55fe26304bcb34851f017e1",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:63edf4927360829359d59d4d7847ed77d2751187c949e57b02d795b97f6d2baa"
           }
         }
       },
-      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/llm-agents-researcher"
+      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/llm-agents-researcher",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-f5d075989aab",
       "employerId": "msmt-vs_21000",
       "title": {
         "zh-CN": "人工智能中心人工智能与网络安全博士后（Stratosphere 实验室，DNS4EU 项目）",
-        "en": "Postdoc in AI and Cybersecurity",
-        "cs": "Postdoc in AI and Cybersecurity"
+        "en": "Postdoc in AI and Cybersecurity (Stratosphere Laboratory, DNS4EU project), AI Center FEE CTU",
+        "cs": "Postdok v oblasti umělé inteligence a kybernetické bezpečnosti (Stratosphere Laboratory, projekt DNS4EU), Centrum umělé inteligence FEL ČVUT"
       },
       "laboratory": null,
       "originalText": "Postdoc in AI and Cybersecurity",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-07T11:16:01Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "required",
@@ -25890,7 +25894,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -25912,37 +25916,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:cd51822b8f93c79c45ed93ffc4a7521fefd9f09654b93b98bb6a8075aeae8351",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:cd51822b8f93c79c45ed93ffc4a7521fefd9f09654b93b98bb6a8075aeae8351",
         "factHash": "sha256:1a24945bab5022b88a2a64809ac7f55aa0126781920f964987d7d6b184c89af1",
         "evidenceHash": "sha256:cd51822b8f93c79c45ed93ffc4a7521fefd9f09654b93b98bb6a8075aeae8351",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "operator_source_review"
+          "role": "automatic_pipeline"
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:e282c90832958c8800e8cab37fbeffed80317429a355734e2c889c81bd4e43fb",
-            "reviewedAt": "2026-10-02T20:34:12Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:cd51822b8f93c79c45ed93ffc4a7521fefd9f09654b93b98bb6a8075aeae8351",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:0add7e93f16721dd2b07d937c0aa752ed953a3115e302131a38ab986c3c7cf24"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:e282c90832958c8800e8cab37fbeffed80317429a355734e2c889c81bd4e43fb",
-            "reviewedAt": "2026-10-02T20:34:12Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:cd51822b8f93c79c45ed93ffc4a7521fefd9f09654b93b98bb6a8075aeae8351",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:373cbe0a6e48491fa74626e11b7c0988d71a991769bc27bde821ae86a692e937"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:e282c90832958c8800e8cab37fbeffed80317429a355734e2c889c81bd4e43fb",
-            "reviewedAt": "2026-10-02T20:34:12Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:cd51822b8f93c79c45ed93ffc4a7521fefd9f09654b93b98bb6a8075aeae8351",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:3520d729e1e25bf09e1d54c03746a0e52c81bcd62a6f443e1904ef66b67d7e84"
           }
         }
       },
-      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/postdoc-in-ai-and-cybersecurity"
+      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/postdoc-in-ai-and-cybersecurity",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-21000-54efd24ca654",
@@ -26605,7 +26610,7 @@
       "originalText": "Docent/docentka nebo odborný asistent / odborná asistentka se zaměřením na biochemii",
       "sourceLanguage": "cs",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-07T09:30:42Z",
+      "reviewedAt": "2026-10-07T11:16:01Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -26667,23 +26672,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:1ea62ceb4b07d2224a38dc67d5531d89333e3fd856f07a3a7500a4762107674e",
-            "reviewedAt": "2026-10-07T09:30:42Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:7d71e460b393878bbcb9cc020b7653349e066721a47daee69f8f77f15de9df5d"
           },
           "en": {
             "status": "machine",
             "translatedFromHash": "sha256:1ea62ceb4b07d2224a38dc67d5531d89333e3fd856f07a3a7500a4762107674e",
-            "reviewedAt": "2026-10-07T09:30:42Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:2535f2d87a59326f895f080c02238f8886535b765a6f78f95f08031583896739"
           },
           "cs": {
             "status": "reviewed",
             "translatedFromHash": "sha256:1ea62ceb4b07d2224a38dc67d5531d89333e3fd856f07a3a7500a4762107674e",
-            "reviewedAt": "2026-10-07T09:30:42Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:583f2bdc3db415dc55df8762f2f9834146ae17f7bb83b591368040c134a66b9b"
           }
-        },
-        "reviewedSourceHash": "sha256:2e057a0da38e5f952254c4d419a69e5b53d19144bacc939a5cbc5eabc1c70cde"
+        }
       },
       "officialDetailUrl": "https://www.osu.cz/kariera/kariera-akademicke-pozice/?inzeratid=199"
     },
@@ -26788,7 +26792,7 @@
       "originalText": "Provozní technik/technička",
       "sourceLanguage": "cs",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-07T09:30:42Z",
+      "reviewedAt": "2026-10-07T11:16:01Z",
       "minimumDegree": "other",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -26849,23 +26853,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:4d3c8fb81eb1e76a72b3fc2691a36da61d35b917d3c0373196707b2c8abb8dd3",
-            "reviewedAt": "2026-10-07T09:30:42Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:81a9b972b6833c5a5ec6f493783a66406642bf4f7b561b5cf16596cab4582129"
           },
           "en": {
             "status": "machine",
             "translatedFromHash": "sha256:4d3c8fb81eb1e76a72b3fc2691a36da61d35b917d3c0373196707b2c8abb8dd3",
-            "reviewedAt": "2026-10-07T09:30:42Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:ff89a79937782790fde3013d4c7379c34a5d721b1ff7b3fb5f837d167107dd3f"
           },
           "cs": {
             "status": "reviewed",
             "translatedFromHash": "sha256:4d3c8fb81eb1e76a72b3fc2691a36da61d35b917d3c0373196707b2c8abb8dd3",
-            "reviewedAt": "2026-10-07T09:30:42Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:c7b0a28c72e6eb390fb69f131824244b3110ab88332cf18afe7ebef9b4ff58b4"
           }
-        },
-        "reviewedSourceHash": "sha256:ede3d803b1aa5bbeca5d4535079a2094d69fc25297f67e442ee8c92e8c4e7e82"
+        }
       },
       "officialDetailUrl": "https://www.osu.cz/kariera/kariera-neakademicke-pozice/?inzeratid=200"
     },
@@ -26873,15 +26876,15 @@
       "id": "job-17000-201",
       "employerId": "msmt-vs_17000",
       "title": {
-        "zh-CN": "Lektor/lektorka se zaměřením na anesteziologii, resuscitaci, intenzivní medicínu a urgentní medicínu",
-        "en": "Lektor/lektorka se zaměřením na anesteziologii, resuscitaci, intenzivní medicínu a urgentní medicínu",
+        "zh-CN": "麻醉学、复苏、重症医学和急诊医学方向的讲师",
+        "en": "Lecturer/lecturer focusing on anesthesiology, resuscitation, intensive medicine and emergency medicine",
         "cs": "Lektor/lektorka se zaměřením na anesteziologii, resuscitaci, intenzivní medicínu a urgentní medicínu"
       },
       "laboratory": null,
       "originalText": "Lektor/lektorka se zaměřením na anesteziologii, resuscitaci, intenzivní medicínu a urgentní medicínu",
       "sourceLanguage": "cs",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-07T11:16:01Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -26907,7 +26910,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -26929,35 +26932,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:d6dfc2cc84d1204041d8c4cea6d56fe221784fb6a02b5c199f4d90cad16056e4",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:d6dfc2cc84d1204041d8c4cea6d56fe221784fb6a02b5c199f4d90cad16056e4",
         "factHash": "sha256:fe3ac96e34594126558800015e7a3ff8f4833ab02346e79ee69adffe220a25ae",
         "evidenceHash": "sha256:d6dfc2cc84d1204041d8c4cea6d56fe221784fb6a02b5c199f4d90cad16056e4",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:d6dfc2cc84d1204041d8c4cea6d56fe221784fb6a02b5c199f4d90cad16056e4",
+            "reviewedAt": "2026-10-07T11:16:01Z",
+            "contentHash": "sha256:081aa29399bd4c2d75bb0622d2b73673c55bd22ea0b1572b36898c23c395ae1a"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:d6dfc2cc84d1204041d8c4cea6d56fe221784fb6a02b5c199f4d90cad16056e4",
+            "reviewedAt": "2026-10-07T11:16:01Z",
+            "contentHash": "sha256:80b16dc1787c4c8f60687531c3f36c53124d90e5db40d90a6be9f5697063860e"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d6dfc2cc84d1204041d8c4cea6d56fe221784fb6a02b5c199f4d90cad16056e4",
+            "reviewedAt": "2026-10-07T11:16:01Z",
+            "contentHash": "sha256:c0c8070e641c4b7a4d073623058f4a13e9d8b7131a9d0b8d65ba7abf7160f0f6"
           }
         }
       },
-      "officialDetailUrl": "https://www.osu.cz/kariera/kariera-akademicke-pozice/?inzeratid=201"
+      "officialDetailUrl": "https://www.osu.cz/kariera/kariera-akademicke-pozice/?inzeratid=201",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-17000-197",
@@ -29594,7 +29600,7 @@
       "originalText": "Associate Professor or Professor in the Department of Social Work",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-05T09:59:09Z",
+      "reviewedAt": "2026-10-07T11:16:01Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -29656,23 +29662,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:150f0e47f35a61de4b7fe15698f2f8bccbcb739d53e9874f085d2d1856b0bc21",
-            "reviewedAt": "2026-10-05T09:59:09Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:cde04dbfb7a87270d65468116db6cc0f69baceaf2edf398333776f7716fb1139"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:150f0e47f35a61de4b7fe15698f2f8bccbcb739d53e9874f085d2d1856b0bc21",
-            "reviewedAt": "2026-10-05T09:59:09Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:1bde308ba0791f6ccb20c29f693af0e69c1360f604056316e489f0d38fbca44e"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:150f0e47f35a61de4b7fe15698f2f8bccbcb739d53e9874f085d2d1856b0bc21",
-            "reviewedAt": "2026-10-05T09:59:09Z",
+            "reviewedAt": "2026-10-07T11:16:01Z",
             "contentHash": "sha256:215afc1aeb506b345a30c4f0a16278649238f30d1e30aef4485566e35644aad0"
           }
-        },
-        "reviewedSourceHash": "sha256:eef5111764cda04fc6368ed766c9afc46400fafb48315a11f08ae62cb084137d"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-AP3-FF-KSOCP-129"
     },
@@ -41211,15 +41216,15 @@
       "id": "job-18000-8fc885060a31",
       "employerId": "msmt-vs_18000",
       "title": {
-        "zh-CN": "Právník / Právnička",
-        "en": "Právník / Právnička",
+        "zh-CN": "律师 / 法律顾问",
+        "en": "Lawyer / Legal Counsel",
         "cs": "Právník / Právnička"
       },
       "laboratory": null,
       "originalText": "Právník / Právnička",
       "sourceLanguage": "cs",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-07T11:16:01Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -41244,7 +41249,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -41266,35 +41271,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:763ca7d551ea482d1b48969ab9b9f3eabe08bad5b089fef3b9cbf9b541301c2a",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:763ca7d551ea482d1b48969ab9b9f3eabe08bad5b089fef3b9cbf9b541301c2a",
         "factHash": "sha256:2f79a6d02509b3ebd8ab8ada3add929dd0aee02b09ca6d0f2ee07183da35ea45",
         "evidenceHash": "sha256:763ca7d551ea482d1b48969ab9b9f3eabe08bad5b089fef3b9cbf9b541301c2a",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:763ca7d551ea482d1b48969ab9b9f3eabe08bad5b089fef3b9cbf9b541301c2a",
+            "reviewedAt": "2026-10-07T11:16:01Z",
+            "contentHash": "sha256:ca2cd1117e12854db36061252ebb1fc13c6381c6a843f64a5c64659050cab236"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:763ca7d551ea482d1b48969ab9b9f3eabe08bad5b089fef3b9cbf9b541301c2a",
+            "reviewedAt": "2026-10-07T11:16:01Z",
+            "contentHash": "sha256:546d1b16d86179775f1b4da4c8c45def2d6237afbb8dcb23d52083a92dcd1cad"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:763ca7d551ea482d1b48969ab9b9f3eabe08bad5b089fef3b9cbf9b541301c2a",
+            "reviewedAt": "2026-10-07T11:16:01Z",
+            "contentHash": "sha256:f36e9a500ae3b703f4383b1ec4e08c4935da8112cecb9abf02d20b44d1acdefa"
           }
         }
       },
-      "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/pravnik-pravnicka-2"
+      "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/pravnik-pravnicka-2",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-78271-dc45d50c000c",
