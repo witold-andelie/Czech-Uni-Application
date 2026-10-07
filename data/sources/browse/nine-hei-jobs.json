@@ -13113,8 +13113,8 @@
       "laboratory": null,
       "originalText": "PhD position in “Semantic Communication for Robots”",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-07T11:51:34Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -13139,7 +13139,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -13161,31 +13161,33 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
         "factHash": "sha256:f1e32367e5e24f01d6fc9186f09b089d542becddb4abf2125cbd57be1abdef89",
         "evidenceHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
+            "reviewedAt": "2026-10-07T11:51:34Z",
+            "contentHash": "sha256:c5427e61aa5d92b0c77e609004cd2d4f05bc454da9a8ded214aaa271b2fe86b4"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
+            "reviewedAt": "2026-10-07T11:51:34Z",
+            "contentHash": "sha256:28a63efb00f3a3d54cedcaaaa92386013e0317b047135c31236c94976458a8d5"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:ba13d398ee7723e594f6f443e5594575622ccc580608e83655b4f405d62c6a7e",
+            "reviewedAt": "2026-10-07T11:51:34Z",
+            "contentHash": "sha256:bf3422cb6da3e4fd6547b483b0f16929aabe7d578b9e06b995716bfa56817983"
           }
         }
       },
