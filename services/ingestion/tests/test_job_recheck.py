@@ -500,3 +500,21 @@ def test_a_source_whose_table_decides_openness_keeps_its_posts(tmp_path, monkeyp
     )
     stored = json.loads(jobs_path.read_text(encoding="utf-8"))["jobs"][0]
     assert (stored["lifecycleStatus"], stored["visibility"]) == ("unknown", "public")
+
+
+def test_a_closure_phrase_in_a_condition_does_not_close_a_post():
+    """2026-10-07: eight open posts were recorded closed by conditional sentences."""
+    import harvest_nine_hei_jobs as h
+
+    open_posts = (
+        # CTU 6G Mobile PhD on EURAXESS 466323; its own page said "Call is open".
+        "The applications will be continuously evaluated until the position is filled.",
+        "We accept applications until November 6th, 2026, or until the position is filled.",
+        # University of Ostrava boilerplate on four open posts.
+        "The selection procedure may be cancelled or re-announced.",
+        "The selection process may be canceled or reopened.",
+        "Výběrové řízení probíhá, dokud nebude místo obsazeno.",
+    )
+    closed_posts = ("This position has been filled.", "Applications are closed.", "The call was cancelled.", "Místo je obsazeno.")
+    assert [text for text in open_posts if h.page_is_closed(text)] == []
+    assert [text for text in closed_posts if not h.page_is_closed(text)] == []

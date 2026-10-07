@@ -1189,10 +1189,32 @@ def extract_qualifications(title: str, body: str) -> dict:
     }
 
 
+# A closure phrase inside a condition or a future states no closure: "the
+# applications will be continuously evaluated until the position is filled"
+# closed an open CTU PhD post (EURAXESS 466323, 2026-10-07); "the selection
+# procedure may be cancelled", "až bude místo obsazeno" read the same way.
+_CONDITIONAL_BEFORE_RE = re.compile(
+    r"(?:\b(?:until|till|unless|once|when|whenever|if|as soon as|may|can|could|might|will|would|should|reserves?|right to)\b"
+    r"|\b(?:bude|budou|může|muze|mohou|lze|až|dokud|do doby|pokud|jestliže|jestlize)\b)[^.!?\n]{0,60}$",
+    re.I,
+)
+
+
+def _closed_phrase_stated(blob: str, phrase: str) -> bool:
+    """True when ``phrase`` occurs in ``blob`` as a statement, not a condition."""
+    start = blob.find(phrase)
+    while start >= 0:
+        sentence_start = max(blob.rfind(marker, 0, start) for marker in (".", "!", "?", "\n")) + 1
+        if not _CONDITIONAL_BEFORE_RE.search(blob[sentence_start:start]):
+            return True
+        start = blob.find(phrase, start + len(phrase))
+    return False
+
+
 def _contains_closed_signal(text: str) -> bool:
     blob = text.lower()
     contextual_czech = {"uzavřeno", "uzavreno"}
-    if any(phrase in blob for phrase in CLOSED_PHRASES if phrase not in contextual_czech):
+    if any(_closed_phrase_stated(blob, phrase) for phrase in CLOSED_PHRASES if phrase not in contextual_czech):
         return True
     context_markers = re.compile(
         r"(?:v[ýy]b[eě]rov|p[řr]ihl[aá][šs]|pozic|pracovn[ií]\s+m[ií]st|n[aá]bor|inzer)",
