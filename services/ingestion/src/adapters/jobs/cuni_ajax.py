@@ -92,7 +92,9 @@ class CuniAjaxAdapter:
         status, body = fetch_page(reference.detail_url)
         if status != 200 or not body:
             # A removed notice page stays an incomplete read (registered_listing).
-            self._reasons.append("removed-detail-page" if status in (404, 410) else "invalid-detail-response")
+            self._reasons.append(
+                "removed-detail-page" if status in (404, 410) else "throttled" if status == 429 else "invalid-detail-response"
+            )
             return []
         self._details_ok += 1
         return [

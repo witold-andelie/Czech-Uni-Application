@@ -34,16 +34,22 @@ PEAK_ROWS = 3
 REMOVED_PAGE_STATUSES = {404, 410}
 
 
-def _removed_pages_only(attempt: dict) -> bool:
-    """A failed attempt whose only failures are listed notices the school removed."""
-    if str(attempt.get("kind") or "").startswith("detail"):
-        return attempt.get("status") in REMOVED_PAGE_STATUSES
+def _failure_kind(attempt: dict) -> str:
+    """'removed' (a listed notice the school removed), 'throttled' (the host
+    answered 429) or 'failed' (anything that may mean a broken source)."""
+    kind = str(attempt.get("kind") or "")
     # An adapter reports one attempt per source with its reasons joined; the
     # 2026-10-06 18:01 refresh read UJEP this way and the alarm fired again.
-    if attempt.get("kind") == "adapter":
+    if kind == "adapter":
         reasons = [item for item in str(attempt.get("reason") or "").split(",") if item]
-        return bool(reasons) and all(item == "removed-detail-page" for item in reasons)
-    return False
+        if reasons and all(item in ("removed-detail-page", "throttled") for item in reasons):
+            return "throttled" if "throttled" in reasons else "removed"
+        return "failed"
+    if attempt.get("status") == 429:
+        return "throttled"
+    if kind.startswith("detail") and attempt.get("status") in REMOVED_PAGE_STATUSES:
+        return "removed"
+    return "failed"
 
 
 def observations_from_discovery(discovery: dict | None) -> list[dict]:
@@ -71,10 +77,14 @@ def observations_from_discovery(discovery: dict | None) -> list[dict]:
         # A checkpoint of a bounded pass lists sources it has not reached yet.
         if source_id in deferred or (source_id not in listed and source_id not in attempted):
             continue
-        failed = failures.get(source_id) or []
-        removed_pages_only = bool(failed) and all(_removed_pages_only(item) for item in failed)
+        kinds = {_failure_kind(item) for item in failures.get(source_id) or []}
+        if source_id not in complete and "failed" not in kinds and "throttled" in kinds:
+            # The host throttled the read: this pass did not reach the source,
+            # as with a deferred one; that is not a broken parser (EURAXESS
+            # from GitHub's shared runners, 2026-10-04 and 10-08).
+            continue
         rows.append({"sourceId": source_id, "listed": listed.get(source_id),
-                     "complete": source_id in complete or removed_pages_only})
+                     "complete": source_id in complete or (bool(kinds) and kinds == {"removed"})})
     return rows
 
 

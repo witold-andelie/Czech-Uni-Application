@@ -129,6 +129,8 @@ def test_missing_or_malformed_retry_after_keeps_local_backoff(monkeypatch) -> No
     # within 15 s; 3 s lost a page every ninth, 2026-10-06).
     assert sleeps == [jobs.THROTTLE_RETRY_DELAYS[0]]
     assert sum(jobs.THROTTLE_RETRY_DELAYS) <= MAX_IN_PROCESS_RETRY_SECONDS == 30.0
+    # EURAXESS is given a minute before its host cools down (owner, 2026-10-08).
+    assert sum(jobs.HOST_THROTTLE_RETRY_DELAYS["euraxess.ec.europa.eu"]) == 60.0
 
 
 def test_http_error_body_timeout_still_returns_status(monkeypatch) -> None:

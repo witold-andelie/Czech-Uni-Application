@@ -49,8 +49,18 @@ class HarvestListingAdapter:
         # Rows the listing yielded, quarantined ones included (source health).
         self._source_rows = (result.get("listedBySource") or {}).get(self.source["id"])
         for attempt in result.get("attempts") or []:
-            if attempt.get("ok") is False and attempt.get("reason"):
+            if attempt.get("ok") is not False:
+                continue
+            # Name each failure, so source health can tell a host that
+            # throttled the read from a broken one (2026-10-08).
+            if attempt.get("status") == 429:
+                self._reasons.append("throttled")
+            elif attempt.get("reason"):
                 self._reasons.append(str(attempt["reason"]))
+            elif str(attempt.get("kind") or "").startswith("detail") and attempt.get("status") in (404, 410):
+                self._reasons.append("removed-detail-page")
+            else:
+                self._reasons.append(f"http-{attempt.get('status')}")
         refs: list[ListingReference] = []
         for index, row in enumerate(result.get("candidates") or []):
             url = str(row.get("sourceUrl") or "").strip()
@@ -108,7 +118,9 @@ class HarvestListingAdapter:
                 # A listed notice whose page the school removed (404/410) is
                 # named apart: the read stays incomplete, but source health
                 # does not count it as a failing source (UJEP, 2026-10-06).
-                self._reasons.append("removed-detail-page" if status in (404, 410) else "invalid-detail-response")
+                self._reasons.append(
+                    "removed-detail-page" if status in (404, 410) else "throttled" if status == 429 else "invalid-detail-response"
+                )
                 return []
         self._details_ok += 1
         return [

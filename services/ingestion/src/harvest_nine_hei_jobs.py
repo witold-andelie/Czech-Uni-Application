@@ -69,6 +69,10 @@ REQUEST_RETRY_DELAYS = (3.0, 12.0)
 # about 20 quick requests and recovers within 15 s when left alone (measured
 # 2026-10-06); retried after 3 s and 12 s, every ninth result page was lost.
 THROTTLE_RETRY_DELAYS = (15.0, 15.0)
+# EURAXESS gets a minute before the cooldown below (owner, 2026-10-08).
+HOST_THROTTLE_RETRY_DELAYS = {"euraxess.ec.europa.eu": (30.0, 30.0)}
+# A host still throttling after that backoff is left alone this long.
+THROTTLE_COOLDOWN_SECONDS = 1200
 # Least time between two requests to a host that throttles. One request a
 # second read 40 EURAXESS pages without a single 429 (2026-10-06).
 HOST_MIN_INTERVAL_SECONDS = {"euraxess.ec.europa.eu": 1.0}
@@ -2088,8 +2092,15 @@ def _request_bytes_with_retry(
                 current = _aware_now(current + timedelta(seconds=wait))
                 continue
         if attempt == len(REQUEST_RETRY_DELAYS):
+            if status == 429:
+                # Still throttled after the backoff: leave the host alone for
+                # the rest of this pass. Every further EURAXESS request on
+                # 2026-10-08 waited out 30 s for another 429; the source took
+                # 1,056 s of discovery's 1,396 s and 34 university sources
+                # were not reached.
+                set_host_cooldown(url, current + timedelta(seconds=THROTTLE_COOLDOWN_SECONDS))
             return last
-        delays = THROTTLE_RETRY_DELAYS if status == 429 else REQUEST_RETRY_DELAYS
+        delays = HOST_THROTTLE_RETRY_DELAYS.get(host, THROTTLE_RETRY_DELAYS) if status == 429 else REQUEST_RETRY_DELAYS
         sleeper(delays[attempt])
         current = _aware_now(current + timedelta(seconds=delays[attempt]))
     return last  # pragma: no cover - loop always returns

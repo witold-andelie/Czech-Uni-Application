@@ -188,10 +188,13 @@ def test_removed_notice_pages_do_not_raise_the_incomplete_alarm() -> None:
             {"sourceId": "ujep", "kind": "detail", "status": 410, "ok": False},
             {"sourceId": "slow", "kind": "detail", "status": 404, "ok": False},
             {"sourceId": "slow", "kind": "listing", "status": 429, "ok": False},
+            {"sourceId": "broken", "kind": "listing", "status": 500, "ok": False},
         ],
     }
+    discovery["expectedSourceIds"].append("broken")
     rows = {row["sourceId"]: row["complete"] for row in source_health.observations_from_discovery(discovery)}
-    assert rows == {"ujep": True, "slow": False}
+    # A throttled read did not reach the source (2026-10-08): no observation.
+    assert rows == {"ujep": True, "broken": False}
 
 
 def test_an_advert_validity_date_is_its_deadline_when_nothing_else_is_stated() -> None:
@@ -221,3 +224,39 @@ def test_the_listing_adapter_names_a_removed_notice_page_apart() -> None:
                                listing_url="https://zamo.ujep.cz/open/")
         assert adapter.fetch_detail(ref, {"fetch_page": lambda url, s=status: (s, "")}) == []
     assert adapter._reasons == ["removed-detail-page", "invalid-detail-response"]
+
+
+def test_a_host_that_throttled_the_read_is_not_observed_that_day() -> None:
+    """2026-10-04 and 10-08: EURAXESS throttled GitHub's shared runners after the first page."""
+    def rows(reason):
+        discovery = {"expectedSourceIds": ["eux"], "completeSourceIds": [], "listedBySource": {"eux": 10},
+                     "attempts": [{"sourceId": "eux", "kind": "adapter", "ok": False, "listed": 10, "reason": reason}]}
+        return source_health.observations_from_discovery(discovery)
+
+    assert rows("throttled,throttled,removed-detail-page") == []
+    assert rows("throttled,http-500") == [{"sourceId": "eux", "listed": 10, "complete": False}]
+
+
+def test_a_host_still_throttling_after_the_backoff_is_left_alone(monkeypatch) -> None:
+    """2026-10-08: every further EURAXESS request waited 30 s for another 429."""
+    import urllib.error
+    from datetime import datetime, timezone
+
+    harvest.clear_host_cooldowns()
+    calls = []
+
+    def throttled(req, **_kwargs):
+        calls.append(req.full_url)
+        raise urllib.error.HTTPError(req.full_url, 429, "Too Many Requests", {"Retry-After": "0.000"}, None)
+
+    monkeypatch.setattr(harvest.urllib.request, "urlopen", throttled)
+    monkeypatch.setattr(harvest, "HOST_MIN_INTERVAL_SECONDS", {})
+    now = datetime(2026, 10, 8, 9, 0, tzinfo=timezone.utc)
+    waits: list[float] = []
+    first = harvest._request_bytes_with_retry(harvest.urllib.request.Request("https://euraxess.ec.europa.eu/jobs/1"),
+                                              timeout=1, now=now, sleep_fn=waits.append)
+    assert first.status == 429 and len(calls) == 3 and sum(waits) == 60.0
+    second = harvest._request_bytes_with_retry(harvest.urllib.request.Request("https://euraxess.ec.europa.eu/jobs/2"),
+                                               timeout=1, now=now, sleep_fn=lambda _s: None)
+    assert second.status == 429 and second.deferred and len(calls) == 3
+    harvest.clear_host_cooldowns()
