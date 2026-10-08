@@ -9344,8 +9344,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Jsme panevropská” (https://www.peuni.cz/kariera/) is the career page heading 'Jsme panevropská' on peuni.cz/kariera, not a vacancy (the page lists no VR-*.pdf notice now). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-08T09:11:38Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "not_a_vacancy_page_chrome"
     },
     {
       "id": "job-18000-eu463910",
@@ -9641,8 +9641,8 @@
         "decidedAt": "2026-09-26T18:31:54Z",
         "note": "Duplicate record 2026-09-26T18:31:54Z (operator): job-27000-56 and job-27000-70 both describe the VŠB-TUO advert procedureId=70 - same sourceItemId, same sourceUrl, same trilingual title differing only in the spacing of the Czech form. One advert must be published once, so this record is rejected as a duplicate of job-27000-56, whose Czech title is the advert's own heading verbatim and whose lifecycleStatus records what the live page shows. The position itself is published once, under job-27000-56; nothing here asserts anything the official page does not state.\n\nofficial heading as published: “Odborný asistent / Odborná asistentka”"
       },
-      "lastAttemptAt": "2026-10-08T09:33:31Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-09-26T18:31:54Z",
+      "lastAttemptReason": "duplicate_record_of_job-27000-56"
     },
     {
       "id": "job-27000-54",
@@ -41725,13 +41725,13 @@
       "title": {
         "zh-CN": "计算语言学方向的助理教授",
         "en": "Assistant Professor with focus on computational linguistics",
-        "cs": "Assistant Professor with focus on computational linguistics"
+        "cs": "Odborný asistent s zaměřením na počítačový jazyk"
       },
       "laboratory": null,
       "originalText": "Assistant Professor with focus on computational linguistics",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -41756,7 +41756,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -41778,7 +41778,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
         "factHash": "sha256:64b7bfb8c91cc0ccdf64bfca10e861f2b00ff032bfeb761dbd73b4019afa3241",
@@ -41789,26 +41789,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:3202d2af744b0fd0add8351e6a1afb07fe4605108ba2c8c3d2d968df47c22b88",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:2558bba31bb717379ae69eaeb1e47765fe977c66e2fc46814b7d53351f64aeb9"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:3202d2af744b0fd0add8351e6a1afb07fe4605108ba2c8c3d2d968df47c22b88",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:454b49b682b0ee6e4b91acdbfeadf49b2af2d4d01884973043bbf6f3141e3187"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:3202d2af744b0fd0add8351e6a1afb07fe4605108ba2c8c3d2d968df47c22b88",
-            "reviewedAt": "2026-10-06T16:15:20Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:0311576447571dc47c740b03ebd1d041f2f6dd45f43ac7bf23243f380303dffb"
           }
         }
       },
-      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81817"
+      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81817",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-14000-81818",
@@ -42087,15 +42088,15 @@
       "id": "job-14000-81835",
       "employerId": "msmt-vs_14000",
       "title": {
-        "zh-CN": "Postdoctoral Research Fellow in Non-Coding Genome Research group",
+        "zh-CN": "非编码基因组研究组博士后研究员",
         "en": "Postdoctoral Research Fellow in Non-Coding Genome Research group",
-        "cs": "Postdoctoral Research Fellow in Non-Coding Genome Research group"
+        "cs": "Postdoktorand v skupině výzkumu nekódování genomu"
       },
       "laboratory": null,
       "originalText": "Postdoctoral Research Fellow in Non-Coding Genome Research group",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -42120,7 +42121,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": true,
       "track": "postdoc",
@@ -42142,49 +42143,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:da005f4a567620838d33fb9ab41aaa6d8bb6411abbc62f91ce8f5b1a8b3b3438",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:da005f4a567620838d33fb9ab41aaa6d8bb6411abbc62f91ce8f5b1a8b3b3438",
         "factHash": "sha256:f4a3f9c63c479bd129bd7f41820066802eef5e1dcc000d1459663e91047f6249",
         "evidenceHash": "sha256:da005f4a567620838d33fb9ab41aaa6d8bb6411abbc62f91ce8f5b1a8b3b3438",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:da005f4a567620838d33fb9ab41aaa6d8bb6411abbc62f91ce8f5b1a8b3b3438",
+            "reviewedAt": "2026-10-08T10:30:11Z",
+            "contentHash": "sha256:949db513c09543d50b9e0ee20936591c0ca12f73a81852ae536cd81f9fcb9c8a"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:da005f4a567620838d33fb9ab41aaa6d8bb6411abbc62f91ce8f5b1a8b3b3438",
+            "reviewedAt": "2026-10-08T10:30:11Z",
+            "contentHash": "sha256:eee672119cdb067e53f868cffbfda175a694a878e60f5fa825bde658694852eb"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:da005f4a567620838d33fb9ab41aaa6d8bb6411abbc62f91ce8f5b1a8b3b3438",
+            "reviewedAt": "2026-10-08T10:30:11Z",
+            "contentHash": "sha256:1e46cb3c98adf215451d97ba1f56d5b891c93ec2a18eb1626de21a29fce001a9"
           }
         }
       },
-      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81835"
+      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81835",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-14000-81836",
       "employerId": "msmt-vs_14000",
       "title": {
-        "zh-CN": "Head of the Department of Biochemistry",
+        "zh-CN": "生物化学系主任",
         "en": "Head of the Department of Biochemistry",
-        "cs": "Head of the Department of Biochemistry"
+        "cs": "Zástupce pro výuku a vědeckou činnost"
       },
       "laboratory": null,
       "originalText": "Head of the Department of Biochemistry",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -42209,7 +42213,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -42231,49 +42235,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:8992c5a266b4a0c007028a511b4b5f6199d5a643cdc772b390b80cdc206b7e24",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:8992c5a266b4a0c007028a511b4b5f6199d5a643cdc772b390b80cdc206b7e24",
         "factHash": "sha256:d15a7498df2d22366052bb0707ff8f94d3157f334fbb5b52309718fdb027070f",
         "evidenceHash": "sha256:8992c5a266b4a0c007028a511b4b5f6199d5a643cdc772b390b80cdc206b7e24",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:8992c5a266b4a0c007028a511b4b5f6199d5a643cdc772b390b80cdc206b7e24",
+            "reviewedAt": "2026-10-08T10:30:11Z",
+            "contentHash": "sha256:159c7fa09056fd8b15930edaf3449917f1a65c0f9c5cce1a4fd10749f4e0e33d"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8992c5a266b4a0c007028a511b4b5f6199d5a643cdc772b390b80cdc206b7e24",
+            "reviewedAt": "2026-10-08T10:30:11Z",
+            "contentHash": "sha256:886bf74dadd8b3aad2019458e960ced6b8273016e520bb3326a25d9ad57b7ecd"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:8992c5a266b4a0c007028a511b4b5f6199d5a643cdc772b390b80cdc206b7e24",
+            "reviewedAt": "2026-10-08T10:30:11Z",
+            "contentHash": "sha256:dfc22a11c5b10abe51ad5d6cdc836f480602291c2f81606c7b025023d56c4560"
           }
         }
       },
-      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81836"
+      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81836",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-14000-81837",
       "employerId": "msmt-vs_14000",
       "title": {
-        "zh-CN": "Department of Physiotherapy and Rehabilitation",
+        "zh-CN": "物理治疗与康复系",
         "en": "Department of Physiotherapy and Rehabilitation",
-        "cs": "Department of Physiotherapy and Rehabilitation"
+        "cs": "Katedra fyzioterapie a reabilitace"
       },
       "laboratory": null,
       "originalText": "Department of Physiotherapy and Rehabilitation",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -42298,7 +42305,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -42320,35 +42327,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:d6bce725f9069998c126938ee6c5f4778a3589428a3161b4ee038e57713e4473",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:d6bce725f9069998c126938ee6c5f4778a3589428a3161b4ee038e57713e4473",
         "factHash": "sha256:f7b504c2b328a1ec46dfc114f76a84152f8309946d73fd5a1d391e587a8487ad",
         "evidenceHash": "sha256:d6bce725f9069998c126938ee6c5f4778a3589428a3161b4ee038e57713e4473",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:d6bce725f9069998c126938ee6c5f4778a3589428a3161b4ee038e57713e4473",
+            "reviewedAt": "2026-10-08T10:30:11Z",
+            "contentHash": "sha256:a6016de6020719a07237a82352bc849bd8f31e4424487473736c871f6b3fb6a1"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d6bce725f9069998c126938ee6c5f4778a3589428a3161b4ee038e57713e4473",
+            "reviewedAt": "2026-10-08T10:30:11Z",
+            "contentHash": "sha256:216a56e2b08b89fc8728cba44173153e8fa275de201edec0515cbac32e6e152b"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:d6bce725f9069998c126938ee6c5f4778a3589428a3161b4ee038e57713e4473",
+            "reviewedAt": "2026-10-08T10:30:11Z",
+            "contentHash": "sha256:a2da6ae2f1305395fcb6dd90fbcc58915d62ee2e29c73e544f14bb390ebed7bd"
           }
         }
       },
-      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81837"
+      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81837",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-14000-81792",
@@ -44696,8 +44706,8 @@
       "laboratory": null,
       "originalText": "Academic Staff Member – Department of Mathematics (applications by 7 October 2026) – Internal Recruitment Procedure",
       "sourceLanguage": "en",
-      "translationStatus": "verified",
-      "reviewedAt": "2026-10-04T16:28:28Z",
+      "translationStatus": "stale",
+      "reviewedAt": null,
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -44745,7 +44755,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:65103b14204b02244bf765cbb57c9f8faaf0b505116235cf2830d6b731982229",
-      "publicationStatus": "approved",
+      "publicationStatus": "review_pending",
       "reviewMode": "automatic",
       "translationReview": {
         "sourceHash": "sha256:65103b14204b02244bf765cbb57c9f8faaf0b505116235cf2830d6b731982229",
@@ -44753,25 +44763,25 @@
         "evidenceHash": "sha256:65103b14204b02244bf765cbb57c9f8faaf0b505116235cf2830d6b731982229",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "automatic_pipeline"
+          "role": "operator_source_review"
         },
         "locales": {
           "zh-CN": {
-            "status": "reviewed",
-            "translatedFromHash": "sha256:65103b14204b02244bf765cbb57c9f8faaf0b505116235cf2830d6b731982229",
-            "reviewedAt": "2026-10-04T16:28:28Z",
+            "status": "stale",
+            "translatedFromHash": "sha256:73966bbfbf31b9d61654f12cb1cf44c6b11c4226a968d0cda9ab753242a455c2",
+            "reviewedAt": "2026-09-22T21:17:52Z",
             "contentHash": "sha256:4570c596c4599d3d4912f99f1ec5536266f7a96d405b2f9aa200ae4353808f8b"
           },
           "en": {
-            "status": "reviewed",
-            "translatedFromHash": "sha256:65103b14204b02244bf765cbb57c9f8faaf0b505116235cf2830d6b731982229",
-            "reviewedAt": "2026-10-04T16:28:28Z",
+            "status": "stale",
+            "translatedFromHash": "sha256:73966bbfbf31b9d61654f12cb1cf44c6b11c4226a968d0cda9ab753242a455c2",
+            "reviewedAt": "2026-09-22T21:17:52Z",
             "contentHash": "sha256:91b52171cbc91894f0544ab464c8e8a1a0d55cb6b8e7661a794ead6b2e96f777"
           },
           "cs": {
-            "status": "reviewed",
-            "translatedFromHash": "sha256:65103b14204b02244bf765cbb57c9f8faaf0b505116235cf2830d6b731982229",
-            "reviewedAt": "2026-10-04T16:28:28Z",
+            "status": "stale",
+            "translatedFromHash": "sha256:73966bbfbf31b9d61654f12cb1cf44c6b11c4226a968d0cda9ab753242a455c2",
+            "reviewedAt": "2026-09-22T21:17:52Z",
             "contentHash": "sha256:3314bd63a585090c97998f7d179faf4e68f227409cc1df85120bbaaeaba6e4bc"
           }
         }
@@ -44974,7 +44984,7 @@
       "originalText": "Postdoctoral Researcher, Faculty of Informatics and management",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T21:33:18Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -45035,23 +45045,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:f04179f27a6bfd674558f2bb0df553d2c7d5afc07396af4b88934dcf35a4b933",
-            "reviewedAt": "2026-10-06T21:33:18Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:537feb11245f74ce93725543bdd7bbed07940a438ed6e9b552bcd0275b592540"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:f04179f27a6bfd674558f2bb0df553d2c7d5afc07396af4b88934dcf35a4b933",
-            "reviewedAt": "2026-10-06T21:33:18Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:543acc30f4b73f30121c384d0737f75ae2dfbf61e6326bf870d2b9e7578fdec4"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:f04179f27a6bfd674558f2bb0df553d2c7d5afc07396af4b88934dcf35a4b933",
-            "reviewedAt": "2026-10-06T21:33:18Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:c36dc95269557ec0ca0f9b77cec5f3f6500fe2e2d9b192c4131dc629d7012590"
           }
-        },
-        "reviewedSourceHash": "sha256:60dcbcbf281d5ae2f652d2c6ccb80d871f1cf355b5383a435a12021c3507d531"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/465336"
     },
@@ -45149,14 +45158,14 @@
       "employerId": "msmt-vs_31000",
       "title": {
         "zh-CN": "网页开发人员（PHP、WordPress）",
-        "en": "Webový vývojář / vývojářka (PHP, WordPress)",
+        "en": "Web developer (PHP, WordPress)",
         "cs": "Webový vývojář / vývojářka (PHP, WordPress)"
       },
       "laboratory": null,
       "originalText": "Webový vývojář / vývojářka (PHP, WordPress)",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -45181,7 +45190,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -45203,37 +45212,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:a1be6cc16647a7fcf1f895254c5f576bdd6d425254cfb9d55838b7087d5084ac",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:a1be6cc16647a7fcf1f895254c5f576bdd6d425254cfb9d55838b7087d5084ac",
         "factHash": "sha256:2559123be8913d52c0c9da56942b6157d89370b0d0e472191616510d1e52d7eb",
         "evidenceHash": "sha256:a1be6cc16647a7fcf1f895254c5f576bdd6d425254cfb9d55838b7087d5084ac",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "operator_source_review"
+          "role": "automatic_pipeline"
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:6b05ad1d4bdfc8952b5da85c02e9925656ad3cb944d33f46f82124d60caa657e",
-            "reviewedAt": "2026-09-22T21:17:52Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:a1be6cc16647a7fcf1f895254c5f576bdd6d425254cfb9d55838b7087d5084ac",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:170474c430d7d779b6c36075797a0b588e075679643a64f4ff97cfe3d9adcb39"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:6b05ad1d4bdfc8952b5da85c02e9925656ad3cb944d33f46f82124d60caa657e",
-            "reviewedAt": "2026-09-22T21:17:52Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:a1be6cc16647a7fcf1f895254c5f576bdd6d425254cfb9d55838b7087d5084ac",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:ef6d3ecb698d3ff5157d4205681d8a2703176cd44602d39ff59f356fe75f60b9"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:6b05ad1d4bdfc8952b5da85c02e9925656ad3cb944d33f46f82124d60caa657e",
-            "reviewedAt": "2026-09-22T21:17:52Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:a1be6cc16647a7fcf1f895254c5f576bdd6d425254cfb9d55838b7087d5084ac",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:6f949bbe7ea238c2b79263d3ea402de2e2d0edd0ccbbed19c1cdb02904587166"
           }
         }
       },
-      "officialDetailUrl": "https://www.vse.cz/informace-o-vse/informace-a-predpisy/karierni-prilezitosti/webovy-vyvojar-vyvojarka-php-wordpress/"
+      "officialDetailUrl": "https://www.vse.cz/informace-o-vse/informace-a-predpisy/karierni-prilezitosti/webovy-vyvojar-vyvojarka-php-wordpress/",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-18000-ebb5341d8eaa",
@@ -45434,7 +45444,7 @@
       "originalText": "PdF- Postdoctoral researcher at Faculty of Education for 2027-2029",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T19:06:06Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -45495,23 +45505,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:e0b95485ad6e01c8bb387b75acb5608eea91a76beeb732e68170d8bbcf7396b4",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:4d9e0a8ad50098c6c9ed00efc4ddc09fb42c2a68d6b98f65c514108eb9961d68"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:e0b95485ad6e01c8bb387b75acb5608eea91a76beeb732e68170d8bbcf7396b4",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:ea5e93a5e44e7fd85f2b50b16eea3111b46973a1cfee65a20ca6f0d1214950b1"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:e0b95485ad6e01c8bb387b75acb5608eea91a76beeb732e68170d8bbcf7396b4",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:183d998ff3043db4bacfbf5083d56c0fc4dfb2d98c681f981dbb680e78a3cb50"
           }
-        },
-        "reviewedSourceHash": "sha256:0340779aa696aced6a9db43e66a712fecf9f5aa5700a34d34d032347ba7d1e6c"
+        }
       },
       "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/pdf-postdoctoral-researcher-at-faculty-of-education-for-2027-2029"
     },
@@ -45527,7 +45536,7 @@
       "originalText": "FF - Odborný asistent/ka se zaměřením na klinickou psychologii",
       "sourceLanguage": "cs",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T19:06:06Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "required",
@@ -45588,23 +45597,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:accab9f0fc182fc9a40a156cfb3d6ec406034a390d79a8baeb101585b382eca4",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:67950ccd78fbc722be4ef903cf5ad3b9ab8fc4aad49eb8c0ec6025352f79e71d"
           },
           "en": {
             "status": "machine",
             "translatedFromHash": "sha256:accab9f0fc182fc9a40a156cfb3d6ec406034a390d79a8baeb101585b382eca4",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:26738f07aa20e7b65247db65a2409b8d516c762cd8e31a60aac03c65d559c676"
           },
           "cs": {
             "status": "reviewed",
             "translatedFromHash": "sha256:accab9f0fc182fc9a40a156cfb3d6ec406034a390d79a8baeb101585b382eca4",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:272620f72e2d1fa72d3bad043ec73f55dd2dfa79cd19fe421d4fd06ed6f3eff3"
           }
-        },
-        "reviewedSourceHash": "sha256:8632ce278033d23b6831d01b702720829a0a62b17ff2af1f82ff5c5a7743c61d"
+        }
       },
       "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/ff-odborny-asistent-ka-se-zamerenim-na-klinickou-psychologii"
     },
@@ -45620,7 +45628,7 @@
       "originalText": "FF - ​​Postdoctoral researcher in Archaeology for 2027-2029​",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T19:06:06Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -45681,23 +45689,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:0a862fd2f5663b6961e48f13cc98e06f3be5a4cb5691f194aaa87dfd0ad57d1d",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:5bc7238b143c17be53fd033affd346f584ce29d67002e4046c754ad47ce58d08"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:0a862fd2f5663b6961e48f13cc98e06f3be5a4cb5691f194aaa87dfd0ad57d1d",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:36e635dc4761de8133449fd681444153d75177fcd32bf84a8c47bb055ce966c6"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:0a862fd2f5663b6961e48f13cc98e06f3be5a4cb5691f194aaa87dfd0ad57d1d",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:a1eff48c652a20cd83e2749707f6a154d1b756c560813907b2ad991c9887d7e1"
           }
-        },
-        "reviewedSourceHash": "sha256:90e386c70700014c668b08f2c33413afa42d26b66874ca71570cb69d946b5ba3"
+        }
       },
       "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/ff-postdoctoral-researcher-in-archaeology-for-2027-2029"
     },
@@ -45713,7 +45720,7 @@
       "originalText": "FF - Postdoctoral researcher in Sociology for 2027–2029",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T19:06:06Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -45774,23 +45781,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:10e1a45a20ffb086783d9e3c21f7d40472c9b48b84296bb8260c26cdaeac27c0",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:d5334f41f003defa156f4b16808120fb726bb711e8bb8a3e10885a3add6d39df"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:10e1a45a20ffb086783d9e3c21f7d40472c9b48b84296bb8260c26cdaeac27c0",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:abb4d30acaddbe7e4d23ef7fff85f56c9af1b70c1da70ea93b8c561f542b6846"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:10e1a45a20ffb086783d9e3c21f7d40472c9b48b84296bb8260c26cdaeac27c0",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:d83a6d40505c22adde7c0a51712dc03da4b7bc7f44584c9300362a12301dad99"
           }
-        },
-        "reviewedSourceHash": "sha256:2c7d3f7e423de8224c9a298636ac552f5cac6e49c4bb4c6312d50710b6f61aaf"
+        }
       },
       "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/ff-postdoctoral-researcher-in-sociology-for-2027-2029"
     },
@@ -45806,7 +45812,7 @@
       "originalText": "FF - ​​Postdoctoral researcher in Philosophy for 2027-2029",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T19:06:06Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -45867,23 +45873,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:d5bc5e795bf4c957c13c0c872b042dd291a3a39a7741f456b689482975f02bdb",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:4faa06c5068c477db2290b4bec0c91b4b69954397433e1f684fd6bf0b515ef67"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:d5bc5e795bf4c957c13c0c872b042dd291a3a39a7741f456b689482975f02bdb",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:d8aff04086753580950808ee2fd3943707b76f93e3464d8dc2b1f7f6c17f692a"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:d5bc5e795bf4c957c13c0c872b042dd291a3a39a7741f456b689482975f02bdb",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:7c9be9c302edc0adb66cab0a57825ac1441ad6181fb2f6d623466a1e5c10c72d"
           }
-        },
-        "reviewedSourceHash": "sha256:7b6bba636556e7fb61f49530386fe943cb9db64bc1537a4eb602fc23878c9b71"
+        }
       },
       "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/ff-postdoctoral-researcher-in-political-science-for-2027-2029-1"
     },
@@ -45899,7 +45904,7 @@
       "originalText": "FF- ​​Postdoctoral researcher in Psychology for 2027-2029​",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T19:06:06Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -45960,23 +45965,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:f560fd915a8499b86f99b08d0a98b28befaccf474b4fd7047fe127a43983849d",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:fde5c19225a6d856a91bdbd5bc543002c7e380ba18f609f4565d4dda31c2aeaa"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:f560fd915a8499b86f99b08d0a98b28befaccf474b4fd7047fe127a43983849d",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:389d486265e7a220e96760c0cb7038d0a7f0dfb3c2b5db7a9897328bfa8c6087"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:f560fd915a8499b86f99b08d0a98b28befaccf474b4fd7047fe127a43983849d",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:b65dda0fec55b4e05e33b201070bfd52cd1773531a241dee0fd7009e4f6f0247"
           }
-        },
-        "reviewedSourceHash": "sha256:64681011fade5a23cc0b12a79d14bd248f8df0cb0c845b0e878db194370867e8"
+        }
       },
       "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/ff-postdoctoral-researcher-in-psychology-for-2027-2029"
     },
@@ -45992,7 +45996,7 @@
       "originalText": "FF - ​​Postdoctoral researcher in Social Work for 2027-2029​",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T19:06:06Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -46053,23 +46057,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:fb32ffbcb81e02fdda30444fc9b3b49804f1abde611ef3a60a2ae7a6b2436860",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:2673fb125c159324bebd84f6bb469a3338bea0df99343556054646e39174e56d"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:fb32ffbcb81e02fdda30444fc9b3b49804f1abde611ef3a60a2ae7a6b2436860",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:6e3f6b44e4f5eb2ffae3126efec9c671f928370870036d256af0e51ddf82ee33"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:fb32ffbcb81e02fdda30444fc9b3b49804f1abde611ef3a60a2ae7a6b2436860",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:272e4a503b18185555fab085ec0f96b0d9dcaec905dde9367aea373cd4d459bc"
           }
-        },
-        "reviewedSourceHash": "sha256:537f1da92d67ae3a00761e4a5770c2e4afea74147d3b5a3b655f7f201c7a9867"
+        }
       },
       "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/ff-postdoctoral-researcher-in-social-work-for-2027-2029"
     },
@@ -46085,7 +46088,7 @@
       "originalText": "FF - Postdoctoral researcher in the Fields of History – Archival Studies – Auxiliary Historical Sciences for 2027–2029 ​",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T19:06:06Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -46146,23 +46149,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:0a616345824ff71b1969c3bb38edf74503aa9c12f1b789a0e2cdb92803b1a152",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:ba50de2a9674c9e4d2bed9ef7268227c1fd95b2d52ab4a81ca99546866defad8"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:0a616345824ff71b1969c3bb38edf74503aa9c12f1b789a0e2cdb92803b1a152",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:75db87f7a7078c3d69b2dce3cf87c0130ac229124bc193a71321660cb8673fa5"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:0a616345824ff71b1969c3bb38edf74503aa9c12f1b789a0e2cdb92803b1a152",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:5aca8309e70fb5dd1353f434c0484549d3cf5672b251978eb7e68ddb7d951f71"
           }
-        },
-        "reviewedSourceHash": "sha256:78e9c794c95c3cf89ce41a7b3e14b7c80500e4edaa67de0c907b88602bd4b7cc"
+        }
       },
       "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/ostdoctoral-researcher-in-the-fields-of-history-archival-studies-auxiliary-historical-sciences-for-2027-2029"
     },
@@ -46178,7 +46180,7 @@
       "originalText": "FF - Postdoctoral researcher in Political Science for 2027-2029",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-10-06T19:06:06Z",
+      "reviewedAt": "2026-10-08T10:30:11Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -46239,23 +46241,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:d3f7f873a52529bef40ad4ec453d7c67cf55e9e6cfb48a845fdfeb7393921b4b",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:e54c554a3c8be4c23137c1693794b49149c0b12cdc5ddef158442fb81593d48d"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:d3f7f873a52529bef40ad4ec453d7c67cf55e9e6cfb48a845fdfeb7393921b4b",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:b627990188bdf660e7232faec6c7b3032ec6abf48f2066a0a76ec392b7a02865"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:d3f7f873a52529bef40ad4ec453d7c67cf55e9e6cfb48a845fdfeb7393921b4b",
-            "reviewedAt": "2026-10-06T19:06:06Z",
+            "reviewedAt": "2026-10-08T10:30:11Z",
             "contentHash": "sha256:63a6d6121eae736fc9c43cc7451f04b0b7b16acfc8c211fe1c57bb18ab5dc7c3"
           }
-        },
-        "reviewedSourceHash": "sha256:0c74d3f8e26e589c87024f82a7f1d616d53bc4a0b2d4ffd7616ba0e46b842dec"
+        }
       },
       "officialDetailUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/uredni-deska/verejne-informace/personalni-vyberova-rizeni-a-souteze/ff-postdoctoral-researcher-in-political-science-for-2027-2029"
     },
@@ -47656,8 +47657,8 @@
         "decidedAt": "2026-10-02T20:35:09Z",
         "note": "Operator decision 2026-10-02T20:35:09Z: “Projektový specialista/projektová specialistka na dotační projekty a veřejné zakázky” (https://www.vse.cz/informace-o-vse/informace-a-predpisy/karierni-prilezitosti/projektovy-specialista-projektova-specialistka-na-dotacni-projekty-a-verejne-zakazky/) is a project-office specialist for grant projects and public procurement (legislation and administration). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-10-08T09:42:20Z",
-      "lastAttemptReason": "no-longer-meets-supported-scope:detail-not-a-supported-research-vacancy",
+      "lastAttemptAt": "2026-10-02T20:35:09Z",
+      "lastAttemptReason": "out_of_scope_administrative",
       "officialDetailUrl": "https://www.vse.cz/informace-o-vse/informace-a-predpisy/karierni-prilezitosti/projektovy-specialista-projektova-specialistka-na-dotacni-projekty-a-verejne-zakazky/"
     },
     {
