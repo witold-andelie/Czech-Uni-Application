@@ -1,0 +1,1325 @@
+{
+  "generatedAt": "2026-09-29T18:57:29Z",
+  "dataClass": "official_admissions_extract",
+  "catalogKind": "reviewed_admissions",
+  "institutionId": "msmt-vs_41000",
+  "note": "Incremental reviewed CZU admissions slice: the original four records plus English bachelor and master Business Administration and Economics and Management. Not complete CZU coverage. UIS links are general portals. Inventory IDs are preserved.",
+  "sourceFetchedAt": {
+    "czu-english-programmes": "2026-09-11T19:31:12Z",
+    "czu-czech-programmes": "2026-09-11T19:33:42Z",
+    "czu-doctoral-programmes": "2026-09-11T19:42:37Z"
+  },
+  "counts": {
+    "offerings": 8,
+    "windows": 9,
+    "evidence": 18
+  },
+  "offerings": [
+    {
+      "id": "inv-898e810ed190",
+      "programmeId": "prog-inv-898e810ed190",
+      "institutionId": "msmt-vs_41000",
+      "candidateIds": [
+        "czu-study-507",
+        "czu-studuj-1004"
+      ],
+      "academicYear": "unknown",
+      "teachingLanguages": [
+        "en"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://study.czu.cz/programmes/informatics/",
+      "titleOriginal": "Informatics",
+      "sourceLanguage": "en",
+      "degree": "bachelor",
+      "durationSemesters": 6,
+      "field": {
+        "zh-CN": "经济管理学院",
+        "en": "Faculty of Economics and Management",
+        "cs": "Provozně ekonomická fakulta"
+      },
+      "iscedF": "0613",
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/informatics/",
+      "applicationUrl": null,
+      "applicationTargetKind": "general_portal",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "applicationTargetNote": {
+        "zh-CN": "UIS 是学校通用申请系统，不是该项目已核验的专属申请页。",
+        "en": "UIS is the university’s general application system, not a verified programme-specific apply page.",
+        "cs": "UIS je obecný podací systém univerzity, nikoli ověřená stránka konkrétního programu."
+      },
+      "tuition": {
+        "amount": null,
+        "currency": "EUR",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://study.czu.cz/programmes/informatics/",
+        "unpublishedReason": null,
+        "noteOriginal": "€ 3,200 per year*",
+        "variants": [
+          {
+            "amount": 3200.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 3,200 per year*",
+            "sourceEvidenceId": "ev-inv-898e810ed190-en"
+          },
+          {
+            "amount": 500.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 500 per year*",
+            "sourceEvidenceId": "ev-inv-898e810ed190-en"
+          }
+        ],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "amount": 850.0,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://study.czu.cz/admission/"
+      },
+      "additionalLanguageRequirements": [
+        {
+          "language": "en",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10432-informatics-infoa",
+          "note": {
+            "zh-CN": "授课语言为英语。入学语言证明和材料以经济管理学院招生页为准，这里不编造成绩线。",
+            "en": "Taught in English. Language certificates and materials follow the Faculty of Economics and Management admissions page; scores are not invented here.",
+            "cs": "Výuka probíhá v angličtině. Jazykové doklady a materiály se řídí stránkou PEF; bodové limity se zde nedomýšlejí."
+          }
+        }
+      ],
+      "fetchedAt": "2026-09-11T19:31:12Z",
+      "dataClass": "official_admissions_extract",
+      "lifecycleOverride": null,
+      "title": {
+        "zh-CN": "信息学",
+        "en": "Informatics",
+        "cs": "Informatika"
+      },
+      "sourceHash": "sha256:d46c7b7db846a13ee71b93c67c4f20a376ce233ecde7330873ff45a31e3ef56b",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-12T16:30:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:d46c7b7db846a13ee71b93c67c4f20a376ce233ecde7330873ff45a31e3ef56b",
+        "factHash": "sha256:12f1f72de3599aefa609b5bc5092ab0627be7d729c19a2979534519e4780f8d8",
+        "evidenceHash": "sha256:d46c7b7db846a13ee71b93c67c4f20a376ce233ecde7330873ff45a31e3ef56b",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d46c7b7db846a13ee71b93c67c4f20a376ce233ecde7330873ff45a31e3ef56b",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:aa1664302fccede8b014a0c2a270f782b5bbe95f4695b8f5cf8e6bf5330b20c9"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d46c7b7db846a13ee71b93c67c4f20a376ce233ecde7330873ff45a31e3ef56b",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:5270f13f11aa379992911e23a334c61061c9861fd9a3d533ae82e51743a7de95"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d46c7b7db846a13ee71b93c67c4f20a376ce233ecde7330873ff45a31e3ef56b",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:25c138fd967dbf549346230606459129b0b0c78df9150474c154e218318e30dd"
+          }
+        }
+      }
+    },
+    {
+      "id": "inv-ac1fecbdfc9c",
+      "programmeId": "prog-inv-ac1fecbdfc9c",
+      "institutionId": "msmt-vs_41000",
+      "candidateIds": [
+        "czu-study-511",
+        "czu-studuj-1009"
+      ],
+      "academicYear": "unknown",
+      "teachingLanguages": [
+        "en"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://study.czu.cz/programmes/informatics-2/",
+      "titleOriginal": "Informatics",
+      "sourceLanguage": "en",
+      "degree": "master",
+      "durationSemesters": 4,
+      "field": {
+        "zh-CN": "经济管理学院",
+        "en": "Faculty of Economics and Management",
+        "cs": "Provozně ekonomická fakulta"
+      },
+      "iscedF": "0613",
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/informatics-2/",
+      "applicationUrl": null,
+      "applicationTargetKind": "general_portal",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "applicationTargetNote": {
+        "zh-CN": "UIS 是学校通用申请系统，不是该项目已核验的专属申请页。",
+        "en": "UIS is the university’s general application system, not a verified programme-specific apply page.",
+        "cs": "UIS je obecný podací systém univerzity, nikoli ověřená stránka konkrétního programu."
+      },
+      "tuition": {
+        "amount": null,
+        "currency": "EUR",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://study.czu.cz/programmes/informatics-2/",
+        "unpublishedReason": null,
+        "noteOriginal": "€ 3,200 per year*",
+        "variants": [
+          {
+            "amount": 3200.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 3,200 per year*",
+            "sourceEvidenceId": "ev-inv-ac1fecbdfc9c-en"
+          },
+          {
+            "amount": 500.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 500 per year*",
+            "sourceEvidenceId": "ev-inv-ac1fecbdfc9c-en"
+          }
+        ],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "amount": 850.0,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://study.czu.cz/admission/"
+      },
+      "additionalLanguageRequirements": [
+        {
+          "language": "en",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10299-masters-study/r-10525-informatics",
+          "note": {
+            "zh-CN": "授课语言为英语。入学语言证明和材料以经济管理学院招生页为准，这里不编造成绩线。",
+            "en": "Taught in English. Language certificates and materials follow the Faculty of Economics and Management admissions page; scores are not invented here.",
+            "cs": "Výuka probíhá v angličtině. Jazykové doklady a materiály se řídí stránkou PEF; bodové limity se zde nedomýšlejí."
+          }
+        }
+      ],
+      "fetchedAt": "2026-09-11T19:31:12Z",
+      "dataClass": "official_admissions_extract",
+      "lifecycleOverride": null,
+      "title": {
+        "zh-CN": "信息学",
+        "en": "Informatics",
+        "cs": "Informatika"
+      },
+      "sourceHash": "sha256:8b327936d4656cd2f9ac6ec388fb0c7227915099088c9ac0ede21c9b94ead209",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-12T16:30:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:8b327936d4656cd2f9ac6ec388fb0c7227915099088c9ac0ede21c9b94ead209",
+        "factHash": "sha256:6ac52856fd853379619561167e4c43bd63a8f6687bb3a7b7c0f1cd6004b7712d",
+        "evidenceHash": "sha256:8b327936d4656cd2f9ac6ec388fb0c7227915099088c9ac0ede21c9b94ead209",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8b327936d4656cd2f9ac6ec388fb0c7227915099088c9ac0ede21c9b94ead209",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:aa1664302fccede8b014a0c2a270f782b5bbe95f4695b8f5cf8e6bf5330b20c9"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8b327936d4656cd2f9ac6ec388fb0c7227915099088c9ac0ede21c9b94ead209",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:5270f13f11aa379992911e23a334c61061c9861fd9a3d533ae82e51743a7de95"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8b327936d4656cd2f9ac6ec388fb0c7227915099088c9ac0ede21c9b94ead209",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:25c138fd967dbf549346230606459129b0b0c78df9150474c154e218318e30dd"
+          }
+        }
+      }
+    },
+    {
+      "id": "inv-ca4cebefff1b",
+      "programmeId": "prog-inv-ca4cebefff1b",
+      "institutionId": "msmt-vs_41000",
+      "candidateIds": [
+        "czu-study-506",
+        "czu-studuj-1002"
+      ],
+      "academicYear": "unknown",
+      "teachingLanguages": [
+        "en"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://study.czu.cz/programmes/business-administration/",
+      "titleOriginal": "Business Administration",
+      "sourceLanguage": "en",
+      "degree": "bachelor",
+      "durationSemesters": 6,
+      "field": {
+        "zh-CN": "经济管理学院",
+        "en": "Faculty of Economics and Management",
+        "cs": "Provozně ekonomická fakulta"
+      },
+      "iscedF": "0413",
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/business-administration/",
+      "applicationUrl": null,
+      "applicationTargetKind": "general_portal",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "applicationTargetNote": {
+        "zh-CN": "UIS 是学校通用申请系统，不是该项目已核验的专属申请页。",
+        "en": "UIS is the university’s general application system, not a verified programme-specific apply page.",
+        "cs": "UIS je obecný podací systém univerzity, nikoli ověřená stránka konkrétního programu."
+      },
+      "tuition": {
+        "amount": null,
+        "currency": "EUR",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://study.czu.cz/programmes/business-administration/",
+        "unpublishedReason": null,
+        "noteOriginal": "€ 2,600 per year*",
+        "variants": [
+          {
+            "amount": 2600.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 2,600 per year*",
+            "sourceEvidenceId": "ev-inv-ca4cebefff1b-en",
+            "applicantScope": {
+              "zh-CN": "一般学费",
+              "en": "Tuition fee",
+              "cs": "Školné"
+            }
+          },
+          {
+            "amount": 500.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 500 per year*",
+            "sourceEvidenceId": "ev-inv-ca4cebefff1b-en",
+            "applicantScope": {
+              "zh-CN": "欧盟学生学费",
+              "en": "Tuition fee (EU students)",
+              "cs": "Školné (studenti z EU)"
+            }
+          }
+        ],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "amount": 850.0,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://study.czu.cz/admission/"
+      },
+      "additionalLanguageRequirements": [
+        {
+          "language": "en",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10434-business-administration-ba",
+          "note": {
+            "zh-CN": "授课语言为英语。入学语言证明和材料以经济管理学院招生页为准，这里不编造成绩线。",
+            "en": "Taught in English. Language certificates and materials follow the Faculty of Economics and Management admissions page; scores are not invented here.",
+            "cs": "Výuka probíhá v angličtině. Jazykové doklady a materiály se řídí stránkou PEF; bodové limity se zde nedomýšlejí."
+          }
+        }
+      ],
+      "fetchedAt": "2026-09-11T19:31:12Z",
+      "dataClass": "official_admissions_extract",
+      "lifecycleOverride": null,
+      "title": {
+        "zh-CN": "工商管理",
+        "en": "Business Administration",
+        "cs": "Business Administration"
+      },
+      "sourceHash": "sha256:4ff478c50d975341e24714ddf521364790663046814cf5b078256c4b827d5324",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-29T17:53:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:4ff478c50d975341e24714ddf521364790663046814cf5b078256c4b827d5324",
+        "factHash": "sha256:62d9eff594b0a4fc5800a2a9124192012e0abc281703ea01bbcd6c6624d79cbf",
+        "evidenceHash": "sha256:4ff478c50d975341e24714ddf521364790663046814cf5b078256c4b827d5324",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:4ff478c50d975341e24714ddf521364790663046814cf5b078256c4b827d5324",
+            "reviewedAt": "2026-09-29T17:53:00Z",
+            "contentHash": "sha256:c752a7a14ffd251b2f4cbbaf4e18f045fac9ac7c1b754328c387bdb4885a1c0d"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:4ff478c50d975341e24714ddf521364790663046814cf5b078256c4b827d5324",
+            "reviewedAt": "2026-09-29T17:53:00Z",
+            "contentHash": "sha256:1fb60d12ef76e39ba894129db3cbd1f7099e5ca60c9b7fc1fe373a09d6deafb1"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:4ff478c50d975341e24714ddf521364790663046814cf5b078256c4b827d5324",
+            "reviewedAt": "2026-09-29T17:53:00Z",
+            "contentHash": "sha256:1fb60d12ef76e39ba894129db3cbd1f7099e5ca60c9b7fc1fe373a09d6deafb1"
+          }
+        }
+      }
+    },
+    {
+      "id": "inv-1810509648f0",
+      "programmeId": "prog-inv-1810509648f0",
+      "institutionId": "msmt-vs_41000",
+      "candidateIds": [
+        "czu-study-508",
+        "czu-studuj-1003"
+      ],
+      "academicYear": "unknown",
+      "teachingLanguages": [
+        "en"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://study.czu.cz/programmes/economics-and-management/",
+      "titleOriginal": "Economics and Management",
+      "sourceLanguage": "en",
+      "degree": "bachelor",
+      "durationSemesters": 6,
+      "field": {
+        "zh-CN": "经济管理学院",
+        "en": "Faculty of Economics and Management",
+        "cs": "Provozně ekonomická fakulta"
+      },
+      "iscedF": "0413",
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/economics-and-management/",
+      "applicationUrl": null,
+      "applicationTargetKind": "general_portal",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "applicationTargetNote": {
+        "zh-CN": "UIS 是学校通用申请系统，不是该项目已核验的专属申请页。",
+        "en": "UIS is the university’s general application system, not a verified programme-specific apply page.",
+        "cs": "UIS je obecný podací systém univerzity, nikoli ověřená stránka konkrétního programu."
+      },
+      "tuition": {
+        "amount": null,
+        "currency": "EUR",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://study.czu.cz/programmes/economics-and-management/",
+        "unpublishedReason": null,
+        "noteOriginal": "€ 2,000 per year*",
+        "variants": [
+          {
+            "amount": 2000.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 2,000 per year*",
+            "sourceEvidenceId": "ev-inv-1810509648f0-en",
+            "applicantScope": {
+              "zh-CN": "一般学费",
+              "en": "Tuition fee",
+              "cs": "Školné"
+            }
+          },
+          {
+            "amount": 500.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 500 per year*",
+            "sourceEvidenceId": "ev-inv-1810509648f0-en",
+            "applicantScope": {
+              "zh-CN": "欧盟学生学费",
+              "en": "Tuition fee (EU students)",
+              "cs": "Školné (studenti z EU)"
+            }
+          }
+        ],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "amount": 850.0,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://study.czu.cz/admission/"
+      },
+      "additionalLanguageRequirements": [
+        {
+          "language": "en",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10433-economics-and-management-em",
+          "note": {
+            "zh-CN": "授课语言为英语。入学语言证明和材料以经济管理学院招生页为准，这里不编造成绩线。",
+            "en": "Taught in English. Language certificates and materials follow the Faculty of Economics and Management admissions page; scores are not invented here.",
+            "cs": "Výuka probíhá v angličtině. Jazykové doklady a materiály se řídí stránkou PEF; bodové limity se zde nedomýšlejí."
+          }
+        }
+      ],
+      "fetchedAt": "2026-09-11T19:31:12Z",
+      "dataClass": "official_admissions_extract",
+      "lifecycleOverride": null,
+      "title": {
+        "zh-CN": "经济与管理",
+        "en": "Economics and Management",
+        "cs": "Economics and Management"
+      },
+      "sourceHash": "sha256:7a04d350c08a67962f1e98c256d809cd0ea19f622ce8a3fc3c1847e1e735dc65",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-29T17:53:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:7a04d350c08a67962f1e98c256d809cd0ea19f622ce8a3fc3c1847e1e735dc65",
+        "factHash": "sha256:0318930b6dafc3dac8c3b7b042b903fcae62b033985970826fc7dfa75bb42306",
+        "evidenceHash": "sha256:7a04d350c08a67962f1e98c256d809cd0ea19f622ce8a3fc3c1847e1e735dc65",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:7a04d350c08a67962f1e98c256d809cd0ea19f622ce8a3fc3c1847e1e735dc65",
+            "reviewedAt": "2026-09-29T17:53:00Z",
+            "contentHash": "sha256:a54a7979341b9057c3912d8b988c6683312e93229bec0d61bcb5a86b436b62c9"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:7a04d350c08a67962f1e98c256d809cd0ea19f622ce8a3fc3c1847e1e735dc65",
+            "reviewedAt": "2026-09-29T17:53:00Z",
+            "contentHash": "sha256:16578d632fcc2c02cbd0b2dd9d887f2adc388a346a14dd3a4af870452226b70e"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:7a04d350c08a67962f1e98c256d809cd0ea19f622ce8a3fc3c1847e1e735dc65",
+            "reviewedAt": "2026-09-29T17:53:00Z",
+            "contentHash": "sha256:16578d632fcc2c02cbd0b2dd9d887f2adc388a346a14dd3a4af870452226b70e"
+          }
+        }
+      }
+    },
+    {
+      "id": "inv-cd7c131e0004",
+      "programmeId": "prog-inv-cd7c131e0004",
+      "institutionId": "msmt-vs_41000",
+      "candidateIds": [
+        "czu-study-510",
+        "czu-studuj-1005"
+      ],
+      "academicYear": "unknown",
+      "teachingLanguages": [
+        "en"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://study.czu.cz/programmes/business-administration-2/",
+      "titleOriginal": "Business Administration",
+      "sourceLanguage": "en",
+      "degree": "master",
+      "durationSemesters": 4,
+      "field": {
+        "zh-CN": "经济管理学院",
+        "en": "Faculty of Economics and Management",
+        "cs": "Provozně ekonomická fakulta"
+      },
+      "iscedF": "0413",
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/business-administration-2/",
+      "applicationUrl": null,
+      "applicationTargetKind": "general_portal",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "applicationTargetNote": {
+        "zh-CN": "UIS 是学校通用申请系统，不是该项目已核验的专属申请页。",
+        "en": "UIS is the university’s general application system, not a verified programme-specific apply page.",
+        "cs": "UIS je obecný podací systém univerzity, nikoli ověřená stránka konkrétního programu."
+      },
+      "tuition": {
+        "amount": null,
+        "currency": "EUR",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://study.czu.cz/programmes/business-administration-2/",
+        "unpublishedReason": null,
+        "noteOriginal": "€ 4,400 per year*",
+        "variants": [
+          {
+            "amount": 4400.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 4,400 per year*",
+            "sourceEvidenceId": "ev-inv-cd7c131e0004-en",
+            "applicantScope": {
+              "zh-CN": "一般学费",
+              "en": "Tuition fee",
+              "cs": "Školné"
+            }
+          },
+          {
+            "amount": 500.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 500 per year*",
+            "sourceEvidenceId": "ev-inv-cd7c131e0004-en",
+            "applicantScope": {
+              "zh-CN": "欧盟学生学费",
+              "en": "Tuition fee (EU students)",
+              "cs": "Školné (studenti z EU)"
+            }
+          }
+        ],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "amount": 850.0,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://study.czu.cz/admission/"
+      },
+      "additionalLanguageRequirements": [
+        {
+          "language": "en",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://study.czu.cz/programmes/business-administration-2/",
+          "note": {
+            "zh-CN": "英语授课。申请要求以该硕士项目官网及学院最新招生说明为准；这里不推断英语证书或分数线。",
+            "en": "Taught in English. Check the master's programme page and current faculty admissions instructions; no certificate or score is inferred here.",
+            "cs": "Výuka probíhá v angličtině. Požadavky ověřte na stránce magisterského programu a v aktuálních pokynech fakulty; doklad ani bodová hranice se zde nepředpokládají."
+          }
+        }
+      ],
+      "fetchedAt": "2026-09-11T19:31:12Z",
+      "dataClass": "official_admissions_extract",
+      "lifecycleOverride": null,
+      "title": {
+        "zh-CN": "工商管理",
+        "en": "Business Administration",
+        "cs": "Business Administration"
+      },
+      "sourceHash": "sha256:a60cf378ebb6d76f29cffc7e5bf36aabd7a064bbceb700a0e38b90f4398d4e3e",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-29T18:56:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:a60cf378ebb6d76f29cffc7e5bf36aabd7a064bbceb700a0e38b90f4398d4e3e",
+        "factHash": "sha256:4568c4c900cca9a9dfa61e0193f70dcee9347a73bb2e719546c87870032a1607",
+        "evidenceHash": "sha256:a60cf378ebb6d76f29cffc7e5bf36aabd7a064bbceb700a0e38b90f4398d4e3e",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:a60cf378ebb6d76f29cffc7e5bf36aabd7a064bbceb700a0e38b90f4398d4e3e",
+            "reviewedAt": "2026-09-29T18:56:00Z",
+            "contentHash": "sha256:c752a7a14ffd251b2f4cbbaf4e18f045fac9ac7c1b754328c387bdb4885a1c0d"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:a60cf378ebb6d76f29cffc7e5bf36aabd7a064bbceb700a0e38b90f4398d4e3e",
+            "reviewedAt": "2026-09-29T18:56:00Z",
+            "contentHash": "sha256:1fb60d12ef76e39ba894129db3cbd1f7099e5ca60c9b7fc1fe373a09d6deafb1"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:a60cf378ebb6d76f29cffc7e5bf36aabd7a064bbceb700a0e38b90f4398d4e3e",
+            "reviewedAt": "2026-09-29T18:56:00Z",
+            "contentHash": "sha256:1fb60d12ef76e39ba894129db3cbd1f7099e5ca60c9b7fc1fe373a09d6deafb1"
+          }
+        }
+      }
+    },
+    {
+      "id": "inv-b8ee55eae5f7",
+      "programmeId": "prog-inv-b8ee55eae5f7",
+      "institutionId": "msmt-vs_41000",
+      "candidateIds": [
+        "czu-study-512",
+        "czu-studuj-1006"
+      ],
+      "academicYear": "unknown",
+      "teachingLanguages": [
+        "en"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://study.czu.cz/programmes/economics-and-management-2/",
+      "titleOriginal": "Economics and Management",
+      "sourceLanguage": "en",
+      "degree": "master",
+      "durationSemesters": 4,
+      "field": {
+        "zh-CN": "经济管理学院",
+        "en": "Faculty of Economics and Management",
+        "cs": "Provozně ekonomická fakulta"
+      },
+      "iscedF": "0413",
+      "officialProgrammeUrl": "https://study.czu.cz/programmes/economics-and-management-2/",
+      "applicationUrl": null,
+      "applicationTargetKind": "general_portal",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/?lang=en",
+      "applicationTargetNote": {
+        "zh-CN": "UIS 是学校通用申请系统，不是该项目已核验的专属申请页。",
+        "en": "UIS is the university’s general application system, not a verified programme-specific apply page.",
+        "cs": "UIS je obecný podací systém univerzity, nikoli ověřená stránka konkrétního programu."
+      },
+      "tuition": {
+        "amount": null,
+        "currency": "EUR",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://study.czu.cz/programmes/economics-and-management-2/",
+        "unpublishedReason": null,
+        "noteOriginal": "€ 2,000 per year*",
+        "variants": [
+          {
+            "amount": 2000.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 2,000 per year*",
+            "sourceEvidenceId": "ev-inv-b8ee55eae5f7-en",
+            "applicantScope": {
+              "zh-CN": "一般学费",
+              "en": "Tuition fee",
+              "cs": "Školné"
+            }
+          },
+          {
+            "amount": 500.0,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "€ 500 per year*",
+            "sourceEvidenceId": "ev-inv-b8ee55eae5f7-en",
+            "applicantScope": {
+              "zh-CN": "欧盟学生学费",
+              "en": "Tuition fee (EU students)",
+              "cs": "Školné (studenti z EU)"
+            }
+          }
+        ],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "amount": 850.0,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://study.czu.cz/admission/"
+      },
+      "additionalLanguageRequirements": [
+        {
+          "language": "en",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://study.czu.cz/programmes/economics-and-management-2/",
+          "note": {
+            "zh-CN": "英语授课。申请要求以该硕士项目官网及学院最新招生说明为准；这里不推断英语证书或分数线。",
+            "en": "Taught in English. Check the master's programme page and current faculty admissions instructions; no certificate or score is inferred here.",
+            "cs": "Výuka probíhá v angličtině. Požadavky ověřte na stránce magisterského programu a v aktuálních pokynech fakulty; doklad ani bodová hranice se zde nepředpokládají."
+          }
+        }
+      ],
+      "fetchedAt": "2026-09-11T19:31:12Z",
+      "dataClass": "official_admissions_extract",
+      "lifecycleOverride": null,
+      "title": {
+        "zh-CN": "经济与管理",
+        "en": "Economics and Management",
+        "cs": "Economics and Management"
+      },
+      "sourceHash": "sha256:d01ebf6b1e9fda834a9b7d305a6076c6b6f02cde82993ce864f80fe1c17d517b",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-29T18:56:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:d01ebf6b1e9fda834a9b7d305a6076c6b6f02cde82993ce864f80fe1c17d517b",
+        "factHash": "sha256:dcf1a07b6adb9951ca92e4b4889a974866c258676bfd5e815cd810d340a82441",
+        "evidenceHash": "sha256:d01ebf6b1e9fda834a9b7d305a6076c6b6f02cde82993ce864f80fe1c17d517b",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d01ebf6b1e9fda834a9b7d305a6076c6b6f02cde82993ce864f80fe1c17d517b",
+            "reviewedAt": "2026-09-29T18:56:00Z",
+            "contentHash": "sha256:a54a7979341b9057c3912d8b988c6683312e93229bec0d61bcb5a86b436b62c9"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d01ebf6b1e9fda834a9b7d305a6076c6b6f02cde82993ce864f80fe1c17d517b",
+            "reviewedAt": "2026-09-29T18:56:00Z",
+            "contentHash": "sha256:16578d632fcc2c02cbd0b2dd9d887f2adc388a346a14dd3a4af870452226b70e"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:d01ebf6b1e9fda834a9b7d305a6076c6b6f02cde82993ce864f80fe1c17d517b",
+            "reviewedAt": "2026-09-29T18:56:00Z",
+            "contentHash": "sha256:16578d632fcc2c02cbd0b2dd9d887f2adc388a346a14dd3a4af870452226b70e"
+          }
+        }
+      }
+    },
+    {
+      "id": "inv-c50825f0199c",
+      "programmeId": "prog-inv-c50825f0199c",
+      "institutionId": "msmt-vs_41000",
+      "candidateIds": [
+        "czu-studuj-960"
+      ],
+      "academicYear": "unknown",
+      "teachingLanguages": [
+        "cs"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://studuj.czu.cz/programmes/geograficke-informacni-systemy-a-dalkovy-pruzkum-zeme-v-zivotnim-prostredi/",
+      "titleOriginal": "Geografické informační systémy a dálkový průzkum země v životním prostředí",
+      "sourceLanguage": "cs",
+      "degree": "bachelor",
+      "durationSemesters": 6,
+      "field": {
+        "zh-CN": "环境学院",
+        "en": "Faculty of Environmental Sciences",
+        "cs": "Fakulta životního prostředí"
+      },
+      "iscedF": "0532",
+      "officialProgrammeUrl": "https://studuj.czu.cz/programmes/geograficke-informacni-systemy-a-dalkovy-pruzkum-zeme-v-zivotnim-prostredi/",
+      "applicationUrl": null,
+      "applicationTargetKind": "general_portal",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "applicationTargetNote": {
+        "zh-CN": "UIS 是学校通用申请系统，不是该项目已核验的专属申请页。",
+        "en": "UIS is the university’s general application system, not a verified programme-specific apply page.",
+        "cs": "UIS je obecný podací systém univerzity, nikoli ověřená stránka konkrétního programu."
+      },
+      "tuition": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "published": false,
+        "evidenceUrl": "https://studuj.czu.cz/programmes/geograficke-informacni-systemy-a-dalkovy-pruzkum-zeme-v-zivotnim-prostredi/",
+        "unpublishedReason": "Czech-portal page does not publish a tuition amount. Unpublished is not free.",
+        "noteOriginal": null,
+        "variants": []
+      },
+      "applicationFee": {
+        "amount": 850.0,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://studuj.czu.cz/prijimaci-rizeni/"
+      },
+      "additionalLanguageRequirements": [
+        {
+          "language": "cs",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://studuj.czu.cz/programmes/geograficke-informacni-systemy-a-dalkovy-pruzkum-zeme-v-zivotnim-prostredi/",
+          "note": {
+            "zh-CN": "授课语言为捷克语。具体入学材料以项目页为准，这里不编造考试科目。",
+            "en": "Taught in Czech. Application materials follow the programme page; exam subjects are not invented here.",
+            "cs": "Výuka probíhá v češtině. Materiály se řídí stránkou programu; předměty zkoušek se zde nedomýšlejí."
+          }
+        }
+      ],
+      "fetchedAt": "2026-09-11T19:33:42Z",
+      "dataClass": "official_admissions_extract",
+      "lifecycleOverride": null,
+      "title": {
+        "zh-CN": "地理信息系统与环境遥感",
+        "en": "Geographic Information Systems and Remote Sensing in the Environment",
+        "cs": "Geografické informační systémy a dálkový průzkum země v životním prostředí"
+      },
+      "sourceHash": "sha256:f24ddf3c522f61c7564a1097b38d7b84a9320f571afe94b6a14dd29d2823751f",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-12T16:30:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:f24ddf3c522f61c7564a1097b38d7b84a9320f571afe94b6a14dd29d2823751f",
+        "factHash": "sha256:8798d8ad7771c67dcf935b3be2abd70a877917fcbc81d730bccb2e155f4ac714",
+        "evidenceHash": "sha256:f24ddf3c522f61c7564a1097b38d7b84a9320f571afe94b6a14dd29d2823751f",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:f24ddf3c522f61c7564a1097b38d7b84a9320f571afe94b6a14dd29d2823751f",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:648477fd62d607c6deb023784addd27fd000799c8cea1bdb81ba6cd93c204694"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:f24ddf3c522f61c7564a1097b38d7b84a9320f571afe94b6a14dd29d2823751f",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:f3be8e5329d04b82397477c76ec1f30454e7e9a5ffa45f5be11efdde5c3bce2a"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:f24ddf3c522f61c7564a1097b38d7b84a9320f571afe94b6a14dd29d2823751f",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:8b90601895e6ec053b1ca7ff91cd3e59dec5f7005ee77339f294f4cc685891d8"
+          }
+        }
+      }
+    },
+    {
+      "id": "inv-330bf56297af",
+      "programmeId": "prog-inv-330bf56297af",
+      "institutionId": "msmt-vs_41000",
+      "candidateIds": [
+        "inv-330bf56297af"
+      ],
+      "academicYear": "2026/2027",
+      "teachingLanguages": [
+        "cs"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+      "titleOriginal": "Aplikovaná a krajinná ekologie",
+      "sourceLanguage": "cs",
+      "degree": "doctorate",
+      "durationSemesters": 8,
+      "field": {
+        "zh-CN": "环境学院",
+        "en": "Faculty of Environmental Sciences",
+        "cs": "Fakulta životního prostředí"
+      },
+      "iscedF": "0521",
+      "officialProgrammeUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+      "applicationUrl": null,
+      "applicationTargetKind": "general_portal",
+      "generalApplyPortalUrl": "https://is.czu.cz/prihlaska/",
+      "applicationTargetNote": {
+        "zh-CN": "UIS 是学校通用申请系统，不是该项目已核验的专属申请页。",
+        "en": "UIS is the university’s general application system, not a verified programme-specific apply page.",
+        "cs": "UIS je obecný podací systém univerzity, nikoli ověřená stránka konkrétního programu."
+      },
+      "tuition": {
+        "amount": null,
+        "currency": null,
+        "cycle": null,
+        "published": false,
+        "evidenceUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+        "unpublishedReason": "Faculty doctoral PDF used for windows does not state a tuition amount.",
+        "noteOriginal": null,
+        "variants": []
+      },
+      "additionalLanguageRequirements": [
+        {
+          "language": "cs",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+          "note": {
+            "zh-CN": "捷克语博士。2026/27 两轮均已截止；下一学年窗口未在本证据中公布。",
+            "en": "Czech-taught doctorate. Both 2026/27 rounds are closed; the next academic year is not published in this evidence.",
+            "cs": "Doktorské studium v češtině. Obě kola 2026/27 jsou uzavřená; další akademický rok tento důkaz nezveřejňuje."
+          }
+        }
+      ],
+      "fetchedAt": "2026-09-11T19:42:37Z",
+      "dataClass": "official_admissions_extract",
+      "lifecycleOverride": null,
+      "title": {
+        "zh-CN": "应用与景观生态学",
+        "en": "Applied and Landscape Ecology",
+        "cs": "Aplikovaná a krajinná ekologie"
+      },
+      "sourceHash": "sha256:7a4bec8239ca86c83c16aa10936c3396a47fddc3f26e8e89fbbf4e32283b4cdd",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-12T16:30:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:7a4bec8239ca86c83c16aa10936c3396a47fddc3f26e8e89fbbf4e32283b4cdd",
+        "factHash": "sha256:0b94dd4cc862183c7df19a886d83160133e243127cbd3d582be8a94a9f87c7d8",
+        "evidenceHash": "sha256:7a4bec8239ca86c83c16aa10936c3396a47fddc3f26e8e89fbbf4e32283b4cdd",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:7a4bec8239ca86c83c16aa10936c3396a47fddc3f26e8e89fbbf4e32283b4cdd",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:5c84caf7c6a0cebd4f5803039eeab46cdf5a60a6602e1b4f619dcf251a015120"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:7a4bec8239ca86c83c16aa10936c3396a47fddc3f26e8e89fbbf4e32283b4cdd",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:acdbfbdfe2d7bd24ced376b2d3872d58d59852f575621aa32b2f25e3c8878f3f"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:7a4bec8239ca86c83c16aa10936c3396a47fddc3f26e8e89fbbf4e32283b4cdd",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:8886acba912c6c9fb99be92c5c82129e34c49f038586d56a09171afe197badcc"
+          }
+        }
+      }
+    }
+  ],
+  "windows": [
+    {
+      "id": "win-inv-898e810ed190-2026-09",
+      "ownerType": "offering",
+      "ownerId": "inv-898e810ed190",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "Application",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": "2026-09-15",
+      "closesAt": "2027-03-31",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": null,
+      "sourceEvidenceId": "ev-inv-898e810ed190-en"
+    },
+    {
+      "id": "win-inv-ac1fecbdfc9c-2026-09",
+      "ownerType": "offering",
+      "ownerId": "inv-ac1fecbdfc9c",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "Application",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": "2026-09-15",
+      "closesAt": "2027-03-31",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": null,
+      "sourceEvidenceId": "ev-inv-ac1fecbdfc9c-en"
+    },
+    {
+      "id": "win-inv-ca4cebefff1b-2026-09",
+      "ownerType": "offering",
+      "ownerId": "inv-ca4cebefff1b",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "Application",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": "2026-09-15",
+      "closesAt": "2027-03-31",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": null,
+      "sourceEvidenceId": "ev-inv-ca4cebefff1b-en"
+    },
+    {
+      "id": "win-inv-1810509648f0-2026-09",
+      "ownerType": "offering",
+      "ownerId": "inv-1810509648f0",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "Application",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": "2026-09-15",
+      "closesAt": "2027-03-31",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": null,
+      "sourceEvidenceId": "ev-inv-1810509648f0-en"
+    },
+    {
+      "id": "win-inv-cd7c131e0004-2026-09",
+      "ownerType": "offering",
+      "ownerId": "inv-cd7c131e0004",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "Application",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": "2026-09-15",
+      "closesAt": "2027-03-31",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": null,
+      "sourceEvidenceId": "ev-inv-cd7c131e0004-en"
+    },
+    {
+      "id": "win-inv-b8ee55eae5f7-2026-09",
+      "ownerType": "offering",
+      "ownerId": "inv-b8ee55eae5f7",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "Application",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": "2026-09-15",
+      "closesAt": "2027-03-31",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "unknown",
+      "conditionalOnVacancies": false,
+      "applicationUrl": null,
+      "sourceEvidenceId": "ev-inv-b8ee55eae5f7-en"
+    },
+    {
+      "id": "win-inv-c50825f0199c-2025-11",
+      "ownerType": "offering",
+      "ownerId": "inv-c50825f0199c",
+      "academicYear": null,
+      "roundNumber": null,
+      "roundLabelOriginal": "Přijímací řízení",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": "2025-11-07",
+      "closesAt": "2026-03-31",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "closed",
+      "conditionalOnVacancies": false,
+      "applicationUrl": null,
+      "sourceEvidenceId": "ev-inv-c50825f0199c"
+    },
+    {
+      "id": "win-inv-330bf56297af-1",
+      "ownerType": "offering",
+      "ownerId": "inv-330bf56297af",
+      "academicYear": "2026/2027",
+      "roundNumber": 1,
+      "roundLabelOriginal": "1. etapa",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": "2026-01-31",
+      "closesAt": "2026-05-31",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "closed",
+      "conditionalOnVacancies": false,
+      "applicationUrl": null,
+      "sourceEvidenceId": "ev-inv-330bf56297af"
+    },
+    {
+      "id": "win-inv-330bf56297af-2",
+      "ownerType": "offering",
+      "ownerId": "inv-330bf56297af",
+      "academicYear": "2026/2027",
+      "roundNumber": 2,
+      "roundLabelOriginal": "2. etapa",
+      "roundType": "regular",
+      "applicantScope": null,
+      "opensAt": "2026-07-01",
+      "closesAt": "2026-08-20",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "closed",
+      "conditionalOnVacancies": false,
+      "applicationUrl": null,
+      "sourceEvidenceId": "ev-inv-330bf56297af"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-inv-898e810ed190-en",
+      "url": "https://study.czu.cz/programmes/informatics/",
+      "note": {
+        "zh-CN": "CZU 英语项目页（申请起止与学费）。",
+        "en": "CZU English programme page (dates and tuition).",
+        "cs": "Anglická stránka programu ČZU (termíny a školné)."
+      },
+      "sourceHash": "sha256:d46c7b7db846a13ee71b93c67c4f20a376ce233ecde7330873ff45a31e3ef56b"
+    },
+    {
+      "id": "ev-inv-898e810ed190-cs",
+      "url": "https://studuj.czu.cz/programmes/informatics/",
+      "note": {
+        "zh-CN": "CZU 捷克入口对应英语项目页；项目身份与申请日期一致。学费金额采用英语入口核对。",
+        "en": "Matching Czech-portal English record; programme identity and dates agree. Tuition amounts are checked against the English portal.",
+        "cs": "Shodný záznam anglického programu na českém portálu; totožnost programu a termíny souhlasí. Částky školného jsou ověřeny na anglickém portálu."
+      },
+      "sourceHash": "sha256:38e8f7d884d4da6051b69a0e9f657b938e0feaa20819c0fd322a42acac5f3ff4"
+    },
+    {
+      "id": "ev-inv-898e810ed190-faculty",
+      "url": "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10432-informatics-infoa",
+      "note": {
+        "zh-CN": "经济管理学院招生说明。",
+        "en": "Faculty admissions page.",
+        "cs": "Přijímací informace PEF."
+      }
+    },
+    {
+      "id": "ev-inv-ac1fecbdfc9c-en",
+      "url": "https://study.czu.cz/programmes/informatics-2/",
+      "note": {
+        "zh-CN": "CZU 英语项目页（申请起止与学费）。",
+        "en": "CZU English programme page (dates and tuition).",
+        "cs": "Anglická stránka programu ČZU (termíny a školné)."
+      },
+      "sourceHash": "sha256:8b327936d4656cd2f9ac6ec388fb0c7227915099088c9ac0ede21c9b94ead209"
+    },
+    {
+      "id": "ev-inv-ac1fecbdfc9c-cs",
+      "url": "https://studuj.czu.cz/programmes/informatics-2/",
+      "note": {
+        "zh-CN": "CZU 捷克入口对应英语项目页；项目身份与申请日期一致。学费金额采用英语入口核对。",
+        "en": "Matching Czech-portal English record; programme identity and dates agree. Tuition amounts are checked against the English portal.",
+        "cs": "Shodný záznam anglického programu na českém portálu; totožnost programu a termíny souhlasí. Částky školného jsou ověřeny na anglickém portálu."
+      },
+      "sourceHash": "sha256:42e05a8f503443282d1f12d1cc377e3712a2eda6879dab068d0c069016da03fa"
+    },
+    {
+      "id": "ev-inv-ac1fecbdfc9c-faculty",
+      "url": "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10299-masters-study/r-10525-informatics",
+      "note": {
+        "zh-CN": "经济管理学院招生说明。",
+        "en": "Faculty admissions page.",
+        "cs": "Přijímací informace PEF."
+      }
+    },
+    {
+      "id": "ev-inv-ca4cebefff1b-en",
+      "url": "https://study.czu.cz/programmes/business-administration/",
+      "note": {
+        "zh-CN": "CZU 英语项目页（申请起止与学费）。",
+        "en": "CZU English programme page (dates and tuition).",
+        "cs": "Anglická stránka programu ČZU (termíny a školné)."
+      },
+      "sourceHash": "sha256:4ff478c50d975341e24714ddf521364790663046814cf5b078256c4b827d5324"
+    },
+    {
+      "id": "ev-inv-ca4cebefff1b-cs",
+      "url": "https://studuj.czu.cz/programmes/business-administration/",
+      "note": {
+        "zh-CN": "CZU 捷克入口对应英语项目页；项目身份与申请日期一致。学费金额采用英语入口核对。",
+        "en": "Matching Czech-portal English record; programme identity and dates agree. Tuition amounts are checked against the English portal.",
+        "cs": "Shodný záznam anglického programu na českém portálu; totožnost programu a termíny souhlasí. Částky školného jsou ověřeny na anglickém portálu."
+      },
+      "sourceHash": "sha256:3339ee4dea901490ff54c8cfa336f93689bc756e7b1717dd18f9034968cb0bd5"
+    },
+    {
+      "id": "ev-inv-ca4cebefff1b-faculty",
+      "url": "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10434-business-administration-ba",
+      "note": {
+        "zh-CN": "经济管理学院招生说明。",
+        "en": "Faculty admissions page.",
+        "cs": "Přijímací informace PEF."
+      }
+    },
+    {
+      "id": "ev-inv-1810509648f0-en",
+      "url": "https://study.czu.cz/programmes/economics-and-management/",
+      "note": {
+        "zh-CN": "CZU 英语项目页（申请起止与学费）。",
+        "en": "CZU English programme page (dates and tuition).",
+        "cs": "Anglická stránka programu ČZU (termíny a školné)."
+      },
+      "sourceHash": "sha256:7a04d350c08a67962f1e98c256d809cd0ea19f622ce8a3fc3c1847e1e735dc65"
+    },
+    {
+      "id": "ev-inv-1810509648f0-cs",
+      "url": "https://studuj.czu.cz/programmes/economics-and-management/",
+      "note": {
+        "zh-CN": "CZU 捷克入口对应英语项目页；项目身份与申请日期一致。学费金额采用英语入口核对。",
+        "en": "Matching Czech-portal English record; programme identity and dates agree. Tuition amounts are checked against the English portal.",
+        "cs": "Shodný záznam anglického programu na českém portálu; totožnost programu a termíny souhlasí. Částky školného jsou ověřeny na anglickém portálu."
+      },
+      "sourceHash": "sha256:aab68b3478d9454c210e8d57792fb9fc1c4adbb4fb3090f3362865d125bde9b8"
+    },
+    {
+      "id": "ev-inv-1810509648f0-faculty",
+      "url": "https://www.pef.czu.cz/en/r-9396-study/r-9485-study-programmes/r-10298-bachelors-study/r-10433-economics-and-management-em",
+      "note": {
+        "zh-CN": "经济管理学院招生说明。",
+        "en": "Faculty admissions page.",
+        "cs": "Přijímací informace PEF."
+      }
+    },
+    {
+      "id": "ev-inv-cd7c131e0004-en",
+      "url": "https://study.czu.cz/programmes/business-administration-2/",
+      "note": {
+        "zh-CN": "CZU 英语项目页（申请起止与学费）。",
+        "en": "CZU English programme page (dates and tuition).",
+        "cs": "Anglická stránka programu ČZU (termíny a školné)."
+      },
+      "sourceHash": "sha256:a60cf378ebb6d76f29cffc7e5bf36aabd7a064bbceb700a0e38b90f4398d4e3e"
+    },
+    {
+      "id": "ev-inv-cd7c131e0004-cs",
+      "url": "https://studuj.czu.cz/programmes/business-administration-2/",
+      "note": {
+        "zh-CN": "CZU 捷克入口对应英语项目页；项目身份与申请日期一致。学费金额采用英语入口核对。",
+        "en": "Matching Czech-portal English record; programme identity and dates agree. Tuition amounts are checked against the English portal.",
+        "cs": "Shodný záznam anglického programu na českém portálu; totožnost programu a termíny souhlasí. Částky školného jsou ověřeny na anglickém portálu."
+      },
+      "sourceHash": "sha256:6483c32affd16d9bf170d4f61341e7dfef8c0a2d0ae4e731cf70c720df1d77f2"
+    },
+    {
+      "id": "ev-inv-b8ee55eae5f7-en",
+      "url": "https://study.czu.cz/programmes/economics-and-management-2/",
+      "note": {
+        "zh-CN": "CZU 英语项目页（申请起止与学费）。",
+        "en": "CZU English programme page (dates and tuition).",
+        "cs": "Anglická stránka programu ČZU (termíny a školné)."
+      },
+      "sourceHash": "sha256:d01ebf6b1e9fda834a9b7d305a6076c6b6f02cde82993ce864f80fe1c17d517b"
+    },
+    {
+      "id": "ev-inv-b8ee55eae5f7-cs",
+      "url": "https://studuj.czu.cz/programmes/economics-and-management-2/",
+      "note": {
+        "zh-CN": "CZU 捷克入口对应英语项目页；项目身份与申请日期一致。学费金额采用英语入口核对。",
+        "en": "Matching Czech-portal English record; programme identity and dates agree. Tuition amounts are checked against the English portal.",
+        "cs": "Shodný záznam anglického programu na českém portálu; totožnost programu a termíny souhlasí. Částky školného jsou ověřeny na anglickém portálu."
+      },
+      "sourceHash": "sha256:4a671edda1875eeaed9cfefcc7bb8f34a1594f5dbdbe9bb6e7e5128a6d357391"
+    },
+    {
+      "id": "ev-inv-c50825f0199c",
+      "url": "https://studuj.czu.cz/programmes/geograficke-informacni-systemy-a-dalkovy-pruzkum-zeme-v-zivotnim-prostredi/",
+      "note": {
+        "zh-CN": "CZU 捷克入口本科项目页。学费未公布，不等于免费。",
+        "en": "Czech-portal bachelor page. Unpublished tuition is not free.",
+        "cs": "Stránka bakalářského programu na českém portálu. Nezveřejněné školné není nula."
+      },
+      "sourceHash": "sha256:f24ddf3c522f61c7564a1097b38d7b84a9320f571afe94b6a14dd29d2823751f"
+    },
+    {
+      "id": "ev-inv-330bf56297af",
+      "url": "https://www.fzp.czu.cz/dl/151487?lang=cs",
+      "note": {
+        "zh-CN": "环境学院 2026/27 博士招生 PDF。两轮均已截止。",
+        "en": "FZP 2026/27 doctoral admissions PDF. Both rounds are closed.",
+        "cs": "PDF přijímaček FZP 2026/27. Obě kola jsou uzavřená."
+      }
+    }
+  ],
+  "publicationSelection": {
+    "approved": 8,
+    "reviewPendingExcluded": 0,
+    "excludedIds": []
+  }
+}
