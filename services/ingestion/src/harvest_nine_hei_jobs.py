@@ -3473,20 +3473,70 @@ def parse_czu_pozice_rest(payload: str) -> list[dict]:
     return results
 
 
-def enrich_euraxess_rows(rows: list[dict], fetch_page, source_id: str) -> tuple[list[dict], list[dict], bool]:
-    """Read each EURAXESS notice: employer, facts and an official application address."""
+def _names_post(html: str, title: str) -> bool:
+    """True when a page states this vacancy's title (or most of its words)."""
+    text = visible_text(html).lower()
+    if not text or not title:
+        return False
+    words = re.findall(r"\w{5,}", title.lower())[:5]
+    return title.lower()[:40] in text or (bool(words) and sum(word in text for word in words) >= max(2, len(words) - 1))
+
+
+def _euraxess_row_from_notice(row: dict, entry: dict, stored: dict[str, dict]) -> dict:
+    """A listed notice not read again: the stored vacancy stays as it is."""
+    prior = stored.get(str(row.get("sourceUrl")))
+    if entry.get("employerId") and prior is not None:
+        return {**row, "employerId": prior.get("employerId") or entry["employerId"], "_unchangedJobId": prior["id"]}
+    # Read before and not catalogued then (no employer we list, not a
+    # research post, past its deadline): it stays out until it is read again.
+    return {**row, "_quarantineReason": "unchanged-notice-not-catalogued"}
+
+
+def enrich_euraxess_rows(
+    rows: list[dict],
+    fetch_page,
+    source_id: str,
+    *,
+    notices: dict[str, dict] | None = None,
+    stored: dict[str, dict] | None = None,
+    now: datetime | None = None,
+) -> tuple[list[dict], list[dict], bool]:
+    """Read each new EURAXESS notice once: employer, facts and an official application address.
+
+    A notice read before, under the same title and not yet due a refresh, is
+    not fetched again (euraxess_source.notice_due); its stored vacancy stands.
+    """
     from resolve_programme_links import domains_for_institutions
 
     baseline = json.loads((ROOT / "data" / "sources" / "msmt-hei-baseline.json").read_text(encoding="utf-8"))
     hosts = domains_for_institutions(baseline.get("institutions") or [])
     # A research institute's own host only: AV ČR institutes share cas.cz.
     hosts.update(euraxess_source.research_hosts())
+    persist = notices is None
+    notices = euraxess_source.load_notices() if notices is None else notices
+    stored = euraxess_source.stored_jobs_by_url() if stored is None else stored
+    current = now or datetime.now(timezone.utc)
     out: list[dict] = []
     attempts: list[dict] = []
     complete = True
     for row in rows:
+        code = str(row.get("code") or "")
+        entry = notices.get(code)
+        prior = stored.get(str(row.get("sourceUrl")))
+        # A vacancy archived as missing from the listing is read again when the
+        # listing names it once more.
+        relisted = bool(prior) and prior.get("lifecycleStatus") == "unavailable"
+        if not relisted and not euraxess_source.notice_due(entry, str(row.get("title") or ""), code, current):
+            out.append(_euraxess_row_from_notice(row, entry, stored))
+            attempts.append({"sourceId": source_id, "url": row["sourceUrl"], "status": None, "ok": True, "kind": "detail-read-before"})
+            continue
         status, html = fetch_page(row["sourceUrl"])
         ok = page_ok(status, html)
+        if not ok and isinstance(entry, dict) and entry.get("title") == row.get("title"):
+            # Only a refresh failed: what the first read found still holds.
+            out.append(_euraxess_row_from_notice(row, entry, stored))
+            attempts.append({"sourceId": source_id, "url": row["sourceUrl"], "status": status, "ok": True, "kind": "detail-read-before"})
+            continue
         attempts.append({"sourceId": source_id, "url": row["sourceUrl"], "status": status, "ok": ok, "kind": "detail"})
         if not ok:
             complete = False
@@ -3495,6 +3545,7 @@ def enrich_euraxess_rows(rows: list[dict], fetch_page, source_id: str) -> tuple[
         fields = euraxess_source.detail_fields(text)
         employer = euraxess_source.resolve_employer(fields.get("organisation") or "")
         item = {**row, "euraxessOrganisation": fields.get("organisation"), "_factHtml": html}
+        official_post = None
         if employer:
             item["employerId"] = employer
             parsed = parse_generic_job_page(html, row["sourceUrl"], row["title"]) or {}
@@ -3503,7 +3554,23 @@ def enrich_euraxess_rows(rows: list[dict], fetch_page, source_id: str) -> tuple[
                 html, row["sourceUrl"], fields.get("website"), hosts.get(employer, set())
             )
             item["applicationMethod"] = "official_instructions"
+            target = str(item.get("applicationUrl") or "")
+            if urlsplit(target).path.strip("/") and (urlsplit(target).hostname or "") not in euraxess_source.EURAXESS_HOSTS:
+                # The employer's own page carries the post: the recheck and
+                # the live check read it there, not on EURAXESS.
+                official_status, official_html = fetch_page(target)
+                if page_ok(official_status, official_html) and _names_post(official_html, str(row.get("title") or "")):
+                    official_post = target
+        notices[code] = {
+            "url": row["sourceUrl"],
+            "title": row.get("title"),
+            "fetchedAt": current.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "employerId": employer,
+            "officialPostUrl": official_post,
+        }
         out.append(item)
+    if persist:
+        euraxess_source.save_notices(notices)
     return out, attempts, complete
 
 
@@ -4384,6 +4451,8 @@ def discover_registered_candidates(
             continue
 
         found: list[dict] = []
+        # Every notice the EURAXESS listing names, read or not (the day's listing).
+        euraxess_listed: list[dict] = []
         source_complete = True
         quarantine_mark = len(quarantined)
         if parser == "czu_pozice_rest":
@@ -4533,8 +4602,10 @@ def discover_registered_candidates(
                 elif parser == "roboprox_positions":
                     found.extend(parse_roboprox_positions(html, listing_url))
                 elif parser == "euraxess_search":
+                    listed_rows = euraxess_source.parse_search(html, listing_url)
+                    euraxess_listed.extend(listed_rows)
                     euraxess_rows, euraxess_attempts, euraxess_ok = enrich_euraxess_rows(
-                        euraxess_source.parse_search(html, listing_url), fetch_page, source["id"]
+                        listed_rows, fetch_page, source["id"]
                     )
                     found.extend(euraxess_rows)
                     attempts.extend(euraxess_attempts)
@@ -4568,6 +4639,19 @@ def discover_registered_candidates(
                         "kind": "listing",
                         "reason": "pagination-limit-exceeded",
                     }
+                )
+            if parser == "euraxess_search":
+                # The day's listing stands in for each notice in the recheck
+                # and the live title check (euraxess_source.listing_evidence).
+                listing_read = not queue and not any(
+                    attempt.get("kind") == "listing" and not attempt.get("ok")
+                    for attempt in attempts
+                    if attempt.get("sourceId") == source["id"]
+                )
+                euraxess_source.save_listing(
+                    {str(row.get("sourceUrl")): str(row.get("title") or "") for row in euraxess_listed},
+                    listing_read,
+                    datetime.now(timezone.utc),
                 )
 
         unique_found: list[dict] = []
@@ -4603,7 +4687,7 @@ def discover_registered_candidates(
                         "sourceUrl": item.get("sourceUrl"),
                         "title": item.get("title"),
                         **({"employerName": item["employerName"]} if item.get("employerName") else {}),
-                        "reason": "unresolved-legal-employer",
+                        "reason": item.get("_quarantineReason") or "unresolved-legal-employer",
                     }
                 )
                 continue

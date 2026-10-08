@@ -267,5 +267,5 @@ def test_a_record_the_budget_did_not_reach_keeps_its_earlier_confirmation(tmp_pa
     script = ROOT / "services" / "ingestion" / "src" / "cli" / "verify_live_titles.py"
     source = script.read_text(encoding="utf-8")
     # The budget branch carries a confirmed earlier row instead of overwriting it.
-    assert 'previous.get("status") in confirmed' in source
-    assert source.index('previous.get("status") in confirmed') < source.index('"status": "skipped_budget"')
+    budget = source.index("time.time() - started >= args.budget")
+    assert source.index('previous.get("status") in confirmed', budget) < source.index('"status": "skipped_budget"', budget)

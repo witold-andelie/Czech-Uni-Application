@@ -1096,6 +1096,8 @@ def _recheck_open_jobs_unlocked(
     )
     from urllib.parse import parse_qs, urlsplit
 
+    import euraxess_source
+
     from engine.transport import live_fetcher
 
     live_request = fetch_page is None
@@ -1210,6 +1212,32 @@ def _recheck_open_jobs_unlocked(
             if all_windows_closed:
                 closed_count += 1
             continue
+
+        if (urlsplit(url).hostname or "").lower() in euraxess_source.EURAXESS_HOSTS:
+            # Each EURAXESS notice is read once (owner, 2026-10-08): the
+            # employer's own page when it carries the post, else the day's
+            # listing says whether the notice is still posted. EURAXESS
+            # throttles the shared runners, and 59 notice reads a day here
+            # were part of what it throttled.
+            official = euraxess_source.official_post_url(url)
+            if official:
+                url = official
+            else:
+                evidence = euraxess_source.listing_evidence(url, now)
+                job_copy["lastAttemptAt"] = now_text
+                if evidence is None:
+                    job_copy["lastAttemptReason"] = "euraxess_listing_unavailable"
+                elif evidence["listed"]:
+                    http_success_count += 1
+                    job_copy["lastStatusCheckedAt"] = evidence["checkedAt"]
+                    job_copy["lastAttemptReason"] = "listed_on_euraxess"
+                else:
+                    # A complete listing without it: discovery archives it.
+                    job_copy["lastAttemptReason"] = "not_on_euraxess_listing"
+                updated_jobs.append(job_copy)
+                if all_windows_closed:
+                    closed_count += 1
+                continue
 
         lmc_missing = False
         try:

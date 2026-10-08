@@ -304,6 +304,10 @@ jobs:
           python services/ingestion/src/publish.py --check-sources
           git add data/sources/browse/nine-hei-jobs.json
           if [ -f data/sources/coverage/source-health.json ]; then git add data/sources/coverage/source-health.json; fi
+          # Each EURAXESS notice is read once: what was read, and the day's listing.
+          for file in data/sources/coverage/euraxess-notices.json data/sources/coverage/euraxess-listing.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
           git add data/sources/research-institutions.json
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'

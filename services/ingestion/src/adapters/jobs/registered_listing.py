@@ -40,6 +40,9 @@ class HarvestListingAdapter:
         self._reasons: list[str] = []
         self._details_ok = 0
         self._source_rows: int | None = None
+        # Listed vacancies whose notice was read before and is not read again
+        # (EURAXESS): listed, so not archived, and their stored record stands.
+        self.unchanged_job_ids: set[str] = set()
 
     def discover(self, context: dict[str, Any]) -> list[ListingReference]:
         fetch_page = context["fetch_page"]
@@ -92,6 +95,11 @@ class HarvestListingAdapter:
         # reads every official PDF attachment into _factHtml, while the detail
         # page carries only metadata (title, posting and removal dates).
         # Fetching that page again lost every fact in the notice (2026-10-01).
+        unchanged = (reference.extra.get("listing") or {}).get("_unchangedJobId")
+        if unchanged:
+            self.unchanged_job_ids.add(str(unchanged))
+            self._details_ok += 1
+            return []
         embedded = (reference.extra.get("listing") or {}).get("_factHtml")
         if isinstance(embedded, str) and embedded.strip():
             self._details_ok += 1

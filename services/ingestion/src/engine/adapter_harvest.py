@@ -407,7 +407,8 @@ def harvest_adapter_source(
 
         incoming = [candidate_to_harvest_candidate(item, source) for item in outcome["candidates"]]
         remapped = _reuse_stored_identities(incoming, previous or {})
-        listed_ids = {item["id"] for item in incoming}
+        # A listed notice not read again (EURAXESS) keeps its stored record.
+        listed_ids = {item["id"] for item in incoming} | set(getattr(adapter, "unchanged_job_ids", set()))
         # A detail page that belongs to one vacancy is read from its main
         # content; a page several vacancies share keeps entity_scope.
         url_counts: dict[str, int] = {}
@@ -420,7 +421,8 @@ def harvest_adapter_source(
                     item["_factText"] = main_text
         # A vacancy already on file starts from its stored record, so facts no
         # detail page states (a reviewed working language, confirmed pay) stay.
-        stored = [item for item in seed_candidates_from_stored(previous or {}) if item["id"] in listed_ids]
+        incoming_ids = {item["id"] for item in incoming}
+        stored = [item for item in seed_candidates_from_stored(previous or {}) if item["id"] in incoming_ids]
         merged_candidates = _merge_seed_and_discovered(stored, incoming)
         processed = harvest_candidates(merged_candidates, fetch_page, previous or {}, current, sleep_seconds=0)
         scope = {}

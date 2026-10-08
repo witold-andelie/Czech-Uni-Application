@@ -27,6 +27,113 @@ from urllib.parse import urljoin, urlsplit
 ROOT = Path(__file__).resolve().parents[3]
 EURAXESS_HOSTS = {"euraxess.ec.europa.eu", "www.euraxess.cz", "euraxess.cz"}
 
+# Read each notice once (owner, 2026-10-08). EURAXESS throttles GitHub's
+# shared runners after about twenty quick requests; reading every notice of
+# every listing page daily, then again for the recheck and the live check,
+# came to some 220 requests a day. A notice already read is not read again
+# until its title changes or its refresh is due, and the day's listing
+# stands in for the notice in the recheck and the live title check.
+NOTICES_PATH = ROOT / "data" / "sources" / "coverage" / "euraxess-notices.json"
+LISTING_PATH = ROOT / "data" / "sources" / "coverage" / "euraxess-listing.json"
+CANDIDATES_PATH = ROOT / "data" / "sources" / "browse" / "nine-hei-jobs.json"
+NOTICE_REFRESH_DAYS = 7
+# A listing older than this is not evidence that a notice is still posted.
+LISTING_MAX_AGE_HOURS = 72
+
+
+def _read_json(path: Path, default: dict) -> dict:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return default
+    return data if isinstance(data, dict) else default
+
+
+def _write_json(path: Path, payload: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    text = json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + chr(10)
+    temporary.write_bytes(text.encode("utf-8"))
+    temporary.replace(path)
+
+
+def _parse_time(value: object):
+    from datetime import datetime, timezone
+
+    try:
+        stamp = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return stamp if stamp.tzinfo else stamp.replace(tzinfo=timezone.utc)
+
+
+def _iso(moment) -> str:
+    return moment.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def load_notices(path: Path | None = None) -> dict[str, dict]:
+    notices = _read_json(path or NOTICES_PATH, {}).get("notices")
+    return dict(notices) if isinstance(notices, dict) else {}
+
+
+def save_notices(notices: dict[str, dict], path: Path | None = None) -> None:
+    _write_json(path or NOTICES_PATH, {"schemaVersion": 1, "notices": notices})
+
+
+def notice_due(entry: dict | None, title: str, code: str, now) -> bool:
+    """True when a listed notice must be read: new, retitled or due a refresh.
+
+    Refreshes spread over a week by the notice number, so a first full read
+    does not come due again on a single day.
+    """
+    from datetime import timedelta
+
+    if not isinstance(entry, dict) or entry.get("title") != title:
+        return True
+    fetched = _parse_time(entry.get("fetchedAt"))
+    if fetched is None:
+        return True
+    spread = int(re.sub(r"\D", "", code) or 0) % NOTICE_REFRESH_DAYS
+    return now - fetched >= timedelta(days=NOTICE_REFRESH_DAYS + spread)
+
+
+def stored_jobs_by_url(path: Path | None = None) -> dict[str, dict]:
+    """Stored candidate records keyed by their EURAXESS notice URL."""
+    jobs = _read_json(path or CANDIDATES_PATH, {}).get("jobs") or []
+    return {
+        str(job.get("sourceUrl")): job
+        for job in jobs
+        if isinstance(job, dict) and (urlsplit(str(job.get("sourceUrl") or "")).hostname or "").lower() in EURAXESS_HOSTS
+    }
+
+
+def save_listing(notices: dict[str, str], complete: bool, now, path: Path | None = None) -> None:
+    """The day's listing: notice URL -> title, and whether every page was read."""
+    _write_json(path or LISTING_PATH, {"schemaVersion": 1, "checkedAt": _iso(now), "complete": bool(complete), "notices": notices})
+
+
+def listing_evidence(url: str, now, path: Path | None = None) -> dict | None:
+    """What a recent complete listing says of a notice, or None without one.
+
+    {"listed": bool, "title": str | None, "checkedAt": str}
+    """
+    from datetime import timedelta
+
+    listing = _read_json(path or LISTING_PATH, {})
+    checked = _parse_time(listing.get("checkedAt"))
+    if not listing.get("complete") or checked is None or now - checked > timedelta(hours=LISTING_MAX_AGE_HOURS):
+        return None
+    notices = listing.get("notices") if isinstance(listing.get("notices"), dict) else {}
+    return {"listed": url in notices, "title": notices.get(url), "checkedAt": listing.get("checkedAt")}
+
+
+def official_post_url(url: str, path: Path | None = None) -> str | None:
+    """The employer's own page for a notice, when its first read found the post there."""
+    for entry in load_notices(path).values():
+        if isinstance(entry, dict) and entry.get("url") == url and entry.get("officialPostUrl"):
+            return str(entry["officialPostUrl"])
+    return None
+
 # English and other names EURAXESS uses that the official register does not.
 ALIASES = {
     "ceitec mu": "msmt-vs_14000",

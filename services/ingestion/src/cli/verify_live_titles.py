@@ -45,6 +45,7 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
+import euraxess_source  # noqa: E402
 from live_title_matching import (  # noqa: E402
     extract_pdf_text,
     norm,
@@ -59,6 +60,7 @@ OPERATOR_EVIDENCE = ROOT / "data" / "sources" / "coverage" / "live-verification-
 
 TIMEOUT_S = 30
 HOST_DELAY_S = 2.0
+CONFIRMED = {"matched", "operator_verified"}
 RETRY_DELAYS_S = (3.0, 12.0)
 RETRY_STATUSES = {408, 425, 429, 500, 502, 503, 504}
 UA = "Mozilla/5.0 (X11; Linux x86_64) CzechUniApply/0.1 (verification; contact via faculty pages)"
@@ -291,6 +293,41 @@ def apply_operator_evidence(
     return row
 
 
+
+def euraxess_evidence(task: dict[str, Any], previous: dict[str, Any] | None, previous_generated_at: str | None,
+                      now: datetime) -> tuple[str, dict[str, Any] | None]:
+    """Where to check a EURAXESS-sourced candidate, or its row without a fetch.
+
+    Each EURAXESS notice is read once (owner, 2026-10-08): the employer's own
+    page when it carries the post (returned as the URL to fetch), else the
+    day's listing. Unpaced Scrapling reads of notices on throttled runners
+    found no title on a live post two days running (CTU 466323, 2026-10-07/08).
+    """
+    url = task["sourceUrl"]
+    official = euraxess_source.official_post_url(url)
+    if official:
+        return official, None
+    evidence = euraxess_source.listing_evidence(url, now)
+    row = task_meta(task)
+    if evidence and evidence["listed"]:
+        match = title_matches(evidence["title"] or "", task["titles"])
+        row.update(match)
+        row.update({"checkedAt": evidence["checkedAt"], "httpStatus": 200, "finalUrl": url,
+                    "tool": "euraxess_listing", "status": "matched" if match["matched"] else "non_match"})
+        if not match["matched"]:
+            row["reason"] = "titles not found in the day's EURAXESS listing"
+        return url, row
+    if evidence:
+        row.update({"checkedAt": evidence["checkedAt"], "httpStatus": 200, "finalUrl": url, "tool": "euraxess_listing",
+                    "matched": False, "status": "source_change_noted",
+                    "reason": "notice no longer on the complete EURAXESS listing"})
+        return url, row
+    if previous and previous.get("status") in CONFIRMED:
+        return url, {**previous, "carriedFrom": previous.get("carriedFrom") or previous_generated_at}
+    row.update({"status": "skipped_budget", "checkedAt": ts(), "httpStatus": None, "matched": False,
+                "reason": "no recent complete EURAXESS listing"})
+    return url, row
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Live per-candidate source URL verification")
     parser.add_argument("--output", type=Path, default=OUT)
@@ -315,7 +352,7 @@ def main() -> None:
 
     # Unconfirmed and oldest evidence first: in file order a budget-bounded
     # pass skipped the same tail every day, and those records never verified.
-    confirmed = {"matched", "operator_verified"}
+    confirmed = CONFIRMED
 
     def _priority(task: dict[str, Any]) -> tuple[int, str]:
         row = previous_rows.get(task["candidateId"]) or {}
@@ -339,7 +376,15 @@ def main() -> None:
                 continue
             rows.append({**task_meta(task), "status": "skipped_budget", "checkedAt": ts(), "httpStatus": None, "matched": False, "reason": "wall-clock budget exhausted"})
             continue
-        host = urlsplit(task["sourceUrl"]).netloc
+        target = task["sourceUrl"]
+        if (urlsplit(target).hostname or "").lower() in euraxess_source.EURAXESS_HOSTS:
+            target, row = euraxess_evidence(task, previous_rows.get(task["candidateId"]), previous_generated_at,
+                                            datetime.now(timezone.utc))
+            if row is not None:
+                rows.append(row)
+                processed += 0 if row.get("carriedFrom") else 1
+                continue
+        host = urlsplit(target).netloc
         wait = HOST_DELAY_S - (time.time() - last_by_host[host])
         if wait > 0:
             time.sleep(wait)
@@ -348,7 +393,7 @@ def main() -> None:
         row = task_meta(task)
         row["checkedAt"] = ts()
         try:
-            raw = vet_one(task["sourceUrl"])
+            raw = vet_one(target)
         except Exception as exc:
             row.update({"status": "fetch_error", "httpStatus": None, "matched": False, "reason": str(exc)[:400], "tool": "exception"})
             rows.append(row)
