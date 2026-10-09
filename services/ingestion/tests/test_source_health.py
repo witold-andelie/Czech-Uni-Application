@@ -260,3 +260,26 @@ def test_a_host_still_throttling_after_the_backoff_is_left_alone(monkeypatch) ->
                                                timeout=1, now=now, sleep_fn=lambda _s: None)
     assert second.status == 429 and second.deferred and len(calls) == 3
     harvest.clear_host_cooldowns()
+
+
+def test_the_listing_adapter_reads_a_detail_page_from_its_configured_container() -> None:
+    """2026-10-08: UHK's footer menu made a lawyer's notice read as a research post."""
+    from adapters.base import ListingReference
+    from adapters.jobs.registered_listing import HarvestListingAdapter
+
+    source = {"id": "uhk", "url": "https://www.uhk.cz/vr/", "parser": "generic_listing_links",
+              "detailContainerTag": "section", "detailContainerClass": "page-main"}
+    page = ('<section class="page-main"><h1>Právník / Právnička</h1><p>Právní poradenství univerzitě, smlouvy a '
+            'veřejné zakázky. Požadujeme vysokoškolské vzdělání v oboru právo a praxi v oblasti správního práva. '
+            'Nabízíme zázemí veřejné vysoké školy a flexibilní pracovní dobu.</p></section>'
+            '<footer><nav><a href="/veda">Věda a výzkum</a> <a href="/research">Research</a></nav></footer>')
+    ref = ListingReference(remote_id="1", detail_url="https://www.uhk.cz/vr/pravnik", title="Právník / Právnička",
+                           listing_url="https://www.uhk.cz/vr/")
+    adapter = HarvestListingAdapter(source)
+    documents = adapter.fetch_detail(ref, {"fetch_page": lambda url: (200, page)})
+    assert "Věda a výzkum" not in documents[0].body
+    candidate = adapter.normalize(documents, {})[0]
+    assert candidate.catalogue_scope_status == "unspecified" and candidate.track is None
+    missing = HarvestListingAdapter(source)
+    assert missing.fetch_detail(ref, {"fetch_page": lambda url: (200, "<p>no container</p>")}) == []
+    assert missing._reasons == ["missing-configured-detail-container"]

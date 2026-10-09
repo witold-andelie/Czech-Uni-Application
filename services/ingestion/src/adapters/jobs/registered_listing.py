@@ -18,6 +18,7 @@ from harvest_nine_hei_jobs import (
     NOTICE_BUNDLE_FACTS,
     _stable_discovered_id,
     classify_track,
+    configured_detail_html,
     discover_registered_candidates,
     is_notice_bundle,
     parse_generic_job_page,
@@ -129,6 +130,14 @@ class HarvestListingAdapter:
                 self._reasons.append(
                     "removed-detail-page" if status in (404, 410) else "throttled" if status == 429 else "invalid-detail-response"
                 )
+                return []
+            # The source's own content container, as the discovery path reads
+            # it: the whole UHK page put its footer menu ("Věda a výzkum")
+            # into a lawyer's and an investment head's notices, which then
+            # read as research posts (2026-10-08).
+            body = configured_detail_html(body, self.source)
+            if not body:
+                self._reasons.append("missing-configured-detail-container")
                 return []
         self._details_ok += 1
         return [

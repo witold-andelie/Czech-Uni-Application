@@ -55,6 +55,9 @@ for (const locale of LOCALES) {
   test(`mobile nav drawer traps focus (${locale})`, async ({ page }) => {
     await page.setViewportSize(VIEWPORTS.phone);
     await page.goto(`/${locale}/`);
+    // Clicked before MobileNav hydrated under load, the menu never opened
+    // (local precheck, 2026-10-08).
+    await waitForIsland(page, "MobileNav");
     const toggle = page.getByRole("button", { name: msg(locale, "nav.openMenu") });
     await toggle.click();
     const dialog = page.getByRole("dialog");
