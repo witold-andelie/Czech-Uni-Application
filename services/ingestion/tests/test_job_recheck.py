@@ -518,3 +518,25 @@ def test_a_closure_phrase_in_a_condition_does_not_close_a_post():
     closed_posts = ("This position has been filled.", "Applications are closed.", "The call was cancelled.", "Místo je obsazeno.")
     assert [text for text in open_posts if h.page_is_closed(text)] == []
     assert [text for text in closed_posts if not h.page_is_closed(text)] == []
+
+
+def test_a_register_read_listing_far_fewer_programmes_is_not_written(monkeypatch):
+    """2026-10-09: the register is committed daily now; a truncated export must not shrink the index."""
+    import harvest_cscse24_programmes
+    import parse_msmt_programmes
+
+    written: list[int] = []
+    monkeypatch.setattr(harvest_cscse24_programmes, "harvest_one", lambda school, force: {"msmtCode": school["msmtCode"], "status": "ok"})
+    monkeypatch.setattr(harvest_cscse24_programmes, "SLEEP_SECONDS", 0)
+    monkeypatch.setattr(parse_msmt_programmes, "csv_for_code", lambda code: Path("register.csv"))
+    monkeypatch.setattr(parse_msmt_programmes, "write_school_programmes", lambda code, ident, name, records: written.append(len(records)))
+    monkeypatch.setattr(worker, "_register_rows_on_file", lambda code: 191)
+    school = {"msmtCode": "VS_41000", "id": "msmt-vs_41000", "officialName": "CZU"}
+    monkeypatch.setattr(parse_msmt_programmes, "parse_school_csv", lambda path: [{}] * 194)
+    assert worker.harvest_programmes([school], True)[0]["parsedProgrammes"] == 194  # new programmes: written
+    monkeypatch.setattr(parse_msmt_programmes, "parse_school_csv", lambda path: [{}] * 189)
+    assert worker.harvest_programmes([school], True)[0]["parsedProgrammes"] == 189  # two removed: written
+    monkeypatch.setattr(parse_msmt_programmes, "parse_school_csv", lambda path: [{}] * 40)
+    result = worker.harvest_programmes([school], True)[0]
+    assert result["status"] == "suspicious_drop" and result["parsedProgrammes"] == 0
+    assert written == [194, 189]

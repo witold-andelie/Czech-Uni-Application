@@ -308,11 +308,18 @@ jobs:
           for file in data/sources/coverage/euraxess-notices.json data/sources/coverage/euraxess-listing.json; do
             if [ -f "$file" ]; then git add "$file"; fi
           done
+          # The MŠMT register as the shards read it (each school every fifth
+          # day) and the studyin.gov.cz directory (daily): the programme index
+          # programme-links.yml rebuilds follows the register from these. They
+          # were read every day but never committed, so the published index
+          # stayed on the 2026-09-13 register (CZU: 186 rows, register 194).
+          git add data/sources/programmes
+          if [ -f data/sources/admissions/studyin-programmes.json ]; then git add data/sources/admissions/studyin-programmes.json; fi
           git add data/sources/research-institutions.json
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m 'Refresh harvested official job candidates'
+            git commit -m 'Refresh harvested job candidates and the programme register'
             # main moves while a tick runs (link index, reviews, publications):
             # rebase onto it and retry instead of losing the tick's data.
             pushed=false

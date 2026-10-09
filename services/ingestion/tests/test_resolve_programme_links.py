@@ -1891,3 +1891,31 @@ def test_a_link_whose_row_left_the_register_is_retired_with_a_reason() -> None:
     assert retired[0]["reason"] == "row_left_register"
     assert schools == [{"institutionId": "msmt-vs_17000", "resolved": 1, "offerings": 1}]
     assert reasons == {"inv-gone": "x"}  # one school read empty: reasons untouched
+
+
+def test_a_page_whose_row_left_the_register_lowers_the_floor_instead_of_being_kept():
+    """Owner, 2026-10-09: the register is followed automatically (it was lowered by hand on 2026-10-01)."""
+    previous = {
+        "links": {f"r{n}": {"institutionId": "s1", "url": f"https://s1.cz/{n}"} for n in (1, 2, 3)},
+        "unresolved": [],
+        "coverage": {"schools": [{"institutionId": "s1", "resolved": 3, "offerings": 3}]},
+    }
+    shard = {
+        "generatedAt": "2026-10-09T10:00:00Z",
+        "links": {f"r{n}": {"institutionId": "s1", "url": f"https://s1.cz/{n}"} for n in (1, 2)},
+        "unresolved": [],
+        "coverage": {"schools": [{"institutionId": "s1", "resolved": 2, "offerings": 2, "resolvedAt": "2026-10-09T10:00:00Z"}]},
+        "retiredFromRegister": [{"rowId": "r3", "institutionId": "s1", "reason": "row_left_register"}],
+    }
+    kept: list[str] = []
+    payload = rpl.merge_shards(previous, [shard], floor={"s1": 3}, kept_below_floor=kept)
+    assert kept == [] and set(payload["links"]) == {"r1", "r2"}
+    assert payload["leftRegisterThisRun"] == {"s1": ["r3"]}
+    floor_doc = {"resolvedBySchool": {"s1": 3}, "resolvedTotal": 3, "revisionNotes": []}
+    rpl.ratchet_floor(floor_doc, payload, {"s1": 3})
+    assert floor_doc["resolvedBySchool"] == {"s1": 2} and floor_doc["resolvedTotal"] == 2
+    assert "row_left_register" in floor_doc["revisionNotes"][-1] and "r3" in floor_doc["revisionNotes"][-1]
+    # A page lost while its row is still listed is not accepted: the previous links stay.
+    lost = {**shard, "retiredFromRegister": []}
+    payload = rpl.merge_shards(previous, [lost], floor={"s1": 3}, kept_below_floor=kept)
+    assert set(payload["links"]) == {"r1", "r2", "r3"} and kept

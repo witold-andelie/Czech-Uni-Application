@@ -251,6 +251,19 @@ def plan_for_day(
     }
 
 
+# A register read listing fewer than this share of the programmes on file is
+# not written (a truncated export, not a register change).
+REGISTER_DROP_LIMIT = 0.9
+
+
+def _register_rows_on_file(msmt_code: str) -> int:
+    path = ROOT / "data" / "sources" / "programmes" / f"{msmt_code.lower()}.json"
+    try:
+        return len(json.loads(path.read_text(encoding="utf-8")).get("programmes") or [])
+    except (OSError, ValueError):
+        return 0
+
+
 def harvest_programmes(schools: list[dict], force: bool, deadline: float | None = None) -> list[dict]:
     from harvest_cscse24_programmes import SLEEP_SECONDS, harvest_one
     from parse_msmt_programmes import csv_for_code, parse_school_csv, write_school_programmes
@@ -270,6 +283,16 @@ def harvest_programmes(schools: list[dict], force: bool, deadline: float | None 
         path = csv_for_code(school["msmtCode"])
         if result["status"] in {"ok", "skipped_existing"} and path is not None:
             records = parse_school_csv(path)
+            previous = _register_rows_on_file(school["msmtCode"])
+            if records and previous and len(records) < REGISTER_DROP_LIMIT * previous:
+                # The register is now followed and committed daily (2026-10-09):
+                # a read listing far fewer programmes than the file holds is
+                # taken for a truncated export, not a register change, and the
+                # file stays until a later read agrees.
+                result["status"] = "suspicious_drop"
+                result["previousProgrammes"] = previous
+                result["parsedProgrammes"] = 0
+                records = []
             if records:
                 write_school_programmes(school["msmtCode"], school["id"], school["officialName"], records)
                 result["parsedProgrammes"] = len(records)

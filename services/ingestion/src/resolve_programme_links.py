@@ -2402,6 +2402,24 @@ def schools_read(payload: dict) -> set[str]:
     }
 
 
+
+def ratchet_floor(floor_doc: dict, payload: dict, floor: dict[str, int]) -> None:
+    """Raise the floor to what the merged index proves; rows the register dropped lower it."""
+    by_school = {entry["institutionId"]: int(entry.get("resolved") or 0) for entry in payload["coverage"]["schools"]}
+    left = payload.get("leftRegisterThisRun") or {}
+    floor_doc["resolvedBySchool"] = {
+        key: max(value, floor.get(key, 0) - len(left.get(key, []))) for key, value in sorted(by_school.items())
+    }
+    dropped = sum(len(rows) for rows in left.values())
+    floor_doc["resolvedTotal"] = max(int(floor_doc.get("resolvedTotal") or 0) - dropped, payload["counts"]["linked"])
+    if dropped:
+        floor_doc.setdefault("revisionNotes", []).append(
+            f"{payload['generatedAt'][:10]}: lowered automatically by {dropped} because the MŠMT register no "
+            "longer lists these rows, whose school-owned pages were retired (row_left_register): "
+            + "; ".join(f"{school} {', '.join(rows)}" for school, rows in sorted(left.items()))
+        )
+
+
 def merge_shards(
     previous: dict,
     shards: list[dict],
@@ -2426,13 +2444,22 @@ def merge_shards(
         if isinstance(item, dict)
     }
     retired = list(previous.get("retiredFromRegister") or [])
+    left_register: dict[str, list[str]] = {}
     requests = 0
     for shard in shards:
         read = schools_read(shard)
         requests += int(shard.get("requests") or 0)
+        # A page whose register row the MŠMT register dropped is retired, not
+        # lost: the school's floor falls by those rows (owner, 2026-10-09: the
+        # register is followed automatically; it was lowered by hand before).
+        shard_left: dict[str, list[str]] = {}
+        for item in shard.get("retiredFromRegister") or []:
+            if isinstance(item, dict) and item.get("reason") == "row_left_register":
+                shard_left.setdefault(str(item.get("institutionId")), []).append(str(item.get("rowId")))
         for entry in (shard.get("coverage") or {}).get("schools") or []:
             school = str(entry.get("institutionId"))
-            if school in read and int(entry.get("resolved") or 0) < int((floor or {}).get(school, 0)):
+            effective = int((floor or {}).get(school, 0)) - len(shard_left.get(school, []))
+            if school in read and int(entry.get("resolved") or 0) < effective:
                 read.discard(school)
                 if kept_below_floor is not None:
                     kept_below_floor.append(f"{school}: read {entry.get('resolved')}, floor {floor[school]}")
@@ -2445,6 +2472,9 @@ def merge_shards(
         for entry in (shard.get("coverage") or {}).get("schools") or []:
             if entry.get("institutionId") in read:
                 coverage[str(entry["institutionId"])] = entry
+        for school, rows in shard_left.items():
+            if school in read:
+                left_register.setdefault(school, []).extend(rows)
         retired.extend(item for item in shard.get("retiredFromRegister") or [] if item not in retired)
     for ident in set(links) & set(unresolved):
         unresolved.pop(ident)
@@ -2472,6 +2502,7 @@ def merge_shards(
         "links": dict(sorted(links.items())),
         "unresolved": [unresolved[key] for key in sorted(unresolved)],
         "retiredFromRegister": retired,
+        "leftRegisterThisRun": {school: sorted(rows) for school, rows in sorted(left_register.items())},
         "requests": requests,
     }
 
@@ -2515,11 +2546,7 @@ def main() -> None:
         if args.raise_floor and floor_doc:
             # The floor is a ratchet: what the index now proves becomes the
             # least it may prove tomorrow.
-            by_school = {entry["institutionId"]: int(entry.get("resolved") or 0) for entry in payload["coverage"]["schools"]}
-            floor_doc["resolvedBySchool"] = {
-                key: max(value, floor.get(key, 0)) for key, value in sorted(by_school.items())
-            }
-            floor_doc["resolvedTotal"] = max(int(floor_doc.get("resolvedTotal") or 0), payload["counts"]["linked"])
+            ratchet_floor(floor_doc, payload, floor)
             floor_doc["offeringsTotal"] = payload["counts"]["offerings"]
             floor_doc["recordedFromGeneratedAt"] = payload["generatedAt"]
             DEFAULT_FLOOR.write_text(json.dumps(floor_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
