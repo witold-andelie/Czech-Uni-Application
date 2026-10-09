@@ -35,6 +35,9 @@ from harvest_czu_programmes import HarvestIncomplete, visible_text
 
 ROOT = Path(__file__).resolve().parents[3]
 INVENTORY = ROOT / "data" / "sources" / "browse" / "nine-hei-inventory.json"
+# Register offerings an admissions call may not name yet (accredited after
+# it); more than this at once means a call page changed and the pass stops.
+MAX_UNANNOUNCED_OFFERINGS = 2
 OUT = ROOT / "data" / "sources" / "admissions" / "czu-doctoral-programmes.json"
 INSTITUTION_ID = "msmt-vs_41000"
 ACADEMIC_YEAR = "2026/2027"
@@ -563,10 +566,12 @@ def build_catalog(
 
     programmes: list[dict] = []
     faculty_coverage: list[dict] = []
+    unannounced: list[dict] = []
     for faculty in sorted(baseline_faculties):
         rule = FACULTY_RULES[faculty]
         faculty_rows = [item for item in rows if item["faculty"] == faculty]
         faculty_programmes: list[dict] = []
+        faculty_unannounced = 0
         for row in faculty_rows:
             evidence_ids = tuple(rule.get("programmeEvidence", {}).get(row["studyLanguage"], ()))
             if not evidence_ids:
@@ -591,10 +596,33 @@ def build_catalog(
                         matched_variant = alias
                         break
             if not matched_ids:
-                raise HarvestIncomplete(
-                    f"CZU doctoral offering was not found in faculty evidence: "
-                    f"{faculty} / {row['studyLanguage']} / {row['titleOriginal']}"
+                # A register offering the faculty's admissions announcement does
+                # not name: a programme accredited after the call (MŠMT listed
+                # doctoral "Forest Science" at FLD on 2026-10-09, after the
+                # 2026/2027 call, and the whole pass stopped). It is kept with
+                # no window, never inferred open; several at once mean the page
+                # changed, and the pass stops below.
+                unannounced.append(
+                    {
+                        **row,
+                        "institutionId": INSTITUTION_ID,
+                        "sourceLanguage": row["studyLanguage"],
+                        "facultySlug": rule["slug"],
+                        "academicYear": ACADEMIC_YEAR,
+                        "officialProgrammeEvidenceUrls": [],
+                        "admissionEvidenceUrls": [],
+                        "matchedSourceIds": [],
+                        "sourceTitleVariant": None,
+                        "applicationWindows": [],
+                        "applicationStatus": "unknown",
+                        "admissionAnnouncement": "not_in_current_announcement",
+                        "applyUrl": rule.get("applyUrl", GENERAL_APPLY_URL),
+                        "generalApplyPortalUrl": GENERAL_APPLY_URL,
+                        "publicationStatus": "candidate_not_published",
+                    }
                 )
+                faculty_unannounced += 1
+                continue
 
             windows = _verified_windows(rule, row["studyLanguage"], assets, now)
             if not windows:
@@ -627,6 +655,7 @@ def build_catalog(
                 "facultySlug": rule["slug"],
                 "baselineOfferings": len(faculty_rows),
                 "matchedOfferings": len(faculty_programmes),
+                "offeringsNotInAnnouncement": faculty_unannounced,
                 "offeringsWithOfficialWindow": sum(
                     bool(item["applicationWindows"]) for item in faculty_programmes
                 ),
@@ -642,6 +671,12 @@ def build_catalog(
             }
         )
 
+    if len(unannounced) > MAX_UNANNOUNCED_OFFERINGS:
+        raise HarvestIncomplete(
+            "CZU doctoral offerings were not found in faculty evidence: "
+            + "; ".join(f"{item['faculty']} / {item['studyLanguage']} / {item['titleOriginal']}" for item in unannounced)
+        )
+    programmes.extend(unannounced)
     programmes.sort(key=lambda item: (item["studyLanguage"], item["titleOriginal"].casefold()))
     statuses = Counter(item["applicationStatus"] for item in programmes)
     languages = Counter(item["studyLanguage"] for item in programmes)
@@ -667,7 +702,8 @@ def build_catalog(
             "programmes": len(programmes),
             "faculties": len(faculty_coverage),
             "teachingLanguages": dict(sorted(languages.items())),
-            "matchedToFacultyAdmissionEvidence": len(programmes),
+            "matchedToFacultyAdmissionEvidence": len(programmes) - len(unannounced),
+            "notInCurrentAdmissionAnnouncement": len(unannounced),
             "withAnyOfficialWindow": sum(bool(item["applicationWindows"]) for item in programmes),
             "withAtLeastOneCompleteWindow": complete_window_programmes,
             "applicationWindowRecords": len(all_windows),
@@ -693,7 +729,7 @@ def build_catalog(
                 "cross-checked against the six faculties' official 2026/2027 admissions evidence"
             ),
             "baselineOfferings": len(rows),
-            "matchedOfferings": len(programmes),
+            "matchedOfferings": len(programmes) - len(unannounced),
             "baselineFaculties": len(baseline_faculties),
             "facultiesWithProgrammeAndWindowEvidence": len(faculty_coverage),
             "facultyCoverage": faculty_coverage,

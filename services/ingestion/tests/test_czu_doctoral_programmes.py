@@ -130,3 +130,45 @@ def test_czu_doctoral_refresh_has_independent_two_hour_clock(
     assert task["lastSuccessAt"] == to_iso(now)
     assert task["nextDueAt"] == to_iso(now + timedelta(hours=24))
     assert state["czuCzechProgrammeAvailability"]["lastSuccessAt"] is None
+
+
+def _drop_titles(assets: dict[str, dict], count: int) -> list[str]:
+    """Remove `count` register titles from the faculty evidence they were matched in."""
+    rows = doctoral._load_doctoral_inventory(_inventory())
+    expected = {token for spec in doctoral.SOURCE_ASSETS for token in spec.get("expectedTokens", ())}
+    dropped: list[str] = []
+    for row in rows:
+        title = row["titleOriginal"]
+        evidence = doctoral.FACULTY_RULES[row["faculty"]]["programmeEvidence"][row["studyLanguage"]]
+        texts = [assets[source_id]["text"] for source_id in evidence]
+        if title in expected or any(text.count(title) != 1 for text in texts) or title == "Ochrana lesů a myslivosti":
+            continue
+        if any(title in other["titleOriginal"] and other is not row for other in rows):
+            continue
+        for source_id in evidence:
+            assets[source_id]["text"] = assets[source_id]["text"].replace(f" {title}", "")
+        dropped.append(title)
+        if len(dropped) == count:
+            return dropped
+    raise AssertionError("not enough droppable titles")
+
+
+def test_a_register_offering_the_admissions_call_does_not_name_is_kept_without_a_window() -> None:
+    """2026-10-09: MŠMT listed doctoral "Forest Science" at FLD after the 2026/2027 call."""
+    assets = _complete_assets()
+    (title,) = _drop_titles(assets, 1)
+    payload = doctoral.build_catalog(_inventory(), assets, now=datetime(2026, 10, 9, 12, 0, tzinfo=timezone.utc))
+    kept = next(item for item in payload["programmes"] if item["titleOriginal"] == title)
+    assert kept["applicationWindows"] == [] and kept["applicationStatus"] == "unknown"
+    assert kept["admissionAnnouncement"] == "not_in_current_announcement"
+    assert payload["counts"]["programmes"] == 60
+    assert payload["counts"]["notInCurrentAdmissionAnnouncement"] == 1
+    assert payload["counts"]["matchedToFacultyAdmissionEvidence"] == 59
+    assert payload["coverage"]["complete"] is False
+
+
+def test_many_offerings_missing_from_the_calls_still_stop_the_pass() -> None:
+    assets = _complete_assets()
+    _drop_titles(assets, 3)
+    with pytest.raises(doctoral.HarvestIncomplete, match="were not found in faculty evidence"):
+        doctoral.build_catalog(_inventory(), assets, now=datetime(2026, 10, 9, 12, 0, tzinfo=timezone.utc))
