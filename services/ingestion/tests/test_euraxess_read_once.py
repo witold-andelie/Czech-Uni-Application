@@ -278,3 +278,43 @@ def test_an_incomplete_read_keeps_a_complete_listing_that_still_stands():
     euraxess_source.save_listing({}, False, later)
     assert euraxess_source.listing_evidence(url(1), later) is None
     assert json.loads(euraxess_source.LISTING_PATH.read_text(encoding="utf-8"))["checkedAt"] == iso(later)
+
+
+def test_a_post_an_official_listing_decides_is_checked_there_once_per_run(monkeypatch):
+    """2026-10-10: the 17 RoboProx posts link EURAXESS notices, whose search the
+    runners cannot read; CIIRC's own table decides them and names them all."""
+    import verify_live_titles as v
+
+    roboprox = "https://www.ciirc.cvut.cz/roboprox/job-positions/"
+    task = {"candidateId": "job-21000-02-postdoc-hoffmann", "employerId": "msmt-vs_21000",
+            "sourceUrl": "https://www.euraxess.cz/jobs/190055", "applicationUrl": roboprox, "sourceHash": "sha256:x",
+            "discoverySourceId": "ctu-ciirc-roboprox-positions",
+            "titles": [{"locale": "en", "title": "Postdoc Position – Robots with whole-body tactile sensing"}]}
+    assert v.euraxess_evidence(task, None, None, NOW) == (roboprox, None)
+    found_on_euraxess = {**task, "discoverySourceId": SOURCE_ID}
+    assert v.euraxess_evidence(found_on_euraxess, None, None, NOW)[1]["status"] == "skipped_budget"
+
+    second = {**task, "candidateId": "job-21000-01-postdoc-janota", "sourceUrl": "https://www.euraxess.cz/jobs/190056",
+              "titles": [{"locale": "en", "title": "Postdoc position in Applied Logic-based Reasoning"}]}
+    monkeypatch.setattr(v, "load_tasks", lambda _status: [task, second])
+    monkeypatch.setattr(v, "HOST_DELAY_S", 0)
+    page = ("<table><tr><td>02-Postdoc-Hoffmann</td><td>Postdoc Position &#8211; Robots with whole-body tactile sensing</td>"
+            "<td>Open</td></tr><tr><td>01-Postdoc-Janota</td><td>Postdoc position in Applied Logic-based Reasoning</td>"
+            "<td>Open</td></tr></table>")
+    fetched: list[str] = []
+
+    def vet(url):
+        fetched.append(url)
+        return {"httpStatus": 200, "finalUrl": url, "tool": "scrapling_get", "bodyText": page, "blocked": False, "blockedReasons": []}
+
+    monkeypatch.setattr(v, "vet_one", vet)
+    out = euraxess_source.LISTING_PATH.parent / "live.json"
+    monkeypatch.setattr(sys, "argv", ["verify_live_titles.py", "--output", str(out), "--no-merge",
+                                      "--operator-evidence", str(out.parent / "none.json")])
+    try:
+        v.main()
+    except SystemExit as stop:
+        assert stop.code == 0
+    rows = {row["candidateId"]: row for row in json.loads(out.read_text(encoding="utf-8"))["rows"]}
+    assert fetched == [roboprox]
+    assert {row["status"] for row in rows.values()} == {"matched"}

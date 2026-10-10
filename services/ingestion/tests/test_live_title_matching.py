@@ -92,6 +92,13 @@ def test_norm_collapses_entities_and_whitespace() -> None:
     assert norm_title("  PhD student ") == "phd student"
 
 
+def test_an_entity_dash_on_the_page_matches_the_title_dash() -> None:
+    """2026-10-10: the RoboProx table writes "&#8211;"; the dash stayed past the folding."""
+    page = '<td><a href="https://www.euraxess.cz/jobs/190055">Postdoc Position &#8211; Robots with whole-body tactile sensing</a></td>'
+    assert norm(page) == norm("Postdoc Position – Robots with whole-body tactile sensing")
+    assert title_matches(page, _titles(en="Postdoc Position – Robots with whole-body tactile sensing"))["matched"] is True
+
+
 def test_extract_pdf_text_reports_failure_without_inventing_text() -> None:
     text = extract_pdf_text(b"not a pdf at all")
     assert "error" in text.lower()

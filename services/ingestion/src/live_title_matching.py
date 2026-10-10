@@ -56,6 +56,10 @@ def norm(text: Any) -> str:
         return ""
     text = unicodedata.normalize("NFC", text)
     text = TAG.sub(" ", text)
+    # Entities before the folding below: the RoboProx table writes "&#8211;"
+    # for the dash, which stayed a dash past it while the title's folded to
+    # "-", and a post the official page lists did not match (2026-10-10).
+    text = html.unescape(text)
     text = (
         text.replace(" ", " ")
         .replace("‑", "-")
@@ -65,7 +69,6 @@ def norm(text: Any) -> str:
         .replace("（", "(")
         .replace("）", ")")
     )
-    text = html.unescape(text)
     return WS.sub(" ", text).strip().lower()
 
 

@@ -38,6 +38,7 @@ import sys
 import time
 from collections import defaultdict
 from datetime import datetime, timezone
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
@@ -213,6 +214,7 @@ def load_tasks(only_status: str) -> list[dict[str, Any]]:
                 "applicationUrl": job.get("applicationUrl"),
                 "sourceHash": source_hash.get(job["id"]),
                 "titles": titles,
+                "discoverySourceId": job.get("discoverySourceId"),
             }
         )
     return tasks
@@ -294,6 +296,31 @@ def apply_operator_evidence(
 
 
 
+@lru_cache(maxsize=1)
+def _deciding_listings() -> dict[str, str]:
+    """Registered official listings whose own table decides a post's openness, by source id."""
+    from harvest_nine_hei_jobs import load_registered_job_sources
+    from worker import LISTING_DECIDES_OPENNESS
+
+    return {
+        str(source["id"]): str(source["url"])
+        for source in load_registered_job_sources()
+        if source.get("parser") in LISTING_DECIDES_OPENNESS
+    }
+
+
+def official_listing_page(task: dict[str, Any]) -> str | None:
+    """The official listing that found a post and decides whether it is open.
+
+    CIIRC RoboProx links each open position's EURAXESS notice, and its own
+    table is the authority on the post (worker.LISTING_DECIDES_OPENNESS): the
+    post is checked there, on the official site (A112). EURAXESS search is
+    unreadable from GitHub's runners (2026-10-10), so these 17 posts had kept
+    only the confirmation of 10-08 and would all have lapsed after seven days.
+    """
+    return _deciding_listings().get(str(task.get("discoverySourceId") or ""))
+
+
 def euraxess_evidence(task: dict[str, Any], previous: dict[str, Any] | None, previous_generated_at: str | None,
                       now: datetime) -> tuple[str, dict[str, Any] | None]:
     """Where to check a EURAXESS-sourced candidate, or its row without a fetch.
@@ -304,7 +331,7 @@ def euraxess_evidence(task: dict[str, Any], previous: dict[str, Any] | None, pre
     found no title on a live post two days running (CTU 466323, 2026-10-07/08).
     """
     url = task["sourceUrl"]
-    official = euraxess_source.official_post_url(url)
+    official = euraxess_source.official_post_url(url) or official_listing_page(task)
     if official:
         return official, None
     evidence = euraxess_source.listing_evidence(url, now)
@@ -361,6 +388,7 @@ def main() -> None:
     tasks.sort(key=_priority)
     started = time.time()
     last_by_host: dict[str, float] = defaultdict(float)
+    pages: dict[str, dict[str, Any]] = {}
     rows: list[dict[str, Any]] = []
     processed = 0
     for task in tasks:
@@ -385,15 +413,19 @@ def main() -> None:
                 processed += 0 if row.get("carriedFrom") else 1
                 continue
         host = urlsplit(target).netloc
-        wait = HOST_DELAY_S - (time.time() - last_by_host[host])
-        if wait > 0:
-            time.sleep(wait)
-        last_by_host[host] = time.time()
+        # One read per page and run: a listing that names several posts (the
+        # RoboProx table names 17) is fetched once, not once per post.
+        raw = pages.get(target)
+        if raw is None:
+            wait = HOST_DELAY_S - (time.time() - last_by_host[host])
+            if wait > 0:
+                time.sleep(wait)
+            last_by_host[host] = time.time()
 
         row = task_meta(task)
         row["checkedAt"] = ts()
         try:
-            raw = vet_one(target)
+            raw = raw if raw is not None else pages.setdefault(target, vet_one(target))
         except Exception as exc:
             row.update({"status": "fetch_error", "httpStatus": None, "matched": False, "reason": str(exc)[:400], "tool": "exception"})
             rows.append(row)
