@@ -234,8 +234,16 @@ def _fold(value: object) -> str:
     return re.sub(r"[^a-z0-9]+", " ", text).strip()
 
 
-def programme_details(schools: list[dict], studyin: dict) -> dict[str, list]:
-    """studyin.gov.cz facts per register row, only where exactly one record matches."""
+def programme_details(schools: list[dict], studyin: dict, previous: dict[str, list] | None = None) -> dict[str, list]:
+    """studyin.gov.cz facts per register row, only where exactly one record matches.
+
+    Where the portal lists one programme on two pages (2026-10-10: a second
+    page for 78 programmes, most of them Charles University's under an English
+    address), the page the row was matched to before (``previous``, the
+    committed details) still decides if it is one of the matches; otherwise
+    the row gets no facts rather than a guessed page.
+    """
+    previous = previous or {}
     by_key: dict[tuple, list[dict]] = {}
     by_loose: dict[tuple, list[dict]] = {}
     for record in studyin.get("programmes") or []:
@@ -256,7 +264,16 @@ def programme_details(schools: list[dict], studyin: dict) -> dict[str, list]:
             if not found:
                 found = {id(item): item for item in by_loose.get(base, [])}
             if len(found) != 1:
-                continue
+                before = previous.get(ident)
+                path = before[5] if isinstance(before, list) and len(before) > 5 and before[5] else None
+                kept = [
+                    item
+                    for item in found.values()
+                    if path and str(item.get("officialDirectoryUrl") or "") == STUDYIN_PREFIX + str(path)
+                ]
+                if len(kept) != 1:
+                    continue
+                found = {id(kept[0]): kept[0]}
             record = next(iter(found.values()))
             url = str(record.get("officialDirectoryUrl") or "")
             if not url.startswith(STUDYIN_PREFIX):
@@ -286,14 +303,28 @@ def programme_details(schools: list[dict], studyin: dict) -> dict[str, list]:
     return details
 
 
-def stamp_programme_details(payload: dict) -> dict:
+def committed_programme_details() -> dict[str, list]:
+    """The studyin facts the committed inventory carries, by row id."""
+    try:
+        committed = json.loads((OUT_DIR / "nine-hei-inventory.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    details = committed.get("programmeDetails") if isinstance(committed, dict) else None
+    return details if isinstance(details, dict) else {}
+
+
+def stamp_programme_details(payload: dict, previous: dict[str, list] | None = None) -> dict:
     if not STUDYIN.is_file():
         return payload
     try:
         studyin = json.loads(STUDYIN.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return payload
-    details = programme_details(payload.get("schools") or [], studyin)
+    details = programme_details(
+        payload.get("schools") or [],
+        studyin,
+        committed_programme_details() if previous is None else previous,
+    )
     payload["programmeDetails"] = dict(sorted(details.items()))
     payload["programmeDetailNote"] = PROGRAMME_DETAIL_NOTE
     payload["counts"]["programmesWithDetails"] = len(details)

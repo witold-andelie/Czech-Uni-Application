@@ -126,3 +126,36 @@ def test_programme_link_must_sit_on_the_row_owners_domain(tmp_path: Path, monkey
     assert stamped["counts"]["linkedProgrammes"] == 1
     assert report["droppedForeignDomain"] == 1
     assert report["droppedUnknownRow"] == 1
+
+
+def test_a_programme_the_portal_lists_twice_keeps_the_page_it_was_matched_to() -> None:
+    """2026-10-10: studyin.gov.cz gave 78 programmes a second page (most of them
+    Charles University's, under an English address); "exactly one match"
+    dropped their facts. The page proven before still decides, if it is one of
+    the matches; a page the portal removed is not kept, and nothing is guessed."""
+    from build_nine_hei_inventory import STUDYIN_PREFIX, programme_details
+
+    schools = [{"id": "msmt-vs_11000", "rows": [
+        ["inv-geo", "Aplikovaná geografie", "b", "Přírodovědecká fakulta", 3, "cs", "0532"],
+        ["inv-gone", "Geologie", "b", "Přírodovědecká fakulta", 3, "cs", "0532"],
+    ]}]
+
+    def record(slug: str, title: str, forms: list[str]) -> dict:
+        return {"institutionId": "msmt-vs_11000", "degree": "b", "studyLanguage": "cs", "titles": {"cs": title},
+                "facultyNames": {"cs": "Přírodovědecká fakulta"}, "city": "Praha", "studyForms": {"en": forms},
+                "officialDirectoryUrl": f"{STUDYIN_PREFIX}charles-university/{slug}"}
+
+    studyin = {"programmes": [
+        record("aplikovana-geografie", "Aplikovaná geografie", ["full-time"]),
+        record("applied-geography", "Aplikovaná geografie", ["full-time", "combined"]),
+        record("geologie-1", "Geologie", []),
+        record("geology", "Geologie", ["full-time"]),
+    ]}
+    previous = {
+        "inv-geo": ["Praha", "P", None, None, None, "charles-university/aplikovana-geografie"],
+        "inv-gone": ["Praha", "P", None, None, None, "charles-university/geologie"],
+    }
+    assert programme_details(schools, studyin) == {}
+    details = programme_details(schools, studyin, previous)
+    assert list(details) == ["inv-geo"]
+    assert details["inv-geo"][5] == "charles-university/aplikovana-geografie"
