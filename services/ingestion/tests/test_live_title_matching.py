@@ -99,6 +99,14 @@ def test_an_entity_dash_on_the_page_matches_the_title_dash() -> None:
     assert title_matches(page, _titles(en="Postdoc Position – Robots with whole-body tactile sensing"))["matched"] is True
 
 
+def test_curly_quotes_on_the_page_match_the_title() -> None:
+    """2026-10-10: CTU's 6G PhD notice shows its title verbatim and matched nothing."""
+    page = "Posted on: 16 September 2026 PhD position in “Semantic Communication for Robots” Apply now"
+    titles = _titles(en="PhD position in “Semantic Communication for Robots”", cs='Doktorská pozice "Sémantické komunikace"')
+    assert title_matches(page, titles)["matched"] is True
+    assert norm("„Univerzita“ ‘x’") == norm("\"Univerzita\" 'x'")
+
+
 def test_extract_pdf_text_reports_failure_without_inventing_text() -> None:
     text = extract_pdf_text(b"not a pdf at all")
     assert "error" in text.lower()

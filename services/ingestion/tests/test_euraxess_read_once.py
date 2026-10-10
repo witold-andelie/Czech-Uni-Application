@@ -318,3 +318,83 @@ def test_a_post_an_official_listing_decides_is_checked_there_once_per_run(monkey
     rows = {row["candidateId"]: row for row in json.loads(out.read_text(encoding="utf-8"))["rows"]}
     assert fetched == [roboprox]
     assert {row["status"] for row in rows.values()} == {"matched"}
+
+
+def _notice_page(code: int, title: str) -> str:
+    return (f'<html><head><link rel="canonical" href="https://euraxess.ec.europa.eu/jobs/{code}" /></head>'
+            f"<body><h1>{title}</h1><p>Job Information Organisation/Company Czech Technical University in Prague</p></body></html>")
+
+
+def test_without_a_listing_a_post_is_read_on_its_notice_at_most_every_four_days():
+    """Owner decision 2026-10-10: the runners cannot read the EURAXESS search."""
+    import verify_live_titles as v
+
+    task = {"candidateId": "job-21000-eu466323", "employerId": "msmt-vs_21000", "sourceUrl": url(466323),
+            "applicationUrl": "https://6gmobile.fel.cvut.cz/", "sourceHash": "sha256:x", "discoverySourceId": SOURCE_ID,
+            "titles": [{"locale": "en", "title": "PhD position in “Semantic Communication for Robots”"}]}
+    assert v.euraxess_evidence(task, None, None, NOW, notice_reads_left=1) == (url(466323), None)
+    assert v.euraxess_evidence(task, None, None, NOW)[1]["status"] == "skipped_budget"  # no reads left
+    read = {"candidateId": task["candidateId"], "status": "matched", "httpStatus": 200}
+    two_days = {**read, "checkedAt": iso(NOW - timedelta(days=2))}
+    assert v.euraxess_evidence(task, two_days, "gen-1", NOW, notice_reads_left=5)[1]["carriedFrom"] == "gen-1"
+    four_days = {**read, "checkedAt": iso(NOW - timedelta(days=4))}
+    assert v.euraxess_evidence(task, four_days, "gen-1", NOW, notice_reads_left=5) == (url(466323), None)
+    gone = {**read, "status": "http_404", "httpStatus": 404, "checkedAt": iso(NOW - timedelta(days=1))}
+    assert v.euraxess_evidence(task, gone, "gen-1", NOW, notice_reads_left=5)[1]["status"] == "http_404"  # not re-read daily
+
+    assert euraxess_source.notice_page_problem(_notice_page(466323, "PhD"), url(466323)) is None
+    assert euraxess_source.notice_page_problem("<p>Search results (6738)</p>", url(466323)) == "not-the-notice"
+    assert euraxess_source.notice_page_problem(_notice_page(466324, "PhD"), url(466323)) == "not-the-notice"
+
+
+def test_notice_reads_are_capped_and_a_refusal_ends_them_without_withholding(monkeypatch):
+    import verify_live_titles as v
+
+    def task(code: int) -> dict:
+        return {"candidateId": f"job-21000-eu{code}", "employerId": "msmt-vs_21000", "sourceUrl": url(code),
+                "applicationUrl": "https://www.cvut.cz/en", "sourceHash": "sha256:x", "discoverySourceId": SOURCE_ID,
+                "titles": [{"locale": "en", "title": f"Doctoral position number {code} in robotics"}]}
+
+    monkeypatch.setattr(v, "load_tasks", lambda _status: [task(code) for code in (101, 102, 103, 104)])
+    monkeypatch.setattr(v, "HOST_DELAY_S", 0)
+    monkeypatch.setattr(v, "NOTICE_READS_PER_RUN", 3)
+    out = euraxess_source.LISTING_PATH.parent / "live.json"
+    aging = {"candidateId": "job-21000-eu103", "status": "matched", "httpStatus": 200,
+             "checkedAt": iso(datetime.now(timezone.utc) - timedelta(days=6))}
+    answers: dict[str, tuple[int, str]] = {}
+    fetched: list[str] = []
+
+    def vet(target):
+        fetched.append(target)
+        code = int(target.rsplit("/", 1)[1])
+        status, body = answers.get(target, (200, _notice_page(code, f"Doctoral position number {code} in robotics")))
+        return {"httpStatus": status, "finalUrl": target, "tool": "scrapling_get", "bodyText": body,
+                "blocked": False, "blockedReasons": []}
+
+    def run() -> dict[str, dict]:
+        fetched.clear()
+        out.write_text(json.dumps({"generatedAt": "gen-1", "rows": [aging]}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["verify_live_titles.py", "--output", str(out),
+                                          "--operator-evidence", str(out.parent / "none.json")])
+        try:
+            v.main()
+        except SystemExit:
+            pass
+        return {row["candidateId"]: row for row in json.loads(out.read_text(encoding="utf-8"))["rows"]}
+
+    monkeypatch.setattr(v, "vet_one", vet)
+    rows = run()
+    # Never-confirmed posts first, then the oldest confirmation; three reads.
+    assert fetched == [url(101), url(102), url(104)]
+    assert {rows[f"job-21000-eu{code}"]["status"] for code in (101, 102, 104)} == {"matched"}
+    assert rows["job-21000-eu103"]["carriedFrom"] == "gen-1"
+
+    answers[url(101)] = (200, "<p>Search results (6738)</p>")  # the runner's unfiltered page
+    rows = run()
+    assert fetched == [url(101)]  # not the notice: no further notice this run
+    assert rows["job-21000-eu101"]["status"] == "skipped_budget" and "not-the-notice" in rows["job-21000-eu101"]["reason"]
+    assert rows["job-21000-eu103"]["status"] == "matched" and rows["job-21000-eu103"]["carriedFrom"]  # kept, not withheld
+
+    answers[url(101)] = (429, "")
+    run()
+    assert fetched == [url(101)]  # a 429 ends them too

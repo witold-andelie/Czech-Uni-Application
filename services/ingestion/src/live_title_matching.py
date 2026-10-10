@@ -68,6 +68,15 @@ def norm(text: Any) -> str:
         .replace("／", "/")
         .replace("（", "(")
         .replace("）", ")")
+        # Both sides, not only the title: the page kept its curly quotes while
+        # norm_title folded the title's, and CTU's 6G PhD notice, which shows
+        # its title verbatim, matched nothing in a 2026-10-10 replay (the same
+        # post had found no title on 10-07 and 10-08).
+        .replace("“", '"')
+        .replace("”", '"')
+        .replace("„", '"')
+        .replace("‘", "'")
+        .replace("’", "'")
     )
     return WS.sub(" ", text).strip().lower()
 

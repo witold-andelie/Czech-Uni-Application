@@ -37,7 +37,7 @@ import json
 import sys
 import time
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -62,6 +62,16 @@ OPERATOR_EVIDENCE = ROOT / "data" / "sources" / "coverage" / "live-verification-
 TIMEOUT_S = 30
 HOST_DELAY_S = 2.0
 CONFIRMED = {"matched", "operator_verified"}
+# Owner decision 2026-10-10: GitHub's runners cannot read the EURAXESS search
+# (a317b98), so with no complete listing a post's notice page is read itself,
+# bounded: a post read within NOTICE_CHECK_DAYS is not read again, at most
+# NOTICE_READS_PER_RUN notices are read per run, and a 429 or a page that is
+# not the notice ends them for the run. Four days leaves three to read a post
+# again before its seven-day confirmation lapses; some thirty posts come to
+# about eight EURAXESS requests a day, within A112's budget of about twenty.
+# The employer's own page still comes first.
+NOTICE_CHECK_DAYS = 4
+NOTICE_READS_PER_RUN = 15
 RETRY_DELAYS_S = (3.0, 12.0)
 RETRY_STATUSES = {408, 425, 429, 500, 502, 503, 504}
 UA = "Mozilla/5.0 (X11; Linux x86_64) CzechUniApply/0.1 (verification; contact via faculty pages)"
@@ -151,7 +161,9 @@ def vet_one(url: str) -> dict[str, Any]:
         }
 
     body_l = body.lower()
-    needs_dynamic = (
+    # A 429 is never answered with a browser: another tool sends more
+    # requests to a host asking for fewer (as engine.transport, 2026-10-06).
+    needs_dynamic = status != 429 and (
         status == 0
         or not body.strip()
         or body_l.count("</") == 0
@@ -321,14 +333,28 @@ def official_listing_page(task: dict[str, Any]) -> str | None:
     return _deciding_listings().get(str(task.get("discoverySourceId") or ""))
 
 
+def _read_within(previous: dict[str, Any] | None, now: datetime, days: int) -> bool:
+    """Whether an earlier run read this post (any outcome) within ``days``."""
+    if not previous or (previous.get("httpStatus") is None and previous.get("status") not in CONFIRMED):
+        return False
+    try:
+        checked = datetime.strptime(str(previous.get("checkedAt")), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return False
+    return now - checked < timedelta(days=days)
+
+
 def euraxess_evidence(task: dict[str, Any], previous: dict[str, Any] | None, previous_generated_at: str | None,
-                      now: datetime) -> tuple[str, dict[str, Any] | None]:
+                      now: datetime, *, notice_reads_left: int = 0) -> tuple[str, dict[str, Any] | None]:
     """Where to check a EURAXESS-sourced candidate, or its row without a fetch.
 
     Each EURAXESS notice is read once (owner, 2026-10-08): the employer's own
     page when it carries the post (returned as the URL to fetch), else the
-    day's listing. Unpaced Scrapling reads of notices on throttled runners
-    found no title on a live post two days running (CTU 466323, 2026-10-07/08).
+    day's listing. (CTU 466323 found no title on its live notice on 10-07 and
+    10-08: the matcher folded the title's curly quotes but not the page's.)
+    Without a complete listing the notice itself is returned to fetch, when
+    the run still has ``notice_reads_left`` and the post was not read within
+    NOTICE_CHECK_DAYS (owner, 2026-10-10); otherwise the earlier row stands.
     """
     url = task["sourceUrl"]
     official = euraxess_source.official_post_url(url) or official_listing_page(task)
@@ -349,7 +375,10 @@ def euraxess_evidence(task: dict[str, Any], previous: dict[str, Any] | None, pre
                     "matched": False, "status": "source_change_noted",
                     "reason": "notice no longer on the complete EURAXESS listing"})
         return url, row
-    if previous and previous.get("status") in CONFIRMED:
+    recent = _read_within(previous, now, NOTICE_CHECK_DAYS)
+    if notice_reads_left > 0 and not recent:
+        return url, None  # no complete listing: the notice itself (owner, 2026-10-10)
+    if previous and (previous.get("status") in CONFIRMED or recent):
         return url, {**previous, "carriedFrom": previous.get("carriedFrom") or previous_generated_at}
     row.update({"status": "skipped_budget", "checkedAt": ts(), "httpStatus": None, "matched": False,
                 "reason": "no recent complete EURAXESS listing"})
@@ -389,6 +418,7 @@ def main() -> None:
     started = time.time()
     last_by_host: dict[str, float] = defaultdict(float)
     pages: dict[str, dict[str, Any]] = {}
+    notice_reads = 0
     rows: list[dict[str, Any]] = []
     processed = 0
     for task in tasks:
@@ -405,13 +435,17 @@ def main() -> None:
             rows.append({**task_meta(task), "status": "skipped_budget", "checkedAt": ts(), "httpStatus": None, "matched": False, "reason": "wall-clock budget exhausted"})
             continue
         target = task["sourceUrl"]
+        reading_notice = False
         if (urlsplit(target).hostname or "").lower() in euraxess_source.EURAXESS_HOSTS:
             target, row = euraxess_evidence(task, previous_rows.get(task["candidateId"]), previous_generated_at,
-                                            datetime.now(timezone.utc))
+                                            datetime.now(timezone.utc),
+                                            notice_reads_left=NOTICE_READS_PER_RUN - notice_reads)
             if row is not None:
                 rows.append(row)
                 processed += 0 if row.get("carriedFrom") else 1
                 continue
+            reading_notice = (urlsplit(target).hostname or "").lower() in euraxess_source.EURAXESS_HOSTS
+            notice_reads += 1 if reading_notice else 0
         host = urlsplit(target).netloc
         # One read per page and run: a listing that names several posts (the
         # RoboProx table names 17) is fetched once, not once per post.
@@ -429,6 +463,23 @@ def main() -> None:
         except Exception as exc:
             row.update({"status": "fetch_error", "httpStatus": None, "matched": False, "reason": str(exc)[:400], "tool": "exception"})
             rows.append(row)
+            processed += 1
+            continue
+        refused = None
+        if reading_notice:
+            refused = "throttled" if raw["httpStatus"] == 429 else (
+                euraxess_source.notice_page_problem(raw["bodyText"], target) if raw["httpStatus"] == 200 else None
+            )
+        if refused:
+            # EURAXESS did not serve the notice: nothing was read, and no
+            # further notice is asked for this run.
+            notice_reads = NOTICE_READS_PER_RUN
+            previous = previous_rows.get(task["candidateId"])
+            if previous and previous.get("status") in confirmed:
+                rows.append({**previous, "carriedFrom": previous.get("carriedFrom") or previous_generated_at})
+            else:
+                rows.append({**task_meta(task), "status": "skipped_budget", "checkedAt": ts(), "httpStatus": None,
+                             "matched": False, "reason": f"EURAXESS did not serve the notice ({refused})"})
             processed += 1
             continue
         row["httpStatus"] = raw["httpStatus"]

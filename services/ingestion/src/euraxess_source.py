@@ -289,6 +289,25 @@ def page_urls(html: str, first_url: str, page_size: int = 10) -> list[str]:
     return [f"{first_url}{joiner}page={number}" for number in range(1, pages)]
 
 
+def notice_page_problem(html: str, url: str) -> str | None:
+    """Why a page fetched for a notice is not that notice, or None.
+
+    A notice names itself as canonical and carries the Organisation/Company
+    field. EURAXESS serves GitHub's runners its unfiltered search whatever
+    the query (2026-10-10); a page other than the notice is not evidence that
+    the post is gone.
+    """
+    number = re.search(r"/jobs/(\d+)", url)
+    canonical = re.search(r'<link[^>]+rel="canonical"[^>]+href="([^"]+)"', html or "") or re.search(
+        r'<meta[^>]+property="og:url"[^>]+content="([^"]+)"', html or ""
+    )
+    if not number or not canonical or not re.search(rf"/jobs/{number.group(1)}/?$", canonical.group(1)):
+        return "not-the-notice"
+    if "Organisation/Company" not in (html or ""):
+        return "not-the-notice"
+    return None
+
+
 # The work location every card of the registered search (job_country:747) names.
 COUNTRY_NAME = "Czech Republic"
 
