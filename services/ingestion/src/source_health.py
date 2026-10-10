@@ -32,20 +32,25 @@ INCOMPLETE_DAYS = 3
 PEAK_ROWS = 3
 # A listed notice's own page answering "not found" or "gone".
 REMOVED_PAGE_STATUSES = {404, 410}
+# The host did not serve what was asked: a 429, or the unfiltered first page
+# EURAXESS serves GitHub's runners whatever the query (6,738 offers worldwide
+# on the runner, 114 Czech ones locally, same URL minutes apart, 2026-10-10).
+HOST_REFUSALS = {"throttled", "unfiltered-listing", "page-parameter-ignored"}
 
 
 def _failure_kind(attempt: dict) -> str:
     """'removed' (a listed notice the school removed), 'throttled' (the host
-    answered 429) or 'failed' (anything that may mean a broken source)."""
+    did not serve what was asked, HOST_REFUSALS) or 'failed' (anything that
+    may mean a broken source)."""
     kind = str(attempt.get("kind") or "")
     # An adapter reports one attempt per source with its reasons joined; the
     # 2026-10-06 18:01 refresh read UJEP this way and the alarm fired again.
     if kind == "adapter":
         reasons = [item for item in str(attempt.get("reason") or "").split(",") if item]
-        if reasons and all(item in ("removed-detail-page", "throttled") for item in reasons):
-            return "throttled" if "throttled" in reasons else "removed"
+        if reasons and all(item == "removed-detail-page" or item in HOST_REFUSALS for item in reasons):
+            return "throttled" if any(item in HOST_REFUSALS for item in reasons) else "removed"
         return "failed"
-    if attempt.get("status") == 429:
+    if attempt.get("status") == 429 or attempt.get("reason") in HOST_REFUSALS:
         return "throttled"
     if kind.startswith("detail") and attempt.get("status") in REMOVED_PAGE_STATUSES:
         return "removed"

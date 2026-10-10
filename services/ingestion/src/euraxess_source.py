@@ -108,8 +108,20 @@ def stored_jobs_by_url(path: Path | None = None) -> dict[str, dict]:
 
 
 def save_listing(notices: dict[str, str], complete: bool, now, path: Path | None = None) -> None:
-    """The day's listing: notice URL -> title, and whether every page was read."""
-    _write_json(path or LISTING_PATH, {"schemaVersion": 1, "checkedAt": _iso(now), "complete": bool(complete), "notices": notices})
+    """The day's listing: notice URL -> title, and whether every page was read.
+
+    An incomplete read does not replace a complete listing still young enough
+    to stand as evidence (LISTING_MAX_AGE_HOURS): what it lacks is not news.
+    """
+    from datetime import timedelta
+
+    target = path or LISTING_PATH
+    if not complete:
+        kept = _read_json(target, {})
+        checked = _parse_time(kept.get("checkedAt"))
+        if kept.get("complete") and checked is not None and now - checked <= timedelta(hours=LISTING_MAX_AGE_HOURS):
+            return
+    _write_json(target, {"schemaVersion": 1, "checkedAt": _iso(now), "complete": bool(complete), "notices": notices})
 
 
 def listing_evidence(url: str, now, path: Path | None = None) -> dict | None:
@@ -275,6 +287,34 @@ def page_urls(html: str, first_url: str, page_size: int = 10) -> list[str]:
     pages = (total + page_size - 1) // page_size
     joiner = "&" if "?" in first_url else "?"
     return [f"{first_url}{joiner}page={number}" for number in range(1, pages)]
+
+
+# The work location every card of the registered search (job_country:747) names.
+COUNTRY_NAME = "Czech Republic"
+
+
+def listing_problem(html: str, page_url: str, earlier: set[str]) -> str | None:
+    """Why a search page is not a page of the Czech listing asked for, or None.
+
+    On 2026-10-10 the runner was served the unfiltered first page for every
+    request: ten offers from the Netherlands and Scotland, the same ten on all
+    sixty pages read, and a total past the page limit. Such a page is not the
+    listing; its offers are not read as Czech notices, and paging stops.
+    """
+    cards = [
+        re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", block))
+        for block in re.split(r"(?=<article\b)", html)
+        if block.startswith("<article") and re.search(r'href="/jobs/\d+"', block)
+    ]
+    foreign = sum(1 for card in cards if COUNTRY_NAME not in card)
+    # Most cards, not every one: an offer in several countries may name
+    # Czechia past what its card shows.
+    if cards and foreign * 2 > len(cards):
+        return "unfiltered-listing"
+    urls = {row["sourceUrl"] for row in parse_search(html, page_url)}
+    if urls and urls <= earlier:
+        return "page-parameter-ignored"
+    return None
 
 
 def detail_fields(text: str) -> dict:

@@ -4602,6 +4602,17 @@ def discover_registered_candidates(
                 elif parser == "roboprox_positions":
                     found.extend(parse_roboprox_positions(html, listing_url))
                 elif parser == "euraxess_search":
+                    problem = euraxess_source.listing_problem(
+                        html, listing_url, {str(row.get("sourceUrl")) for row in euraxess_listed}
+                    )
+                    if problem:
+                        # Not the listing asked for: nothing on the page is
+                        # read as a Czech offer, and no further page is asked.
+                        source_complete = False
+                        attempts[-1]["ok"] = False
+                        attempts[-1]["reason"] = problem
+                        queue.clear()
+                        continue
                     listed_rows = euraxess_source.parse_search(html, listing_url)
                     euraxess_listed.extend(listed_rows)
                     euraxess_rows, euraxess_attempts, euraxess_ok = enrich_euraxess_rows(

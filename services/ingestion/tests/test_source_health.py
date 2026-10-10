@@ -237,6 +237,20 @@ def test_a_host_that_throttled_the_read_is_not_observed_that_day() -> None:
     assert rows("throttled,http-500") == [{"sourceId": "eux", "listed": 10, "complete": False}]
 
 
+def test_a_host_serving_the_unfiltered_listing_is_not_observed_that_day() -> None:
+    """2026-10-10: EURAXESS served GitHub's runners its worldwide first page whatever the query."""
+    def rows(attempt):
+        discovery = {"expectedSourceIds": ["eux"], "completeSourceIds": [], "listedBySource": {"eux": 0},
+                     "attempts": [{"sourceId": "eux", "ok": False, **attempt}]}
+        return source_health.observations_from_discovery(discovery)
+
+    assert rows({"kind": "adapter", "listed": 0, "reason": "unfiltered-listing"}) == []
+    assert rows({"kind": "listing", "status": 200, "reason": "page-parameter-ignored"}) == []
+    assert rows({"kind": "adapter", "listed": 0, "reason": "unfiltered-listing,http-500"}) == [
+        {"sourceId": "eux", "listed": 0, "complete": False}
+    ]
+
+
 def test_a_host_still_throttling_after_the_backoff_is_left_alone(monkeypatch) -> None:
     """2026-10-08: every further EURAXESS request waited 30 s for another 429."""
     import urllib.error

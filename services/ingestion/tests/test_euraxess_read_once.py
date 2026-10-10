@@ -15,6 +15,8 @@ import harvest_nine_hei_jobs as h  # noqa: E402
 
 NOW = datetime(2026, 10, 8, 9, 0, tzinfo=timezone.utc)
 SOURCE_ID = "euraxess-cz-jobs"
+# What a card of the Czech-filtered search names (euraxess_source.listing_problem).
+CZECH = "<p>Work Locations: Number of offers: 1, Czech Republic, Charles University</p>"
 
 
 def url(code: int) -> str:
@@ -122,8 +124,8 @@ def test_a_full_pass_reads_only_the_new_notice_and_keeps_the_read_one(tmp_path, 
     search = "https://euraxess.ec.europa.eu/jobs/search?f%5B0%5D=job_country%3A747"
     listing = (
         "<p>Search results (2)</p>"
-        '<article><a href="/jobs/1">Postdoctoral researcher in robotics</a></article>'
-        '<article><a href="/jobs/2">Postdoctoral researcher in vision</a></article>'
+        f'<article><a href="/jobs/1">Postdoctoral researcher in robotics</a>{CZECH}</article>'
+        f'<article><a href="/jobs/2">Postdoctoral researcher in vision</a>{CZECH}</article>'
     )
     euraxess_source.save_notices({"eu1": {"url": url(1), "title": "Postdoctoral researcher in robotics", "fetchedAt": iso(NOW),
                                           "employerId": "msmt-vs_11000", "officialPostUrl": None}})
@@ -202,8 +204,8 @@ def test_the_day_listing_names_every_listed_notice_even_one_not_read_yet():
     search = "https://euraxess.ec.europa.eu/jobs/search?f%5B0%5D=job_country%3A747"
     listing = (
         "<p>Search results (2)</p>"
-        '<article><a href="/jobs/1">Postdoctoral researcher in robotics</a></article>'
-        '<article><a href="/jobs/2">Postdoctoral researcher in vision</a></article>'
+        f'<article><a href="/jobs/1">Postdoctoral researcher in robotics</a>{CZECH}</article>'
+        f'<article><a href="/jobs/2">Postdoctoral researcher in vision</a>{CZECH}</article>'
     )
     source = {"id": SOURCE_ID, "url": search, "official": True, "sourceType": "official_job_listing_supplemental",
               "parser": "euraxess_search", "followDetails": False, "maxListingPages": 60}
@@ -211,3 +213,68 @@ def test_the_day_listing_names_every_listed_notice_even_one_not_read_yet():
     assert SOURCE_ID not in result["completeSourceIds"]
     listing_file = json.loads(euraxess_source.LISTING_PATH.read_text(encoding="utf-8"))
     assert listing_file["complete"] and set(listing_file["notices"]) == {url(1), url(2)}
+
+
+def _search_source(search: str) -> dict:
+    return {"id": SOURCE_ID, "url": search, "official": True, "sourceType": "official_job_listing_supplemental",
+            "parser": "euraxess_search", "followDetails": False, "maxListingPages": 60}
+
+
+def test_an_unfiltered_search_page_is_not_read_as_the_czech_listing():
+    """2026-10-10 replay: the runner got the global first page for every request.
+
+    Ten offers from the Netherlands and Scotland, the same ten on sixty pages:
+    their notices were read as Czech ones and the pass ran into the page limit.
+    """
+    search = "https://euraxess.ec.europa.eu/jobs/search?f%5B0%5D=job_country%3A747"
+    page = "<p>Search results (15000)</p>" + "".join(
+        f'<article><a href="/jobs/{471908 + n}">PhD position {n}</a>'
+        "<p>Work Locations: Number of offers: 1, Netherlands, Delft</p></article>"
+        for n in range(10)
+    )
+    standing = datetime.now(timezone.utc) - timedelta(hours=20)
+    euraxess_source.save_listing({url(1): "Postdoctoral researcher in robotics"}, True, standing)
+    fetched: list[str] = []
+
+    def fetch(target):
+        fetched.append(target)
+        return 200, page
+
+    result = h.discover_registered_candidates(fetch, registry=[_search_source(search)])
+    assert fetched == [search]  # no notice of it read, no further page asked
+    assert SOURCE_ID not in result["completeSourceIds"]
+    assert [a.get("reason") for a in result["attempts"] if not a.get("ok", True)] == ["unfiltered-listing"]
+    assert not any(code.startswith("eu4719") for code in euraxess_source.load_notices())
+    listing_file = json.loads(euraxess_source.LISTING_PATH.read_text(encoding="utf-8"))
+    assert listing_file["complete"] and listing_file["notices"] == {url(1): "Postdoctoral researcher in robotics"}
+
+
+def test_a_page_that_repeats_the_first_stops_the_pass():
+    search = "https://euraxess.ec.europa.eu/jobs/search?f%5B0%5D=job_country%3A747"
+    page = "<p>Search results (30)</p>" + "".join(
+        f'<article><a href="/jobs/{n}">Postdoctoral researcher {n}</a>{CZECH}</article>' for n in range(1, 11)
+    )
+    now = iso(datetime.now(timezone.utc))
+    euraxess_source.save_notices({f"eu{n}": {"url": url(n), "title": f"Postdoctoral researcher {n}", "fetchedAt": now,
+                                             "employerId": None, "officialPostUrl": None} for n in range(1, 11)})
+    fetched: list[str] = []
+
+    def fetch(target):
+        fetched.append(target)
+        return 200, page
+
+    result = h.discover_registered_candidates(fetch, registry=[_search_source(search)])
+    assert fetched == [search, f"{search}&page=1"]
+    assert SOURCE_ID not in result["completeSourceIds"]
+    assert "page-parameter-ignored" in [a.get("reason") for a in result["attempts"]]
+    assert json.loads(euraxess_source.LISTING_PATH.read_text(encoding="utf-8"))["complete"] is False
+
+
+def test_an_incomplete_read_keeps_a_complete_listing_that_still_stands():
+    euraxess_source.save_listing({url(1): "Postdoc"}, True, NOW - timedelta(hours=30))
+    euraxess_source.save_listing({}, False, NOW)
+    assert euraxess_source.listing_evidence(url(1), NOW)["listed"]
+    later = NOW + timedelta(hours=50)  # the complete listing is now 80 hours old
+    euraxess_source.save_listing({}, False, later)
+    assert euraxess_source.listing_evidence(url(1), later) is None
+    assert json.loads(euraxess_source.LISTING_PATH.read_text(encoding="utf-8"))["checkedAt"] == iso(later)
