@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from apply_cscse_list import LISTED
+from publication_contract import STUDYIN_PATH_RE
 
 ROOT = Path(__file__).resolve().parents[3]
 SRC = ROOT / "data" / "sources" / "programmes"
@@ -259,6 +260,13 @@ def programme_details(schools: list[dict], studyin: dict) -> dict[str, list]:
             record = next(iter(found.values()))
             url = str(record.get("officialDirectoryUrl") or "")
             if not url.startswith(STUDYIN_PREFIX):
+                continue
+            # The path the published contract accepts ("university/programme").
+            # The portal lists Unicorn's programmes without the university
+            # segment; their seven details failed publication (2026-10-10).
+            # The portal's facts are supplementary: the row is published
+            # without them rather than with a path the contract refuses.
+            if not STUDYIN_PATH_RE.fullmatch(url[len(STUDYIN_PREFIX):]):
                 continue
             forms = "".join(
                 code

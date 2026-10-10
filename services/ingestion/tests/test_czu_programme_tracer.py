@@ -27,12 +27,22 @@ from storage.memory import MemoryStore  # noqa: E402
 
 ALL_SOURCES = ("studyin", "czu-study-english-programmes", "czu-studuj-bachelor-master-programmes", "czu-doctoral-faculty-admissions")
 
-EXPECTED_RECORD_COUNTS = {
-    "studyin": 5137,
-    "czu-study-english-programmes": 36,
-    "czu-studuj-bachelor-master-programmes": 129,
-    "czu-doctoral-faculty-admissions": 60,
-}
+
+
+def _declared_count(source_id: str) -> int:
+    """The record count the evidence file states for itself.
+
+    The studyin directory is committed by every refresh since 2026-10-09; a
+    hard-coded 5137 failed CI the next day on 5247 records. The invariant is
+    that every record the file declares is parsed and ingested.
+    """
+    payload = load_payload(source_id)
+    declared = int((payload.get("counts") or {}).get("programmes") or 0)
+    assert declared > 0 and declared == len(payload.get("programmes") or []), source_id
+    return declared
+
+
+EXPECTED_RECORD_COUNTS = {source_id: _declared_count(source_id) for source_id in ALL_SOURCES}
 
 
 def _source(source_id: str) -> dict:
