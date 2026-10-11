@@ -398,3 +398,44 @@ def test_notice_reads_are_capped_and_a_refusal_ends_them_without_withholding(mon
     answers[url(101)] = (429, "")
     run()
     assert fetched == [url(101)]  # a 429 ends them too
+
+
+def test_a_notice_worded_otherwise_is_checked_on_the_listing_that_titles_it(monkeypatch):
+    """2026-10-11: JČU's and ZČU's PDF notices word their headings unlike the
+    listing titles; four open posts were held back as non_match."""
+    import verify_live_titles as v
+
+    listing = "https://www.jcu.cz/cz/univerzita/volna-mista"
+    title = "Postdoktorská pozice ve fyzické geografii/arktickém výzkumu (m/ž) (PRF JU)"
+
+    def task(ident: str, pdf: str) -> dict:
+        return {"candidateId": ident, "employerId": "msmt-vs_12000", "sourceUrl": pdf, "applicationUrl": pdf,
+                "sourceHash": "sha256:x", "discoverySourceId": "jcu-central-vacancies",
+                "titles": [{"locale": "cs", "title": title}]}
+
+    live, gone = "https://www.jcu.cz/images/live.pdf", "https://www.jcu.cz/images/gone.pdf"
+    monkeypatch.setattr(v, "load_tasks", lambda _status: [task("job-live", live), task("job-gone", gone)])
+    monkeypatch.setattr(v, "discovery_listing_page", lambda _task: listing)
+    monkeypatch.setattr(v, "HOST_DELAY_S", 0)
+    bodies = {live: (200, "Postdoktorská pozice (m/ž) fyzická geografie / arktický výzkum. Centrum polární ekologie."),
+              gone: (404, "Not found"),
+              listing: (200, f"<ul><li><a href='{live}'>{title}</a></li></ul>")}
+    fetched: list[str] = []
+
+    def vet(url):
+        fetched.append(url)
+        status, body = bodies[url]
+        return {"httpStatus": status, "finalUrl": url, "tool": "pdf", "bodyText": body, "blocked": False, "blockedReasons": []}
+
+    monkeypatch.setattr(v, "vet_one", vet)
+    out = euraxess_source.LISTING_PATH.parent / "live.json"
+    monkeypatch.setattr(sys, "argv", ["verify_live_titles.py", "--output", str(out), "--no-merge",
+                                      "--operator-evidence", str(out.parent / "none.json")])
+    try:
+        v.main()
+    except SystemExit:
+        pass
+    rows = {row["candidateId"]: row for row in json.loads(out.read_text(encoding="utf-8"))["rows"]}
+    assert rows["job-live"]["status"] == "matched" and rows["job-live"]["listingUrl"] == listing
+    assert rows["job-gone"]["status"] == "http_404"  # a removed notice is not rescued by its listing
+    assert fetched.count(listing) == 1

@@ -321,6 +321,21 @@ def _deciding_listings() -> dict[str, str]:
     }
 
 
+@lru_cache(maxsize=1)
+def _listing_pages() -> dict[str, str]:
+    """Every registered job listing's own page, by source id."""
+    from harvest_nine_hei_jobs import load_registered_job_sources
+
+    return {str(source["id"]): str(source["url"]) for source in load_registered_job_sources()}
+
+
+def discovery_listing_page(task: dict[str, Any]) -> str | None:
+    """The official listing page on which the post was found, if registered."""
+    url = _listing_pages().get(str(task.get("discoverySourceId") or ""))
+    host = (urlsplit(url or "").hostname or "").lower()
+    return url if url and host not in euraxess_source.EURAXESS_HOSTS else None
+
+
 def official_listing_page(task: dict[str, Any]) -> str | None:
     """The official listing that found a post and decides whether it is open.
 
@@ -487,6 +502,28 @@ def main() -> None:
         row["tool"] = raw["tool"]
         row["bodySha256"] = sha256_text(raw["bodyText"])[:MAX_HASH_CHARS]
         match = title_matches(raw["bodyText"], task["titles"])
+        listing = discovery_listing_page(task) if raw["httpStatus"] == 200 and not reading_notice else None
+        if not match["matched"] and listing and listing != target:
+            # The notice is still published but words its heading otherwise:
+            # the title shown is the official listing's, so it is checked
+            # there (JČU's and ZČU's PDF notices; four open posts were held
+            # back as non_match, 2026-10-11). A removed notice is not rescued.
+            listed = pages.get(listing)
+            if listed is None:
+                listing_host = urlsplit(listing).netloc
+                wait = HOST_DELAY_S - (time.time() - last_by_host[listing_host])
+                if wait > 0:
+                    time.sleep(wait)
+                last_by_host[listing_host] = time.time()
+                try:
+                    listed = pages.setdefault(listing, vet_one(listing))
+                except Exception:
+                    listed = pages.setdefault(listing, {"httpStatus": 0, "bodyText": ""})
+            if listed.get("httpStatus") == 200:
+                on_listing = title_matches(listed.get("bodyText") or "", task["titles"])
+                if on_listing["matched"]:
+                    match = on_listing
+                    row["listingUrl"] = listing
         row.update(match)
         if not match["matched"]:
             status = "blocked_or_useless" if raw["blocked"] or raw["httpStatus"] in (401, 403, 407, 451) else (
