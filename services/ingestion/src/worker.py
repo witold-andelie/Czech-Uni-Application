@@ -1115,6 +1115,7 @@ def _recheck_open_jobs_unlocked(
         parse_date,
         parse_lmc_widget_config,
         request_json,
+        title_marks_closed,
         visible_text,
     )
     from urllib.parse import parse_qs, urlsplit
@@ -1346,7 +1347,10 @@ def _recheck_open_jobs_unlocked(
         job_copy["lastAttemptReason"] = "recheck_ok"
         text = visible_text(html)
         title_en = job.get("title", {}).get("en") if isinstance(job.get("title"), dict) else str(job.get("title") or "")
-        if page_is_closed(text, title_en):
+        # The official title too: a machine translation may drop the
+        # listing's closure mark ("– UKONČENO", Institute of
+        # Thermomechanics, 2026-10-11).
+        if page_is_closed(text, title_en) or title_marks_closed(job.get("originalText")):
             job_copy["lifecycleStatus"] = "closed"
             job_copy["wholeOpportunityClosed"] = True
             job_copy["visibility"] = "archived"

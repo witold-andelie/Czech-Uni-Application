@@ -540,3 +540,37 @@ def test_a_register_read_listing_far_fewer_programmes_is_not_written(monkeypatch
     result = worker.harvest_programmes([school], True)[0]
     assert result["status"] == "suspicious_drop" and result["parsedProgrammes"] == 0
     assert written == [194, 189]
+
+
+
+def test_a_post_whose_official_title_marks_it_ended_is_closed(tmp_path: Path, monkeypatch) -> None:
+    """2026-10-11: the Institute of Thermomechanics keeps finished procedures
+    listed as "... – UKONČENO"; thirteen were public as open since 10-03, and
+    the machine translation dropped the mark from one English title."""
+    import harvest_nine_hei_jobs as harvest
+
+    for title in (
+        "Odborný pracovník výzkumu a vývoje – UKONČENO",
+        "Research and Development Specialist – COMPLETED",
+        "Postdoc position (filled)",
+        "Výzkumný pracovník - obsazeno",
+    ):
+        assert harvest.title_marks_closed(title), title
+    for title in (
+        "Výběrové řízení na obsazení pozice technik Střediska podpory uživatelů (Ž/M)",
+        "Postdoktorandská pozice v oblasti vodíkové technologie – 0089/26_D6",
+        "Completed PhD required: postdoc in fluid dynamics",
+        None,
+    ):
+        assert not harvest.title_marks_closed(title), title
+    assert harvest.page_is_closed("Laboratorní technik – UKONČENO", "Laboratorní technik – UKONČENO")
+
+    record = {**job(), "lifecycleStatus": "unknown", "originalText": "Postdoktorand – specialista na vývoj algoritmů – UKONČENO",
+              "title": {"en": "Postdoctoral Researcher – specialist in development of algorithms"}}
+    jobs_path = tmp_path / "jobs.json"
+    jobs_path.write_text(json.dumps({"jobs": [record], "windows": []}), encoding="utf-8")
+    worker.recheck_open_jobs(fetch_page=lambda _url: (200, "<h1>Postdoktorand</h1><p>Popis pozice a požadavky.</p>"),
+                             now=NOW, jobs_path=jobs_path, schedule_manager=ScheduleManager(tmp_path / "s.json"),
+                             use_lock=False, safety_dir=tmp_path / "safety")
+    stored = json.loads(jobs_path.read_text(encoding="utf-8"))["jobs"][0]
+    assert (stored["lifecycleStatus"], stored["visibility"], stored["closureReason"]) == ("closed", "archived", "page_announced_closure")

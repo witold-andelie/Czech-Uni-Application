@@ -1317,7 +1317,24 @@ def entity_scope(text: str, target_title: str = "") -> str:
     return tail[: min(boundaries)] if boundaries else tail
 
 
+# A listing that keeps finished procedures and marks their titles: the
+# Institute of Thermomechanics lists "Odborný pracovník výzkumu a vývoje –
+# UKONČENO" (ended), and thirteen such posts were public from 10-03 to 10-11.
+_TITLE_CLOSED_RE = re.compile(
+    r"[-–—(:|/,]\s*(?:ukončeno|ukonceno|obsazeno|uzavřeno|uzavreno|zrušeno|zruseno|"
+    r"closed|filled|cancell?ed|completed|finished|ended)\s*[)\].!]?\s*$",
+    re.I,
+)
+
+
+def title_marks_closed(title: str | None) -> bool:
+    """Whether a vacancy title ends with its listing's closure mark."""
+    return bool(_TITLE_CLOSED_RE.search(str(title or "").strip()))
+
+
 def page_is_closed(text: str, target_title: str = "") -> bool:
+    if title_marks_closed(target_title):
+        return True
     if target_title:
         scope = entity_scope(text, target_title)
         if scope != text or target_title.lower() in text.lower():
