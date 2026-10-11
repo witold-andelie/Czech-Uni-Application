@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T10:12:31Z",
+  "generatedAt": "2026-10-11T11:54:00Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-10-11.1",
-    "publishedAt": "2026-10-11T10:12:31Z",
-    "candidateGenerationId": "cg-3e3525ae3ed64bc6a3b521f0cd50b25c",
-    "sourceRunSetDigest": "sha256:bd45d654a985640c47f3f78eb0b66496516fbc516aec5432d81b7980006be2ec",
+    "activeVersion": "v2026-10-11.2",
+    "publishedAt": "2026-10-11T11:54:00Z",
+    "candidateGenerationId": "cg-3480c6102126416b84b591ddefa1c5f4",
+    "sourceRunSetDigest": "sha256:efd3c1d883ef2c667c0b9c9403451732170ae65e57569d7006aae49ff6e2280d",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -37,7 +37,7 @@
     "directoryHarvestComplete": true,
     "englishCzechUuidSetsMatch": true,
     "directoryReportsApplicationsOpen": 0,
-    "displayedRegisterInventoryRecords": 5027,
+    "displayedRegisterInventoryRecords": 5031,
     "displayedRegisterInventoryInstitutions": 53,
     "completeAdmissionsCatalogueClaim": false,
     "priorityInstitutionSources": {
@@ -144,21 +144,21 @@
     "claimBoundary": "The DZS source snapshot is complete for its reported directory result, but it is not the legal register or the authority for each university application window. Candidate records remain outside formal publication until source and zh-CN/en/cs review passes.",
     "programmePageLinks": {
       "source": "resolve_programme_links.py",
-      "linkIndexGeneratedAt": "2026-10-10T12:44:55Z",
-      "publishedSnapshotCount": 4102,
+      "linkIndexGeneratedAt": "2026-10-11T11:53:44Z",
+      "publishedSnapshotCount": 4106,
       "denominator": "register rows in the pinned published inventory snapshot",
       "totals": {
         "schools": 53,
-        "registerRows": 5027,
-        "rowsWithSchoolProgrammePage": 4102,
+        "registerRows": 5031,
+        "rowsWithSchoolProgrammePage": 4106,
         "rowsShowingUniversitySite": 925,
         "registerRowCoveragePercent": 81.6
       },
       "schools": [
         {
           "institutionId": "msmt-vs_11000",
-          "registerRows": 912,
-          "rowsWithSchoolProgrammePage": 868,
+          "registerRows": 913,
+          "rowsWithSchoolProgrammePage": 869,
           "rowsShowingUniversitySite": 44,
           "registerRowCoveragePercent": 95.2
         },
@@ -262,10 +262,10 @@
         },
         {
           "institutionId": "msmt-vs_27000",
-          "registerRows": 293,
-          "rowsWithSchoolProgrammePage": 235,
+          "registerRows": 294,
+          "rowsWithSchoolProgrammePage": 236,
           "rowsShowingUniversitySite": 58,
-          "registerRowCoveragePercent": 80.2
+          "registerRowCoveragePercent": 80.3
         },
         {
           "institutionId": "msmt-vs_28000",
@@ -291,9 +291,9 @@
         {
           "institutionId": "msmt-vs_43000",
           "registerRows": 145,
-          "rowsWithSchoolProgrammePage": 120,
-          "rowsShowingUniversitySite": 25,
-          "registerRowCoveragePercent": 82.8
+          "rowsWithSchoolProgrammePage": 121,
+          "rowsShowingUniversitySite": 24,
+          "registerRowCoveragePercent": 83.4
         },
         {
           "institutionId": "msmt-vs_51000",
@@ -332,10 +332,10 @@
         },
         {
           "institutionId": "msmt-vs_56000",
-          "registerRows": 13,
-          "rowsWithSchoolProgrammePage": 8,
-          "rowsShowingUniversitySite": 5,
-          "registerRowCoveragePercent": 61.5
+          "registerRows": 15,
+          "rowsWithSchoolProgrammePage": 9,
+          "rowsShowingUniversitySite": 6,
+          "registerRowCoveragePercent": 60.0
         },
         {
           "institutionId": "msmt-vs_61000",
@@ -560,7 +560,7 @@
       "national_aggregator": 1
     },
     "independentNonHeiOfficialSources": 14,
-    "inventoryRows": 5027,
+    "inventoryRows": 5031,
     "discoveredCandidates": 512,
     "currentCandidates": 329,
     "supportedCandidates": 288,
