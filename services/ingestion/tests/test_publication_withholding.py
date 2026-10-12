@@ -32,21 +32,53 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src"))
 
 import publish  # noqa: E402
-from live_evidence import CONFIRMED_STATUSES, entering_publication, load_evidence, parse_ts  # noqa: E402
+from live_evidence import (  # noqa: E402
+    CONFIRMED_STATUSES,
+    entering_publication,
+    load_evidence,
+    parse_ts,
+    requires_live_evidence,
+)
 
 SOURCES = ROOT / "data" / "sources"
 CANDIDATES = SOURCES / "browse" / "nine-hei-jobs.json"
 LIVE_EVIDENCE = SOURCES / "coverage" / "live-title-verification.json"
 
 
-def staged_selection(tmp_path: Path) -> tuple[list[dict], dict]:
+def staged_selection(tmp_path: Path, evidence: Path = LIVE_EVIDENCE) -> tuple[list[dict], dict]:
     """Run the publication selection over the real candidate file."""
     staging = tmp_path / "candidate" / "browse"
     staging.mkdir(parents=True)
     shutil.copy(CANDIDATES, staging / "nine-hei-jobs.json")
-    publish._select_approved_jobs(tmp_path / "candidate", LIVE_EVIDENCE)
+    publish._select_approved_jobs(tmp_path / "candidate", evidence)
     payload = json.loads((staging / "nine-hei-jobs.json").read_text(encoding="utf-8"))
     return payload["jobs"], payload["publicationSelection"]
+
+
+def evidence_failing_one_published_record(tmp_path: Path) -> tuple[Path, str]:
+    """The real evidence with one published, still-open record's check failing.
+
+    Whether the day's data withholds anything is not this file's business: on
+    2026-10-12 every approved record verified, and the tests that required a
+    withheld record in the real data failed CI. The record taken here is one the
+    real selection publishes, with no announced window already closed.
+    """
+    jobs, _selection = staged_selection(tmp_path / "real")
+    published = {job["id"] for job in jobs}
+    payload = json.loads(CANDIDATES.read_text(encoding="utf-8"))
+    now = datetime.now(timezone.utc)
+    ident = next(
+        job["id"]
+        for job in sorted(entering_publication(payload), key=lambda job: job["id"])
+        if job["id"] in published and requires_live_evidence(job, payload.get("windows") or [], now)
+    )
+    evidence = load_evidence(LIVE_EVIDENCE)
+    rows = [row for row in evidence.get("rows") or [] if row.get("candidateId") != ident]
+    rows.append({"candidateId": ident, "status": "non_match", "httpStatus": 200, "matched": False,
+                 "checkedAt": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "reason": "titles not found in test body"})
+    path = tmp_path / "live-title-verification.json"
+    path.write_text(json.dumps({**evidence, "rows": rows}, ensure_ascii=False), encoding="utf-8")
+    return path, ident
 
 
 def candidate_records() -> dict[str, dict]:
@@ -76,9 +108,10 @@ def test_published_records_never_invent_compensation(tmp_path: Path) -> None:
 
 
 def test_every_withheld_record_says_why_and_is_not_published(tmp_path: Path) -> None:
-    jobs, selection = staged_selection(tmp_path)
+    evidence, failing = evidence_failing_one_published_record(tmp_path)
+    jobs, selection = staged_selection(tmp_path / "failing", evidence)
     published_ids = {job["id"] for job in jobs}
-    assert selection["withheld"], "the current candidate set has nothing to withhold"
+    assert failing in {item["id"] for item in selection["withheld"]}
     for item in selection["withheld"]:
         assert item["id"] not in published_ids
         assert item["reasons"] or item.get("liveEvidence"), item
@@ -125,13 +158,14 @@ def test_records_whose_source_no_longer_verifies_them_are_withheld_not_closed(tm
     snapshot with the live-evidence reason recorded - they are neither marked
     closed nor silently dropped.
     """
-    jobs, selection = staged_selection(tmp_path)
+    evidence, failing = evidence_failing_one_published_record(tmp_path)
+    jobs, selection = staged_selection(tmp_path / "failing", evidence)
     withheld = {item["id"]: item for item in selection["withheld"]}
     records = candidate_records()
     unverified = {
         ident for ident, item in withheld.items() if item.get("liveEvidence")
     }
-    assert unverified, "the live source changes should be visible in the selection"
+    assert failing in unverified, "a record whose source no longer verifies it must be withheld"
     for ident in unverified:
         record = records[ident]
         assert record.get("lifecycleStatus") not in {"closed", "expired"}, (
