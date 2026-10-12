@@ -1,40 +1,40 @@
 {
   "ledgerSchemaVersion": 1,
-  "generatedAt": "2026-10-11T11:54:00Z",
-  "publicationVersion": "v2026-10-11.2",
-  "candidateGenerationId": "cg-3480c6102126416b84b591ddefa1c5f4",
-  "sourceRunSetDigest": "sha256:efd3c1d883ef2c667c0b9c9403451732170ae65e57569d7006aae49ff6e2280d",
-  "currentCandidates": 329,
+  "generatedAt": "2026-10-12T10:40:47Z",
+  "publicationVersion": "v2026-10-12.1",
+  "candidateGenerationId": "cg-ea545a64b4f7480dafba4f0cba1ef016",
+  "sourceRunSetDigest": "sha256:5d152f94c8198e7922a17463a5a5628f1645d0e48ab246f2f8877ce27cae1c20",
+  "currentCandidates": 307,
   "summary": {
-    "approved_public": 223,
-    "blocked": 106,
+    "approved_public": 213,
+    "blocked": 94,
     "blockerCounts": {
       "unconfirmed_pay_evidence": 0,
-      "unspecified_scope": 41,
+      "unspecified_scope": 32,
       "evidence_changed_since_review": 0,
-      "trilingual_review_missing": 100,
+      "trilingual_review_missing": 93,
       "review_incomplete": 0
     },
     "unknownAttributeCounts": {
-      "degree_unstated": 130,
-      "doctoral_enrollment_unspecified": 267
+      "degree_unstated": 110,
+      "doctoral_enrollment_unspecified": 255
     }
   },
   "bySchool": {
     "msmt-vs_21000": {
       "current": 46,
-      "approved_public": 45,
-      "blocked": 1
+      "approved_public": 43,
+      "blocked": 3
     },
-    "msmt-vs_26000": {
-      "current": 5,
-      "approved_public": 4,
-      "blocked": 1
+    "msmt-vs_14000": {
+      "current": 42,
+      "approved_public": 26,
+      "blocked": 16
     },
     "msmt-vs_23000": {
-      "current": 24,
-      "approved_public": 13,
-      "blocked": 11
+      "current": 18,
+      "approved_public": 17,
+      "blocked": 1
     },
     "rvvi-67985912": {
       "current": 1,
@@ -46,35 +46,25 @@
       "approved_public": 4,
       "blocked": 2
     },
-    "msmt-vs_17000": {
-      "current": 19,
-      "approved_public": 11,
-      "blocked": 8
-    },
     "msmt-vs_27000": {
       "current": 5,
       "approved_public": 4,
       "blocked": 1
     },
     "msmt-vs_28000": {
-      "current": 1,
+      "current": 2,
       "approved_public": 1,
-      "blocked": 0
+      "blocked": 1
     },
     "msmt-vs_12000": {
-      "current": 13,
-      "approved_public": 5,
-      "blocked": 8
-    },
-    "msmt-vs_14000": {
-      "current": 41,
-      "approved_public": 26,
-      "blocked": 15
+      "current": 8,
+      "approved_public": 6,
+      "blocked": 2
     },
     "msmt-vs_15000": {
-      "current": 11,
+      "current": 12,
       "approved_public": 8,
-      "blocked": 3
+      "blocked": 4
     },
     "msmt-vs_18000": {
       "current": 13,
@@ -87,9 +77,9 @@
       "blocked": 2
     },
     "msmt-vs_11000": {
-      "current": 37,
+      "current": 39,
       "approved_public": 19,
-      "blocked": 18
+      "blocked": 20
     },
     "rvvi-61389013": {
       "current": 5,
@@ -101,10 +91,20 @@
       "approved_public": 21,
       "blocked": 2
     },
+    "msmt-vs_26000": {
+      "current": 4,
+      "approved_public": 3,
+      "blocked": 1
+    },
     "rvvi-67985815": {
       "current": 1,
       "approved_public": 1,
       "blocked": 0
+    },
+    "msmt-vs_17000": {
+      "current": 17,
+      "approved_public": 11,
+      "blocked": 6
     },
     "msmt-vs_41000": {
       "current": 8,
@@ -192,8 +192,8 @@
       "blocked": 0
     },
     "rvvi-61388998": {
-      "current": 15,
-      "approved_public": 14,
+      "current": 2,
+      "approved_public": 1,
       "blocked": 1
     },
     "rvvi-61389021": {
@@ -203,8 +203,8 @@
     },
     "rvvi-67985858": {
       "current": 1,
-      "approved_public": 0,
-      "blocked": 1
+      "approved_public": 1,
+      "blocked": 0
     },
     "rvvi-68378025": {
       "current": 2,
@@ -231,8 +231,10 @@
       "doctoralEnrollment": "required",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-10-11",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": false
@@ -241,24 +243,24 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
-      "candidateId": "job-26000-2001455359",
-      "employerId": "msmt-vs_26000",
-      "originalText": "Vědecko-výzkumný pracovník/pracovnice - junior (R1) Ústavu stavební mechaniky",
-      "sourceUrl": "https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001455359",
+      "candidateId": "job-14000-81813",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Specialist in Research, Development and Production of Recombinant Proteins",
+      "sourceUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81813",
       "track": "post_master",
       "isPostdoc": false,
       "paidStatus": "confirmed",
-      "minimumDegree": "master",
-      "doctoralEnrollment": "required",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
-      "nearestDeadline": "2026-10-11",
+      "nearestDeadline": "2026-10-12",
       "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
-        "degree": false,
-        "doctoralEnrollment": false
+        "degree": true,
+        "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:11:34Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -279,7 +281,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -300,7 +302,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T09:07:10Z",
+      "factsExtractedAt": "2026-10-12T09:26:33Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -321,7 +323,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:14:11Z",
+      "factsExtractedAt": "2026-10-12T09:35:25Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -348,30 +350,6 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
-      "candidateId": "job-17000-196",
-      "employerId": "msmt-vs_17000",
-      "originalText": "Administrátor/ka portálových aplikací – junior",
-      "sourceUrl": "https://www.osu.cz/kariera/kariera-neakademicke-pozice/?inzeratid=196",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": "2026-10-14",
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
       "candidateId": "job-27000-69",
       "employerId": "msmt-vs_27000",
       "originalText": "Senior Research Centre Leader – Electron-Beam Engineering and CVD Synthesis of Low-Dimensional Materials",
@@ -389,7 +367,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:31:06Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -433,31 +411,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:13:43Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-12000-2d116181c727",
-      "employerId": "msmt-vs_12000",
-      "originalText": "Koordinátor kanceláře děkana a vedení fakulty (m/ž) (PRF JU)",
-      "sourceUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/24092026-koordinator-kancelare-dekana-a-vedeni-fakulty-1.pdf",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": "2026-10-15",
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -472,13 +426,13 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-10-15",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -499,7 +453,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -523,7 +477,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -547,7 +501,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -568,7 +522,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -589,7 +543,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -613,7 +567,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -634,7 +588,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -655,7 +609,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -676,7 +630,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:26:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -714,37 +668,13 @@
       "doctoralEnrollment": "required",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-10-17",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-12000-ac23bc925a6d",
-      "employerId": "msmt-vs_12000",
-      "originalText": "Studijní referent (m/ž) (PRF JU)",
-      "sourceUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/10/05102026-studijni-referent.pdf",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": "2026-10-18",
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -765,7 +695,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -832,27 +762,6 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
-      "candidateId": "job-14000-81813",
-      "employerId": "msmt-vs_14000",
-      "originalText": "Specialist in Research, Development and Production of Recombinant Proteins",
-      "sourceUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81813",
-      "track": "post_master",
-      "isPostdoc": false,
-      "paidStatus": "confirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": "2026-10-19",
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
       "candidateId": "job-14000-81752",
       "employerId": "msmt-vs_14000",
       "originalText": "PhD position - Plant regeneration and development",
@@ -870,7 +779,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -885,13 +794,13 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-10-20",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -912,7 +821,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:03:23Z",
+      "factsExtractedAt": "2026-10-12T09:45:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -935,7 +844,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T09:07:10Z",
+      "factsExtractedAt": "2026-10-12T09:26:33Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -956,7 +865,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:10:27Z",
+      "factsExtractedAt": "2026-10-12T09:32:27Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -977,7 +886,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:31:06Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1004,30 +913,6 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
-      "candidateId": "job-23000-433d453d-31af-4de9-8411-0e7f8901bf76",
-      "employerId": "msmt-vs_23000",
-      "originalText": "projektový manažer, manažerka, oddělení Strategie a rozvoje, Fakulta designu a umění Ladislava Sutnara ",
-      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=433d453d-31af-4de9-8411-0e7f8901bf76;1.0&download=0",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "bachelor",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": "2026-10-22",
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": false,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
       "candidateId": "job-11000-202610-ap2-p-f-7500-119",
       "employerId": "msmt-vs_11000",
       "originalText": "Assistant Professor at the Institute for Environmental Studies (M/Ž)",
@@ -1045,7 +930,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1066,7 +951,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1087,7 +972,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1108,7 +993,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1129,7 +1014,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1265,7 +1150,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1286,7 +1171,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:10:27Z",
+      "factsExtractedAt": "2026-10-12T09:32:27Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1309,7 +1194,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:11:34Z",
+      "factsExtractedAt": "2026-10-12T09:33:16Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1351,7 +1236,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T09:07:10Z",
+      "factsExtractedAt": "2026-10-12T09:26:33Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1372,7 +1257,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1393,7 +1278,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1460,7 +1345,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1470,7 +1355,7 @@
       "sourceUrl": "https://euraxess.ec.europa.eu/jobs/467778",
       "track": "post_master",
       "isPostdoc": false,
-      "paidStatus": "confirmed",
+      "paidStatus": "unconfirmed",
       "minimumDegree": "doctorate",
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
@@ -1483,7 +1368,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-06T20:57:09Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1504,7 +1389,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:30:58Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1525,7 +1410,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:07Z",
+      "factsExtractedAt": "2026-10-12T09:33:45Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1546,7 +1431,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:07Z",
+      "factsExtractedAt": "2026-10-12T09:33:45Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1567,7 +1452,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1588,7 +1473,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1598,7 +1483,7 @@
       "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468340",
       "track": "post_master",
       "isPostdoc": false,
-      "paidStatus": "confirmed",
+      "paidStatus": "unconfirmed",
       "minimumDegree": "doctorate",
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
@@ -1611,7 +1496,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-06T20:57:09Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1621,7 +1506,7 @@
       "sourceUrl": "https://euraxess.ec.europa.eu/jobs/468345",
       "track": "post_master",
       "isPostdoc": false,
-      "paidStatus": "confirmed",
+      "paidStatus": "unconfirmed",
       "minimumDegree": "doctorate",
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
@@ -1634,7 +1519,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-06T20:57:09Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1658,7 +1543,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1679,7 +1564,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:11:34Z",
+      "factsExtractedAt": "2026-10-12T09:33:16Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1700,7 +1585,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:11:34Z",
+      "factsExtractedAt": "2026-10-12T09:33:16Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1744,7 +1629,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1765,7 +1650,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:31:20Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1793,6 +1678,30 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
+      "candidateId": "job-28000-c35230b4e054",
+      "employerId": "msmt-vs_28000",
+      "originalText": "Odborný pracovník/odborná pracovnice Poradenského centra UTB",
+      "sourceUrl": "https://kariera.utb.cz/odborny-pracovnik-pracovnice-poradenskeho-centra-utb/",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "unspecified",
+      "nearestDeadline": "2026-10-28",
+      "decision": "blocked",
+      "blockers": [
+        "unspecified_scope",
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
       "candidateId": "job-11000-202610-vp1-faf-hk-kskf-127",
       "employerId": "msmt-vs_11000",
       "originalText": "FaF_VZ4_105: PhD Student, 0,15 FTE (project NETPHARM)",
@@ -1810,7 +1719,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1854,7 +1763,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1900,7 +1809,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-07T08:57:57Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1924,7 +1833,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1945,7 +1854,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -1990,7 +1899,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2011,7 +1920,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2034,7 +1943,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-07T08:57:57Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2055,7 +1964,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-07T08:57:57Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2076,7 +1985,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2097,7 +2006,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2118,7 +2027,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2139,7 +2048,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2160,7 +2069,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2181,7 +2090,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2202,7 +2111,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2223,7 +2132,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2244,7 +2153,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-07T08:57:57Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2265,7 +2174,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:14:11Z",
+      "factsExtractedAt": "2026-10-12T09:35:25Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2286,7 +2195,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:26:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2307,7 +2216,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2328,7 +2237,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2349,7 +2258,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2460,7 +2369,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2483,7 +2392,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-07T08:57:57Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2504,7 +2413,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2525,7 +2434,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2546,18 +2455,18 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
-      "candidateId": "job-17000-197",
-      "employerId": "msmt-vs_17000",
-      "originalText": "Administrátor/ka IT senior",
-      "sourceUrl": "https://www.osu.cz/kariera/kariera-neakademicke-pozice/?inzeratid=197",
+      "candidateId": "job-15000-b2c9535c0ffd",
+      "employerId": "msmt-vs_15000",
+      "originalText": "Koordinátor/-ka akreditačního řízení",
+      "sourceUrl": "https://pracuj.upol.cz/nc/zprava/clanek/koordinator-ka-akreditacniho-rizeni-1/",
       "track": null,
       "isPostdoc": false,
       "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
+      "minimumDegree": "other",
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "unspecified",
       "nearestDeadline": "2026-10-31",
@@ -2567,10 +2476,10 @@
         "trilingual_review_missing"
       ],
       "unknownAttributes": {
-        "degree": true,
+        "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2591,7 +2500,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:10:27Z",
+      "factsExtractedAt": "2026-10-12T09:32:27Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2612,7 +2521,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2635,7 +2544,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-07T08:57:57Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2656,7 +2565,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:14:11Z",
+      "factsExtractedAt": "2026-10-12T09:35:25Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2784,7 +2693,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2849,7 +2758,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2870,7 +2779,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2891,7 +2800,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2933,7 +2842,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:31:20Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2954,7 +2863,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2975,7 +2884,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -2996,7 +2905,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3017,7 +2926,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3038,7 +2947,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3085,7 +2994,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3108,7 +3017,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3129,7 +3038,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3150,7 +3059,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:11:34Z",
+      "factsExtractedAt": "2026-10-12T09:33:16Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3217,7 +3126,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3238,7 +3147,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3259,7 +3168,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3280,7 +3189,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3301,7 +3210,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:08:40Z",
+      "factsExtractedAt": "2026-10-12T09:30:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3325,7 +3234,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3348,7 +3257,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:26:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3371,7 +3280,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:26:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3392,7 +3301,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3413,7 +3322,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3428,13 +3337,13 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-11",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3455,7 +3364,28 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-14000-81839",
+      "employerId": "msmt-vs_14000",
+      "originalText": "Assistant Professor for Department of Experimental Biology",
+      "sourceUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81839",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "master",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": "2026-11-12",
+      "decision": "blocked",
+      "blockers": [],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3476,7 +3406,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3497,7 +3427,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:22:12Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3518,7 +3448,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3565,7 +3495,31 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-202611-ved-ff-as-126",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Director of the Institute – Academic Staff Member – Professor / Associate Professor / Assistant Professor",
+      "sourceUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-VED-FF-%C3%9AAS-126",
+      "track": null,
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "unspecified",
+      "nearestDeadline": "2026-11-15",
+      "decision": "blocked",
+      "blockers": [
+        "unspecified_scope",
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3613,6 +3567,30 @@
         "doctoralEnrollment": true
       },
       "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-11000-202611-ved-ff-ka-133",
+      "employerId": "msmt-vs_11000",
+      "originalText": "Director of the Institute – Academic Staff Member – Professor / Associate Professor / Assistant Professor - Institute of Musicology, Theater, and Film Studies",
+      "sourceUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-VED-FF-Ka%C3%9A-133",
+      "track": null,
+      "isPostdoc": false,
+      "paidStatus": "unconfirmed",
+      "minimumDegree": "doctorate",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "unspecified",
+      "nearestDeadline": "2026-11-18",
+      "decision": "blocked",
+      "blockers": [
+        "unspecified_scope",
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": false,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3685,30 +3663,6 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
-      "candidateId": "job-12000-4b114d053272",
-      "employerId": "msmt-vs_12000",
-      "originalText": "Správce objektu (ZSF JU)",
-      "sourceUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/10/02102026-zsf-pto-spravce.pdf",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": "2026-11-30",
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
       "candidateId": "job-12000-d65a89a0a489",
       "employerId": "msmt-vs_12000",
       "originalText": "Doktorské studium – Vědecký, výzkumný a vývojový asistent v biologických a příbuzných oborech (FROV JU)",
@@ -3726,7 +3680,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3747,7 +3701,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3768,7 +3722,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -3791,7 +3745,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4196,7 +4150,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4217,7 +4171,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4307,7 +4261,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4349,7 +4303,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4370,7 +4324,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4391,7 +4345,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4412,7 +4366,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4433,7 +4387,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4454,7 +4408,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4475,7 +4429,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:15:25Z",
+      "factsExtractedAt": "2026-10-12T09:36:28Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4517,7 +4471,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4538,7 +4492,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4672,7 +4626,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:07:53Z",
+      "factsExtractedAt": "2026-10-12T09:30:07Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4693,7 +4647,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:29:05Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4787,30 +4741,6 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
-      "candidateId": "job-12000-81d180d26617",
-      "employerId": "msmt-vs_12000",
-      "originalText": "Pracovník/pracovnice na výpomoc v kavárně menzy Jihočeské univerzity (DPP/DPČ) (JU)",
-      "sourceUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/10/09102026-vypomoc.pdf",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
       "candidateId": "job-12000-955d7a8b0745",
       "employerId": "msmt-vs_12000",
       "originalText": "Postdoctoral Researcher in (Bio)Physics (PRF JU)",
@@ -4828,7 +4758,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4849,31 +4779,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-12000-c9f66d1395c5",
-      "employerId": "msmt-vs_12000",
-      "originalText": "Pracovník/pracovnice se zaměřením na studenou kuchyni do menzy Jihočeské univerzity (DPP/DPČ) (JU)",
-      "sourceUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/10/05102026-menza-dpp-dpc.pdf",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:12:56Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4978,7 +4884,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -4999,7 +4905,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5020,7 +4926,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5062,7 +4968,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5083,7 +4989,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5104,7 +5010,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5125,7 +5031,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5146,7 +5052,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5167,7 +5073,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5188,7 +5094,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5209,7 +5115,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5230,7 +5136,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5251,7 +5157,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5272,7 +5178,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5293,7 +5199,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5314,7 +5220,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:20:47Z",
+      "factsExtractedAt": "2026-10-12T09:40:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5326,16 +5232,16 @@
       "isPostdoc": false,
       "paidStatus": "unconfirmed",
       "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
+      "doctoralEnrollment": "required",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
       "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
-        "doctoralEnrollment": true
+        "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:21:23Z",
+      "factsExtractedAt": "2026-10-12T09:41:22Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5356,7 +5262,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:21:23Z",
+      "factsExtractedAt": "2026-10-12T09:41:22Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5377,7 +5283,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:10:59Z",
+      "factsExtractedAt": "2026-10-12T09:32:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5398,7 +5304,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:10:59Z",
+      "factsExtractedAt": "2026-10-12T09:32:49Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5419,7 +5325,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:21:23Z",
+      "factsExtractedAt": "2026-10-12T09:41:22Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5431,16 +5337,16 @@
       "isPostdoc": false,
       "paidStatus": "unconfirmed",
       "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
+      "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
       "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
-        "doctoralEnrollment": false
+        "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:21:23Z",
+      "factsExtractedAt": "2026-10-12T09:41:22Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5461,7 +5367,30 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:21:23Z",
+      "factsExtractedAt": "2026-10-12T09:41:22Z",
+      "parserVersion": "jobs-parser-2026-09-12.2"
+    },
+    {
+      "candidateId": "job-21000-5563",
+      "employerId": "msmt-vs_21000",
+      "originalText": "Asistentka",
+      "sourceUrl": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/5563",
+      "track": "post_master",
+      "isPostdoc": false,
+      "paidStatus": "confirmed",
+      "minimumDegree": "unknown",
+      "doctoralEnrollment": "unspecified",
+      "catalogueScopeStatus": "included",
+      "nearestDeadline": null,
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
+      "unknownAttributes": {
+        "degree": true,
+        "doctoralEnrollment": true
+      },
+      "factsExtractedAt": "2026-10-12T09:32:27Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5473,16 +5402,16 @@
       "isPostdoc": false,
       "paidStatus": "unconfirmed",
       "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
+      "doctoralEnrollment": "required",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
       "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
-        "doctoralEnrollment": true
+        "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:21:23Z",
+      "factsExtractedAt": "2026-10-12T09:41:22Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5503,28 +5432,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:21:23Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-21000-bcc1cf979495",
-      "employerId": "msmt-vs_21000",
-      "originalText": "Seeking AI Leaders to Shape the Future with Us",
-      "sourceUrl": "https://www.aic.fel.cvut.cz/careers/ai-leaders",
-      "track": "post_master",
-      "isPostdoc": false,
-      "paidStatus": "confirmed",
-      "minimumDegree": "doctorate",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": false,
-        "doctoralEnrollment": false
-      },
-      "factsExtractedAt": "2026-10-11T09:21:23Z",
+      "factsExtractedAt": "2026-10-12T09:41:22Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5536,16 +5444,16 @@
       "isPostdoc": true,
       "paidStatus": "confirmed",
       "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
+      "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
       "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
-        "doctoralEnrollment": false
+        "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:21:23Z",
+      "factsExtractedAt": "2026-10-12T09:41:22Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5566,7 +5474,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
+      "factsExtractedAt": "2026-10-12T09:31:20Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5587,31 +5495,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:25:12Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-23000-4e0dbfc5-4d4f-43f2-8b7d-b94fa55556dc",
-      "employerId": "msmt-vs_23000",
-      "originalText": "Systémový analytik/systémová analytička, Odbor kvality Západočeské univerzity v Plzni",
-      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=4e0dbfc5-4d4f-43f2-8b7d-b94fa55556dc;1.0&download=0",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:31:20Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5632,55 +5516,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-23000-766c8566-08d4-481a-b2c9-34344be5bcbc",
-      "employerId": "msmt-vs_23000",
-      "originalText": "Pomocná síla do kuchyně, Školící a ubytovací zařízení Nečtiny Západočeské univerzity v Plzni ",
-      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=766c8566-08d4-481a-b2c9-34344be5bcbc;1.0&download=0",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-23000-7e9b7cf9-06e6-4087-8720-047ef78580a3",
-      "employerId": "msmt-vs_23000",
-      "originalText": "Šéfkuchař/šéfkuchařka, Správa kolejí a menz ZČU",
-      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=7e9b7cf9-06e6-4087-8720-047ef78580a3;1.0&download=0",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5701,55 +5537,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-23000-a9959fe5-b148-4672-ac5f-43fdff07114b",
-      "employerId": "msmt-vs_23000",
-      "originalText": "Administrátor/administrátorka veřejných zakázek pro Právní odbor Západočeské univerzity v Plzni",
-      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=a9959fe5-b148-4672-ac5f-43fdff07114b;1.0&download=0",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "other",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": false,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-23000-ae96eba0-1f0e-480d-99a3-913b4b409c10",
-      "employerId": "msmt-vs_23000",
-      "originalText": "Právník/právnička na úseku veřejných zakázek pro Právní odbor Západočeské univerzity v Plzni",
-      "sourceUrl": "https://xdoc.zcu.cz/api/alfresco?id=ae96eba0-1f0e-480d-99a3-913b4b409c10;1.0&download=0",
-      "track": null,
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "unspecified",
-      "nearestDeadline": null,
-      "decision": "blocked",
-      "blockers": [
-        "unspecified_scope",
-        "trilingual_review_missing"
-      ],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5764,13 +5552,13 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:05:31Z",
+      "factsExtractedAt": "2026-10-12T09:49:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5794,7 +5582,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:19:37Z",
+      "factsExtractedAt": "2026-10-12T09:39:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5818,7 +5606,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:19:37Z",
+      "factsExtractedAt": "2026-10-12T09:39:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5842,7 +5630,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:19:37Z",
+      "factsExtractedAt": "2026-10-12T09:39:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5866,7 +5654,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:19:37Z",
+      "factsExtractedAt": "2026-10-12T09:39:52Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5887,7 +5675,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:13:04Z",
+      "factsExtractedAt": "2026-10-12T09:34:30Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5911,7 +5699,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:13:54Z",
+      "factsExtractedAt": "2026-10-12T09:35:12Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5932,7 +5720,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:13:54Z",
+      "factsExtractedAt": "2026-10-12T09:35:12Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5956,7 +5744,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:07Z",
+      "factsExtractedAt": "2026-10-12T09:33:45Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -5977,7 +5765,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:07Z",
+      "factsExtractedAt": "2026-10-12T09:33:45Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6001,7 +5789,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:07Z",
+      "factsExtractedAt": "2026-10-12T09:33:45Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6022,7 +5810,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:07Z",
+      "factsExtractedAt": "2026-10-12T09:33:45Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6043,7 +5831,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:07Z",
+      "factsExtractedAt": "2026-10-12T09:33:45Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6064,7 +5852,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:12:07Z",
+      "factsExtractedAt": "2026-10-12T09:33:45Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6088,7 +5876,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:24:19Z",
+      "factsExtractedAt": "2026-10-12T09:44:01Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6112,7 +5900,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:24:19Z",
+      "factsExtractedAt": "2026-10-12T09:44:01Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6136,7 +5924,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T08:44:23Z",
+      "factsExtractedAt": "2026-10-12T09:28:08Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6160,7 +5948,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T08:44:23Z",
+      "factsExtractedAt": "2026-10-12T09:28:08Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6184,7 +5972,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T08:44:23Z",
+      "factsExtractedAt": "2026-10-12T09:28:08Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6208,7 +5996,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T08:44:23Z",
+      "factsExtractedAt": "2026-10-12T09:28:08Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6232,7 +6020,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T08:44:23Z",
+      "factsExtractedAt": "2026-10-12T09:28:08Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6256,7 +6044,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T08:44:23Z",
+      "factsExtractedAt": "2026-10-12T09:28:08Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6280,7 +6068,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T08:44:23Z",
+      "factsExtractedAt": "2026-10-12T09:28:08Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6304,7 +6092,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T08:44:23Z",
+      "factsExtractedAt": "2026-10-12T09:28:08Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6346,7 +6134,7 @@
         "degree": false,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-10T09:07:10Z",
+      "factsExtractedAt": "2026-10-12T09:26:33Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6373,132 +6161,6 @@
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
-      "candidateId": "job-88998-05be99f21618",
-      "employerId": "rvvi-61388998",
-      "originalText": "Výzkumný pracovník – postdoktorand v oboru termodynamiky – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/vyzkumny-pracovnik-postdoktorand-v-oboru-termodynamiky/",
-      "track": "postdoc",
-      "isPostdoc": true,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": false
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-07b634079b27",
-      "employerId": "rvvi-61388998",
-      "originalText": "Vědecký pracovník/vědecká pracovnice v oboru dynamiky tekutin – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/vedecky-pracovnik-v-oboru-dynamiky-tekutin/",
-      "track": "post_master",
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-0cae3c57f884",
-      "employerId": "rvvi-61388998",
-      "originalText": "Postdoktorandská pozice se zaměřením na vnitřní vysokorychlostní aerodynamiku – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/postdoktorandska-pozice-se-zamerenim-na-vnitrni-vysokorychlostni-aerodynamiku/",
-      "track": "postdoc",
-      "isPostdoc": true,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": false
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-0e6754d5be4a",
-      "employerId": "rvvi-61388998",
-      "originalText": "Odborný pracovník výzkumu a vývoje – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/odborny-pracovnik-vyzkumu-a-vyvoje/",
-      "track": "post_master",
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-3c6b02b6e0c8",
-      "employerId": "rvvi-61388998",
-      "originalText": "Pracovník/pracovnice výzkumu a vývoje – postdoktorand(ka) v oboru mechaniky tekutin a přenosu tepla a hmoty – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/vyzkumny-pracovnik-postdoktorand-v-oboru-termodynamiky-2/",
-      "track": "postdoc",
-      "isPostdoc": true,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": false
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-4d5535a8194f",
-      "employerId": "rvvi-61388998",
-      "originalText": "Postdoktorandská pozice se zaměřením na simulaci proudění suspenzí nesférických částic – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/postdoktorand-se-zamerenim-na-simulaci-proudeni-suspenzi-nesferickych-castic/",
-      "track": "postdoc",
-      "isPostdoc": true,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": false
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
       "candidateId": "job-88998-4d736706b9d2",
       "employerId": "rvvi-61388998",
       "originalText": "2. výzva programu MERIT Postdoctoral Fellowship Programme se otevírá 15. ledna 2024",
@@ -6518,112 +6180,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-5b08f47bc1dc",
-      "employerId": "rvvi-61388998",
-      "originalText": "Doktorand – vývoj experimentální aparatury pro analýzu plastické deformace v kovech – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/doktorand-vyvoj-experimentalni-aparatury-pro-analyzu-plasticke-deformace-v-kovech/",
-      "track": "assistant",
-      "isPostdoc": false,
-      "paidStatus": "confirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": false
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-679de7a4ea19",
-      "employerId": "rvvi-61388998",
-      "originalText": "PhD Student – Structural design optimization for vibration mitigation in additively manufactured electric machines – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/phd-student-structural-design-optimization-for-vibration-mitigation-in-additively-manufactured-electric-machines/",
-      "track": "assistant",
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "master",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": false,
-        "doctoralEnrollment": false
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-696c5676409a",
-      "employerId": "rvvi-61388998",
-      "originalText": "Odborný pracovník výzkumu a vývoje – Laboratorní technik/technička – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/odborny-pracovnik-vyzkumu-a-vyvoje-laboratorni-technik-technicka-pro-oddeleni-elektrotechniky-a-elektrofyziky/",
-      "track": "post_master",
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-91bc72dadb95",
-      "employerId": "rvvi-61388998",
-      "originalText": "Odborný pracovník výzkumu a vývoje s min. 2letými zkušenostmi s numerickými simulacemi/programováním – vibrace a dynamika mechanických systémů – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/odborny-pracovnik-vyzkumu-a-vyvoje-s-min-2letymi-zkusenostmi-s-numerickymi-simulacemi-programovanim-vibrace-a-dynamika-mechanickych-systemu/",
-      "track": "post_master",
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-c4112864fac0",
-      "employerId": "rvvi-61388998",
-      "originalText": "Postdoktorand – specialista/postdoktorandka – specialistka na vývoj algoritmů topologické optimalizace – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/postdoktorand-specialista-na-vyvoj-algoritmu-topologicke-optimalizace/",
-      "track": "postdoc",
-      "isPostdoc": true,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": false
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
+      "factsExtractedAt": "2026-10-12T09:45:35Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6644,49 +6201,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-d296547c6419",
-      "employerId": "rvvi-61388998",
-      "originalText": "Odborný pracovník výzkumu a vývoje – nanomateriály pro vodíkové technologie – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/odborny-pracovnik-vyzkumu-a-vyvoje-nanomaterialy-pro-vodikove-technologie/",
-      "track": "post_master",
-      "isPostdoc": false,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "bachelor",
-      "doctoralEnrollment": "unspecified",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": false,
-        "doctoralEnrollment": true
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
-      "parserVersion": "jobs-parser-2026-09-12.2"
-    },
-    {
-      "candidateId": "job-88998-d8d19beed281",
-      "employerId": "rvvi-61388998",
-      "originalText": "Postdoktorand(ka) pro oddělení Dynamiky a vibrací – UKONČENO",
-      "sourceUrl": "https://www.it.cas.cz/postdoktorand-pro-oddeleni-dynamiky-a-vibraci/",
-      "track": "postdoc",
-      "isPostdoc": true,
-      "paidStatus": "unconfirmed",
-      "minimumDegree": "unknown",
-      "doctoralEnrollment": "required",
-      "catalogueScopeStatus": "included",
-      "nearestDeadline": null,
-      "decision": "approved_public",
-      "blockers": [],
-      "unknownAttributes": {
-        "degree": true,
-        "doctoralEnrollment": false
-      },
-      "factsExtractedAt": "2026-10-11T09:03:15Z",
+      "factsExtractedAt": "2026-10-12T09:45:35Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6709,7 +6224,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:03:23Z",
+      "factsExtractedAt": "2026-10-12T09:45:42Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6732,7 +6247,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T09:07:10Z",
+      "factsExtractedAt": "2026-10-12T09:26:33Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6810,13 +6325,13 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:03:51Z",
+      "factsExtractedAt": "2026-10-12T09:46:04Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6837,7 +6352,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:03:36Z",
+      "factsExtractedAt": "2026-10-12T09:45:53Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6860,7 +6375,7 @@
         "degree": false,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T09:07:10Z",
+      "factsExtractedAt": "2026-10-12T09:26:33Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6881,7 +6396,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:03:43Z",
+      "factsExtractedAt": "2026-10-12T09:45:58Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6902,7 +6417,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6923,7 +6438,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6944,7 +6459,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6965,7 +6480,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -6986,7 +6501,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7007,7 +6522,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7028,7 +6543,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7049,7 +6564,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7070,7 +6585,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7091,7 +6606,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7112,7 +6627,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7133,7 +6648,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7154,7 +6669,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7175,7 +6690,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7196,7 +6711,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7217,7 +6732,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7238,7 +6753,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7259,7 +6774,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7280,7 +6795,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7301,7 +6816,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7322,7 +6837,7 @@
         "degree": true,
         "doctoralEnrollment": false
       },
-      "factsExtractedAt": "2026-10-11T09:02:18Z",
+      "factsExtractedAt": "2026-10-12T09:44:50Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7345,7 +6860,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T09:07:10Z",
+      "factsExtractedAt": "2026-10-12T09:26:33Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     },
     {
@@ -7366,7 +6881,7 @@
         "degree": true,
         "doctoralEnrollment": true
       },
-      "factsExtractedAt": "2026-10-10T09:07:10Z",
+      "factsExtractedAt": "2026-10-12T09:26:33Z",
       "parserVersion": "jobs-parser-2026-09-12.2"
     }
   ]
