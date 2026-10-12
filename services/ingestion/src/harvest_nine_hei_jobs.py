@@ -4117,8 +4117,15 @@ def parse_accordion_items(html: str, page_url: str, skip_class: str = "archive")
     return results
 
 
+# Site navigation, page header and footer: their headings are not vacancies.
+# ÚCHP's vacancy page listed none on 2026-10-11, and its footer menu headings
+# "Věda a výzkum" and "Veřejnost" were read as two posts; one was published.
+_PAGE_CHROME_BLOCK_RE = re.compile(r"(?is)<(nav|header|footer)\b[^>]*>.*?</\1\s*>")
+
+
 def parse_inline_heading_jobs(html: str, page_url: str) -> list[dict]:
     """Parse official pages where multiple complete vacancies are inline."""
+    html = _PAGE_CHROME_BLOCK_RE.sub(" ", html)
     headings = list(re.finditer(r"(?is)<h2\b[^>]*>(.*?)</h2>", html))
     results: list[dict] = []
     for index, heading in enumerate(headings):

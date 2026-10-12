@@ -79,6 +79,7 @@ def test_gates_withhold_and_say_why() -> None:
     payload = {"jobs": [
         _job(id="chrome", originalText="Přejít na hlavní obsah"),
         _job(id="dated", originalText="30.09.2026 Volná místa, konkursy Výběrové řízení"),
+        _job(id="menu", originalText="Věda a výzkum"),  # ÚCHP footer heading, 2026-10-11
         _job(id="scope", track=None),
         _job(id="late"),
     ], "windows": [{"ownerId": "late", "closesAt": "2026-09-30"}]}
@@ -86,6 +87,7 @@ def test_gates_withhold_and_say_why() -> None:
     assert report["approved"] == []
     assert "title-is-page-chrome" in report["withheld"]["chrome"]
     assert "title-is-page-chrome" in report["withheld"]["dated"]
+    assert "title-is-page-chrome" in report["withheld"]["menu"]
     assert "outside-research-catalogue-scope" in report["withheld"]["scope"]
     assert "deadline-passed" in report["withheld"]["late"]
 

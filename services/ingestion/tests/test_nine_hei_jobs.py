@@ -3323,3 +3323,23 @@ def test_the_verb_master_is_not_a_masters_degree() -> None:
     )["minimumDegree"] == "unknown"
     for body in ("Holds at least a master’s degree in computer science", "Masters in physics required", "Master degree in chemistry"):
         assert extract_qualifications("Researcher", body)["minimumDegree"] == "master", body
+
+
+def test_inline_headings_in_the_site_menu_and_footer_are_not_vacancies() -> None:
+    """2026-10-11: ÚCHP's page listed no vacancy; its footer menu headings
+    "Věda a výzkum" and "Veřejnost" were read as two posts."""
+    footer = (
+        '<footer><nav><h2 class="footer__nav-heading">Věda a výzkum</h2>'
+        "<ul><li>Výzkum na ÚCHP</li><li>Projekty</li><li>Výsledky vědy a výzkumu</li><li>PhD studium</li>"
+        "<li>Postdoktorandské pozice a výzkumní pracovníci</li></ul>"
+        '<h2 class="footer__nav-heading">Veřejnost</h2><ul><li>Popularizace vědy a výzkumu</li></ul></nav></footer>'
+    )
+    assert parse_inline_heading_jobs(f"<main><p>Aktuálně nenabízíme žádné pozice.</p></main>{footer}",
+                                     "https://www.icpf.cas.cz/nabidky-zamestnani/") == []
+    vacancy = (
+        "<main><h2>Postdoktorand v oboru chemického inženýrství</h2>"
+        "<p>Hledáme postdoktoranda pro výzkum v oblasti chemických procesů. Požadujeme Ph.D. "
+        "v chemickém inženýrství. Přihlášky do 30. 11. 2026.</p></main>"
+    )
+    rows = parse_inline_heading_jobs(vacancy + footer, "https://www.icpf.cas.cz/nabidky-zamestnani/")
+    assert [row["title"] for row in rows] == ["Postdoktorand v oboru chemického inženýrství"]

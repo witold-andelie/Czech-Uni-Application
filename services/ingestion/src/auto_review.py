@@ -32,7 +32,9 @@ CLOSED_LIFECYCLES = {"closed", "expired", "unavailable"}
 # Page chrome that a listing parser once took for a vacancy (VŠTE, PEUNI).
 _CHROME_RE = re.compile(
     r"^(?:top|menu|kontakt\w*|contacts?|home|úvod|uvod|přejít na hlavní obsah|skip to (?:main )?content|"
-    r"škola základní informace|jsme panevropsk\w*|více|more|read more|detail)$",
+    r"škola základní informace|jsme panevropsk\w*|více|more|read more|detail|"
+    # Menu headings (ÚCHP footer 2026-10-11, UHK footer 2026-10-08).
+    r"věda a výzkum|veda a vyzkum|veřejnost|verejnost|o ústavu|o ustavu|spolupráce|spoluprace|pro média|pro media)$",
     re.I,
 )
 _DATE_PREFIX_RE = re.compile(r"^\s*\d{1,2}\.\s?\d{1,2}\.\s?\d{4}\b")
