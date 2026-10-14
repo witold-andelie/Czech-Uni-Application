@@ -1,9 +1,9 @@
 {
   "note": "Committed regression floor for data/sources/admissions/programme-links.json. CI fails when any school or the total resolves fewer school-owned programme pages than this. Raise it when coverage genuinely improves; revise it with the reason recorded in revisionNotes when the register itself shrinks.",
-  "recordedFromGeneratedAt": "2026-10-13T12:39:43Z",
+  "recordedFromGeneratedAt": "2026-10-14T10:37:39Z",
   "denominatorBasis": "MŠMT register rows published for the school in the active inventory",
-  "resolvedTotal": 4117,
-  "offeringsTotal": 5051,
+  "resolvedTotal": 4115,
+  "offeringsTotal": 5048,
   "schoolNames": {
     "msmt-vs_14000": "Masarykova univerzita",
     "msmt-vs_41000": "Česká zemědělská univerzita v Praze",
@@ -51,7 +51,7 @@
     "msmt-vs_11000": 869,
     "msmt-vs_12000": 202,
     "msmt-vs_13000": 134,
-    "msmt-vs_14000": 451,
+    "msmt-vs_14000": 449,
     "msmt-vs_15000": 399,
     "msmt-vs_16000": 3,
     "msmt-vs_17000": 135,
@@ -118,6 +118,7 @@
     "2026-09-28: AMU's three faculty sitemaps were adopted as catalogue entries, but only after measuring what they bind (work/programme-link-probe/amu-sitemap-baseline.json, amu-sitemap-variant.json, amu-final.json, live-amu-codestrip.log). Measured offline with previous={}: the entry URLs the school already had resolve 20 of 101 rows in 264 requests, and adding famu.cz/sitemap-programs.xml, hamu.cz/sitemap-programs.xml and damu.cz/sitemap-programs.xml on their own resolved the same 20 in 271 requests - every <loc> was fetched and none was bound, because each slug ends with the school's own programme code (animovana-tvorba-232) and so equalled no register title. The resolver now reads that code off a slug the way it already reads a code-shaped parenthetical off a catalogue anchor: the slug is taken exactly as the school wrote it whenever it already equals a register title, and only otherwise retried without a trailing two-to-four digit number. No register row ends in a two-to-four digit number, so removing one can only stop a real page from being read as naming nothing; it cannot move one row's page to another row. Measured again with that rule: 26 of 101 rows in 347 requests. The merged live run reached 27, one above the offline measure, and all seven new links answered verified with a page title equal to the register row: Directing of Devised and Object Theatre, Taneční umění a nonverbální divadlo, Produkce a management, PuppArts EMJM, Skladba a teorie skladby, Interpretace a teorie interpretace, Choreology. No previously committed id was lost, no row kept by an existing link changed address, and no other school was re-fetched. The rule is general but its measured gain is AMU's alone: reading each of the other 42 schools' sitemap roots twice, once with and once without the code-free reading, changed the titles bound for none of them (work/programme-link-probe/generality.log, generality-rest.log) - only AMU writes a code-shaped suffix onto every programme slug. AMU's other 74 unresolved rows did not improve: 54 are now ambiguous_register_rows rather than no_candidate_page, because the register holds those 26 titles at two levels and the programme pages state no level the resolver can read, and the level probe separated six of them. Those rows stay unresolved with the reason recorded rather than being bound by a guessed level.",
     "2026-10-01: lowered by 3 (owner approved) because the MŠMT register itself dropped three rows that had proven pages. Two independent fresh exports (2026-09-29T22:31Z / 2026-09-30T08:45Z for VS_14000, 2026-09-29T22:06Z / 2026-09-30T08:33Z for VS_17000) agree: Masaryk University Study of Religions (PhD, en, inv-456d46b3fc7b) is gone; Bioanalytická laboratorní diagnostika ve zdravotnictví - Embryolog (master, Lékařská fakulta) is listed only in English, so the Czech row inv-cc15e6e1e766 is gone and its Czech page is not moved to the English row (A100); Ostrava University Zubní lékařství (master, inv-7ab7cd851395) is gone. msmt-vs_14000 floor -2, msmt-vs_17000 -1, total 3426 -> 3423. The resolver retires such links with reason row_left_register.",
     "2026-10-03: msmt-vs_11000 floor -1 and total -1 because a wrong link is removed, not lost: register row inv-0fedb5e23a6f (Historie, bachelor, Filozofická fakulta) was bound to https://www.lf2.cuni.cz/fakulta/o-fakulte/historie, the 2nd Faculty of Medicine's 'Historie fakulty' page, found as a same-titled anchor. resolve_programme_links.py now rejects a page on a host whose other bindings all belong to another faculty (faculty_sites, reason page_on_another_faculty_site); the row shows the university site until its own page is found. The same rule removes ČVUT inv-b3ad1d36c297 (Computer Science, PhD, Fakulta elektrotechnická) bound to FIT's bachelor page; ČVUT's floor is not lowered because Bílá kniha adds far more rows in the same run.",
-    "2026-10-12: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_12000 inv-032f6e56a754; msmt-vs_17000 inv-7ab7cd851395"
+    "2026-10-12: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_12000 inv-032f6e56a754; msmt-vs_17000 inv-7ab7cd851395",
+    "2026-10-14: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_14000 inv-456d46b3fc7b, inv-cc15e6e1e766"
   ]
 }
