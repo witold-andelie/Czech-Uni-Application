@@ -444,3 +444,51 @@ def test_a_notice_worded_otherwise_is_checked_on_the_listing_that_titles_it(monk
     assert rows["job-live"]["status"] == "matched" and rows["job-live"]["listingUrl"] == listing
     assert rows["job-gone"]["status"] == "http_404"  # a removed notice is not rescued by its listing
     assert fetched.count(listing) == 1
+
+
+def test_a_pdf_is_checked_on_the_listed_page_that_attaches_and_titles_it(monkeypatch):
+    """2026-10-17..19: UPCE lists a department page, which titles the PDF it
+    attaches; the PDF words its heading otherwise and the open post was held back."""
+    import verify_live_titles as v
+
+    listing = "https://www.upce.cz/volna-mista"
+    department, other = "https://www.upce.cz/katedra-ved-o-vychove-3", "https://www.upce.cz/vyberove-rizeni-na-obsazeni-mista-x"
+    pdf = "https://www.upce.cz/sites/default/files/global/2026-10/7240/DOC-PROF%20KVV%20pedagogika_142916.pdf"
+    moved = "https://www.upce.cz/sites/default/files/global/2026-10/7240/elsewhere.pdf"
+    title = "Profesor/Profesorka; Docent/Docentka"
+
+    def task(ident: str, url: str) -> dict:
+        return {"candidateId": ident, "employerId": "msmt-vs_25000", "sourceUrl": url, "applicationUrl": url,
+                "sourceHash": "sha256:x", "discoverySourceId": "upce-central-vacancies",
+                "titles": [{"locale": "cs", "title": title}]}
+
+    monkeypatch.setattr(v, "load_tasks", lambda _status: [task("job-pdf", pdf), task("job-moved", moved)])
+    monkeypatch.setattr(v, "discovery_listing_page", lambda _task: listing)
+    monkeypatch.setattr(v, "HOST_DELAY_S", 0)
+    bodies = {pdf: (200, "akademická pracovnice / akademický pracovník docentka / docent, profesorka / profesor"),
+              # Still served, but no listed page attaches it under that title.
+              moved: (200, "docentka / docent"),
+              listing: (200, f"<a href='{department}'>Katedra věd o výchově</a><a href='{other}'>Správce</a>"),
+              department: (200, f"<h2>Výběrové řízení</h2><a href='{pdf}'>{title} - pdf 551 kB</a>"),
+              # Names the title, but attaches nothing: not the post's page.
+              other: (200, f"<h1>Správce</h1><p>{title}</p>")}
+    fetched: list[str] = []
+
+    def vet(url):
+        fetched.append(url)
+        status, body = bodies[url]
+        return {"httpStatus": status, "finalUrl": url, "tool": "pdf" if url.endswith(".pdf") else "scrapling_get",
+                "bodyText": body, "blocked": False, "blockedReasons": []}
+
+    monkeypatch.setattr(v, "vet_one", vet)
+    out = euraxess_source.LISTING_PATH.parent / "live.json"
+    monkeypatch.setattr(sys, "argv", ["verify_live_titles.py", "--output", str(out), "--no-merge",
+                                      "--operator-evidence", str(out.parent / "none.json")])
+    try:
+        v.main()
+    except SystemExit:
+        pass
+    rows = {row["candidateId"]: row for row in json.loads(out.read_text(encoding="utf-8"))["rows"]}
+    assert rows["job-pdf"]["status"] == "matched" and rows["job-pdf"]["listingUrl"] == department
+    assert rows["job-moved"]["status"] == "non_match"
+    assert all(fetched.count(url) == 1 for url in (listing, department, other))

@@ -34,6 +34,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from collections import defaultdict
@@ -72,6 +73,9 @@ CONFIRMED = {"matched", "operator_verified"}
 # The employer's own page still comes first.
 NOTICE_CHECK_DAYS = 4
 NOTICE_READS_PER_RUN = 15
+# A listing's detail pages read, at most and once per run, to find the page
+# that titles an attached PDF (attachment_pages; UPCE lists four).
+DETAIL_PAGES_PER_LISTING = 10
 RETRY_DELAYS_S = (3.0, 12.0)
 RETRY_STATUSES = {408, 425, 429, 500, 502, 503, 504}
 UA = "Mozilla/5.0 (X11; Linux x86_64) CzechUniApply/0.1 (verification; contact via faculty pages)"
@@ -336,6 +340,39 @@ def discovery_listing_page(task: dict[str, Any]) -> str | None:
     return url if url and host not in euraxess_source.EURAXESS_HOSTS else None
 
 
+def attachment_pages(task: dict[str, Any], listing: str, listing_html: str) -> list[str]:
+    """The listing's detail pages, when the post is a document those pages attach.
+
+    UPCE lists a department's page ("Katedra věd o výchově"), and that page
+    titles the PDF it attaches ("Profesor/Profesorka; Docent/Docentka"); the
+    PDF words its heading otherwise, so the open post was held back as
+    non_match, 2026-10-17..19. The harvest read the title on that page.
+    """
+    from harvest_nine_hei_jobs import load_registered_job_sources, parse_generic_listing_links
+
+    source = next((item for item in load_registered_job_sources()
+                   if str(item.get("id")) == str(task.get("discoverySourceId") or "")), None)
+    patterns = (source or {}).get("detailAttachmentPatterns") or []
+    if not any(re.search(pattern, task["sourceUrl"], re.I) for pattern in patterns):
+        return []
+    links = parse_generic_listing_links(listing_html, listing, source.get("pathPatterns"))
+    return [item["sourceUrl"] for item in links][:DETAIL_PAGES_PER_LISTING]
+
+
+def attached_with_title(page_html: str, page_url: str, task: dict[str, Any]) -> dict[str, Any] | None:
+    """The title match of the link on ``page_url`` that attaches this very document."""
+    from harvest_nine_hei_jobs import load_registered_job_sources, parse_generic_listing_links
+
+    source = next((item for item in load_registered_job_sources()
+                   if str(item.get("id")) == str(task.get("discoverySourceId") or "")), {})
+    for item in parse_generic_listing_links(page_html, page_url, source.get("detailAttachmentPatterns") or []):
+        if item["sourceUrl"] == task["sourceUrl"]:
+            match = title_matches(str(item.get("title") or ""), task["titles"])
+            if match["matched"]:
+                return match
+    return None
+
+
 def official_listing_page(task: dict[str, Any]) -> str | None:
     """The official listing that found a post and decides whether it is open.
 
@@ -433,6 +470,21 @@ def main() -> None:
     started = time.time()
     last_by_host: dict[str, float] = defaultdict(float)
     pages: dict[str, dict[str, Any]] = {}
+
+    def read_once(url: str) -> dict[str, Any]:
+        """An official page other than the post's own, fetched at most once per run."""
+        if url not in pages:
+            page_host = urlsplit(url).netloc
+            wait = HOST_DELAY_S - (time.time() - last_by_host[page_host])
+            if wait > 0:
+                time.sleep(wait)
+            last_by_host[page_host] = time.time()
+            try:
+                pages[url] = vet_one(url)
+            except Exception:
+                pages[url] = {"httpStatus": 0, "bodyText": ""}
+        return pages[url]
+
     notice_reads = 0
     rows: list[dict[str, Any]] = []
     processed = 0
@@ -508,22 +560,21 @@ def main() -> None:
             # the title shown is the official listing's, so it is checked
             # there (JČU's and ZČU's PDF notices; four open posts were held
             # back as non_match, 2026-10-11). A removed notice is not rescued.
-            listed = pages.get(listing)
-            if listed is None:
-                listing_host = urlsplit(listing).netloc
-                wait = HOST_DELAY_S - (time.time() - last_by_host[listing_host])
-                if wait > 0:
-                    time.sleep(wait)
-                last_by_host[listing_host] = time.time()
-                try:
-                    listed = pages.setdefault(listing, vet_one(listing))
-                except Exception:
-                    listed = pages.setdefault(listing, {"httpStatus": 0, "bodyText": ""})
+            listed = read_once(listing)
             if listed.get("httpStatus") == 200:
                 on_listing = title_matches(listed.get("bodyText") or "", task["titles"])
                 if on_listing["matched"]:
                     match = on_listing
                     row["listingUrl"] = listing
+                else:
+                    # Or on the listed page that attaches the document.
+                    for page_url in attachment_pages(task, listing, listed.get("bodyText") or ""):
+                        page = read_once(page_url)
+                        attached = attached_with_title(page.get("bodyText") or "", page_url, task) if page.get("httpStatus") == 200 else None
+                        if attached:
+                            match = attached
+                            row["listingUrl"] = page_url
+                            break
         row.update(match)
         if not match["matched"]:
             status = "blocked_or_useless" if raw["blocked"] or raw["httpStatus"] in (401, 403, 407, 451) else (
