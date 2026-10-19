@@ -20,6 +20,11 @@ def _inventory() -> dict:
     return json.loads(doctoral.INVENTORY.read_text(encoding="utf-8"))
 
 
+def _register_rows() -> list[dict]:
+    """The CZU doctoral offerings in the committed register; MŠMT adds some (60 -> 62 on 2026-10-14)."""
+    return doctoral._load_doctoral_inventory(_inventory())
+
+
 def _complete_assets() -> dict[str, dict]:
     rows = doctoral._load_doctoral_inventory(_inventory())
     assets: dict[str, dict] = {}
@@ -58,13 +63,15 @@ def test_czu_doctoral_crosscheck_matches_all_register_offerings() -> None:
         now=datetime(2026, 9, 11, 12, 0, tzinfo=timezone.utc),
     )
 
+    rows = _register_rows()
+    languages = {lang: sum(row["studyLanguage"] == lang for row in rows) for lang in ("cs", "en")}
     assert payload["catalogKind"] == "candidate_not_published"
-    assert payload["counts"]["programmes"] == 60
+    assert payload["counts"]["programmes"] == len(rows)
     assert payload["counts"]["faculties"] == 6
-    assert payload["counts"]["teachingLanguages"] == {"cs": 30, "en": 30}
-    assert payload["counts"]["matchedToFacultyAdmissionEvidence"] == 60
-    assert payload["counts"]["withAnyOfficialWindow"] == 60
-    assert payload["counts"]["closedByOfficialDates"] == 60
+    assert payload["counts"]["teachingLanguages"] == languages
+    assert payload["counts"]["matchedToFacultyAdmissionEvidence"] == len(rows)
+    assert payload["counts"]["withAnyOfficialWindow"] == len(rows)
+    assert payload["counts"]["closedByOfficialDates"] == len(rows)
     assert payload["counts"]["openByOfficialDates"] == 0
     assert payload["coverage"]["complete"] is True
     assert payload["coverage"]["allApplicationWindowsClosedAtFetch"] is True
@@ -125,8 +132,8 @@ def test_czu_doctoral_refresh_has_independent_two_hour_clock(
     state = manager.load_state(now)
     task = state["czuDoctoralProgrammeAvailability"]
     assert result["published"] is False
-    assert task["programmesCount"] == 60
-    assert task["matchedProgrammesCount"] == 60
+    assert task["programmesCount"] == len(_register_rows())
+    assert task["matchedProgrammesCount"] == len(_register_rows())
     assert task["lastSuccessAt"] == to_iso(now)
     assert task["nextDueAt"] == to_iso(now + timedelta(hours=24))
     assert state["czuCzechProgrammeAvailability"]["lastSuccessAt"] is None
@@ -134,7 +141,7 @@ def test_czu_doctoral_refresh_has_independent_two_hour_clock(
 
 def _drop_titles(assets: dict[str, dict], count: int) -> list[str]:
     """Remove `count` register titles from the faculty evidence they were matched in."""
-    rows = doctoral._load_doctoral_inventory(_inventory())
+    rows = _register_rows()
     expected = {token for spec in doctoral.SOURCE_ASSETS for token in spec.get("expectedTokens", ())}
     dropped: list[str] = []
     for row in rows:
@@ -161,9 +168,9 @@ def test_a_register_offering_the_admissions_call_does_not_name_is_kept_without_a
     kept = next(item for item in payload["programmes"] if item["titleOriginal"] == title)
     assert kept["applicationWindows"] == [] and kept["applicationStatus"] == "unknown"
     assert kept["admissionAnnouncement"] == "not_in_current_announcement"
-    assert payload["counts"]["programmes"] == 60
+    assert payload["counts"]["programmes"] == len(_register_rows())
     assert payload["counts"]["notInCurrentAdmissionAnnouncement"] == 1
-    assert payload["counts"]["matchedToFacultyAdmissionEvidence"] == 59
+    assert payload["counts"]["matchedToFacultyAdmissionEvidence"] == len(_register_rows()) - 1
     assert payload["coverage"]["complete"] is False
 
 

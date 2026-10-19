@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import date, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -15,6 +16,8 @@ LISTING = "https://cuni.test/vyberova-rizeni/ajax.php?lang=en&stav=active&apo=al
 DETAIL_BASE = "https://cuni.test/open"
 RESEARCH_CODE = "CU-RESEARCH-1"
 TEACHING_CODE = "CU-TEACHING-2"
+# Relative to the real clock the harvest reads; a fixed 2026-10-31 would expire the posts in CI.
+DEADLINE = (date.today() + timedelta(days=60)).isoformat()
 
 
 def _source() -> dict:
@@ -57,10 +60,10 @@ def _fetch(url: str) -> tuple[int, str]:
         return (
             200,
             "<h1>Research assistant in virology</h1><p>Master degree. Employment contract. "
-            "Enrollment in a PhD is not required. Application deadline: 2026-10-31.</p>",
+            f"Enrollment in a PhD is not required. Application deadline: {DEADLINE}.</p>",
         )
     if url.endswith(f"pracid={TEACHING_CODE}"):
-        return 200, "<h1>Lecturer in Latin</h1><p>Teaching duties. Application deadline: 2026-10-31.</p>"
+        return 200, f"<h1>Lecturer in Latin</h1><p>Teaching duties. Application deadline: {DEADLINE}.</p>"
     return 404, ""
 
 

@@ -92,7 +92,7 @@ def test_czu_doctoral_offerings_carry_asserted_season_windows_and_apply_portal()
     outcome, _ = _run(source_id, store)
     assert outcome["completeness"].ok
     versions = [v for v in store.versions if v.get("prog_id")]
-    assert len(versions) == 60
+    assert len(versions) == EXPECTED_RECORD_COUNTS["czu-doctoral-faculty-admissions"]
     for version in versions:
         assert version["facts"]["academic_year"] == "2026/2027"
         assert version["facts"]["seasonAsserted"] is True
@@ -100,7 +100,7 @@ def test_czu_doctoral_offerings_carry_asserted_season_windows_and_apply_portal()
         assert version["facts"]["teaching_languages"] == [version["facts"]["studyLanguage"]]
     windows = sum(len(version["facts"]["applicationWindows"]) for version in versions)
     assert windows == 92
-    assert outcome["completeness"].parsed_count == 60
+    assert outcome["completeness"].parsed_count == EXPECTED_RECORD_COUNTS["czu-doctoral-faculty-admissions"]
 
 
 def test_czu_english_passthrough_keeps_tuition_and_does_not_invent_season() -> None:
@@ -159,9 +159,9 @@ def test_idempotent_rerun_creates_no_new_versions() -> None:
     first, _ = _run(source_id, store)
     second, _ = _run(source_id, store)
     assert first["completeness"].ok and second["completeness"].ok
-    assert len(store.programmes) == 60
+    assert len(store.programmes) == EXPECTED_RECORD_COUNTS["czu-doctoral-faculty-admissions"]
     versions = [v for v in store.versions if v.get("prog_id")]
-    assert len(versions) == 60
+    assert len(versions) == EXPECTED_RECORD_COUNTS["czu-doctoral-faculty-admissions"]
 
 
 def test_english_crosscheck_disagreement_is_preserved_not_merged() -> None:
@@ -194,7 +194,7 @@ def test_offerings_only_where_season_is_asserted() -> None:
 
     offerings, reasons = derive_offerings("czu-doctoral-faculty-admissions", _payload("czu-doctoral-faculty-admissions"))
     assert reasons == []
-    assert len(offerings) == 60
+    assert len(offerings) == EXPECTED_RECORD_COUNTS["czu-doctoral-faculty-admissions"]
     for offering in offerings:
         assert offering.academic_year == "2026/2027"
         assert offering.lifecycle == "closed"

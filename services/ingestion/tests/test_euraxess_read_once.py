@@ -14,6 +14,8 @@ import euraxess_source  # noqa: E402
 import harvest_nine_hei_jobs as h  # noqa: E402
 
 NOW = datetime(2026, 10, 8, 9, 0, tzinfo=timezone.utc)
+# Notice deadlines follow the real clock the harvest reads (a fixed 31 Dec 2026 would close them in 2027).
+DEADLINE = (datetime.now(timezone.utc) + timedelta(days=60)).strftime("%d %b %Y")
 SOURCE_ID = "euraxess-cz-jobs"
 # What a card of the Czech-filtered search names (euraxess_source.listing_problem).
 CZECH = "<p>Work Locations: Number of offers: 1, Czech Republic, Charles University</p>"
@@ -33,7 +35,7 @@ def notice(title: str = "Postdoctoral researcher in robotics", website: str = "h
         "<p>Organisation/Company Charles University Department Faculty of Mathematics and Physics "
         "Research Field Computer science</p>"
         f"<p>Website {website}</p>"
-        "<p>A postdoctoral research position in robotics. PhD required. Application Deadline 31 Dec 2026.</p>"
+        f"<p>A postdoctoral research position in robotics. PhD required. Application Deadline {DEADLINE}.</p>"
         "</main></body></html>"
     )
 
@@ -127,7 +129,10 @@ def test_a_full_pass_reads_only_the_new_notice_and_keeps_the_read_one(tmp_path, 
         f'<article><a href="/jobs/1">Postdoctoral researcher in robotics</a>{CZECH}</article>'
         f'<article><a href="/jobs/2">Postdoctoral researcher in vision</a>{CZECH}</article>'
     )
-    euraxess_source.save_notices({"eu1": {"url": url(1), "title": "Postdoctoral researcher in robotics", "fetchedAt": iso(NOW),
+    # The harvest reads the real clock, so the notice was read just now, not on the fixed NOW
+    # (with NOW, eu1 fell due again on 2026-10-16 and CI went red).
+    read_now = iso(datetime.now(timezone.utc))
+    euraxess_source.save_notices({"eu1": {"url": url(1), "title": "Postdoctoral researcher in robotics", "fetchedAt": read_now,
                                           "employerId": "msmt-vs_11000", "officialPostUrl": None}})
     prior = {"id": "job-11000-eu1", "employerId": "msmt-vs_11000", "discoverySourceId": SOURCE_ID, "sourceUrl": url(1),
              "visibility": "public", "lifecycleStatus": "unknown", "title": {"en": "Postdoctoral researcher in robotics"}}
