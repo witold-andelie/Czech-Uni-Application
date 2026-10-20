@@ -1,6 +1,6 @@
 {
   "note": "Committed regression floor for data/sources/admissions/programme-links.json. CI fails when any school or the total resolves fewer school-owned programme pages than this. Raise it when coverage genuinely improves; revise it with the reason recorded in revisionNotes when the register itself shrinks.",
-  "recordedFromGeneratedAt": "2026-10-19T10:57:08Z",
+  "recordedFromGeneratedAt": "2026-10-20T10:31:21Z",
   "denominatorBasis": "MŠMT register rows published for the school in the active inventory",
   "resolvedTotal": 4118,
   "offeringsTotal": 5061,
@@ -119,6 +119,7 @@
     "2026-10-01: lowered by 3 (owner approved) because the MŠMT register itself dropped three rows that had proven pages. Two independent fresh exports (2026-09-29T22:31Z / 2026-09-30T08:45Z for VS_14000, 2026-09-29T22:06Z / 2026-09-30T08:33Z for VS_17000) agree: Masaryk University Study of Religions (PhD, en, inv-456d46b3fc7b) is gone; Bioanalytická laboratorní diagnostika ve zdravotnictví - Embryolog (master, Lékařská fakulta) is listed only in English, so the Czech row inv-cc15e6e1e766 is gone and its Czech page is not moved to the English row (A100); Ostrava University Zubní lékařství (master, inv-7ab7cd851395) is gone. msmt-vs_14000 floor -2, msmt-vs_17000 -1, total 3426 -> 3423. The resolver retires such links with reason row_left_register.",
     "2026-10-03: msmt-vs_11000 floor -1 and total -1 because a wrong link is removed, not lost: register row inv-0fedb5e23a6f (Historie, bachelor, Filozofická fakulta) was bound to https://www.lf2.cuni.cz/fakulta/o-fakulte/historie, the 2nd Faculty of Medicine's 'Historie fakulty' page, found as a same-titled anchor. resolve_programme_links.py now rejects a page on a host whose other bindings all belong to another faculty (faculty_sites, reason page_on_another_faculty_site); the row shows the university site until its own page is found. The same rule removes ČVUT inv-b3ad1d36c297 (Computer Science, PhD, Fakulta elektrotechnická) bound to FIT's bachelor page; ČVUT's floor is not lowered because Bílá kniha adds far more rows in the same run.",
     "2026-10-12: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_12000 inv-032f6e56a754; msmt-vs_17000 inv-7ab7cd851395",
-    "2026-10-14: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_14000 inv-456d46b3fc7b, inv-cc15e6e1e766"
+    "2026-10-14: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_14000 inv-456d46b3fc7b, inv-cc15e6e1e766",
+    "2026-10-20: lowered automatically by 1 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_15000 inv-00ff6bfaeddf"
   ]
 }
