@@ -52,13 +52,38 @@ def test_completed_source_survives_later_interruption(tmp_path, monkeypatch):
         }
 
     monkeypatch.setattr(harvest, "harvest_with_registered_discovery", collect)
-    with pytest.raises(TimeoutError):
-        worker.harvest_jobs([], jobs_path=target)
+    # One source failing (a store read timed out, 2026-10-21) is deferred:
+    # it neither ends the pass nor counts as read to the end.
+    result = worker.harvest_jobs([], jobs_path=target)
     saved = json.loads(target.read_text())
     assert saved["jobs"][0]["id"] == "job-a"
     assert saved["discovery"]["expectedSourceIds"] == ["a", "b"]
     assert saved["discovery"]["completeSourceIds"] == ["a"]
-    assert saved["discovery"]["runKind"] == "partial_checkpoint"
+    assert saved["discovery"]["deferredSourceIds"] == ["b"]
+    assert result["discovery"]["deferredSourceIds"] == ["b"]
+
+
+def test_a_failing_source_does_not_end_discovery_for_the_sources_after_it(tmp_path, monkeypatch):
+    target = tmp_path / "jobs.json"
+    sources = [{"id": s, "employerId": f"school-{s}"} for s in ("a", "b", "c")]
+    monkeypatch.setattr(harvest, "load_registered_job_sources", lambda: sources)
+    read: list[str] = []
+
+    def collect(candidates, fetch, previous, **kwargs):
+        source = kwargs["registry"][0]["id"]
+        read.append(source)
+        if source == "b":
+            raise TimeoutError("The read operation timed out")
+        return {"jobs": [{"id": f"job-{source}", "publicationStatus": "review_pending"}], "windows": [], "evidence": [],
+                "processedCandidateIds": [f"job-{source}"],
+                "discovery": {"attempts": [{"sourceId": source, "ok": True}], "completeSourceIds": [source], "discoveredCount": 1}}
+
+    monkeypatch.setattr(harvest, "harvest_with_registered_discovery", collect)
+    result = worker.harvest_jobs([], jobs_path=target)
+    assert read == ["a", "b", "c"]
+    assert result["discovery"]["completeSourceIds"] == ["a", "c"]
+    assert result["discovery"]["deferredSourceIds"] == ["b"]
+    assert {job["id"] for job in json.loads(target.read_text())["jobs"]} >= {"job-a", "job-c"}
 
 
 def test_zcu_nested_documents_and_versions():

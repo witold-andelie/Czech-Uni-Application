@@ -90,3 +90,65 @@ def test_start_run_claims_lease_and_finish_releases(monkeypatch) -> None:
     assert claim_calls and claim_calls[0]["p_owner"]
     store.finish_run(run["id"], status="succeeded", listing_complete=True, listed_count=1, parsed_count=1)
     assert release_calls == [{"p_run": run["id"], "p_token": "tok-claim"}]
+
+
+class _Answer:
+    def __init__(self, body: bytes) -> None:
+        self.body = body
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def read(self) -> bytes:
+        return self.body
+
+
+def _flaky(monkeypatch, failures: int) -> list[str]:
+    """urlopen that times out ``failures`` times, then answers; returns the methods sent."""
+    import storage.rest as rest
+
+    sent: list[str] = []
+
+    def urlopen(req, timeout=None, context=None):
+        sent.append(req.get_method())
+        if len(sent) <= failures:
+            raise TimeoutError("The read operation timed out")
+        return _Answer(b'[{"consecutive_complete_run_absence": 0}]')
+
+    monkeypatch.setattr(rest.urllib.request, "urlopen", urlopen)
+    monkeypatch.setattr(rest.time, "sleep", lambda _s: None)
+    return sent
+
+
+def test_a_read_that_times_out_is_sent_again(monkeypatch) -> None:
+    """2026-10-14, 10-20, 10-21: one timed-out read ended the whole job discovery."""
+    store = _store(monkeypatch)
+    sent = _flaky(monkeypatch, failures=2)
+    assert store._request("GET", "catalog_research_job?select=id") == [{"consecutive_complete_run_absence": 0}]
+    assert sent == ["GET", "GET", "GET"]
+
+
+def test_an_upsert_is_sent_again_but_an_insert_is_not(monkeypatch) -> None:
+    import pytest
+
+    store = _store(monkeypatch)
+    sent = _flaky(monkeypatch, failures=1)
+    store._request("POST", "catalog_research_job", [{}], extra={"Prefer": "resolution=merge-duplicates,return=minimal"})
+    assert sent == ["POST", "POST"]
+    sent = _flaky(monkeypatch, failures=1)
+    with pytest.raises(TimeoutError):  # the first may have been applied
+        store._request("POST", "ingest_source_run", {}, extra={"Prefer": "return=minimal"})
+    assert sent == ["POST"]
+
+
+def test_a_read_that_keeps_timing_out_still_fails(monkeypatch) -> None:
+    import pytest
+
+    store = _store(monkeypatch)
+    sent = _flaky(monkeypatch, failures=9)
+    with pytest.raises(TimeoutError):
+        store._request("GET", "catalog_research_job?select=id")
+    assert len(sent) == 3

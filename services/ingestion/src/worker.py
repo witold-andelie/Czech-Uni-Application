@@ -364,7 +364,17 @@ def harvest_jobs(
                 break
             print(f"job_discovery: source={source.get('id')}", flush=True)
             page = injected_fetch if injected_fetch is not None else live_fetcher(source)
-            part = harvest_jobs([], fetch_page=page, jobs_path=target, registry=[source])
+            try:
+                part = harvest_jobs([], fetch_page=page, jobs_path=target, registry=[source])
+            except Exception as exc:  # noqa: BLE001 - one source's failure is that source's alone
+                # The store failing for one source (a Supabase read timed out,
+                # 2026-10-21) ended discovery for every source after it. The
+                # source is deferred, not failed: it was not read to the end,
+                # proves nothing about its posts, and goes first next run.
+                print(f"job_discovery: source={source.get('id')} deferred after {type(exc).__name__}: {str(exc)[:200]}",
+                      flush=True)
+                aggregate["deferredSourceIds"].append(str(source.get("id")))
+                continue
             discovery = part.get("discovery") or {}
             for key in ("completeSourceIds", "deferredSourceIds", "attempts"):
                 aggregate[key].extend(discovery.get(key) or [])

@@ -6,15 +6,21 @@ from datetime import datetime, timezone
 from typing import Any
 from uuid import uuid4
 from urllib.parse import quote
+import http.client
 import json
 import os
 import ssl
+import time
 import urllib.error
 import urllib.request
 
 from storage.documents import TIER_TRANSIENT, prepare_document
 from storage.evidence import EvidenceStore
 from storage.facts import job_fact_hash, stored_facts
+
+
+RETRY_DELAYS_S = (3.0, 12.0)
+RETRY_STATUSES = {502, 503, 504}
 
 
 def _now() -> datetime:
@@ -67,15 +73,31 @@ class RestStore:
             headers=self._headers(extra),
             method=method,
         )
-        try:
-            with urllib.request.urlopen(req, timeout=30, context=self._ctx) as resp:
-                raw = resp.read()
-                if not raw:
-                    return None
-                return json.loads(raw.decode("utf-8"))
-        except urllib.error.HTTPError as exc:
-            snippet = exc.read().decode("utf-8", errors="replace")[:300].replace(self.key, "[redacted]")
-            raise RuntimeError(f"supabase REST {method} {path} -> {exc.code}: {snippet}") from None
+        # A read that times out was the whole job discovery's end on 2026-10-14,
+        # 10-20 and 10-21 (22 of 49 sources unread on 10-21). A request that
+        # may run twice without harm is sent again; an insert is not, since
+        # the first may have been applied before its answer was lost.
+        prefer = (extra or {}).get("Prefer") or ""
+        repeatable = method in {"GET", "HEAD", "PATCH", "DELETE"} or "merge-duplicates" in prefer
+        delays = RETRY_DELAYS_S if repeatable else ()
+        for attempt in range(len(delays) + 1):
+            try:
+                with urllib.request.urlopen(req, timeout=30, context=self._ctx) as resp:
+                    raw = resp.read()
+                    if not raw:
+                        return None
+                    return json.loads(raw.decode("utf-8"))
+            except urllib.error.HTTPError as exc:
+                if exc.code in RETRY_STATUSES and attempt < len(delays):
+                    time.sleep(delays[attempt])
+                    continue
+                snippet = exc.read().decode("utf-8", errors="replace")[:300].replace(self.key, "[redacted]")
+                raise RuntimeError(f"supabase REST {method} {path} -> {exc.code}: {snippet}") from None
+            except (TimeoutError, ConnectionError, http.client.HTTPException, urllib.error.URLError):
+                if attempt >= len(delays):
+                    raise
+                time.sleep(delays[attempt])
+        return None
 
     PAGE = 1000
 
