@@ -1,0 +1,1134 @@
+{
+  "generatedAt": "2026-09-07T12:34:24Z",
+  "dataClass": "official_admissions_extract",
+  "catalogKind": "tracer_not_published",
+  "note": "Verified official application / admissions URLs for every register HEI. Only HTTP 200 pages without a not-found phrase are stored. CSS/asset hits were dropped. Not a programme catalogue. Not written to data/published/. A working portal is not an open window.",
+  "counts": {
+    "institutions": 54,
+    "eApplication": 42,
+    "admissionsInfo": 10,
+    "missing": 2
+  },
+  "institutions": [
+    {
+      "institutionId": "msmt-vs_51000",
+      "msmtCode": "VS_51000",
+      "officialName": "Akademie múzických umění v Praze",
+      "officialUrl": "https://www.amu.cz",
+      "applyUrl": "https://prihlaska.amu.cz/apps/kos/prihlaska/",
+      "applyUrlEn": "https://prihlaska.amu.cz/apps/kos/prihlaska/",
+      "admissionsUrl": "https://www.amu.cz/cs/studium/prijimaci-rizeni/",
+      "admissionsUrlEn": "https://www.amu.cz/cs/studium/prijimaci-rizeni/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:40:40Z"
+    },
+    {
+      "institutionId": "msmt-vs_52000",
+      "msmtCode": "VS_52000",
+      "officialName": "Akademie výtvarných umění v Praze",
+      "officialUrl": "https://www.avu.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": null,
+      "admissionsUrlEn": null,
+      "kind": "missing",
+      "checkedAt": "2026-09-07T12:30:47Z",
+      "probes": [
+        {
+          "url": "https://www.avu.cz/prijimaci-rizeni",
+          "finalUrl": "https://avu.cz/prijimaci-rizeni",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.avu.cz/en/admissions",
+          "finalUrl": "https://avu.cz/en/admissions",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.avu.cz/prihlaska",
+          "finalUrl": "https://avu.cz/prihlaska",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.avu.cz/eprihlaska",
+          "finalUrl": "https://avu.cz/eprihlaska",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.avu.cz/uchazeci",
+          "finalUrl": "https://avu.cz/uchazeci",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.avu.cz/admissions",
+          "finalUrl": "https://avu.cz/admissions",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.avu.cz/en/apply",
+          "finalUrl": "https://avu.cz/en/apply",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.avu.cz/en/applicants",
+          "finalUrl": "https://avu.cz/en/applicants",
+          "status": 404,
+          "ok": false
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_61000",
+      "msmtCode": "VS_61000",
+      "officialName": "AMBIS vysoká škola, a.s.",
+      "officialUrl": "https://www.ambis.cz",
+      "applyUrl": "https://www.ambis.cz/prihlaska",
+      "applyUrlEn": "https://www.ambis.cz/prihlaska",
+      "admissionsUrl": "https://www.ambis.cz/prijimaci-rizeni",
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-07T12:30:58Z",
+      "probes": [
+        {
+          "url": "https://www.ambis.cz/prihlaska",
+          "finalUrl": "https://www.ambis.cz/prihlaska",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.ambis.cz/en/admissions",
+          "finalUrl": "https://www.ambis.cz/en/admissions",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://prihlaska.ambis.cz/",
+          "finalUrl": null,
+          "status": 0,
+          "ok": false
+        },
+        {
+          "url": "https://www.ambis.cz/prijimaci-rizeni",
+          "finalUrl": "https://www.ambis.cz/prijimaci-rizeni",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_6u000",
+      "msmtCode": "VS_6U000",
+      "officialName": "Anglo-americká vysoká škola, a. s.",
+      "officialUrl": "https://www.aauni.edu",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": "https://www.aauni.edu/admissions/",
+      "admissionsUrlEn": "https://www.aauni.edu/admissions/",
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-06T19:41:38Z"
+    },
+    {
+      "institutionId": "msmt-vs_7m000",
+      "msmtCode": "VS_7M000",
+      "officialName": "ARCHIP s.r.o.",
+      "officialUrl": "https://www.archip.eu",
+      "applyUrl": "https://www.archip.eu/apply-now/",
+      "applyUrlEn": "https://www.archip.eu/apply-now/",
+      "admissionsUrl": null,
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:41:49Z"
+    },
+    {
+      "institutionId": "msmt-vs_7r000",
+      "msmtCode": "VS_7R000",
+      "officialName": "ART & DESIGN INSTITUT, s.r.o.",
+      "officialUrl": "https://www.artdesigninstitut.cz",
+      "applyUrl": "https://www.adi.cz/prihlaska",
+      "applyUrlEn": "https://www.adi.cz/prihlaska",
+      "admissionsUrl": "https://www.adi.cz/",
+      "admissionsUrlEn": "https://www.adi.cz/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:42:02Z"
+    },
+    {
+      "institutionId": "msmt-vs_7d000",
+      "msmtCode": "VS_7D000",
+      "officialName": "CEVRO Univerzita z.ú.",
+      "officialUrl": "https://www.cevro.cz",
+      "applyUrl": "https://www.cevro.cz/prijimaci-rizeni-online-prihlaska/",
+      "applyUrlEn": "https://www.cevro.cz/prijimaci-rizeni-online-prihlaska/",
+      "admissionsUrl": "https://www.cevro.cz/pro-uchazece/",
+      "admissionsUrlEn": "https://www.cevro.cz/pro-uchazece/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:42:32Z"
+    },
+    {
+      "institutionId": "msmt-vs_7j000",
+      "msmtCode": "VS_7J000",
+      "officialName": "Evropská výzkumná univerzita, z.ú.",
+      "officialUrl": "https://www.vs-prigo.cz",
+      "applyUrl": "https://eruni.org/form/application-form-new?ref=/study-programmes",
+      "applyUrlEn": "https://eruni.org/form/application-form-new?ref=/study-programmes",
+      "admissionsUrl": "https://eruni.org/admissions",
+      "admissionsUrlEn": "https://eruni.org/admissions",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:42:58Z"
+    },
+    {
+      "institutionId": "msmt-vs_6n000",
+      "msmtCode": "VS_6N000",
+      "officialName": "Filmová akademie Miroslava Ondříčka v Písku, o.p.s.",
+      "officialUrl": "https://www.filmovka.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": "https://www.filmovka.cz",
+      "admissionsUrlEn": "https://www.filmovka.cz",
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-06T19:43:10Z"
+    },
+    {
+      "institutionId": "msmt-vs_54000",
+      "msmtCode": "VS_54000",
+      "officialName": "Janáčkova akademie múzických umění",
+      "officialUrl": "https://www.jamu.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": "https://www.jamu.cz/uchazeci/",
+      "admissionsUrlEn": "https://www.jamu.cz/uchazeci/",
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-06T19:43:51Z"
+    },
+    {
+      "institutionId": "msmt-vs_12000",
+      "msmtCode": "VS_12000",
+      "officialName": "Jihočeská univerzita v Českých Budějovicích",
+      "officialUrl": "https://www.jcu.cz",
+      "applyUrl": "https://wstag.jcu.cz/portal/studium/uchazec/eprihlaska.html",
+      "applyUrlEn": "https://wstag.jcu.cz/portal/studium/uchazec/eprihlaska.html",
+      "admissionsUrl": "https://www.jcu.cz/cz/prijimaci-zkousky/dny-otevrenych-dveri",
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-07T12:31:33Z",
+      "probes": [
+        {
+          "url": "https://www.jcu.cz/cz/prijimaci-rizeni",
+          "finalUrl": "https://www.jcu.cz/cz/prijimaci-rizeni",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.jcu.cz/en/admissions",
+          "finalUrl": "https://www.jcu.cz/en/admissions",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://wstag.jcu.cz/portal/studium/uchazec/eprihlaska.html",
+          "finalUrl": "https://wstag.jcu.cz/portal/studium/uchazec/eprihlaska.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.jcu.cz/cz/prijimaci-zkousky/dny-otevrenych-dveri",
+          "finalUrl": "https://www.jcu.cz/cz/prijimaci-zkousky/dny-otevrenych-dveri",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.jcu.cz/cz/prijimaci-zkousky/prijimaci-rizeni",
+          "finalUrl": "https://www.jcu.cz/cz/prijimaci-zkousky/prijimaci-rizeni",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.jcu.cz/cz/prijimaci-zkousky/studijni-programy",
+          "finalUrl": "https://www.jcu.cz/cz/prijimaci-zkousky/studijni-programy",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.jcu.cz/cz/prijimaci-zkousky/double-joint-degree",
+          "finalUrl": "https://www.jcu.cz/cz/prijimaci-zkousky/double-joint-degree",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.jcu.cz/cz/prijimaci-zkousky/studijni-oddeleni",
+          "finalUrl": "https://www.jcu.cz/cz/prijimaci-zkousky/studijni-oddeleni",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.jcu.cz/cz/prijimaci-zkousky/nejcastejsi-dotazy",
+          "finalUrl": "https://www.jcu.cz/cz/prijimaci-zkousky/nejcastejsi-dotazy",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.jcu.cz/cz/prijimaci-zkousky/nostrifikace",
+          "finalUrl": "https://www.jcu.cz/cz/prijimaci-zkousky/nostrifikace",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.jcu.cz/cz/prijimaci-zkousky/zakladni-informace-o-it",
+          "finalUrl": "https://www.jcu.cz/cz/prijimaci-zkousky/zakladni-informace-o-it",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_14000",
+      "msmtCode": "VS_14000",
+      "officialName": "Masarykova univerzita",
+      "officialUrl": "https://www.muni.cz",
+      "applyUrl": "https://is.muni.cz/prihlaska/",
+      "applyUrlEn": "https://is.muni.cz/prihlaska/?lang=en",
+      "admissionsUrl": "https://www.muni.cz/uchazeci",
+      "admissionsUrlEn": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/how-to-apply",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:45:02Z"
+    },
+    {
+      "institutionId": "msmt-vs_43000",
+      "msmtCode": "VS_43000",
+      "officialName": "Mendelova univerzita v Brně",
+      "officialUrl": "https://www.mendelu.cz",
+      "applyUrl": "https://is.mendelu.cz/prihlaska/",
+      "applyUrlEn": "https://is.mendelu.cz/prihlaska/",
+      "admissionsUrl": "https://mendelu.cz/uchazec/",
+      "admissionsUrlEn": "https://mendelu.cz/en/admissions/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:45:30Z"
+    },
+    {
+      "institutionId": "msmt-vs_75000",
+      "msmtCode": "VS_75000",
+      "officialName": "Metropolitní univerzita Praha, o. p. s.",
+      "officialUrl": "https://www.mup.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": "https://sis.mup.cz/login.php?do=prijimacky",
+      "admissionsUrlEn": "https://sis.mup.cz/login.php?do=prijimacky",
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-06T19:45:42Z"
+    },
+    {
+      "institutionId": "msmt-vs_7c000",
+      "msmtCode": "VS_7C000",
+      "officialName": "Moravská vysoká škola Olomouc, o.p.s.",
+      "officialUrl": "https://www.mvso.cz",
+      "applyUrl": "https://www.mvso.cz/prihlaska",
+      "applyUrlEn": "https://www.mvso.cz/prihlaska",
+      "admissionsUrl": "https://www.mvso.cz/uchazeci",
+      "admissionsUrlEn": "https://www.mvso.cz/uchazeci",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:45:50Z"
+    },
+    {
+      "institutionId": "msmt-vs_17000",
+      "msmtCode": "VS_17000",
+      "officialName": "Ostravská univerzita",
+      "officialUrl": "https://www.osu.cz",
+      "applyUrl": "https://is-stag.osu.cz/portal/studium/uchazec/eprihlaska.html",
+      "applyUrlEn": "https://is-stag.osu.cz/portal/studium/uchazec/eprihlaska.html",
+      "admissionsUrl": "https://www.osu.cz/uchazec/",
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-07T12:31:48Z",
+      "probes": [
+        {
+          "url": "https://www.osu.cz/uchazec/",
+          "finalUrl": "https://www.osu.cz/uchazec/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.osu.cz/en/admissions/",
+          "finalUrl": "https://www.osu.cz/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://stag.osu.cz/portal/studium/uchazec/eprihlaska.html",
+          "finalUrl": null,
+          "status": 0,
+          "ok": false
+        },
+        {
+          "url": "https://portal.osu.cz/eprihlaska",
+          "finalUrl": "https://is-stag.osu.cz/portal/studium/uchazec/eprihlaska.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.osu.cz/uchazec-prijimaci-rizeni/",
+          "finalUrl": "https://www.osu.cz/uchazec-prijimaci-rizeni/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.osu.cz/vysledky-prijimaciho-rizeni/",
+          "finalUrl": "https://www.osu.cz/vysledky-prijimaciho-rizeni/",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_7s000",
+      "msmtCode": "VS_7S000",
+      "officialName": "Panevropská univerzita, a.s.",
+      "officialUrl": "https://www.peuni.cz",
+      "applyUrl": "https://is.peuni.cz/prihlaska/",
+      "applyUrlEn": "https://is.peuni.cz/prihlaska/",
+      "admissionsUrl": "https://www.peuni.cz/",
+      "admissionsUrlEn": "https://www.peuni.cz/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:46:15Z"
+    },
+    {
+      "institutionId": "msmt-vs_94000",
+      "msmtCode": "VS_94000",
+      "officialName": "Policejní akademie České republiky v Praze",
+      "officialUrl": "https://www.polac.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": null,
+      "admissionsUrlEn": null,
+      "kind": "missing",
+      "checkedAt": "2026-09-06T19:46:47Z"
+    },
+    {
+      "institutionId": "msmt-vs_7l000",
+      "msmtCode": "VS_7L000",
+      "officialName": "Prague City Vysoká Škola s.r.o.",
+      "officialUrl": "https://www.praguecityuniversity.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": "https://praguecityuniversity.cz/",
+      "admissionsUrlEn": "https://praguecityuniversity.cz/",
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-06T19:47:03Z"
+    },
+    {
+      "institutionId": "msmt-vs_79000",
+      "msmtCode": "VS_79000",
+      "officialName": "Pražská vysoká škola psychosociálních studií, s.r.o.",
+      "officialUrl": "https://www.pvsps.cz",
+      "applyUrl": "https://www.pvsps.cz/chci-studovat/prihlasky-terminy-a-poplatky/",
+      "applyUrlEn": "https://www.pvsps.cz/chci-studovat/prihlasky-terminy-a-poplatky/",
+      "admissionsUrl": "https://www.pvsps.cz/",
+      "admissionsUrlEn": "https://www.pvsps.cz/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:47:19Z"
+    },
+    {
+      "institutionId": "msmt-vs_19000",
+      "msmtCode": "VS_19000",
+      "officialName": "Slezská univerzita v Opavě",
+      "officialUrl": "https://www.slu.cz",
+      "applyUrl": "https://is.slu.cz/prihlaska/",
+      "applyUrlEn": "https://is.slu.cz/prihlaska/",
+      "admissionsUrl": "https://www.slu.cz/slu/cz/uchazeci/",
+      "admissionsUrlEn": "https://www.slu.cz/slu/cz/uchazeci/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:47:42Z"
+    },
+    {
+      "institutionId": "msmt-vs_24000",
+      "msmtCode": "VS_24000",
+      "officialName": "Technická univerzita v Liberci",
+      "officialUrl": "https://www.tul.cz",
+      "applyUrl": "https://stag.tul.cz/portal/studium/uchazec/eprihlaska.html",
+      "applyUrlEn": "https://stag.tul.cz/portal/studium/uchazec/eprihlaska.html",
+      "admissionsUrl": "https://www.tul.cz/uchazeci/",
+      "admissionsUrlEn": "https://www.tul.cz/en/admissions/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:48:24Z"
+    },
+    {
+      "institutionId": "msmt-vs_7e000",
+      "msmtCode": "VS_7E000",
+      "officialName": "Unicorn Vysoká škola s.r.o.",
+      "officialUrl": "https://www.unicornuniversity.net/cs",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": null,
+      "admissionsUrlEn": "https://unicornuniversity.net/en/admissions",
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-07T12:31:55Z",
+      "probes": [
+        {
+          "url": "https://www.unicornuniversity.net/cs/prihlaska",
+          "finalUrl": "https://unicornuniversity.net/cs/prihlaska",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.unicornuniversity.net/en/admissions",
+          "finalUrl": "https://unicornuniversity.net/en/admissions",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_63000",
+      "msmtCode": "VS_63000",
+      "officialName": "University College Prague - Vysoká škola mezinárodních vztahů a Vysoká škola hotelová a ekonomická s.r.o.",
+      "officialUrl": "https://www.ucp.cz",
+      "applyUrl": "https://www.ucp.cz/prihlaska",
+      "applyUrlEn": "https://www.ucp.cz/prihlaska",
+      "admissionsUrl": "https://www.ucp.cz/prijimaci-rizeni",
+      "admissionsUrlEn": "https://www.ucp.cz/prijimaci-rizeni",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:48:46Z"
+    },
+    {
+      "institutionId": "msmt-vs_6d000",
+      "msmtCode": "VS_6D000",
+      "officialName": "University of New York in Prague, s.r.o.",
+      "officialUrl": "https://www.unyp.cz",
+      "applyUrl": "https://application.unyp.cz/",
+      "applyUrlEn": "https://application.unyp.cz/",
+      "admissionsUrl": "https://www.unyp.cz/admissions/",
+      "admissionsUrlEn": "https://www.unyp.cz/admissions/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:49:06Z"
+    },
+    {
+      "institutionId": "msmt-vs_18000",
+      "msmtCode": "VS_18000",
+      "officialName": "Univerzita Hradec Králové",
+      "officialUrl": "https://www.uhk.cz",
+      "applyUrl": "https://stag.uhk.cz/portal/studium/uchazec/eprihlaska.html",
+      "applyUrlEn": "https://stag.uhk.cz/portal/studium/uchazec/eprihlaska.html",
+      "admissionsUrl": null,
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:49:13Z"
+    },
+    {
+      "institutionId": "msmt-vs_13000",
+      "msmtCode": "VS_13000",
+      "officialName": "Univerzita Jana Evangelisty Purkyně v Ústí nad Labem",
+      "officialUrl": "https://www.ujep.cz",
+      "applyUrl": "https://www.ujep.cz/cs/prihlaska-ke-studiu",
+      "applyUrlEn": "https://www.ujep.cz/cs/prihlaska-ke-studiu",
+      "admissionsUrl": "https://www.ujep.cz/cs/prijimaci-rizeni",
+      "admissionsUrlEn": "https://www.ujep.cz/cs/prijimaci-rizeni",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:49:36Z"
+    },
+    {
+      "institutionId": "msmt-vs_11000",
+      "msmtCode": "VS_11000",
+      "officialName": "Univerzita Karlova",
+      "officialUrl": "https://www.cuni.cz",
+      "applyUrl": "https://is.cuni.cz/studium/prihlaska/",
+      "applyUrlEn": "https://is.cuni.cz/studium/eng/prihlaska/",
+      "admissionsUrl": "https://cuni.cz/UK-36.html",
+      "admissionsUrlEn": "https://cuni.cz/UK-36.html",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:49:42Z"
+    },
+    {
+      "institutionId": "msmt-vs_95000",
+      "msmtCode": "VS_95000",
+      "officialName": "Univerzita obrany",
+      "officialUrl": "https://www.unob.cz",
+      "applyUrl": "https://unob.cz/univerzita/co-muzu-studovat/e-prihlaska/",
+      "applyUrlEn": "https://unob.cz/univerzita/co-muzu-studovat/e-prihlaska/",
+      "admissionsUrl": "https://unob.cz/univerzita/co-muzu-studovat/casto-kladene-otazky/co-je-obsahem-prijimaciho-rizeni-ke-studiu-na-univerzite-obrany/",
+      "admissionsUrlEn": "https://unob.cz/univerzita/co-muzu-studovat/casto-kladene-otazky/co-je-obsahem-prijimaciho-rizeni-ke-studiu-na-univerzite-obrany/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:50:17Z"
+    },
+    {
+      "institutionId": "msmt-vs_15000",
+      "msmtCode": "VS_15000",
+      "officialName": "Univerzita Palackého v Olomouci",
+      "officialUrl": "https://www.upol.cz",
+      "applyUrl": "https://prihlaska.upol.cz",
+      "applyUrlEn": "https://prihlaska.upol.cz",
+      "admissionsUrl": null,
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:50:26Z"
+    },
+    {
+      "institutionId": "msmt-vs_25000",
+      "msmtCode": "VS_25000",
+      "officialName": "Univerzita Pardubice",
+      "officialUrl": "https://www.upce.cz",
+      "applyUrl": "https://portal.upce.cz/portal/studium/uchazec/eprihlaska.html",
+      "applyUrlEn": "https://portal.upce.cz/portal/studium/uchazec/eprihlaska.html",
+      "admissionsUrl": "https://www.upce.cz/prijimaci-rizeni",
+      "admissionsUrlEn": "https://www.upce.cz/prijimaci-rizeni",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:50:50Z"
+    },
+    {
+      "institutionId": "msmt-vs_28000",
+      "msmtCode": "VS_28000",
+      "officialName": "Univerzita Tomáše Bati ve Zlíně",
+      "officialUrl": "https://www.utb.cz",
+      "applyUrl": "https://stag.utb.cz/portal/studium/uchazec/eprihlaska.html",
+      "applyUrlEn": "https://stag.utb.cz/portal/studium/uchazec/eprihlaska.html",
+      "admissionsUrl": "https://www.utb.cz/univerzita/studium/studenti-se-specifickymi-potrebami/centrum-pro-studenty-se-specifickymi-potrebami/uchazeci/",
+      "admissionsUrlEn": "https://www.utb.cz/en/admissions/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-07T12:32:33Z",
+      "probes": [
+        {
+          "url": "https://www.utb.cz/univerzita/uchazeci/",
+          "finalUrl": "https://www.utb.cz/univerzita/studium/studenti-se-specifickymi-potrebami/centrum-pro-studenty-se-specifickymi-potrebami/uchazeci/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.utb.cz/en/admissions/",
+          "finalUrl": "https://www.utb.cz/en/admissions/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://apply.utb.cz/",
+          "finalUrl": "https://stag.utb.cz/portal/studium/uchazec/eprihlaska.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://prihlaska.utb.cz/",
+          "finalUrl": "https://stag.utb.cz/portal/studium/uchazec/eprihlaska.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.utb.cz/uchazec/",
+          "finalUrl": "https://www.utb.cz/uchazec/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.utb.cz/uchazec/bakalarske-studium/",
+          "finalUrl": "https://www.utb.cz/uchazec/bakalarske-studium/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.utb.cz/uchazec/bakalarske-studium/bakalarske-programy/",
+          "finalUrl": "https://www.utb.cz/uchazec/bakalarske-studium/bakalarske-programy/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.utb.cz/uchazec/bakalarske-studium/prijimaci-rizeni/",
+          "finalUrl": "https://www.utb.cz/uchazec/bakalarske-studium/prijimaci-rizeni/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.utb.cz/uchazec/bakalarske-studium/kontakty/",
+          "finalUrl": "https://www.utb.cz/uchazec/bakalarske-studium/kontakty/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.utb.cz/uchazec/magisterske-studium/",
+          "finalUrl": "https://www.utb.cz/uchazec/magisterske-studium/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.utb.cz/uchazec/magisterske-studium/magisterske-programy/",
+          "finalUrl": "https://www.utb.cz/uchazec/magisterske-studium/magisterske-programy/",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_16000",
+      "msmtCode": "VS_16000",
+      "officialName": "Veterinární univerzita Brno",
+      "officialUrl": "https://www.vfu.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": "https://www.vetuni.cz/turnstile.php?from=%2Fen%2Fapplicants&_cc_chk=1&_cc_retry=2",
+      "admissionsUrlEn": "https://www.vetuni.cz/turnstile.php?from=%2Fen%2Fapplicants&_cc_chk=1&_cc_retry=2",
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-06T19:52:25Z"
+    },
+    {
+      "institutionId": "msmt-vs_7n000",
+      "msmtCode": "VS_7N000",
+      "officialName": "Vysoká škola aplikované psychologie, s.r.o.",
+      "officialUrl": "https://www.vsaps.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": "https://www.vsaps.cz/o-nas/organy-vsaps/prijimaci-komise",
+      "admissionsUrlEn": "https://www.vsaps.cz/o-nas/organy-vsaps/prijimaci-komise",
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-06T19:53:02Z"
+    },
+    {
+      "institutionId": "msmt-vs_27000",
+      "msmtCode": "VS_27000",
+      "officialName": "Vysoká škola báňská – Technická univerzita Ostrava",
+      "officialUrl": "https://www.vsb.cz",
+      "applyUrl": "https://prihlaska.vsb.cz/uchazec",
+      "applyUrlEn": "https://prihlaska.vsb.cz/uchazec",
+      "admissionsUrl": "https://www.vsb.cz/cs/uchazec/",
+      "admissionsUrlEn": "https://www.vsb.cz/cs/uchazec/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:53:39Z"
+    },
+    {
+      "institutionId": "msmt-vs_22000",
+      "msmtCode": "VS_22000",
+      "officialName": "Vysoká škola chemicko-technologická v Praze",
+      "officialUrl": "https://www.vscht.cz",
+      "applyUrl": "https://studuj.vscht.cz/prihlaska/prihlaska-k-bakalarskemu-studiu/",
+      "applyUrlEn": "https://studuj.vscht.cz/prihlaska/prihlaska-k-bakalarskemu-studiu/",
+      "admissionsUrl": "https://phd.vscht.cz/zajemci/prijimaci-rizeni",
+      "admissionsUrlEn": "https://phd.vscht.cz/zajemci/prijimaci-rizeni",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:54:07Z"
+    },
+    {
+      "institutionId": "msmt-vs_31000",
+      "msmtCode": "VS_31000",
+      "officialName": "Vysoká škola ekonomická v Praze",
+      "officialUrl": "https://www.vse.cz",
+      "applyUrl": "https://insis.vse.cz/prihlaska/",
+      "applyUrlEn": "https://insis.vse.cz/prihlaska/",
+      "admissionsUrl": "https://www.vse.cz/zajemci-o-studium/bakalarske-obory/posuzovani-zahranicniho-vzdelani-v-ramci-prijimaciho-rizeni/",
+      "admissionsUrlEn": "https://www.vse.cz/zajemci-o-studium/bakalarske-obory/posuzovani-zahranicniho-vzdelani-v-ramci-prijimaciho-rizeni/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:54:32Z"
+    },
+    {
+      "institutionId": "msmt-vs_7v000",
+      "msmtCode": "VS_7V000",
+      "officialName": "Vysoká škola ekonomie a managementu, a.s.",
+      "officialUrl": "https://www.vsem.cz",
+      "applyUrl": "https://sis.vsem.cz/sis/vysoka-skola/prijimaci-rizeni/el-prihlaska-ke-studiu",
+      "applyUrlEn": "https://sis.vsem.cz/sis/vysoka-skola/prijimaci-rizeni/el-prihlaska-ke-studiu",
+      "admissionsUrl": "https://auth.vsem.cz/login?continue=https%3A%2F%2Fsis.vsem.cz%2Fsis%2Fprihlaseni-do-systemu%2F%3Fpath%3Dprihlaseni-do-systemu%252F%26requesturi%3Dhttps%253A%252F%252Fsis.vsem.cz%252Fsis%252Fvysoka-skola%252Finfosystem-sis%252Fsoubory-uchazece-studenta",
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-07T12:32:47Z",
+      "probes": [
+        {
+          "url": "https://www.vsem.cz/prihlaska.html",
+          "finalUrl": "https://www.vsem.cz/prihlaska.html",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.vsem.cz/en/admissions.html",
+          "finalUrl": "https://www.vsem.cz/en/admissions.html",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "http://www.vsem.cz/sis/vysoka-skola/prijimaci-rizeni/el-prihlaska-ke-studiu",
+          "finalUrl": "https://sis.vsem.cz/sis/vysoka-skola/prijimaci-rizeni/el-prihlaska-ke-studiu",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://sis.vsem.cz/sis/vysoka-skola/infosystem-sis/soubory-uchazece-studenta",
+          "finalUrl": "https://auth.vsem.cz/login?continue=https%3A%2F%2Fsis.vsem.cz%2Fsis%2Fprihlaseni-do-systemu%2F%3Fpath%3Dprihlaseni-do-systemu%252F%26requesturi%3Dhttps%253A%252F%252Fsis.vsem.cz%252Fsis%252Fvysoka-skola%252Finfosystem-sis%252Fsoubory-uchazece-studenta",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.vsem.cz/udaje-uchazece-studenta.html",
+          "finalUrl": "https://www.vsem.cz/udaje-uchazece-studenta.html",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_6k000",
+      "msmtCode": "VS_6K000",
+      "officialName": "Vysoká škola evropských a regionálních studií, z. ú.",
+      "officialUrl": "https://www.vsers.cz",
+      "applyUrl": "https://is.vsers.cz/prihlaska.php",
+      "applyUrlEn": "https://is.vsers.cz/prihlaska.php",
+      "admissionsUrl": "https://vsers.cz/uchazeci/",
+      "admissionsUrlEn": "https://vsers.cz/uchazeci/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:55:00Z"
+    },
+    {
+      "institutionId": "msmt-vs_7u000",
+      "msmtCode": "VS_7U000",
+      "officialName": "Vysoká škola finanční a správní, a.s.",
+      "officialUrl": "https://www.vsfs.cz",
+      "applyUrl": "https://is.vsfs.cz/prihlaska/",
+      "applyUrlEn": "https://is.vsfs.cz/prihlaska/",
+      "admissionsUrl": null,
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:55:08Z"
+    },
+    {
+      "institutionId": "msmt-vs_7t000",
+      "msmtCode": "VS_7T000",
+      "officialName": "Vysoká škola kreativní komunikace, s.r.o.",
+      "officialUrl": "https://www.vskk.cz",
+      "applyUrl": "https://www.vskk.cz/prihlaska/",
+      "applyUrlEn": "https://www.vskk.cz/prihlaska/",
+      "admissionsUrl": "https://www.vskk.cz/cz/zajemci-o-studium/prijimaci-rizeni/",
+      "admissionsUrlEn": "https://www.vskk.cz/cz/zajemci-o-studium/prijimaci-rizeni/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:55:24Z"
+    },
+    {
+      "institutionId": "msmt-vs_6r000",
+      "msmtCode": "VS_6R000",
+      "officialName": "Vysoká škola logistiky o.p.s.",
+      "officialUrl": "https://www.vslg.cz",
+      "applyUrl": "https://stag.vslg.cz/portal/studium/uchazec/eprihlaska.html?pc_lang=cs",
+      "applyUrlEn": "https://stag.vslg.cz/portal/studium/uchazec/eprihlaska.html?pc_lang=cs",
+      "admissionsUrl": "https://vslg.cz/prijimaci-rizeni/",
+      "admissionsUrlEn": "https://vslg.cz/prijimaci-rizeni/",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:55:43Z"
+    },
+    {
+      "institutionId": "msmt-vs_6q000",
+      "msmtCode": "VS_6Q000",
+      "officialName": "Vysoká škola NEWTON, a.s.",
+      "officialUrl": "https://vysokaskolanewton.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": "https://www.vysokaskolanewton.cz/pravidla-prijimaciho-rizeni",
+      "admissionsUrlEn": "https://www.vysokaskolanewton.cz/pravidla-prijimaciho-rizeni",
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-06T19:55:49Z"
+    },
+    {
+      "institutionId": "msmt-vs_55000",
+      "msmtCode": "VS_55000",
+      "officialName": "Vysoká škola polytechnická Jihlava",
+      "officialUrl": "https://www.vspj.cz",
+      "applyUrl": "https://www.vspj.cz/cs/zajemce-o-studium/e-prihlaska",
+      "applyUrlEn": "https://www.vspj.cz/cs/zajemce-o-studium/e-prihlaska",
+      "admissionsUrl": "https://www.vspj.cz/cs/skola/uredni-deska/podminky-prijimaciho-rizeni",
+      "admissionsUrlEn": "https://www.vspj.cz/cs/skola/uredni-deska/podminky-prijimaciho-rizeni",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:56:08Z"
+    },
+    {
+      "institutionId": "msmt-vs_73000",
+      "msmtCode": "VS_73000",
+      "officialName": "Vysoká škola Sting, o.p.s.",
+      "officialUrl": "https://www.sting.cz",
+      "applyUrl": "https://www.sting.cz/uchazeci/prihlaska-ke-studiu/",
+      "applyUrlEn": "https://www.sting.cz/uchazeci/prihlaska-ke-studiu/",
+      "admissionsUrl": "https://www.sting.cz/uchazeci/",
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-07T12:33:23Z",
+      "probes": [
+        {
+          "url": "https://www.sting.cz/prihlaska",
+          "finalUrl": "https://www.sting.cz/uchazeci/prihlaska-ke-studiu/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.sting.cz/uchazeci",
+          "finalUrl": "https://www.sting.cz/uchazeci/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.sting.cz/uchazeci/",
+          "finalUrl": "https://www.sting.cz/uchazeci/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.sting.cz/uchazeci/kombinovane-studium/",
+          "finalUrl": "https://www.sting.cz/uchazeci/kombinovane-studium/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.sting.cz/uchazeci/prijimaci-rizeni/",
+          "finalUrl": "https://www.sting.cz/uchazeci/prijimaci-rizeni/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.sting.cz/uchazeci/prihlaska-ke-studiu/",
+          "finalUrl": "https://www.sting.cz/uchazeci/prihlaska-ke-studiu/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.sting.cz/uchazeci/dny-otevrenych-dveri/",
+          "finalUrl": "https://www.sting.cz/uchazeci/dny-otevrenych-dveri/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.sting.cz/uchazeci/zahranicni-zkusenost/",
+          "finalUrl": "https://www.sting.cz/uchazeci/zahranicni-zkusenost/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.sting.cz/uchazeci/stipendia/",
+          "finalUrl": "https://www.sting.cz/uchazeci/stipendia/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.sting.cz/uchazeci/jeden-den-studentem/",
+          "finalUrl": "https://www.sting.cz/uchazeci/jeden-den-studentem/",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_56000",
+      "msmtCode": "VS_56000",
+      "officialName": "Vysoká škola technická a ekonomická v Českých Budějovicích",
+      "officialUrl": "https://www.vstecb.cz",
+      "applyUrl": "https://is.vstecb.cz/prihlaska/",
+      "applyUrlEn": "https://is.vstecb.cz/prihlaska/",
+      "admissionsUrl": null,
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:57:14Z"
+    },
+    {
+      "institutionId": "msmt-vs_6p000",
+      "msmtCode": "VS_6P000",
+      "officialName": "Vysoká škola tělesné výchovy a sportu PALESTRA, spol. s r.o.",
+      "officialUrl": "https://www.palestra.cz",
+      "applyUrl": null,
+      "applyUrlEn": null,
+      "admissionsUrl": "https://palestra.cz/uchazeci/",
+      "admissionsUrlEn": null,
+      "kind": "admissions_info",
+      "checkedAt": "2026-09-07T12:33:38Z",
+      "probes": [
+        {
+          "url": "https://www.palestra.cz/prihlaska",
+          "finalUrl": "https://palestra.cz/prihlaska",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.palestra.cz/uchazeci",
+          "finalUrl": "https://palestra.cz/uchazeci/",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_53000",
+      "msmtCode": "VS_53000",
+      "officialName": "Vysoká škola uměleckoprůmyslová v Praze",
+      "officialUrl": "https://www.vsup.cz",
+      "applyUrl": "https://www.umprum.cz/cs/web/katedry/volne-umeni/atelier-s-hostujicim-umelcem/prijimame-prihlasky-na-staz-v-atelieru-s-hostujicim-umelcem-markem-barkerem-na-zimni-semestr-2026-2027",
+      "applyUrlEn": "https://www.umprum.cz/cs/web/katedry/volne-umeni/atelier-s-hostujicim-umelcem/prijimame-prihlasky-na-staz-v-atelieru-s-hostujicim-umelcem-markem-barkerem-na-zimni-semestr-2026-2027",
+      "admissionsUrl": "https://www.umprum.cz/cs/web/uchazec",
+      "admissionsUrlEn": "https://www.umprum.cz/cs/web/uchazec",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:58:02Z"
+    },
+    {
+      "institutionId": "msmt-vs_6s000",
+      "msmtCode": "VS_6S000",
+      "officialName": "Vysoká škola zdravotnická, o.p.s.",
+      "officialUrl": "https://www.vszdrav.cz",
+      "applyUrl": "https://www.vszdrav.cz/elektronicka-prihlaska",
+      "applyUrlEn": "https://www.vszdrav.cz/elektronicka-prihlaska",
+      "admissionsUrl": "https://www.vszdrav.cz/prijimaci-rizeni",
+      "admissionsUrlEn": "https://www.vszdrav.cz/prijimaci-rizeni",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:58:28Z"
+    },
+    {
+      "institutionId": "msmt-vs_26000",
+      "msmtCode": "VS_26000",
+      "officialName": "Vysoké učení technické v Brně",
+      "officialUrl": "https://www.vutbr.cz",
+      "applyUrl": "https://www.vut.cz/eprihlaska/",
+      "applyUrlEn": "https://www.vut.cz/eprihlaska/",
+      "admissionsUrl": "https://www.vut.cz/studuj/proc-na-vut/prijimaci-rizeni",
+      "admissionsUrlEn": "https://www.vut.cz/en/study-options",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:58:40Z"
+    },
+    {
+      "institutionId": "msmt-vs_23000",
+      "msmtCode": "VS_23000",
+      "officialName": "Západočeská univerzita v Plzni",
+      "officialUrl": "https://www.zcu.cz",
+      "applyUrl": "https://portal.zcu.cz/portal/studium/uchazec/eprihlaska.html?plang=cs",
+      "applyUrlEn": "https://portal.zcu.cz/portal/studium/uchazec/eprihlaska.html?plang=cs",
+      "admissionsUrl": "https://www.zcu.cz/cs/Admission/index.html",
+      "admissionsUrlEn": "https://www.zcu.cz/en/Admission/index.html",
+      "kind": "e_application",
+      "checkedAt": "2026-09-07T12:34:09Z",
+      "probes": [
+        {
+          "url": "https://www.zcu.cz/cs/Admission/",
+          "finalUrl": "https://www.zcu.cz/cs/Admission/index.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.zcu.cz/en/Admission/",
+          "finalUrl": "https://www.zcu.cz/en/Admission/index.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://portal.zcu.cz/",
+          "finalUrl": "https://portal.zcu.cz/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.zcu.cz/cs/Admission/Bachelor-and-master-studies/",
+          "finalUrl": "https://www.zcu.cz/cs/Admission/Bachelor-and-master-studies/index.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.zcu.cz/cs/Admission/Follow-up-master-studies/",
+          "finalUrl": "https://www.zcu.cz/cs/Admission/Follow-up-master-studies/index.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.zcu.cz/cs/Admission/Doctoral-studies/",
+          "finalUrl": "https://www.zcu.cz/cs/Admission/Doctoral-studies/index.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.zcu.cz/cs/links/eprihlaska",
+          "finalUrl": "https://portal.zcu.cz/portal/studium/uchazec/eprihlaska.html?plang=cs",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.zcu.cz/cs/Admission/More-studies/",
+          "finalUrl": "https://www.zcu.cz/cs/Admission/More-studies/index.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.zcu.cz/cs/Admission/Bachelor-and-master-studies/Open_day/",
+          "finalUrl": "https://www.zcu.cz/cs/Admission/Bachelor-and-master-studies/Open_day/index.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.zcu.cz/cs/Admission/More-studies/index.html",
+          "finalUrl": "https://www.zcu.cz/cs/Admission/More-studies/index.html",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "institutionId": "msmt-vs_41000",
+      "msmtCode": "VS_41000",
+      "officialName": "Česká zemědělská univerzita v Praze",
+      "officialUrl": "https://www.czu.cz",
+      "applyUrl": "https://is.czu.cz/prihlaska/",
+      "applyUrlEn": "https://is.czu.cz/prihlaska/",
+      "admissionsUrl": "https://www.czu.cz/cs/r-7210-o-czu",
+      "admissionsUrlEn": "https://www.czu.cz/cs/r-7210-o-czu",
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:59:32Z"
+    },
+    {
+      "institutionId": "msmt-vs_21000",
+      "msmtCode": "VS_21000",
+      "officialName": "České vysoké učení technické v Praze",
+      "officialUrl": "https://www.cvut.cz",
+      "applyUrl": "https://prihlaska.cvut.cz/apps/kos/prihlaska/",
+      "applyUrlEn": "https://prihlaska.cvut.cz/apps/kos/prihlaska/",
+      "admissionsUrl": null,
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-06T19:59:43Z"
+    },
+    {
+      "institutionId": "msmt-vs_7p000",
+      "msmtCode": "VS_7P000",
+      "officialName": "Škoda Auto Vysoká škola o.p.s.",
+      "officialUrl": "https://www.savs.cz",
+      "applyUrl": "https://is.savs.cz/prihlaska/",
+      "applyUrlEn": "https://is.savs.cz/prihlaska/",
+      "admissionsUrl": "https://www.savs.cz/prijimaci-rizeni",
+      "admissionsUrlEn": null,
+      "kind": "e_application",
+      "checkedAt": "2026-09-07T12:34:24Z",
+      "probes": [
+        {
+          "url": "https://www.savs.cz/uchazeci",
+          "finalUrl": "https://www.savs.cz/uchazeci",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://www.savs.cz/en/admissions",
+          "finalUrl": "https://www.savs.cz/en/admissions",
+          "status": 404,
+          "ok": false
+        },
+        {
+          "url": "https://is.savs.cz/prihlaska",
+          "finalUrl": "https://is.savs.cz/prihlaska/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://is.savs.cz/prihlaska/",
+          "finalUrl": "https://is.savs.cz/prihlaska/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.savs.cz/prijimaci-rizeni",
+          "finalUrl": "https://www.savs.cz/prijimaci-rizeni",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://www.savs.cz/prijimaci-rizeni-navazujici-magistersky-program-v-anglickem-jazyce-7lp",
+          "finalUrl": "https://www.savs.cz/prijimaci-rizeni-navazujici-magistersky-program-v-anglickem-jazyce-7lp",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    }
+  ]
+}
