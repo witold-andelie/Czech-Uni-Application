@@ -1,25 +1,25 @@
 {
-  "generatedAt": "2026-10-21T10:26:20Z",
+  "generatedAt": "2026-10-22T10:33:13Z",
   "dataClass": "school_owned_programme_page_index",
   "note": "School-owned programme page links for the MŠMT register inventory. Each link was resolved from the university's own site by exact normalised title/degree/language equality; a row without a proven page keeps the university-site fallback and is listed under unresolved. No fuzzy or partial matching, and no invented URLs.",
   "counts": {
     "schools": 53,
     "offerings": 5062,
-    "linked": 4120,
-    "unresolved": 942,
-    "rowsWithMultipleSchoolPages": 2292
+    "linked": 4127,
+    "unresolved": 935,
+    "rowsWithMultipleSchoolPages": 2192
   },
   "coverage": {
     "totals": {
       "schools": 53,
       "offerings": 5062,
-      "resolved": 4120,
-      "unresolved": 942,
-      "rowsWithMultipleSchoolPages": 2292,
+      "resolved": 4127,
+      "unresolved": 935,
+      "rowsWithMultipleSchoolPages": 2192,
       "byReachability": {
         "access_control": 1,
-        "http_200_title_not_confirmed": 2707,
-        "unverified": 56,
+        "http_200_title_not_confirmed": 2706,
+        "unverified": 64,
         "verified": 1356
       }
     },
@@ -38,7 +38,7 @@
           "ambiguous_register_rows": 5,
           "no_candidate_page": 39
         },
-        "resolvedAt": "2026-10-21T09:01:55Z",
+        "resolvedAt": "2026-10-22T09:08:42Z",
         "notes": []
       },
       {
@@ -50,14 +50,14 @@
         "offerings": 214,
         "resolved": 202,
         "unresolved": 12,
-        "rowsWithMultipleSchoolPages": 186,
+        "rowsWithMultipleSchoolPages": 185,
         "unresolvedReasons": {
           "ambiguous_register_rows": 1,
           "no_candidate_page": 11
         },
-        "resolvedAt": "2026-10-20T09:04:42Z",
+        "resolvedAt": "2026-10-22T09:07:24Z",
         "notes": [
-          "catalogue_unreachable_http_404 (x13)"
+          "catalogue_unreachable_http_404 (x15)"
         ]
       },
       {
@@ -73,7 +73,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 10
         },
-        "resolvedAt": "2026-10-21T09:01:47Z",
+        "resolvedAt": "2026-10-22T09:08:42Z",
         "notes": []
       },
       {
@@ -141,14 +141,13 @@
         "offerings": 172,
         "resolved": 135,
         "unresolved": 37,
-        "rowsWithMultipleSchoolPages": 134,
+        "rowsWithMultipleSchoolPages": 53,
         "unresolvedReasons": {
-          "ambiguous_register_rows": 1,
-          "no_candidate_page": 36
+          "no_candidate_page": 37
         },
-        "resolvedAt": "2026-10-20T09:04:40Z",
+        "resolvedAt": "2026-10-22T09:09:02Z",
         "notes": [
-          "level_probe_budget_exhausted"
+          "catalogue_unreachable_http_0"
         ]
       },
       {
@@ -165,8 +164,9 @@
           "ambiguous_register_rows": 15,
           "no_candidate_page": 17
         },
-        "resolvedAt": "2026-10-21T09:01:48Z",
+        "resolvedAt": "2026-10-22T09:07:54Z",
         "notes": [
+          "catalogue_unreachable_http_0",
           "catalogue_unreachable_http_401",
           "catalogue_unreachable_http_404 (x4)"
         ]
@@ -239,7 +239,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 49
         },
-        "resolvedAt": "2026-10-21T09:01:40Z",
+        "resolvedAt": "2026-10-22T09:07:54Z",
         "notes": []
       },
       {
@@ -271,7 +271,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 11
         },
-        "resolvedAt": "2026-10-21T09:01:40Z",
+        "resolvedAt": "2026-10-22T09:09:40Z",
         "notes": []
       },
       {
@@ -289,7 +289,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 15
         },
-        "resolvedAt": "2026-10-20T09:04:41Z",
+        "resolvedAt": "2026-10-22T09:07:18Z",
         "notes": []
       },
       {
@@ -324,7 +324,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 44
         },
-        "resolvedAt": "2026-10-21T09:01:48Z",
+        "resolvedAt": "2026-10-22T09:09:40Z",
         "notes": []
       },
       {
@@ -355,12 +355,14 @@
         "offerings": 189,
         "resolved": 176,
         "unresolved": 13,
-        "rowsWithMultipleSchoolPages": 118,
+        "rowsWithMultipleSchoolPages": 108,
         "unresolvedReasons": {
           "no_candidate_page": 13
         },
-        "resolvedAt": "2026-10-21T09:01:40Z",
+        "resolvedAt": "2026-10-22T09:07:18Z",
         "notes": [
+          "budget_exhausted (x2)",
+          "catalogue_unreachable_http_0 (x10)",
           "catalogue_unreachable_http_404 (x2)"
         ]
       },
@@ -371,17 +373,15 @@
           "mendelu.cz"
         ],
         "offerings": 145,
-        "resolved": 122,
-        "unresolved": 23,
-        "rowsWithMultipleSchoolPages": 65,
+        "resolved": 129,
+        "unresolved": 16,
+        "rowsWithMultipleSchoolPages": 57,
         "unresolvedReasons": {
-          "ambiguous_register_rows": 2,
-          "no_candidate_page": 13,
-          "page_states_nothing": 8
+          "no_candidate_page": 16
         },
-        "resolvedAt": "2026-10-21T09:01:55Z",
+        "resolvedAt": "2026-10-22T09:07:54Z",
         "notes": [
-          "catalogue_unreachable_http_404"
+          "catalogue_unreachable_http_0"
         ]
       },
       {
@@ -400,7 +400,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 37
         },
-        "resolvedAt": "2026-10-21T09:01:45Z",
+        "resolvedAt": "2026-10-22T09:07:24Z",
         "notes": [
           "budget_exhausted (x2)",
           "budget_exhausted"
@@ -419,7 +419,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 12
         },
-        "resolvedAt": "2026-10-21T09:01:47Z",
+        "resolvedAt": "2026-10-22T09:07:54Z",
         "notes": [
           "catalogue_unreachable_http_404 (x2)"
         ]
@@ -439,7 +439,7 @@
           "ambiguous_register_rows": 1,
           "page_returned_404": 1
         },
-        "resolvedAt": "2026-10-21T09:01:40Z",
+        "resolvedAt": "2026-10-22T09:07:24Z",
         "notes": [
           "catalogue_unreachable_http_404 (x9)"
         ]
@@ -457,7 +457,7 @@
         "unresolvedReasons": {
           "ambiguous_register_rows": 19
         },
-        "resolvedAt": "2026-10-20T09:04:40Z",
+        "resolvedAt": "2026-10-22T09:07:54Z",
         "notes": [
           "catalogue_unreachable_http_403 (x2)"
         ]
@@ -475,7 +475,7 @@
         "unresolvedReasons": {
           "ambiguous_register_rows": 2
         },
-        "resolvedAt": "2026-10-21T09:01:52Z",
+        "resolvedAt": "2026-10-22T09:08:42Z",
         "notes": []
       },
       {
@@ -492,7 +492,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 5
         },
-        "resolvedAt": "2026-10-21T09:01:55Z",
+        "resolvedAt": "2026-10-22T09:09:40Z",
         "notes": [
           "catalogue_unreachable_http_404 (x6)"
         ]
@@ -529,7 +529,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 5
         },
-        "resolvedAt": "2026-10-21T09:01:47Z",
+        "resolvedAt": "2026-10-22T09:09:40Z",
         "notes": [
           "catalogue_unreachable_http_404"
         ]
@@ -564,7 +564,7 @@
         "unresolved": 0,
         "rowsWithMultipleSchoolPages": 0,
         "unresolvedReasons": {},
-        "resolvedAt": "2026-10-21T09:01:48Z",
+        "resolvedAt": "2026-10-22T09:08:42Z",
         "notes": []
       },
       {
@@ -580,7 +580,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-21T09:01:40Z",
+        "resolvedAt": "2026-10-22T09:08:42Z",
         "notes": []
       },
       {
@@ -628,7 +628,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 2
         },
-        "resolvedAt": "2026-10-21T09:01:52Z",
+        "resolvedAt": "2026-10-22T09:07:54Z",
         "notes": []
       },
       {
@@ -676,7 +676,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 1
         },
-        "resolvedAt": "2026-10-21T09:01:52Z",
+        "resolvedAt": "2026-10-22T09:09:40Z",
         "notes": []
       },
       {
@@ -722,7 +722,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-21T09:01:40Z",
+        "resolvedAt": "2026-10-22T09:07:54Z",
         "notes": []
       },
       {
@@ -738,7 +738,7 @@
         "unresolvedReasons": {
           "ambiguous_register_rows": 2
         },
-        "resolvedAt": "2026-10-21T09:01:55Z",
+        "resolvedAt": "2026-10-22T09:08:42Z",
         "notes": [
           "catalogue_unreachable_http_404 (x3)"
         ]
@@ -757,7 +757,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 7
         },
-        "resolvedAt": "2026-10-20T09:04:40Z",
+        "resolvedAt": "2026-10-22T09:09:40Z",
         "notes": []
       },
       {
@@ -774,7 +774,7 @@
           "ambiguous_register_rows": 3,
           "no_candidate_page": 6
         },
-        "resolvedAt": "2026-10-21T09:01:48Z",
+        "resolvedAt": "2026-10-22T09:07:54Z",
         "notes": []
       },
       {
@@ -844,7 +844,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 2
         },
-        "resolvedAt": "2026-10-21T09:01:40Z",
+        "resolvedAt": "2026-10-22T09:09:40Z",
         "notes": []
       },
       {
@@ -860,7 +860,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 3
         },
-        "resolvedAt": "2026-10-21T09:01:48Z",
+        "resolvedAt": "2026-10-22T09:09:40Z",
         "notes": [
           "catalogue_unreachable_http_403 (x44)"
         ]
@@ -879,7 +879,7 @@
           "ambiguous_register_rows": 1,
           "no_candidate_page": 3
         },
-        "resolvedAt": "2026-10-21T09:01:47Z",
+        "resolvedAt": "2026-10-22T09:08:42Z",
         "notes": []
       },
       {
@@ -913,7 +913,7 @@
         "unresolvedReasons": {
           "no_candidate_page": 4
         },
-        "resolvedAt": "2026-10-20T09:04:42Z",
+        "resolvedAt": "2026-10-22T09:08:42Z",
         "notes": [
           "catalogue_unreachable_http_404 (x14)"
         ]
@@ -1071,7 +1071,7 @@
       "pageTitle": "Elektrotechnická výroba a management",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:48Z"
+      "checkedAt": "2026-10-22T09:29:06Z"
     },
     "inv-008cb7daac98": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1143",
@@ -1986,7 +1986,7 @@
       "pageTitle": "Information Technology",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:03Z"
+      "checkedAt": "2026-10-22T09:28:22Z"
     },
     "inv-0504df37d0be": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23424-optika-a-optometrie",
@@ -2009,7 +2009,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "philosophy",
+      "matchedTitle": "Philosophy",
       "rowTitle": "Philosophy",
       "sourceUrl": "https://www.uhk.cz/en/philosophical-faculty/study/study-programs",
       "matchedBy": "school_catalogue_anchor",
@@ -2054,7 +2054,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "teorie a dejiny moderniho a soucasneho umeni",
+      "matchedTitle": "Teorie a dějiny moderního a současného umění",
       "rowTitle": "Teorie a dějiny moderního a současného umění",
       "sourceUrl": "https://www.umprum.cz/cs/web/student/studijni-plany/studijni-plany-navazujici-magisterske-studium",
       "matchedBy": "school_catalogue_anchor",
@@ -2361,7 +2361,7 @@
       "pageTitle": "Informační technologie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:59Z"
+      "checkedAt": "2026-10-22T09:28:18Z"
     },
     "inv-06b159fd4e61": {
       "url": "https://is.czu.cz/katalog/plany.pl?fakulta=30;poc_obdobi=1204;typ_ss=;typ_studia=3;program=1947;info=1;misto_vyuky=;lang=cz",
@@ -2691,7 +2691,7 @@
       "pageTitle": "Space Applications",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:43Z"
+      "checkedAt": "2026-10-22T09:28:02Z"
     },
     "inv-07f82bc4ac9a": {
       "url": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/25572-neurosciences",
@@ -3111,7 +3111,7 @@
       "pageTitle": "Telekomunikační a informační systémy",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:04Z"
+      "checkedAt": "2026-10-22T09:29:20Z"
     },
     "inv-09c989894ac6": {
       "url": "https://www.utb.cz/vyhledavac-oboru/chemie-a-technologie-ochrany-zivotniho-prostredi-phd/",
@@ -3501,7 +3501,7 @@
       "pageTitle": "Výrobní systémy",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:34Z"
+      "checkedAt": "2026-10-22T09:28:53Z"
     },
     "inv-0b9d1c7774d3": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1309",
@@ -3546,7 +3546,7 @@
       "pageTitle": "Electronics and Information Technologies",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:54Z"
+      "checkedAt": "2026-10-22T09:28:13Z"
     },
     "inv-0bb2959a40b1": {
       "url": "https://is.slu.cz/program/724?lang=cs",
@@ -3644,7 +3644,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "hra na varhany",
+      "matchedTitle": "Hra na varhany",
       "rowTitle": "Hra na varhany",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -3739,9 +3739,9 @@
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=2653",
       "matchedBy": "school_harvested_programme_page",
       "pageTitle": "Český jazyk a literatura / Ostravská univerzita",
-      "reachability": "http_200_title_not_confirmed",
+      "reachability": "unverified",
       "matchedAt": "2026-10-09T11:04:03Z",
-      "checkedAt": "2026-10-15T09:33:37Z"
+      "checkedAt": "2026-10-22T10:10:27Z"
     },
     "inv-0cbd104fe730": {
       "url": "https://www.ambis.cz/obory/bezpecnostni-management",
@@ -3786,7 +3786,7 @@
       "pageTitle": "Architektura a urbanismus",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:41Z"
+      "checkedAt": "2026-10-22T09:28:59Z"
     },
     "inv-0cceeeeed51e": {
       "url": "https://bilakniha.cvut.cz/cs/program1240207629105.html",
@@ -3891,7 +3891,7 @@
       "pageTitle": "Mechanical Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:02Z"
+      "checkedAt": "2026-10-22T09:27:21Z"
     },
     "inv-0d3bbc6b1e50": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4871",
@@ -4161,7 +4161,7 @@
       "pageTitle": "Mikroelektronika a technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:57Z"
+      "checkedAt": "2026-10-22T09:29:15Z"
     },
     "inv-0e2a3a24aa9e": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/452",
@@ -4251,7 +4251,7 @@
       "pageTitle": "Automotive Electronics and Electromobility",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:47Z"
+      "checkedAt": "2026-10-22T09:28:07Z"
     },
     "inv-0e55717ea2c8": {
       "url": "https://is.czu.cz/katalog/plany.pl?fakulta=20;poc_obdobi=1265;typ_ss=;typ_studia=3;program=1807;info=1;misto_vyuky=;lang=cz",
@@ -4447,6 +4447,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-10-19T09:35:51Z"
+    },
+    "inv-0eea671023b6": {
+      "url": "https://is.mendelu.cz/katalog/plany.pl?fakulta=38;poc_obdobi=830;typ_ss=;typ_studia=1;program=3189;info=1;misto_vyuky=;lang=cz",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_43000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Výroba a design nábytku",
+      "rowTitle": "Výroba a design nábytku",
+      "sourceUrl": "https://is.mendelu.cz/katalog/plany.pl?fakulta=38;poc_obdobi=830;typ_ss=;typ_studia=1;program=3189;info=1;misto_vyuky=;lang=cz",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Prohlídka studijních programů",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-22T09:07:54Z",
+      "checkedAt": "2026-10-22T09:33:37Z"
     },
     "inv-0eefc276c9be": {
       "url": "https://www.osu.cz/studijniobory/?specializaceid=3507",
@@ -5061,7 +5076,7 @@
       "pageTitle": "Bioinženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:52Z"
+      "checkedAt": "2026-10-22T09:29:10Z"
     },
     "inv-1158c5b6a65b": {
       "url": "https://portal.zcu.cz/ects/browser/FDU/1853?lang=cs",
@@ -5134,9 +5149,9 @@
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=2670",
       "matchedBy": "school_harvested_programme_page",
       "pageTitle": "Čeština pro cizince / Ostravská univerzita",
-      "reachability": "http_200_title_not_confirmed",
+      "reachability": "unverified",
       "matchedAt": "2026-10-09T11:04:03Z",
-      "checkedAt": "2026-10-15T09:33:44Z"
+      "checkedAt": "2026-10-22T10:32:47Z"
     },
     "inv-1194a5aba142": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4941",
@@ -5391,7 +5406,7 @@
       "pageTitle": "Elektronika a komunikační technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:10Z"
+      "checkedAt": "2026-10-22T09:29:26Z"
     },
     "inv-12a111c7fbef": {
       "url": "https://www.uhk.cz/cs/prirodovedecka-fakulta/prijimaci-zkousky/studijni-programy/biologie-a-ekologie",
@@ -5624,7 +5639,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "design",
+      "matchedTitle": "Design",
       "rowTitle": "Design",
       "sourceUrl": "https://www.umprum.cz/en/web/applicant/study-in-czech/postgraduate-master-s-degree-programmes-in-czech/postgraduate-master-s-degree-programmes-in-czech-art/postgraduate-master-programme-specification-art",
       "matchedBy": "school_catalogue_anchor",
@@ -5826,7 +5841,7 @@
       "pageTitle": "Teleinformatika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:54Z"
+      "checkedAt": "2026-10-22T09:29:12Z"
     },
     "inv-1482cfc6c3fd": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/915",
@@ -5856,7 +5871,7 @@
       "pageTitle": "Aplikovaná matematika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:35Z"
+      "checkedAt": "2026-10-22T09:28:54Z"
     },
     "inv-148e4619cf66": {
       "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=1033&academicYearId=66&studyLanguageIds=1",
@@ -6044,7 +6059,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "klavirni interpretace",
+      "matchedTitle": "Klavírní interpretace",
       "rowTitle": "Klavírní interpretace",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -6291,7 +6306,7 @@
       "pageTitle": "Biomedicínská technika a bioinformatika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:11Z"
+      "checkedAt": "2026-10-22T09:29:27Z"
     },
     "inv-166a4e135a63": {
       "url": "https://stag.upol.cz/ects/browser/PDF/1854?lang=cs",
@@ -6554,7 +6569,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "fine arts",
+      "matchedTitle": "Fine Arts",
       "rowTitle": "Fine Arts",
       "sourceUrl": "https://www.umprum.cz/en/web/applicant",
       "matchedBy": "school_catalogue_anchor",
@@ -6644,7 +6659,7 @@
       "institutionId": "msmt-vs_56000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "technologie a rizeni dopravy",
+      "matchedTitle": "Technologie a řízení dopravy",
       "rowTitle": "Technologie a řízení dopravy",
       "sourceUrl": "https://www.vstecb.cz/bakalarske-obory-1639-htm",
       "matchedBy": "school_catalogue_anchor",
@@ -7131,7 +7146,7 @@
       "pageTitle": "Průmyslový design ve strojírenství",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:09Z"
+      "checkedAt": "2026-10-22T09:27:28Z"
     },
     "inv-1a1982040538": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1727",
@@ -7386,7 +7401,7 @@
       "pageTitle": "Procesní management",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:25Z"
+      "checkedAt": "2026-10-22T09:29:41Z"
     },
     "inv-1b01f4eb1776": {
       "url": "https://portal.zcu.cz/ects/browser/FAV/1914?lang=cs",
@@ -7746,7 +7761,7 @@
       "pageTitle": "Řízení rizik technických a ekonomických systémů",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:32Z"
+      "checkedAt": "2026-10-22T09:29:48Z"
     },
     "inv-1c74702a3f39": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4395",
@@ -7851,7 +7866,7 @@
       "pageTitle": "Potravinářská chemie a biotechnologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:22Z"
+      "checkedAt": "2026-10-22T09:29:38Z"
     },
     "inv-1cb8c811281c": {
       "url": "https://bilakniha.cvut.cz/cs/program1251116502305.html",
@@ -8129,7 +8144,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "herectvi",
+      "matchedTitle": "Herectví",
       "rowTitle": "Herectví",
       "sourceUrl": "https://df.jamu.cz/uchazeci-df/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -8174,14 +8189,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Letový provoz",
+      "matchedTitle": "letovy provoz",
       "rowTitle": "Letový provoz",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Letový provoz",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:39Z"
+      "checkedAt": "2026-10-22T09:17:27Z"
     },
     "inv-1df6d753c717": {
       "url": "https://stag.tul.cz/ects/browser/FM/1227?lang=cs",
@@ -8451,7 +8466,7 @@
       "pageTitle": "Informační bezpečnost",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:41Z"
+      "checkedAt": "2026-10-22T09:28:01Z"
     },
     "inv-1eda2da64bb8": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1548",
@@ -8691,7 +8706,7 @@
       "pageTitle": "Electrical Power Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:44Z"
+      "checkedAt": "2026-10-22T09:28:03Z"
     },
     "inv-201291ce6bb1": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/217",
@@ -8729,7 +8744,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "historical performance",
+      "matchedTitle": "Historical Performance",
       "rowTitle": "Historical Performance",
       "sourceUrl": "https://hf.jamu.cz/en/applicants-2/study-programmes",
       "matchedBy": "school_catalogue_anchor",
@@ -9194,7 +9209,7 @@
       "institutionId": "msmt-vs_17000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Sochařství - volná tvorba",
+      "matchedTitle": "Sochařství – volná tvorba",
       "rowTitle": "Sochařství - volná tvorba",
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=3057",
       "matchedBy": "school_harvested_programme_page",
@@ -9246,7 +9261,7 @@
       "pageTitle": "Architecture and Urban Design",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:26Z"
+      "checkedAt": "2026-10-22T09:27:45Z"
     },
     "inv-229c940289e5": {
       "url": "https://hf.jamu.cz/studijni-obory/pedagogika-klavirni-hry-2/",
@@ -9254,7 +9269,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "pedagogika klavirni hry",
+      "matchedTitle": "Pedagogika klavírní hry",
       "rowTitle": "Pedagogika klavírní hry",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -9329,7 +9344,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "hra na varhany a duchovni hudba",
+      "matchedTitle": "Hra na varhany a duchovní hudba",
       "rowTitle": "Hra na varhany a duchovní hudba",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -9606,7 +9621,7 @@
       "pageTitle": "Stavební inženýrství – vodní hospodářství a vodní stavby",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:28Z"
+      "checkedAt": "2026-10-22T09:27:47Z"
     },
     "inv-24528cb1a0d4": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/doctoral-degree/doctoral-degree-detail/?programmeId=809",
@@ -10071,7 +10086,7 @@
       "pageTitle": "Výrobní stroje, systémy a roboty",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:16Z"
+      "checkedAt": "2026-10-22T09:28:35Z"
     },
     "inv-25983072dcfb": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2021?lang=cs",
@@ -10371,7 +10386,7 @@
       "pageTitle": "Konstrukční a procesní inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:37Z"
+      "checkedAt": "2026-10-22T09:28:56Z"
     },
     "inv-26e5aef64bbb": {
       "url": "https://stag.upol.cz/ects/browser/FIF/2254?lang=cs",
@@ -10564,9 +10579,9 @@
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=2662",
       "matchedBy": "school_harvested_programme_page",
       "pageTitle": "Latinský jazyk a kultura středověku / Ostravská univerzita",
-      "reachability": "http_200_title_not_confirmed",
+      "reachability": "unverified",
       "matchedAt": "2026-10-09T11:04:03Z",
-      "checkedAt": "2026-10-15T09:33:42Z"
+      "checkedAt": "2026-10-22T10:27:12Z"
     },
     "inv-27e5bf0efa9a": {
       "url": "https://www.osu.cz/studijniobory/?specializaceid=3830",
@@ -10596,7 +10611,7 @@
       "pageTitle": "Chemistry, Technology and Properties of Materials",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:13Z"
+      "checkedAt": "2026-10-22T09:28:32Z"
     },
     "inv-27ff878f3de4": {
       "url": "https://wstag.jcu.cz/ects/browser/FZE/1568?lang=cs",
@@ -10949,14 +10964,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "Tourism",
+      "matchedTitle": "tourism",
       "rowTitle": "Tourism",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Tourism - Panevropská univerzita",
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:51Z"
+      "checkedAt": "2026-10-22T09:17:39Z"
     },
     "inv-29913369f80b": {
       "url": "https://is.mendelu.cz/katalog/plany.pl?fakulta=14;poc_obdobi=824;typ_ss=;typ_studia=4;program=2068;info=1;misto_vyuky=;lang=cz",
@@ -11196,7 +11211,7 @@
       "pageTitle": "Městské inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:33Z"
+      "checkedAt": "2026-10-22T09:27:52Z"
     },
     "inv-2a7bfe624f0f": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4235",
@@ -11316,7 +11331,7 @@
       "pageTitle": "Audio inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:53Z"
+      "checkedAt": "2026-10-22T09:29:11Z"
     },
     "inv-2af2e69725fd": {
       "url": "https://study.vscht.cz/degree-programmes/master/n107",
@@ -11534,7 +11549,7 @@
       "institutionId": "msmt-vs_41000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Veterinární asistent – specialista",
+      "matchedTitle": "Veterinární asistent - specialista",
       "rowTitle": "Veterinární asistent - specialista",
       "sourceUrl": "https://studuj.czu.cz/programmes/veterinarni-asistent-specialista/",
       "matchedBy": "school_harvested_programme_page",
@@ -11542,6 +11557,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T08:12:48Z",
       "checkedAt": "2026-10-21T09:19:59Z"
+    },
+    "inv-2be4112be385": {
+      "url": "https://is.mendelu.cz/katalog/plany.pl?fakulta=14;poc_obdobi=824;typ_ss=;typ_studia=4;program=2071;info=1;misto_vyuky=;lang=cz",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_43000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Potravinářství a výživa člověka",
+      "rowTitle": "Potravinářství a výživa člověka",
+      "sourceUrl": "https://is.mendelu.cz/katalog/plany.pl?fakulta=14;poc_obdobi=824;typ_ss=;typ_studia=4;program=2071;info=1;misto_vyuky=;lang=cz",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Prohlídka studijních programů",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-22T09:07:54Z",
+      "checkedAt": "2026-10-22T09:33:34Z"
     },
     "inv-2bef52386ba9": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/doctoral-degree/doctoral-degree-detail/?programmeId=923",
@@ -11939,7 +11969,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "grafika a vizualni komunikace",
+      "matchedTitle": "Grafika a vizuální komunikace",
       "rowTitle": "Grafika a vizuální komunikace",
       "sourceUrl": "https://www.umprum.cz/cs/web/uchazec/prijimaci-rizeni-do-bakalarskeho-programu-vytvarna-umeni/informace-o-bakalarskem-programu",
       "matchedBy": "school_catalogue_anchor",
@@ -12126,7 +12156,7 @@
       "pageTitle": "Jaderná energetika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:47Z"
+      "checkedAt": "2026-10-22T09:29:05Z"
     },
     "inv-2e9a2b127712": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/889",
@@ -12246,7 +12276,7 @@
       "pageTitle": "Chemické technologie a nanotechnologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:20Z"
+      "checkedAt": "2026-10-22T09:29:36Z"
     },
     "inv-2f1a818123ab": {
       "url": "https://stag.upol.cz/ects/browser/PRF/3337?lang=cs",
@@ -12291,7 +12321,7 @@
       "pageTitle": "Chemie a chemické technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:17Z"
+      "checkedAt": "2026-10-22T09:29:33Z"
     },
     "inv-2f7a10057798": {
       "url": "https://stag.upol.cz/ects/browser/LEF/2589?lang=cs",
@@ -12576,7 +12606,7 @@
       "pageTitle": "Physical and Building Materials Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:16Z"
+      "checkedAt": "2026-10-22T09:27:35Z"
     },
     "inv-3065b43485f0": {
       "url": "https://wstag.jcu.cz/ects/browser/FFI/1068?lang=cs",
@@ -12734,7 +12764,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "volne umeni",
+      "matchedTitle": "Volné umění",
       "rowTitle": "Volné umění",
       "sourceUrl": "https://www.umprum.cz/cs/web/uchazec/prijimaci-rizeni-do-bakalarskeho-programu-vytvarna-umeni/informace-o-bakalarskem-programu",
       "matchedBy": "school_catalogue_anchor",
@@ -12779,7 +12809,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "divadlo a vychova",
+      "matchedTitle": "Divadlo a výchova",
       "rowTitle": "Divadlo a výchova",
       "sourceUrl": "https://df.jamu.cz/uchazeci-df/prijimaci-rizeni/postup-krok-za-krokem",
       "matchedBy": "school_catalogue_anchor",
@@ -12891,7 +12921,7 @@
       "pageTitle": "Pokročilé automobilové inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:25Z"
+      "checkedAt": "2026-10-22T09:28:44Z"
     },
     "inv-31cd2e114bf8": {
       "url": "https://wstag.jcu.cz/ects/browser/FZE/1710?lang=cs",
@@ -13191,7 +13221,7 @@
       "pageTitle": "Informační technologie a umělá inteligence",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:01Z"
+      "checkedAt": "2026-10-22T09:28:20Z"
     },
     "inv-3342585004a6": {
       "url": "https://www.vsfs.cz/studijni-programy/nova-media-a-marketingova-komunikace/magisterske",
@@ -13896,7 +13926,7 @@
       "pageTitle": "Telekomunikační a informační technika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:45Z"
+      "checkedAt": "2026-10-22T09:29:03Z"
     },
     "inv-35aeaa17643d": {
       "url": "https://www.osu.cz/studijniobory/?specializaceid=2748",
@@ -13919,7 +13949,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "cizi jazyky pro cestovni ruch rusky jazyk",
+      "matchedTitle": "Cizí jazyky pro cestovní ruch – ruský jazyk",
       "rowTitle": "Cizí jazyky pro cestovní ruch – ruský jazyk",
       "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/nabidka-studijnich-programu",
       "matchedBy": "school_catalogue_anchor",
@@ -14016,7 +14046,7 @@
       "pageTitle": "Environmentálně vyspělé budovy",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:24Z"
+      "checkedAt": "2026-10-22T09:27:43Z"
     },
     "inv-3605eadb12ed": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/bachelor-degree/bachelor-degree-detail/?programmeId=1126",
@@ -14181,7 +14211,7 @@
       "pageTitle": "Biofyzikální chemie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:34Z"
+      "checkedAt": "2026-10-22T09:29:50Z"
     },
     "inv-369ca8299cd8": {
       "url": "https://stag.upol.cz/ects/browser/FIF/2209?lang=cs",
@@ -14534,7 +14564,7 @@
       "institutionId": "msmt-vs_56000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "logistika",
+      "matchedTitle": "Logistika",
       "rowTitle": "Logistika",
       "sourceUrl": "https://www.vstecb.cz/magisterske-obory-1640-htm",
       "matchedBy": "school_catalogue_anchor",
@@ -14871,7 +14901,7 @@
       "pageTitle": "Architektura pozemních staveb",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:15Z"
+      "checkedAt": "2026-10-22T09:27:34Z"
     },
     "inv-392ed3573a3d": {
       "url": "https://fel.cvut.cz/en/study-programs/eis--electronics-and-integrated-systems",
@@ -14969,7 +14999,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "visual arts",
+      "matchedTitle": "Visual Arts",
       "rowTitle": "Visual Arts",
       "sourceUrl": "https://www.umprum.cz/en/web/applicant/study-in-czech/doctoral-programmes-in-czech",
       "matchedBy": "school_catalogue_anchor",
@@ -14984,7 +15014,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "cizi jazyky pro cestovni ruch anglicky jazyk",
+      "matchedTitle": "Cizí jazyky pro cestovní ruch – anglický jazyk",
       "rowTitle": "Cizí jazyky pro cestovní ruch – anglický jazyk",
       "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/nabidka-studijnich-programu",
       "matchedBy": "school_catalogue_anchor",
@@ -15014,14 +15044,14 @@
       "institutionId": "msmt-vs_26000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "Power Systems and Communication Technology",
+      "matchedTitle": "power systems and communication technology",
       "rowTitle": "Power Systems and Communication Technology",
       "sourceUrl": "https://www.vut.cz/en/students/programmes?data%5Brok%5D=2027",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Power Systems and Communication Technology",
       "reachability": "verified",
       "matchedAt": "2026-10-10T11:10:32Z",
-      "checkedAt": "2026-10-17T08:33:54Z"
+      "checkedAt": "2026-10-22T09:27:13Z"
     },
     "inv-39e00b0adf1e": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1613",
@@ -15081,7 +15111,7 @@
       "pageTitle": "Environmental Sciences and Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:18Z"
+      "checkedAt": "2026-10-22T09:27:37Z"
     },
     "inv-39ff67d3eb70": {
       "url": "https://stag.utb.cz/ects/browser/FHS/1771?lang=cs",
@@ -15119,7 +15149,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "konzervovani restaurovani umeleckoremeslnych del",
+      "matchedTitle": "Konzervování – restaurování uměleckořemeslných děl",
       "rowTitle": "Konzervování – restaurování uměleckořemeslných děl",
       "sourceUrl": "https://www.umprum.cz/cs/web/uchazec/navazujici-magisterske-studium/management-umeni-a-designu/informace-o-navazujicim-magisterskem-programu-management-umeni-a-designu",
       "matchedBy": "school_catalogue_anchor",
@@ -15749,7 +15779,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "teorie a dejiny moderniho a soucasneho umeni",
+      "matchedTitle": "Teorie a dějiny moderního a současného umění",
       "rowTitle": "Teorie a dějiny moderního a současného umění",
       "sourceUrl": "https://www.umprum.cz/cs/web/uchazec/doktorske-studium/visual-arts-ph-d/visual-arts-ph-d-more-information-about-the-programme",
       "matchedBy": "school_catalogue_anchor",
@@ -15981,7 +16011,7 @@
       "pageTitle": "Návrh čipů a moderní polovodičové technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:06Z"
+      "checkedAt": "2026-10-22T09:29:22Z"
     },
     "inv-3d86f61b7865": {
       "url": "https://portal.upce.cz/ects/browser/FCH/733?lang=cs",
@@ -16146,7 +16176,7 @@
       "pageTitle": "Integrative Urban Studies",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:09Z"
+      "checkedAt": "2026-10-22T09:28:28Z"
     },
     "inv-3e0ad55660f6": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/master-degree/master-degree-detail/?programmeId=834",
@@ -16296,7 +16326,7 @@
       "pageTitle": "Procesní inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:31Z"
+      "checkedAt": "2026-10-22T09:28:50Z"
     },
     "inv-3eca9a35f3af": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/161",
@@ -16341,7 +16371,7 @@
       "pageTitle": "Inženýrská mechanika a biomechanika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:28Z"
+      "checkedAt": "2026-10-22T09:28:47Z"
     },
     "inv-3ef281bc5840": {
       "url": "https://stag.tul.cz/ects/browser/FZS/1346?lang=cs",
@@ -16491,7 +16521,7 @@
       "pageTitle": "Communications and Networking",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:45Z"
+      "checkedAt": "2026-10-22T09:28:04Z"
     },
     "inv-3fabdcfeb85b": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1236",
@@ -16949,7 +16979,7 @@
       "institutionId": "msmt-vs_26000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "stavba stroju a zarizeni",
+      "matchedTitle": "Stavba strojů a zařízení",
       "rowTitle": "Stavba strojů a zařízení",
       "sourceUrl": "https://www.vut.cz/studenti/programy",
       "matchedBy": "school_catalogue_anchor",
@@ -17106,7 +17136,7 @@
       "pageTitle": "Chemie a technologie materiálů",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:06Z"
+      "checkedAt": "2026-10-22T09:28:25Z"
     },
     "inv-42c1c740fb30": {
       "url": "https://www.vut.cz/studenti/programy/program/9934",
@@ -17121,7 +17151,7 @@
       "pageTitle": "Realitní inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:31Z"
+      "checkedAt": "2026-10-22T09:29:47Z"
     },
     "inv-42d5b4d5d06b": {
       "url": "https://stag.upol.cz/ects/browser/FTK/2341?lang=cs",
@@ -17346,7 +17376,7 @@
       "pageTitle": "Environmentální inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:23Z"
+      "checkedAt": "2026-10-22T09:27:42Z"
     },
     "inv-43c6901684e0": {
       "url": "https://www.vut.cz/studenti/programy/program/9964",
@@ -17361,7 +17391,7 @@
       "pageTitle": "Biophysical Chemistry",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:12Z"
+      "checkedAt": "2026-10-22T09:28:31Z"
     },
     "inv-43cccdcd42a1": {
       "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=820&academicYearId=66&studyLanguageIds=1",
@@ -17549,14 +17579,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Digitální ekonomika a společnost",
+      "matchedTitle": "digitalni ekonomika a spolecnost",
       "rowTitle": "Digitální ekonomika a společnost",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Digitální ekonomika a společnost",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:36Z"
+      "checkedAt": "2026-10-22T09:17:24Z"
     },
     "inv-448540c086dc": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4088",
@@ -17669,7 +17699,7 @@
       "institutionId": "msmt-vs_56000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "rizeni lidskych zdroju",
+      "matchedTitle": "Řízení lidských zdrojů",
       "rowTitle": "Řízení lidských zdrojů",
       "sourceUrl": "https://www.vstecb.cz/bakalarske-obory-1639-htm",
       "matchedBy": "school_catalogue_anchor",
@@ -18126,7 +18156,7 @@
       "pageTitle": "Teoretická elektrotechnika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:55Z"
+      "checkedAt": "2026-10-22T09:29:13Z"
     },
     "inv-477de77ce1d7": {
       "url": "https://www.fbmi.cvut.cz/en/students/study-information?section=bmt",
@@ -18409,9 +18439,9 @@
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=2641",
       "matchedBy": "school_harvested_programme_page",
       "pageTitle": "Latinský jazyk a kultura / Ostravská univerzita",
-      "reachability": "http_200_title_not_confirmed",
+      "reachability": "unverified",
       "matchedAt": "2026-10-09T11:04:03Z",
-      "checkedAt": "2026-10-15T09:33:33Z"
+      "checkedAt": "2026-10-22T09:53:42Z"
     },
     "inv-48e898cc2da7": {
       "url": "https://www.mup.cz/studijni-programy/doktorske-studium/politologie/",
@@ -18471,7 +18501,7 @@
       "pageTitle": "Konstrukční inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:04Z"
+      "checkedAt": "2026-10-22T09:27:23Z"
     },
     "inv-4958e5e2f9cd": {
       "url": "https://portal.upce.cz/ects/browser/FCH/563?lang=en",
@@ -18996,7 +19026,7 @@
       "pageTitle": "Elektronika a komunikační technologie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:42Z"
+      "checkedAt": "2026-10-22T09:28:01Z"
     },
     "inv-4b34f1c35dcb": {
       "url": "https://studuj.vscht.cz/studijni-programy/program/B401",
@@ -19686,7 +19716,7 @@
       "pageTitle": "Aerospace Technology",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:01Z"
+      "checkedAt": "2026-10-22T09:27:20Z"
     },
     "inv-4dcadd4b81af": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/187",
@@ -19731,7 +19761,7 @@
       "pageTitle": "Silnoproudá elektrotechnika a elektroenergetika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:05Z"
+      "checkedAt": "2026-10-22T09:29:21Z"
     },
     "inv-4de5f3b89bb4": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1029",
@@ -20136,7 +20166,7 @@
       "pageTitle": "Kybernetika, automatizace a měření",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:40Z"
+      "checkedAt": "2026-10-22T09:27:59Z"
     },
     "inv-4f60aaadd52f": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/26613-farmacie",
@@ -20196,7 +20226,7 @@
       "pageTitle": "Chemie a technologie ochrany životního prostředí",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:36Z"
+      "checkedAt": "2026-10-22T09:29:52Z"
     },
     "inv-4f951a10c07a": {
       "url": "https://is.czu.cz/katalog/plany.pl?fakulta=50;poc_obdobi=1250;typ_ss=;typ_studia=3;program=1667;info=1;misto_vyuky=;lang=cz",
@@ -20399,7 +20429,7 @@
       "institutionId": "msmt-vs_41000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "land and environmental engineering",
+      "matchedTitle": "Land and Environmental Engineering",
       "rowTitle": "Land and Environmental Engineering",
       "sourceUrl": "https://www.af.czu.cz/en/r-9408-study/r-9495-study-programmes",
       "matchedBy": "school_catalogue_anchor",
@@ -20781,7 +20811,7 @@
       "pageTitle": "Informační management",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:26Z"
+      "checkedAt": "2026-10-22T09:29:42Z"
     },
     "inv-524123293193": {
       "url": "https://www.muni.cz/uchazeci/navazujici-magisterske-studium/nabidka-studia/24162-religionistika",
@@ -20931,7 +20961,7 @@
       "pageTitle": "Automobilní a dopravní inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:26Z"
+      "checkedAt": "2026-10-22T09:28:45Z"
     },
     "inv-5287a33fd022": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4257",
@@ -21456,7 +21486,7 @@
       "pageTitle": "Fine Art and Design",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:19Z"
+      "checkedAt": "2026-10-22T09:27:38Z"
     },
     "inv-5430d2df2e54": {
       "url": "https://insis.vse.cz/katalog/plany.pl?fakulta=20;poc_obdobi=1230;typ_ss=5;typ_studia=1;program=606;info=1;misto_vyuky=;lang=cz",
@@ -21539,7 +21569,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "management umeni a designu",
+      "matchedTitle": "Management umění a designu",
       "rowTitle": "Management umění a designu",
       "sourceUrl": "https://www.umprum.cz/cs/web/katedry/design/management-umeni-a-designu",
       "matchedBy": "school_catalogue_anchor",
@@ -21577,6 +21607,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-10-19T09:36:47Z"
+    },
+    "inv-54ccc1855604": {
+      "url": "https://is.mendelu.cz/katalog/plany.pl?fakulta=38;poc_obdobi=830;typ_ss=;typ_studia=1;program=1870;info=1;misto_vyuky=;lang=cz",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_43000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Lesnictví",
+      "rowTitle": "Lesnictví",
+      "sourceUrl": "https://is.mendelu.cz/katalog/plany.pl?fakulta=38;poc_obdobi=830;typ_ss=;typ_studia=1;program=1870;info=1;misto_vyuky=;lang=cz",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Prohlídka studijních programů",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-22T09:07:54Z",
+      "checkedAt": "2026-10-22T09:33:35Z"
     },
     "inv-54e836d311f7": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1439",
@@ -21801,7 +21846,7 @@
       "pageTitle": "Design and Process Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:13Z"
+      "checkedAt": "2026-10-22T09:27:32Z"
     },
     "inv-55aee1cf40d4": {
       "url": "https://studuj.czu.cz/programmes/forest-science-in-global-change/",
@@ -22581,7 +22626,7 @@
       "pageTitle": "Geodézie a kartografie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:25Z"
+      "checkedAt": "2026-10-22T09:27:45Z"
     },
     "inv-5880bc32c8a0": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24387-cinska-studia",
@@ -23046,7 +23091,7 @@
       "pageTitle": "Applied Mathematics",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:10Z"
+      "checkedAt": "2026-10-22T09:27:29Z"
     },
     "inv-5b3ee93d1776": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1927?lang=cs",
@@ -23204,14 +23249,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Bezpečnostně právní studia",
+      "matchedTitle": "bezpecnostne pravni studia",
       "rowTitle": "Bezpečnostně právní studia",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": null,
       "reachability": "access_control",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:54Z"
+      "checkedAt": "2026-10-22T09:17:41Z"
     },
     "inv-5bd08df728a3": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4082",
@@ -23309,7 +23354,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "praxe verejne spravy",
+      "matchedTitle": "Praxe veřejné správy",
       "rowTitle": "Praxe veřejné správy",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/praxe-verejne-spravy",
       "matchedBy": "school_sitemap_slug",
@@ -23564,7 +23609,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "architecture",
+      "matchedTitle": "Architecture",
       "rowTitle": "Architecture",
       "sourceUrl": "https://www.umprum.cz/en/web/applicant",
       "matchedBy": "school_catalogue_anchor",
@@ -24239,7 +24284,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "politika a obcanska spolecnost ve stredni evrope",
+      "matchedTitle": "Politika a občanská společnost ve střední Evropě",
       "rowTitle": "Politika a občanská společnost ve střední Evropě",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/politika-a-obcanska-spolecnost-ve-stredni-evrope",
       "matchedBy": "school_sitemap_slug",
@@ -24396,7 +24441,7 @@
       "pageTitle": "Mathematical Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:06Z"
+      "checkedAt": "2026-10-22T09:27:25Z"
     },
     "inv-611660acc353": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1355",
@@ -24599,7 +24644,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "scenografie",
+      "matchedTitle": "Scénografie",
       "rowTitle": "Scénografie",
       "sourceUrl": "https://df.jamu.cz/uchazeci-df/prijimaci-rizeni/postup-krok-za-krokem",
       "matchedBy": "school_catalogue_anchor",
@@ -24771,7 +24816,7 @@
       "pageTitle": "Stavební inženýrství – stavební materiály a technologie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:29Z"
+      "checkedAt": "2026-10-22T09:27:48Z"
     },
     "inv-625fb5c3c041": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1547",
@@ -25004,7 +25049,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "grafika a vizualni komunikace",
+      "matchedTitle": "Grafika a vizuální komunikace",
       "rowTitle": "Grafika a vizuální komunikace",
       "sourceUrl": "https://www.umprum.cz/cs/web/uchazec/navazujici-magisterske-studium/umeni/informace-o-navazujicim-magisterskem-programu-umeni",
       "matchedBy": "school_catalogue_anchor",
@@ -25131,7 +25176,7 @@
       "pageTitle": "Master of Information Technology",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:00Z"
+      "checkedAt": "2026-10-22T09:28:19Z"
     },
     "inv-642d1a5c4193": {
       "url": "https://apl.unob.cz/StudijniProgramy/Studium/2952/Infekcni-biologie",
@@ -25296,7 +25341,7 @@
       "pageTitle": "Architektura a urbanismus",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:11Z"
+      "checkedAt": "2026-10-22T09:28:30Z"
     },
     "inv-64cd45a4e087": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/26540-kyberbezpecnost",
@@ -25364,7 +25409,7 @@
       "institutionId": "msmt-vs_26000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "strojirenska technologie",
+      "matchedTitle": "Strojírenská technologie",
       "rowTitle": "Strojírenská technologie",
       "sourceUrl": "https://www.vut.cz/studenti/programy",
       "matchedBy": "school_catalogue_anchor",
@@ -25619,7 +25664,7 @@
       "institutionId": "msmt-vs_56000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "podnikova ekonomika",
+      "matchedTitle": "Podniková ekonomika",
       "rowTitle": "Podniková ekonomika",
       "sourceUrl": "https://www.vstecb.cz/bakalarske-obory-1639-htm",
       "matchedBy": "school_catalogue_anchor",
@@ -25656,7 +25701,7 @@
       "pageTitle": "Elektronika a komunikační technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:01Z"
+      "checkedAt": "2026-10-22T09:29:18Z"
     },
     "inv-66045ce02f11": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/5009",
@@ -26014,9 +26059,9 @@
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=2658",
       "matchedBy": "school_harvested_programme_page",
       "pageTitle": "Filozofie - completus / Ostravská univerzita",
-      "reachability": "http_200_title_not_confirmed",
+      "reachability": "unverified",
       "matchedAt": "2026-10-09T11:04:03Z",
-      "checkedAt": "2026-10-15T09:33:40Z"
+      "checkedAt": "2026-10-22T10:21:37Z"
     },
     "inv-67341bacd20e": {
       "url": "https://portal.upce.cz/ects/browser/FCH/628?lang=cs",
@@ -26196,7 +26241,7 @@
       "pageTitle": "Mezinárodní ekonomika a obchod",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:27Z"
+      "checkedAt": "2026-10-22T09:29:43Z"
     },
     "inv-67a13f5df738": {
       "url": "https://bilakniha.cvut.cz/cs/program1195814354305.html",
@@ -26316,7 +26361,7 @@
       "pageTitle": "Silnoproudá elektrotechnika a výkonová elektronika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:46Z"
+      "checkedAt": "2026-10-22T09:29:04Z"
     },
     "inv-684f7c8c361d": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4391",
@@ -26549,7 +26594,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "bezpecnostni management",
+      "matchedTitle": "Bezpečnostní management",
       "rowTitle": "Bezpečnostní management",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/bezpecnostni-management",
       "matchedBy": "school_sitemap_slug",
@@ -26586,7 +26631,7 @@
       "pageTitle": "Strojírenská technologie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:33:59Z"
+      "checkedAt": "2026-10-22T09:27:18Z"
     },
     "inv-6a03b861698f": {
       "url": "https://portal.zcu.cz/ects/browser/FST/1999?lang=en",
@@ -26931,7 +26976,7 @@
       "pageTitle": "Civil Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:33:58Z"
+      "checkedAt": "2026-10-22T09:27:17Z"
     },
     "inv-6b98be4e6d46": {
       "url": "https://www.hamu.cz/cs/katedry-programy/katedra-tance/studijni-programy/tanecni-veda-210/",
@@ -26976,7 +27021,7 @@
       "pageTitle": "Strategický rozvoj podniku",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:28Z"
+      "checkedAt": "2026-10-22T09:29:44Z"
     },
     "inv-6bacf929bf81": {
       "url": "https://is.slu.cz/program/981?lang=cs",
@@ -27034,9 +27079,9 @@
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=2645",
       "matchedBy": "school_harvested_programme_page",
       "pageTitle": "Matematika / Ostravská univerzita",
-      "reachability": "http_200_title_not_confirmed",
+      "reachability": "unverified",
       "matchedAt": "2026-10-09T11:04:03Z",
-      "checkedAt": "2026-10-15T09:33:34Z"
+      "checkedAt": "2026-10-22T09:59:17Z"
     },
     "inv-6c0bbf535863": {
       "url": "https://wstag.jcu.cz/ects/browser/FFI/1069?lang=cs",
@@ -27591,7 +27636,7 @@
       "pageTitle": "Profesionální pilot",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:23Z"
+      "checkedAt": "2026-10-22T09:28:42Z"
     },
     "inv-6e17e3dbd367": {
       "url": "https://bilakniha.cvut.cz/cs/program1140283146805.html",
@@ -27637,6 +27682,21 @@
       "reachability": "verified",
       "matchedAt": "2026-09-27T12:09:39Z",
       "checkedAt": "2026-10-20T09:11:22Z"
+    },
+    "inv-6e319de60974": {
+      "url": "https://is.mendelu.cz/katalog/plany.pl?fakulta=38;poc_obdobi=830;typ_ss=;typ_studia=1;program=2846;info=1;misto_vyuky=;lang=cz",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_43000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Biomateriály",
+      "rowTitle": "Biomateriály",
+      "sourceUrl": "https://is.mendelu.cz/katalog/plany.pl?fakulta=38;poc_obdobi=830;typ_ss=;typ_studia=1;program=2846;info=1;misto_vyuky=;lang=cz",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Prohlídka studijních programů",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-22T09:07:54Z",
+      "checkedAt": "2026-10-22T09:33:36Z"
     },
     "inv-6e3b421cf960": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4865",
@@ -28116,7 +28176,7 @@
       "pageTitle": "Sportovní technologie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:10Z"
+      "checkedAt": "2026-10-22T09:28:29Z"
     },
     "inv-6fac320dd5fb": {
       "url": "https://portal.ujep.cz/ects/browser/PRF/1348?lang=cs",
@@ -28204,9 +28264,9 @@
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=2650",
       "matchedBy": "school_harvested_programme_page",
       "pageTitle": "Český jazyk a literatura / Ostravská univerzita",
-      "reachability": "http_200_title_not_confirmed",
+      "reachability": "unverified",
       "matchedAt": "2026-10-09T11:04:03Z",
-      "checkedAt": "2026-10-15T09:33:36Z"
+      "checkedAt": "2026-10-22T10:04:52Z"
     },
     "inv-703b6434a4fe": {
       "url": "https://mendelu.cz/studijni-programy/pestovani-lesa/",
@@ -28334,7 +28394,7 @@
       "institutionId": "msmt-vs_17000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Sochařství - volná tvorba",
+      "matchedTitle": "Sochařství – volná tvorba",
       "rowTitle": "Sochařství - volná tvorba",
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=3053",
       "matchedBy": "school_harvested_programme_page",
@@ -28806,7 +28866,7 @@
       "pageTitle": "Stavební inženýrství – pozemní stavby",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:37Z"
+      "checkedAt": "2026-10-22T09:27:56Z"
     },
     "inv-727780e70390": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4113",
@@ -29219,7 +29279,7 @@
       "institutionId": "msmt-vs_17000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "Literární věda - teorie a dějiny národních literatur",
+      "matchedTitle": "Literární věda – teorie a dějiny národních literatur",
       "rowTitle": "Literární věda - teorie a dějiny národních literatur",
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=2966",
       "matchedBy": "school_harvested_programme_page",
@@ -29766,7 +29826,7 @@
       "pageTitle": "Chemie přírodních látek",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:23Z"
+      "checkedAt": "2026-10-22T09:29:39Z"
     },
     "inv-762717f37b20": {
       "url": "https://portal.fsv.cvut.cz/en/student/bakalmag/prehled/bc/ce.php",
@@ -29946,7 +30006,7 @@
       "pageTitle": "Power Systems and Power Electronics",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:51Z"
+      "checkedAt": "2026-10-22T09:28:10Z"
     },
     "inv-76e8e99ad054": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/201",
@@ -30066,7 +30126,7 @@
       "pageTitle": "Fyzikální inženýrství a nanotechnologie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:03Z"
+      "checkedAt": "2026-10-22T09:27:22Z"
     },
     "inv-7721cbc1fe7f": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24088-zivotni-prostredi-a-zdravi",
@@ -30104,7 +30164,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "verejna sprava",
+      "matchedTitle": "Veřejná správa",
       "rowTitle": "Veřejná správa",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/verejna-sprava",
       "matchedBy": "school_sitemap_slug",
@@ -30336,7 +30396,7 @@
       "pageTitle": "Bioengineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:46Z"
+      "checkedAt": "2026-10-22T09:28:06Z"
     },
     "inv-780670c6acb0": {
       "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=960&academicYearId=66&studyLanguageIds=1",
@@ -30621,7 +30681,7 @@
       "pageTitle": "Applied and Interdisciplinary Mathematics",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:00Z"
+      "checkedAt": "2026-10-22T09:27:19Z"
     },
     "inv-791fc86df891": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/bachelor-degree/bachelor-degree-detail/?programmeId=927",
@@ -30824,7 +30884,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "chemie se zamerenim na vzdelavani",
+      "matchedTitle": "Chemie se zaměřením na vzdělávání",
       "rowTitle": "Chemie se zaměřením na vzdělávání",
       "sourceUrl": "https://www.uhk.cz/cs/prirodovedecka-fakulta/prijimaci-zkousky/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -31049,7 +31109,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "obchodnepravni vztahy",
+      "matchedTitle": "Obchodněprávní vztahy",
       "rowTitle": "Obchodněprávní vztahy",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/obchodnepravni-vztahy",
       "matchedBy": "school_sitemap_slug",
@@ -31251,7 +31311,7 @@
       "pageTitle": "Chemie a technologie materiálů",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:18Z"
+      "checkedAt": "2026-10-22T09:29:34Z"
     },
     "inv-7bc730e5916a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1002",
@@ -32196,7 +32256,7 @@
       "pageTitle": "Vizuální komunikace v kreativních průmyslech",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:24Z"
+      "checkedAt": "2026-10-22T09:28:43Z"
     },
     "inv-806f9ebcccc3": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1072",
@@ -32294,7 +32354,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "economics business politics",
+      "matchedTitle": "Economics, Business, Politics",
       "rowTitle": "Economics, Business, Politics",
       "sourceUrl": "https://www.cevro.cz/en/study-programmes/economics-business-politics",
       "matchedBy": "school_sitemap_slug",
@@ -32399,7 +32459,7 @@
       "institutionId": "msmt-vs_41000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "Agriculture in Tropics and Subtropics",
+      "matchedTitle": "Agriculture in Tropics and subtropics",
       "rowTitle": "Agriculture in Tropics and subtropics",
       "sourceUrl": "https://is.czu.cz/katalog/plany.pl?fakulta=71;poc_obdobi=1246;typ_ss=;typ_studia=3;program=1348;info=1;misto_vyuky=;lang=cz",
       "matchedBy": "school_harvested_programme_page",
@@ -32429,14 +32489,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Provoz a řízení letecké dopravy",
+      "matchedTitle": "provoz a rizeni letecke dopravy",
       "rowTitle": "Provoz a řízení letecké dopravy",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Provoz a řízení letecké dopravy",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:46Z"
+      "checkedAt": "2026-10-22T09:17:34Z"
     },
     "inv-8136c2047f19": {
       "url": "https://www.uhk.cz/cs/filozoficka-fakulta/prijimaci-zkousky/studijni-programy/filozofie-a-spolecenske-vedy",
@@ -32691,7 +32751,7 @@
       "pageTitle": "E-mobilita a udržitelnost",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:09Z"
+      "checkedAt": "2026-10-22T09:29:25Z"
     },
     "inv-823b88b7f47e": {
       "url": "https://www.vut.cz/studenti/programy/program/9684",
@@ -32706,7 +32766,7 @@
       "pageTitle": "Physical Engineering and Nanotechnology",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:11Z"
+      "checkedAt": "2026-10-22T09:27:30Z"
     },
     "inv-8249871854b5": {
       "url": "https://www.muni.cz/en/admissions/phd-studies/choose-programme/25795-biomedical-sciences",
@@ -32864,7 +32924,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "kompozice a teorie kompozice",
+      "matchedTitle": "Kompozice a teorie kompozice",
       "rowTitle": "Kompozice a teorie kompozice",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -32879,7 +32939,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "architektonicka tvorba",
+      "matchedTitle": "Architektonická tvorba",
       "rowTitle": "Architektonická tvorba",
       "sourceUrl": "https://www.umprum.cz/cs/web/uchazec/informace-o-magisterskem-programu",
       "matchedBy": "school_catalogue_anchor",
@@ -32984,7 +33044,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "klavirni pedagogika",
+      "matchedTitle": "Klavírní pedagogika",
       "rowTitle": "Klavírní pedagogika",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -33021,7 +33081,7 @@
       "pageTitle": "Theoretical Electrical Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:49Z"
+      "checkedAt": "2026-10-22T09:28:08Z"
     },
     "inv-8383a0d25028": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/master-degree/master-degree-detail/?programmeId=904",
@@ -33224,14 +33284,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "Podnikání a management",
+      "matchedTitle": "podnikani a management",
       "rowTitle": "Podnikání a management",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Podnikání a management - Panevropská univerzita",
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:53Z"
+      "checkedAt": "2026-10-22T09:17:40Z"
     },
     "inv-8463ed4c0e2a": {
       "url": "https://www.muni.cz/uchazeci/doktorske-studium/vyberte-si-program/23964-teorie-vytvarne-a-galerijni-pedagogiky",
@@ -33359,7 +33419,7 @@
       "institutionId": "msmt-vs_26000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "aplikovana informatika a rizeni",
+      "matchedTitle": "Aplikovaná informatika a řízení",
       "rowTitle": "Aplikovaná informatika a řízení",
       "sourceUrl": "https://www.vut.cz/studenti/programy",
       "matchedBy": "school_catalogue_anchor",
@@ -33381,7 +33441,7 @@
       "pageTitle": "Stavební inženýrství – realizace staveb",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:30Z"
+      "checkedAt": "2026-10-22T09:27:49Z"
     },
     "inv-84e029168c2e": {
       "url": "https://hf.jamu.cz/studijni-obory/hudebni-produkce-5/",
@@ -33389,7 +33449,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "hudebni produkce",
+      "matchedTitle": "Hudební produkce",
       "rowTitle": "Hudební produkce",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -33869,7 +33929,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "cizi jazyky pro cestovni ruch francouzsky jazyk",
+      "matchedTitle": "Cizí jazyky pro cestovní ruch – francouzský jazyk",
       "rowTitle": "Cizí jazyky pro cestovní ruch – francouzský jazyk",
       "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/nabidka-studijnich-programu",
       "matchedBy": "school_catalogue_anchor",
@@ -33937,6 +33997,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-20T09:40:14Z",
       "checkedAt": "2026-10-20T09:47:23Z"
+    },
+    "inv-87862bc578ba": {
+      "url": "https://is.mendelu.cz/katalog/plany.pl?fakulta=14;poc_obdobi=824;typ_ss=;typ_studia=1;program=1812;info=1;misto_vyuky=;lang=cz",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_43000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Aplikovaná technika",
+      "rowTitle": "Aplikovaná technika",
+      "sourceUrl": "https://is.mendelu.cz/katalog/plany.pl?fakulta=14;poc_obdobi=824;typ_ss=;typ_studia=1;program=1812;info=1;misto_vyuky=;lang=cz",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Prohlídka studijních programů",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-22T09:07:54Z",
+      "checkedAt": "2026-10-22T09:33:33Z"
     },
     "inv-878e9799fcd7": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2814?lang=cs",
@@ -34371,7 +34446,7 @@
       "pageTitle": "Chemie a chemické technologie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:04Z"
+      "checkedAt": "2026-10-22T09:28:23Z"
     },
     "inv-8961e88fc0c1": {
       "url": "https://www.fs.cvut.cz/zajemci-o-studium/formy-studia/navazujici-magisterske-programy/epi-program/",
@@ -34596,7 +34671,7 @@
       "pageTitle": "Návrh čipů a moderní polovodičové technologie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:39Z"
+      "checkedAt": "2026-10-22T09:27:58Z"
     },
     "inv-8a64153a65b0": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/doctoral-degree/doctoral-degree-detail/?programmeId=826",
@@ -34844,7 +34919,7 @@
       "institutionId": "msmt-vs_56000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "business analytik",
+      "matchedTitle": "Business analytik",
       "rowTitle": "Business analytik",
       "sourceUrl": "https://www.vstecb.cz/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -34866,7 +34941,7 @@
       "pageTitle": "Energetika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:17Z"
+      "checkedAt": "2026-10-22T09:28:36Z"
     },
     "inv-8b1a4822b94d": {
       "url": "https://stag.upol.cz/ects/browser/FIF/2899?lang=cs",
@@ -35016,7 +35091,7 @@
       "pageTitle": "Průmyslový design ve strojírenství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:22Z"
+      "checkedAt": "2026-10-22T09:28:41Z"
     },
     "inv-8be46b39c543": {
       "url": "https://portal.ujep.cz/ects/browser/FZS/1139?lang=cs",
@@ -35046,7 +35121,7 @@
       "pageTitle": "Aplikovaná analytická, environmentální a forenzní chemie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:15Z"
+      "checkedAt": "2026-10-22T09:29:31Z"
     },
     "inv-8be951ff59a7": {
       "url": "https://stag.tul.cz/ects/browser/FE/1495?lang=cs",
@@ -35114,7 +35189,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "volne umeni",
+      "matchedTitle": "Volné umění",
       "rowTitle": "Volné umění",
       "sourceUrl": "https://www.umprum.cz/cs/web/uchazec/navazujici-magisterske-studium/umeni/informace-o-navazujicim-magisterskem-programu-umeni",
       "matchedBy": "school_catalogue_anchor",
@@ -35234,7 +35309,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "politologie",
+      "matchedTitle": "Politologie",
       "rowTitle": "Politologie",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/politologie",
       "matchedBy": "school_sitemap_slug",
@@ -35406,7 +35481,7 @@
       "pageTitle": "Matematické inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:20Z"
+      "checkedAt": "2026-10-22T09:28:39Z"
     },
     "inv-8d7ec990c0a6": {
       "url": "https://wstag.jcu.cz/ects/browser/FFI/1196?lang=cs",
@@ -35571,7 +35646,7 @@
       "pageTitle": "Výzkum v umění a designu",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:44Z"
+      "checkedAt": "2026-10-22T09:29:02Z"
     },
     "inv-8e317840c660": {
       "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=986&academicYearId=66&studyLanguageIds=1",
@@ -35946,7 +36021,7 @@
       "pageTitle": "Geodézie a kartografie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:34Z"
+      "checkedAt": "2026-10-22T09:27:53Z"
     },
     "inv-8fb073665c59": {
       "url": "https://www.osu.cz/studijniobory/?specializaceid=3439",
@@ -36066,7 +36141,7 @@
       "pageTitle": "Geodesy and Cartography",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:17Z"
+      "checkedAt": "2026-10-22T09:27:36Z"
     },
     "inv-905245281d82": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/master-degree/master-degree-detail/?programmeId=1032",
@@ -36299,7 +36374,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "bezpecnostni politika",
+      "matchedTitle": "Bezpečnostní politika",
       "rowTitle": "Bezpečnostní politika",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/bezpecnostni-politika",
       "matchedBy": "school_sitemap_slug",
@@ -36419,7 +36494,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "pravo v obchodnich vztazich",
+      "matchedTitle": "Právo v obchodních vztazích",
       "rowTitle": "Právo v obchodních vztazích",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/pravo-v-obchodnich-vztazich",
       "matchedBy": "school_sitemap_slug",
@@ -36456,7 +36531,7 @@
       "pageTitle": "Architecture and Urban Design",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:27Z"
+      "checkedAt": "2026-10-22T09:27:46Z"
     },
     "inv-91f4da9ac601": {
       "url": "https://df.jamu.cz/studijni-obor/scenografie-4-prijimaci-rizeni/",
@@ -36464,7 +36539,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "scenografie",
+      "matchedTitle": "Scénografie",
       "rowTitle": "Scénografie",
       "sourceUrl": "https://df.jamu.cz/uchazeci-df/prijimaci-rizeni/postup-krok-za-krokem",
       "matchedBy": "school_catalogue_anchor",
@@ -37124,14 +37199,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Cestovní ruch a turismus",
+      "matchedTitle": "cestovni ruch a turismus",
       "rowTitle": "Cestovní ruch a turismus",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Cestovní ruch a turismus",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:34Z"
+      "checkedAt": "2026-10-22T09:17:23Z"
     },
     "inv-949482043fc7": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1836?lang=cs",
@@ -37694,7 +37769,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Učitelství pro střední školy - německý jazyk a literatura",
+      "matchedTitle": "Učitelství pro střední školy – Německý jazyk a literatura",
       "rowTitle": "Učitelství pro střední školy – Německý jazyk a literatura",
       "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/ucitelstvi-pro-stredni-skoly-nemecky-jazyk-a-literatura",
       "matchedBy": "school_catalogue_anchor",
@@ -37806,7 +37881,7 @@
       "pageTitle": "Materiálové vědy",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:38Z"
+      "checkedAt": "2026-10-22T09:28:57Z"
     },
     "inv-979b38f0988a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1722",
@@ -37926,7 +38001,7 @@
       "pageTitle": "Volné umění",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:21Z"
+      "checkedAt": "2026-10-22T09:27:40Z"
     },
     "inv-980f42d9172c": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1158",
@@ -38016,7 +38091,7 @@
       "pageTitle": "Cybernetics, Control and Measurements",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:53Z"
+      "checkedAt": "2026-10-22T09:28:12Z"
     },
     "inv-983683fb6e56": {
       "url": "https://www.muni.cz/uchazeci/doktorske-studium/vyberte-si-program/24323-psychologie",
@@ -38091,7 +38166,7 @@
       "pageTitle": "Fyzikální chemie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:35Z"
+      "checkedAt": "2026-10-22T09:29:51Z"
     },
     "inv-986eb7d9e15a": {
       "url": "https://stag.upol.cz/ects/browser/PDF/2061?lang=cs",
@@ -38279,7 +38354,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "design",
+      "matchedTitle": "Design",
       "rowTitle": "Design",
       "sourceUrl": "https://www.umprum.cz/cs/web/uchazec/prijimaci-rizeni-do-bakalarskeho-programu-vytvarna-umeni/informace-o-bakalarskem-programu",
       "matchedBy": "school_catalogue_anchor",
@@ -38436,7 +38511,7 @@
       "pageTitle": "Entrepreneurship and Small Business Development",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:33:56Z"
+      "checkedAt": "2026-10-22T09:27:15Z"
     },
     "inv-99d50412dfda": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1243",
@@ -38794,9 +38869,9 @@
       "sourceUrl": "https://www.osu.cz/studijniobory/?specializaceid=2656",
       "matchedBy": "school_harvested_programme_page",
       "pageTitle": "Filozofie - completus / Ostravská univerzita",
-      "reachability": "http_200_title_not_confirmed",
+      "reachability": "unverified",
       "matchedAt": "2026-10-09T11:04:03Z",
-      "checkedAt": "2026-10-15T09:33:39Z"
+      "checkedAt": "2026-10-22T10:16:02Z"
     },
     "inv-9beba4c74dd0": {
       "url": "https://www.osu.cz/studijniobory/?specializaceid=3470",
@@ -38946,7 +39021,7 @@
       "pageTitle": "Chemie pro medicínské aplikace",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:19Z"
+      "checkedAt": "2026-10-22T09:29:35Z"
     },
     "inv-9cef01bcd395": {
       "url": "https://www.peuni.cz/studijni-programy/bakalarske-studium/entrepreneurship-and-management/",
@@ -38954,14 +39029,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "Entrepreneurship and Management",
+      "matchedTitle": "entrepreneurship and management",
       "rowTitle": "Entrepreneurship and Management",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Entrepreneurship and Management - Panevropská univerzita",
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:38Z"
+      "checkedAt": "2026-10-22T09:17:26Z"
     },
     "inv-9cf5a350d476": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4901",
@@ -39209,14 +39284,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Podnikání a management",
+      "matchedTitle": "podnikani a management",
       "rowTitle": "Podnikání a management",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Podnikání a management",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:45Z"
+      "checkedAt": "2026-10-22T09:17:32Z"
     },
     "inv-9e89c6362673": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/255",
@@ -39239,7 +39314,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "political science",
+      "matchedTitle": "Political Science",
       "rowTitle": "Political Science",
       "sourceUrl": "https://www.uhk.cz/en/philosophical-faculty/study/study-programs",
       "matchedBy": "school_catalogue_anchor",
@@ -39314,7 +39389,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "dirigovani zpev a operni rezie",
+      "matchedTitle": "Dirigování, zpěv a operní režie",
       "rowTitle": "Dirigování, zpěv a operní režie",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -39336,7 +39411,7 @@
       "pageTitle": "Design",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:43Z"
+      "checkedAt": "2026-10-22T09:29:01Z"
     },
     "inv-9f31e7c488af": {
       "url": "https://stag.upol.cz/ects/browser/PRF/2489?lang=cs",
@@ -40206,7 +40281,7 @@
       "pageTitle": "Teleinformatics",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:48Z"
+      "checkedAt": "2026-10-22T09:28:07Z"
     },
     "inv-a31a837cc486": {
       "url": "https://studuj.czu.cz/programmes/prostorove-planovani/",
@@ -40979,7 +41054,7 @@
       "institutionId": "msmt-vs_41000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "Applied geoinformatics and remote sensing in forestry",
+      "matchedTitle": "Applied Geoinformatics and Remote Sensing in Forestry",
       "rowTitle": "Applied Geoinformatics and Remote Sensing in Forestry",
       "sourceUrl": "https://is.czu.cz/katalog/plany.pl?fakulta=40;poc_obdobi=1301;typ_ss=;typ_studia=3;program=688;info=1;misto_vyuky=;lang=cz",
       "matchedBy": "school_harvested_programme_page",
@@ -41144,7 +41219,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "politologie a mezinarodni vztahy",
+      "matchedTitle": "Politologie a mezinárodní vztahy",
       "rowTitle": "Politologie a mezinárodní vztahy",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/politologie-a-mezinarodni-vztahy",
       "matchedBy": "school_sitemap_slug",
@@ -41346,7 +41421,7 @@
       "pageTitle": "Chemie pro medicínské aplikace",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:05Z"
+      "checkedAt": "2026-10-22T09:28:24Z"
     },
     "inv-a753549e2c01": {
       "url": "https://wstag.jcu.cz/ects/browser/FEK/1258?lang=cs",
@@ -41737,6 +41812,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:48:27Z",
       "checkedAt": "2026-10-21T09:29:26Z"
+    },
+    "inv-a9be41a439cd": {
+      "url": "https://is.mendelu.cz/katalog/plany.pl?fakulta=38;poc_obdobi=830;typ_ss=;typ_studia=4;program=1875;info=1;misto_vyuky=;lang=cz",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_43000",
+      "degree": "m",
+      "language": "cs",
+      "matchedTitle": "Lesní inženýrství",
+      "rowTitle": "Lesní inženýrství",
+      "sourceUrl": "https://is.mendelu.cz/katalog/plany.pl?fakulta=38;poc_obdobi=830;typ_ss=;typ_studia=4;program=1875;info=1;misto_vyuky=;lang=cz",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Prohlídka studijních programů",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-22T09:07:54Z",
+      "checkedAt": "2026-10-22T09:33:38Z"
     },
     "inv-a9c16f368b1a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4290",
@@ -42756,7 +42846,7 @@
       "pageTitle": "Geodézie a kartografie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:58Z"
+      "checkedAt": "2026-10-22T09:28:17Z"
     },
     "inv-aea222a7c870": {
       "url": "https://stag.tul.cz/ects/browser/FP/1299?lang=cs",
@@ -42861,7 +42951,7 @@
       "pageTitle": "Přesná mechanika a optika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:30Z"
+      "checkedAt": "2026-10-22T09:28:49Z"
     },
     "inv-aef97e89d73e": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3768",
@@ -42951,7 +43041,7 @@
       "pageTitle": "Mechatronika",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:08Z"
+      "checkedAt": "2026-10-22T09:27:27Z"
     },
     "inv-af49e9cc0848": {
       "url": "https://www.fs.cvut.cz/en/prospective-students/accredited-study-programmes/master-study-programmes/apt-en/",
@@ -43071,7 +43161,7 @@
       "pageTitle": "Environmentálně vyspělé budovy",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:35Z"
+      "checkedAt": "2026-10-22T09:27:55Z"
     },
     "inv-afe7a8ec8efe": {
       "url": "https://apl.unob.cz/StudijniProgramy/Studium/51/Teorie-obrany-statu",
@@ -43184,14 +43274,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Řízení lidských zdrojů",
+      "matchedTitle": "rizeni lidskych zdroju",
       "rowTitle": "Řízení lidských zdrojů",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Řízení lidských zdrojů",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:50Z"
+      "checkedAt": "2026-10-22T09:17:37Z"
     },
     "inv-b06fba3d4c01": {
       "url": "https://stag.utb.cz/ects/browser/FAI/1239?lang=cs",
@@ -43364,7 +43454,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "interpretace a teorie interpretace",
+      "matchedTitle": "Interpretace a teorie interpretace",
       "rowTitle": "Interpretace a teorie interpretace",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -43386,7 +43476,7 @@
       "pageTitle": "Audio inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:11Z"
+      "checkedAt": "2026-10-22T09:29:28Z"
     },
     "inv-b1667d78d941": {
       "url": "https://www.jcu.cz/prijimaci-zkousky/studijni-programy/studijni-program?program=2859",
@@ -43461,7 +43551,7 @@
       "pageTitle": "Matematické inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:07Z"
+      "checkedAt": "2026-10-22T09:27:26Z"
     },
     "inv-b1a9ed07b174": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/486",
@@ -43484,7 +43574,7 @@
       "institutionId": "msmt-vs_53000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "vytvarna umeni",
+      "matchedTitle": "Výtvarná umění",
       "rowTitle": "Výtvarná umění",
       "sourceUrl": "https://www.umprum.cz/cs/web/uchazec/doktorske-studium/visual-arts-ph-d/visual-arts-ph-d-more-information-about-the-programme",
       "matchedBy": "school_catalogue_anchor",
@@ -43589,7 +43679,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Učitelství pro ZUŠ - hra na nástroj a sólový zpěv",
+      "matchedTitle": "Učitelství pro ZUŠ – hra na nástroj a sólový zpěv",
       "rowTitle": "Učitelství pro ZUŠ – hra na nástroj a sólový zpěv",
       "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/ucitelstvi-pro-zus-hra-na-nastroj-a-solovy-zpev",
       "matchedBy": "school_catalogue_anchor",
@@ -43626,7 +43716,7 @@
       "pageTitle": "Applied Mechanics",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:12Z"
+      "checkedAt": "2026-10-22T09:27:31Z"
     },
     "inv-b22c6700fe01": {
       "url": "https://apl.unob.cz/StudijniProgramy/Studium/19/Vojenske-technologie-%E2%80%93-strojni",
@@ -43821,7 +43911,7 @@
       "pageTitle": "Fyzikální inženýrství a nanotechnologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:36Z"
+      "checkedAt": "2026-10-22T09:28:55Z"
     },
     "inv-b354bdcd5241": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/909",
@@ -43889,14 +43979,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Marketingové komunikace",
+      "matchedTitle": "marketingove komunikace",
       "rowTitle": "Marketingové komunikace",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Marketingové komunikace - Panevropská univerzita",
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T18:23:52Z",
-      "checkedAt": "2026-10-17T08:14:28Z"
+      "checkedAt": "2026-10-22T09:17:16Z"
     },
     "inv-b38437bff162": {
       "url": "https://stag.tul.cz/ects/browser/FA/1474?lang=cs",
@@ -44226,7 +44316,7 @@
       "pageTitle": "Company Management and Economics",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:07Z"
+      "checkedAt": "2026-10-22T09:28:26Z"
     },
     "inv-b45355d06604": {
       "url": "https://www.mup.cz/studijni-programy/doktorske-studium/medialni-studia/",
@@ -44286,7 +44376,7 @@
       "pageTitle": "Mikroelektronika a technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:07Z"
+      "checkedAt": "2026-10-22T09:29:23Z"
     },
     "inv-b477abb85dfd": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24655-dejiny-umeni",
@@ -44586,7 +44676,7 @@
       "pageTitle": "Design",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:42Z"
+      "checkedAt": "2026-10-22T09:29:00Z"
     },
     "inv-b569ad8192ce": {
       "url": "https://www.vszdrav.cz/zdravotnicke-zachranarstvi",
@@ -45501,7 +45591,7 @@
       "pageTitle": "Strojírenství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:15Z"
+      "checkedAt": "2026-10-22T09:28:34Z"
     },
     "inv-b79fa5162302": {
       "url": "https://studuj.vscht.cz/studijni-programy/program/N104",
@@ -45599,14 +45689,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Psychologie",
+      "matchedTitle": "psychologie",
       "rowTitle": "Psychologie",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Psychologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:48Z"
+      "checkedAt": "2026-10-22T09:17:35Z"
     },
     "inv-b7feaab89fd9": {
       "url": "https://www.muni.cz/uchazeci/navazujici-magisterske-studium/nabidka-studia/24516-socialni-pedagogika-a-poradenstvi",
@@ -46266,7 +46356,7 @@
       "pageTitle": "Materials Sciences",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:14Z"
+      "checkedAt": "2026-10-22T09:27:33Z"
     },
     "inv-bb3cdd219405": {
       "url": "https://stag.upol.cz/ects/browser/LEF/2957?lang=cs",
@@ -46439,7 +46529,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "political science",
+      "matchedTitle": "Political Science",
       "rowTitle": "Political Science",
       "sourceUrl": "https://www.uhk.cz/en/philosophical-faculty/study/study-programs",
       "matchedBy": "school_catalogue_anchor",
@@ -46499,14 +46589,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Provoz a řízení letecké dopravy – management leteckých podniků",
+      "matchedTitle": "provoz a rizeni letecke dopravy management leteckych podniku",
       "rowTitle": "Provoz a řízení letecké dopravy – management leteckých podniků",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Provoz a řízení letecké dopravy - Management leteckých podniků",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:57Z"
+      "checkedAt": "2026-10-22T09:17:44Z"
     },
     "inv-bc5ab831acc7": {
       "url": "https://portal.ujep.cz/ects/browser/PRF/1220?lang=cs",
@@ -46581,7 +46671,7 @@
       "pageTitle": "Silnoproudá elektrotechnika a elektroenergetika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:56Z"
+      "checkedAt": "2026-10-22T09:29:14Z"
     },
     "inv-bcbc06a47262": {
       "url": "https://stag.utb.cz/ects/browser/FHS/1731?lang=cs",
@@ -46971,7 +47061,7 @@
       "pageTitle": "Elektroenergetika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:49Z"
+      "checkedAt": "2026-10-22T09:29:07Z"
     },
     "inv-be1c6fd2c181": {
       "url": "https://bilakniha.cvut.cz/cs/program1209115786805.html",
@@ -47286,7 +47376,7 @@
       "pageTitle": "Informační bezpečnost",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:08Z"
+      "checkedAt": "2026-10-22T09:29:24Z"
     },
     "inv-bf2b53730e84": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4903",
@@ -47819,7 +47909,7 @@
       "institutionId": "msmt-vs_7j000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "ekonomika a management",
+      "matchedTitle": "Ekonomika a management",
       "rowTitle": "Ekonomika a management",
       "sourceUrl": "https://www.vs-prigo.cz/cs/studium-se-skupinou-eruni/univerzitni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -48389,7 +48479,7 @@
       "institutionId": "msmt-vs_11000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "teacher education of physical education for upper secondary schools",
+      "matchedTitle": "Teacher Education of Physical Education for Upper Secondary Schools",
       "rowTitle": "Teacher Education of Physical Education for Upper Secondary Schools",
       "sourceUrl": "https://is.cuni.cz/studium/v4/en/anonymous/study-programs/program?page=32",
       "matchedBy": "school_catalogue_anchor",
@@ -48614,14 +48704,14 @@
       "institutionId": "msmt-vs_26000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "Food Chemistry",
+      "matchedTitle": "food chemistry",
       "rowTitle": "Food Chemistry",
       "sourceUrl": "https://www.vut.cz/en/students/programmes",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Food Chemistry",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:14Z"
+      "checkedAt": "2026-10-22T09:28:33Z"
     },
     "inv-c54daa32b1bd": {
       "url": "https://studuj.vscht.cz/studijni-programy/program/N202",
@@ -48704,7 +48794,7 @@
       "institutionId": "msmt-vs_7j000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "economy and management",
+      "matchedTitle": "Economy and Management",
       "rowTitle": "Economy and Management",
       "sourceUrl": "https://www.vs-prigo.cz/study-programmes",
       "matchedBy": "school_catalogue_anchor",
@@ -48756,7 +48846,7 @@
       "pageTitle": "Environmentální chemie, bezpečnost a management",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:16Z"
+      "checkedAt": "2026-10-22T09:29:32Z"
     },
     "inv-c5de94f891e3": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4783",
@@ -49206,7 +49296,7 @@
       "pageTitle": "Expertní inženýrství v dopravě",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:30Z"
+      "checkedAt": "2026-10-22T09:29:46Z"
     },
     "inv-c789aa731368": {
       "url": "https://www.muni.cz/uchazeci/navazujici-magisterske-studium/nabidka-studia/23948-ucitelstvi-technicke-a-informacni-vychovy-pro-zakladni-skoly",
@@ -49431,7 +49521,7 @@
       "pageTitle": "Konstrukční inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:19Z"
+      "checkedAt": "2026-10-22T09:28:38Z"
     },
     "inv-c8f9d203adb5": {
       "url": "https://www.hamu.cz/en/departments-sections/jazz-interpretation-department/study-programmes/jazz-studies-244/",
@@ -49626,7 +49716,7 @@
       "pageTitle": "Biomedicínské inženýrství a bioinformatika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:51Z"
+      "checkedAt": "2026-10-22T09:29:09Z"
     },
     "inv-c97c2dc4c42a": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/903",
@@ -49679,7 +49769,7 @@
       "institutionId": "msmt-vs_7t000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "kreativni marketing a komunikace",
+      "matchedTitle": "Kreativní marketing a komunikace",
       "rowTitle": "Kreativní marketing a komunikace",
       "sourceUrl": "https://www.vskk.cz/cz/program",
       "matchedBy": "school_catalogue_anchor",
@@ -49739,7 +49829,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "teaching at basic art schools playing a musical instrument and solo singing",
+      "matchedTitle": "Teaching at Basic Art Schools - Playing a Musical Instrument and Solo Singing",
       "rowTitle": "Teaching at Basic Art Schools - Playing a Musical Instrument and Solo Singing",
       "sourceUrl": "https://www.uhk.cz/en/faculty-of-education/study/study-programs",
       "matchedBy": "school_catalogue_anchor",
@@ -50106,7 +50196,7 @@
       "pageTitle": "Biomedical Technologies and Bioinformatics",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:55Z"
+      "checkedAt": "2026-10-22T09:28:14Z"
     },
     "inv-cbdd05b08954": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/925",
@@ -50151,7 +50241,7 @@
       "pageTitle": "Angličtina pro praxi v elektrotechnice a komunikačních technologiích",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:13Z"
+      "checkedAt": "2026-10-22T09:29:29Z"
     },
     "inv-cbe832fb384c": {
       "url": "https://www.cevro.cz/en/study-programmes/economics-philosophy-politics",
@@ -50159,7 +50249,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "m",
       "language": "en",
-      "matchedTitle": "economics philosophy politics",
+      "matchedTitle": "Economics, Philosophy, Politics",
       "rowTitle": "Economics, Philosophy, Politics",
       "sourceUrl": "https://www.cevro.cz/en/study-programmes/economics-philosophy-politics",
       "matchedBy": "school_sitemap_slug",
@@ -51156,7 +51246,7 @@
       "pageTitle": "Výpočtové simulace pro udržitelnou energetiku",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:33Z"
+      "checkedAt": "2026-10-22T09:28:52Z"
     },
     "inv-d000cb3d7855": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3948",
@@ -51291,7 +51381,7 @@
       "pageTitle": "Fyzikální inženýrství a nanotechnologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:18Z"
+      "checkedAt": "2026-10-22T09:28:37Z"
     },
     "inv-d12f8a2f887f": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23190-bezpecnostni-a-strategicka-studia",
@@ -51591,7 +51681,7 @@
       "pageTitle": "Architektura a rozvoj sídel",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:38Z"
+      "checkedAt": "2026-10-22T09:27:57Z"
     },
     "inv-d25a59dc6262": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3873",
@@ -51621,7 +51711,7 @@
       "pageTitle": "Mechatronika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:21Z"
+      "checkedAt": "2026-10-22T09:28:40Z"
     },
     "inv-d28ab087808d": {
       "url": "https://mendelu.cz/studijni-programy/ekologie-lesa/",
@@ -51696,7 +51786,7 @@
       "pageTitle": "Environmentální chemie a technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:21Z"
+      "checkedAt": "2026-10-22T09:29:37Z"
     },
     "inv-d2ab6863e23c": {
       "url": "https://www.muni.cz/en/bachelors-and-masters-study-programmes/24665-english-language-for-education",
@@ -52401,7 +52491,7 @@
       "pageTitle": "Civil Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:36Z"
+      "checkedAt": "2026-10-22T09:27:55Z"
     },
     "inv-d4f86abed660": {
       "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=1132&academicYearId=66&studyLanguageIds=1",
@@ -52536,7 +52626,7 @@
       "pageTitle": "Potravinářská chemie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:38Z"
+      "checkedAt": "2026-10-22T09:29:54Z"
     },
     "inv-d56a872b2eab": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/26945-recka-a-latinska-studia",
@@ -52611,7 +52701,7 @@
       "pageTitle": "Integrativní prostorové plánování",
       "reachability": "verified",
       "matchedAt": "2026-10-10T10:18:19Z",
-      "checkedAt": "2026-10-17T08:33:55Z"
+      "checkedAt": "2026-10-22T09:27:14Z"
     },
     "inv-d5d10e7ee6c3": {
       "url": "https://studuj.vscht.cz/studijni-programy/program/N306",
@@ -52956,7 +53046,7 @@
       "pageTitle": "Kybernetika, automatizace a měření",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:58Z"
+      "checkedAt": "2026-10-22T09:29:16Z"
     },
     "inv-d76dbab23bd6": {
       "url": "https://www.vut.cz/studenti/programy/program/9944",
@@ -52971,7 +53061,7 @@
       "pageTitle": "Architektura a urbanismus",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:33Z"
+      "checkedAt": "2026-10-22T09:29:49Z"
     },
     "inv-d78a5b6d829e": {
       "url": "https://stag.upol.cz/ects/browser/FIF/1932?lang=cs",
@@ -53151,7 +53241,7 @@
       "pageTitle": "Strojírenská technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:39Z"
+      "checkedAt": "2026-10-22T09:28:58Z"
     },
     "inv-d8125567cf84": {
       "url": "https://is.mendelu.cz/katalog/plany.pl?fakulta=38;poc_obdobi=830;typ_ss=;typ_studia=4;program=2046;info=1;misto_vyuky=;lang=cz",
@@ -53519,7 +53609,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "management socialnich sluzeb",
+      "matchedTitle": "Management sociálních služeb",
       "rowTitle": "Management sociálních služeb",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/management-socialnich-sluzeb",
       "matchedBy": "school_sitemap_slug",
@@ -53624,7 +53714,7 @@
       "institutionId": "msmt-vs_41000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Výživa a potraviny",
+      "matchedTitle": "Výživa  a potraviny",
       "rowTitle": "Výživa  a potraviny",
       "sourceUrl": "https://studuj.czu.cz/programmes/vyziva-a-potraviny-2/",
       "matchedBy": "school_harvested_programme_page",
@@ -53856,7 +53946,7 @@
       "pageTitle": "Stavební inženýrství – navrhování pozemních staveb",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:33:57Z"
+      "checkedAt": "2026-10-22T09:27:17Z"
     },
     "inv-db497f1c5fc9": {
       "url": "https://bilakniha.cvut.cz/cs/program1240207380605.html",
@@ -53886,7 +53976,7 @@
       "pageTitle": "Účetnictví a finanční řízení podniku",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:29Z"
+      "checkedAt": "2026-10-22T09:29:45Z"
     },
     "inv-db5cbbe3b950": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23442-laboratorni-diagnostika-ve-zdravotnictvi",
@@ -54584,7 +54674,7 @@
       "institutionId": "msmt-vs_56000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "pozemni stavby",
+      "matchedTitle": "Pozemní stavby",
       "rowTitle": "Pozemní stavby",
       "sourceUrl": "https://www.vstecb.cz/bakalarske-obory-1639-htm",
       "matchedBy": "school_catalogue_anchor",
@@ -54734,7 +54824,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "d",
       "language": "cs",
-      "matchedTitle": "dramaticka umeni",
+      "matchedTitle": "Dramatická umění",
       "rowTitle": "Dramatická umění",
       "sourceUrl": "https://df.jamu.cz/uchazeci-df/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -54861,7 +54951,7 @@
       "pageTitle": "Fyzikální a stavebně materiálové inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:57Z"
+      "checkedAt": "2026-10-22T09:28:16Z"
     },
     "inv-dee79f069519": {
       "url": "https://www.vsb.cz/en/study/degree-students/degree-studies/master-degree/master-degree-detail/?programmeId=906",
@@ -54951,7 +55041,7 @@
       "pageTitle": "Ekonomika a management",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:24Z"
+      "checkedAt": "2026-10-22T09:29:40Z"
     },
     "inv-df4c6f35d5ad": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/575",
@@ -55056,7 +55146,7 @@
       "pageTitle": "Energetické a termofluidní inženýrství",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:27Z"
+      "checkedAt": "2026-10-22T09:28:46Z"
     },
     "inv-df9c0e47a320": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/1517",
@@ -55147,6 +55237,21 @@
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-27T20:57:04Z",
       "checkedAt": "2026-10-19T09:36:26Z"
+    },
+    "inv-dfdf3ae61318": {
+      "url": "https://is.mendelu.cz/katalog/plany.pl?fakulta=60;poc_obdobi=828;typ_ss=;typ_studia=1;program=3170;info=1;misto_vyuky=;lang=cz",
+      "kind": "school_programme_page",
+      "institutionId": "msmt-vs_43000",
+      "degree": "b",
+      "language": "cs",
+      "matchedTitle": "Vinařství a zpracovatelské biotechnologie",
+      "rowTitle": "Vinařství a zpracovatelské biotechnologie",
+      "sourceUrl": "https://is.mendelu.cz/katalog/plany.pl?fakulta=60;poc_obdobi=828;typ_ss=;typ_studia=1;program=3170;info=1;misto_vyuky=;lang=cz",
+      "matchedBy": "school_harvested_programme_page",
+      "pageTitle": "Prohlídka studijních programů",
+      "reachability": "http_200_title_not_confirmed",
+      "matchedAt": "2026-10-22T09:07:54Z",
+      "checkedAt": "2026-10-22T09:33:39Z"
     },
     "inv-dfeaae8bd75d": {
       "url": "https://stag.tul.cz/ects/browser/FS/1380?lang=cs",
@@ -56144,14 +56249,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Podnikání a management",
+      "matchedTitle": "podnikani a management",
       "rowTitle": "Podnikání a management",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Podnikání a management - Panevropská univerzita",
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-10-03T18:23:52Z",
-      "checkedAt": "2026-10-17T08:14:29Z"
+      "checkedAt": "2026-10-22T09:17:18Z"
     },
     "inv-e3fd8d7655b1": {
       "url": "https://studuj.vscht.cz/studijni-programy/program/B209",
@@ -56601,7 +56706,7 @@
       "pageTitle": "Elektroenergetika a komunikační technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:50Z"
+      "checkedAt": "2026-10-22T09:29:08Z"
     },
     "inv-e586fa88e192": {
       "url": "https://www.vsb.cz/cs/uchazec/studijni-programy/?programmeId=1168&academicYearId=66&studyLanguageIds=1",
@@ -57126,7 +57231,7 @@
       "pageTitle": "Stavební inženýrství – konstrukce a dopravní stavby",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:32Z"
+      "checkedAt": "2026-10-22T09:27:51Z"
     },
     "inv-e7f77f936fa7": {
       "url": "https://stag.tul.cz/ects/browser/FP/1551?lang=cs",
@@ -57194,14 +57299,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Management",
+      "matchedTitle": "management",
       "rowTitle": "Management",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "management",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:41Z"
+      "checkedAt": "2026-10-22T09:17:29Z"
     },
     "inv-e840acda78d1": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3747",
@@ -57501,7 +57606,7 @@
       "pageTitle": "Letecká a kosmická technika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:29Z"
+      "checkedAt": "2026-10-22T09:28:48Z"
     },
     "inv-e9b934197865": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/24121-obecna-jazykoveda",
@@ -57606,7 +57711,7 @@
       "pageTitle": "Slévárenská technologie",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:32Z"
+      "checkedAt": "2026-10-22T09:28:51Z"
     },
     "inv-ea55b1c400ae": {
       "url": "https://studuj.czu.cz/programmes/sustainable-use-of-natural-resources/",
@@ -58056,7 +58161,7 @@
       "pageTitle": "Automatizační a měřicí technika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:14Z"
+      "checkedAt": "2026-10-22T09:29:30Z"
     },
     "inv-ebbfac65b317": {
       "url": "https://www.muni.cz/uchazeci/doktorske-studium/vyberte-si-program/26849-verejnopravni-studia",
@@ -58124,7 +58229,7 @@
       "institutionId": "msmt-vs_56000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "ridici procesy ve strojirenstvi",
+      "matchedTitle": "Řídicí procesy ve strojírenství",
       "rowTitle": "Řídicí procesy ve strojírenství",
       "sourceUrl": "https://www.vstecb.cz/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -58154,14 +58259,14 @@
       "institutionId": "msmt-vs_26000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "Microelectronics and technology",
+      "matchedTitle": "Microelectronics and Technology",
       "rowTitle": "Microelectronics and technology",
       "sourceUrl": "https://www.vut.cz/studenti/programy/program/9812",
       "matchedBy": "school_harvested_programme_page",
       "pageTitle": "Microelectronics and Technology",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:52Z"
+      "checkedAt": "2026-10-22T09:28:11Z"
     },
     "inv-ec3698ecba73": {
       "url": "https://www.muni.cz/bakalarske-a-magisterske-studijni-programy/23626-fyzika",
@@ -58379,7 +58484,7 @@
       "institutionId": "msmt-vs_18000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "cizi jazyky pro cestovni ruch nemecky jazyk",
+      "matchedTitle": "Cizí jazyky pro cestovní ruch – německý jazyk",
       "rowTitle": "Cizí jazyky pro cestovní ruch – německý jazyk",
       "sourceUrl": "https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/nabidka-studijnich-programu",
       "matchedBy": "school_catalogue_anchor",
@@ -58536,7 +58641,7 @@
       "pageTitle": "Volné umění",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:22Z"
+      "checkedAt": "2026-10-22T09:27:41Z"
     },
     "inv-edc5fe9ceffa": {
       "url": "https://www.muni.cz/uchazeci/doktorske-studium/vyberte-si-program/24092-zivotni-prostredi-a-zdravi",
@@ -58926,7 +59031,7 @@
       "pageTitle": "Informační bezpečnost",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:35:59Z"
+      "checkedAt": "2026-10-22T09:29:17Z"
     },
     "inv-efa68578be99": {
       "url": "https://portal.fsv.cvut.cz/student/bakalmag/prehled/bc/si_v.php",
@@ -59016,7 +59121,7 @@
       "pageTitle": "International Business and Management",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:08Z"
+      "checkedAt": "2026-10-22T09:28:27Z"
     },
     "inv-efc433f30a0e": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/5032",
@@ -59106,7 +59211,7 @@
       "pageTitle": "Stavební inženýrství – management stavebnictví",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:31Z"
+      "checkedAt": "2026-10-22T09:27:51Z"
     },
     "inv-f0137122372e": {
       "url": "https://stag.tul.cz/ects/browser/FP/1361?lang=cs",
@@ -59249,7 +59354,7 @@
       "institutionId": "msmt-vs_54000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "kompozice",
+      "matchedTitle": "Kompozice",
       "rowTitle": "Kompozice",
       "sourceUrl": "https://hf.jamu.cz/uchazeci-hf/studijni-programy",
       "matchedBy": "school_catalogue_anchor",
@@ -59481,7 +59586,7 @@
       "pageTitle": "Electrical Engineering",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:56Z"
+      "checkedAt": "2026-10-22T09:28:15Z"
     },
     "inv-f245a319e53d": {
       "url": "https://portal.upce.cz/ects/browser/FF/495?lang=cs",
@@ -59931,7 +60036,7 @@
       "pageTitle": "Logistics Analytics",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:05Z"
+      "checkedAt": "2026-10-22T09:27:24Z"
     },
     "inv-f489bb5a7c29": {
       "url": "https://stag.upol.cz/ects/browser/FIF/3137?lang=cs",
@@ -60059,7 +60164,7 @@
       "institutionId": "msmt-vs_56000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "strojirenstvi",
+      "matchedTitle": "Strojírenství",
       "rowTitle": "Strojírenství",
       "sourceUrl": "https://www.vstecb.cz/bakalarske-obory-1639-htm",
       "matchedBy": "school_catalogue_anchor",
@@ -60839,7 +60944,7 @@
       "institutionId": "msmt-vs_7j000",
       "degree": "d",
       "language": "en",
-      "matchedTitle": "economic policy and public administration",
+      "matchedTitle": "Economic Policy and Public Administration",
       "rowTitle": "Economic Policy and Public Administration",
       "sourceUrl": "https://www.vs-prigo.cz/doctoral-research-fellowship-phd",
       "matchedBy": "school_catalogue_anchor",
@@ -60996,7 +61101,7 @@
       "pageTitle": "Chemie, technologie a vlastnosti materiálů",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:37Z"
+      "checkedAt": "2026-10-22T09:29:53Z"
     },
     "inv-f93acf49dd59": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/151",
@@ -61034,14 +61139,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "m",
       "language": "cs",
-      "matchedTitle": "Obchodněprávní studia",
+      "matchedTitle": "obchodnepravni studia",
       "rowTitle": "Obchodněprávní studia",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Obchodněprávní studia - Panevropská univerzita",
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:56Z"
+      "checkedAt": "2026-10-22T09:17:43Z"
     },
     "inv-f95960f20e4d": {
       "url": "https://www.vut.cz/studenti/programy/program/9806",
@@ -61056,7 +61161,7 @@
       "pageTitle": "Biomedicínské technologie a bioinformatika",
       "reachability": "verified",
       "matchedAt": "2026-09-28T16:18:36Z",
-      "checkedAt": "2026-10-17T08:36:02Z"
+      "checkedAt": "2026-10-22T09:29:19Z"
     },
     "inv-f959d4962c4f": {
       "url": "https://www.osu.cz/studijniobory/?specializaceid=3122",
@@ -61109,14 +61214,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Bezpečnostní studia",
+      "matchedTitle": "bezpecnostni studia",
       "rowTitle": "Bezpečnostní studia",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "bezpečnostní studia",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:33Z"
+      "checkedAt": "2026-10-22T09:17:21Z"
     },
     "inv-f98ffdfa2020": {
       "url": "https://studuj.vscht.cz/studijni-programy/program/N401",
@@ -61244,7 +61349,7 @@
       "institutionId": "msmt-vs_7d000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "aplikovana ekonomie",
+      "matchedTitle": "Aplikovaná ekonomie",
       "rowTitle": "Aplikovaná ekonomie",
       "sourceUrl": "https://www.cevro.cz/studijni-programy/aplikovana-ekonomie",
       "matchedBy": "school_sitemap_slug",
@@ -61889,14 +61994,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "en",
-      "matchedTitle": "Air Transport",
+      "matchedTitle": "air transport",
       "rowTitle": "Air Transport",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Air Transport - Panevropská univerzita",
       "reachability": "http_200_title_not_confirmed",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:31Z"
+      "checkedAt": "2026-10-22T09:17:20Z"
     },
     "inv-fd04d450e006": {
       "url": "https://www.muni.cz/uchazeci/navazujici-magisterske-studium/nabidka-studia/26786-neurovedy",
@@ -61934,14 +62039,14 @@
       "institutionId": "msmt-vs_7s000",
       "degree": "b",
       "language": "cs",
-      "matchedTitle": "Marketingové komunikace",
+      "matchedTitle": "marketingove komunikace",
       "rowTitle": "Marketingové komunikace",
       "sourceUrl": "https://www.peuni.cz/studijni-programy/",
       "matchedBy": "school_catalogue_anchor",
       "pageTitle": "Marketingové komunikace",
       "reachability": "verified",
       "matchedAt": "2026-09-28T18:25:53Z",
-      "checkedAt": "2026-10-17T08:14:43Z"
+      "checkedAt": "2026-10-22T09:17:31Z"
     },
     "inv-fd30787c7ed8": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/4633",
@@ -62016,7 +62121,7 @@
       "pageTitle": "Research in Art and Design",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:34:20Z"
+      "checkedAt": "2026-10-22T09:27:39Z"
     },
     "inv-fd9bb6482bc8": {
       "url": "https://studuj.czu.cz/programmes/konzervace-prirodnin-a-taxidermie/",
@@ -62511,7 +62616,7 @@
       "pageTitle": "Informační technologie",
       "reachability": "verified",
       "matchedAt": "2026-10-03T18:07:01Z",
-      "checkedAt": "2026-10-17T08:35:02Z"
+      "checkedAt": "2026-10-22T09:28:21Z"
     },
     "inv-ff078fc525f9": {
       "url": "https://is.cuni.cz/studium/v4/cs/anonymous/study-programs/program/accreditation/3902",
@@ -63051,11 +63156,6 @@
       "reason": "no_candidate_page"
     },
     {
-      "institutionId": "msmt-vs_43000",
-      "rowId": "inv-0eea671023b6",
-      "reason": "page_states_nothing"
-    },
-    {
       "institutionId": "msmt-vs_61000",
       "rowId": "inv-0f58c12afeb7",
       "reason": "ambiguous_register_rows"
@@ -63589,11 +63689,6 @@
       "institutionId": "msmt-vs_7t000",
       "rowId": "inv-2bd7de92ab43",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_43000",
-      "rowId": "inv-2be4112be385",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_22000",
@@ -64293,7 +64388,7 @@
     {
       "institutionId": "msmt-vs_43000",
       "rowId": "inv-51cf7c467454",
-      "reason": "ambiguous_register_rows"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_31000",
@@ -64369,11 +64464,6 @@
       "institutionId": "msmt-vs_28000",
       "rowId": "inv-54c7e4e3d02a",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_43000",
-      "rowId": "inv-54ccc1855604",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_51000",
@@ -64772,11 +64862,6 @@
     },
     {
       "institutionId": "msmt-vs_43000",
-      "rowId": "inv-6e319de60974",
-      "reason": "page_states_nothing"
-    },
-    {
-      "institutionId": "msmt-vs_43000",
       "rowId": "inv-6f02f651e8bc",
       "reason": "no_candidate_page"
     },
@@ -65093,7 +65178,7 @@
     {
       "institutionId": "msmt-vs_43000",
       "rowId": "inv-8246292f4339",
-      "reason": "page_states_nothing"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_15000",
@@ -65199,11 +65284,6 @@
       "institutionId": "msmt-vs_22000",
       "rowId": "inv-877147cd8496",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_43000",
-      "rowId": "inv-87862bc578ba",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_28000",
@@ -65839,11 +65919,6 @@
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-a9adaaa115e5",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_43000",
-      "rowId": "inv-a9be41a439cd",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_22000",
@@ -66703,7 +66778,7 @@
     {
       "institutionId": "msmt-vs_43000",
       "rowId": "inv-d998a0421fa1",
-      "reason": "ambiguous_register_rows"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_21000",
@@ -66834,11 +66909,6 @@
       "institutionId": "msmt-vs_21000",
       "rowId": "inv-df6927d24402",
       "reason": "no_candidate_page"
-    },
-    {
-      "institutionId": "msmt-vs_43000",
-      "rowId": "inv-dfdf3ae61318",
-      "reason": "page_states_nothing"
     },
     {
       "institutionId": "msmt-vs_61000",
@@ -67088,7 +67158,7 @@
     {
       "institutionId": "msmt-vs_17000",
       "rowId": "inv-ed8b9b6bdb73",
-      "reason": "ambiguous_register_rows"
+      "reason": "no_candidate_page"
     },
     {
       "institutionId": "msmt-vs_14000",
@@ -67504,5 +67574,5 @@
     }
   ],
   "leftRegisterThisRun": {},
-  "requests": 5162
+  "requests": 3531
 }
