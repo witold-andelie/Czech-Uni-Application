@@ -1,9 +1,9 @@
 {
   "note": "Committed regression floor for data/sources/admissions/programme-links.json. CI fails when any school or the total resolves fewer school-owned programme pages than this. Raise it when coverage genuinely improves; revise it with the reason recorded in revisionNotes when the register itself shrinks.",
-  "recordedFromGeneratedAt": "2026-10-23T10:27:30Z",
+  "recordedFromGeneratedAt": "2026-10-24T10:03:43Z",
   "denominatorBasis": "MŠMT register rows published for the school in the active inventory",
-  "resolvedTotal": 4127,
-  "offeringsTotal": 5062,
+  "resolvedTotal": 4136,
+  "offeringsTotal": 5073,
   "schoolNames": {
     "msmt-vs_14000": "Masarykova univerzita",
     "msmt-vs_41000": "Česká zemědělská univerzita v Praze",
@@ -49,8 +49,8 @@
   },
   "resolvedBySchool": {
     "msmt-vs_11000": 871,
-    "msmt-vs_12000": 202,
-    "msmt-vs_13000": 134,
+    "msmt-vs_12000": 208,
+    "msmt-vs_13000": 135,
     "msmt-vs_14000": 449,
     "msmt-vs_15000": 399,
     "msmt-vs_16000": 3,
@@ -64,7 +64,7 @@
     "msmt-vs_25000": 141,
     "msmt-vs_26000": 185,
     "msmt-vs_27000": 236,
-    "msmt-vs_28000": 86,
+    "msmt-vs_28000": 88,
     "msmt-vs_31000": 86,
     "msmt-vs_41000": 176,
     "msmt-vs_43000": 129,
@@ -120,6 +120,7 @@
     "2026-10-03: msmt-vs_11000 floor -1 and total -1 because a wrong link is removed, not lost: register row inv-0fedb5e23a6f (Historie, bachelor, Filozofická fakulta) was bound to https://www.lf2.cuni.cz/fakulta/o-fakulte/historie, the 2nd Faculty of Medicine's 'Historie fakulty' page, found as a same-titled anchor. resolve_programme_links.py now rejects a page on a host whose other bindings all belong to another faculty (faculty_sites, reason page_on_another_faculty_site); the row shows the university site until its own page is found. The same rule removes ČVUT inv-b3ad1d36c297 (Computer Science, PhD, Fakulta elektrotechnická) bound to FIT's bachelor page; ČVUT's floor is not lowered because Bílá kniha adds far more rows in the same run.",
     "2026-10-12: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_12000 inv-032f6e56a754; msmt-vs_17000 inv-7ab7cd851395",
     "2026-10-14: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_14000 inv-456d46b3fc7b, inv-cc15e6e1e766",
-    "2026-10-20: lowered automatically by 1 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_15000 inv-00ff6bfaeddf"
+    "2026-10-20: lowered automatically by 1 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_15000 inv-00ff6bfaeddf",
+    "2026-10-24: lowered automatically by 1 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_28000 inv-b7315faa45eb"
   ]
 }
