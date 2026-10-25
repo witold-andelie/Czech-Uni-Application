@@ -1,9 +1,9 @@
 {
   "note": "Committed regression floor for data/sources/admissions/programme-links.json. CI fails when any school or the total resolves fewer school-owned programme pages than this. Raise it when coverage genuinely improves; revise it with the reason recorded in revisionNotes when the register itself shrinks.",
-  "recordedFromGeneratedAt": "2026-10-24T10:03:43Z",
+  "recordedFromGeneratedAt": "2026-10-25T10:20:45Z",
   "denominatorBasis": "MŠMT register rows published for the school in the active inventory",
-  "resolvedTotal": 4136,
-  "offeringsTotal": 5073,
+  "resolvedTotal": 4137,
+  "offeringsTotal": 5075,
   "schoolNames": {
     "msmt-vs_14000": "Masarykova univerzita",
     "msmt-vs_41000": "Česká zemědělská univerzita v Praze",
@@ -66,7 +66,7 @@
     "msmt-vs_27000": 236,
     "msmt-vs_28000": 88,
     "msmt-vs_31000": 86,
-    "msmt-vs_41000": 176,
+    "msmt-vs_41000": 177,
     "msmt-vs_43000": 129,
     "msmt-vs_51000": 64,
     "msmt-vs_52000": 0,
@@ -121,6 +121,7 @@
     "2026-10-12: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_12000 inv-032f6e56a754; msmt-vs_17000 inv-7ab7cd851395",
     "2026-10-14: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_14000 inv-456d46b3fc7b, inv-cc15e6e1e766",
     "2026-10-20: lowered automatically by 1 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_15000 inv-00ff6bfaeddf",
-    "2026-10-24: lowered automatically by 1 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_28000 inv-b7315faa45eb"
+    "2026-10-24: lowered automatically by 1 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_28000 inv-b7315faa45eb",
+    "2026-10-25: lowered automatically by 2 because the MŠMT register no longer lists these rows, whose school-owned pages were retired (row_left_register): msmt-vs_41000 inv-34796e287661, inv-bdc7606cbd52"
   ]
 }
