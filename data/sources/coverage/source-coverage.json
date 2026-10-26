@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T09:47:28Z",
+  "generatedAt": "2026-10-26T11:11:09Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-10-26.1",
-    "publishedAt": "2026-10-26T09:47:28Z",
-    "candidateGenerationId": "cg-cb066aa32d7943a288c54b21afb8560e",
-    "sourceRunSetDigest": "sha256:16b44309c21aeed8fd48b39305fc9ea00cacc00dae8af79092cdc0610dea85d4",
+    "activeVersion": "v2026-10-26.2",
+    "publishedAt": "2026-10-26T11:11:09Z",
+    "candidateGenerationId": "cg-764460ee035f489baa3dc2e55b06f06f",
+    "sourceRunSetDigest": "sha256:31a7e30e0bc44205d07ae908d92c4b1aecb90534627e0fb9b6d70e5c485a7e2a",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -37,7 +37,7 @@
     "directoryHarvestComplete": true,
     "englishCzechUuidSetsMatch": true,
     "directoryReportsApplicationsOpen": 0,
-    "displayedRegisterInventoryRecords": 5076,
+    "displayedRegisterInventoryRecords": 5080,
     "displayedRegisterInventoryInstitutions": 53,
     "completeAdmissionsCatalogueClaim": false,
     "priorityInstitutionSources": {
@@ -144,23 +144,23 @@
     "claimBoundary": "The DZS source snapshot is complete for its reported directory result, but it is not the legal register or the authority for each university application window. Candidate records remain outside formal publication until source and zh-CN/en/cs review passes.",
     "programmePageLinks": {
       "source": "resolve_programme_links.py",
-      "linkIndexGeneratedAt": "2026-10-25T10:20:45Z",
-      "publishedSnapshotCount": 4137,
+      "linkIndexGeneratedAt": "2026-10-26T11:10:49Z",
+      "publishedSnapshotCount": 4132,
       "denominator": "register rows in the pinned published inventory snapshot",
       "totals": {
         "schools": 53,
-        "registerRows": 5076,
-        "rowsWithSchoolProgrammePage": 4137,
-        "rowsShowingUniversitySite": 939,
-        "registerRowCoveragePercent": 81.5
+        "registerRows": 5080,
+        "rowsWithSchoolProgrammePage": 4132,
+        "rowsShowingUniversitySite": 948,
+        "registerRowCoveragePercent": 81.3
       },
       "schools": [
         {
           "institutionId": "msmt-vs_11000",
           "registerRows": 915,
-          "rowsWithSchoolProgrammePage": 871,
-          "rowsShowingUniversitySite": 44,
-          "registerRowCoveragePercent": 95.2
+          "rowsWithSchoolProgrammePage": 866,
+          "rowsShowingUniversitySite": 49,
+          "registerRowCoveragePercent": 94.6
         },
         {
           "institutionId": "msmt-vs_12000",
@@ -227,10 +227,10 @@
         },
         {
           "institutionId": "msmt-vs_22000",
-          "registerRows": 116,
+          "registerRows": 120,
           "rowsWithSchoolProgrammePage": 61,
-          "rowsShowingUniversitySite": 55,
-          "registerRowCoveragePercent": 52.6
+          "rowsShowingUniversitySite": 59,
+          "registerRowCoveragePercent": 50.8
         },
         {
           "institutionId": "msmt-vs_23000",
@@ -560,7 +560,7 @@
       "national_aggregator": 1
     },
     "independentNonHeiOfficialSources": 14,
-    "inventoryRows": 5076,
+    "inventoryRows": 5080,
     "discoveredCandidates": 650,
     "currentCandidates": 380,
     "supportedCandidates": 329,
