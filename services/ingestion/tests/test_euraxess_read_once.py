@@ -403,6 +403,10 @@ def test_notice_reads_are_capped_and_a_refusal_ends_them_without_withholding(mon
     answers[url(101)] = (429, "")
     run()
     assert fetched == [url(101)]  # a 429 ends them too
+    answers[url(101)] = (403, "")
+    rows = run()
+    assert fetched == [url(101)]  # and so does a 403 (EURAXESS to GitHub, 2026-10-24)
+    assert "refused-403" in rows["job-21000-eu101"]["reason"] and rows["job-21000-eu103"]["carriedFrom"]
 
 
 def test_a_notice_worded_otherwise_is_checked_on_the_listing_that_titles_it(monkeypatch):

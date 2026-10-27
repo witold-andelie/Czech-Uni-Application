@@ -554,7 +554,9 @@ def main() -> None:
             unreachable[host] = target
         refused = None
         if reading_notice:
-            refused = "throttled" if raw["httpStatus"] == 429 else (
+            # 403: EURAXESS refuses GitHub's runners from 2026-10-24; fifteen
+            # notices were asked one after another and each refused.
+            refused = "throttled" if raw["httpStatus"] == 429 else "refused-403" if raw["httpStatus"] == 403 else (
                 euraxess_source.notice_page_problem(raw["bodyText"], target) if raw["httpStatus"] == 200 else None
             )
         if refused:
