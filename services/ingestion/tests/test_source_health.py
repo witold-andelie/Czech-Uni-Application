@@ -297,3 +297,43 @@ def test_the_listing_adapter_reads_a_detail_page_from_its_configured_container()
     missing = HarvestListingAdapter(source)
     assert missing.fetch_detail(ref, {"fetch_page": lambda url: (200, "<p>no container</p>")}) == []
     assert missing._reasons == ["missing-configured-detail-container"]
+
+
+def test_a_host_that_answers_nothing_is_a_warning_not_the_red_alarm() -> None:
+    """2026-10-23..27: eud.is.cvut.cz timed out (also outside GitHub), CIIRC refused
+    connections, EURAXESS answered GitHub 403; refresh went red four days running.
+    Owner decision 2026-10-27: a yellow warning, the parser alarms unchanged."""
+    def rows(reason, listed=0):
+        discovery = {"expectedSourceIds": ["s"], "completeSourceIds": [], "listedBySource": {"s": listed},
+                     "attempts": [{"sourceId": "s", "kind": "adapter", "ok": False, "listed": listed, "reason": reason}]}
+        return source_health.observations_from_discovery(discovery)
+
+    for reason in ("http-0", "http-403", "http-0,listing-count-mismatch:0/None"):
+        assert rows(reason) == [{"sourceId": "s", "listed": 0, "complete": False, "unreachable": True}], reason
+    # Read rows, or failed otherwise: the parser's alarm as before.
+    assert rows("http-0", listed=5) == [{"sourceId": "s", "listed": 5, "complete": False}]
+    assert rows("http-0,http-500") == [{"sourceId": "s", "listed": 0, "complete": False}]
+    assert rows("listing-count-mismatch:0/None") == [{"sourceId": "s", "listed": 0, "complete": False}]
+
+    ledger = {"sources": {}}
+    for day in ("2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26"):
+        source_health.update(ledger, rows("http-0"), day)
+    assert source_health.alarms(ledger) == []
+    (warning,) = source_health.warnings(ledger)
+    assert "last 4 observed days, 2026-10-23 to 2026-10-26" in warning
+    # Unanswered days neither make nor break an incomplete streak.
+    source_health.update(ledger, rows("http-500"), "2026-10-27")
+    assert source_health.alarms(ledger) == [] and source_health.warnings(ledger) == []
+    for day in ("2026-10-28", "2026-10-29"):
+        source_health.update(ledger, rows("http-500"), day)
+    assert "incomplete on 2026-10-27, 2026-10-28, 2026-10-29" in source_health.alarms(ledger)[0]
+
+
+def test_check_warns_without_failing_for_an_unanswering_host(tmp_path: Path, monkeypatch, capsys) -> None:
+    ledger = {"sources": {"eux": {"history": [{"day": d, "listed": 0, "complete": False, "unreachable": True}
+                                              for d in ("2026-10-24", "2026-10-25", "2026-10-26")]}}}
+    path = tmp_path / "health.json"
+    path.write_text(json.dumps(ledger), encoding="utf-8")
+    monkeypatch.setattr(source_health, "LEDGER", path)
+    assert source_health.main(["--check"]) == 0
+    assert "::warning title=Source unreachable::eux" in capsys.readouterr().out

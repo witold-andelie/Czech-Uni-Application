@@ -231,6 +231,7 @@ def load_tasks(only_status: str) -> list[dict[str, Any]]:
                 "sourceHash": source_hash.get(job["id"]),
                 "titles": titles,
                 "discoverySourceId": job.get("discoverySourceId"),
+                "archived": job.get("visibility") == "archived",
             }
         )
     return tasks
@@ -462,14 +463,18 @@ def main() -> None:
     # pass skipped the same tail every day, and those records never verified.
     confirmed = CONFIRMED
 
-    def _priority(task: dict[str, Any]) -> tuple[int, str]:
+    # Archived records publish nothing whatever their evidence, so they come
+    # last: seven archived ČVUT notices, never confirmed and so always first,
+    # spent each whole budget from 2026-10-22 while 80 public posts lapsed.
+    def _priority(task: dict[str, Any]) -> tuple[int, int, str]:
         row = previous_rows.get(task["candidateId"]) or {}
-        return (1 if row.get("status") in confirmed else 0, str(row.get("checkedAt") or ""))
+        return (1 if task.get("archived") else 0, 1 if row.get("status") in confirmed else 0, str(row.get("checkedAt") or ""))
 
     tasks.sort(key=_priority)
     started = time.time()
     last_by_host: dict[str, float] = defaultdict(float)
     pages: dict[str, dict[str, Any]] = {}
+    unreachable: dict[str, str] = {}  # host -> the URL it did not answer this run
 
     def read_once(url: str) -> dict[str, Any]:
         """An official page other than the post's own, fetched at most once per run."""
@@ -517,6 +522,19 @@ def main() -> None:
         # One read per page and run: a listing that names several posts (the
         # RoboProx table names 17) is fetched once, not once per post.
         raw = pages.get(target)
+        if raw is None and host in unreachable:
+            # The host answered nothing earlier in this run (eud.is.cvut.cz
+            # from 2026-10-22: some 3.5 minutes of timeouts per post). Its
+            # other posts are not asked again; an earlier confirmation stays
+            # until its own age runs out, as when the budget is spent.
+            previous = previous_rows.get(task["candidateId"])
+            if previous and previous.get("status") in confirmed:
+                rows.append({**previous, "carriedFrom": previous.get("carriedFrom") or previous_generated_at})
+            else:
+                rows.append({**task_meta(task), "status": "skipped_budget", "checkedAt": ts(), "httpStatus": None,
+                             "matched": False, "reason": f"host did not answer earlier in this run ({unreachable[host]})"})
+            processed += 1
+            continue
         if raw is None:
             wait = HOST_DELAY_S - (time.time() - last_by_host[host])
             if wait > 0:
@@ -532,6 +550,8 @@ def main() -> None:
             rows.append(row)
             processed += 1
             continue
+        if raw["httpStatus"] == 0 and not raw.get("blocked"):
+            unreachable[host] = target
         refused = None
         if reading_notice:
             refused = "throttled" if raw["httpStatus"] == 429 else (

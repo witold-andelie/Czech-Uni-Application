@@ -284,3 +284,53 @@ def test_a_record_the_budget_did_not_reach_keeps_its_earlier_confirmation(tmp_pa
     # The budget branch carries a confirmed earlier row instead of overwriting it.
     budget = source.index("time.time() - started >= args.budget")
     assert source.index('previous.get("status") in confirmed', budget) < source.index('"status": "skipped_budget"', budget)
+
+
+def test_a_host_that_does_not_answer_is_asked_once_per_run(tmp_path: Path, monkeypatch) -> None:
+    """2026-10-22..27: eud.is.cvut.cz answered nothing; seven archived notices on it,
+    never confirmed and so first in line, spent each whole budget (some 3.5 minutes
+    each) while the confirmations of 80 public posts lapsed."""
+    sys.path.insert(0, str(ROOT / "services" / "ingestion" / "src" / "cli"))
+    import verify_live_titles as v
+
+    dead, live = "https://eud.is.cvut.cz/pub/deska/36000002/ifis/", "https://www.vut.cz/jobs/"
+
+    def task(ident: str, url: str, archived: bool = False) -> dict:
+        return {"candidateId": ident, "employerId": "msmt-vs_21000", "sourceUrl": url, "applicationUrl": url,
+                "sourceHash": "sha256:x", "discoverySourceId": None, "archived": archived,
+                "titles": [{"locale": "cs", "title": "Postdoktorand v robotice"}]}
+
+    tasks = [task("old-archived", dead + "5471", archived=True), task("confirmed", dead + "5581"),
+             task("never", dead + "5590"), task("elsewhere", live + "1")]
+    previous = {"generatedAt": "2026-10-21T09:00:00Z", "rows": [
+        {"candidateId": "confirmed", "status": "matched", "checkedAt": "2026-10-21T09:00:00Z", "httpStatus": 200},
+        {"candidateId": "elsewhere", "status": "matched", "checkedAt": "2026-10-20T09:00:00Z", "httpStatus": 200}]}
+    (tmp_path / "previous.json").write_text(json.dumps(previous), encoding="utf-8")
+    fetched: list[str] = []
+
+    def vet(url):
+        fetched.append(url)
+        if url.startswith(dead):
+            return {"httpStatus": 0, "finalUrl": url, "tool": "scrapling_get", "bodyText": "", "blocked": False, "blockedReasons": []}
+        return {"httpStatus": 200, "finalUrl": url, "tool": "scrapling_get", "bodyText": "<h1>Postdoktorand v robotice</h1>",
+                "blocked": False, "blockedReasons": []}
+
+    monkeypatch.setattr(v, "load_tasks", lambda _status: list(tasks))
+    monkeypatch.setattr(v, "discovery_listing_page", lambda _task: None)
+    monkeypatch.setattr(v, "vet_one", vet)
+    monkeypatch.setattr(v, "HOST_DELAY_S", 0)
+    out = tmp_path / "live.json"
+    monkeypatch.setattr(sys, "argv", ["verify_live_titles.py", "--output", str(out), "--merge-from", str(tmp_path / "previous.json"),
+                                      "--operator-evidence", str(tmp_path / "none.json")])
+    try:
+        v.main()
+    except SystemExit:
+        pass
+    rows = {row["candidateId"]: row for row in json.loads(out.read_text(encoding="utf-8"))["rows"]}
+    assert sum(url.startswith(dead) for url in fetched) == 1
+    assert dead + "5471" not in fetched  # the archived notice comes last, after its host went quiet
+    assert rows["elsewhere"]["status"] == "matched"
+    assert rows["confirmed"]["status"] == "matched" and rows["confirmed"]["carriedFrom"] == "2026-10-21T09:00:00Z"
+    assert rows["never"]["status"] in {"skipped_budget", "http_0"}
+    unanswered = [row for row in rows.values() if row["status"] == "skipped_budget"]
+    assert unanswered and all("did not answer" in row["reason"] for row in unanswered)

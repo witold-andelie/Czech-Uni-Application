@@ -36,6 +36,13 @@ REMOVED_PAGE_STATUSES = {404, 410}
 # EURAXESS serves GitHub's runners whatever the query (6,738 offers worldwide
 # on the runner, 114 Czech ones locally, same URL minutes apart, 2026-10-10).
 HOST_REFUSALS = {"throttled", "unfiltered-listing", "page-parameter-ignored"}
+# The host answered nothing (no connection: http-0) or refused this client
+# (403) before any listing row was read: eud.is.cvut.cz timed out from
+# 2026-10-23, also from outside GitHub; CIIRC refused connections on 10-24 and
+# 10-26; EURAXESS answers GitHub's runners 403 from 10-24. That is not a
+# parser this project can fix, so it is a warning (owner decision 2026-10-27),
+# recorded day by day, and never counts toward the red incomplete alarm.
+UNREACHABLE_STATUSES = {0, 403}
 
 
 def _failure_kind(attempt: dict) -> str:
@@ -47,11 +54,17 @@ def _failure_kind(attempt: dict) -> str:
     # 2026-10-06 18:01 refresh read UJEP this way and the alarm fired again.
     if kind == "adapter":
         reasons = [item for item in str(attempt.get("reason") or "").split(",") if item]
+        refused = {f"http-{status}" for status in UNREACHABLE_STATUSES}
+        if (not int(attempt.get("listed") or 0) and refused & set(reasons)
+                and all(item in refused or item.startswith("listing-count-mismatch:0/") for item in reasons)):
+            return "unreachable"
         if reasons and all(item == "removed-detail-page" or item in HOST_REFUSALS for item in reasons):
             return "throttled" if any(item in HOST_REFUSALS for item in reasons) else "removed"
         return "failed"
     if attempt.get("status") == 429 or attempt.get("reason") in HOST_REFUSALS:
         return "throttled"
+    if kind == "listing" and attempt.get("status") in UNREACHABLE_STATUSES:
+        return "unreachable"
     if kind.startswith("detail") and attempt.get("status") in REMOVED_PAGE_STATUSES:
         return "removed"
     return "failed"
@@ -88,8 +101,11 @@ def observations_from_discovery(discovery: dict | None) -> list[dict]:
             # as with a deferred one; that is not a broken parser (EURAXESS
             # from GitHub's shared runners, 2026-10-04 and 10-08).
             continue
-        rows.append({"sourceId": source_id, "listed": listed.get(source_id),
-                     "complete": source_id in complete or (bool(kinds) and kinds == {"removed"})})
+        row = {"sourceId": source_id, "listed": listed.get(source_id),
+               "complete": source_id in complete or (bool(kinds) and kinds == {"removed"})}
+        if not row["complete"] and "unreachable" in kinds and kinds <= {"unreachable", "throttled", "removed"}:
+            row["unreachable"] = True
+        rows.append(row)
     return rows
 
 
@@ -110,7 +126,10 @@ def update(ledger: dict, observations: list[dict], day: str) -> dict:
         entry = sources.setdefault(source_id, {"history": []})
         history = [item for item in entry.get("history") or [] if item.get("day") != day]
         listed = row.get("listed")
-        history.append({"day": day, "listed": None if listed is None else int(listed), "complete": bool(row.get("complete"))})
+        item = {"day": day, "listed": None if listed is None else int(listed), "complete": bool(row.get("complete"))}
+        if row.get("unreachable"):
+            item["unreachable"] = True
+        history.append(item)
         history.sort(key=lambda item: item["day"])
         entry["history"] = history[-HISTORY_DAYS:]
         counts = [item["listed"] for item in entry["history"] if isinstance(item.get("listed"), int)]
@@ -123,7 +142,8 @@ def alarms(ledger: dict) -> list[str]:
     for source_id, entry in sorted((ledger.get("sources") or {}).items()):
         if entry.get("muted"):
             continue
-        history = entry.get("history") or []
+        # Days the host answered nothing say nothing about the parser.
+        history = [item for item in entry.get("history") or [] if not item.get("unreachable")]
         recent = history[-EMPTY_DAYS:]
         if (
             len(recent) == EMPTY_DAYS
@@ -139,6 +159,24 @@ def alarms(ledger: dict) -> list[str]:
             found.append(
                 f"{source_id}: incomplete on {', '.join(item['day'] for item in recent)}; "
                 "fetches or detail pages keep failing"
+            )
+    return found
+
+
+def warnings(ledger: dict) -> list[str]:
+    """Sources whose host has answered nothing on each of its last observed days."""
+    found = []
+    for source_id, entry in sorted((ledger.get("sources") or {}).items()):
+        history = entry.get("history") or []
+        streak = []
+        for item in reversed(history):
+            if not item.get("unreachable"):
+                break
+            streak.append(item["day"])
+        if len(streak) >= INCOMPLETE_DAYS:
+            found.append(
+                f"{source_id}: the host answered nothing (no connection or 403) on its last {len(streak)} "
+                f"observed days, {streak[-1]} to {streak[0]}; nothing is archived from it meanwhile"
             )
     return found
 
@@ -168,6 +206,8 @@ def main(argv: list[str] | None = None) -> int:
     ledger = load()
     sources = ledger.get("sources") or {}
     print(f"source health: {len(sources)} source(s) observed")
+    for line in warnings(ledger):
+        print(f"::warning title=Source unreachable::{line}" if args.check else f"warning: {line}")
     found = alarms(ledger)
     for line in found:
         print(f"::error title=Source health::{line}" if args.check else f"alarm: {line}")

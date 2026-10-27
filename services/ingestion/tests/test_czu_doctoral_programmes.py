@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import json
 import sys
 from datetime import datetime, timedelta, timezone
@@ -25,8 +26,8 @@ def _register_rows() -> list[dict]:
     return doctoral._load_doctoral_inventory(_inventory())
 
 
-def _complete_assets() -> dict[str, dict]:
-    rows = doctoral._load_doctoral_inventory(_inventory())
+def _complete_assets(inventory: dict | None = None) -> dict[str, dict]:
+    rows = doctoral._load_doctoral_inventory(inventory or _inventory())
     assets: dict[str, dict] = {}
     specs = {item["id"]: item for item in doctoral.SOURCE_ASSETS}
     for source_id, spec in specs.items():
@@ -76,10 +77,29 @@ def test_czu_doctoral_crosscheck_matches_all_register_offerings() -> None:
     assert payload["coverage"]["complete"] is True
     assert payload["coverage"]["allApplicationWindowsClosedAtFetch"] is True
     assert len(payload["coverage"]["facultyCoverage"]) == 6
-    variant = next(
-        item for item in payload["programmes"] if item["titleOriginal"] == "Ochrana lesů a myslivosti"
-    )
+
+
+def _register_spelling(title: str) -> dict:
+    """A copy of the register that spells one doctoral offering ``title``.
+
+    Until 2026-10-23 MŠMT spelt "Ochrana lesů a myslivosti" where the faculty
+    writes "myslivost"; on 10-24 the register was corrected, and a test that
+    looked the old spelling up in the day's data failed CI from that day.
+    """
+    inventory = copy.deepcopy(_inventory())
+    school = next(item for item in inventory["schools"] if item["id"] == doctoral.INSTITUTION_ID)
+    doctoral_rows = [row for row in school["rows"] if row[2] == "d"]
+    row = next((row for row in doctoral_rows if row[1].startswith("Ochrana lesů a myslivost")), doctoral_rows[0])
+    row[1] = title
+    return inventory
+
+
+def test_a_register_spelling_the_faculty_writes_otherwise_is_matched_through_its_alias() -> None:
+    inventory = _register_spelling("Ochrana lesů a myslivosti")
+    payload = doctoral.build_catalog(inventory, _complete_assets(inventory), now=datetime(2026, 9, 11, 12, 0, tzinfo=timezone.utc))
+    variant = next(item for item in payload["programmes"] if item["titleOriginal"] == "Ochrana lesů a myslivosti")
     assert variant["sourceTitleVariant"] == "Ochrana lesů a myslivost"
+    assert payload["counts"]["matchedToFacultyAdmissionEvidence"] == len(_register_rows())
 
 
 def test_unknown_start_never_becomes_open_from_future_end_alone() -> None:
