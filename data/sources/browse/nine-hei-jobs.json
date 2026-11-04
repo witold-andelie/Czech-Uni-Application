@@ -14729,8 +14729,8 @@
         "decidedAt": "2026-09-26T18:31:54Z",
         "note": "Duplicate record 2026-09-26T18:31:54Z (operator): job-27000-56 and job-27000-70 both describe the VŠB-TUO advert procedureId=70 - same sourceItemId, same sourceUrl, same trilingual title differing only in the spacing of the Czech form. One advert must be published once, so this record is rejected as a duplicate of job-27000-56, whose Czech title is the advert's own heading verbatim and whose lifecycleStatus records what the live page shows. The position itself is published once, under job-27000-56; nothing here asserts anything the official page does not state.\n\nofficial heading as published: “Odborný asistent / Odborná asistentka”"
       },
-      "lastAttemptAt": "2026-11-04T09:43:03Z",
-      "lastAttemptReason": "missing-from-complete-official-listing"
+      "lastAttemptAt": "2026-09-26T18:31:54Z",
+      "lastAttemptReason": "duplicate_record_of_job-27000-56"
     },
     {
       "id": "job-27000-54",
@@ -22513,8 +22513,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Lektor Katedry molekulární biologie a genetiky (m/ž) (PRF JU)” (https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/17092026-kmbg-lektor.pdf) is a lecturer post whose duties are teaching, thesis supervision and outreach, with own research only an advantage. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-11-04T09:23:19Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "out_of_scope_teaching_only",
       "officialDetailUrl": "https://www.jcu.cz/images/UNIVERZITA/volna-mista/2026/09/17092026-kmbg-lektor.pdf"
     },
     {
@@ -31787,8 +31787,8 @@
       "laboratory": null,
       "originalText": "PhD Student in Aqueous Dual-Ion Batteries",
       "sourceLanguage": "en",
-      "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -31813,7 +31813,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "public",
+      "visibility": "review_pending",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -31831,33 +31831,31 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:ad1657c457fb6c7febd168b6b0ce9449f43cb41b919b8c566c8961656b64c874",
-      "publicationStatus": "approved",
+      "publicationStatus": "review_pending",
       "translationReview": {
         "sourceHash": "sha256:ad1657c457fb6c7febd168b6b0ce9449f43cb41b919b8c566c8961656b64c874",
         "factHash": "sha256:330b5cd7644c4441b65d826b785e9dae4a793e646e78ebff59d10eeebd60f198",
         "evidenceHash": "sha256:ad1657c457fb6c7febd168b6b0ce9449f43cb41b919b8c566c8961656b64c874",
         "normalizationVersion": "fact-v2",
-        "reviewer": {
-          "role": "automatic_pipeline"
-        },
+        "reviewer": null,
         "locales": {
           "zh-CN": {
-            "status": "machine",
-            "translatedFromHash": "sha256:ad1657c457fb6c7febd168b6b0ce9449f43cb41b919b8c566c8961656b64c874",
-            "reviewedAt": "2026-11-03T11:14:19Z",
-            "contentHash": "sha256:0c961f19a77b559bffe5b8e1d3e4d75569c9e713c2d0151e260a76429ffb46e9"
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
           },
           "en": {
-            "status": "reviewed",
-            "translatedFromHash": "sha256:ad1657c457fb6c7febd168b6b0ce9449f43cb41b919b8c566c8961656b64c874",
-            "reviewedAt": "2026-11-03T11:14:19Z",
-            "contentHash": "sha256:9014f6250d28d69691007d411a798126fae052ab444d1401f417f08b4231613a"
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
           },
           "cs": {
-            "status": "machine",
-            "translatedFromHash": "sha256:ad1657c457fb6c7febd168b6b0ce9449f43cb41b919b8c566c8961656b64c874",
-            "reviewedAt": "2026-11-03T11:14:19Z",
-            "contentHash": "sha256:c8d2d86a113cc5c44d760d5f8068ccfa359fb30c3046e1e5c17bb7b07b5efc87"
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
           }
         }
       },
@@ -40046,8 +40044,8 @@
         "decidedAt": "2026-10-02T20:34:12Z",
         "note": "Operator decision 2026-10-02T20:34:12Z: “Kuchař/kuchařka” (https://kariera.utb.cz/kuchar-kucharka-2/) is a cook post. The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-11-04T09:26:12Z",
-      "lastAttemptReason": "past-deadline-archived",
+      "lastAttemptAt": "2026-10-02T20:34:12Z",
+      "lastAttemptReason": "out_of_scope_operations",
       "officialDetailUrl": "https://kariera.utb.cz/kuchar-kucharka-2/"
     },
     {
@@ -42795,15 +42793,15 @@
       "id": "job-78271-f5df8416be0e",
       "employerId": "rvvi-68378271",
       "title": {
-        "zh-CN": "PhD Student in Aqueous Dual-Ion Batteries",
+        "zh-CN": "水性双离子电池博士生",
         "en": "PhD Student in Aqueous Dual-Ion Batteries",
-        "cs": "PhD Student in Aqueous Dual-Ion Batteries"
+        "cs": "Doktorand v oblasti vodných dual-ionových baterií"
       },
       "laboratory": null,
       "originalText": "PhD Student in Aqueous Dual-Ion Batteries",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -42828,7 +42826,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -42846,49 +42844,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
         "factHash": "sha256:d1d2cad27960f939c779e5fd883a4476341c99930ffac4ab3cef97348d0f9861",
         "evidenceHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:0c961f19a77b559bffe5b8e1d3e4d75569c9e713c2d0151e260a76429ffb46e9"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:9014f6250d28d69691007d411a798126fae052ab444d1401f417f08b4231613a"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:c8d2d86a113cc5c44d760d5f8068ccfa359fb30c3046e1e5c17bb7b07b5efc87"
           }
         }
       },
-      "officialDetailUrl": "https://www.fzu.cz/kariera/volna-mista/phd-student-aqueous-dual-ion-batteries"
+      "officialDetailUrl": "https://www.fzu.cz/kariera/volna-mista/phd-student-aqueous-dual-ion-batteries",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-78271-182265aa9346",
       "employerId": "rvvi-68378271",
       "title": {
-        "zh-CN": "PhD Student in Aqueous Dual-Ion Batteries",
+        "zh-CN": "水性双离子电池博士生",
         "en": "PhD Student in Aqueous Dual-Ion Batteries",
-        "cs": "PhD Student in Aqueous Dual-Ion Batteries"
+        "cs": "Doktorand v oblasti vodných dual-ionových baterií"
       },
       "laboratory": null,
       "originalText": "PhD Student in Aqueous Dual-Ion Batteries",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -42913,7 +42914,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -42931,35 +42932,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
         "factHash": "sha256:4017db7c8f92c1ca29903a62c3eda8ec3a525ad6f5c5781bc4010c2381877f8f",
         "evidenceHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:0c961f19a77b559bffe5b8e1d3e4d75569c9e713c2d0151e260a76429ffb46e9"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:9014f6250d28d69691007d411a798126fae052ab444d1401f417f08b4231613a"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:92131517f5756918ab34c0ed72d48b881bb426e1acc29dc5cd25b155902b72b7",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:c8d2d86a113cc5c44d760d5f8068ccfa359fb30c3046e1e5c17bb7b07b5efc87"
           }
         }
       },
-      "officialDetailUrl": "https://www.fzu.cz/en/kariera/volna-mista/phd-student-aqueous-dual-ion-batteries"
+      "officialDetailUrl": "https://www.fzu.cz/en/kariera/volna-mista/phd-student-aqueous-dual-ion-batteries",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-85955-11d08fb49383",
@@ -46946,15 +46950,15 @@
       "id": "job-23000-aded358a-fafd-435d-954d-27f46a3217ee",
       "employerId": "msmt-vs_23000",
       "title": {
-        "zh-CN": "Akademický pracovník / akademická pracovnice - asistent/asistentka katedry politologie a mezinárodních vztahů Fakulty filozofické ZČU v Plzni",
-        "en": "Akademický pracovník / akademická pracovnice - asistent/asistentka katedry politologie a mezinárodních vztahů Fakulty filozofické ZČU v Plzni",
+        "zh-CN": "学术工作人员/学术女工作人员 - 政治学与国际关系系助理/助理，哲学学院，普日布斯克大学",
+        "en": "Academic Staff Member / Academic Staff - Assistant/Assistant to the Department of Political Science and International Relations, Faculty of Philosophy, ZČU in Plzen",
         "cs": "Akademický pracovník / akademická pracovnice - asistent/asistentka katedry politologie a mezinárodních vztahů Fakulty filozofické ZČU v Plzni"
       },
       "laboratory": null,
       "originalText": "Akademický pracovník / akademická pracovnice - asistent/asistentka katedry politologie a mezinárodních vztahů Fakulty filozofické ZČU v Plzni",
       "sourceLanguage": "cs",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -46980,7 +46984,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -47002,49 +47006,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:536b992fe8d7200d3560fe8239336150d8f81330e32f0e22a24599fe09d9f8b3",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:536b992fe8d7200d3560fe8239336150d8f81330e32f0e22a24599fe09d9f8b3",
         "factHash": "sha256:09cde26a8d8c6f1428c163865d5fb3f7267173898eeabf4f0db649020a404479",
         "evidenceHash": "sha256:536b992fe8d7200d3560fe8239336150d8f81330e32f0e22a24599fe09d9f8b3",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:536b992fe8d7200d3560fe8239336150d8f81330e32f0e22a24599fe09d9f8b3",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:13785e4bf5852f35d3d5bf6c24e9e1c0d90c10041cdc3aee66c5a1107e3b7ad8"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:536b992fe8d7200d3560fe8239336150d8f81330e32f0e22a24599fe09d9f8b3",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:9486440ede1e19b6bd907b940ff5e539cb4eda9b7de92d3c409c37cf11c42d88"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:536b992fe8d7200d3560fe8239336150d8f81330e32f0e22a24599fe09d9f8b3",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:6352e56a0e49ca428472f08f5886a7106d9b79260107e9d9d56bc91a2ba0a81f"
           }
         }
       },
-      "officialDetailUrl": "https://xdoc.zcu.cz/api/alfresco?id=aded358a-fafd-435d-954d-27f46a3217ee;1.0&download=0"
+      "officialDetailUrl": "https://xdoc.zcu.cz/api/alfresco?id=aded358a-fafd-435d-954d-27f46a3217ee;1.0&download=0",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-23000-f80dded8-b97f-406a-8bd6-3d25ef49f0d6",
       "employerId": "msmt-vs_23000",
       "title": {
-        "zh-CN": "akademický pracovník / akademická pracovnice – odborný asistent / odborná asistentka na Katedře výtvarné výchovy a kultury Fakulty pedagogické ZČU v Plzni",
-        "en": "akademický pracovník / akademická pracovnice – odborný asistent / odborná asistentka na Katedře výtvarné výchovy a kultury Fakulty pedagogické ZČU v Plzni",
+        "zh-CN": "学术人员/学术工作者 - 助理教授/助理教授，捷克理工大学普日布斯克分校教育学院艺术教育与文化系",
+        "en": "Academic worker / academic worker - Assistant Professor / Assistant Professor on the Department of Art Education and Culture, Faculty of Education, ZČU in Plzen",
         "cs": "akademický pracovník / akademická pracovnice – odborný asistent / odborná asistentka na Katedře výtvarné výchovy a kultury Fakulty pedagogické ZČU v Plzni"
       },
       "laboratory": null,
       "originalText": "akademický pracovník / akademická pracovnice – odborný asistent / odborná asistentka na Katedře výtvarné výchovy a kultury Fakulty pedagogické ZČU v Plzni",
       "sourceLanguage": "cs",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -47069,7 +47076,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -47091,35 +47098,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:1b83764afe102b145d805627b6c7a044295236783713dcc1bda81fe2cea5ffdf",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:1b83764afe102b145d805627b6c7a044295236783713dcc1bda81fe2cea5ffdf",
         "factHash": "sha256:f3a86273f4706fa996531d0d892ff96ea5c4e68f714def3d4e86ba8e3554fed1",
         "evidenceHash": "sha256:1b83764afe102b145d805627b6c7a044295236783713dcc1bda81fe2cea5ffdf",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:1b83764afe102b145d805627b6c7a044295236783713dcc1bda81fe2cea5ffdf",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:0da3aecd246f5b62ef447373d0ffed698d50fb246ba3f22096f98df2055e30eb"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:1b83764afe102b145d805627b6c7a044295236783713dcc1bda81fe2cea5ffdf",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:5b51f744fba9a7cd3fc9e450c817d43f69c488996a46697de20a789800771be0"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:1b83764afe102b145d805627b6c7a044295236783713dcc1bda81fe2cea5ffdf",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:a65ba73d5a73ccb0ac6cfe86daa15aa4c8df408de84ee2666e7eb813ba6297dc"
           }
         }
       },
-      "officialDetailUrl": "https://xdoc.zcu.cz/api/alfresco?id=f80dded8-b97f-406a-8bd6-3d25ef49f0d6;1.0&download=0"
+      "officialDetailUrl": "https://xdoc.zcu.cz/api/alfresco?id=f80dded8-b97f-406a-8bd6-3d25ef49f0d6;1.0&download=0",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-23000-7914a47b-9027-46dd-a8a2-b9d1bfd389c6",
@@ -48028,7 +48038,7 @@
       "originalText": "Associate Professor or Professor in the Department of Social Work",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -48090,23 +48100,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:8c04b77d6a37c89142af3a200d172d48549b225c824f0834212dad3b5d3dd3ac",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:cde04dbfb7a87270d65468116db6cc0f69baceaf2edf398333776f7716fb1139"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:8c04b77d6a37c89142af3a200d172d48549b225c824f0834212dad3b5d3dd3ac",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:1bde308ba0791f6ccb20c29f693af0e69c1360f604056316e489f0d38fbca44e"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:8c04b77d6a37c89142af3a200d172d48549b225c824f0834212dad3b5d3dd3ac",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:215afc1aeb506b345a30c4f0a16278649238f30d1e30aef4485566e35644aad0"
           }
-        },
-        "reviewedSourceHash": "sha256:1b93feee305dd445cd6ec6f93e13b89df6c3ad76d0b240cc1e4d757f4313b040"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-AP3-FF-KSOCP-129"
     },
@@ -48122,7 +48131,7 @@
       "originalText": "Assistant at the LFP UK Dental Clinic",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -48184,23 +48193,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:94833cf2996991d945b76197a6bf1a1eda7231c6ee85717dc9aa606b85d091a3",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:e198db24b849b557282b9aa338e6d20c3c261ca222e634e3b13cfde8b8a3308c"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:94833cf2996991d945b76197a6bf1a1eda7231c6ee85717dc9aa606b85d091a3",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:94b7f3751f16fcef6ca0a14c7b8693d6ed89890be449b7d34f07e96d65772d39"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:94833cf2996991d945b76197a6bf1a1eda7231c6ee85717dc9aa606b85d091a3",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:effbe774817ae3b2aa1f07f3371155dded87cff1037a844fa4d21f6411425d61"
           }
-        },
-        "reviewedSourceHash": "sha256:f59695b89df2cf5f88385201af5618ca81fded726ecf4aa5f8ba18e7b67e2a40"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-AP1-LFPl-SK-134"
     },
@@ -48216,7 +48224,7 @@
       "originalText": "Academic worker with a focus on Cellular and Molecular Physiology",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -48278,23 +48286,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:cc2d67466669ca044a9f5925cb25c0cea08f2e66154df6971fa54e7cd281c2c2",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:427a5354cd223e3da596e7e553c76fcfed801b26744a5c9f340d33548504344c"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:cc2d67466669ca044a9f5925cb25c0cea08f2e66154df6971fa54e7cd281c2c2",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:58cbece4884c4101cdf5e1106cf906b1f6eed7fe5f86cd847ca3c6134270c051"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:cc2d67466669ca044a9f5925cb25c0cea08f2e66154df6971fa54e7cd281c2c2",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:0202d663032859a4a3032ce462fed170d7cae87d5c243350fe4f82ff8bbaddda"
           }
-        },
-        "reviewedSourceHash": "sha256:8c53ed639fa15a4aa25ff5fdecaf9e01c9723f7ec34fb9624276d06129484552"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-AP2-P%C5%99F-1520-132"
     },
@@ -48310,7 +48317,7 @@
       "originalText": "Assistant Professor at the Department of Physical Geography and Geoecology",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -48372,23 +48379,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:bf4b78317793c5d00d241b2dc7d41e002fe623ff4db3c22e91da82344243d2fd",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:bdd7b667552e391e6df81e34162c9de23e0ef420af7d1dc03639facbb1a2b106"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:bf4b78317793c5d00d241b2dc7d41e002fe623ff4db3c22e91da82344243d2fd",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:5cdc477570f04cb125ab1c6579e2e25b3a5d1f0ccef67213194f9d5033669bd2"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:bf4b78317793c5d00d241b2dc7d41e002fe623ff4db3c22e91da82344243d2fd",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:bd2276fdde6091aeffbfc15ca719080b841f2ed3507d0a34ed4d282188922822"
           }
-        },
-        "reviewedSourceHash": "sha256:8dbff5af35a3e70dca36cf1b4978f318cc7c951636b962262a3d02460a3724c6"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-AP2-P%C5%99F-3300-135"
     },
@@ -48582,7 +48588,7 @@
       "originalText": "Professor at the Department of Pathophysiology, Faculty of Medicine in Pilsen, Charles University",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -48644,23 +48650,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:67479a6a8f60b9407535a4e32781fd95b9bbe7f54fff5e84c3fd09e0bcd981d0",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:394bad9789c665f3ecee48ee8470ed1f0936d9c665bacc72e6ec763f6794a3b4"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:67479a6a8f60b9407535a4e32781fd95b9bbe7f54fff5e84c3fd09e0bcd981d0",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:bea10f864aa4c9841a108ee55d643844846e19794935a8855ae92a96e85c2f83"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:67479a6a8f60b9407535a4e32781fd95b9bbe7f54fff5e84c3fd09e0bcd981d0",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:b183fecaa78739e2c6b07e9f4420ee79d895a693eca4966c40212b037310ae47"
           }
-        },
-        "reviewedSourceHash": "sha256:9ae81fae19e92c127a31a2fb1eeb5c71d5501dda03297b179ac9ebb2293fcd0e"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-AP4-LFPl-%C3%9APF-137"
     },
@@ -48676,7 +48681,7 @@
       "originalText": "Postdoctoral Position in Structural Biology",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -48737,23 +48742,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:d383c564169c864eee36037cc6b4f61651e302d6e1ee5feefb4fb108a9772844",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:40fe5d3b829321f2d5f9ff463c2b729045f0310589974668063fea206ad07609"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:d383c564169c864eee36037cc6b4f61651e302d6e1ee5feefb4fb108a9772844",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:630842454a736b753df86f3e1a79fa97e904d0b975948ea3cb6f13e3e35b992a"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:d383c564169c864eee36037cc6b4f61651e302d6e1ee5feefb4fb108a9772844",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:64f6e37a672790719901573d2ab282816644ce12e92be386ebf31de2e169fd07"
           }
-        },
-        "reviewedSourceHash": "sha256:e4f04e530ee3b0989374fed8a25d6c812561625a318213708a3c3d03bddccbe1"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-PD-P%C5%99F-2600-139"
     },
@@ -48769,7 +48773,7 @@
       "originalText": "Group Leader in Bioinformatics",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -48830,23 +48834,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:45864913a7cb16c3ffcb4936acd5a2a7a0bdc18d34d9b53e5a6d61e72cca1361",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:e46f43a36d622e1d515af87fa1ae58fd228a9d8bb4815020053d8368d4dabb70"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:45864913a7cb16c3ffcb4936acd5a2a7a0bdc18d34d9b53e5a6d61e72cca1361",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:9c52851e3a392805d48601ddd032fb0e489a7694074182a44252796c946c3a09"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:45864913a7cb16c3ffcb4936acd5a2a7a0bdc18d34d9b53e5a6d61e72cca1361",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:50c193033df0e45b9c71caad6c25129526271320c28eec930ca6f808871752e2"
           }
-        },
-        "reviewedSourceHash": "sha256:f9058fa80d20a4db8ab38a14dc34ca86855aadae33b0265b9ede4e9c9de57537"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202612-VP2-P%C5%99F-1510-138"
     },
@@ -48862,7 +48865,7 @@
       "originalText": "The Faculty of Physical Education and Sport invites applications for the position of Head of the Department of Swimming Sports, Water Sports and Technical Sports.",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -48924,23 +48927,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:2bf4e5d1a45f65aa1338d0ff9377d8cd1d73e9df6a14ec438074ea201eeb1837",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:dd8bea2c9e2c23e1b6773fb553d2051ba87efa88a29fbd9507aef1f14c7f20a3"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:2bf4e5d1a45f65aa1338d0ff9377d8cd1d73e9df6a14ec438074ea201eeb1837",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:baac7dd8e349f8efe307dc6e15fdae8b1a7c5706720303a138b7750c85edc697"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:2bf4e5d1a45f65aa1338d0ff9377d8cd1d73e9df6a14ec438074ea201eeb1837",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:754ab1ff555d9dce80e566d40317ca1626ef9cd6891dfda6ff39d324bc8b30e9"
           }
-        },
-        "reviewedSourceHash": "sha256:b56712c871e592203e8c36f94bab228b460f898e307d8d88f4e2882f7d5273f5"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202611-VED-FTVS-PS-142"
     },
@@ -48956,7 +48958,7 @@
       "originalText": "Assistant specializing in Methodology and Czech Politics at the Department of Political Science",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "required",
@@ -49018,23 +49020,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:f93ab7632e8707ce47438093a6598e7cd81e1ccecaf974538149c9330b05e793",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:9c467a1f5b378448b40fa272e32874c91e053d42d0f9937f24ace9b7fd67f01f"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:f93ab7632e8707ce47438093a6598e7cd81e1ccecaf974538149c9330b05e793",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:6e2a9bdeeaf50b6cf286223a999f2665f8111b5a6ca12f5a82b0d811287b5c8a"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:f93ab7632e8707ce47438093a6598e7cd81e1ccecaf974538149c9330b05e793",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:3d738ace576d7719a278d88f80262d9f8fc4e1cf1aa560c2ccfb85a8e94b68ea"
           }
-        },
-        "reviewedSourceHash": "sha256:ab385a00e52e4ae97938dba1b51353529131f5aafa4772785cc6c14f542fa932"
+        }
       },
       "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202612-AP1-FSV-KP-143"
     },
@@ -49042,15 +49043,15 @@
       "id": "job-11000-202612-ap2-p-f-4300-144",
       "employerId": "msmt-vs_11000",
       "title": {
-        "zh-CN": "Assistant professor at the Department of Geochemistry, Mineralogy, and Mineral Resources",
+        "zh-CN": "地球化学、矿物学和矿产资源系的助理教授",
         "en": "Assistant professor at the Department of Geochemistry, Mineralogy, and Mineral Resources",
-        "cs": "Assistant professor at the Department of Geochemistry, Mineralogy, and Mineral Resources"
+        "cs": "Odborný asistent na katedře geochemie, mineralogie a horninových surovin"
       },
       "laboratory": null,
       "originalText": "Assistant professor at the Department of Geochemistry, Mineralogy, and Mineral Resources",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -49076,7 +49077,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "open",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -49098,49 +49099,52 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:a64c4f78e970c7b6c2b0541e7eb389dedb6c192bb50acfa1921e889711bce340",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:a64c4f78e970c7b6c2b0541e7eb389dedb6c192bb50acfa1921e889711bce340",
         "factHash": "sha256:2c2e441ff0048e9696c55166564afd5b33323bd513bb0b672438834d9353f19c",
         "evidenceHash": "sha256:a64c4f78e970c7b6c2b0541e7eb389dedb6c192bb50acfa1921e889711bce340",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:a64c4f78e970c7b6c2b0541e7eb389dedb6c192bb50acfa1921e889711bce340",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:244d73006a8ecf8a04b4838d37a86576882b5e3143ff3e5d2e73b14c00b8f90d"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:a64c4f78e970c7b6c2b0541e7eb389dedb6c192bb50acfa1921e889711bce340",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:04697b65dfcdd983b3ef97bfb83f222237d303e3648b6326c3f1f2a0203cd73f"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:a64c4f78e970c7b6c2b0541e7eb389dedb6c192bb50acfa1921e889711bce340",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:ae9328b7341c28a8e355ea8aa4360e6a3d60457d7420721953d1d14b3175fdd8"
           }
         }
       },
-      "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202612-AP2-P%C5%99F-4300-144"
+      "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202612-AP2-P%C5%99F-4300-144",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-11000-202612-ap2-ff-ksoc-136",
       "employerId": "msmt-vs_11000",
       "title": {
-        "zh-CN": "Assistant Professor at the Department of Sociology",
+        "zh-CN": "社会学系助理教授",
         "en": "Assistant Professor at the Department of Sociology",
-        "cs": "Assistant Professor at the Department of Sociology"
+        "cs": "Odborný asistent na katedře sociologie"
       },
       "laboratory": null,
       "originalText": "Assistant Professor at the Department of Sociology",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -49166,7 +49170,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "open",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -49188,35 +49192,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:087e57592f87c7172d8d72ff49d503205ffa85030344aa2fe2f56122fe009405",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:087e57592f87c7172d8d72ff49d503205ffa85030344aa2fe2f56122fe009405",
         "factHash": "sha256:13b1083f16c862918ced3e3ddb5228cbb0a491e599ad65c2580815ba8a1ca7cd",
         "evidenceHash": "sha256:087e57592f87c7172d8d72ff49d503205ffa85030344aa2fe2f56122fe009405",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:087e57592f87c7172d8d72ff49d503205ffa85030344aa2fe2f56122fe009405",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:86c51d4ee725e7fadc3dfc7b66912350f894bf4e02a6a0168e5c2f36eeff4dee"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:087e57592f87c7172d8d72ff49d503205ffa85030344aa2fe2f56122fe009405",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:13c6ca2b3eac69ad30184ab9aadcb0de4226022749146b58c59142aefedf67d6"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:087e57592f87c7172d8d72ff49d503205ffa85030344aa2fe2f56122fe009405",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:4d2eecfd0e4b5c51ea0c633a6565876f950c57efd8fc13d0d64e83e2943635e1"
           }
         }
       },
-      "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202612-AP2-FF-KSOC-136"
+      "officialDetailUrl": "https://cuni.cz/UKEN-1573.html?pracid=202612-AP2-FF-KSOC-136",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-11000-202611-ved-ff-as-126",
@@ -49958,13 +49965,13 @@
       "title": {
         "zh-CN": "生命科学领域初级研究小组负责人",
         "en": "JUNIOR RESEARCH GROUP LEADER IN LIFE SCIENCES",
-        "cs": "JUNIOR RESEARCH GROUP LEADER IN LIFE SCIENCES"
+        "cs": "MLADÝ ŘADOVÝ ŘEDITEL VÝZKUMNÉ SKUPINY V OBRAZU ŽIVÝCH SOUSTAV"
       },
       "laboratory": null,
       "originalText": "JUNIOR RESEARCH GROUP LEADER IN LIFE SCIENCES",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -49989,7 +49996,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -50011,7 +50018,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:e272528ceca88b2e5454c38e833e4feeb5e57e9e8cfa43faa06be375d448afca",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:e272528ceca88b2e5454c38e833e4feeb5e57e9e8cfa43faa06be375d448afca",
         "factHash": "sha256:b43e0c8dc621cfd732d63b5b54406884ea10a5577ecb2afc19e6170be4a29136",
@@ -50022,26 +50029,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:26c2b3eee944bc3fd99d6f5c14e42479ad57b7d382b6a7b63bac1d3c6e948c9e",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:e272528ceca88b2e5454c38e833e4feeb5e57e9e8cfa43faa06be375d448afca",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:43a70a9874d2feefaa1126d45820ed5f8d2f1a0c293f45690b6c9913b9a63870"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:26c2b3eee944bc3fd99d6f5c14e42479ad57b7d382b6a7b63bac1d3c6e948c9e",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:e272528ceca88b2e5454c38e833e4feeb5e57e9e8cfa43faa06be375d448afca",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:b61080352db35de20509aaa4e5032af957752cbae4ce559a1573ef7c68bd252b"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:26c2b3eee944bc3fd99d6f5c14e42479ad57b7d382b6a7b63bac1d3c6e948c9e",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:e272528ceca88b2e5454c38e833e4feeb5e57e9e8cfa43faa06be375d448afca",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:185d3a64674fa15b0eb19f2dd1885e3690280d9e46e7097c6c79f455c57c3a92"
           }
         }
       },
-      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81819"
+      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81819",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-14000-81814",
@@ -50055,7 +50063,7 @@
       "originalText": "Head of Institute of Medical Genetics and Genomics",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -50117,23 +50125,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:1f54c2d9222e1c081d5b53ccdcf4e303e88bf9259113dad843092b177cb10745",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:dc8431dfc188442c9df5f656c51c51b1787a1557d442b23e528999eca3e46baa"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:1f54c2d9222e1c081d5b53ccdcf4e303e88bf9259113dad843092b177cb10745",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:e1c110e208823d771c6def13b643574d3c32f7f9edf2e65142f1da68eb877ec0"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:1f54c2d9222e1c081d5b53ccdcf4e303e88bf9259113dad843092b177cb10745",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:60088178851bb94f37ec9ed2ab1b1d32faebbc328b32e84c1c3c335a80a18c83"
           }
-        },
-        "reviewedSourceHash": "sha256:24deda4c9efbba84d5ecdc7268b40830b0b25e6a1322b808fbd16c2d22662688"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81814"
     },
@@ -50149,7 +50156,7 @@
       "originalText": "Head of Department of General Internal Medicine",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -50210,23 +50217,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:2726a2702867992e49dec0a02056fac146d893ccf6c4c9a0a49a8412e5caf25a",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:0476b9ec7fa772ea7fa58f67caaa9f883d26fbac2c80ec1ce2e58899366988a7"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:2726a2702867992e49dec0a02056fac146d893ccf6c4c9a0a49a8412e5caf25a",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:e4f54ad086b06a5f84f191cd41e343d8fa4924cafb9d31d02b1856366d9b699f"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:2726a2702867992e49dec0a02056fac146d893ccf6c4c9a0a49a8412e5caf25a",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:47c6c146a786a08de6a0520b2efa5f7145a82dde3d24c1129c79436706bc66ea"
           }
-        },
-        "reviewedSourceHash": "sha256:f730b06947b9c70f1a76df8ba8b0c73133e6187cfe50d6976c844e73f0063d0a"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81815"
     },
@@ -50242,7 +50248,7 @@
       "originalText": "Assistant Professor with focus on computational linguistics",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -50303,23 +50309,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:2558bba31bb717379ae69eaeb1e47765fe977c66e2fc46814b7d53351f64aeb9"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:454b49b682b0ee6e4b91acdbfeadf49b2af2d4d01884973043bbf6f3141e3187"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:0311576447571dc47c740b03ebd1d041f2f6dd45f43ac7bf23243f380303dffb"
           }
-        },
-        "reviewedSourceHash": "sha256:7fb32490fd78340fd9cb1de355cfa28ad160c99e0c8a3fe10eaa99a8bb4ca03e"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81817"
     },
@@ -50335,7 +50340,7 @@
       "originalText": "Assistant professor or Associate Professor in the field of sports management at the Department of Sports Performance and Diagnostics",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -50396,23 +50401,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:cdfebee72dcee7cd9fad71640ab4f6595b97227463eba10e7ae45e08d8d4f3b7",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:ae1f19f8836b8c094e6c900ce8276471f7c6c9e3401091bfbedca1a3eeb424e9"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:cdfebee72dcee7cd9fad71640ab4f6595b97227463eba10e7ae45e08d8d4f3b7",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:0a350d40500270db817febf8241722c643e1267069fb3f8571c69167f7a13d7e"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:cdfebee72dcee7cd9fad71640ab4f6595b97227463eba10e7ae45e08d8d4f3b7",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:08e033b60f2dd368e2b03ccc59024cc9d64ec70d6753d0389297258e324d020c"
           }
-        },
-        "reviewedSourceHash": "sha256:f0d0e212f816fa8d22c874c429bbb8692a7f6e12ba1e8b717facb6036e0fb93f"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81818"
     },
@@ -50428,7 +50432,7 @@
       "originalText": "Technical specialist",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -50489,23 +50493,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:8c380988f75c8f04791571dd6d20df6350e13c7fdab430a1969c6e8f2538f621",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:888a576c2f41c8d7330ff237ecdffdff01b3f9ee1fca675237ede398225563ff"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:8c380988f75c8f04791571dd6d20df6350e13c7fdab430a1969c6e8f2538f621",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:e1efce2df95fb30f46defd5256c66535638d497873976a9e57eb5b6ffaa8801f"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:8c380988f75c8f04791571dd6d20df6350e13c7fdab430a1969c6e8f2538f621",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:5abfc9ecd0888e11c2b89fb381f8330dd9df29fc2d8e76360435f57065f37ab3"
           }
-        },
-        "reviewedSourceHash": "sha256:79fa1ceed7391b13f35018ecae9afde58a5649ba7341d5a02da81c1765bb9f36"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81832"
     },
@@ -50610,7 +50613,7 @@
       "originalText": "Head of the Department of Biochemistry",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -50671,23 +50674,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:8992c5a266b4a0c007028a511b4b5f6199d5a643cdc772b390b80cdc206b7e24",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:159c7fa09056fd8b15930edaf3449917f1a65c0f9c5cce1a4fd10749f4e0e33d"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:8992c5a266b4a0c007028a511b4b5f6199d5a643cdc772b390b80cdc206b7e24",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:886bf74dadd8b3aad2019458e960ced6b8273016e520bb3326a25d9ad57b7ecd"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:8992c5a266b4a0c007028a511b4b5f6199d5a643cdc772b390b80cdc206b7e24",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:dfc22a11c5b10abe51ad5d6cdc836f480602291c2f81606c7b025023d56c4560"
           }
-        },
-        "reviewedSourceHash": "sha256:9bc1f1132a40ff432c9b5ab92bf80b3f8276f541cd410a3a06b259c9842c9438"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81836"
     },
@@ -50703,7 +50705,7 @@
       "originalText": "Department Head of Physiotherapy and Rehabilitation",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -50764,23 +50766,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:946e42578e0e9f051b5d32f333ee4774c0d6c32b3608d93a89a2b6aa37d759e5",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:c713ad67954dd6801a94badcaac18e821cb0cb95663d3a68ee094b3d0c605cde"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:946e42578e0e9f051b5d32f333ee4774c0d6c32b3608d93a89a2b6aa37d759e5",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:50ac623756bd324773cb3f3ed7979681b1b830ac7ccdfb5fc027a270adbc99a1"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:946e42578e0e9f051b5d32f333ee4774c0d6c32b3608d93a89a2b6aa37d759e5",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:2301812aa38ca0661757aa94e61ecf582e604717a3a374c557d0c58a93814239"
           }
-        },
-        "reviewedSourceHash": "sha256:a27b681d08574d6c4ae87bb0211e838ea627fc4ece2fdcd49ba4dd984fb7171a"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81837"
     },
@@ -50796,7 +50797,7 @@
       "originalText": "Assistant Professor at Department of Educational Sciences",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -50858,23 +50859,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:fa465882ce742d5d7be083187b3d0deabebadaef986f1cfa1aa71636170c545d",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:e4e182987bec406078c9e78f5a4ae08b8f5c41463ba893d3eb230c8f1a2013b1"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:fa465882ce742d5d7be083187b3d0deabebadaef986f1cfa1aa71636170c545d",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:a0827f454428033139da37f7f3c187c075adc670ee21a3749352e73eec56ca4b"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:fa465882ce742d5d7be083187b3d0deabebadaef986f1cfa1aa71636170c545d",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:89e94e58a0081983e667266f40fc9bde3a8afc74ed3d5107f3e0e4faef0d647c"
           }
-        },
-        "reviewedSourceHash": "sha256:0a214affc676c4f4947f6332879f203fa965c8ab2264472e2378ae3ca600405b"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81833"
     },
@@ -50890,7 +50890,7 @@
       "originalText": "Assistant Professor for Department of Experimental Biology",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -50951,23 +50951,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:a491f87e99f8b98a0c2f754d6231c77fdf35fc07c5de1e98a0d565a2a61d86d8",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:1d274ce6d39b9a9d6ffe61c7afeedce11d29faa839ecfbd0edb7678285e41890"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:a491f87e99f8b98a0c2f754d6231c77fdf35fc07c5de1e98a0d565a2a61d86d8",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:fc9e29cb09e8a31d6b7b02533c13c37ba934fad925c8fdc595f10ea956bd1c7f"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:a491f87e99f8b98a0c2f754d6231c77fdf35fc07c5de1e98a0d565a2a61d86d8",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:421393487aff4d48471ffd3a83ee1e602edcf58b7bc5c806112432f51e5c555c"
           }
-        },
-        "reviewedSourceHash": "sha256:2f829126661b775774f5b5bc4632d02bfd4298e06dc95eb9964b59a22216dabe"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81839"
     },
@@ -50983,7 +50982,7 @@
       "originalText": "Instructor of the Department of First Pathology of the Faculty of Medicine MU and St. Anne´s Faculty Hospital",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -51045,23 +51044,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:fae059d5ab3bfcbdd8b53d52302f771ceb79236117f09d1d74c5c68384094146",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:2bbbf228dc9dd33750aa56f66e5ed84e6ccea06e6a07b7667005febdbd7577d1"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:fae059d5ab3bfcbdd8b53d52302f771ceb79236117f09d1d74c5c68384094146",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:823499d04531bd368c3cedb3ed85273559ddcc1efd9a931916a56398cf3831f0"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:fae059d5ab3bfcbdd8b53d52302f771ceb79236117f09d1d74c5c68384094146",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:f1ee82d5bf64371250461da17f86d9570694c98b06475018adc0bdc951ca0c21"
           }
-        },
-        "reviewedSourceHash": "sha256:b067f9269769f24e7a40b43fde70d39d9fa23bda8db9769a2e69052b8868a853"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81841"
     },
@@ -51077,7 +51075,7 @@
       "originalText": "Postdoctoral Position in Organic / Supramolecular chemistry",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -51138,23 +51136,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:21aac5159f37dccb52d3481566c91c05a1881237b589e2d0f9f81e7b77459cba",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:d1019d0f9827bf4e797b85037f66871c82681af6119903ca7098c9f751a082b7"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:21aac5159f37dccb52d3481566c91c05a1881237b589e2d0f9f81e7b77459cba",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:0a8491bfb1493a4a06057059d6e5a149897fbf6160737d3e4929c0fade4d31ee"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:21aac5159f37dccb52d3481566c91c05a1881237b589e2d0f9f81e7b77459cba",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:a62d58a192ce77c79d06f86b19594941dcbddaeca2a34139af7b75129a88d2fb"
           }
-        },
-        "reviewedSourceHash": "sha256:13d526a9ab3fa490a92cdbcef34ce9c2197f15121c2d63f00bba0e5636068aab"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81852"
     },
@@ -51260,7 +51257,7 @@
       "originalText": "Assistant professor at the Department of Political Science specialising in security studies, research methods and digital technologies",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -51322,23 +51319,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:13fe638d26cc674de59bba187e01993f3ff12a271ddb1d27e2c3bcbd9af50236",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:aec59227d8268061129ad20583c571336afc8b167b1a418cac6cd1d74060233f"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:13fe638d26cc674de59bba187e01993f3ff12a271ddb1d27e2c3bcbd9af50236",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:85c51a4bf85a9624efb80dd7c6e0511900824739b594cb73c0857b36078e4666"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:13fe638d26cc674de59bba187e01993f3ff12a271ddb1d27e2c3bcbd9af50236",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:bdebef08dc0843f58696518257860842cefc3c5fcc13df1d76fe3d6d966490a8"
           }
-        },
-        "reviewedSourceHash": "sha256:08056354a0a51280178e6b661b20b0f0cacc0314382f8479212ed507227e1859"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81854"
     },
@@ -51354,7 +51350,7 @@
       "originalText": "Assistant professor at the Department of Political Science specialising in political behaviour, quantitative methods and spatial data",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -51416,23 +51412,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:bb9409788a5004626629f516ae1dc302b301cccc6f6b81eec3c90f013b69362e",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:52287e76bd950d5a66260a61d455b80b4501e2e55f4a5e4e06328b4133bcf35c"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:bb9409788a5004626629f516ae1dc302b301cccc6f6b81eec3c90f013b69362e",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:dc3bc2ca2463ab58893d57e6b072d5831091722771f5e3888b48a4548d0c4b60"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:bb9409788a5004626629f516ae1dc302b301cccc6f6b81eec3c90f013b69362e",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:e7165208dba5800ee2fb1cd427b6726f94308fbce0028ee9ba986da90ece5077"
           }
-        },
-        "reviewedSourceHash": "sha256:d2b0ef66189f4fc7c7564006a6a7156c6b89c074e695d6e519c29fd06ccbcea9"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81856"
     },
@@ -51448,7 +51443,7 @@
       "originalText": "Assistant (Junior Lecturer) at the Department of Political Science specialising in Czech politics, contemporary history and socio-political change",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -51511,23 +51506,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:531bce226ce12555b14318e0064f2890b24503c8e59b7d29b21f38095e6d7ba0",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:aca907e02b4f576d30e71cbfebb6813d513f8dcaea42becaeb61bdb3c79d4629"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:531bce226ce12555b14318e0064f2890b24503c8e59b7d29b21f38095e6d7ba0",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:5840852eb94a1f290c880609ff09917be2e5f805a1648526ea453e491c87978b"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:531bce226ce12555b14318e0064f2890b24503c8e59b7d29b21f38095e6d7ba0",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:d8554f27ec6961142bff9ce46042abd6c5047427f48b89a9ffdd8e67fe9974bd"
           }
-        },
-        "reviewedSourceHash": "sha256:311264077e0a7b840b7c53a57dbc9427ddd6d58c217784104963e262d4431f60"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81857"
     },
@@ -51543,7 +51537,7 @@
       "originalText": "Head of Department of Internal Medicine and Cardiology",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -51604,23 +51598,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:3b75e58f85360c283e250752cdfb89a722d34f1b7c2f6e62736900cb428f4338",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:b38e203ec8ce6ddb97be49a6cd3b4779eff6fa6b1c6bd069bb50705e1e3d972a"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:3b75e58f85360c283e250752cdfb89a722d34f1b7c2f6e62736900cb428f4338",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:201ee9f4e8681ef9abf952451db88bbd87269c7f44cceaee29569d47014debe3"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:3b75e58f85360c283e250752cdfb89a722d34f1b7c2f6e62736900cb428f4338",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:98a5355b1117f6de835875b53460151655ec71dff13a3a924e34d58d64664cea"
           }
-        },
-        "reviewedSourceHash": "sha256:7deda9ea3cc33cdbb44123b43b3388e5ac3a38521b6307a1a8b58754c0eea448"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81873"
     },
@@ -51636,7 +51629,7 @@
       "originalText": "Education Development Manager",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -51698,23 +51691,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:f5816b402c903b9d0620f83b8f0799d4afbe25e8c718639bbcfaeb11fd7b79c2",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:1cca1d4997a825f150472e35678c23ca1115c3f68b5c33bf50e44a7c6473c05f"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:f5816b402c903b9d0620f83b8f0799d4afbe25e8c718639bbcfaeb11fd7b79c2",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:c180a21b72346079c9f7e3392af102c03a19b4b04f341aba004ab7fe6153172d"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:f5816b402c903b9d0620f83b8f0799d4afbe25e8c718639bbcfaeb11fd7b79c2",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:8aac5e44c555510d676157cf64244922a6f0744695a51d14d3bdce8caa8915b1"
           }
-        },
-        "reviewedSourceHash": "sha256:8662c9b7464e9e2fbcd6b6f8dfc0f53890583aa7c8fb6dda74cca46a0b5c59ed"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81874"
     },
@@ -51730,7 +51722,7 @@
       "originalText": "Instructor of the Department of Simulation Medicine of the Faculty of Medicine MU",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -51792,23 +51784,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:b3d3c459be9eb7bd35a1c564361a91cc279654118b719f3fdd55111ef283e7ea",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:ceb64df4fed51b9675510c5b16f58fc1082a613b49ef075b63a9565b9f74810c"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:b3d3c459be9eb7bd35a1c564361a91cc279654118b719f3fdd55111ef283e7ea",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:cbea1cfe8d7589401515c123cda5079ba44c8dcca4951baf34dae0b4f5552177"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:b3d3c459be9eb7bd35a1c564361a91cc279654118b719f3fdd55111ef283e7ea",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:28e5f62c61822253969739241e260220435020567bf10b5789992f6b2ba60c11"
           }
-        },
-        "reviewedSourceHash": "sha256:0a244a63946c8d6598b026bf95c59a4cc45f31f060baebc0fc218c520861fec9"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81878"
     },
@@ -51824,7 +51815,7 @@
       "originalText": "Assistant professor",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -51885,23 +51876,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:bfb0c39aae60ff3f19faa6912f7c918174de850f4d1b9441fbf38d897bd2f1c6",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:67ae71f3826514eee84c5ee30fb2912d487b1360c89f4c96623efd0e7c83226a"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:bfb0c39aae60ff3f19faa6912f7c918174de850f4d1b9441fbf38d897bd2f1c6",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:364de68428fe4802a17372d409aa935d7afe61ce2f7c922f2944606ad5e7c664"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:bfb0c39aae60ff3f19faa6912f7c918174de850f4d1b9441fbf38d897bd2f1c6",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:b13ce2732e0ac67f0b3c5b396d95f82288f76f3cd12b4b5e219aa358ec82f83b"
           }
-        },
-        "reviewedSourceHash": "sha256:35496f290f04ba14b7c52d8bc6a93fe64cfaa3fc9ec9dc87a9ae2b6614c94e95"
+        }
       },
       "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81894"
     },
@@ -51911,13 +51901,13 @@
       "title": {
         "zh-CN": "ATMP实验室技术员",
         "en": "ATMP Laboratory Technician",
-        "cs": "ATMP Laboratory Technician"
+        "cs": "Laborant laboratoře ATMP"
       },
       "laboratory": null,
       "originalText": "ATMP Laboratory Technician",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -51942,7 +51932,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -51964,7 +51954,7 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:aa4ad4bd13674dcc688bf9d44a9121306f53c03e458e4832a7278e3292259b23",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:aa4ad4bd13674dcc688bf9d44a9121306f53c03e458e4832a7278e3292259b23",
         "factHash": "sha256:e0e55d59a8941eaf25191909a0f627f029c3054ffaa316c3fdacd2de7d2f505d",
@@ -51975,26 +51965,27 @@
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:01517c05428b63a8e0456aac9d6469fdd4c95f7027e7469db9feb1a553262335",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:aa4ad4bd13674dcc688bf9d44a9121306f53c03e458e4832a7278e3292259b23",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:a2313140de243a825e5e5b6defbdab4c41ba7554e6a6c815ece59b20d93ae2b0"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:01517c05428b63a8e0456aac9d6469fdd4c95f7027e7469db9feb1a553262335",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:aa4ad4bd13674dcc688bf9d44a9121306f53c03e458e4832a7278e3292259b23",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:349cb04e9d1355d263c990a376baad3dd2eefd26282730037db8cc3dd4688268"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:01517c05428b63a8e0456aac9d6469fdd4c95f7027e7469db9feb1a553262335",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "machine",
+            "translatedFromHash": "sha256:aa4ad4bd13674dcc688bf9d44a9121306f53c03e458e4832a7278e3292259b23",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:db6dccade8c26b8049073cd82f105b3de0c8dda0ab16184cdcd384b5790e090a"
           }
         }
       },
-      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81914"
+      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81914",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-14000-81915",
@@ -52089,15 +52080,15 @@
       "id": "job-14000-81893",
       "employerId": "msmt-vs_14000",
       "title": {
-        "zh-CN": "Laboratory technician for the archaeological laboratory at the Department of Archaeology and Museology",
+        "zh-CN": "考古实验室技术员，考古与博物馆学系",
         "en": "Laboratory technician for the archaeological laboratory at the Department of Archaeology and Museology",
-        "cs": "Laboratory technician for the archaeological laboratory at the Department of Archaeology and Museology"
+        "cs": "Laborant pro archeologický laboratoř na ústavu archeologie a museologie"
       },
       "laboratory": null,
       "originalText": "Laboratory technician for the archaeological laboratory at the Department of Archaeology and Museology",
       "sourceLanguage": "en",
-      "translationStatus": "unreviewed",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -52122,7 +52113,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -52144,35 +52135,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:7a58e4ea91139b2c1f012392d6944f5aabaac487cb23bba4750b043ceec5554c",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:7a58e4ea91139b2c1f012392d6944f5aabaac487cb23bba4750b043ceec5554c",
         "factHash": "sha256:d629e057134fa01c1ddcc6ecb9346d6016df90f3b315b0fad5170cb3c409db08",
         "evidenceHash": "sha256:7a58e4ea91139b2c1f012392d6944f5aabaac487cb23bba4750b043ceec5554c",
         "normalizationVersion": "fact-v2",
-        "reviewer": null,
+        "reviewer": {
+          "role": "automatic_pipeline"
+        },
         "locales": {
           "zh-CN": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:7a58e4ea91139b2c1f012392d6944f5aabaac487cb23bba4750b043ceec5554c",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:ccde3424d15735db7c89864a8427f9167d3db44c0ce70a065e28d253f5055dff"
           },
           "en": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "reviewed",
+            "translatedFromHash": "sha256:7a58e4ea91139b2c1f012392d6944f5aabaac487cb23bba4750b043ceec5554c",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:4490bf2433f316e44335eb881b3e63d89f7233fc22cd23259aa6bfae73298d19"
           },
           "cs": {
-            "status": "missing",
-            "translatedFromHash": null,
-            "reviewedAt": null,
-            "contentHash": null
+            "status": "machine",
+            "translatedFromHash": "sha256:7a58e4ea91139b2c1f012392d6944f5aabaac487cb23bba4750b043ceec5554c",
+            "reviewedAt": "2026-11-04T10:45:03Z",
+            "contentHash": "sha256:a981d2468f65be7502a6039d08b8e43e7384f6b4f51de6b4f1a7fdd11526d95b"
           }
         }
       },
-      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81893"
+      "officialDetailUrl": "https://www.muni.cz/en/about-us/careers/vacancies/81893",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-27000-86",
@@ -54057,7 +54051,7 @@
       "originalText": "Researcher in the Department of Management",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "doctorate",
       "doctorateRequired": true,
       "doctoralEnrollment": "unspecified",
@@ -54114,23 +54108,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:d73cac6eea07f8e484d15772ba7e877082542f8db74b5e283fbd77ea977f0c2f",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:ffa856493111bbc969282200648e45c4ae551ef04aee3acaad55d8fc50f69cc7"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:d73cac6eea07f8e484d15772ba7e877082542f8db74b5e283fbd77ea977f0c2f",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:b7cedb5fda292578c92fefaf4c603518d98fc097d4183fd51703e88b63f54f86"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:d73cac6eea07f8e484d15772ba7e877082542f8db74b5e283fbd77ea977f0c2f",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:37f528d1139998008be335b36779b7aea2d6b594d6e4d14a4d9101d9082090a2"
           }
-        },
-        "reviewedSourceHash": "sha256:f00d39226e677d4d6c57ccdfdf42279c07505040fe49d1a7f74dbbaee235f412"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/459760"
     },
@@ -54146,7 +54139,7 @@
       "originalText": "Assistant Professor with a Focus on Ruminant Nutrition",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "master",
       "doctorateRequired": false,
       "doctoralEnrollment": "unspecified",
@@ -54207,23 +54200,22 @@
           "zh-CN": {
             "status": "machine",
             "translatedFromHash": "sha256:e058666c168936dfecdf86b1e113ee71c90838ff8974380b152fb35f942f6264",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:a0231fc5a9b3ea7ae83c4925bac8409855b0a5cd0fd1850e6a1543ba0fca3681"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:e058666c168936dfecdf86b1e113ee71c90838ff8974380b152fb35f942f6264",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:f659ba38aaa67fe42916e6fdcaa588febebbefaf5b33b917522701bed1c4388f"
           },
           "cs": {
             "status": "machine",
             "translatedFromHash": "sha256:e058666c168936dfecdf86b1e113ee71c90838ff8974380b152fb35f942f6264",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:22fb7fe33f7579ce8c2ec0055e3bdd8b32853ccf4607843532b9789a07e08774"
           }
-        },
-        "reviewedSourceHash": "sha256:d9f3bd1465af87acbf1d8cce5f0d1b41b94319d97f7af793154bfb1679748876"
+        }
       },
       "officialDetailUrl": "https://euraxess.ec.europa.eu/jobs/459342"
     },
@@ -57567,14 +57559,14 @@
       "employerId": "msmt-vs_21000",
       "title": {
         "zh-CN": "人工智能中心机器人系统工程师（自主机器人系统开发，初级／高级）",
-        "en": "Robotics Systems Engineer – Development of Autonomous Robotic Systems (Junior / Senior)",
-        "cs": "Robotics Systems Engineer – Development of Autonomous Robotic Systems (Junior / Senior)"
+        "en": "Robotics Systems Engineer – Development of Autonomous Robotic Systems (Junior / Senior), AI Center FEE CTU",
+        "cs": "Inženýr/ka robotických systémů – vývoj autonomních robotických systémů (junior / senior), Centrum umělé inteligence FEL ČVUT"
       },
       "laboratory": null,
       "originalText": "Robotics Systems Engineer – Development of Autonomous Robotic Systems (Junior / Senior)",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-02T20:34:12Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -57599,7 +57591,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "post_master",
@@ -57621,37 +57613,39 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:8c07fc5ab7a694531672a1a3ea85c47e2577ac40f0ca1fffa66df4cf15d64cb9",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:8c07fc5ab7a694531672a1a3ea85c47e2577ac40f0ca1fffa66df4cf15d64cb9",
         "factHash": "sha256:82708d5308d29be339a9d7ff2333eea1f4310607fd0ead1a6a0cce56d2d05007",
         "evidenceHash": "sha256:8c07fc5ab7a694531672a1a3ea85c47e2577ac40f0ca1fffa66df4cf15d64cb9",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "automatic_pipeline"
+          "role": "operator_source_review"
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:d22630f3fe6f2027ba8ec71d3def7d982bc87ec71e44655e1c3164c1bdbbcdcf",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8c07fc5ab7a694531672a1a3ea85c47e2577ac40f0ca1fffa66df4cf15d64cb9",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:b19c46d60b7bd571f5c44638d308b89e1eff3c1b35f3279d345bd72ddb01410e"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:d22630f3fe6f2027ba8ec71d3def7d982bc87ec71e44655e1c3164c1bdbbcdcf",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8c07fc5ab7a694531672a1a3ea85c47e2577ac40f0ca1fffa66df4cf15d64cb9",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:eab7ae17846d899313090157104e45c78e27416050ab5042708d306ff1af4bf5"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:d22630f3fe6f2027ba8ec71d3def7d982bc87ec71e44655e1c3164c1bdbbcdcf",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:8c07fc5ab7a694531672a1a3ea85c47e2577ac40f0ca1fffa66df4cf15d64cb9",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:65da3c28d624368f39f87421017fff40fefb9d68cfade8464cad2a602bf0da9c"
           }
-        }
+        },
+        "reviewedSourceHash": "sha256:1151a3e360ab54fcd44acc936c6cc3c3f440068f011eb2924b1cee14def90913"
       },
-      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/robotics-systems-engineer---development-of-autonomous-robotic-systems-junior-senior"
+      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/robotics-systems-engineer---development-of-autonomous-robotic-systems-junior-senior",
+      "reviewMode": "human"
     },
     {
       "id": "job-21000-8e94bb5bd334",
@@ -57937,14 +57931,14 @@
       "employerId": "msmt-vs_21000",
       "title": {
         "zh-CN": "人工智能中心博士研究生（含离散决策变量的非线性问题近实时优化）",
-        "en": "PhD Student –⁠⁠⁠⁠⁠⁠ Near real time optimization of non-linear problems with discrete decision variables",
-        "cs": "PhD Student –⁠⁠⁠⁠⁠⁠ Near real time optimization of non-linear problems with discrete decision variables"
+        "en": "PhD Student – Near Real-Time Optimization of Non-Linear Problems with Discrete Decision Variables, AI Center FEE CTU",
+        "cs": "Doktorand/ka – optimalizace nelineárních úloh s diskrétními rozhodovacími proměnnými v téměř reálném čase, Centrum umělé inteligence FEL ČVUT"
       },
       "laboratory": null,
       "originalText": "PhD Student –⁠⁠⁠⁠⁠⁠ Near real time optimization of non-linear problems with discrete decision variables",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-10-02T20:34:12Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "required",
@@ -57969,7 +57963,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -57991,37 +57985,39 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:56014072787b043f6a10340491cb940985923c918ba410d74ce61ab4058bc2ac",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:56014072787b043f6a10340491cb940985923c918ba410d74ce61ab4058bc2ac",
         "factHash": "sha256:b1dbdb15a51377a7827044fdced4bfb1f438d8140ea6570e1e569618d8b4d104",
         "evidenceHash": "sha256:56014072787b043f6a10340491cb940985923c918ba410d74ce61ab4058bc2ac",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "automatic_pipeline"
+          "role": "operator_source_review"
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:d222340e83709a84bf3cd799ba1b05ab2dbdc01d67935bd0e8ee0777edcd9084",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:56014072787b043f6a10340491cb940985923c918ba410d74ce61ab4058bc2ac",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:36f004336730a3b9f43e278adbe6d590d4e8aea6a51d40c23f88b2562718aac5"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:d222340e83709a84bf3cd799ba1b05ab2dbdc01d67935bd0e8ee0777edcd9084",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:56014072787b043f6a10340491cb940985923c918ba410d74ce61ab4058bc2ac",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:442c429d36cb0a17fc7b0935829c17980ae62c47e6fa0bef32b60c684fee3995"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:d222340e83709a84bf3cd799ba1b05ab2dbdc01d67935bd0e8ee0777edcd9084",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:56014072787b043f6a10340491cb940985923c918ba410d74ce61ab4058bc2ac",
+            "reviewedAt": "2026-10-02T20:34:12Z",
             "contentHash": "sha256:fa656e1a8db06d015eabe4b9076e9e8a9cca02e811779fb11678e059b7acc5e8"
           }
-        }
+        },
+        "reviewedSourceHash": "sha256:3f13d6b6cdb48e7cb43c57df174461e6c24e0e6853ad7efe068bbe864c399be3"
       },
-      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/phd-near-real-time-optimization"
+      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/phd-near-real-time-optimization",
+      "reviewMode": "human"
     },
     {
       "id": "job-21000-3956d8552f41",
@@ -58035,7 +58031,7 @@
       "originalText": "Open Positions in Field Robotics & Autonomous Systems: Research & Engineering (PhD/Postdoc/Tenure/Dev)",
       "sourceLanguage": "en",
       "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "required",
@@ -58096,23 +58092,22 @@
           "zh-CN": {
             "status": "reviewed",
             "translatedFromHash": "sha256:291e1d16194db03906bef769d8189bf1f8cc452e2b4f0f1881f4b52c0a0b0353",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:de61078f1e1861ee66c5d33b3cc6be0cbbdef377648ebad872705a6aaa1bd235"
           },
           "en": {
             "status": "reviewed",
             "translatedFromHash": "sha256:291e1d16194db03906bef769d8189bf1f8cc452e2b4f0f1881f4b52c0a0b0353",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:9710c94057eef1821197c2850c2f4ad994de6ac1ccf80355c5ea13ebc93234f7"
           },
           "cs": {
             "status": "reviewed",
             "translatedFromHash": "sha256:291e1d16194db03906bef769d8189bf1f8cc452e2b4f0f1881f4b52c0a0b0353",
-            "reviewedAt": "2026-11-03T11:14:19Z",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:a2f8e03ae4107f80212c735b5ae90e5c9177e45918b69619a4fa9ef09fde5974"
           }
-        },
-        "reviewedSourceHash": "sha256:329e187b4065182b9b4f358554b886d1b6f86beea205e66215356fb503d5a07c"
+        }
       },
       "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/open-positions-in-field-robotics-autonomous-systems"
     },
@@ -58214,14 +58209,14 @@
       "employerId": "msmt-vs_21000",
       "title": {
         "zh-CN": "人工智能中心人工智能方向博士研究生",
-        "en": "Ph.D. in Artificial Intelligence",
-        "cs": "Ph.D. in Artificial Intelligence"
+        "en": "Ph.D. in Artificial Intelligence, AI Center FEE CTU",
+        "cs": "Doktorské studium v oblasti umělé inteligence, Centrum umělé inteligence FEL ČVUT"
       },
       "laboratory": null,
       "originalText": "Ph.D. in Artificial Intelligence",
       "sourceLanguage": "en",
-      "translationStatus": "stale",
-      "reviewedAt": null,
+      "translationStatus": "verified",
+      "reviewedAt": "2026-11-04T10:45:03Z",
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "required",
@@ -58246,7 +58241,7 @@
       "applicationMethod": "official_instructions",
       "applicationHostVerified": true,
       "lifecycleStatus": "unknown",
-      "visibility": "review_pending",
+      "visibility": "public",
       "catalogueScopeStatus": "included",
       "isPostdoc": false,
       "track": "assistant",
@@ -58268,37 +58263,38 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:980f160c681dc38e1698c8755f1225989202fe529e0e7ed0f30bde735cc54168",
-      "publicationStatus": "review_pending",
+      "publicationStatus": "approved",
       "translationReview": {
         "sourceHash": "sha256:980f160c681dc38e1698c8755f1225989202fe529e0e7ed0f30bde735cc54168",
         "factHash": "sha256:3be8e9b1db3d08e44cacc8bbc43e674a16a08b430b312ba95eeacb11456ed223",
         "evidenceHash": "sha256:980f160c681dc38e1698c8755f1225989202fe529e0e7ed0f30bde735cc54168",
         "normalizationVersion": "fact-v2",
         "reviewer": {
-          "role": "operator_source_review"
+          "role": "automatic_pipeline"
         },
         "locales": {
           "zh-CN": {
-            "status": "stale",
-            "translatedFromHash": "sha256:078477027a0c248476efcde27aba06158a669f15c8743a925d6a76ae78e6d65f",
-            "reviewedAt": "2026-10-02T20:34:12Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:980f160c681dc38e1698c8755f1225989202fe529e0e7ed0f30bde735cc54168",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:64853ce07729112de87f329be8fd3c442f60f2b9a4a8ccab64c7f4ab8c9e1966"
           },
           "en": {
-            "status": "stale",
-            "translatedFromHash": "sha256:078477027a0c248476efcde27aba06158a669f15c8743a925d6a76ae78e6d65f",
-            "reviewedAt": "2026-10-02T20:34:12Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:980f160c681dc38e1698c8755f1225989202fe529e0e7ed0f30bde735cc54168",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:5cfbebc9e54e57ad3c962ae07d1fdc531737cfefd249bd14271373cfffb0d9e0"
           },
           "cs": {
-            "status": "stale",
-            "translatedFromHash": "sha256:078477027a0c248476efcde27aba06158a669f15c8743a925d6a76ae78e6d65f",
-            "reviewedAt": "2026-10-02T20:34:12Z",
+            "status": "reviewed",
+            "translatedFromHash": "sha256:980f160c681dc38e1698c8755f1225989202fe529e0e7ed0f30bde735cc54168",
+            "reviewedAt": "2026-11-04T10:45:03Z",
             "contentHash": "sha256:e5b0ce966bc60a89c63fc663d4e2f04474092a2772dfcab3b588adbe0dd3a725"
           }
         }
       },
-      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/phd-in-artificial-intelligence"
+      "officialDetailUrl": "https://www.aic.fel.cvut.cz/careers/phd-in-artificial-intelligence",
+      "reviewMode": "automatic"
     },
     {
       "id": "job-55000-b934e0a708c7",
@@ -63069,7 +63065,7 @@
       "publicationStatus": "rejected",
       "translationReview": {
         "sourceHash": "sha256:982095275e1614b222a7ec31f61851d1529fe0ad90defca1d91d6d13051b7030",
-        "factHash": "sha256:39e7bd3f61480bc35868008fce7136e43942ab10fab4de97fd910ff9da496658",
+        "factHash": "sha256:e90d637614e4aa7fdbdbb462596fefcbcd732eff2933c5f4049e4ce89497e27c",
         "evidenceHash": "sha256:982095275e1614b222a7ec31f61851d1529fe0ad90defca1d91d6d13051b7030",
         "normalizationVersion": "fact-v2",
         "reviewer": null,
@@ -63102,8 +63098,8 @@
         "decidedAt": "2026-10-06T18:00:00Z",
         "note": "Owner decision 2026-10-06: heads of teaching centres are not catalogued (heads of research institutes, departments and data or computing centres are). “Vedoucí Centra pro výuku cizích jazyků” (https://pracuj.upol.cz/nc/zprava/clanek/vedouci-centra-pro-vyuku-cizich-jazyku/) heads the Faculty of Medicine's foreign-language teaching centre; the notice describes running the centre (concept, staff, budget). Not published; its identity is kept."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "past-deadline-archived",
+      "lastAttemptAt": "2026-10-06T18:00:00Z",
+      "lastAttemptReason": "out_of_scope_teaching_centre_head",
       "officialDetailUrl": "https://pracuj.upol.cz/nc/zprava/clanek/vedouci-centra-pro-vyuku-cizich-jazyku/"
     },
     {
@@ -63168,7 +63164,7 @@
       "publicationStatus": "rejected",
       "translationReview": {
         "sourceHash": "sha256:88f90e10862847f722ec6c2f8cb3c57596339d89d12900c2fcc118cde293fec9",
-        "factHash": "sha256:e562420d331e59f6356dbb3aaac9a09be5572d5ccafe9ecd6f43d36cf29f872c",
+        "factHash": "sha256:6264b2499b296e0e13e54c84b73e0616c7678f77f82962cb3155f0e024c58f6b",
         "evidenceHash": "sha256:88f90e10862847f722ec6c2f8cb3c57596339d89d12900c2fcc118cde293fec9",
         "normalizationVersion": "fact-v2",
         "reviewer": null,
@@ -63201,8 +63197,8 @@
         "decidedAt": "2026-10-06T18:00:00Z",
         "note": "Owner decision 2026-10-06: heads of teaching centres are not catalogued (heads of research institutes, departments and data or computing centres are). “Vedoucí Centra pro základní výkony ve zdravotnictví” (https://pracuj.upol.cz/nc/zprava/clanek/vedouci-centra-pro-zakladni-vykony-ve-zdravotnictvi/) heads the Faculty of Medicine's centre teaching basic healthcare procedures; the notice describes running the centre (concept, staff, budget). Not published; its identity is kept."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "past-deadline-archived",
+      "lastAttemptAt": "2026-10-06T18:00:00Z",
+      "lastAttemptReason": "out_of_scope_teaching_centre_head",
       "officialDetailUrl": "https://pracuj.upol.cz/nc/zprava/clanek/vedouci-centra-pro-zakladni-vykony-ve-zdravotnictvi/"
     },
     {
@@ -63320,8 +63316,8 @@
       "laboratory": null,
       "originalText": "Přednosta/přednostka Ústavu lékařské chemie a biochemie",
       "sourceLanguage": "cs",
-      "translationStatus": "verified",
-      "reviewedAt": "2026-11-03T11:14:19Z",
+      "translationStatus": "unreviewed",
+      "reviewedAt": null,
       "minimumDegree": "unknown",
       "doctorateRequired": null,
       "doctoralEnrollment": "unspecified",
@@ -63368,34 +63364,32 @@
       "noticeRemoveAt": null,
       "eligibilityGranularity": "vacancy",
       "sourceHash": "sha256:68ebf5b1f224f6864771835a22ac14c5c8c6998cb5c65b220f2969e243748bc4",
-      "publicationStatus": "approved",
+      "publicationStatus": "review_pending",
       "reviewMode": "automatic",
       "translationReview": {
         "sourceHash": "sha256:68ebf5b1f224f6864771835a22ac14c5c8c6998cb5c65b220f2969e243748bc4",
         "factHash": "sha256:f3dedebf34cb1f2133e8c73b1fbd81b327d4003991244d40bbb47e53026b120e",
         "evidenceHash": "sha256:68ebf5b1f224f6864771835a22ac14c5c8c6998cb5c65b220f2969e243748bc4",
         "normalizationVersion": "fact-v2",
-        "reviewer": {
-          "role": "automatic_pipeline"
-        },
+        "reviewer": null,
         "locales": {
           "zh-CN": {
-            "status": "machine",
-            "translatedFromHash": "sha256:68ebf5b1f224f6864771835a22ac14c5c8c6998cb5c65b220f2969e243748bc4",
-            "reviewedAt": "2026-11-03T11:14:19Z",
-            "contentHash": "sha256:f6ced9d841c89d9864f26f059cc75fbfc85deb22a3ccdd89282fdc9134f859f5"
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
           },
           "en": {
-            "status": "machine",
-            "translatedFromHash": "sha256:68ebf5b1f224f6864771835a22ac14c5c8c6998cb5c65b220f2969e243748bc4",
-            "reviewedAt": "2026-11-03T11:14:19Z",
-            "contentHash": "sha256:b9f36c7a88150afc564c3288263b315cce11f9e801abccddc7d3c84c8643b77f"
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
           },
           "cs": {
-            "status": "reviewed",
-            "translatedFromHash": "sha256:68ebf5b1f224f6864771835a22ac14c5c8c6998cb5c65b220f2969e243748bc4",
-            "reviewedAt": "2026-11-03T11:14:19Z",
-            "contentHash": "sha256:95e357ad12707c2f45971fbe79855e7d569eb471886aa1e3d329f361f180b52f"
+            "status": "missing",
+            "translatedFromHash": null,
+            "reviewedAt": null,
+            "contentHash": null
           }
         }
       },
@@ -63499,8 +63493,8 @@
         "decidedAt": "2026-10-06T18:00:00Z",
         "note": "Owner decision 2026-10-06: heads of teaching centres are not catalogued (heads of research institutes, departments and data or computing centres are). “Vedoucí Centra pro výuku infekčního lékařství” (https://pracuj.upol.cz/nc/zprava/clanek/vedouci-centra-pro-vyuku-infekcniho-lekarstvi/) heads the Faculty of Medicine's infectious-disease teaching centre; the notice describes running the centre (concept, staff, budget). Not published; its identity is kept."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-06T18:00:00Z",
+      "lastAttemptReason": "out_of_scope_teaching_centre_head",
       "officialDetailUrl": "https://pracuj.upol.cz/nc/zprava/clanek/vedouci-centra-pro-vyuku-infekcniho-lekarstvi/"
     },
     {
@@ -63990,8 +63984,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Výběrové řízení - vedoucí/ho odboru strategického rozvoje ČVUT” (https://eud.is.cvut.cz/pub/deska/36000002/ifis/5526) is the head of the strategic development office (administration). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "out_of_scope_administrative",
       "officialDetailUrl": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/5526"
     },
     {
@@ -64093,8 +64087,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Výběrové řízení - Vedoucí odboru výstavby a investiční činnosti (OVIČ)” (https://eud.is.cvut.cz/pub/deska/36000002/ifis/5516) is the head of the construction and investment office (administration). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "out_of_scope_administrative",
       "officialDetailUrl": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/5516"
     },
     {
@@ -64192,8 +64186,8 @@
         "decidedAt": "2026-10-06T16:00:00Z",
         "note": "Owner decision 2026-10-06: “Specialista/specialistka HR pro interní vzdělávání VUT” (https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001465663) is a human-resources post for VUT's internal staff training, not a research or research-technical worker (A38). Not published; its identity is kept."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-06T16:00:00Z",
+      "lastAttemptReason": "out_of_scope_administrative",
       "officialDetailUrl": "https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001465663"
     },
     {
@@ -66380,9 +66374,9 @@
           }
         }
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
+      "lastAttemptAt": "2026-10-06T16:00:00Z",
       "lastStatusCheckedAt": "2026-10-06T15:07:01Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptReason": "out_of_scope_operations",
       "reviewDisposition": {
         "publicationStatus": "rejected",
         "visibility": "archived",
@@ -67544,8 +67538,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “VŘ na pozici pracovník IT oddělení na FJFI” (https://eud.is.cvut.cz/pub/deska/36000002/ifis/5488) is an IT-department staff post at FJFI (IT support, not research or research-technical work). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "out_of_scope_it_support",
       "officialDetailUrl": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/5488"
     },
     {
@@ -68025,8 +68019,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Asistent/ka projektu Ústavu automatizace a informatiky” (https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001448639) is a project-coordination assistant (task and deadline tracking; secondary school minimum). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "out_of_scope_administrative",
       "officialDetailUrl": "https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001448639"
     },
     {
@@ -68313,8 +68307,8 @@
         "decidedAt": "2026-10-06T16:00:00Z",
         "note": "Owner decision 2026-10-06: “VŘ - ředitel/ ředitelka MÚVS” (https://eud.is.cvut.cz/pub/deska/36000002/ifis/5504) is the CTU Rector's selection procedure for the director of the Masaryk Institute of Advanced Studies, a leadership post; the attached notice (VŘ_ředitel_MUVS.pdf) seeks someone to lead the institute, not a research or research-technical worker (A38). Not published; its identity is kept."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-06T16:00:00Z",
+      "lastAttemptReason": "out_of_scope_management",
       "officialDetailUrl": "https://eud.is.cvut.cz/pub/deska/36000002/ifis/5504"
     },
     {
@@ -69531,8 +69525,8 @@
         "decidedAt": "2026-10-02T20:24:18Z",
         "note": "Operator decision 2026-10-02T20:24:18Z: “Vedoucí / vedoucí Odboru kvality VUT v Brně” (https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001459151) is the head of the university quality office (administration). The catalogue lists research and research-technical posts (A38), so it is not published; its identity is kept and the decision is revisited if the notice changes."
       },
-      "lastAttemptAt": "2026-11-04T10:07:29Z",
-      "lastAttemptReason": "missing-from-complete-official-listing",
+      "lastAttemptAt": "2026-10-02T20:24:18Z",
+      "lastAttemptReason": "out_of_scope_administrative",
       "officialDetailUrl": "https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001459151"
     },
     {
