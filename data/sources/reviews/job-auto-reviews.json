@@ -2,41 +2,6 @@
   "schemaVersion": 1,
   "note": "Automatic reviews (owner decision 2026-10-02); written by auto_review.py only where no human review matches.",
   "reviews": {
-    "job-11000-202611-ap1-lfpl-sk-134": {
-      "sourceHash": "sha256:dc07090a0fdfa69b962efc070a11d66965d73a61599bbd9e731949dd881c1b4a",
-      "evidenceHash": "sha256:dc07090a0fdfa69b962efc070a11d66965d73a61599bbd9e731949dd881c1b4a",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-09-job-11000-202611-ap1-lfpl-sk-134",
-      "reviewedAt": "2026-11-09T11:22:43Z",
-      "reviewedOriginalText": "Assistant at the LFP UK Dental Clinic",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
-      "title": {
-        "zh-CN": "LFP UK牙科诊所助理",
-        "en": "Assistant at the LFP UK Dental Clinic",
-        "cs": "Asistent v klinice LFP UK"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-09T11:22:43Z",
-          "contentHash": "sha256:e198db24b849b557282b9aa338e6d20c3c261ca222e634e3b13cfde8b8a3308c"
-        },
-        "en": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-09T11:22:43Z",
-          "contentHash": "sha256:94b7f3751f16fcef6ca0a14c7b8693d6ed89890be449b7d34f07e96d65772d39"
-        },
-        "cs": {
-          "status": "machine",
-          "reviewedAt": "2026-11-09T11:22:43Z",
-          "contentHash": "sha256:effbe774817ae3b2aa1f07f3371155dded87cff1037a844fa4d21f6411425d61"
-        }
-      },
-      "factHash": "sha256:7d87ea65448820d858d2ec722782a224254220ddc68c3d9bdbea68d5fd9eaf36"
-    },
     "job-11000-202611-ap2-p-f-1520-132": {
       "sourceHash": "sha256:337f4eb1bacb7f96871db37e76c861a04306fa7071208a3f02a98d872b946388",
       "evidenceHash": "sha256:337f4eb1bacb7f96871db37e76c861a04306fa7071208a3f02a98d872b946388",
@@ -351,6 +316,41 @@
         }
       },
       "factHash": "sha256:2c2e441ff0048e9696c55166564afd5b33323bd513bb0b672438834d9353f19c"
+    },
+    "job-11000-202612-ap3-faf-hk-kflt-147": {
+      "sourceHash": "sha256:3b2c7b59ddfb0bb426a6a50e1a4b3862b82154ff1295a3348bcb7b8c389eab73",
+      "evidenceHash": "sha256:3b2c7b59ddfb0bb426a6a50e1a4b3862b82154ff1295a3348bcb7b8c389eab73",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-11000-202612-ap3-faf-hk-kflt-147",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Head of the Department of Pharmacology and Toxicology",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "药理学与毒理学系主任",
+        "en": "Head of the Department of Pharmacology and Toxicology",
+        "cs": "Zástupce pro výuku a vědeckou činnost"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:30fce1c1704c32099d183ee419f90e9d723a0768e33848b8cde595a67b0ebc6e"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:59a378c697be90ad511e59554860df693de675e920061357d4e685e6560686e1"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:dfc22a11c5b10abe51ad5d6cdc836f480602291c2f81606c7b025023d56c4560"
+        }
+      },
+      "factHash": "sha256:5a4177aff0aec970796c35b93603d3911532c2c5e992cedba545515151b29761"
     },
     "job-11000-202612-vp2-p-f-1510-138": {
       "sourceHash": "sha256:d9235eddd281012ac450936ebbb4676ce6a8c1daa6f44576b3db6a6e78ae3eea",
@@ -1227,41 +1227,6 @@
       },
       "factHash": "sha256:eb199bce513f52e1a8e8e46931b84bc4f51ee10e87f2781af097662a7bc1f04f"
     },
-    "job-15000-0cbda8c92c42": {
-      "sourceHash": "sha256:735ac75b1d81cc4a6e10919ef810cea4d4fa663b6e71b4c8a3f056a80815a295",
-      "evidenceHash": "sha256:735ac75b1d81cc4a6e10919ef810cea4d4fa663b6e71b4c8a3f056a80815a295",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-10-job-15000-0cbda8c92c42",
-      "reviewedAt": "2026-11-10T11:22:58Z",
-      "reviewedOriginalText": "Odb. asistent/ka pro obor nizozemská filologie",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "荷兰语言学专业助理教授",
-        "en": "Assistant Professor for the Field of Dutch Philology",
-        "cs": "Odb. asistent/ka pro obor nizozemská filologie"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:8fc9175ed211e3581ab1ed3b6e5f66495338f04d6a57c4730e8199ee5627ae54"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:1734285119a5d73cfd02c0ac311cdac3e70585b75b09ce06c8f63ba9243f2d63"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:9c224c97f61b00e5ce84949c61e3c30dfdc9e8662cad51071f0bda8051a0b3a3"
-        }
-      },
-      "factHash": "sha256:93c2b153f1017bad8100065b2d9ad669fb1a011f01ac112eb50f90b488177c10"
-    },
     "job-15000-37f6e98ea774": {
       "sourceHash": "sha256:8b941ab73fa200723e45bfa4ddb7f508078b6fe3e45e9b50f788436d9427389d",
       "evidenceHash": "sha256:8b941ab73fa200723e45bfa4ddb7f508078b6fe3e45e9b50f788436d9427389d",
@@ -1296,76 +1261,6 @@
         }
       },
       "factHash": "sha256:554a2504d8f7177788abb8624a9d131bbb634da52183dab1d965b36a3fb44919"
-    },
-    "job-15000-4b5b216d785b": {
-      "sourceHash": "sha256:2d963d20ae3e9e9e8b7296b911cfefb3a468b17d4583013a4c49455f77078b34",
-      "evidenceHash": "sha256:2d963d20ae3e9e9e8b7296b911cfefb3a468b17d4583013a4c49455f77078b34",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-10-job-15000-4b5b216d785b",
-      "reviewedAt": "2026-11-10T11:22:58Z",
-      "reviewedOriginalText": "Vedoucí Katedry muzikologie",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "音乐学系主任",
-        "en": "Head of Department of Musicology",
-        "cs": "Vedoucí Katedry muzikologie"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:ef2d9d390bcd83e81046d686174193bed404e995e5e0c85acf6257546c0fada2"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:4d3b55a5781be49d24889421175b3ce1d94e719a6ae049c7bff3f78e07778977"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:d7437704267438f7f6d394abaf6a113aa08a477b2e3fa3e681d40d15c4d9bf39"
-        }
-      },
-      "factHash": "sha256:aab24fd2010d237279d32d256a812bd41d2a7605cf3c6f2051ae0225bbfd7da0"
-    },
-    "job-15000-580b58dc1e06": {
-      "sourceHash": "sha256:b5979199ea4d4f4e3cbba5a44f8e1981407ff8db1eb5a36df106512314344844",
-      "evidenceHash": "sha256:b5979199ea4d4f4e3cbba5a44f8e1981407ff8db1eb5a36df106512314344844",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-10-job-15000-580b58dc1e06",
-      "reviewedAt": "2026-11-10T11:22:58Z",
-      "reviewedOriginalText": "Odborný asistent / odborná asistentka / Assistant Professor",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "助理教授 / 助理",
-        "en": "Assistant Professor / Assistant",
-        "cs": "Odborný asistent / odborná asistentka / Assistant Professor"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:f0c3ecd7cfddf43c684fd60760c412c22287ec4ec20ae3caa238dc8829430d5e"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:39a58d3ece0dcea6850970905f5a1fcd0e8938e1256b52cfbfd9be87730169e9"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:df7d4d6f49fd834ee4f65ce0e53670ea854144c5f6ee1ef693d4a944e0385b73"
-        }
-      },
-      "factHash": "sha256:0cb0dbe1956dafe7946c58d1e5996c821679949c57816fa1002a689652baa481"
     },
     "job-15000-63f627098a41": {
       "sourceHash": "sha256:e674cc6819d03e7dfa7ea167857bdd0b3d45d2903441af74775ef22ebecf37ce",
@@ -1402,41 +1297,6 @@
       },
       "factHash": "sha256:723ce670a193633d3a55bc1438debb0a4f96a31ab160846fab017d44aeab8b34"
     },
-    "job-15000-6bb7b6e809e2": {
-      "sourceHash": "sha256:7a36cc095110b9e8c2ce1ca70ac7fe908af1de105ee4ea19e93d49542ac6b1ba",
-      "evidenceHash": "sha256:7a36cc095110b9e8c2ce1ca70ac7fe908af1de105ee4ea19e93d49542ac6b1ba",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-10-job-15000-6bb7b6e809e2",
-      "reviewedAt": "2026-11-10T11:22:58Z",
-      "reviewedOriginalText": "Lektor/ka vietnamského jazyka / Lector of the Vietnamese language",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "越南语讲师/越南语讲师",
-        "en": "Lecturer/Vietnamese language / Lecturer of the Vietnamese language",
-        "cs": "Lektor/ka vietnamského jazyka / Lector of the Vietnamese language"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:e19466f0431b5d7dba94f2affa503a28f018d5d8723bcea5a2b9447870a9aaa6"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:eb499a9d507c76213bdeeae91cd151c1973b8a1bf59b9f935aa446e893e3e9bc"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:0ba90ebc02ef24761580b49fae6f998ea238e889ae8a4c4f17450819f561a2e2"
-        }
-      },
-      "factHash": "sha256:c06f778ffe14ae89a49a3c6d12ac15a2ec6d9cbb746874e6500ce2bd96c1d174"
-    },
     "job-15000-b53b0d0b2ee9": {
       "sourceHash": "sha256:bcde624413951dfb0009ee87cbfaf01b0047c052126b934235d0918a6342f65b",
       "evidenceHash": "sha256:bcde624413951dfb0009ee87cbfaf01b0047c052126b934235d0918a6342f65b",
@@ -1471,76 +1331,6 @@
         }
       },
       "factHash": "sha256:bad2e8160f6f8aa5c2c9953c2f0fba67bf76e2bf72f30100cde83689c3766fc7"
-    },
-    "job-15000-bb31e61d3798": {
-      "sourceHash": "sha256:e45aea97fef21d35fa662da5c99fa3e901cd5d6e55aea1672d22cf5ac5277787",
-      "evidenceHash": "sha256:e45aea97fef21d35fa662da5c99fa3e901cd5d6e55aea1672d22cf5ac5277787",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-10-job-15000-bb31e61d3798",
-      "reviewedAt": "2026-11-10T11:22:58Z",
-      "reviewedOriginalText": "Vedoucí Katedry divadelních a filmových studií",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "戏剧与电影研究系主任",
-        "en": "Head of Department of Theatre and Film Studies",
-        "cs": "Vedoucí Katedry divadelních a filmových studií"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:453e33d8a014a8542eb74a74feaddd9baa3d830d3366527543139c38327bfb68"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:f48f9c92632220df960cd0dbe06b1fbdc360d96fbd9f00d4c3fced8ebe7c74d0"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:c8cc82c29f046da79de019c89554a5506876c7c21bd49db4640ef74bd6319ba3"
-        }
-      },
-      "factHash": "sha256:da2c2d34ffae5007442ff664b37a6d72dfcd957d8f2307b53e88993e157c7640"
-    },
-    "job-15000-e650ff6515e3": {
-      "sourceHash": "sha256:7788e1e96f7220c86efa42d0d4e156df745f6b0f4b80546d839c2bdba8fc906c",
-      "evidenceHash": "sha256:7788e1e96f7220c86efa42d0d4e156df745f6b0f4b80546d839c2bdba8fc906c",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-10-job-15000-e650ff6515e3",
-      "reviewedAt": "2026-11-10T11:22:58Z",
-      "reviewedOriginalText": "Odb. asistent/ka pro obor italská lingvistika",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "意大利语言学领域助理教授",
-        "en": "Assistant Professor for the field of Italian Linguistics",
-        "cs": "Odb. asistent/ka pro obor italská lingvistika"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:eff2fe8d9d6743771d3d6e0d482eec3ab81972caf458da9790c32615073734a1"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:a027334950ee66ba30812b7fb17b0c53be9c4fcd32dc287f1600c2fef04ee72b"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:3d04f104222e77119c51a4096b8f4b88cb50969eeeec7b296749bac145535aaf"
-        }
-      },
-      "factHash": "sha256:23a3646b20bc98ee571bd3af81d358394860a216a41141b0ef9c6891cbf629e7"
     },
     "job-15000-f73bdf66bcc1": {
       "sourceHash": "sha256:ce841c23b1d682fba641d57c370246f64db47708b9706c79f1c3b6fde4cc59fe",
@@ -1577,50 +1367,15 @@
       },
       "factHash": "sha256:b863f6fba790f8fda62df1ba81f2976ce96af1bb38c016e0479804e465d70cac"
     },
-    "job-15000-fb32212af0b2": {
-      "sourceHash": "sha256:26f3826f06985bd7cbe301c4559fc6556e609ad3e7043638bbd028b64535d4b6",
-      "evidenceHash": "sha256:26f3826f06985bd7cbe301c4559fc6556e609ad3e7043638bbd028b64535d4b6",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-10-job-15000-fb32212af0b2",
-      "reviewedAt": "2026-11-10T11:22:58Z",
-      "reviewedOriginalText": "Vedoucí Katedry historie",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "历史系主任",
-        "en": "Head of Department of History",
-        "cs": "Vedoucí Katedry historie"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:5c4dfc70b8496b44c679b0b4eb4580be132a0d7004be6da73b9f204e10aaf7ef"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:aa3d6c0d30c07e0ee2de275741955311f17f89661f6c38c9c6461f6c46534320"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-10T11:22:58Z",
-          "contentHash": "sha256:d26ace51d6936183935f2c17fcf305a13da4b96f97434940b9f6b30768d553b6"
-        }
-      },
-      "factHash": "sha256:d88bf656fa87dfc1c8b24da2adae6a505fe6ba2175b3e403dbdb22ddbb7df83c"
-    },
     "job-17000-203": {
-      "sourceHash": "sha256:c594510bad7f00ce71cba86f0a860ded676592578ba2c284424c72e11566a78a",
-      "evidenceHash": "sha256:c594510bad7f00ce71cba86f0a860ded676592578ba2c284424c72e11566a78a",
+      "sourceHash": "sha256:5335993eda155c2c824509658344297aa3698c595d18794ec6947759f1104347",
+      "evidenceHash": "sha256:5335993eda155c2c824509658344297aa3698c595d18794ec6947759f1104347",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-203",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-203",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Asistent/asistentka se zaměřením na současný český jazyk, kvantitativní lingvistiku a češtinu pro cizince",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1631,31 +1386,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:940a7138316b16576c859a02a56021a15337a53c0da48cd2d519ec5e4b78b4e3"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:408e5a32c2beeaf87ef7301a41c8140b74da27322abd2efed562a6f162c93ab9"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:9400e7903a1b75ced7e4863052b604db7bb58d25567a47a1ed648be32fd7a122"
         }
       },
       "factHash": "sha256:4bf33adc13bb315de291faffbd478458a4e2803b70b484c879288c43b15683ae"
     },
     "job-17000-204": {
-      "sourceHash": "sha256:78ae933a0cdf9c664291c39e27f7c2df5b17ab1d19072d751ec912365f399c63",
-      "evidenceHash": "sha256:78ae933a0cdf9c664291c39e27f7c2df5b17ab1d19072d751ec912365f399c63",
+      "sourceHash": "sha256:d7fa0eb181f18aee68d02fa38c7b4528105b08c3bce20506393735a7e590e294",
+      "evidenceHash": "sha256:d7fa0eb181f18aee68d02fa38c7b4528105b08c3bce20506393735a7e590e294",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-204",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-204",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Docent/docentka pro lékařskou fyziologii",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1666,31 +1421,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:9c075907626db512f5489387a619743518d11f9893d321dbde40784390ffeec1"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:e9b718a3b03f0d3e0d616840725a705ebd0905f6bd4f1bdacfcc930e544fa930"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:f7cad3d747aa4e66ea1020e99ae8d23f6870288181da7d63f695b4b949ead957"
         }
       },
       "factHash": "sha256:afe6d6ba1c9de2b72097d9cb847840dd969e2e59617016e63695676b15632093"
     },
     "job-17000-206": {
-      "sourceHash": "sha256:a31ae4d2fbb74ab34440071fcfecbe6844137d212768fe6dbb530485d5f753f9",
-      "evidenceHash": "sha256:a31ae4d2fbb74ab34440071fcfecbe6844137d212768fe6dbb530485d5f753f9",
+      "sourceHash": "sha256:38afe226cb9d7a9fa7912f8cbdefbb09baffbc9c6bde3d7bbac2070e42a0989a",
+      "evidenceHash": "sha256:38afe226cb9d7a9fa7912f8cbdefbb09baffbc9c6bde3d7bbac2070e42a0989a",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-206",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-206",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Technik/technička nebo laborant/laborantka se zaměřením na solidní nádory",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1701,31 +1456,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:c592b859a6a904ea0ed1c941f46c75f5ba5d9a597122e3f803e9038083574b20"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:ae17be5cb67854e07370d400fb81713085a05b37f6cf06b9621228724bb2231f"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:05085bfaaef296a20dd6f379c6344bede87d421984568688178f498b2bd8732b"
         }
       },
       "factHash": "sha256:a334bd49af4edb7560b1030a41d8f1e9de8f61391a6423e1cf06c73f77a38c5a"
     },
     "job-17000-207": {
-      "sourceHash": "sha256:cddb72604c084a52e8a45365f76808c2d317a504c68789b3c2cb14361aacd9ae",
-      "evidenceHash": "sha256:cddb72604c084a52e8a45365f76808c2d317a504c68789b3c2cb14361aacd9ae",
+      "sourceHash": "sha256:cd04dc924c21d87ac3973dda73bba529ea53a980c30112076a8b1b51c257a19a",
+      "evidenceHash": "sha256:cd04dc924c21d87ac3973dda73bba529ea53a980c30112076a8b1b51c257a19a",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-207",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-207",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Profesor/ka, docent/ka se zaměřením na ošetřovatelství s funkčním zařazením na pozici vedoucí/ho Ústavu ošetřovatelství a porodní asistence",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1736,31 +1491,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:4d753736f01c55397b1ecabbc33b578c765548a1346bbd0a3eafa21a3cef3ccb"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:750d0755b5dfdc966beda1e42816154fd2bae226666f3bb409d56cd24092e6d3"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:dea477f3ef4ebe6ed709af56d47cf923534506fa278ba3315a0bba5e7c6ad045"
         }
       },
       "factHash": "sha256:3c40c5a75609793004173c3a375f41c7c7ba786d596842e220a52984d329bc68"
     },
     "job-17000-208": {
-      "sourceHash": "sha256:75b5774e8f440cbeddab0ae07201ce6cbabdea82aa07c138baa30eb077587b03",
-      "evidenceHash": "sha256:75b5774e8f440cbeddab0ae07201ce6cbabdea82aa07c138baa30eb077587b03",
+      "sourceHash": "sha256:7fd1b1d26ed6b481b8de297774ce407aec18836e34f35124eb3fd6a76748d97a",
+      "evidenceHash": "sha256:7fd1b1d26ed6b481b8de297774ce407aec18836e34f35124eb3fd6a76748d97a",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-208",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-208",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Specialista – bioinformatik / specialistka – bioinformatička se zaměřením na vývoj softwaru a webových aplikací v hematoonkologii",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1771,31 +1526,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:4d4796daf0bb4793eb0a49958ca850587b54348cba12d39739a6757461921c6e"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:c855b531844e07a5ec542fee8b34bd2e9335e41ee649b0f40831adfce618b995"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:14600c06a16a41d63522198f5d681047ceff04f84bd9f00ce50b8decc76db0fa"
         }
       },
       "factHash": "sha256:d0638eaed93083a8fab284871333a29fb2b6259f6b3a569ff300b999a7db7203"
     },
     "job-17000-212": {
-      "sourceHash": "sha256:0c8392d41f9b469145c14d5e300ec5bfd8b57fffdb9563c90213b45734e39f8a",
-      "evidenceHash": "sha256:0c8392d41f9b469145c14d5e300ec5bfd8b57fffdb9563c90213b45734e39f8a",
+      "sourceHash": "sha256:8c843f567d802169754bdbeab6c97a9ba9eab09f0f679d589218448503ec7b25",
+      "evidenceHash": "sha256:8c843f567d802169754bdbeab6c97a9ba9eab09f0f679d589218448503ec7b25",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-212",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-212",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Popularizátor/ka vědy a umělecké činnosti",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1806,31 +1561,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:65519f83d4d1de57d381a4a5a3924b83ef3d6c04076a5ec9ee9270ce73bbac23"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:5920ae6bc80d2489628592651e85e909c6269c01ee06c00a5aca32f704934e50"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:b3fc1e29640e87b79fa5aa0dabe07b0cf2b6795f8129b950547a83cc40e698c2"
         }
       },
       "factHash": "sha256:835ce3992ec45646593658c976f1943c337f78d5a6e6147ed1e01ca66fe11b99"
     },
     "job-17000-213": {
-      "sourceHash": "sha256:f7183e6477de56dea06d5414bbabc723c6e45bedee29cfc1dd15f24faefc61b5",
-      "evidenceHash": "sha256:f7183e6477de56dea06d5414bbabc723c6e45bedee29cfc1dd15f24faefc61b5",
+      "sourceHash": "sha256:d4f67a65df2313f89e15d453bed8d0978fa3388546a7f989ec1557c3b611006a",
+      "evidenceHash": "sha256:d4f67a65df2313f89e15d453bed8d0978fa3388546a7f989ec1557c3b611006a",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-213",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-213",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Odborný asistent / odborná asistentka se zaměřením na biofyziku",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1841,31 +1596,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:848a719af6b010385ed366dbbd47d4c1194f8b2cf277ba9d03d30c3ce6b09434"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:903bd20b286d4f89630e0cd81fd9463ee12092d587e7f731132d2060b6fb9b74"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:bdf0c9889e045423a0d7ae373116f74b09293693b2ab9c88dc373b9ea7248894"
         }
       },
       "factHash": "sha256:dd9a7a61ddd88bfc7bbdefc7535a16c2bd84df03a36776fdb8680e4c6abedfff"
     },
     "job-17000-215": {
-      "sourceHash": "sha256:4cd342471a538c788ebce886d493cab1405eb28d0f18db905c582cb1205d230a",
-      "evidenceHash": "sha256:4cd342471a538c788ebce886d493cab1405eb28d0f18db905c582cb1205d230a",
+      "sourceHash": "sha256:7ba9c08acdaab9688142f243ed0970d5491b0cc9277195621a9f7b2fc991e987",
+      "evidenceHash": "sha256:7ba9c08acdaab9688142f243ed0970d5491b0cc9277195621a9f7b2fc991e987",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-215",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-215",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Asistent/asistentka se zaměřením na hematoonkologii",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1876,31 +1631,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:5ae321eb7758eb153079f98b9ce0558c387c91e4295d5d6afb6ff1122453f0bf"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:0e9e34f32299da5ca0e9ebfae61e912dddd95ce9a4dc48acc87fe906be838834"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:33c45b7e63fdea6e1d7902927f7d98c97bc648018f3bb5089ad356a8d300e9c9"
         }
       },
       "factHash": "sha256:208c5c5a038867e63529a8340573d6eb8a739622da2ea8bd7203f2d37125018f"
     },
     "job-17000-217": {
-      "sourceHash": "sha256:4351ac589f4f75430edd4285ec25c3e81b53ae02a17d23b7b0c34f4ddf8c9f36",
-      "evidenceHash": "sha256:4351ac589f4f75430edd4285ec25c3e81b53ae02a17d23b7b0c34f4ddf8c9f36",
+      "sourceHash": "sha256:843b13b2a627fdc580ac0a22fdc06563ba017ebcaa1800810851830062225bfd",
+      "evidenceHash": "sha256:843b13b2a627fdc580ac0a22fdc06563ba017ebcaa1800810851830062225bfd",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-217",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-217",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Výzkumný pracovník / výzkumná pracovnice VZ4 – junior",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1911,31 +1666,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:491b6050adb81cc186990868e16401ea5f0b4f92921b9bb04c79d030f00b75ac"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:6079b5a74892a7a3624e92882279574fab5cef165cadb090a2f627a46327ab59"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:b8a6781a27945be17ee051323ae2072f34414aeba88d4a8de291288e36f6ed97"
         }
       },
       "factHash": "sha256:365a2b82671010d9c280673fb5475ff4b9b167254d7f33f350278483b8d13d8d"
     },
     "job-17000-218": {
-      "sourceHash": "sha256:8ce2065d19cca9223eed69c5e3ddd94e706ce80f3449b76e03a871a83c644b64",
-      "evidenceHash": "sha256:8ce2065d19cca9223eed69c5e3ddd94e706ce80f3449b76e03a871a83c644b64",
+      "sourceHash": "sha256:cd5604a50f07b50d479e7895083c851d5b637850e178784dca776be80330cfd4",
+      "evidenceHash": "sha256:cd5604a50f07b50d479e7895083c851d5b637850e178784dca776be80330cfd4",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-07-job-17000-218",
-      "reviewedAt": "2026-11-07T10:19:15Z",
+      "reviewEventId": "auto-2026-11-11-job-17000-218",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Výzkumný pracovník / výzkumná pracovnice VZ5 – junior",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1946,17 +1701,17 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:9ee7997147c20373b75c5a9d4c94927d64cecfaafb526a16fb1d4af1c1c4ce13"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:1e0b2db3e20598d9ae54c23c04541ef045bd0c7980f7116c1750f6909d1a03d3"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-07T10:19:15Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:b5ccc07f0956ea734d9288efe150e6c38a427a224081511febf4b0e7c6570546"
         }
       },
@@ -2661,6 +2416,41 @@
         }
       },
       "factHash": "sha256:e21d2b814caf96387b760870b3570ec08f5d71cce80375ced8be0e1a7b48ca73"
+    },
+    "job-21000-5680": {
+      "sourceHash": "sha256:85c824fc9eacf7bbbb4fd9ce917e39bd0117e10d9e8f76ec10116bba18bbf807",
+      "evidenceHash": "sha256:85c824fc9eacf7bbbb4fd9ce917e39bd0117e10d9e8f76ec10116bba18bbf807",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-21000-5680",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Selection procedure - POSTDOC IN THEORETICAL HADRON PHYSICS",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "选拔程序 - 理论强子物理学博士后",
+        "en": "Selection procedure - POSTDOC IN THEORETICAL HADRON PHYSICS",
+        "cs": "Výběrový řízenec - POSTDOCTORANDUS V TEORETICKÉ HADRONOVÉ FYZICE"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:7a50d3ba25bdc150da4c30949024cd010dd134bbdb20794b7d9fe854b183409a"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:fcabe8aa067035b5a034aad4b5dc2c0c4eebaa2f8b07e3a58301a47c406261ff"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:7abf201f6436b9824f793fc13f70ed0326acd44111da98f7be948793acf4235a"
+        }
+      },
+      "factHash": "sha256:8dba5936ce8afa2d579f6d11f206b5cd1cedb341863b4b42107f5a76a12a98a1"
     },
     "job-21000-8e94bb5bd334": {
       "sourceHash": "sha256:3412a1ab23519a554c8be864920e7c90b57dc25721ae7fabf0f2ee03cccb3550",
@@ -3992,6 +3782,41 @@
       },
       "factHash": "sha256:0e9493d136c34aad8d893e1260298987060c479e613149b1d8de6c59f21aa534"
     },
+    "job-23000-eb5a4b22-7152-4eb3-a4d6-7d7ee5778f8b": {
+      "sourceHash": "sha256:bf968a6dfdc64ee0da0eb838dfc567b37be077f3353a25cffc75644313041614",
+      "evidenceHash": "sha256:bf968a6dfdc64ee0da0eb838dfc567b37be077f3353a25cffc75644313041614",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-23000-eb5a4b22-7152-4eb3-a4d6-7d7ee5778f8b",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Akademický pracovník / akademická pracovnice - vedoucí katedry pro katedru matematiky, fyziky a technické výchovy Fakulty pedagogické  ZČU V PLZNI",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
+      "title": {
+        "zh-CN": "学术工作人员 - 数学、物理和技术教育系主任，教育学院ZČU普日布日",
+        "en": "Academic Staff Member / Academic Staff - Head of Department for the Department of Mathematics, Physics and Technical Education, Faculty of Education ZČU in Plzeň",
+        "cs": "Akademický pracovník / akademická pracovnice - vedoucí katedry pro katedru matematiky, fyziky a technické výchovy Fakulty pedagogické  ZČU V PLZNI"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:4b00e2685aaa62ae9c846cdc14b5886021a49840ea434dc2feafb04df39d9fec"
+        },
+        "en": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:4c1a24da63913d725de675eef90491813c35175658d3770b78bbca2c67e4d2a6"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:23fdd52e6f2fd5b3095d14aa4dfac8b4c87e6b9b13a7841d7b8300bb84f9cd6a"
+        }
+      },
+      "factHash": "sha256:9ff685461d08999db01523a5b38b2e0fd0c2b9634bf88943e79b50f972fcc5e1"
+    },
     "job-23000-eu469546": {
       "sourceHash": "sha256:1dad750cded984435ed696a3c9c308e66ca7e9c6dac9d8b0eccb28f708101f38",
       "evidenceHash": "sha256:1dad750cded984435ed696a3c9c308e66ca7e9c6dac9d8b0eccb28f708101f38",
@@ -4553,14 +4378,14 @@
       "factHash": "sha256:2ccd4b2ad7d6d1159a146c54a435cce128667435c4e92ff7c30aa027dd77f2bc"
     },
     "job-26000-2001475433": {
-      "sourceHash": "sha256:f41a033e93b14705b852098b83c0f0eb5c5d25ea11c503932c85771301a58286",
-      "evidenceHash": "sha256:f41a033e93b14705b852098b83c0f0eb5c5d25ea11c503932c85771301a58286",
+      "sourceHash": "sha256:a5954f3df640a692dca64e80ea3c56196cc0ea177b289ec24b1a12137645c345",
+      "evidenceHash": "sha256:a5954f3df640a692dca64e80ea3c56196cc0ea177b289ec24b1a12137645c345",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-10-job-26000-2001475433",
-      "reviewedAt": "2026-11-10T11:22:58Z",
+      "reviewEventId": "auto-2026-11-11-job-26000-2001475433",
+      "reviewedAt": "2026-11-11T10:54:01Z",
       "reviewedOriginalText": "Ředitel / ředitelka Centra sportovních aktivit VUT v Brně",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -4571,21 +4396,21 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:ccd28febc0f191797dc317635f5903723b70efd80fdeb851a1cd4a1d394f5f0a"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-10T11:22:58Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:f09d4bf0087e536c56ffd674df44f9ecdf0ccb2fad93def19158e90cb1deb3dd"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-10T11:22:58Z",
+          "reviewedAt": "2026-11-11T10:54:01Z",
           "contentHash": "sha256:f7ccae5ae088a090ef002c474f06e1f34a1a80b80394ec6b629e36102b0541ff"
         }
       },
-      "factHash": "sha256:93ed6b641fd6f3e4b611812dd0fc3069bd75fd50f6421f5a0267a32c20f4e3c2"
+      "factHash": "sha256:c0caef029d45c717167d60fcc031389b5dd83ad2a907960fe0aadb236893fa77"
     },
     "job-26000-2001488412": {
       "sourceHash": "sha256:5a8dd66a0f8112ae145075f484abc9ffdfec26b662054d07c6a51fdabcbe8398",
@@ -5077,6 +4902,111 @@
       },
       "factHash": "sha256:c86984955c4d47f74299d0885e8a1e6421844dccc8980bbf514e68137144beec"
     },
+    "job-27000-108": {
+      "sourceHash": "sha256:387486f5101f33152a76c64ecced649e999806e76de527197167fb760424f4fb",
+      "evidenceHash": "sha256:387486f5101f33152a76c64ecced649e999806e76de527197167fb760424f4fb",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-27000-108",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Odborný asistent / Odborná asistentka (úvazek 1,0)",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
+      "title": {
+        "zh-CN": "助理教授（1.0 工作量）",
+        "en": "Assistant Professor (1.0 FTE)",
+        "cs": "Odborný asistent / Odborná asistentka (úvazek 1,0)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:671c0c95b66ff7fd64efbe92ed00912a1cd23e08122b3770501f7c5922d02a34"
+        },
+        "en": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:5b7c6d255ce96c7313f8aa53c380d9f9f42c6dd055d678f1b7abd6b3b5dd8ccc"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:e651adf87090f940ab86e16e80ebea71f00de2549ed936ab78387c629ad24775"
+        }
+      },
+      "factHash": "sha256:69e95aba734045ba55afd373b3b5b734cc36cb760ea5ea146bfa989ebdedc14a"
+    },
+    "job-27000-109": {
+      "sourceHash": "sha256:9f161f05239ce6cd6b85fb96266b50f44db2bc0529a49ec48b99e41ebec5b071",
+      "evidenceHash": "sha256:9f161f05239ce6cd6b85fb96266b50f44db2bc0529a49ec48b99e41ebec5b071",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-27000-109",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Odborný asistent / Odborná asistentka (úvazek 0,2)",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
+      "title": {
+        "zh-CN": "助理教授 / 助理教授（0.2 工作量）",
+        "en": "Assistant Professor / Assistant Professor (0.2 FTE)",
+        "cs": "Odborný asistent / Odborná asistentka (úvazek 0,2)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:2dcb2c125af131af12bdcf24d72223dfac271c82b4623f53effa5d518251af4d"
+        },
+        "en": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:ef86e6224d0ff3be333778e33689655cd8f430c80b4e504b0641ab2a57d36d15"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:6c7d1b7c4f40bc96b68d7f14a6990a69fb77ff72156b47a1baf11e06fce8d685"
+        }
+      },
+      "factHash": "sha256:18cb613da51cb56af322dac5fa373c7b72fd1143f7875e277e11c539255ed545"
+    },
+    "job-27000-111": {
+      "sourceHash": "sha256:89c685432645b9f6c78394d6f2b2c0c6fbe001c5e76f105b340175beba46fcc1",
+      "evidenceHash": "sha256:89c685432645b9f6c78394d6f2b2c0c6fbe001c5e76f105b340175beba46fcc1",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-27000-111",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Odborný asistent / Odborná asistentka",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
+      "title": {
+        "zh-CN": "助理教授 / 助理教授",
+        "en": "Assistant Professor / Assistant Professor",
+        "cs": "Odborný asistent / Odborná asistentka"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:e2ea802a77dfada8a40af1a676eab723d6734dfe3c412def60c5afc2c7ec8a65"
+        },
+        "en": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:d9584de25e5b4b6dd7ac011830ef3aeed6e36e04548d348231cbd11c03dfd750"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:50b9ddd68a1a7ffc90a42f18f7a21f65d0cd37db421880bfbacf0cb1781ed948"
+        }
+      },
+      "factHash": "sha256:e26166e04a8a08646d3cc227cfcd256c0ebde323fc1164f2772a218254f512d8"
+    },
     "job-27000-85": {
       "sourceHash": "sha256:fd0142f7264f1c49bdecb4d69dcf6a71550f71ed81e2595b0d76f07d440ed676",
       "evidenceHash": "sha256:fd0142f7264f1c49bdecb4d69dcf6a71550f71ed81e2595b0d76f07d440ed676",
@@ -5566,6 +5496,41 @@
         }
       },
       "factHash": "sha256:a3ca7abaea74e70621a9189bb92f947c6fa4d50b7fa9efd1cfd02602c610c20d"
+    },
+    "job-41000-766": {
+      "sourceHash": "sha256:3541223cd439d5d8543f83b88a1da085cbacb30972d6f3a57312341864c2cf3b",
+      "evidenceHash": "sha256:3541223cd439d5d8543f83b88a1da085cbacb30972d6f3a57312341864c2cf3b",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-41000-766",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "FAPPZ: Odborný asistent pro obor aplikované mikrobiologie, bioaktivních látek a nanotechnologií",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
+      "title": {
+        "zh-CN": "FAPPZ：应用微生物学、生物活性物质和纳米技术领域的助理教授",
+        "en": "FAPPZ: Assistant Professor for the field of applied microbiology, bioactive compounds and nanotechnology",
+        "cs": "FAPPZ: Odborný asistent pro obor aplikované mikrobiologie, bioaktivních látek a nanotechnologií"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:403be15fe2c852ffa6eecf212f79becb468a73f59d9c1fbdd2f441a675ef854f"
+        },
+        "en": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:2f60c6068c2a70e6a7698934a883179702fe1de338432fcb5682973bf35131b6"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:50269179ff64e67d742523a5dae7d4413f3e0d7ab9ed7d5e9ccb5c95de910c71"
+        }
+      },
+      "factHash": "sha256:c642514261e173235ded4883e52b94faf237fc7880a41e05f341175b7641190b"
     },
     "job-43000-492828": {
       "sourceHash": "sha256:634589ccfc1f655d961c40fe003e920ebf92a7a8f258dcf8f36469968aefc888",
@@ -6197,6 +6162,41 @@
       },
       "factHash": "sha256:b256d26f2d91d5b14955796f7a698796f7c511e0b4ccad41657ed42a88ef35a2"
     },
+    "job-78271-76c52bee3716": {
+      "sourceHash": "sha256:36dc3b466da06d1414735b8964bff5f66f3f2a557c00f29cb73aa695ced0f0c6",
+      "evidenceHash": "sha256:36dc3b466da06d1414735b8964bff5f66f3f2a557c00f29cb73aa695ced0f0c6",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-78271-76c52bee3716",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Research assistant in String Theory (Ph.D. candidate)",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "弦理论研究助理（博士候选人）",
+        "en": "Research assistant in String Theory (Ph.D. candidate)",
+        "cs": "Vědecký asistent v teorii strun (doktorand)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:4c780f8a9ebdbf5bbf53be75bf14212e5dc3017579dfbb6a8415bb250677dcfb"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:a1b6352e0679c953e71e5bf9178a8c03797ff2cd7851e944d9e940a88d07ead7"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:a917f2811e71cf264152cf02697d491fa6352ba5676721ee80dd38eb170003e4"
+        }
+      },
+      "factHash": "sha256:2d4d23eb620b0096ede14ec3dc7c38058f0e3eea15dda2132acae544f94479a9"
+    },
     "job-78271-7c1d5ddbe395": {
       "sourceHash": "sha256:3e37f4a89f89a759963e14b2d13acb3c2d9de42c8db1049a0da515f025bf7b7f",
       "evidenceHash": "sha256:3e37f4a89f89a759963e14b2d13acb3c2d9de42c8db1049a0da515f025bf7b7f",
@@ -6617,6 +6617,41 @@
       },
       "factHash": "sha256:d1d2cad27960f939c779e5fd883a4476341c99930ffac4ab3cef97348d0f9861"
     },
+    "job-78271-f802b27b1625": {
+      "sourceHash": "sha256:36dc3b466da06d1414735b8964bff5f66f3f2a557c00f29cb73aa695ced0f0c6",
+      "evidenceHash": "sha256:36dc3b466da06d1414735b8964bff5f66f3f2a557c00f29cb73aa695ced0f0c6",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-78271-f802b27b1625",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Research assistant in String Theory (Ph.D. candidate)",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "弦理论研究助理（博士候选人）",
+        "en": "Research assistant in String Theory (Ph.D. candidate)",
+        "cs": "Vědecký asistent v teorii strun (doktorand)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:4c780f8a9ebdbf5bbf53be75bf14212e5dc3017579dfbb6a8415bb250677dcfb"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:a1b6352e0679c953e71e5bf9178a8c03797ff2cd7851e944d9e940a88d07ead7"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:a917f2811e71cf264152cf02697d491fa6352ba5676721ee80dd38eb170003e4"
+        }
+      },
+      "factHash": "sha256:8a58f52fa3d3ea3618f4f52a7fc10e57528e5b72ce79f06d6c1b1def554c93bf"
+    },
     "job-7c000-eu459760": {
       "sourceHash": "sha256:d73cac6eea07f8e484d15772ba7e877082542f8db74b5e283fbd77ea977f0c2f",
       "evidenceHash": "sha256:d73cac6eea07f8e484d15772ba7e877082542f8db74b5e283fbd77ea977f0c2f",
@@ -6827,6 +6862,41 @@
       },
       "factHash": "sha256:e36e99433915bd3065f0ddd245347960ae2c6082e11281875ba6d4f46090cc02"
     },
+    "job-rvvi-61388955-avcr1983": {
+      "sourceHash": "sha256:05c249346b8c48196c0294dd26d1ec391815190e0dc38dc80166e2674a03084b",
+      "evidenceHash": "sha256:05c249346b8c48196c0294dd26d1ec391815190e0dc38dc80166e2674a03084b",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-rvvi-61388955-avcr1983",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Postdoctoral Fellow /Associate Scientist in Computational Biophysics",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "计算生物物理学博士后研究员/副科学家",
+        "en": "Postdoctoral Fellow /Associate Scientist in Computational Biophysics",
+        "cs": "Postdoktorand / asistent výzkumný v počítačové biophysice"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:c0a8b29ba2e78ef23dda477b38c245439d85984a605960f1fec2d0efc3badd96"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:217b3e544c63c8fe8e7b8e86ae11e3ed0f92026d0b9bc4bfbf5677af94f56e47"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:b631574bc3e93400896f48654cc14a85a8aa0cad2b6da72240a79d43509ad27a"
+        }
+      },
+      "factHash": "sha256:8202780f74d0760daffb4cb07fc461e6f60a1208725525d54f7460ca8accb822"
+    },
     "job-rvvi-61389013-avcr1958": {
       "sourceHash": "sha256:e12d99f83d599d6407a98ddd0f63d5a3ad102a933cf6a9b13178020603781406",
       "evidenceHash": "sha256:e12d99f83d599d6407a98ddd0f63d5a3ad102a933cf6a9b13178020603781406",
@@ -6861,6 +6931,111 @@
         }
       },
       "factHash": "sha256:ca9beffb68bb8a7a89894281bbf2171204b522ef02f9e2f985fe282f29b4cdb0"
+    },
+    "job-rvvi-61389013-avcr1975": {
+      "sourceHash": "sha256:a89ed1c03435c27ce560490c69663dfdb04d5aa99e499ec8533c77a9d5910261",
+      "evidenceHash": "sha256:a89ed1c03435c27ce560490c69663dfdb04d5aa99e499ec8533c77a9d5910261",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-rvvi-61389013-avcr1975",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Postdoctoral position Controlled surface initiated polymerization and adaptive polymer brushes",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "博士后职位：可控表面引发聚合与自适应聚合刷",
+        "en": "Postdoctoral position Controlled surface initiated polymerization and adaptive polymer brushes",
+        "cs": "Postdoktorandská pozice Řízená povrchová iniciace polymerizace a adaptivní polymerové štěty"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:f37bcb48dc291cd1c8aa44a7d7cdf1cc0a6e5e467869f822104089d6fc607946"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:16f92e16b8a87547dbc3d8fdb87bfb17c39d780f9c463fc1e9d81b89a87f586a"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:ba269d734480094e2cf10edabd0e8c23d747ef802bf1dd5ee8f15aa25383d656"
+        }
+      },
+      "factHash": "sha256:dbf0a9bc0d83dddab1f3bc09c1e2c3b6bddbdc7e639a7f2dfdd8375345b18079"
+    },
+    "job-rvvi-61389013-avcr1976": {
+      "sourceHash": "sha256:ebac9f0fd2927845e250cf6463c289a4e4dd4efd1973660ae1d213f95c03e757",
+      "evidenceHash": "sha256:ebac9f0fd2927845e250cf6463c289a4e4dd4efd1973660ae1d213f95c03e757",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-rvvi-61389013-avcr1976",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Postdoctoral position in The Department of Polymers for Electronics and Photonics",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "电子与光子学聚合物部门的博士后职位",
+        "en": "Postdoctoral position in The Department of Polymers for Electronics and Photonics",
+        "cs": "Postdoktorandská pozice v Ústavu polymerů pro elektroniku a fotoniku"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:962b03b9da24b01a3cded8a94aae8b68b3be81a5592dca12777690057f2a9f54"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:e64cd03ef0edc150c152ee874947394a318a4a779f0133a7d6a3445724682bf4"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:77033bf74f57a8fb0a643ce8f5dc74552a21125f028555d8258187cedc59a40a"
+        }
+      },
+      "factHash": "sha256:c0f8c1d9771a3480b2df006db6a83b41bf0001c031c1496b08faa854fcb38f6a"
+    },
+    "job-rvvi-61389013-avcr1977": {
+      "sourceHash": "sha256:7098704f036c5f9671fd973659b2a3e777bd50b6063cddce17a43c7669c12782",
+      "evidenceHash": "sha256:7098704f036c5f9671fd973659b2a3e777bd50b6063cddce17a43c7669c12782",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-rvvi-61389013-avcr1977",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Call for proposals to establish and lead a new research department: Polymer Informatics, Automated Polymer Synthesis and Machine Learning",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "关于建立和领导新研究部门的提案征集：聚合物信息学、自动化聚合物合成与机器学习",
+        "en": "Call for proposals to establish and lead a new research department: Polymer Informatics, Automated Polymer Synthesis and Machine Learning",
+        "cs": "Zveřejnění nabídek k zřízení a vedení nového výzkumného oddělení: Polymer Informatics, Automated Polymer Synthesis and Machine Learning"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:7492ff28ca1ddf7208b90385647455439b2761558b6126e8a41abeb7c1ab2f5c"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:6e0396992360c4692a09bb159d83cf4d717341ed98e398426ad65b2f0d65c345"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:5b537ff4db51d5da9d02efd28d4bbf7e23947ec1d5e2b89b1773e6aa7c03290c"
+        }
+      },
+      "factHash": "sha256:b1c8ba1c3971ef55d99e4d10a87af905cd99b80a1d72f9ba567f1c21f2822f8c"
     },
     "job-rvvi-61389021-eme": {
       "sourceHash": "sha256:0ad4fa0111f3f19e05e12522b24d8773d0fe06333940b12c61462a2ee0cef918",
@@ -7001,6 +7176,41 @@
         }
       },
       "factHash": "sha256:af0f84f5fb80c8708297aef755372ee0fd399ef263a1a964178e7f8a1295ad27"
+    },
+    "job-rvvi-67985904-avcr1982": {
+      "sourceHash": "sha256:c0e41c6a200d0fd4fde1cf5374596c1ad0f994462a58cb31c99ffaa2ccc20155",
+      "evidenceHash": "sha256:c0e41c6a200d0fd4fde1cf5374596c1ad0f994462a58cb31c99ffaa2ccc20155",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-11-job-rvvi-67985904-avcr1982",
+      "reviewedAt": "2026-11-11T10:54:01Z",
+      "reviewedOriginalText": "Postdoctoral Researcher in Primary Cilia Signalling Research career profile: Recognised Researcher (R2)",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "初级纤毛信号传导研究博士后研究员职业档案：知名研究人员（R2）",
+        "en": "Postdoctoral Researcher in Primary Cilia Signalling Research career profile: Recognised Researcher (R2)",
+        "cs": "Postdoktorand v oblasti výzkumu signálního přenosu primárních cilíí kariérní profil: Uznávaný vědec (R2)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:74aa9498163f649db1aa1a0161ccfee15d3bf954b28e238d7f6c2cb8320abbf0"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:13c2e29db4e56cb6ad59df909f8ea39d8426edde37c8c035baa0e03902cd56f5"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-11T10:54:01Z",
+          "contentHash": "sha256:f7c0033102c4f0bcff5eee3f8b28b06279dfcbbfff95ba34230ef3b3eec85386"
+        }
+      },
+      "factHash": "sha256:a1681a368c1c0693fe703fc230736f950f3e90418c9ba3c83a534d7d61813c30"
     },
     "job-rvvi-67985955-avcr1927": {
       "sourceHash": "sha256:ca0ec98870f57f87983e446968d3367bcd3317934548030986b0b063b6abc825",
