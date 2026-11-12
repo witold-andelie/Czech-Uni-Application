@@ -67,12 +67,15 @@ CONFIRMED = {"matched", "operator_verified"}
 # (a317b98), so with no complete listing a post's notice page is read itself,
 # bounded: a post read within NOTICE_CHECK_DAYS is not read again, at most
 # NOTICE_READS_PER_RUN notices are read per run, and a 429 or a page that is
-# not the notice ends them for the run. Four days leaves three to read a post
-# again before its seven-day confirmation lapses; some thirty posts come to
-# about eight EURAXESS requests a day, within A112's budget of about twenty.
+# not the notice ends them for the run. Runs are 3-4 days apart since
+# 2026-11-12 (refresh.yml), so a run reads every post last read before the
+# previous run: two days, not four, or a post would wait for the second run
+# after its read and its seven-day confirmation would lapse. The cap is three
+# runs' worth: about 45 EURAXESS requests per run, some 13 a day, within
+# A112's budget of about twenty.
 # The employer's own page still comes first.
-NOTICE_CHECK_DAYS = 4
-NOTICE_READS_PER_RUN = 15
+NOTICE_CHECK_DAYS = 2
+NOTICE_READS_PER_RUN = 45
 # A listing's detail pages read, at most and once per run, to find the page
 # that titles an attached PDF (attachment_pages; UPCE lists four).
 DETAIL_PAGES_PER_LISTING = 10

@@ -2,7 +2,10 @@ name: Scheduled official-source refresh
 
 on:
   schedule:
-    - cron: '17 2 * * *'
+    # Every 3-4 days (owner decision 2026-11-12, three times slower than daily). Fixed
+    # days of the month, not */3, so no month-end gap is shorter than 3 days; the longest
+    # gap, 28th to the 1st of a 31-day month, is 4 days, inside the 7-day live-check window.
+    - cron: '17 2 1,4,7,10,13,16,19,22,25,28 * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -26,10 +29,12 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-24.04
-    # Setup ~5 min + task tick <=75 min + live verification <=25 min + commits.
+    # Setup ~5 min + task tick <=75 min + live verification <=75 min + commits.
+    # One run now covers the 3-4 days three daily runs did: the live check reads every
+    # approved post once per run instead of the oldest ~250 (2026-11-12).
     # At a 35-min tick discovery and four shards never ran (2026-10-06); the
     # repository is public, so hosted-runner minutes are not billed.
-    timeout-minutes: ${{ github.event.inputs.mode == 'adapters' && 20 || 135 }}
+    timeout-minutes: ${{ github.event.inputs.mode == 'adapters' && 20 || 180 }}
     permissions:
       contents: write
       actions: write
@@ -177,9 +182,9 @@ jobs:
           # and a wall-clock budget so a tick can never run away. A 404/403/
           # 500/timeout is recorded as source evidence change, never as a
           # closed vacancy (docs/REFRESH_POLICY.md).
-          LIVE_VERIFY_BUDGET_SECONDS: "1500"
+          LIVE_VERIFY_BUDGET_SECONDS: "4500"
         run: |
-          budget="${LIVE_VERIFY_BUDGET_SECONDS:-1500}"
+          budget="${LIVE_VERIFY_BUDGET_SECONDS:-4500}"
           python -u services/ingestion/src/cli/verify_live_titles.py --budget "$budget" || true
           python - <<'PY'
           import json

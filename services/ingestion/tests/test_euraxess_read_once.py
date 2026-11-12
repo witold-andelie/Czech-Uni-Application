@@ -330,7 +330,7 @@ def _notice_page(code: int, title: str) -> str:
             f"<body><h1>{title}</h1><p>Job Information Organisation/Company Czech Technical University in Prague</p></body></html>")
 
 
-def test_without_a_listing_a_post_is_read_on_its_notice_at_most_every_four_days():
+def test_without_a_listing_a_post_is_read_on_its_notice_at_most_every_two_days():
     """Owner decision 2026-10-10: the runners cannot read the EURAXESS search."""
     import verify_live_titles as v
 
@@ -340,10 +340,11 @@ def test_without_a_listing_a_post_is_read_on_its_notice_at_most_every_four_days(
     assert v.euraxess_evidence(task, None, None, NOW, notice_reads_left=1) == (url(466323), None)
     assert v.euraxess_evidence(task, None, None, NOW)[1]["status"] == "skipped_budget"  # no reads left
     read = {"candidateId": task["candidateId"], "status": "matched", "httpStatus": 200}
-    two_days = {**read, "checkedAt": iso(NOW - timedelta(days=2))}
-    assert v.euraxess_evidence(task, two_days, "gen-1", NOW, notice_reads_left=5)[1]["carriedFrom"] == "gen-1"
-    four_days = {**read, "checkedAt": iso(NOW - timedelta(days=4))}
-    assert v.euraxess_evidence(task, four_days, "gen-1", NOW, notice_reads_left=5) == (url(466323), None)
+    one_day = {**read, "checkedAt": iso(NOW - timedelta(days=1))}
+    assert v.euraxess_evidence(task, one_day, "gen-1", NOW, notice_reads_left=5)[1]["carriedFrom"] == "gen-1"
+    # Runs are 3-4 days apart (2026-11-12): the next run reads what the last one read.
+    three_days = {**read, "checkedAt": iso(NOW - timedelta(days=3))}
+    assert v.euraxess_evidence(task, three_days, "gen-1", NOW, notice_reads_left=5) == (url(466323), None)
     gone = {**read, "status": "http_404", "httpStatus": 404, "checkedAt": iso(NOW - timedelta(days=1))}
     assert v.euraxess_evidence(task, gone, "gen-1", NOW, notice_reads_left=5)[1]["status"] == "http_404"  # not re-read daily
 
