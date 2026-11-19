@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T13:38:30Z",
+  "generatedAt": "2026-11-19T12:24:59Z",
   "dataClass": "operational_coverage_audit",
   "catalogKind": "coverage_evidence_not_opportunity_publication",
   "schemaVersion": 2,
@@ -12,10 +12,10 @@
     "supportedPaidMaster": "supportedCandidate AND the paidMaster facts"
   },
   "publication": {
-    "activeVersion": "v2026-11-16.2",
-    "publishedAt": "2026-11-16T13:38:29Z",
-    "candidateGenerationId": "cg-e9013f28a8fc403ba6d6f2cbc54d371f",
-    "sourceRunSetDigest": "sha256:ddb5e0a3b2f3e5256006c863ef7c06e824f690ad2c20e3accf22a082745cf93a",
+    "activeVersion": "v2026-11-19.1",
+    "publishedAt": "2026-11-19T12:24:59Z",
+    "candidateGenerationId": "cg-5643fa9e11374329b839890c9597dbe9",
+    "sourceRunSetDigest": "sha256:bf5b0c3b552566f2807cdb76b7fa518be0c42862bed5a7b3c1654c26734ee3cc",
     "reportBoundToActiveVersion": true,
     "historical": false
   },
@@ -532,7 +532,7 @@
   },
   "jobs": {
     "registeredOfficialListingSources": 49,
-    "lastRunCompleteSources": 4,
+    "lastRunCompleteSources": 8,
     "lastDiscoverySuccessAt": null,
     "discoveryIntervalHours": 4,
     "lastStatusRecheckSuccessAt": null,
@@ -561,18 +561,18 @@
     },
     "independentNonHeiOfficialSources": 14,
     "inventoryRows": 5099,
-    "discoveredCandidates": 783,
-    "currentCandidates": 311,
-    "supportedCandidates": 288,
-    "unspecifiedScopeCandidates": 23,
-    "reviewPending": 51,
-    "approved": 237,
-    "public": 226,
-    "currentOpenOrUnknown": 288,
-    "currentPaidMasterScopeCandidates": 73,
-    "supportedPaidMasterScopeCandidates": 73,
-    "publishedRecords": 413,
-    "publishedPaidMasterScopeJobs": 61,
+    "discoveredCandidates": 793,
+    "currentCandidates": 291,
+    "supportedCandidates": 272,
+    "unspecifiedScopeCandidates": 19,
+    "reviewPending": 39,
+    "approved": 233,
+    "public": 216,
+    "currentOpenOrUnknown": 272,
+    "currentPaidMasterScopeCandidates": 76,
+    "supportedPaidMasterScopeCandidates": 76,
+    "publishedRecords": 403,
+    "publishedPaidMasterScopeJobs": 62,
     "sourceConnectedSchools": 31,
     "fullyAssessedSchoolScope": 0,
     "missingInstitutions": [
@@ -695,17 +695,24 @@
     "lastDiscoveryRun": {
       "runKind": "selected_sources",
       "expectedSourceIds": [
-        "jcu-central-vacancies",
-        "utb-central-careers",
-        "osu-central-careers",
-        "zcu-central-vacancies",
-        "avu-selection-procedures"
+        "muni-careers",
+        "czu-central-jobs",
+        "upce-central-vacancies",
+        "slu-central-vacancies",
+        "unob-academic-selection",
+        "jamu-faculty-vacancies",
+        "peuni-central-careers",
+        "unyp-central-careers"
       ],
       "completeSourceIds": [
-        "jcu-central-vacancies",
-        "osu-central-careers",
-        "utb-central-careers",
-        "zcu-central-vacancies"
+        "czu-central-jobs",
+        "jamu-faculty-vacancies",
+        "muni-careers",
+        "peuni-central-careers",
+        "slu-central-vacancies",
+        "unob-academic-selection",
+        "unyp-central-careers",
+        "upce-central-vacancies"
       ],
       "deferredSourceIds": [],
       "lastScheduledSuccessAt": null,
@@ -713,54 +720,84 @@
       "singleSourceRefreshCannotCountAsAllSourceSuccess": true,
       "perSourceRunStatus": [
         {
-          "sourceId": "jcu-central-vacancies",
+          "sourceId": "muni-careers",
+          "parserVersion": "muni_vacancies",
+          "attempted": true,
+          "attempts": 34,
+          "failedAttempts": 0,
+          "lastAttemptAt": null,
+          "runComplete": true,
+          "overdue": false
+        },
+        {
+          "sourceId": "czu-central-jobs",
+          "parserVersion": "czu_pozice_rest",
+          "attempted": true,
+          "attempts": 10,
+          "failedAttempts": 0,
+          "lastAttemptAt": null,
+          "runComplete": true,
+          "overdue": false
+        },
+        {
+          "sourceId": "upce-central-vacancies",
           "parserVersion": "generic_listing_links",
           "attempted": true,
-          "attempts": 15,
+          "attempts": 24,
           "failedAttempts": 0,
           "lastAttemptAt": null,
           "runComplete": true,
           "overdue": false
         },
         {
-          "sourceId": "utb-central-careers",
-          "parserVersion": "utb_careers",
-          "attempted": true,
-          "attempts": 7,
-          "failedAttempts": 0,
-          "lastAttemptAt": null,
-          "runComplete": true,
-          "overdue": false
-        },
-        {
-          "sourceId": "osu-central-careers",
+          "sourceId": "slu-central-vacancies",
           "parserVersion": "generic_listing_links",
           "attempted": true,
-          "attempts": 17,
+          "attempts": 1,
           "failedAttempts": 0,
           "lastAttemptAt": null,
           "runComplete": true,
           "overdue": false
         },
         {
-          "sourceId": "zcu-central-vacancies",
-          "parserVersion": "zcu_document_feed",
+          "sourceId": "unob-academic-selection",
+          "parserVersion": "inline_heading_jobs",
           "attempted": true,
-          "attempts": 27,
+          "attempts": 4,
           "failedAttempts": 0,
           "lastAttemptAt": null,
           "runComplete": true,
           "overdue": false
         },
         {
-          "sourceId": "avu-selection-procedures",
+          "sourceId": "jamu-faculty-vacancies",
+          "parserVersion": "inline_heading_jobs",
+          "attempted": true,
+          "attempts": 2,
+          "failedAttempts": 0,
+          "lastAttemptAt": null,
+          "runComplete": true,
+          "overdue": false
+        },
+        {
+          "sourceId": "peuni-central-careers",
           "parserVersion": "generic_listing_links",
           "attempted": true,
-          "attempts": 6,
-          "failedAttempts": 5,
+          "attempts": 1,
+          "failedAttempts": 0,
           "lastAttemptAt": null,
-          "runComplete": false,
-          "overdue": true
+          "runComplete": true,
+          "overdue": false
+        },
+        {
+          "sourceId": "unyp-central-careers",
+          "parserVersion": "inline_heading_jobs",
+          "attempted": true,
+          "attempts": 1,
+          "failedAttempts": 0,
+          "lastAttemptAt": null,
+          "runComplete": true,
+          "overdue": false
         }
       ]
     },
@@ -839,7 +876,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 17,
+        "currentCandidateJobs": 14,
         "currentPaidMasterScopeCandidates": 4,
         "publishedPaidMasterScopeJobs": 2
       },
@@ -857,8 +894,8 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 3,
-        "currentPaidMasterScopeCandidates": 2,
+        "currentCandidateJobs": 12,
+        "currentPaidMasterScopeCandidates": 3,
         "publishedPaidMasterScopeJobs": 2
       },
       {
@@ -875,7 +912,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 5,
+        "currentCandidateJobs": 4,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -894,7 +931,7 @@
           }
         ],
         "currentCandidateJobs": 41,
-        "currentPaidMasterScopeCandidates": 11,
+        "currentPaidMasterScopeCandidates": 15,
         "publishedPaidMasterScopeJobs": 11
       },
       {
@@ -911,9 +948,9 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 8,
+        "currentCandidateJobs": 6,
         "currentPaidMasterScopeCandidates": 1,
-        "publishedPaidMasterScopeJobs": 0
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_16000",
@@ -947,9 +984,9 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 10,
-        "currentPaidMasterScopeCandidates": 2,
-        "publishedPaidMasterScopeJobs": 2
+        "currentCandidateJobs": 12,
+        "currentPaidMasterScopeCandidates": 1,
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_18000",
@@ -965,7 +1002,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 9,
+        "currentCandidateJobs": 8,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -1022,7 +1059,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 53,
+        "currentCandidateJobs": 52,
         "currentPaidMasterScopeCandidates": 29,
         "publishedPaidMasterScopeJobs": 26
       },
@@ -1058,7 +1095,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 18,
+        "currentCandidateJobs": 16,
         "currentPaidMasterScopeCandidates": 5,
         "publishedPaidMasterScopeJobs": 5
       },
@@ -1076,7 +1113,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 6,
+        "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -1112,7 +1149,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 12,
+        "currentCandidateJobs": 10,
         "currentPaidMasterScopeCandidates": 3,
         "publishedPaidMasterScopeJobs": 3
       },
@@ -1137,7 +1174,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 9,
+        "currentCandidateJobs": 8,
         "currentPaidMasterScopeCandidates": 2,
         "publishedPaidMasterScopeJobs": 1
       },
@@ -1155,7 +1192,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 2,
+        "currentCandidateJobs": 3,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -1173,9 +1210,9 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 3,
-        "currentPaidMasterScopeCandidates": 0,
-        "publishedPaidMasterScopeJobs": 0
+        "currentCandidateJobs": 2,
+        "currentPaidMasterScopeCandidates": 1,
+        "publishedPaidMasterScopeJobs": 1
       },
       {
         "institutionId": "msmt-vs_41000",
@@ -1191,7 +1228,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 8,
+        "currentCandidateJobs": 7,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
@@ -1209,8 +1246,8 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 5,
-        "currentPaidMasterScopeCandidates": 2,
+        "currentCandidateJobs": 8,
+        "currentPaidMasterScopeCandidates": 3,
         "publishedPaidMasterScopeJobs": 2
       },
       {
@@ -1227,8 +1264,8 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 4,
-        "currentPaidMasterScopeCandidates": 3,
+        "currentCandidateJobs": 2,
+        "currentPaidMasterScopeCandidates": 1,
         "publishedPaidMasterScopeJobs": 0
       },
       {
@@ -1619,7 +1656,7 @@
             "lastSuccessAt": null
           }
         ],
-        "currentCandidateJobs": 5,
+        "currentCandidateJobs": 0,
         "currentPaidMasterScopeCandidates": 0,
         "publishedPaidMasterScopeJobs": 0
       },
