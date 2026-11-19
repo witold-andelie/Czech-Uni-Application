@@ -2,41 +2,6 @@
   "schemaVersion": 1,
   "note": "Automatic reviews (owner decision 2026-10-02); written by auto_review.py only where no human review matches.",
   "reviews": {
-    "job-11000-202611-ap3-ff-ksocp-129": {
-      "sourceHash": "sha256:c04b90e0ada003705a12e42a0030eac185e2dd8d9c399e386c855952805df080",
-      "evidenceHash": "sha256:c04b90e0ada003705a12e42a0030eac185e2dd8d9c399e386c855952805df080",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-16-job-11000-202611-ap3-ff-ksocp-129",
-      "reviewedAt": "2026-11-16T11:36:50Z",
-      "reviewedOriginalText": "Associate Professor or Professor in the Department of Social Work",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
-      "title": {
-        "zh-CN": "社会工作系的副教授或教授",
-        "en": "Associate Professor or Professor in the Department of Social Work",
-        "cs": "Docent nebo profesor v oddělení sociální práce"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:cde04dbfb7a87270d65468116db6cc0f69baceaf2edf398333776f7716fb1139"
-        },
-        "en": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:1bde308ba0791f6ccb20c29f693af0e69c1360f604056316e489f0d38fbca44e"
-        },
-        "cs": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:215afc1aeb506b345a30c4f0a16278649238f30d1e30aef4485566e35644aad0"
-        }
-      },
-      "factHash": "sha256:083dd2e77452855ddab0efdf9eb728980984c884868b5d08237eec977d1a74a7"
-    },
     "job-11000-202611-ap4-lfpl-pf-137": {
       "sourceHash": "sha256:ed8dc9fb75d9995e95721dec876bcb441379283af2dba3ad94f65d1a1c6cc90d",
       "evidenceHash": "sha256:ed8dc9fb75d9995e95721dec876bcb441379283af2dba3ad94f65d1a1c6cc90d",
@@ -352,6 +317,41 @@
       },
       "factHash": "sha256:afd5298fd65dfc0fcda315c674241d1ef4590aab459ae874b953e0360b5566b5"
     },
+    "job-12000-497436689ea4": {
+      "sourceHash": "sha256:804550795e307bed5539c3ee51b30e521d57ddf2d3d5396325033e617c43c008",
+      "evidenceHash": "sha256:804550795e307bed5539c3ee51b30e521d57ddf2d3d5396325033e617c43c008",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-19-job-12000-497436689ea4",
+      "reviewedAt": "2026-11-19T12:22:41Z",
+      "reviewedOriginalText": "Asistent/asistentka v oboru speciální pedagogika (PF JU)",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
+      "title": {
+        "zh-CN": "特殊教育领域助理（PF JU）",
+        "en": "Assistant in the field of special education (PF JU)",
+        "cs": "Asistent/asistentka v oboru speciální pedagogika (PF JU)"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:9d2b10e3b6d7d34e684b44bc410592173340ddebc15a47ab1c354f2bd64e8554"
+        },
+        "en": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:a647c85d481ab03aac1d0842726559da40be3b0bb370a16d8b392994e48960f9"
+        },
+        "cs": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:5e12d737bc1faac7015bb657d74ffce824d6dd575132bd4df11dbd9ed1222f82"
+        }
+      },
+      "factHash": "sha256:51151b2168ac60aeff12f87d8148d607bb33fcadf15d4f013a6e2e6181a3e064"
+    },
     "job-12000-4e1b0587556e": {
       "sourceHash": "sha256:479734dde0d106413c311f04aec85fe9f2d9b04d12139c41bbed08ea12d547ed",
       "evidenceHash": "sha256:479734dde0d106413c311f04aec85fe9f2d9b04d12139c41bbed08ea12d547ed",
@@ -423,14 +423,14 @@
       "factHash": "sha256:60cd99739bab920b9c42bd25a8c1ed73a02ccd56557491f1bb0969e64bdfe233"
     },
     "job-13000-05e46ded8a22": {
-      "sourceHash": "sha256:8e35cc950379e18f79b0e8fd2c15b20963215e06ef8670726cb680c0d3c84c34",
-      "evidenceHash": "sha256:8e35cc950379e18f79b0e8fd2c15b20963215e06ef8670726cb680c0d3c84c34",
+      "sourceHash": "sha256:b4e33028199c4aba47a1bb5c57bae2313e68fced763fdb46d16a1593eea167ac",
+      "evidenceHash": "sha256:b4e33028199c4aba47a1bb5c57bae2313e68fced763fdb46d16a1593eea167ac",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-13-job-13000-05e46ded8a22",
-      "reviewedAt": "2026-11-13T11:24:32Z",
+      "reviewEventId": "auto-2026-11-19-job-13000-05e46ded8a22",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Postdoctoral Position in Experimental Fluid Mechanics",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -441,31 +441,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:a5d6ed2a40b59cfae030dec5e25f4bcc8caa60b1ce15f1f7f74aa0386e1e4009"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:f3fdf50ffdf1a383f913431b6b50bbcfff41e749a2bf5875bb04659c8a9b9512"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:c4cf36432713c87b9338bcc932770164c4a09debbc97ce05f7a9a895458627e2"
         }
       },
       "factHash": "sha256:254f440ee7bc4e31dd4058304516cb8a79042217eaa1e76a8a788a904e683aa8"
     },
     "job-13000-6c060986eb6c": {
-      "sourceHash": "sha256:2cae8e2581a003149512471c033938f01038b2256df07b68f619de805f7d364b",
-      "evidenceHash": "sha256:2cae8e2581a003149512471c033938f01038b2256df07b68f619de805f7d364b",
+      "sourceHash": "sha256:8d51ad980095ce8d569eadf3009de145b812ed5e04c6ab271e41a87f635aba86",
+      "evidenceHash": "sha256:8d51ad980095ce8d569eadf3009de145b812ed5e04c6ab271e41a87f635aba86",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-13-job-13000-6c060986eb6c",
-      "reviewedAt": "2026-11-13T11:24:32Z",
+      "reviewEventId": "auto-2026-11-19-job-13000-6c060986eb6c",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Head of the Department of Pedagogy and Applied Disciplines",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -476,31 +476,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:abe08016b9e0ba07c9e1a97db44fdb42a10aae9b168b61680259655ff03881ca"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:4cbf6e99e761649a27ebed784debd3d893238f0cf09889122c89a2412f664abc"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:f1235a9afd20bc21309401d641a803c93e99e8da0e37b4b68fae8db039ff1ebf"
         }
       },
       "factHash": "sha256:13b38f5a15b5af485b5a72630a2ed602845b139cc6c26d95787e419e87f3b17c"
     },
     "job-14000-81817": {
-      "sourceHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
-      "evidenceHash": "sha256:64e7d11f3b86a5e1eca24b51e02c4caa0a4dea6f7e64c118f3a940ee73cacf34",
+      "sourceHash": "sha256:9a69a330e87849bc460c69a90128e6abe300b906a34dedba11c831a41301d1e7",
+      "evidenceHash": "sha256:9a69a330e87849bc460c69a90128e6abe300b906a34dedba11c831a41301d1e7",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81817",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81817",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Assistant Professor with focus on computational linguistics",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -511,31 +511,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:2558bba31bb717379ae69eaeb1e47765fe977c66e2fc46814b7d53351f64aeb9"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:454b49b682b0ee6e4b91acdbfeadf49b2af2d4d01884973043bbf6f3141e3187"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:0311576447571dc47c740b03ebd1d041f2f6dd45f43ac7bf23243f380303dffb"
         }
       },
       "factHash": "sha256:64b7bfb8c91cc0ccdf64bfca10e861f2b00ff032bfeb761dbd73b4019afa3241"
     },
     "job-14000-81819": {
-      "sourceHash": "sha256:e272528ceca88b2e5454c38e833e4feeb5e57e9e8cfa43faa06be375d448afca",
-      "evidenceHash": "sha256:e272528ceca88b2e5454c38e833e4feeb5e57e9e8cfa43faa06be375d448afca",
+      "sourceHash": "sha256:f57176216ab5e342b2b930387d367f34625932403cfd49f0f9991dd5564e0c6f",
+      "evidenceHash": "sha256:f57176216ab5e342b2b930387d367f34625932403cfd49f0f9991dd5564e0c6f",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81819",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81819",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "JUNIOR RESEARCH GROUP LEADER IN LIFE SCIENCES",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -546,31 +546,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:43a70a9874d2feefaa1126d45820ed5f8d2f1a0c293f45690b6c9913b9a63870"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:b61080352db35de20509aaa4e5032af957752cbae4ce559a1573ef7c68bd252b"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:185d3a64674fa15b0eb19f2dd1885e3690280d9e46e7097c6c79f455c57c3a92"
         }
       },
-      "factHash": "sha256:b43e0c8dc621cfd732d63b5b54406884ea10a5577ecb2afc19e6170be4a29136"
+      "factHash": "sha256:b3aa38115a2652f91a1edd837d6bc89e611f1b502a86ebd81ecceab230bc04fd"
     },
     "job-14000-81854": {
-      "sourceHash": "sha256:13fe638d26cc674de59bba187e01993f3ff12a271ddb1d27e2c3bcbd9af50236",
-      "evidenceHash": "sha256:13fe638d26cc674de59bba187e01993f3ff12a271ddb1d27e2c3bcbd9af50236",
+      "sourceHash": "sha256:fc899245188f979f66fff24b57ea72985ef747e994bded3b2a407690b1d03ae9",
+      "evidenceHash": "sha256:fc899245188f979f66fff24b57ea72985ef747e994bded3b2a407690b1d03ae9",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81854",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81854",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Assistant professor at the Department of Political Science specialising in security studies, research methods and digital technologies",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -581,31 +581,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:aec59227d8268061129ad20583c571336afc8b167b1a418cac6cd1d74060233f"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:85c51a4bf85a9624efb80dd7c6e0511900824739b594cb73c0857b36078e4666"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:bdebef08dc0843f58696518257860842cefc3c5fcc13df1d76fe3d6d966490a8"
         }
       },
       "factHash": "sha256:905f6d40a87ecdc291e5f88c073f9d30e680d5f4572ed8fa524787df0bcfbcff"
     },
     "job-14000-81856": {
-      "sourceHash": "sha256:bb9409788a5004626629f516ae1dc302b301cccc6f6b81eec3c90f013b69362e",
-      "evidenceHash": "sha256:bb9409788a5004626629f516ae1dc302b301cccc6f6b81eec3c90f013b69362e",
+      "sourceHash": "sha256:fb8e528f43f3865a290de387f3847d0670cd67cbe7f7f86c4b0131c919482df3",
+      "evidenceHash": "sha256:fb8e528f43f3865a290de387f3847d0670cd67cbe7f7f86c4b0131c919482df3",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81856",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81856",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Assistant professor at the Department of Political Science specialising in political behaviour, quantitative methods and spatial data",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -616,31 +616,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:52287e76bd950d5a66260a61d455b80b4501e2e55f4a5e4e06328b4133bcf35c"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:dc3bc2ca2463ab58893d57e6b072d5831091722771f5e3888b48a4548d0c4b60"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:e7165208dba5800ee2fb1cd427b6726f94308fbce0028ee9ba986da90ece5077"
         }
       },
       "factHash": "sha256:6a16793b32c710748c26dbc99dfbbd56cb922551cd8ca51ebbaea73360664ed9"
     },
     "job-14000-81857": {
-      "sourceHash": "sha256:531bce226ce12555b14318e0064f2890b24503c8e59b7d29b21f38095e6d7ba0",
-      "evidenceHash": "sha256:531bce226ce12555b14318e0064f2890b24503c8e59b7d29b21f38095e6d7ba0",
+      "sourceHash": "sha256:03263b5975472cfca670b1f82849e79bbb09bfe2ba573040cd5df65b16942fcf",
+      "evidenceHash": "sha256:03263b5975472cfca670b1f82849e79bbb09bfe2ba573040cd5df65b16942fcf",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81857",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81857",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Assistant (Junior Lecturer) at the Department of Political Science specialising in Czech politics, contemporary history and socio-political change",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -651,31 +651,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:aca907e02b4f576d30e71cbfebb6813d513f8dcaea42becaeb61bdb3c79d4629"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:5840852eb94a1f290c880609ff09917be2e5f805a1648526ea453e491c87978b"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:d8554f27ec6961142bff9ce46042abd6c5047427f48b89a9ffdd8e67fe9974bd"
         }
       },
       "factHash": "sha256:ed712d5c29c66d40c86d502f2c7d7d9a638ab0dbd4eb1dbd4823114f87dcef52"
     },
     "job-14000-81873": {
-      "sourceHash": "sha256:3b75e58f85360c283e250752cdfb89a722d34f1b7c2f6e62736900cb428f4338",
-      "evidenceHash": "sha256:3b75e58f85360c283e250752cdfb89a722d34f1b7c2f6e62736900cb428f4338",
+      "sourceHash": "sha256:b9da5e7f5fb317b288e0cc0d90c8413d19a0bd23da3737bc44caaede11bc29ee",
+      "evidenceHash": "sha256:b9da5e7f5fb317b288e0cc0d90c8413d19a0bd23da3737bc44caaede11bc29ee",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81873",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81873",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Head of Department of Internal Medicine and Cardiology",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -686,31 +686,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:b38e203ec8ce6ddb97be49a6cd3b4779eff6fa6b1c6bd069bb50705e1e3d972a"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:201ee9f4e8681ef9abf952451db88bbd87269c7f44cceaee29569d47014debe3"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:98a5355b1117f6de835875b53460151655ec71dff13a3a924e34d58d64664cea"
         }
       },
       "factHash": "sha256:88073506dbc1ce08bb47e2e51c09cca1b251a50e766d99eb3b0bb26d5bd86ffc"
     },
     "job-14000-81878": {
-      "sourceHash": "sha256:b3d3c459be9eb7bd35a1c564361a91cc279654118b719f3fdd55111ef283e7ea",
-      "evidenceHash": "sha256:b3d3c459be9eb7bd35a1c564361a91cc279654118b719f3fdd55111ef283e7ea",
+      "sourceHash": "sha256:8ba95f3a46123951bb09a4b2b2065fdd067dbda76a465e31140706326c6b7cc7",
+      "evidenceHash": "sha256:8ba95f3a46123951bb09a4b2b2065fdd067dbda76a465e31140706326c6b7cc7",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81878",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81878",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Instructor of the Department of Simulation Medicine of the Faculty of Medicine MU",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -721,31 +721,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:ceb64df4fed51b9675510c5b16f58fc1082a613b49ef075b63a9565b9f74810c"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:cbea1cfe8d7589401515c123cda5079ba44c8dcca4951baf34dae0b4f5552177"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:28e5f62c61822253969739241e260220435020567bf10b5789992f6b2ba60c11"
         }
       },
       "factHash": "sha256:be7a595969089d4bc6425a20548d21bf4aad7d280f9a4b6ae1c9a1681d2fffc1"
     },
     "job-14000-81893": {
-      "sourceHash": "sha256:7a58e4ea91139b2c1f012392d6944f5aabaac487cb23bba4750b043ceec5554c",
-      "evidenceHash": "sha256:7a58e4ea91139b2c1f012392d6944f5aabaac487cb23bba4750b043ceec5554c",
+      "sourceHash": "sha256:cdf6c4b4852bd7a563ed118dca5395f63a0900367c64bf655d74b75cde711f1d",
+      "evidenceHash": "sha256:cdf6c4b4852bd7a563ed118dca5395f63a0900367c64bf655d74b75cde711f1d",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81893",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81893",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Laboratory technician for the archaeological laboratory at the Department of Archaeology and Museology",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -756,31 +756,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:ccde3424d15735db7c89864a8427f9167d3db44c0ce70a065e28d253f5055dff"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:4490bf2433f316e44335eb881b3e63d89f7233fc22cd23259aa6bfae73298d19"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:a981d2468f65be7502a6039d08b8e43e7384f6b4f51de6b4f1a7fdd11526d95b"
         }
       },
-      "factHash": "sha256:d629e057134fa01c1ddcc6ecb9346d6016df90f3b315b0fad5170cb3c409db08"
+      "factHash": "sha256:f892803af78cdb966bfc984ed4be21ef09850aaea9b2fbff03f7fc4f36b6bdc2"
     },
     "job-14000-81894": {
-      "sourceHash": "sha256:4e92ef18d84bf5a0eb19a817347cd5f57dd34afa90f23eb313b4837140841909",
-      "evidenceHash": "sha256:4e92ef18d84bf5a0eb19a817347cd5f57dd34afa90f23eb313b4837140841909",
+      "sourceHash": "sha256:b1613809b1afbb4768bf2d216e7d4033fffa87a7ac048b119579f9d14315522a",
+      "evidenceHash": "sha256:b1613809b1afbb4768bf2d216e7d4033fffa87a7ac048b119579f9d14315522a",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81894",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81894",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Assistant professor",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -791,31 +791,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:67ae71f3826514eee84c5ee30fb2912d487b1360c89f4c96623efd0e7c83226a"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:364de68428fe4802a17372d409aa935d7afe61ce2f7c922f2944606ad5e7c664"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:b13ce2732e0ac67f0b3c5b396d95f82288f76f3cd12b4b5e219aa358ec82f83b"
         }
       },
       "factHash": "sha256:0f187d27fb681d840aba764dc761c1aed6a956c2daa132b1c47991ff01a750fc"
     },
     "job-14000-81914": {
-      "sourceHash": "sha256:aa4ad4bd13674dcc688bf9d44a9121306f53c03e458e4832a7278e3292259b23",
-      "evidenceHash": "sha256:aa4ad4bd13674dcc688bf9d44a9121306f53c03e458e4832a7278e3292259b23",
+      "sourceHash": "sha256:9a565f3b7e7ac0f1c39de226239d40b3baa805f2e96b766988f6d30138df6374",
+      "evidenceHash": "sha256:9a565f3b7e7ac0f1c39de226239d40b3baa805f2e96b766988f6d30138df6374",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81914",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81914",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "ATMP Laboratory Technician",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -826,31 +826,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:a2313140de243a825e5e5b6defbdab4c41ba7554e6a6c815ece59b20d93ae2b0"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:349cb04e9d1355d263c990a376baad3dd2eefd26282730037db8cc3dd4688268"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:db6dccade8c26b8049073cd82f105b3de0c8dda0ab16184cdcd384b5790e090a"
         }
       },
-      "factHash": "sha256:e0e55d59a8941eaf25191909a0f627f029c3054ffaa316c3fdacd2de7d2f505d"
+      "factHash": "sha256:e6de163b7e99b41b8dd3629126633ccb8a79535a2d8ddd58b314b6901e600c21"
     },
     "job-14000-81933": {
-      "sourceHash": "sha256:6586a4e6acc6655054029c7e56766cc5f3d2d3ca0ba90a251de981a54f2fd70c",
-      "evidenceHash": "sha256:6586a4e6acc6655054029c7e56766cc5f3d2d3ca0ba90a251de981a54f2fd70c",
+      "sourceHash": "sha256:ea4aada251d42a58af27b687809e30fc250eb9e61f44f1e64fdc0de2334e03d6",
+      "evidenceHash": "sha256:ea4aada251d42a58af27b687809e30fc250eb9e61f44f1e64fdc0de2334e03d6",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81933",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81933",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Assistant Professor in Empirical Microeconomics (tenure track)",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -861,31 +861,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:df91a175f1f2de36819e595f13c7006db31efc290ffd346f2127cf98c03faea4"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:e1ea1b9ee3e1f7893178d1c94c6d8e68264ce2587ae5dc79c3b02bf8732ccd0d"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:b80610d2117edc9ec9a1a9bffb7d52a26a12a5abe9273014ef4e41f50ca0c1d8"
         }
       },
       "factHash": "sha256:b6b62f9a976be2265683d7db9138030041db1c2d384bb0d86c420643ede16fe5"
     },
     "job-14000-81956": {
-      "sourceHash": "sha256:f58c42c93e7d171da76445fea5425be8ffbce756a77f21e1057d537a38b73469",
-      "evidenceHash": "sha256:f58c42c93e7d171da76445fea5425be8ffbce756a77f21e1057d537a38b73469",
+      "sourceHash": "sha256:9a4274662fce5b8d181cec9517ffff6325ba61e17616b5adaa13cdbf8dff82e4",
+      "evidenceHash": "sha256:9a4274662fce5b8d181cec9517ffff6325ba61e17616b5adaa13cdbf8dff82e4",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81956",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81956",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Uncovering the Electronic Origins of Magnetic Resonance PhD Position in Theoretical Chemistry",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -896,31 +896,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:8d85a408a331ca2ffe25fd1a10693b528e0f7d35d0ae75efa026e48f23181fce"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:7a94d2db2e65ce9c80510e62a2aee00f45a776dfcf16402ef081acd1f357b330"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:cd5193d9be5b24975a2bc9a8a88aefcb1fb6805f2b649f57a5c86cd52897fbb1"
         }
       },
       "factHash": "sha256:1cf3959519ab7900e07816aa71f471129370970509f007b1f8a9d7b1dea1bee5"
     },
     "job-14000-81957": {
-      "sourceHash": "sha256:26f5c805cd780901d1222e62b5874348d4bdb29c02078f11e89ffb45679bd5c7",
-      "evidenceHash": "sha256:26f5c805cd780901d1222e62b5874348d4bdb29c02078f11e89ffb45679bd5c7",
+      "sourceHash": "sha256:f68bb898654fa8ee8c39c3ae681140aec99fded135e7ec5ca1e81155afd90bab",
+      "evidenceHash": "sha256:f68bb898654fa8ee8c39c3ae681140aec99fded135e7ec5ca1e81155afd90bab",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81957",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81957",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Instructor / Assistant Professor of the Department of Sports Medicine and Rehabilitation of the Faculty of Medicine MU and St. Anne´s Faculty Hospital",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -931,31 +931,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:1c8dc10910d5c59551bc002c9197d71a677e8f166fa4e54a2d7b00bdeef7e530"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:f3e36d76dbbb7862c9abc1c7c7e76870c176366d3d1d720c7e3932727384adbf"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:c3291f3e48bdd717dd14b204b7896c946b59d06abf97ced662098990413d1f05"
         }
       },
       "factHash": "sha256:bffc1d86cce87297b58b2ff050b9614fcd4a32902aae55a5493111521eaaa262"
     },
     "job-14000-81973": {
-      "sourceHash": "sha256:1cc65cdece94ad889c1051a094d07bb379fe82469592f36c5aad6fedc07880d3",
-      "evidenceHash": "sha256:1cc65cdece94ad889c1051a094d07bb379fe82469592f36c5aad6fedc07880d3",
+      "sourceHash": "sha256:231b2d5b0cfd20031c775f216ea11108658ddf6b9bcce8d2b09fd7f9a079e29f",
+      "evidenceHash": "sha256:231b2d5b0cfd20031c775f216ea11108658ddf6b9bcce8d2b09fd7f9a079e29f",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81973",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81973",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Postdoctoral Researcher in Protein Biochemistry of Plant Epigenetic Regulators",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -966,31 +966,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:905d4c156ad7eddca018ad893859caf12a3e99f9be6c28276e3d9e8cb65fc82f"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:b1d6befb15b96052644bd60b82870fb641ccf8d7abbe1bfd2c999d735967a24b"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:c3cbdca002f52056cb433791d5c15e728f3b028aa1b8714c9fef9c8b378852ce"
         }
       },
       "factHash": "sha256:b763bbcde01457461828bc1bb626712eb4236ae97a9694bd7c8007e072738cb6"
     },
     "job-14000-81974": {
-      "sourceHash": "sha256:2d906a57d573c8d898332ec1beb6e792c1f7ff1992c75e2d5ad41550c4a58ed0",
-      "evidenceHash": "sha256:2d906a57d573c8d898332ec1beb6e792c1f7ff1992c75e2d5ad41550c4a58ed0",
+      "sourceHash": "sha256:7cc286709c919740e9db03ad630fe17b406e3eb79ef300b37da052c957d514ee",
+      "evidenceHash": "sha256:7cc286709c919740e9db03ad630fe17b406e3eb79ef300b37da052c957d514ee",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81974",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81974",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "PhD candidate in Molecular Epigenetics in Plant Vernalization",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -1001,31 +1001,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:e328b5f56ffa901e2fcac61272a10526e3ae4b7e0fb397bf95c000c8a4a3fc58"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:449778d9a464aafdef357edc4782aab6fc77e4641eeec5c796d6a14f855a5c14"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:235e0ed2ee3272970fef7b060535bd0d89d782f84d667ed4815e25c2f024fa17"
         }
       },
       "factHash": "sha256:6acf442756d7ffa08fd1bc572874c5e6ad5cea66799d85a79ca271feb28fb9fc"
     },
     "job-14000-81975": {
-      "sourceHash": "sha256:8164453dbdfaa6326b89a6078193c8bcfa7897e55e07748b8d365a3474f4b829",
-      "evidenceHash": "sha256:8164453dbdfaa6326b89a6078193c8bcfa7897e55e07748b8d365a3474f4b829",
+      "sourceHash": "sha256:79782c3cd446441d580522758b803737d6179267981e8d5c89ea9359c8dbfa42",
+      "evidenceHash": "sha256:79782c3cd446441d580522758b803737d6179267981e8d5c89ea9359c8dbfa42",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81975",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81975",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Postdoctoral Fellow in lipid nanoparticles in drug delivery",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -1036,31 +1036,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:0085ec28552aa93856d931fea7e0cc9b0e81604bd6ddea52585fe9f4691a1eed"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:fe472db35d9c0d3060433a29abeb02aae9208806c87885c0d8f8d814d46fa366"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:7e0021800827fd5198f62620af5c81be923b519872921e39919e68ec6dcdff8f"
         }
       },
       "factHash": "sha256:d9954caf74fb923ef98b9be571da5b467778d0718fb23a26c32b3fd1e527a79e"
     },
     "job-14000-81994": {
-      "sourceHash": "sha256:e5d2d713bfc027a53e9ef4c5e6d986ff34ed730ba205a22a8722ba26e1d48e10",
-      "evidenceHash": "sha256:e5d2d713bfc027a53e9ef4c5e6d986ff34ed730ba205a22a8722ba26e1d48e10",
+      "sourceHash": "sha256:68dcb3e5bbe3658297172df0bb1d05b2f1663de24891bd839f26b502a872d5fe",
+      "evidenceHash": "sha256:68dcb3e5bbe3658297172df0bb1d05b2f1663de24891bd839f26b502a872d5fe",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81994",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81994",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Assistant Professor of the Department of Pediatric Neurology of the Faculty of Medicine MU",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -1071,31 +1071,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:ec2b6b9727822208f085966c1832f025658e2f61e6fdc76f261061da881e7065"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:dea52b53b70cf2ae282b3c486fe05558b99766d0daf53f1faa5190f193c44709"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:d599761bcb4a1b02331fbc62c9bea7fdf64ba03481fac640db3588b096bb47f7"
         }
       },
       "factHash": "sha256:68e31ef889bc778693e93b8dcd45de44103c190611c6a45df13c24b8808f6484"
     },
     "job-14000-81996": {
-      "sourceHash": "sha256:0162331e541032fa07be01757b964d30080ba27215bd8c6689fa4aa47a0b0624",
-      "evidenceHash": "sha256:0162331e541032fa07be01757b964d30080ba27215bd8c6689fa4aa47a0b0624",
+      "sourceHash": "sha256:c8747d6b328fa730a5f68d8b1e8863781ad83d03ddf44a57620c2e23955ff231",
+      "evidenceHash": "sha256:c8747d6b328fa730a5f68d8b1e8863781ad83d03ddf44a57620c2e23955ff231",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-14000-81996",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-14000-81996",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "QC ATMP Laboratory Technician",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
       "title": {
@@ -1106,21 +1106,91 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:3ff317242addb6f636f3c3df07bbfa16aece45e907465422554a4525bb2d2417"
         },
         "en": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:cee179cb31961d75c673210680f62d7840cda34832300a2febd13f143d7e7574"
         },
         "cs": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:136b832d15e77c1a3fc741d1b67db6feff3eac1a390a5658694bf71567c73c86"
         }
       },
-      "factHash": "sha256:a95955c33e345554627b0e6a05b3a9a2add6f32fa72bead99eed0a9ff927f294"
+      "factHash": "sha256:1941e93e39f59cee908fa71d63598913d09f98f4dd783b772e290f45dd94923c"
+    },
+    "job-14000-82013": {
+      "sourceHash": "sha256:60212eda29cd4ed48dea6615383fd34164d43beef50cd7f10be48a5650b9ad5b",
+      "evidenceHash": "sha256:60212eda29cd4ed48dea6615383fd34164d43beef50cd7f10be48a5650b9ad5b",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-19-job-14000-82013",
+      "reviewedAt": "2026-11-19T12:22:41Z",
+      "reviewedOriginalText": "Instructor of the Department of Physiotherapy and Rehabilitation of the Faculty of Medicine MU",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "医学院穆大学物理治疗与康复系讲师",
+        "en": "Instructor of the Department of Physiotherapy and Rehabilitation of the Faculty of Medicine MU",
+        "cs": "Lektor katedry fyzioterapie a reabilitace Fakulty medicíny MU"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:2653cae852609e572d7365907123f9e0101aeb58a46b814f45ee578881eab7fe"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:54e0a18cdd81d857b46cb36b2093f3e6b90bd532efb69306501a749f99f47114"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:ce9b5fc279b9c8fe99290b6f182f99ec378bd98f183af9151e03845d90cb7efb"
+        }
+      },
+      "factHash": "sha256:d531c53dda8321b4198058b8f47a406c1c48b9d7c1b8952ee6773ce91908db5e"
+    },
+    "job-14000-82033": {
+      "sourceHash": "sha256:b3d7c0c80c266abf418d903903061108c71fa473724e4f960055c44b8894342d",
+      "evidenceHash": "sha256:b3d7c0c80c266abf418d903903061108c71fa473724e4f960055c44b8894342d",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-19-job-14000-82033",
+      "reviewedAt": "2026-11-19T12:22:41Z",
+      "reviewedOriginalText": "Assistant professor of the Department of Paediatric Anaesthesiology and Intensive Care Medicine of the Faculty of Medicine MU",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "医学院穆大学儿科麻醉与重症监护医学系助理教授",
+        "en": "Assistant professor of the Department of Paediatric Anaesthesiology and Intensive Care Medicine of the Faculty of Medicine MU",
+        "cs": "Odborný asistent Katedry anesteziologie a intenzivní medicíny dětského věku Fakulty medicíny MU"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:c878654407b376ace17389b4401cb975723f6cd7e3643c6c3fb730c79e095495"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:e857c22235f3db1498dec58a577c0375c3680ae5566cd19e57d261f0cec9c3c7"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:726b61936b0139df6a7cd86a4faf100f5af6a643d04c39da232e062ecaf9ac2d"
+        }
+      },
+      "factHash": "sha256:aa5c89ab206d6b2f4d080f57a8c0d5dad87f947e9b5b9dd3aa56911cc3faef42"
     },
     "job-14000-eu465466": {
       "sourceHash": "sha256:a7a59082d19cb0ea9b0a65a845ec85c0c8c99b4c5794d2abed02edc73832196d",
@@ -1227,120 +1297,15 @@
       },
       "factHash": "sha256:bad2e8160f6f8aa5c2c9953c2f0fba67bf76e2bf72f30100cde83689c3766fc7"
     },
-    "job-15000-f73bdf66bcc1": {
-      "sourceHash": "sha256:4f911a3b9ff861b3eda7613a28005aec0e5e005e495305b6c929bfb547bd9acc",
-      "evidenceHash": "sha256:4f911a3b9ff861b3eda7613a28005aec0e5e005e495305b6c929bfb547bd9acc",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-16-job-15000-f73bdf66bcc1",
-      "reviewedAt": "2026-11-16T11:36:50Z",
-      "reviewedOriginalText": "Technik/technička v oboru botanika",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "植物学技术员",
-        "en": "Botanist Technician",
-        "cs": "Technik/technička v oboru botanika"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:edf3ec625bc069d4e0138945b95df2e2963e711199111f9a80308c470a34222b"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:112a6986a13874b5c35c2a2b6db8da4dcb4a7220f672adc202322e216dc5bc0e"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:4a155b740edc2cc85d51f0811499baa6c354ea949f3a1b4e810c2c9393def3cf"
-        }
-      },
-      "factHash": "sha256:b863f6fba790f8fda62df1ba81f2976ce96af1bb38c016e0479804e465d70cac"
-    },
-    "job-17000-206": {
-      "sourceHash": "sha256:38afe226cb9d7a9fa7912f8cbdefbb09baffbc9c6bde3d7bbac2070e42a0989a",
-      "evidenceHash": "sha256:38afe226cb9d7a9fa7912f8cbdefbb09baffbc9c6bde3d7bbac2070e42a0989a",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-16-job-17000-206",
-      "reviewedAt": "2026-11-16T11:36:50Z",
-      "reviewedOriginalText": "Technik/technička nebo laborant/laborantka se zaměřením na solidní nádory",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "技术员或实验室技术员，专注于实体肿瘤",
-        "en": "Technician or Laboratory Technician specializing in solid tumors",
-        "cs": "Technik/technička nebo laborant/laborantka se zaměřením na solidní nádory"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:c592b859a6a904ea0ed1c941f46c75f5ba5d9a597122e3f803e9038083574b20"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:ae17be5cb67854e07370d400fb81713085a05b37f6cf06b9621228724bb2231f"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:05085bfaaef296a20dd6f379c6344bede87d421984568688178f498b2bd8732b"
-        }
-      },
-      "factHash": "sha256:a334bd49af4edb7560b1030a41d8f1e9de8f61391a6423e1cf06c73f77a38c5a"
-    },
-    "job-17000-207": {
-      "sourceHash": "sha256:cd04dc924c21d87ac3973dda73bba529ea53a980c30112076a8b1b51c257a19a",
-      "evidenceHash": "sha256:cd04dc924c21d87ac3973dda73bba529ea53a980c30112076a8b1b51c257a19a",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-16-job-17000-207",
-      "reviewedAt": "2026-11-16T11:36:50Z",
-      "reviewedOriginalText": "Profesor/ka, docent/ka se zaměřením na ošetřovatelství s funkčním zařazením na pozici vedoucí/ho Ústavu ošetřovatelství a porodní asistence",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "护理学教授/教授，副教授/副教授，专注于护理领域，功能岗位为护理学与助产系主任",
-        "en": "Professor/Professoress, Associate Professor/Associate Professoress with focus on nursing, with functional assignment to the position of Head of the Institute of Nursing and Midwifery",
-        "cs": "Profesor/ka, docent/ka se zaměřením na ošetřovatelství s funkčním zařazením na pozici vedoucí/ho Ústavu ošetřovatelství a porodní asistence"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:4d753736f01c55397b1ecabbc33b578c765548a1346bbd0a3eafa21a3cef3ccb"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:750d0755b5dfdc966beda1e42816154fd2bae226666f3bb409d56cd24092e6d3"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:dea477f3ef4ebe6ed709af56d47cf923534506fa278ba3315a0bba5e7c6ad045"
-        }
-      },
-      "factHash": "sha256:3c40c5a75609793004173c3a375f41c7c7ba786d596842e220a52984d329bc68"
-    },
     "job-17000-208": {
-      "sourceHash": "sha256:7fd1b1d26ed6b481b8de297774ce407aec18836e34f35124eb3fd6a76748d97a",
-      "evidenceHash": "sha256:7fd1b1d26ed6b481b8de297774ce407aec18836e34f35124eb3fd6a76748d97a",
+      "sourceHash": "sha256:75b5774e8f440cbeddab0ae07201ce6cbabdea82aa07c138baa30eb077587b03",
+      "evidenceHash": "sha256:75b5774e8f440cbeddab0ae07201ce6cbabdea82aa07c138baa30eb077587b03",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-17000-208",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-17000-208",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Specialista – bioinformatik / specialistka – bioinformatička se zaměřením na vývoj softwaru a webových aplikací v hematoonkologii",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1351,66 +1316,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:4d4796daf0bb4793eb0a49958ca850587b54348cba12d39739a6757461921c6e"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:c855b531844e07a5ec542fee8b34bd2e9335e41ee649b0f40831adfce618b995"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:14600c06a16a41d63522198f5d681047ceff04f84bd9f00ce50b8decc76db0fa"
         }
       },
       "factHash": "sha256:d0638eaed93083a8fab284871333a29fb2b6259f6b3a569ff300b999a7db7203"
     },
-    "job-17000-212": {
-      "sourceHash": "sha256:8c843f567d802169754bdbeab6c97a9ba9eab09f0f679d589218448503ec7b25",
-      "evidenceHash": "sha256:8c843f567d802169754bdbeab6c97a9ba9eab09f0f679d589218448503ec7b25",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-11-16-job-17000-212",
-      "reviewedAt": "2026-11-16T11:36:50Z",
-      "reviewedOriginalText": "Popularizátor/ka vědy a umělecké činnosti",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "科学与艺术活动推广人",
-        "en": "Science and Art Activity Promoter",
-        "cs": "Popularizátor/ka vědy a umělecké činnosti"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:65519f83d4d1de57d381a4a5a3924b83ef3d6c04076a5ec9ee9270ce73bbac23"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:5920ae6bc80d2489628592651e85e909c6269c01ee06c00a5aca32f704934e50"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
-          "contentHash": "sha256:b3fc1e29640e87b79fa5aa0dabe07b0cf2b6795f8129b950547a83cc40e698c2"
-        }
-      },
-      "factHash": "sha256:835ce3992ec45646593658c976f1943c337f78d5a6e6147ed1e01ca66fe11b99"
-    },
     "job-17000-213": {
-      "sourceHash": "sha256:d4f67a65df2313f89e15d453bed8d0978fa3388546a7f989ec1557c3b611006a",
-      "evidenceHash": "sha256:d4f67a65df2313f89e15d453bed8d0978fa3388546a7f989ec1557c3b611006a",
+      "sourceHash": "sha256:f7183e6477de56dea06d5414bbabc723c6e45bedee29cfc1dd15f24faefc61b5",
+      "evidenceHash": "sha256:f7183e6477de56dea06d5414bbabc723c6e45bedee29cfc1dd15f24faefc61b5",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-17000-213",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-17000-213",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Odborný asistent / odborná asistentka se zaměřením na biofyziku",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1421,31 +1351,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:848a719af6b010385ed366dbbd47d4c1194f8b2cf277ba9d03d30c3ce6b09434"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:903bd20b286d4f89630e0cd81fd9463ee12092d587e7f731132d2060b6fb9b74"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:bdf0c9889e045423a0d7ae373116f74b09293693b2ab9c88dc373b9ea7248894"
         }
       },
       "factHash": "sha256:dd9a7a61ddd88bfc7bbdefc7535a16c2bd84df03a36776fdb8680e4c6abedfff"
     },
     "job-17000-215": {
-      "sourceHash": "sha256:7ba9c08acdaab9688142f243ed0970d5491b0cc9277195621a9f7b2fc991e987",
-      "evidenceHash": "sha256:7ba9c08acdaab9688142f243ed0970d5491b0cc9277195621a9f7b2fc991e987",
+      "sourceHash": "sha256:4cd342471a538c788ebce886d493cab1405eb28d0f18db905c582cb1205d230a",
+      "evidenceHash": "sha256:4cd342471a538c788ebce886d493cab1405eb28d0f18db905c582cb1205d230a",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-17000-215",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-17000-215",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Asistent/asistentka se zaměřením na hematoonkologii",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1456,31 +1386,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:5ae321eb7758eb153079f98b9ce0558c387c91e4295d5d6afb6ff1122453f0bf"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:0e9e34f32299da5ca0e9ebfae61e912dddd95ce9a4dc48acc87fe906be838834"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:33c45b7e63fdea6e1d7902927f7d98c97bc648018f3bb5089ad356a8d300e9c9"
         }
       },
       "factHash": "sha256:208c5c5a038867e63529a8340573d6eb8a739622da2ea8bd7203f2d37125018f"
     },
     "job-17000-217": {
-      "sourceHash": "sha256:843b13b2a627fdc580ac0a22fdc06563ba017ebcaa1800810851830062225bfd",
-      "evidenceHash": "sha256:843b13b2a627fdc580ac0a22fdc06563ba017ebcaa1800810851830062225bfd",
+      "sourceHash": "sha256:4351ac589f4f75430edd4285ec25c3e81b53ae02a17d23b7b0c34f4ddf8c9f36",
+      "evidenceHash": "sha256:4351ac589f4f75430edd4285ec25c3e81b53ae02a17d23b7b0c34f4ddf8c9f36",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-17000-217",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-17000-217",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Výzkumný pracovník / výzkumná pracovnice VZ4 – junior",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1491,31 +1421,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:491b6050adb81cc186990868e16401ea5f0b4f92921b9bb04c79d030f00b75ac"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:6079b5a74892a7a3624e92882279574fab5cef165cadb090a2f627a46327ab59"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:b8a6781a27945be17ee051323ae2072f34414aeba88d4a8de291288e36f6ed97"
         }
       },
       "factHash": "sha256:365a2b82671010d9c280673fb5475ff4b9b167254d7f33f350278483b8d13d8d"
     },
     "job-17000-218": {
-      "sourceHash": "sha256:cd5604a50f07b50d479e7895083c851d5b637850e178784dca776be80330cfd4",
-      "evidenceHash": "sha256:cd5604a50f07b50d479e7895083c851d5b637850e178784dca776be80330cfd4",
+      "sourceHash": "sha256:8ce2065d19cca9223eed69c5e3ddd94e706ce80f3449b76e03a871a83c644b64",
+      "evidenceHash": "sha256:8ce2065d19cca9223eed69c5e3ddd94e706ce80f3449b76e03a871a83c644b64",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-16-job-17000-218",
-      "reviewedAt": "2026-11-16T11:36:50Z",
+      "reviewEventId": "auto-2026-11-19-job-17000-218",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Výzkumný pracovník / výzkumná pracovnice VZ5 – junior",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -1526,17 +1456,17 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:9ee7997147c20373b75c5a9d4c94927d64cecfaafb526a16fb1d4af1c1c4ce13"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:1e0b2db3e20598d9ae54c23c04541ef045bd0c7980f7116c1750f6909d1a03d3"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-16T11:36:50Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:b5ccc07f0956ea734d9288efe150e6c38a427a224081511febf4b0e7c6570546"
         }
       },
@@ -1961,41 +1891,6 @@
         }
       },
       "factHash": "sha256:43a10e0b6b06bc12cc7b120edac56c36ba0b3c05a4a3f77feb6601862fa7386c"
-    },
-    "job-21000-5575": {
-      "sourceHash": "sha256:1fb342078653c9e127aaecfee3133f1ee1e96e38fd147f143748bdd9bec72ca1",
-      "evidenceHash": "sha256:1fb342078653c9e127aaecfee3133f1ee1e96e38fd147f143748bdd9bec72ca1",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-10-16-job-21000-5575",
-      "reviewedAt": "2026-10-16T08:43:19Z",
-      "reviewedOriginalText": "Výběrové řízení na pozici vědecký pracovník podílející se na pedagogické činnosti",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "参与教学活动的科研职位选拔",
-        "en": "Selection process for a research position involving pedagogical activities",
-        "cs": "Výběrové řízení na pozici vědecký pracovník podílející se na pedagogické činnosti"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-10-16T08:43:19Z",
-          "contentHash": "sha256:93dad8a21fa9e0581cfa7da6c43713919736ac3a20611847c3a8979d5fe318a7"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-10-16T08:43:19Z",
-          "contentHash": "sha256:01ecae15a69f54d80d1a357f4f886b6cee8c0682cddf2b7476e96c0e963745da"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-10-16T08:43:19Z",
-          "contentHash": "sha256:4b7dca74b0d5984e84a1a9de984b6db369bff6a000766e92b5bfd761aad22300"
-        }
-      },
-      "factHash": "sha256:23120b2716a5721150b951ed4cf46feefa36dcd50658aa1add3e119c93d881e6"
     },
     "job-21000-5581": {
       "sourceHash": "sha256:4e8f145d5063fbb53d7f0ddbd2d88a927d9d766c4aa2e3ac2c71e0413ffdff6d",
@@ -3187,76 +3082,6 @@
       },
       "factHash": "sha256:176b30399e7ed33b5d3a76b076752df0679c6b221ab18c71b78c4de1990ebac6"
     },
-    "job-23000-8d4a8515-7931-4215-abc9-352e7c775a93": {
-      "sourceHash": "sha256:13f72ff4b34394ead4f48768d5b82b044d69d06662e298023b5441ddae6148ee",
-      "evidenceHash": "sha256:13f72ff4b34394ead4f48768d5b82b044d69d06662e298023b5441ddae6148ee",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-10-31-job-23000-8d4a8515-7931-4215-abc9-352e7c775a93",
-      "reviewedAt": "2026-10-31T10:09:33Z",
-      "reviewedOriginalText": "Odborný pracovník / odborná pracovnice ve výzkumu (R2), oblast Výpočetní fyzika materiálů, oddělení Výzkum pokročilých materiálů (RAM), ústav Nové technologie - výzkumné centrum (NTC) ZČU v Plzni",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "研究员（R2），领域为计算材料物理，先进材料研究部门（RAM），新技术研究所-研究中心（NTC）捷克理工大学普日布斯凯）",
-        "en": "Researcher / Researcher (R2), field of Computational Materials Physics, Department of Research of Advanced Materials (RAM), Institute of New Technologies - Research Centre (NTC) ZČU in Plzen",
-        "cs": "Odborný pracovník / odborná pracovnice ve výzkumu (R2), oblast Výpočetní fyzika materiálů, oddělení Výzkum pokročilých materiálů (RAM), ústav Nové technologie - výzkumné centrum (NTC) ZČU v Plzni"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-10-31T10:09:33Z",
-          "contentHash": "sha256:23555374ca2040218194389134df22a9957f065e68c85f27719ca3109376cf50"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-10-31T10:09:33Z",
-          "contentHash": "sha256:e2d921d485c2ec30cff39caf5e2289b16e41e01e8acc211a635afb2b6fe55b25"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-10-31T10:09:33Z",
-          "contentHash": "sha256:4d2216f85de59681b17f684f3893d658e51472a359052cdbbe86274edfe5ceb2"
-        }
-      },
-      "factHash": "sha256:54a7ef6620b6d970eb4ff9358f94f2f8b4c9e7fc0369b2ce29c3a885662469bf"
-    },
-    "job-23000-952cea2a-e2fd-4982-855a-bd7d48fa6f71": {
-      "sourceHash": "sha256:02d8ebcd80116ddc2bf0234d684fa59500d641626615a96f1284f29481d4b5be",
-      "evidenceHash": "sha256:02d8ebcd80116ddc2bf0234d684fa59500d641626615a96f1284f29481d4b5be",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-10-31-job-23000-952cea2a-e2fd-4982-855a-bd7d48fa6f71",
-      "reviewedAt": "2026-10-31T10:09:33Z",
-      "reviewedOriginalText": "Odborný pracovník / odborná pracovnice ve výzkumu (R2), oblast Experimentální fyzika materiálů, oddělení Výzkum pokročilých materiálů (RAM), ústav Nové technologie - výzkumné centrum (NTC) ZČU v Plzni",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "研究人员（R2），领域为材料实验物理学，先进材料研究部门（RAM），新技术研究所-研究中心（NTC）捷克理工大学普日布斯凯普莱斯尼",
-        "en": "Researcher / Researcher (R2), field of Experimental Physics of Materials, Department of Research of Advanced Materials (RAM), Institute of New Technologies - Research Centre (NTC) ZČU in Plzen",
-        "cs": "Odborný pracovník / odborná pracovnice ve výzkumu (R2), oblast Experimentální fyzika materiálů, oddělení Výzkum pokročilých materiálů (RAM), ústav Nové technologie - výzkumné centrum (NTC) ZČU v Plzni"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-10-31T10:09:33Z",
-          "contentHash": "sha256:5f73957778758c91bb9b05dab1efae6ee6dc02322d087a4e4d5b3efc6b933318"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-10-31T10:09:33Z",
-          "contentHash": "sha256:bec2235fec4873ec8fb47cfd119077e3d3cf65dfd47d3b1c58095e655f1aff9a"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-10-31T10:09:33Z",
-          "contentHash": "sha256:9a9299914e909d608e7ec0becedca7a130b7410af7407f3b3b093f903cb8a734"
-        }
-      },
-      "factHash": "sha256:ccefd67806ae11e0be60c4fd541ce53501d324867041ce966c14b3bc12f9d9b6"
-    },
     "job-23000-9cb046aa-c026-414b-a789-698cba997d51": {
       "sourceHash": "sha256:2ec62a850bf2ff3f97e0c70fa143517718cf2810495d69aa97a636275eb59bf9",
       "evidenceHash": "sha256:2ec62a850bf2ff3f97e0c70fa143517718cf2810495d69aa97a636275eb59bf9",
@@ -3957,41 +3782,6 @@
       },
       "factHash": "sha256:b8a7f8536c1235f4730bc6af7cf20fffe3afeb005c3407be57eddbbbca4cda49"
     },
-    "job-26000-2001488412": {
-      "sourceHash": "sha256:5a8dd66a0f8112ae145075f484abc9ffdfec26b662054d07c6a51fdabcbe8398",
-      "evidenceHash": "sha256:5a8dd66a0f8112ae145075f484abc9ffdfec26b662054d07c6a51fdabcbe8398",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-10-29-job-26000-2001488412",
-      "reviewedAt": "2026-10-29T10:12:26Z",
-      "reviewedOriginalText": "Akademický pracovník - Odborný asistent/odborná asistentka (R2)",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "学术人员 - 助理教授（R2）",
-        "en": "Academic Staff - Assistant Professor (R2)",
-        "cs": "Akademický pracovník - Odborný asistent/odborná asistentka (R2)"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-10-29T10:12:26Z",
-          "contentHash": "sha256:046fe0e1b8b13590c22fecb7a44127bf8a4ea846f19272be7259a6759be6b4e2"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-10-29T10:12:26Z",
-          "contentHash": "sha256:dcb12a31c355f881d97c862c85a697e6df369a7db1805bd95d4b36980e47c1ce"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-10-29T10:12:26Z",
-          "contentHash": "sha256:6ebcf1faac2ccc83f779e71ff3a36b04aba99ba301a36fada4d75c812e403d38"
-        }
-      },
-      "factHash": "sha256:9186185669c71e6abfcc5da2843bb8a13c03a7b9e3d34c4696a5af9951d5dfbe"
-    },
     "job-26000-2001489264": {
       "sourceHash": "sha256:a24da94f0c8ec55e3addbde84bd3db26ad5a5b0ac09cca8ca02a1aa27dddd3b3",
       "evidenceHash": "sha256:a24da94f0c8ec55e3addbde84bd3db26ad5a5b0ac09cca8ca02a1aa27dddd3b3",
@@ -4587,41 +4377,6 @@
       },
       "factHash": "sha256:0f0e1d44840f3c064ca8f17e01e66019ef887765ad4c012425af0b95586b9991"
     },
-    "job-27000-94": {
-      "sourceHash": "sha256:1f20d78da6d88e8ccd957f249345c1bf6bbd3655773da7dd826c073733a11331",
-      "evidenceHash": "sha256:1f20d78da6d88e8ccd957f249345c1bf6bbd3655773da7dd826c073733a11331",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-10-21-job-27000-94",
-      "reviewedAt": "2026-10-21T08:53:29Z",
-      "reviewedOriginalText": "Postdoctoral Researcher in Safety Engineering",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
-      "title": {
-        "zh-CN": "安全工程领域的博士后研究员",
-        "en": "Postdoctoral Researcher in Safety Engineering",
-        "cs": "Postdoktorand v oblasti bezpečnostního inženýrství"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-10-21T08:53:29Z",
-          "contentHash": "sha256:697e016d105c800e1cb3d767d4589e3fbc6fccddcf0ae5c6dd02d7f82e5a224a"
-        },
-        "en": {
-          "status": "reviewed",
-          "reviewedAt": "2026-10-21T08:53:29Z",
-          "contentHash": "sha256:d49041da46698b3f4d166cbd94712b0228530d9b888ce934caf636272d18cf0b"
-        },
-        "cs": {
-          "status": "machine",
-          "reviewedAt": "2026-10-21T08:53:29Z",
-          "contentHash": "sha256:72eb65350bcb1ce640484375a50649544604f474a7a5a2cca9d543c5e1dd1568"
-        }
-      },
-      "factHash": "sha256:983bd59b60601b0310abb75525046ef2a3a3ef888588856e999f4c6135c6554b"
-    },
     "job-28000-c6caa03bb3c4": {
       "sourceHash": "sha256:ade00e6e194477b6dd7ffc3c164921394f429ba5a45925ad9452bc3c90aab6c6",
       "evidenceHash": "sha256:ade00e6e194477b6dd7ffc3c164921394f429ba5a45925ad9452bc3c90aab6c6",
@@ -4693,14 +4448,14 @@
       "factHash": "sha256:f41a3d80f704abb6cbc55145a2bd972a3810b95928f724733cde4afb7f3684d7"
     },
     "job-31000-a9df9e73b959": {
-      "sourceHash": "sha256:7eb72c394e760e88a66d491cfbd068ff0065cab548abe00b2f7bf0a8ba3261df",
-      "evidenceHash": "sha256:7eb72c394e760e88a66d491cfbd068ff0065cab548abe00b2f7bf0a8ba3261df",
+      "sourceHash": "sha256:773c602d1f6c07948b124cc1eb8738f46d6bb46130d3844c30d1c97b5e9a2b5b",
+      "evidenceHash": "sha256:773c602d1f6c07948b124cc1eb8738f46d6bb46130d3844c30d1c97b5e9a2b5b",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-13-job-31000-a9df9e73b959",
-      "reviewedAt": "2026-11-13T11:24:32Z",
+      "reviewEventId": "auto-2026-11-19-job-31000-a9df9e73b959",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Odborný asistent/Odborný asistent CSc./Ph.D. na Katedře ekonometrie/demografie",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -4711,31 +4466,31 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:52967cf027fbfe61a9bdcdd651d8877c6822447c1d427b2588833014c5a5bc79"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:3698ff25829f27351cbf5c645156e13cbc5b104a9744db797a50a16001baa4c1"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:37d5620c4024372a9765186692b9ab9ce61dc680cac919547af3d01cb0103cec"
         }
       },
-      "factHash": "sha256:19a81a68263269d70d93f31682b1af9cde1a82dd9c860728d5f34932755ffd11"
+      "factHash": "sha256:7be941f0767986d513f5c289b65746aea4a4025e096376ae24c778812a148437"
     },
     "job-31000-b2b46d8643af": {
-      "sourceHash": "sha256:5c9c844e0e8193bb38c105b5b00af6b8cee20a9030c790faa29ab9afabb5952b",
-      "evidenceHash": "sha256:5c9c844e0e8193bb38c105b5b00af6b8cee20a9030c790faa29ab9afabb5952b",
+      "sourceHash": "sha256:918367d06560c9c3dae6df855bbb416d1396a9f1e445a4c909d5cd861667cc5a",
+      "evidenceHash": "sha256:918367d06560c9c3dae6df855bbb416d1396a9f1e445a4c909d5cd861667cc5a",
       "normalizationVersion": "fact-v2",
       "reviewer": {
         "role": "automatic_pipeline"
       },
-      "reviewEventId": "auto-2026-11-13-job-31000-b2b46d8643af",
-      "reviewedAt": "2026-11-13T11:24:32Z",
+      "reviewEventId": "auto-2026-11-19-job-31000-b2b46d8643af",
+      "reviewedAt": "2026-11-19T12:22:41Z",
       "reviewedOriginalText": "Vedoucí Katedry regionálních studií Národohospodářské fakulty VŠE v Praze",
       "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
       "title": {
@@ -4746,56 +4501,21 @@
       "locales": {
         "zh-CN": {
           "status": "machine",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:397be38e08706cb06aec9a16797ae8afe202d03d887f0a9ab7925296a1a68a34"
         },
         "en": {
           "status": "machine",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:af2dc9c11f6c7e68870ee88e0fad439f29ad795c07ce065f8fe8ccea692a10f4"
         },
         "cs": {
           "status": "reviewed",
-          "reviewedAt": "2026-11-13T11:24:32Z",
+          "reviewedAt": "2026-11-19T12:22:41Z",
           "contentHash": "sha256:5338cab9e76fb71771b8085a6ccc375864c6d479a26f598d82dca9a87705c2e3"
         }
       },
       "factHash": "sha256:e6ac9a0a8699cfe30cf6a714826ec6fd17a7657ebd0d6c9feae0a875a984e7f3"
-    },
-    "job-41000-752": {
-      "sourceHash": "sha256:98408a11d574bd4d17eb5c7c184d86ce878118f6c0455f2a4593c015b761a016",
-      "evidenceHash": "sha256:98408a11d574bd4d17eb5c7c184d86ce878118f6c0455f2a4593c015b761a016",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-10-16-job-41000-752",
-      "reviewedAt": "2026-10-16T08:43:19Z",
-      "reviewedOriginalText": "PEF: Asistent pro obor sociologie venkova a zemědělství",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "PEF：乡村与农业社会学助理",
-        "en": "PEF: Assistant for the sociology of the countryside and agriculture",
-        "cs": "PEF: Asistent pro obor sociologie venkova a zemědělství"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-10-16T08:43:19Z",
-          "contentHash": "sha256:5f2cfa24525b8eacca4a0390684f4b96a67e09b3da8a07bbeafbb51828f3cd92"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-10-16T08:43:19Z",
-          "contentHash": "sha256:7ff0dbd0b04778f7643c8947f2c5755337238051a4695f3ed84e379ee99c338d"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-10-16T08:43:19Z",
-          "contentHash": "sha256:0409d52fe21b7c094fdb6ddf92594ef540377623066e80204da8eb6caa4749cf"
-        }
-      },
-      "factHash": "sha256:09c2ab1c71c60ac331d0ca61d6b627c1a9d2235b7474af916b7533bdf0881b13"
     },
     "job-41000-754": {
       "sourceHash": "sha256:cb81edff9345518648a0b4581c96fd88ac90ac7fa09e3a5098fb739854219f90",
@@ -5146,6 +4866,111 @@
         }
       },
       "factHash": "sha256:306ae5ff08520b8d23cb9f291746af35052500ee1341fa2f4529836d9a690ce1"
+    },
+    "job-43000-501444": {
+      "sourceHash": "sha256:9bdda6c60758d2d796c427e29c76cf89cb54716593d97553b37f9d4485227502",
+      "evidenceHash": "sha256:9bdda6c60758d2d796c427e29c76cf89cb54716593d97553b37f9d4485227502",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-19-job-43000-501444",
+      "reviewedAt": "2026-11-19T12:22:41Z",
+      "reviewedOriginalText": "Assistant or Assistant Professor specializing in Business Economics",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "商业经济学助理或助理教授",
+        "en": "Assistant or Assistant Professor specializing in Business Economics",
+        "cs": "Asistent nebo odborný asistent specializující se na obchodní ekonomie"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:62475f30a190fafd3382484062cf45fae0fdf4fceaee340efb133d8080024edb"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:00b54589214c14a8bb93cb1f2e43dddc7d134789d83d379c6064289ed9ec5561"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:156f727a0c046c7f23ad3d4df251a9662d3c62f41e896d93b0dceae6345b4b30"
+        }
+      },
+      "factHash": "sha256:20a563b809ceaabb67523db9bdfab0bfd336d7f30f6e8d66de9b9a5c56f72acf"
+    },
+    "job-43000-501594": {
+      "sourceHash": "sha256:fd6e86be201f75e144e2383bb708fe6064ee90d6732f2bc94ec598ff8446d07f",
+      "evidenceHash": "sha256:fd6e86be201f75e144e2383bb708fe6064ee90d6732f2bc94ec598ff8446d07f",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-19-job-43000-501594",
+      "reviewedAt": "2026-11-19T12:22:41Z",
+      "reviewedOriginalText": "Assistant Professor in Andragogy",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "成人教育学助理教授",
+        "en": "Assistant Professor in Andragogy",
+        "cs": "Odborný asistent v andragogii"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:285c8bcd6b1ffc1673d731e03cbf0a0ca119f81b64c4af7372fd132831302e6a"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:f96d391d2b2df54576b3a6792655e6baaf99965c5d6d2bfeb75eed58dc9c3a84"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:42f7288ca3b36c1d83f51d7ee96e3cdb35c27257986e541762b68b58790c6bd9"
+        }
+      },
+      "factHash": "sha256:f4e1ba95ec77cb828995f3f3ee902833e5a5816226199eb35a2a663c7281fe81"
+    },
+    "job-43000-501595": {
+      "sourceHash": "sha256:81e319cb9c84953cd7623fe727c71d01d160cb44ed307557abaa3a5ea6ee0ee1",
+      "evidenceHash": "sha256:81e319cb9c84953cd7623fe727c71d01d160cb44ed307557abaa3a5ea6ee0ee1",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-19-job-43000-501595",
+      "reviewedAt": "2026-11-19T12:22:41Z",
+      "reviewedOriginalText": "Associate Professor in the Field of Education",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "教育领域的副教授",
+        "en": "Associate Professor in the Field of Education",
+        "cs": "Docent v oblasti vzdělání"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:fb6fed5d427860966cbfa17da65d8583ffaeb61b006391c238f6e00903a45d74"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:5980f9e2b54f9a21d3a4d6b2cc69bb89aaf9ae2b915a8750d28ec53d701702cf"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:d5a4494a1516fade04983e8fb53954ae605e43fa0f1b21b57f34bec78afeeba5"
+        }
+      },
+      "factHash": "sha256:9e7ae8be7c9de936cfa6682e7fdb7d32ef855158ecddcdb58b0f6d54534dc3f8"
     },
     "job-43000-eu459342": {
       "sourceHash": "sha256:e058666c168936dfecdf86b1e113ee71c90838ff8974380b152fb35f942f6264",
@@ -6162,41 +5987,6 @@
       },
       "factHash": "sha256:9ee5ad3baf191cbf088d90b34d61e0f02d6974edb774b88aa0e1da69917e355f"
     },
-    "job-85556-716e04bff169": {
-      "sourceHash": "sha256:7046abc537200534d3ce7b18d0ba2a9955abae33c043bf6397eda0001fb0515b",
-      "evidenceHash": "sha256:7046abc537200534d3ce7b18d0ba2a9955abae33c043bf6397eda0001fb0515b",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-10-23-job-85556-716e04bff169",
-      "reviewedAt": "2026-10-23T09:13:10Z",
-      "reviewedOriginalText": "Výběrové řízení na ředitele ÚTIA AV ČR",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the cs title is the official one.",
-      "title": {
-        "zh-CN": "ÚTIA AV ČR 主任选拔程序",
-        "en": "Selection Procedure for the Director of the ÚTIA AV ČR",
-        "cs": "Výběrové řízení na ředitele ÚTIA AV ČR"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-10-23T09:13:10Z",
-          "contentHash": "sha256:904e3b0337795a48af544e2a5800b0cec075d6426c4633eff4325ce6647b4692"
-        },
-        "en": {
-          "status": "machine",
-          "reviewedAt": "2026-10-23T09:13:10Z",
-          "contentHash": "sha256:329aa8a27ff0aa8132131af3feda0e76e602709785c2332965112fe48f6f1acf"
-        },
-        "cs": {
-          "status": "reviewed",
-          "reviewedAt": "2026-10-23T09:13:10Z",
-          "contentHash": "sha256:857f03b9cfc4f7369edc190dda455e1360af5e40bb64710e84cf4ce64a02c9f0"
-        }
-      },
-      "factHash": "sha256:d357f9ca5b3b6f621f987fa1cd398daebabc7d75bcdeb584e5c45260627e8990"
-    },
     "job-85955-11d08fb49383": {
       "sourceHash": "sha256:1b89bae7516752732bffc5d366c64117e4b9b696cf11b59e4c8bd2cff4cc3e05",
       "evidenceHash": "sha256:1b89bae7516752732bffc5d366c64117e4b9b696cf11b59e4c8bd2cff4cc3e05",
@@ -6442,6 +6232,41 @@
       },
       "factHash": "sha256:dbf0a9bc0d83dddab1f3bc09c1e2c3b6bddbdc7e639a7f2dfdd8375345b18079"
     },
+    "job-rvvi-61389013-avcr1976": {
+      "sourceHash": "sha256:ebac9f0fd2927845e250cf6463c289a4e4dd4efd1973660ae1d213f95c03e757",
+      "evidenceHash": "sha256:ebac9f0fd2927845e250cf6463c289a4e4dd4efd1973660ae1d213f95c03e757",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-19-job-rvvi-61389013-avcr1976",
+      "reviewedAt": "2026-11-19T12:22:41Z",
+      "reviewedOriginalText": "Postdoctoral position in The Department of Polymers for Electronics and Photonics",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "电子与光子学聚合物部门的博士后职位",
+        "en": "Postdoctoral position in The Department of Polymers for Electronics and Photonics",
+        "cs": "Postdoktorandská pozice v Ústavu polymerů pro elektroniku a fotoniku"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:962b03b9da24b01a3cded8a94aae8b68b3be81a5592dca12777690057f2a9f54"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:e64cd03ef0edc150c152ee874947394a318a4a779f0133a7d6a3445724682bf4"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:77033bf74f57a8fb0a643ce8f5dc74552a21125f028555d8258187cedc59a40a"
+        }
+      },
+      "factHash": "sha256:c0f8c1d9771a3480b2df006db6a83b41bf0001c031c1496b08faa854fcb38f6a"
+    },
     "job-rvvi-61389013-avcr1977": {
       "sourceHash": "sha256:7098704f036c5f9671fd973659b2a3e777bd50b6063cddce17a43c7669c12782",
       "evidenceHash": "sha256:7098704f036c5f9671fd973659b2a3e777bd50b6063cddce17a43c7669c12782",
@@ -6652,6 +6477,41 @@
       },
       "factHash": "sha256:a1681a368c1c0693fe703fc230736f950f3e90418c9ba3c83a534d7d61813c30"
     },
+    "job-rvvi-67985912-avcr1992": {
+      "sourceHash": "sha256:ad4f60e1557d6048e0fc111ce16bfd3f3895bde03eb5ce5114012e37e53b7ade",
+      "evidenceHash": "sha256:ad4f60e1557d6048e0fc111ce16bfd3f3895bde03eb5ce5114012e37e53b7ade",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-19-job-rvvi-67985912-avcr1992",
+      "reviewedAt": "2026-11-19T12:22:41Z",
+      "reviewedOriginalText": "Senior Researcher from Abroad",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "来自国外的高级研究员",
+        "en": "Senior Researcher from Abroad",
+        "cs": "Vysoký vědecký pracovník z ciziny"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:d42193dc9c63077619070bf8ce60e1cfe471d7310df68e6ae43998333e85be44"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:59964d57bdf8a2ecd886c11b471a3e55696cf61545461cb5d8344edd09d9714c"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:ae9ac844345d2125b9824357be5fced9e85c42750eb021459d1dee1f25b7f786"
+        }
+      },
+      "factHash": "sha256:1954d2ee2ab8dda99a9b72bd8de80e103bcb57ddba0209cf70b60f47822f8397"
+    },
     "job-rvvi-67985955-avcr1927": {
       "sourceHash": "sha256:ca0ec98870f57f87983e446968d3367bcd3317934548030986b0b063b6abc825",
       "evidenceHash": "sha256:ca0ec98870f57f87983e446968d3367bcd3317934548030986b0b063b6abc825",
@@ -6721,41 +6581,6 @@
         }
       },
       "factHash": "sha256:0ba58dee05aac5bfa712ceeb680ad6ee0f9f142162649b4762524a2699f88a42"
-    },
-    "job-rvvi-68378114-avcr1934": {
-      "sourceHash": "sha256:ad7dfaacc21500d922ba5daf97d883204d1b19949d7c2097d05d528080bfb392",
-      "evidenceHash": "sha256:ad7dfaacc21500d922ba5daf97d883204d1b19949d7c2097d05d528080bfb392",
-      "normalizationVersion": "fact-v2",
-      "reviewer": {
-        "role": "automatic_pipeline"
-      },
-      "reviewEventId": "auto-2026-10-20-job-rvvi-68378114-avcr1934",
-      "reviewedAt": "2026-10-20T08:56:44Z",
-      "reviewedOriginalText": "Research Fellow",
-      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
-      "title": {
-        "zh-CN": "研究员",
-        "en": "Research Fellow",
-        "cs": "Vědecký pracovník"
-      },
-      "locales": {
-        "zh-CN": {
-          "status": "machine",
-          "reviewedAt": "2026-10-20T08:56:44Z",
-          "contentHash": "sha256:fb2f4efd84e7f43c3d355b8d90559bd58eb7a16c312e45b2c31558d0a4a9f9a4"
-        },
-        "en": {
-          "status": "reviewed",
-          "reviewedAt": "2026-10-20T08:56:44Z",
-          "contentHash": "sha256:6a149c8838e02db5c76a89f286cfdb27db05303aecdcc0e103c7e6e0f6693efc"
-        },
-        "cs": {
-          "status": "machine",
-          "reviewedAt": "2026-10-20T08:56:44Z",
-          "contentHash": "sha256:a428aba24381dfcd33228b2cd9cae67e1c3c56d49c8d22215000e7d6e3be3636"
-        }
-      },
-      "factHash": "sha256:a83302ef6bfb0dcad12d0773aafd860d34a3a2fbccdbd64007d8bef7dcc053e8"
     },
     "job-rvvi-68378114-avcr1945": {
       "sourceHash": "sha256:3f32bc4ad86e6c77ec9212c449cc7fa058a7d69fd573a7b63c66f3e41e1fa24c",
@@ -6966,6 +6791,41 @@
         }
       },
       "factHash": "sha256:f65a5401ae68d36f80d52cfa1e3647dc65364402482689465395fbbaa551358a"
+    },
+    "job-rvvi-86652036-avcr1991": {
+      "sourceHash": "sha256:f14634ae6bf3ef170dd858eec2ad4ad79b3e3e40c554ba5f38064242030371db",
+      "evidenceHash": "sha256:f14634ae6bf3ef170dd858eec2ad4ad79b3e3e40c554ba5f38064242030371db",
+      "normalizationVersion": "fact-v2",
+      "reviewer": {
+        "role": "automatic_pipeline"
+      },
+      "reviewEventId": "auto-2026-11-19-job-rvvi-86652036-avcr1991",
+      "reviewedAt": "2026-11-19T12:22:41Z",
+      "reviewedOriginalText": "Senior Research Scientist – Cancer Biology",
+      "reviewNote": "Automatic review: facts are the collector's evidence-based extraction; titles machine-translated offline (llama.cpp-b11347/qwen3-8b-q4km/titles-v1), the en title is the official one.",
+      "title": {
+        "zh-CN": "高级研究员——癌症生物学",
+        "en": "Senior Research Scientist – Cancer Biology",
+        "cs": "Senior výzkumný pracovník – Biologie rakoviny"
+      },
+      "locales": {
+        "zh-CN": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:9ddd3c5d54c0eb04ce0eba88015491cbcb94e6bcd333480cfd76af6ef1e68fe2"
+        },
+        "en": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:4228a8f5f116a6ba5c0bfae09d79cd675a1eab66cc30a2c3785fe86b878c19cf"
+        },
+        "cs": {
+          "status": "machine",
+          "reviewedAt": "2026-11-19T12:22:41Z",
+          "contentHash": "sha256:17123f890cfc267edf0810ce2ecfdee828d6c6e701c4de39822c48cb78fc6500"
+        }
+      },
+      "factHash": "sha256:3bf0f047e1acc294c74d59bc21d07dfa56a1b0abac76a685739c713880156e26"
     }
   }
 }
