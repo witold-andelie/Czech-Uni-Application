@@ -1,0 +1,3004 @@
+{
+  "generatedAt": "2026-09-06T18:10:24Z",
+  "dataClass": "official_register_extract",
+  "catalogKind": "baseline_not_published",
+  "sourceUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+  "sourceTitle": "Registr vysokých škol a uskutečňovaných studijních programů",
+  "httpStatus": 200,
+  "extraction": "Scrapling 0.4.9 GET; HTML table parse",
+  "sourceSha256": "53c8f21cce0461c42042e7d6818969d13f5af57e275a313f158d8ac05c8396fd",
+  "note": "Names, legal type, ownership and region come from the official MŠMT register list. Websites, programmes, tuition, deadlines and CSCSE status are not on this page and are not invented.",
+  "counts": {
+    "total": 54,
+    "public": 26,
+    "private": 26,
+    "state": 2,
+    "university": 31,
+    "nonUniversity": 23
+  },
+  "institutions": [
+    {
+      "id": "msmt-vs_51000",
+      "msmtCode": "VS_51000",
+      "officialName": "Akademie múzických umění v Praze",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.amu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "61384984",
+      "seat": "Malostranské náměstí 259/12 Malá Strana 118 00 Praha 1",
+      "dataMailbox": "ikwj9fx",
+      "webHost": "www.amu.cz",
+      "statutoryRepresentative": "PhDr. Ingeborg Radok Žádná",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "布拉格表演艺术学院",
+        "listedNameEn": "Akademie muzickych umeni v Praze",
+        "officialMatchedName": "Akademie múzických umění v Praze",
+        "matchedAwardingInstitutionId": "msmt-vs_51000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 107,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 86,
+          "en": 21
+        },
+        "degrees": {
+          "master": 52,
+          "bachelor": 41,
+          "doctorate": 14
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_52000",
+      "msmtCode": "VS_52000",
+      "officialName": "Akademie výtvarných umění v Praze",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.avu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "60461446",
+      "seat": "U Akademie 172/4, Holešovice 170 22 PRAHA 7",
+      "dataMailbox": "nuvj88r",
+      "webHost": "www.avu.cz",
+      "statutoryRepresentative": "prof.Mgr. Tomáš Pospiszyl, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 12,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 11,
+          "en": 1
+        },
+        "degrees": {
+          "master": 7,
+          "doctorate": 4,
+          "bachelor": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_61000",
+      "msmtCode": "VS_61000",
+      "officialName": "AMBIS vysoká škola, a.s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.ambis.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "61858307",
+      "seat": "Lindnerova 575/1 180 00 Praha 8",
+      "dataMailbox": "ftxc2jx",
+      "webHost": "www.ambis.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "Dr. Martina Mannová",
+      "officialNameEn": "AMBIS University",
+      "detailSource": "https://regvssp.msmt.cz/registrvssp/cvsdet.aspx",
+      "detailEvidence": "work/raw/2026-09-06/msmt-detail-ambis-private.html",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "AMBIS大学",
+        "listedNameEn": "AMBIS University",
+        "officialMatchedName": "AMBIS vysoká škola, a.s.",
+        "matchedAwardingInstitutionId": "msmt-vs_61000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 32,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 30,
+          "en": 2
+        },
+        "degrees": {
+          "bachelor": 24,
+          "master": 8
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_6u000",
+      "msmtCode": "VS_6U000",
+      "officialName": "Anglo-americká vysoká škola, a. s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.aauni.edu",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "19194951",
+      "seat": "Letenská 120/5 Malá Strana 118 00 Praha 1",
+      "dataMailbox": "j3uyjb4",
+      "webHost": "www.aauni.edu",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Ing. Jiří Schwarz, CSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 13,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 11,
+          "cs": 2
+        },
+        "degrees": {
+          "bachelor": 10,
+          "master": 3
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7m000",
+      "msmtCode": "VS_7M000",
+      "officialName": "ARCHIP s.r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.archip.eu",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "28881699",
+      "seat": "Štulcova 89/1 128 00 Praha 2, Vyšehrad",
+      "dataMailbox": "bspm4u6",
+      "webHost": "www.archip.eu",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "Ing. arch. Regina Loukotová, PhD.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 2,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 2
+        },
+        "degrees": {
+          "bachelor": 1,
+          "master": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7r000",
+      "msmtCode": "VS_7R000",
+      "officialName": "ART & DESIGN INSTITUT, s.r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.artdesigninstitut.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "27216641",
+      "seat": "Vinohradská 1597/14, Vinohrady, 130 00 Praha 3",
+      "dataMailbox": "n2vjktt",
+      "webHost": "www.artdesigninstitut.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "prof. PhDr. Július Gajdoš, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 2,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 1,
+          "cs": 1
+        },
+        "degrees": {
+          "bachelor": 2
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7d000",
+      "msmtCode": "VS_7D000",
+      "officialName": "CEVRO Univerzita z.ú.",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.cevro.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "27590101",
+      "seat": "Jungmannova 17 Nové Město 110 00 Praha 1",
+      "dataMailbox": "uz3paee",
+      "webHost": "www.cevro.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Mgr. Tomáš Jarmara, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 15,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 13,
+          "en": 2
+        },
+        "degrees": {
+          "bachelor": 8,
+          "master": 6,
+          "doctorate": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7j000",
+      "msmtCode": "VS_7J000",
+      "officialName": "Evropská výzkumná univerzita, z.ú.",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Moravskoslezský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vs-prigo.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "25840886",
+      "seat": "Vítězslava Nezvala 801/1 736 01 Havířov - Město",
+      "dataMailbox": "4ugmzwf",
+      "webHost": "www.vs-prigo.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Mgr. Ing. Zuzana Machová, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 12,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 6,
+          "cs": 6
+        },
+        "degrees": {
+          "bachelor": 6,
+          "master": 4,
+          "doctorate": 2
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_6n000",
+      "msmtCode": "VS_6N000",
+      "officialName": "Filmová akademie Miroslava Ondříčka v Písku, o.p.s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Jihočeský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.filmovka.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "26074184",
+      "seat": "Lipová alej 2068/1 397 01 Písek - Budějovické Předměstí",
+      "dataMailbox": "w7cne3a",
+      "webHost": "www.filmovka.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Mgr. Eva Bobková",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 4,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 2,
+          "cs": 2
+        },
+        "degrees": {
+          "bachelor": 2,
+          "master": 2
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_54000",
+      "msmtCode": "VS_54000",
+      "officialName": "Janáčkova akademie múzických umění",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Jihomoravský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.jamu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "62156462",
+      "seat": "Beethovenova 650/2 662 15 Brno",
+      "dataMailbox": "7ckj9g2",
+      "webHost": "www.jamu.cz",
+      "statutoryRepresentative": "prof. Barbara Maria Willi, Ph. D., MBA",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "雅纳切克音乐艺术学院",
+        "listedNameEn": "Janáčkova akademie múzických umění v Brně",
+        "officialMatchedName": "Janáčkova akademie múzických umění",
+        "matchedAwardingInstitutionId": "msmt-vs_54000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 35,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 34,
+          "en": 1
+        },
+        "degrees": {
+          "master": 17,
+          "bachelor": 14,
+          "doctorate": 4
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_12000",
+      "msmtCode": "VS_12000",
+      "officialName": "Jihočeská univerzita v Českých Budějovicích",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Jihočeský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.jcu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "60076658",
+      "seat": "Branišovská 1645/31a 370 05 České Budějovice",
+      "dataMailbox": "vu8j9dv",
+      "webHost": "www.jcu.cz",
+      "statutoryRepresentative": "prof. Ing. Pavel Kozák, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "捷克布杰约维采南波西米亚大学",
+        "listedNameEn": "Jihočeská univerzita v Českých Budějovicích",
+        "officialMatchedName": "Jihočeská univerzita v Českých Budějovicích",
+        "matchedAwardingInstitutionId": "msmt-vs_12000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 212,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 183,
+          "en": 29
+        },
+        "degrees": {
+          "bachelor": 91,
+          "doctorate": 52,
+          "master": 69
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_14000",
+      "msmtCode": "VS_14000",
+      "officialName": "Masarykova univerzita",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Jihomoravský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.muni.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "00216224",
+      "seat": "Žerotínovo nám. 617/9 Brno-město 601 77 Brno",
+      "dataMailbox": "9tmj9e4",
+      "webHost": "www.muni.cz",
+      "statutoryRepresentative": "prof. MUDr. Martin Bareš, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "马萨里克大学",
+        "listedNameEn": "Masaryk University",
+        "officialMatchedName": "Masarykova univerzita",
+        "matchedAwardingInstitutionId": "msmt-vs_14000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 542,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 124,
+          "cs": 416,
+          "de": 2
+        },
+        "degrees": {
+          "doctorate": 178,
+          "bachelor": 157,
+          "master": 207
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_43000",
+      "msmtCode": "VS_43000",
+      "officialName": "Mendelova univerzita v Brně",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Jihomoravský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.mendelu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "62156489",
+      "seat": "Zemědělská 1/1665, 613 00 Brno",
+      "dataMailbox": "85ij9bs",
+      "webHost": "www.mendelu.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Ing. Martin Klimánek, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "布尔诺孟德尔大学",
+        "listedNameEn": "Mendel University in Brno",
+        "officialMatchedName": "Mendelova univerzita v Brně",
+        "matchedAwardingInstitutionId": "msmt-vs_43000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 146,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 110,
+          "en": 36
+        },
+        "degrees": {
+          "bachelor": 46,
+          "master": 44,
+          "doctorate": 56
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_75000",
+      "msmtCode": "VS_75000",
+      "officialName": "Metropolitní univerzita Praha, o. p. s.",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.mup.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "26482789",
+      "seat": "Dubečská 900/10 Strašnice 100 00 Praha 10",
+      "dataMailbox": "2bzpcqz",
+      "webHost": "www.mup.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "prof. PhDr. Michal Klíma, M.A., CSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "布拉格城市大学",
+        "listedNameEn": "Metropolitan University Prague",
+        "officialMatchedName": "Metropolitní univerzita Praha, o. p. s.",
+        "matchedAwardingInstitutionId": "msmt-vs_75000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 29,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 9,
+          "cs": 20
+        },
+        "degrees": {
+          "bachelor": 12,
+          "master": 10,
+          "doctorate": 7
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7c000",
+      "msmtCode": "VS_7C000",
+      "officialName": "Moravská vysoká škola Olomouc, o.p.s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Olomoucký",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.mvso.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "26867184",
+      "seat": "tř. Kosmonautů 1288/1 Hodolany 779 00 Olomouc",
+      "dataMailbox": "ctmhmyk",
+      "webHost": "www.mvso.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Ing. Jarmila Zimmermannová, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 6,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 1,
+          "cs": 5
+        },
+        "degrees": {
+          "bachelor": 3,
+          "master": 3
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_17000",
+      "msmtCode": "VS_17000",
+      "officialName": "Ostravská univerzita",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Moravskoslezský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.osu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "61988987",
+      "seat": "Dvořákova 7 701 03 Ostrava",
+      "dataMailbox": "37gj9fm",
+      "webHost": "www.osu.cz",
+      "statutoryRepresentative": "doc. Mgr. Petr Kopecký, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "奥斯特拉发大学",
+        "listedNameEn": "Ostravská Univerzita",
+        "officialMatchedName": "Ostravská univerzita",
+        "matchedAwardingInstitutionId": "msmt-vs_17000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 173,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 160,
+          "en": 13
+        },
+        "degrees": {
+          "master": 57,
+          "bachelor": 76,
+          "doctorate": 40
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7s000",
+      "msmtCode": "VS_7S000",
+      "officialName": "Panevropská univerzita, a.s.",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.peuni.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "04130081",
+      "seat": "Spálená 76/14, Nové Město, 110 00 Praha 1",
+      "dataMailbox": "ybu4y24",
+      "webHost": "www.peuni.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. RNDr. Vladimír Krajčík, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "泛欧大学",
+        "listedNameEn": "Panevropská univerzita",
+        "officialMatchedName": "Panevropská univerzita, a.s.",
+        "matchedAwardingInstitutionId": "msmt-vs_7s000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 23,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 3,
+          "cs": 19,
+          "ru": 1
+        },
+        "degrees": {
+          "bachelor": 15,
+          "master": 7,
+          "doctorate": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_94000",
+      "msmtCode": "VS_94000",
+      "officialName": "Policejní akademie České republiky v Praze",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "state",
+      "ownershipOriginal": "státní",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.polac.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "48135445",
+      "seat": "Lhotecká 559/7 P.O.Box 54 Kamýk 143 01 Praha 4",
+      "dataMailbox": "u5maa9p",
+      "webHost": "www.polac.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "plk. v. v. Mgr. David Dlouhý, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 8,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 8
+        },
+        "degrees": {
+          "doctorate": 1,
+          "master": 2,
+          "bachelor": 5
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7l000",
+      "msmtCode": "VS_7L000",
+      "officialName": "Prague City Vysoká Škola s.r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.praguecityuniversity.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "27259439",
+      "seat": "Kolbenova 923/34a 190 00 Praha 9, Vysočany",
+      "dataMailbox": "9wwj7p5",
+      "webHost": "www.praguecityuniversity.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. PhDr. Zdeněk Starý, CSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      }
+    },
+    {
+      "id": "msmt-vs_79000",
+      "msmtCode": "VS_79000",
+      "officialName": "Pražská vysoká škola psychosociálních studií, s.r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.pvsps.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "47122099",
+      "seat": "Hekrova 805/25 Háje 149 00 Praha 4",
+      "dataMailbox": "dzyuiwc",
+      "webHost": "www.pvsps.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. PhDr. Jiří Růžička, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 4,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 4
+        },
+        "degrees": {
+          "bachelor": 2,
+          "master": 2
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_19000",
+      "msmtCode": "VS_19000",
+      "officialName": "Slezská univerzita v Opavě",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Moravskoslezský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.slu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "47813059",
+      "seat": "Na Rybníčku 626/1 746 01 Opava",
+      "dataMailbox": "qw6j9hq",
+      "webHost": "www.slu.cz",
+      "statutoryRepresentative": "doc. Mgr. Tomáš Gongol, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "奥帕瓦西里西亚大学",
+        "listedNameEn": "Silesian University in Opava",
+        "officialMatchedName": "Slezská univerzita v Opavě",
+        "matchedAwardingInstitutionId": "msmt-vs_19000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 76,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 72,
+          "en": 4
+        },
+        "degrees": {
+          "master": 22,
+          "bachelor": 48,
+          "doctorate": 6
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_24000",
+      "msmtCode": "VS_24000",
+      "officialName": "Technická univerzita v Liberci",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Liberecký",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.tul.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "46747885",
+      "seat": "Studentská 1402/2 461 17 Liberec 1",
+      "dataMailbox": "td7j9ft",
+      "webHost": "www.tul.cz",
+      "statutoryRepresentative": "doc. Ing. Aleš Kocourek, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "利贝雷茨技术大学",
+        "listedNameEn": "Technical University of Liberec",
+        "officialMatchedName": "Technická univerzita v Liberci",
+        "matchedAwardingInstitutionId": "msmt-vs_24000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 122,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 90,
+          "en": 32
+        },
+        "degrees": {
+          "bachelor": 54,
+          "master": 42,
+          "doctorate": 26
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7e000",
+      "msmtCode": "VS_7E000",
+      "officialName": "Unicorn Vysoká škola s.r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.unicornuniversity.net/cs",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "27169511",
+      "seat": "V kapslovně 2767/2 Žižkov 130 00 Praha 3",
+      "dataMailbox": "sit86fn",
+      "webHost": "www.unicornuniversity.net/cs/",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "prof. Ing. Jan Čadil, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 7,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 5,
+          "en": 2
+        },
+        "degrees": {
+          "master": 2,
+          "bachelor": 5
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_63000",
+      "msmtCode": "VS_63000",
+      "officialName": "University College Prague - Vysoká škola mezinárodních vztahů a Vysoká škola hotelová a ekonomická s.r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.ucp.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "25619161",
+      "seat": "U Santošky 17, 150 00, Praha 5",
+      "dataMailbox": "krqbify",
+      "webHost": "www.ucp.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "Ing. Martin Petříček, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 6,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 1,
+          "cs": 5
+        },
+        "degrees": {
+          "bachelor": 5,
+          "master": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_6d000",
+      "msmtCode": "VS_6D000",
+      "officialName": "University of New York in Prague, s.r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.unyp.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "25676598",
+      "seat": "Londýnská 506/41 Vinohrady 120 00 Praha",
+      "dataMailbox": "jr39ca9",
+      "webHost": "www.unyp.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "Ilias Foutsis",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "纽约大学布拉格分校",
+        "listedNameEn": "University of New York in Prague",
+        "officialMatchedName": "University of New York in Prague, s.r.o.",
+        "matchedAwardingInstitutionId": "msmt-vs_6d000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 6,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 6
+        },
+        "degrees": {
+          "bachelor": 5,
+          "master": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_18000",
+      "msmtCode": "VS_18000",
+      "officialName": "Univerzita Hradec Králové",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Královéhradecký",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.uhk.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "62690094",
+      "seat": "Rokitanského 62 500 03 Hradec Králové III",
+      "dataMailbox": "k3xj9dz",
+      "webHost": "www.uhk.cz",
+      "statutoryRepresentative": "doc. RNDr. Jan Kříž, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 129,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 98,
+          "en": 31
+        },
+        "degrees": {
+          "bachelor": 66,
+          "doctorate": 25,
+          "master": 38
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_13000",
+      "msmtCode": "VS_13000",
+      "officialName": "Univerzita Jana Evangelisty Purkyně v Ústí nad Labem",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Ústecký",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.ujep.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "44555601",
+      "seat": "Pasteurova 3544/1 400 96 Ústí nad Labem",
+      "dataMailbox": "6nhj9dq",
+      "webHost": "www.ujep.cz",
+      "statutoryRepresentative": "doc. RNDr. Jaroslav Koutský, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 142,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 8,
+          "cs": 134
+        },
+        "degrees": {
+          "doctorate": 23,
+          "master": 54,
+          "bachelor": 65
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_11000",
+      "msmtCode": "VS_11000",
+      "officialName": "Univerzita Karlova",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.cuni.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "00216208",
+      "seat": "Ovocný trh 5 Staré Město Praha 1, 116 36",
+      "dataMailbox": "piyj9b4",
+      "webHost": "www.cuni.cz",
+      "statutoryRepresentative": "prof. RNDr. Jiří Zima, CSc.",
+      "officialNameEn": "Charles University",
+      "detailSource": "https://regvssp.msmt.cz/registrvssp/cvsdet.aspx",
+      "detailEvidence": "work/raw/2026-09-06/msmt-detail-charles-university.html",
+      "programmeInventory": {
+        "total": 925,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 320,
+          "cs": 587,
+          "de": 10,
+          "ru": 4,
+          "it": 1,
+          "fr": 2,
+          "pl": 1
+        },
+        "degrees": {
+          "doctorate": 399,
+          "master": 329,
+          "bachelor": 197
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      },
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "查理大学",
+        "listedNameEn": "Univerzita Karlova",
+        "officialMatchedName": "Univerzita Karlova",
+        "matchedAwardingInstitutionId": "msmt-vs_11000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      }
+    },
+    {
+      "id": "msmt-vs_95000",
+      "msmtCode": "VS_95000",
+      "officialName": "Univerzita obrany",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "state",
+      "ownershipOriginal": "státní",
+      "region": "Jihomoravský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.unob.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "60162694",
+      "seat": "Kounicova 156/65 662 10 Brno",
+      "dataMailbox": "hkraife",
+      "webHost": "www.unob.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "plk. gšt. doc. RNDr. Zuzana Kročová, Ph.D.",
+      "officialNameEn": "University of Defence",
+      "detailSource": "https://regvssp.msmt.cz/registrvssp/cvsdet.aspx",
+      "detailEvidence": "work/raw/2026-09-06/msmt-detail-univerzita-obrany-state.html",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 32,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 32
+        },
+        "degrees": {
+          "bachelor": 6,
+          "master": 14,
+          "doctorate": 12
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_15000",
+      "msmtCode": "VS_15000",
+      "officialName": "Univerzita Palackého v Olomouci",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Olomoucký",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.upol.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "61989592",
+      "seat": "Křížkovského 511/8 771 47 Olomouc",
+      "dataMailbox": "ffsj9ei",
+      "webHost": "www.upol.cz",
+      "statutoryRepresentative": "doc. JUDr. Michael Kohajda, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "帕拉茨基大学",
+        "listedNameEn": "Palacký University Olomouc",
+        "officialMatchedName": "Univerzita Palackého v Olomouci",
+        "matchedAwardingInstitutionId": "msmt-vs_15000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 496,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 77,
+          "cs": 417,
+          "ru": 1,
+          "fr": 1
+        },
+        "degrees": {
+          "doctorate": 157,
+          "master": 168,
+          "bachelor": 171
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_25000",
+      "msmtCode": "VS_25000",
+      "officialName": "Univerzita Pardubice",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Pardubický",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.upce.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "00216275",
+      "seat": "Studentská 95, 532 10 Pardubice 2",
+      "dataMailbox": "f5vj9hu",
+      "webHost": "www.upce.cz",
+      "statutoryRepresentative": "prof. Ing. Libor Čapek, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "帕尔杜比采大学",
+        "listedNameEn": "Univerzita Pardubice",
+        "officialMatchedName": "Univerzita Pardubice",
+        "matchedAwardingInstitutionId": "msmt-vs_25000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 155,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 30,
+          "cs": 125
+        },
+        "degrees": {
+          "doctorate": 42,
+          "master": 54,
+          "bachelor": 59
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_28000",
+      "msmtCode": "VS_28000",
+      "officialName": "Univerzita Tomáše Bati ve Zlíně",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Zlínský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.utb.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "70883521",
+      "seat": "Nám. T. G. Masaryka 5555 760 01 Zlín",
+      "dataMailbox": "ahqj9id",
+      "webHost": "www.utb.cz",
+      "statutoryRepresentative": "prof. Mgr. Milan Adámek, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 123,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 89,
+          "en": 34
+        },
+        "degrees": {
+          "master": 49,
+          "bachelor": 43,
+          "doctorate": 31
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_16000",
+      "msmtCode": "VS_16000",
+      "officialName": "Veterinární univerzita Brno",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Jihomoravský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vfu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "62157124",
+      "seat": "Palackého tř. 1946/1 612 42 Brno",
+      "dataMailbox": "y2cj9e8",
+      "webHost": "www.vfu.cz",
+      "statutoryRepresentative": "prof. Ing. Eva Voslářová, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 48,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 22,
+          "cs": 26
+        },
+        "degrees": {
+          "doctorate": 24,
+          "bachelor": 10,
+          "master": 14
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7n000",
+      "msmtCode": "VS_7N000",
+      "officialName": "Vysoká škola aplikované psychologie, s.r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Ústecký",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vsaps.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "27911586",
+      "seat": "Karlštejnská 11/30 158 00 Praha 5, Jinonice",
+      "dataMailbox": "8tbbidq",
+      "webHost": "www.vsaps.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "PhDr. Mgr. Štefan Medzihorský",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 1,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 1
+        },
+        "degrees": {
+          "bachelor": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_27000",
+      "msmtCode": "VS_27000",
+      "officialName": "Vysoká škola báňská – Technická univerzita Ostrava",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Moravskoslezský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vsb.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "61989100",
+      "seat": "17. listopadu 15/2172 708 33 Ostrava-Poruba",
+      "dataMailbox": "d3kj88v",
+      "webHost": "www.vsb.cz",
+      "statutoryRepresentative": "prof. Ing. Igor Ivan, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "奥斯特拉发技术大学",
+        "listedNameEn": "VSB-Technical University of Ostrava",
+        "officialMatchedName": "Vysoká škola báňská – Technická univerzita Ostrava",
+        "matchedAwardingInstitutionId": "msmt-vs_27000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 295,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 115,
+          "cs": 180
+        },
+        "degrees": {
+          "master": 119,
+          "bachelor": 98,
+          "doctorate": 78
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_22000",
+      "msmtCode": "VS_22000",
+      "officialName": "Vysoká škola chemicko-technologická v Praze",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vscht.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "60461373",
+      "seat": "Technická 5 Dejvice 166 28 Praha 6",
+      "dataMailbox": "sp4j9ch",
+      "webHost": "www.vscht.cz",
+      "statutoryRepresentative": "prof. Ing. Milan Pospíšil, CSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "布拉格化工大学",
+        "listedNameEn": "Vysoká škola chemicko-technologická v Praze",
+        "officialMatchedName": "Vysoká škola chemicko-technologická v Praze",
+        "matchedAwardingInstitutionId": "msmt-vs_22000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 127,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 39,
+          "cs": 88
+        },
+        "degrees": {
+          "doctorate": 45,
+          "bachelor": 39,
+          "master": 43
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_31000",
+      "msmtCode": "VS_31000",
+      "officialName": "Vysoká škola ekonomická v Praze",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vse.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "61384399",
+      "seat": "Nám. W. Churchilla 1938/4 Žižkov 130 67 Praha 3",
+      "dataMailbox": "canj9d5",
+      "webHost": "www.vse.cz",
+      "statutoryRepresentative": "doc. Ing. Petr Dvořák, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "布拉格经济大学",
+        "listedNameEn": "Vysoká škola ekonomická v Praze",
+        "officialMatchedName": "Vysoká škola ekonomická v Praze",
+        "matchedAwardingInstitutionId": "msmt-vs_31000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 116,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 32,
+          "cs": 83,
+          "ru": 1
+        },
+        "degrees": {
+          "doctorate": 29,
+          "bachelor": 36,
+          "master": 51
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7v000",
+      "msmtCode": "VS_7V000",
+      "officialName": "Vysoká škola ekonomie a managementu, a.s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vsem.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "01801376",
+      "seat": "Nárožní 2600/9a 158 00 Praha 5",
+      "dataMailbox": "qrrteb6",
+      "webHost": "www.vsem.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "prof. Ing. Milan Žák, CSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 4,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 4
+        },
+        "degrees": {
+          "bachelor": 2,
+          "master": 2
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_6k000",
+      "msmtCode": "VS_6K000",
+      "officialName": "Vysoká škola evropských a regionálních studií, z. ú.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Jihočeský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vsers.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "26033909",
+      "seat": "Žižkova tř. 1632/5b, 370 01 České Budějovice",
+      "dataMailbox": "jsypz8u",
+      "webHost": "www.vsers.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Ing. Jiří Dušek, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 2,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 2
+        },
+        "degrees": {
+          "bachelor": 2
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7u000",
+      "msmtCode": "VS_7U000",
+      "officialName": "Vysoká škola finanční a správní, a.s.",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vsfs.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "04274644",
+      "seat": "Estonská 500 Vršovice 101 00 Praha 10",
+      "dataMailbox": "6rq65x3",
+      "webHost": "www.vsfs.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "RSDr. Bohuslava Šenkýřová",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "金融与管理大学",
+        "listedNameEn": "The University of Finance and Administration",
+        "officialMatchedName": "Vysoká škola finanční a správní, a.s.",
+        "matchedAwardingInstitutionId": "msmt-vs_7u000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 20,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 15,
+          "en": 5
+        },
+        "degrees": {
+          "bachelor": 9,
+          "master": 9,
+          "doctorate": 2
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7t000",
+      "msmtCode": "VS_7T000",
+      "officialName": "Vysoká škola kreativní komunikace, s.r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vskk.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "05080967",
+      "seat": "Na Pankráci 420/54 Nusle 140 00 Praha 4",
+      "dataMailbox": "28yvmyy",
+      "webHost": "www.vskk.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Ing. Ivo Straka, CSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 7,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 3,
+          "cs": 4
+        },
+        "degrees": {
+          "bachelor": 6,
+          "master": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_6r000",
+      "msmtCode": "VS_6R000",
+      "officialName": "Vysoká škola logistiky o.p.s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Olomoucký",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vslg.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "25875167",
+      "seat": "Palackého 1381/25 750 02 Přerov",
+      "dataMailbox": "8fq5iug",
+      "webHost": "www.vslg.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "prof. Ing. Václav Cempírek, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 3,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 3
+        },
+        "degrees": {
+          "master": 1,
+          "bachelor": 2
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_6q000",
+      "msmtCode": "VS_6Q000",
+      "officialName": "Vysoká škola NEWTON, a.s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://vysokaskolanewton.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "27081869",
+      "seat": "5. května 1640/65, Nusle, 140 00 Praha 4",
+      "dataMailbox": "6kdfd3p",
+      "webHost": "vysokaskolanewton.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "Anna Plechatá Krausová, DPhil.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 4,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 2,
+          "cs": 2
+        },
+        "degrees": {
+          "master": 2,
+          "bachelor": 2
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_55000",
+      "msmtCode": "VS_55000",
+      "officialName": "Vysoká škola polytechnická Jihlava",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Vysočina",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vspj.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "71226401",
+      "seat": "Tolstého 16 586 01 Jihlava",
+      "dataMailbox": "w9ej9jg",
+      "webHost": "www.vspj.cz",
+      "statutoryRepresentative": "doc. Ing. Zdeněk Horák, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 11,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 11
+        },
+        "degrees": {
+          "bachelor": 8,
+          "master": 3
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_73000",
+      "msmtCode": "VS_73000",
+      "officialName": "Vysoká škola Sting, o.p.s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Jihomoravský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.sting.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "26239604",
+      "seat": "Rašínova 103/2 602 00 Brno",
+      "dataMailbox": "k9p32t6",
+      "webHost": "www.sting.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Ing. Jiří Koleňák, Ph.D., MBA, LL.M.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 1,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 1
+        },
+        "degrees": {
+          "bachelor": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_56000",
+      "msmtCode": "VS_56000",
+      "officialName": "Vysoká škola technická a ekonomická v Českých Budějovicích",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Jihočeský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vstecb.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "75081431",
+      "seat": "Okružní 517/10 370 01 České Budějovice",
+      "dataMailbox": "72pj9jc",
+      "webHost": "www.vstecb.cz",
+      "statutoryRepresentative": "prof. Ing. Marek Vochozka, MBA, Ph.D., dr. h.c.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 13,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 4,
+          "cs": 9
+        },
+        "degrees": {
+          "master": 5,
+          "bachelor": 8
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_6p000",
+      "msmtCode": "VS_6P000",
+      "officialName": "Vysoká škola tělesné výchovy a sportu PALESTRA, spol. s r.o.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.palestra.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "27132781",
+      "seat": "Slovačíkova 400/1, 197 00 Praha 9 – Kbely",
+      "dataMailbox": "pwubigc",
+      "webHost": "www.palestra.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "prof. PhDr. Václav Hošek, DrSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 5,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 5
+        },
+        "degrees": {
+          "bachelor": 4,
+          "master": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_53000",
+      "msmtCode": "VS_53000",
+      "officialName": "Vysoká škola uměleckoprůmyslová v Praze",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vsup.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "60461071",
+      "seat": "Náměstí Jana Palacha 80 Staré Město 116 93 Praha 1",
+      "dataMailbox": "hwtj9ck",
+      "webHost": "www.vsup.cz",
+      "statutoryRepresentative": "prof. PhDr. PaedDr. Jindřich Vybíral, CSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 18,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 5,
+          "cs": 13
+        },
+        "degrees": {
+          "master": 12,
+          "bachelor": 3,
+          "doctorate": 3
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_6s000",
+      "msmtCode": "VS_6S000",
+      "officialName": "Vysoká škola zdravotnická, o.p.s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vszdrav.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "27235530",
+      "seat": "Duškova 1094/7 Smíchov 150 00 Praha 5",
+      "dataMailbox": "qvfhk8t",
+      "webHost": "www.vszdrav.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. PhDr. Jitka Němcová, PhD.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "absent",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": null,
+        "listedNameEn": null,
+        "officialMatchedName": null,
+        "matchedAwardingInstitutionId": null,
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": null,
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 5,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 5
+        },
+        "degrees": {
+          "bachelor": 4,
+          "master": 1
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_26000",
+      "msmtCode": "VS_26000",
+      "officialName": "Vysoké učení technické v Brně",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Jihomoravský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.vutbr.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "00216305",
+      "seat": "Antonínská 548/1 601 90 Brno",
+      "dataMailbox": "yb9j9by",
+      "webHost": "www.vutbr.cz",
+      "statutoryRepresentative": "doc. Ing. Ladislav Janíček, Ph.D., MBA, LL.M.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "布尔诺理工大学",
+        "listedNameEn": "Brno University of Technology",
+        "officialMatchedName": "Vysoké učení technické v Brně",
+        "matchedAwardingInstitutionId": "msmt-vs_26000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 201,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 56,
+          "cs": 145
+        },
+        "degrees": {
+          "doctorate": 60,
+          "master": 83,
+          "bachelor": 58
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_23000",
+      "msmtCode": "VS_23000",
+      "officialName": "Západočeská univerzita v Plzni",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Plzeňský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.zcu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "49777513",
+      "seat": "Univerzitní 2732/8 306 14 Plzeň",
+      "dataMailbox": "zqfj9hj",
+      "webHost": "www.zcu.cz",
+      "statutoryRepresentative": "prof. RNDr. Miroslav Lávička, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "比尔森西波西米亚大学",
+        "listedNameEn": "Západočeská Univerzita v Plzni",
+        "officialMatchedName": "Západočeská univerzita v Plzni",
+        "matchedAwardingInstitutionId": "msmt-vs_23000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 163,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "cs": 141,
+          "en": 22
+        },
+        "degrees": {
+          "bachelor": 68,
+          "master": 62,
+          "doctorate": 33
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_41000",
+      "msmtCode": "VS_41000",
+      "officialName": "Česká zemědělská univerzita v Praze",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.czu.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "60460709",
+      "seat": "Kamýcká 129 Suchdol 165 00 Praha 6",
+      "dataMailbox": "3hdj9cb",
+      "webHost": "www.czu.cz",
+      "statutoryRepresentative": "prof. PhDr. Michal Lošťák, Ph.D.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "捷克生命科学大学",
+        "listedNameEn": "Czech University of Life Sciences Prague",
+        "officialMatchedName": "Česká zemědělská univerzita v Praze",
+        "matchedAwardingInstitutionId": "msmt-vs_41000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 191,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 73,
+          "cs": 118
+        },
+        "degrees": {
+          "bachelor": 53,
+          "master": 77,
+          "doctorate": 61
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_21000",
+      "msmtCode": "VS_21000",
+      "officialName": "České vysoké učení technické v Praze",
+      "legalType": "university",
+      "legalTypeOriginal": "univerzitní",
+      "ownership": "public",
+      "ownershipOriginal": "veřejná",
+      "region": "Praha",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.cvut.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "ico": "68407700",
+      "seat": "Jugoslávských partyzánů 1580/3 Dejvice 160 00 Praha 6",
+      "dataMailbox": "p83j9ee",
+      "webHost": "www.cvut.cz",
+      "statutoryRepresentative": "prof. Dr. Michal Pěchouček, MSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "布拉格捷克技术大学",
+        "listedNameEn": "Czech Technical University in Prague",
+        "officialMatchedName": "České vysoké učení technické v Praze",
+        "matchedAwardingInstitutionId": "msmt-vs_21000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 287,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 109,
+          "cs": 178
+        },
+        "degrees": {
+          "doctorate": 97,
+          "master": 124,
+          "bachelor": 66
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    },
+    {
+      "id": "msmt-vs_7p000",
+      "msmtCode": "VS_7P000",
+      "officialName": "Škoda Auto Vysoká škola o.p.s.",
+      "legalType": "non_university",
+      "legalTypeOriginal": "neuniverzitní",
+      "ownership": "private",
+      "ownershipOriginal": "soukromá",
+      "region": "Středočeský",
+      "country": "CZ",
+      "cscseLookupStatus": "unverified",
+      "officialUrl": "https://www.savs.cz",
+      "source": {
+        "registryUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+        "law": "zákon č. 111/1998 Sb., § 87"
+      },
+      "ico": "29142890",
+      "seat": "Na Karmeli 1457 293 01 Mladá Boleslav",
+      "dataMailbox": "t9xtj28",
+      "webHost": "www.savs.cz",
+      "officialUrlSource": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+      "officialUrlNote": "Hostname taken from the official MŠMT CSV (VŠ) export. https:// was prefixed when the export had no scheme; live homepage was not re-checked.",
+      "statutoryRepresentative": "doc. Ing. Pavel Mertlík, CSc.",
+      "cscseReference": {
+        "lookupStatus": "unverified",
+        "operatorListStatus": "listed",
+        "evidenceKind": "operator_supplied_list",
+        "listedNameZh": "斯科达汽车大学",
+        "listedNameEn": "ŠKODA AUTO Vysoká škola o.p.s.",
+        "officialMatchedName": "Škoda Auto Vysoká škola o.p.s.",
+        "matchedAwardingInstitutionId": "msmt-vs_7p000",
+        "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+        "checkedAt": null,
+        "operatorListDated": "2026-09-06",
+        "sourceVersion": "operator_supplied_list_2026-09-06",
+        "evidenceId": "ev-cscse-operator-list-2026-09-06",
+        "reviewer": "operator",
+        "matchConfidence": "exact",
+        "notices": []
+      },
+      "programmeInventory": {
+        "total": 8,
+        "sourceUrl": "https://regvssp.msmt.cz/registrvssp/csplist.aspx",
+        "languages": {
+          "en": 2,
+          "cs": 6
+        },
+        "degrees": {
+          "master": 4,
+          "bachelor": 4
+        },
+        "note": "Accredited/delivered programmes from the official register. Not imported as applyable offerings."
+      }
+    }
+  ],
+  "websiteMerge": {
+    "at": "2026-09-06T18:12:01Z",
+    "sourceUrl": "https://archiv.msmt.gov.cz/areas-of-work/tertiary-education/public-higher-education-institutions-websites",
+    "matchedPublicWebsites": 25,
+    "extraction": "Scrapling 0.4.9 GET of archived MŠMT page; name match to register list"
+  },
+  "csvMerge": {
+    "at": "2026-09-06T18:25:37Z",
+    "sourceUrl": "https://regvssp.msmt.cz/registrvssp/cvslist.aspx",
+    "encoding": "cp1250",
+    "matchedInstitutions": 54,
+    "institutionsWithUrl": 54,
+    "extraction": "ASP.NET POST of CSV (VŠ) from the official register list"
+  },
+  "cscseApply": {
+    "at": "2026-09-06",
+    "sourceVersion": "operator_supplied_list_2026-09-06",
+    "lookupUrl": "http://yxcx.cscse.edu.cn/rzyxmd",
+    "operatorListedNames": 25,
+    "matchedListed": 24,
+    "registerNotOnList": 30,
+    "unmatchedOperatorNames": 1,
+    "note": "Operator-supplied CSCSE listed names matched to the current MŠMT register. Not a live official CSCSE lookup. Public lookupStatus remains unverified until a retrievable official result exists. operatorListStatus=listed means the current register row was on this supplied list; absent means it was not."
+  },
+  "cscseUnmatched": [
+    {
+      "n": 25,
+      "zh": "政治与社会科学学院",
+      "en": "Academia Rerum Civilium – Vysoká škola politických a společenských věd",
+      "msmtCode": null,
+      "reason": "Not among the 54 HEIs on the MŠMT register harvested 2026-09-06. Public reports: private non-university HEI; state approval 2003; insolvency and loss of accreditation in 2022; activity ended. Not created as a current catalogue row.",
+      "reasonZh": "未出现在 2026-09-06 教育部现行 54 所登记中。公开报道：私立非大学型高校，2003 年获国家批准，2022 年破产、取消认证后停办。未做成现行高校条目，也未把可查标签标到其他学校。"
+    }
+  ],
+  "programmeInventoryApply": {
+    "scope": "msmt_register_harvested",
+    "institutionsParsed": 53,
+    "programmes": 5126,
+    "failed": [
+      {
+        "msmtCode": "VS_7L000",
+        "reason": "csv_empty_or_unparsed",
+        "bytes": 8916,
+        "required": false
+      }
+    ]
+  }
+}
