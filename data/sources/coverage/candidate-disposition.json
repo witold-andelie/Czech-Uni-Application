@@ -1,18 +1,18 @@
 {
   "ledgerSchemaVersion": 1,
-  "generatedAt": "2026-11-22T14:24:58Z",
-  "publicationVersion": "v2026-11-22.2",
-  "candidateGenerationId": "cg-86cb82a852d348fea14416eff1ddb041",
-  "sourceRunSetDigest": "sha256:36bae790d23b297c542828b60345371fff2cc27ca5cf9ebfe85e338cf50f07fd",
+  "generatedAt": "2026-11-28T16:26:10Z",
+  "publicationVersion": "v2026-11-28.1",
+  "candidateGenerationId": "cg-4fc02a2bf83b416998317da451700a50",
+  "sourceRunSetDigest": "sha256:31846ec6b148f841a9fab9168f0c360d33d16082645b1abe9b6b3861e4f97ecc",
   "currentCandidates": 295,
   "summary": {
-    "approved_public": 202,
-    "blocked": 93,
+    "approved_public": 183,
+    "blocked": 112,
     "blockerCounts": {
       "unconfirmed_pay_evidence": 0,
       "unspecified_scope": 26,
       "evidence_changed_since_review": 0,
-      "trilingual_review_missing": 66,
+      "trilingual_review_missing": 97,
       "review_incomplete": 0
     },
     "unknownAttributeCounts": {
@@ -23,33 +23,33 @@
   "bySchool": {
     "msmt-vs_12000": {
       "current": 13,
-      "approved_public": 4,
-      "blocked": 9
+      "approved_public": 6,
+      "blocked": 7
     },
     "msmt-vs_23000": {
       "current": 22,
-      "approved_public": 12,
-      "blocked": 10
+      "approved_public": 5,
+      "blocked": 17
     },
     "msmt-vs_31000": {
       "current": 2,
-      "approved_public": 2,
-      "blocked": 0
+      "approved_public": 0,
+      "blocked": 2
     },
     "msmt-vs_41000": {
       "current": 8,
-      "approved_public": 7,
-      "blocked": 1
+      "approved_public": 3,
+      "blocked": 5
     },
     "rvvi-67985955": {
       "current": 2,
-      "approved_public": 2,
-      "blocked": 0
+      "approved_public": 0,
+      "blocked": 2
     },
     "msmt-vs_14000": {
       "current": 42,
-      "approved_public": 22,
-      "blocked": 20
+      "approved_public": 16,
+      "blocked": 26
     },
     "msmt-vs_21000": {
       "current": 53,
@@ -58,8 +58,8 @@
     },
     "msmt-vs_11000": {
       "current": 14,
-      "approved_public": 11,
-      "blocked": 3
+      "approved_public": 9,
+      "blocked": 5
     },
     "msmt-vs_26000": {
       "current": 8,
@@ -73,13 +73,13 @@
     },
     "msmt-vs_15000": {
       "current": 6,
-      "approved_public": 2,
-      "blocked": 4
+      "approved_public": 3,
+      "blocked": 3
     },
     "msmt-vs_25000": {
       "current": 12,
-      "approved_public": 12,
-      "blocked": 0
+      "approved_public": 4,
+      "blocked": 8
     },
     "msmt-vs_17000": {
       "current": 10,
@@ -118,8 +118,8 @@
     },
     "msmt-vs_22000": {
       "current": 5,
-      "approved_public": 5,
-      "blocked": 0
+      "approved_public": 4,
+      "blocked": 1
     },
     "rvvi-86652036": {
       "current": 1,
@@ -138,8 +138,8 @@
     },
     "msmt-vs_43000": {
       "current": 11,
-      "approved_public": 1,
-      "blocked": 10
+      "approved_public": 11,
+      "blocked": 0
     },
     "rvvi-68378050": {
       "current": 2,
@@ -211,8 +211,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-22",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -256,8 +258,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-22",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -277,8 +281,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-22",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -298,8 +304,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-22",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -319,8 +327,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-22",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -365,7 +375,9 @@
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-23",
       "decision": "blocked",
-      "blockers": [],
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -385,8 +397,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-23",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -452,8 +466,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-25",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -473,8 +489,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-25",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -494,8 +512,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-25",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -515,8 +535,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-25",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -536,8 +558,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-25",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -557,8 +581,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-25",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -578,8 +604,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-26",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -599,8 +627,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-26",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -620,8 +650,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-26",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -641,8 +673,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-26",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -685,8 +719,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -706,8 +742,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -751,8 +789,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -772,8 +812,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -793,8 +835,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -814,8 +858,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -835,8 +881,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -856,8 +904,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": false,
         "doctoralEnrollment": true
@@ -877,8 +927,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -898,8 +950,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -919,8 +973,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -940,8 +996,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -961,8 +1019,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -982,8 +1042,10 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-27",
-      "decision": "approved_public",
-      "blockers": [],
+      "decision": "blocked",
+      "blockers": [
+        "trilingual_review_missing"
+      ],
       "unknownAttributes": {
         "degree": true,
         "doctoralEnrollment": true
@@ -1119,7 +1181,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-11-29",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -2718,7 +2780,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-07",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -3189,7 +3251,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-14",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -3273,7 +3335,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-16",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -3443,7 +3505,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-21",
-      "decision": "approved_public",
+      "decision": "blocked",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -3485,7 +3547,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-21",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -3506,7 +3568,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-21",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -3527,7 +3589,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-21",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -3548,7 +3610,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-21",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -3569,7 +3631,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-21",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -3590,7 +3652,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-21",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -3611,7 +3673,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-21",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -3632,7 +3694,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2026-12-21",
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -4058,7 +4120,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": "2027-01-08",
-      "decision": "approved_public",
+      "decision": "blocked",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -4411,7 +4473,7 @@
       "doctoralEnrollment": "required",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -4504,7 +4566,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -4525,7 +4587,7 @@
       "doctoralEnrollment": "required",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -5262,7 +5324,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "approved_public",
+      "decision": "blocked",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -5472,7 +5534,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -5493,7 +5555,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "approved_public",
+      "decision": "blocked",
       "blockers": [],
       "unknownAttributes": {
         "degree": false,
@@ -5514,7 +5576,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "approved_public",
+      "decision": "blocked",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -5535,7 +5597,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "approved_public",
+      "decision": "blocked",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -5580,7 +5642,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -5601,7 +5663,7 @@
       "doctoralEnrollment": "unspecified",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "blocked",
+      "decision": "approved_public",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,
@@ -5907,7 +5969,7 @@
       "doctoralEnrollment": "required",
       "catalogueScopeStatus": "included",
       "nearestDeadline": null,
-      "decision": "approved_public",
+      "decision": "blocked",
       "blockers": [],
       "unknownAttributes": {
         "degree": true,

@@ -1,0 +1,561 @@
+{
+  "generatedAt": "2026-09-06T19:29:34Z",
+  "dataClass": "official_admissions_extract",
+  "catalogKind": "tracer_not_published",
+  "institutionId": "msmt-vs_14000",
+  "institutionOfficialName": "Masarykova univerzita",
+  "msmtCode": "VS_14000",
+  "facultyOriginal": "Fakulta informatiky",
+  "note": "Masaryk University FI tracer: English Visual Informatics master's (two intakes) and Czech Informatika bachelor. FI bachelor programmes are Czech-only. Not a published catalogue. Not written to data/published/.",
+  "sources": {
+    "howToApply": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/how-to-apply",
+    "tuition": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/tuition-fees-and-financial-aid",
+    "admissionFees": "https://www.muni.cz/en/about-us/official-notice-board/admission-procedure-fees",
+    "fiBachelorCs": "https://www.fi.muni.cz/admission/info-bachelor.html.cs",
+    "fiBachelorGuideCs": "https://www.fi.muni.cz/admission/guide.html.cs",
+    "fiMasterEn": "https://www.fi.muni.cz/admission/international/info-master.html.en",
+    "fiIndexEn": "https://www.fi.muni.cz/admission/index.html.en",
+    "register": "https://regvssp.msmt.cz/registrvssp/csplist.aspx"
+  },
+  "offerings": [
+    {
+      "id": "muni-fi-vi-en-2026",
+      "institutionId": "msmt-vs_14000",
+      "facultyOriginal": "Fakulta informatiky",
+      "facultySisOriginal": "Faculty of Informatics",
+      "registerMatch": {
+        "titleOriginal": "Visual Informatics",
+        "facultyName": "Fakulta informatiky",
+        "degree": "master",
+        "teachingLanguage": "en",
+        "iscedF": "0688",
+        "standardYears": "2"
+      },
+      "academicYear": "2026/2027",
+      "academicYearEvidence": "FI English master criteria are titled 2026/2027 (autumn 2026 and spring 2027 intakes).",
+      "teachingLanguages": [
+        "en"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://www.fi.muni.cz/admission/international/info-master.html.en",
+      "titleOriginal": "Visual Informatics",
+      "title": {
+        "zh-CN": "视觉信息学",
+        "en": "Visual Informatics",
+        "cs": "Visual Informatics"
+      },
+      "degree": "master",
+      "durationOriginal": "2 years",
+      "formOriginal": "full-time",
+      "sisIdObor": null,
+      "additionalLanguageRequirements": [
+        {
+          "language": "en",
+          "context": "admission",
+          "requirement": "required",
+          "evidenceUrl": "https://www.fi.muni.cz/admission/international/info-master.html.en",
+          "note": {
+            "zh-CN": "英语授课硕士要求至少 B2（FI 列出 TOEFL iBT 85、IELTS 6.5 等）。",
+            "en": "English at least B2 is required (FI lists TOEFL iBT 85, IELTS 6.5, and other accepted tests).",
+            "cs": "Je požadována angličtina alespoň na úrovni B2 (FI uvádí TOEFL iBT 85, IELTS 6.5 a další uznávané testy)."
+          }
+        }
+      ],
+      "applicationUrl": "https://is.muni.cz/prihlaska/?lang=en",
+      "applicationUrlNote": "FI English master page links the MU e-application. February intake is still within 15 June–15 October 2026.",
+      "tuition": {
+        "amount": 4500,
+        "currency": "EUR",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/tuition-fees-and-financial-aid",
+        "unpublishedReason": null,
+        "noteOriginal": "Faculty of Informatics 4,500 EUR (faculty-wide English-taught rate on the central tuition page, not a programme-specific figure).",
+        "variants": [
+          {
+            "amount": 4500,
+            "currency": "EUR",
+            "cycle": "year",
+            "applicantScopeOriginal": "Faculty of Informatics",
+            "sourceEvidenceId": "ev-muni-tuition-fi"
+          }
+        ],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "onlineOriginal": "FI English master page: 800 CZK. Official notice board FI follow-up master's (foreign language, 2026/27): 900 CZK. Amount not collapsed.",
+        "paperOriginal": null,
+        "amount": null,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://www.fi.muni.cz/admission/international/info-master.html.en",
+        "candidates": [
+          {
+            "amount": 800,
+            "currency": "CZK",
+            "sourceEvidenceId": "ev-muni-fi-en-fee-800"
+          },
+          {
+            "amount": 900,
+            "currency": "CZK",
+            "sourceEvidenceId": "ev-muni-fi-en-fee-900"
+          }
+        ]
+      },
+      "window": {
+        "id": "win-muni-fi-vi-en-feb-2027",
+        "ownerType": "offering",
+        "ownerId": "muni-fi-vi-en-2026",
+        "academicYear": "2026/2027",
+        "roundNumber": null,
+        "roundLabelOriginal": "February intake",
+        "roundType": "unspecified",
+        "applicantScope": null,
+        "opensAt": "2026-06-15",
+        "opensAtNotInferredFrom": null,
+        "opensAtFacultyNotePrecision": null,
+        "closesAt": "2026-10-15",
+        "timezone": "Europe/Prague",
+        "datePrecision": "date",
+        "status": "open",
+        "conditionalOnVacancies": false,
+        "applicationUrl": "https://is.muni.cz/prihlaska/?lang=en",
+        "sourceEvidenceId": "ev-muni-fi-en-feb",
+        "sisCannotApplyNow": null
+      },
+      "windows": [
+        {
+          "id": "win-muni-fi-vi-en-sep-2026",
+          "ownerType": "offering",
+          "ownerId": "muni-fi-vi-en-2026",
+          "academicYear": "2026/2027",
+          "roundNumber": null,
+          "roundLabelOriginal": "September intake",
+          "roundType": "unspecified",
+          "applicantScope": null,
+          "opensAt": "2025-12-15",
+          "opensAtNotInferredFrom": null,
+          "opensAtFacultyNotePrecision": null,
+          "closesAt": "2026-04-15",
+          "timezone": "Europe/Prague",
+          "datePrecision": "date",
+          "status": "closed",
+          "conditionalOnVacancies": false,
+          "applicationUrl": "https://is.muni.cz/prihlaska/?lang=en",
+          "sourceEvidenceId": "ev-muni-fi-en-sep",
+          "sisCannotApplyNow": null
+        },
+        {
+          "id": "win-muni-fi-vi-en-feb-2027",
+          "ownerType": "offering",
+          "ownerId": "muni-fi-vi-en-2026",
+          "academicYear": "2026/2027",
+          "roundNumber": null,
+          "roundLabelOriginal": "February intake",
+          "roundType": "unspecified",
+          "applicantScope": null,
+          "opensAt": "2026-06-15",
+          "opensAtNotInferredFrom": null,
+          "opensAtFacultyNotePrecision": null,
+          "closesAt": "2026-10-15",
+          "timezone": "Europe/Prague",
+          "datePrecision": "date",
+          "status": "open",
+          "conditionalOnVacancies": false,
+          "applicationUrl": "https://is.muni.cz/prihlaska/?lang=en",
+          "sourceEvidenceId": "ev-muni-fi-en-feb",
+          "sisCannotApplyNow": null
+        }
+      ],
+      "dataClass": "official_admissions_extract",
+      "catalogKind": "tracer_not_published",
+      "sourceLanguage": "en",
+      "applicationTargetKind": "programme_page",
+      "officialProgrammeUrl": "https://www.fi.muni.cz/admission/international/info-master.html.en",
+      "fetchedAt": "2026-09-06T19:29:34Z",
+      "sourceHash": "sha256:f8e628bf7a6d1bccd7fbda557a623de7084c38b9528e05ee4bfbeea8f3769db5",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-12T16:30:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:f8e628bf7a6d1bccd7fbda557a623de7084c38b9528e05ee4bfbeea8f3769db5",
+        "factHash": "sha256:ea772615e153da0288d874f3e49cdbbe67492fb542611abe67e23725f1b63f6b",
+        "evidenceHash": "sha256:f8e628bf7a6d1bccd7fbda557a623de7084c38b9528e05ee4bfbeea8f3769db5",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:f8e628bf7a6d1bccd7fbda557a623de7084c38b9528e05ee4bfbeea8f3769db5",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:1b6378eab90b353f47350d43bffe58383915e9a527071e583e78dfeb6f4df658"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:f8e628bf7a6d1bccd7fbda557a623de7084c38b9528e05ee4bfbeea8f3769db5",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:4e5f6bc7c3d917e037399ab1dcbf2a7e5d9aa2630f90995c824163bbf8d14542"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:f8e628bf7a6d1bccd7fbda557a623de7084c38b9528e05ee4bfbeea8f3769db5",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:4e5f6bc7c3d917e037399ab1dcbf2a7e5d9aa2630f90995c824163bbf8d14542"
+          }
+        }
+      }
+    },
+    {
+      "id": "muni-fi-inf-cs-2026",
+      "institutionId": "msmt-vs_14000",
+      "facultyOriginal": "Fakulta informatiky",
+      "facultySisOriginal": "Fakulta informatiky",
+      "registerMatch": {
+        "titleOriginal": "Informatika",
+        "facultyName": "Fakulta informatiky",
+        "degree": "bachelor",
+        "teachingLanguage": "cs",
+        "iscedF": "0613",
+        "standardYears": "3"
+      },
+      "academicYear": "2026/2027",
+      "academicYearEvidence": "FI Czech bachelor page is titled Bakalářské studium 2026/2027 with application dates 1.11.2025–28.2.2026.",
+      "teachingLanguages": [
+        "cs"
+      ],
+      "languageMode": "single",
+      "languageEvidenceUrl": "https://www.fi.muni.cz/admission/info-bachelor.html.cs",
+      "titleOriginal": "Informatika",
+      "title": {
+        "zh-CN": "信息学",
+        "en": "Informatika",
+        "cs": "Informatika"
+      },
+      "degree": "bachelor",
+      "durationOriginal": "3 roky",
+      "formOriginal": "prezenční",
+      "sisIdObor": null,
+      "additionalLanguageRequirements": [],
+      "applicationUrl": "https://is.muni.cz/prihlaska/info?filtr-typ-studia=BM&filtr-forma-studia=P&filtr-fakulta=1433&vyhledat=Vyhledat",
+      "applicationUrlNote": "FI Czech bachelor page links the MU e-application. The 2026/2027 window is closed.",
+      "tuition": {
+        "amount": 0,
+        "currency": "CZK",
+        "cycle": "year",
+        "published": true,
+        "evidenceUrl": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/tuition-fees-and-financial-aid",
+        "unpublishedReason": null,
+        "noteOriginal": "programmes taught in Czech are completely tuition free",
+        "variants": [],
+        "doNotCollapseDualRates": true
+      },
+      "applicationFee": {
+        "onlineOriginal": "FI Czech bachelor guide: 800 Kč. Official notice board FI bachelor 2026/27: 900 CZK. Amount not collapsed.",
+        "paperOriginal": null,
+        "amount": null,
+        "currency": "CZK",
+        "isNotTuition": true,
+        "evidenceUrl": "https://www.fi.muni.cz/admission/guide.html.cs",
+        "candidates": [
+          {
+            "amount": 800,
+            "currency": "CZK",
+            "sourceEvidenceId": "ev-muni-fi-cs-fee-800"
+          },
+          {
+            "amount": 900,
+            "currency": "CZK",
+            "sourceEvidenceId": "ev-muni-fi-cs-fee-900"
+          }
+        ]
+      },
+      "window": {
+        "id": "win-muni-fi-inf-cs-2026",
+        "ownerType": "offering",
+        "ownerId": "muni-fi-inf-cs-2026",
+        "academicYear": "2026/2027",
+        "roundNumber": null,
+        "roundLabelOriginal": "Termíny pro podávání přihlášek",
+        "roundType": "unspecified",
+        "applicantScope": null,
+        "opensAt": "2025-11-01",
+        "opensAtNotInferredFrom": null,
+        "opensAtFacultyNotePrecision": null,
+        "closesAt": "2026-02-28",
+        "timezone": "Europe/Prague",
+        "datePrecision": "date",
+        "status": "closed",
+        "conditionalOnVacancies": false,
+        "applicationUrl": "https://is.muni.cz/prihlaska/info?filtr-typ-studia=BM&filtr-forma-studia=P&filtr-fakulta=1433&vyhledat=Vyhledat",
+        "sourceEvidenceId": "ev-muni-fi-cs-close",
+        "sisCannotApplyNow": null
+      },
+      "windows": [
+        {
+          "id": "win-muni-fi-inf-cs-2026",
+          "ownerType": "offering",
+          "ownerId": "muni-fi-inf-cs-2026",
+          "academicYear": "2026/2027",
+          "roundNumber": null,
+          "roundLabelOriginal": "Termíny pro podávání přihlášek",
+          "roundType": "unspecified",
+          "applicantScope": null,
+          "opensAt": "2025-11-01",
+          "opensAtNotInferredFrom": null,
+          "opensAtFacultyNotePrecision": null,
+          "closesAt": "2026-02-28",
+          "timezone": "Europe/Prague",
+          "datePrecision": "date",
+          "status": "closed",
+          "conditionalOnVacancies": false,
+          "applicationUrl": "https://is.muni.cz/prihlaska/info?filtr-typ-studia=BM&filtr-forma-studia=P&filtr-fakulta=1433&vyhledat=Vyhledat",
+          "sourceEvidenceId": "ev-muni-fi-cs-close",
+          "sisCannotApplyNow": null
+        }
+      ],
+      "dataClass": "official_admissions_extract",
+      "catalogKind": "tracer_not_published",
+      "sourceLanguage": "cs",
+      "applicationTargetKind": "programme_page",
+      "officialProgrammeUrl": "https://www.fi.muni.cz/admission/info-bachelor.html.cs",
+      "fetchedAt": "2026-09-06T19:29:34Z",
+      "sourceHash": "sha256:40a4e5ce95921f7ad7e64993c78a8ccd608a67d3d4e3ea6c6c117cdfa628bded",
+      "publicationStatus": "approved",
+      "translationStatus": "verified",
+      "factsReviewedAt": "2026-09-12T16:30:00Z",
+      "translationReview": {
+        "sourceHash": "sha256:40a4e5ce95921f7ad7e64993c78a8ccd608a67d3d4e3ea6c6c117cdfa628bded",
+        "factHash": "sha256:a5ec424aa9f0eb05f31f2ffc9d20ad50b71988a2e4cf0bd452e6a0ebf0d3b6c1",
+        "evidenceHash": "sha256:40a4e5ce95921f7ad7e64993c78a8ccd608a67d3d4e3ea6c6c117cdfa628bded",
+        "normalizationVersion": "fact-v1",
+        "reviewer": {
+          "role": "operator_source_review"
+        },
+        "locales": {
+          "zh-CN": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:40a4e5ce95921f7ad7e64993c78a8ccd608a67d3d4e3ea6c6c117cdfa628bded",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:aa1664302fccede8b014a0c2a270f782b5bbe95f4695b8f5cf8e6bf5330b20c9"
+          },
+          "en": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:40a4e5ce95921f7ad7e64993c78a8ccd608a67d3d4e3ea6c6c117cdfa628bded",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:25c138fd967dbf549346230606459129b0b0c78df9150474c154e218318e30dd"
+          },
+          "cs": {
+            "status": "reviewed",
+            "translatedFromHash": "sha256:40a4e5ce95921f7ad7e64993c78a8ccd608a67d3d4e3ea6c6c117cdfa628bded",
+            "reviewedAt": "2026-09-12T16:30:00Z",
+            "contentHash": "sha256:25c138fd967dbf549346230606459129b0b0c78df9150474c154e218318e30dd"
+          }
+        }
+      }
+    }
+  ],
+  "windows": [
+    {
+      "id": "win-muni-fi-vi-en-sep-2026",
+      "ownerType": "offering",
+      "ownerId": "muni-fi-vi-en-2026",
+      "academicYear": "2026/2027",
+      "roundNumber": null,
+      "roundLabelOriginal": "September intake",
+      "roundType": "unspecified",
+      "applicantScope": null,
+      "opensAt": "2025-12-15",
+      "opensAtNotInferredFrom": null,
+      "opensAtFacultyNotePrecision": null,
+      "closesAt": "2026-04-15",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "closed",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://is.muni.cz/prihlaska/?lang=en",
+      "sourceEvidenceId": "ev-muni-fi-en-sep",
+      "sisCannotApplyNow": null
+    },
+    {
+      "id": "win-muni-fi-vi-en-feb-2027",
+      "ownerType": "offering",
+      "ownerId": "muni-fi-vi-en-2026",
+      "academicYear": "2026/2027",
+      "roundNumber": null,
+      "roundLabelOriginal": "February intake",
+      "roundType": "unspecified",
+      "applicantScope": null,
+      "opensAt": "2026-06-15",
+      "opensAtNotInferredFrom": null,
+      "opensAtFacultyNotePrecision": null,
+      "closesAt": "2026-10-15",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "open",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://is.muni.cz/prihlaska/?lang=en",
+      "sourceEvidenceId": "ev-muni-fi-en-feb",
+      "sisCannotApplyNow": null
+    },
+    {
+      "id": "win-muni-fi-inf-cs-2026",
+      "ownerType": "offering",
+      "ownerId": "muni-fi-inf-cs-2026",
+      "academicYear": "2026/2027",
+      "roundNumber": null,
+      "roundLabelOriginal": "Termíny pro podávání přihlášek",
+      "roundType": "unspecified",
+      "applicantScope": null,
+      "opensAt": "2025-11-01",
+      "opensAtNotInferredFrom": null,
+      "opensAtFacultyNotePrecision": null,
+      "closesAt": "2026-02-28",
+      "timezone": "Europe/Prague",
+      "datePrecision": "date",
+      "status": "closed",
+      "conditionalOnVacancies": false,
+      "applicationUrl": "https://is.muni.cz/prihlaska/info?filtr-typ-studia=BM&filtr-forma-studia=P&filtr-fakulta=1433&vyhledat=Vyhledat",
+      "sourceEvidenceId": "ev-muni-fi-cs-close",
+      "sisCannotApplyNow": null
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-muni-fi-en-sep",
+      "url": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/how-to-apply",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Faculty of Informatics September intake: 15 December–15 April",
+      "supports": [
+        "window.opensAt",
+        "window.closesAt"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-how-to-apply-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-fi-en-feb",
+      "url": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/how-to-apply",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Faculty of Informatics February intake: 15 June–15 October",
+      "supports": [
+        "window.opensAt",
+        "window.closesAt"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-how-to-apply-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-fi-en-eval-autumn",
+      "url": "https://www.fi.muni.cz/admission/international/info-master.html.en",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "dates of evaluation of fully submitted and paid applications are: 15 January, 15 February, 15 March, 15 April 2026",
+      "supports": [
+        "window.closesAt"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-fi-master-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-fi-cs-close",
+      "url": "https://www.fi.muni.cz/admission/info-bachelor.html.cs",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Termíny pro podávání přihlášek: 1. 11. 2025 – 28. 2. 2026",
+      "supports": [
+        "window.opensAt",
+        "window.closesAt"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-fi-bachelor-cs.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-tuition-fi",
+      "url": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/tuition-fees-and-financial-aid",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Faculty of Informatics 4,500 EUR",
+      "supports": [
+        "tuition.amount"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-tuition-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-tuition-czech-free",
+      "url": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/tuition-fees-and-financial-aid",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "programmes taught in Czech are completely tuition free",
+      "supports": [
+        "tuition.amount"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-tuition-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-fi-en-fee-800",
+      "url": "https://www.fi.muni.cz/admission/international/info-master.html.en",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "The application fee is 800 CZK",
+      "supports": [
+        "applicationFee"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-fi-master-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-fi-en-fee-900",
+      "url": "https://www.muni.cz/en/about-us/official-notice-board/admission-procedure-fees",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "FI follow-up master's foreign-language admission procedure fee 900 CZK (2026/27 table)",
+      "supports": [
+        "applicationFee"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-admission-fees-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-fi-cs-fee-800",
+      "url": "https://www.fi.muni.cz/admission/guide.html.cs",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Přihláška se podává elektronicky a poplatek je 800 Kč.",
+      "supports": [
+        "applicationFee"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-fi-bachelor-guide-cs.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-fi-cs-fee-900",
+      "url": "https://www.muni.cz/en/about-us/official-notice-board/admission-procedure-fees",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "FI bachelor admission procedure fee 900 CZK (2026/27 table)",
+      "supports": [
+        "applicationFee"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-admission-fees-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    },
+    {
+      "id": "ev-muni-fi-bachelor-czech-only",
+      "url": "https://www.fi.muni.cz/admission/index.html.en",
+      "institution": "Masarykova univerzita",
+      "extractedAt": "2026-09-06",
+      "quoteOriginal": "Bachelor's Taught in Czech only.",
+      "supports": [
+        "teachingLanguages"
+      ],
+      "localPath": "work/raw/2026-09-06/muni-fi-index-en.html",
+      "timezoneAssumed": "Europe/Prague"
+    }
+  ]
+}
