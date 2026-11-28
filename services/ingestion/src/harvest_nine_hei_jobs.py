@@ -31,6 +31,7 @@ ROOT = Path(__file__).resolve().parents[3]
 from publication_rules import (  # noqa: E402
     JOB_FACT_NORMALIZATION_VERSION,
     JOB_FACT_VERSIONS,
+    SALARY_CURRENCIES,
     review_job_fact_hash,
     job_fact_hash,
     reviewer_role,
@@ -1650,6 +1651,21 @@ _GROUP3 = re.compile(
 _DECIMAL_2 = re.compile(r"^([0-9]+)([.,])([0-9]{1,2})$")
 
 
+_CURRENCY_ALIASES = {"kč": "CZK", "kc": "CZK", "€": "EUR"}
+
+
+def normalize_salary_currency(value: object) -> str | None:
+    """The controlled currency code a source's currency word stands for, else None.
+
+    VUT's LMC job feed gives the currency as the word "Kč"; 2026-11-22 one such
+    record reached the published selection and failed every workflow that
+    validates it (SALARY_CURRENCY_INVALID) from 2026-11-25.
+    """
+    token = str(value or "").strip()
+    code = _CURRENCY_ALIASES.get(token.casefold(), token.upper())
+    return code if code in SALARY_CURRENCIES else None
+
+
 def parse_money_number(raw: str | None) -> float | None:
     """Parse one contiguous money token, honouring grouping and decimal separators.
 
@@ -2591,9 +2607,11 @@ def parse_lmc_graphql_detail(
         minimum = salary.get("min")
         maximum = salary.get("max")
         amount = minimum if isinstance(minimum, (int, float)) else maximum
-        if isinstance(amount, (int, float)):
+        currency = normalize_salary_currency(salary.get("currency"))
+        # An amount without a currency the contract knows is not stated.
+        if isinstance(amount, (int, float)) and currency:
             parsed["salaryAmount"] = float(amount)
-            parsed["salaryCurrency"] = salary.get("currency")
+            parsed["salaryCurrency"] = currency
             parsed["paidStatus"] = "confirmed"
     structured_degree = _lmc_required_degree(parameters.get("requiredEducation"))
     if structured_degree is not None:
@@ -5312,6 +5330,9 @@ def job_record(candidate: dict, verified_at: str, host_verified: bool, page_text
     # A67: cycle and tax are evidence-based. An amount without a stated payroll
     # period stays "unspecified"; a net figure is never relabelled gross.
     salary_amount = candidate.get("salaryAmount")
+    salary_currency = normalize_salary_currency(candidate.get("salaryCurrency"))
+    if salary_currency is None:
+        salary_amount = None
     salary_cycle = candidate.get("salaryCycle")
     salary_tax = candidate.get("salaryTax")
     job = {
@@ -5329,7 +5350,7 @@ def job_record(candidate: dict, verified_at: str, host_verified: bool, page_text
         "paidStatus": candidate.get("paidStatus") or "unconfirmed",
         "salary": {
             "amount": salary_amount,
-            "currency": candidate.get("salaryCurrency"),
+            "currency": salary_currency,
             "cycle": salary_cycle
             or ("unspecified" if salary_amount is not None else None),
             "tax": salary_tax

@@ -3343,3 +3343,35 @@ def test_inline_headings_in_the_site_menu_and_footer_are_not_vacancies() -> None
     )
     rows = parse_inline_heading_jobs(vacancy + footer, "https://www.icpf.cas.cz/nabidky-zamestnani/")
     assert [row["title"] for row in rows] == ["Postdoktorand v oboru chemického inženýrství"]
+
+
+def _lmc_detail(salary: dict | None) -> str:
+    return json.dumps({"data": {"widget": {"jobAd": {
+        "id": "2001543979", "title": "správce/vývojář Oracle databáze", "validFrom": "2026-11-20T10:00:00+01:00",
+        "languageIso": "cs",
+        "content": {"htmlContent": "<p>Správa databází pro výzkum. Minimálně bakalářské vzdělání.</p>", "sections": []},
+        "parameters": {"requiredEducation": "Bakalářské"}, "salary": salary}}}}, ensure_ascii=False)
+
+
+def test_an_lmc_salary_states_its_currency_as_a_controlled_code() -> None:
+    """2026-11-22: VUT's feed gave the currency as the word "Kč"; the record failed
+    SALARY_CURRENCY_INVALID in every workflow that validates the selection."""
+    from harvest_nine_hei_jobs import job_record, normalize_salary_currency
+
+    url = "https://vutbr.jobs.cz/detail-pozice?r=detail&id=2001543979"
+    parsed = parse_lmc_graphql_detail(_lmc_detail({"min": 60000, "max": None, "period": None, "currency": "Kč"}), url, "2001543979")
+    assert parsed["salaryAmount"] == 60000.0 and parsed["salaryCurrency"] == "CZK" and parsed["paidStatus"] == "confirmed"
+    assert [normalize_salary_currency(value) for value in ("Kč", "KČ", "czk", "CZK", " eur ", "€", "USD")] == [
+        "CZK", "CZK", "CZK", "CZK", "EUR", "EUR", "USD"]
+    assert normalize_salary_currency("Ft") is None and normalize_salary_currency(None) is None
+    # A currency the contract does not know states no amount, rather than an amount in no currency.
+    unknown = parse_lmc_graphql_detail(_lmc_detail({"min": 60000, "max": None, "period": None, "currency": "Ft/m"}), url, "2001543979")
+    assert unknown["salaryAmount"] is None and unknown["salaryCurrency"] is None
+    # And a candidate carrying the raw word (a stored record re-harvested) is normalised too.
+    candidate = {"id": "job-26000-2001543979", "employerId": "msmt-vs_26000", "title": "správce/vývojář Oracle databáze",
+                 "sourceUrl": url, "track": "post_master", "salaryAmount": 60000.0, "salaryCurrency": "Kč"}
+    job, _window = job_record(candidate, "2026-11-28T00:00:00Z", True, "")
+    assert job["salary"]["currency"] == "CZK"
+    candidate["salaryCurrency"] = "Ft/m"
+    job, _window = job_record(candidate, "2026-11-28T00:00:00Z", True, "")
+    assert job["salary"]["amount"] is None and job["salary"]["currency"] is None

@@ -22,7 +22,7 @@ from typing import Callable
 from urllib.parse import urlsplit
 
 from harvest_nine_hei_jobs import AUTO_REVIEWS, AUTOMATIC_REVIEWER, REVIEWS, ROOT, _read_reviews
-from publication_rules import JOB_FACT_NORMALIZATION_VERSION, job_fact_hash, translation_content_hash
+from publication_rules import JOB_FACT_NORMALIZATION_VERSION, SALARY_CURRENCIES, job_fact_hash, translation_content_hash
 from title_translation import LOCALES, cache_key, llama_translate, translate_title
 
 TRANSLATIONS = ROOT / "data" / "sources" / "reviews" / "machine-title-translations.json"
@@ -118,6 +118,11 @@ def gate_blockers(job: dict, windows: list[dict], today: date, others: list[dict
             break
     if not str(job.get("sourceHash") or "").startswith("sha256:"):
         reasons.append("no-source-hash")
+    # One approved record the publication contract refuses fails every workflow
+    # that validates the selection (2026-11-25..28), so it is withheld instead.
+    salary = job.get("salary") if isinstance(job.get("salary"), dict) else {}
+    if salary.get("amount") is not None and salary.get("currency") not in SALARY_CURRENCIES:
+        reasons.append("salary-currency-not-controlled")
     return reasons
 
 

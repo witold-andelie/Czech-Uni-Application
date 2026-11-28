@@ -163,3 +163,16 @@ def test_a_teaching_centre_head_is_withheld_but_research_and_data_centre_heads_a
     for kept in ("VŘ - ředitel VIC", "Head of Institute of Medical Genetics and Genomics",
                  "Head of the Centre for Educational Research", "Senior Research Centre Leader – CVD Synthesis"):
         assert "teaching-centre-head" not in blockers(kept)
+
+
+def test_a_salary_the_publication_contract_would_refuse_is_withheld_not_approved() -> None:
+    """2026-11-25..28: one approved record with currency "Kč" failed CI, refresh,
+    auto-review and programme-links at their validation step."""
+    payload = {"jobs": [
+        _job(id="bad", salary={"amount": 60000.0, "currency": "Kč", "cycle": "unspecified", "tax": "unknown", "basisFte": None}),
+        _job(id="good", salary={"amount": 60000.0, "currency": "CZK", "cycle": "unspecified", "tax": "unknown", "basisFte": None}),
+        _job(id="unpaid", salary={"amount": None, "currency": None, "cycle": None, "tax": "unknown", "basisFte": None}),
+    ], "windows": []}
+    report = auto_review.run(payload, {}, {}, {}, today=TODAY, now=NOW, translate=_fake)
+    assert report["withheld"]["bad"] == ["salary-currency-not-controlled"]
+    assert sorted(report["approved"]) == ["good", "unpaid"]
